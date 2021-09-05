@@ -23,26 +23,28 @@
 <meta name="description" content="区间求和 区间最大值 区间修改 单点修改    前缀和 √ × × ×   树状数组 √ × √ √   线段树 √ √ √ √   #树状数组 引入: 当i&amp;(-i)时会发生什么： 先看例子：    十进制 二进制 二进制（补） i&amp;(-i)    0 0000 0000 0000   1 0001 1111 0001   2 0010 1110 0010   3 001">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前缀和、树状数组、线段树">
-<meta property="og:url" content="http://example.com/2021/06/28/Binary-Indexed-Tree/index.html">
+<meta property="og:url" content="http://example.com/2021/06/28/%E5%89%8D%E7%BC%80%E5%92%8C%E3%80%81%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E3%80%81%E7%BA%BF%E6%AE%B5%E6%A0%91/index.html">
 <meta property="og:site_name" content="划水骗分二十年，没人比我更懂蒻">
 <meta property="og:description" content="区间求和 区间最大值 区间修改 单点修改    前缀和 √ × × ×   树状数组 √ × √ √   线段树 √ √ √ √   #树状数组 引入: 当i&amp;(-i)时会发生什么： 先看例子：    十进制 二进制 二进制（补） i&amp;(-i)    0 0000 0000 0000   1 0001 1111 0001   2 0010 1110 0010   3 001">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2021/06/28/Binary-Indexed-Tree/1.jpg">
+<meta property="og:image" content="http://example.com/2021/06/28/%E5%89%8D%E7%BC%80%E5%92%8C%E3%80%81%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E3%80%81%E7%BA%BF%E6%AE%B5%E6%A0%91/1.jpg">
 <meta property="article:published_time" content="2021-06-28T09:45:06.000Z">
-<meta property="article:modified_time" content="2021-07-20T05:49:34.837Z">
+<meta property="article:modified_time" content="2021-09-05T02:44:47.635Z">
 <meta property="article:author" content="爷">
 <meta property="article:tag" content="算法">
 <meta property="article:tag" content="其他">
 <meta property="article:tag" content="Binary Indexed Tree">
+<meta property="article:tag" content="前缀和">
+<meta property="article:tag" content="Segment Tree">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2021/06/28/Binary-Indexed-Tree/1.jpg">
+<meta name="twitter:image" content="http://example.com/2021/06/28/%E5%89%8D%E7%BC%80%E5%92%8C%E3%80%81%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E3%80%81%E7%BA%BF%E6%AE%B5%E6%A0%91/1.jpg">
 
 
-<link rel="canonical" href="http://example.com/2021/06/28/Binary-Indexed-Tree/">
+<link rel="canonical" href="http://example.com/2021/06/28/%E5%89%8D%E7%BC%80%E5%92%8C%E3%80%81%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E3%80%81%E7%BA%BF%E6%AE%B5%E6%A0%91/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2021/06/28/Binary-Indexed-Tree/","path":"2021/06/28/Binary-Indexed-Tree/","title":"前缀和、树状数组、线段树"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2021/06/28/%E5%89%8D%E7%BC%80%E5%92%8C%E3%80%81%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E3%80%81%E7%BA%BF%E6%AE%B5%E6%A0%91/","path":"2021/06/28/前缀和、树状数组、线段树/","title":"前缀和、树状数组、线段树"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>前缀和、树状数组、线段树 | 划水骗分二十年，没人比我更懂蒻</title>
@@ -126,13 +128,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-count">44</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -172,7 +174,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/28/Binary-Indexed-Tree/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/28/%E5%89%8D%E7%BC%80%E5%92%8C%E3%80%81%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E3%80%81%E7%BA%BF%E6%AE%B5%E6%A0%91/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -203,7 +205,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-07-20 13:49:34" itemprop="dateModified" datetime="2021-07-20T13:49:34+08:00">2021-07-20</time>
+        <time title="Modified: 2021-09-05 10:44:47" itemprop="dateModified" datetime="2021-09-05T10:44:47+08:00">2021-09-05</time>
       </span>
 
   
@@ -310,7 +312,7 @@
 <p>树状数组：<br>因为十进制正整数都有其唯一对应的二进制数，故任何一个十进制正整数都能展开：$x=2^a+2^b+2^c+···$<br>例如：117=64+32+16+4+1<br>重新观察上面这个表达式，117个1 = 64个1 + 32个1 +16个1 + 4个1 + 1个1<br>同理，117个箱子 = 64个箱子 + 32个箱子 +16个箱子 +4个箱子 + 1个箱子<br>假设现在有117个箱子按顺序摆在我的面前，每个箱子装了不同数量的，额，苹果，好的。<br>我给这117个箱子编号，1号箱子，2号箱子，3号箱子，4号箱子······<br>我现在想知道这117个箱子一共TM的到底装了多少个苹果，那么我可以需要取<br>1到64号箱子苹果总数，加上65号到96号箱子里苹果的总数，再加上97号到112号箱子里苹果的总数，再加上113号到116号箱子里苹果的总数，再加上117号箱子里苹果的总数。</p>
 <p>现在假设有个表格来记录莫些箱子装的苹果数之和</p>
 <p>如下图，</p>
-<img src="/2021/06/28/Binary-Indexed-Tree/1.jpg" class>
+<img src="/2021/06/28/%E5%89%8D%E7%BC%80%E5%92%8C%E3%80%81%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E3%80%81%E7%BA%BF%E6%AE%B5%E6%A0%91/1.jpg" class>
 
 <p>沿着i+=lowbit(i)进行存储，那么沿着i-=lowbit(i)取出，即可取出1~i的区间和</p>
 <p>假设现在需要取1到14出来，14的二进制是1110，也就是说14=8+4+2，把8、4、2一次对应到数组中为8，12，14。故1到14的箱子所装的苹果总数为8号箱+12号箱+14号箱。12的二进制1100，8的二进制1000。i-=lowbit相当于砍掉最后1位的1。故i-=lowbit(i)实现14到12到8。</p>
@@ -344,6 +346,8 @@
               <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"># 算法</a>
               <a href="/tags/%E5%85%B6%E4%BB%96/" rel="tag"># 其他</a>
               <a href="/tags/Binary-Indexed-Tree/" rel="tag"># Binary Indexed Tree</a>
+              <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" rel="tag"># 前缀和</a>
+              <a href="/tags/Segment-Tree/" rel="tag"># Segment Tree</a>
           </div>
 
         
