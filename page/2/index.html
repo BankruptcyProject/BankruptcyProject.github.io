@@ -116,13 +116,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-count">45</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -152,6 +152,88 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/30/N-Queens/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="爷">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/05/30/N-Queens/" class="post-title-link" itemprop="url">N-Queens</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-05-30 10:20:29" itemprop="dateCreated datePublished" datetime="2021-05-30T10:20:29+08:00">2021-05-30</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-09-05 10:21:06" itemprop="dateModified" datetime="2021-09-05T10:21:06+08:00">2021-09-05</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="第一次手写-93-83-39-95"><a href="#第一次手写-93-83-39-95" class="headerlink" title="第一次手写(93.83%,39.95% )"></a>第一次手写(93.83%,39.95% )</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">bool</span> row[<span class="number">10</span>] = &#123; <span class="number">0</span> &#125;, left[<span class="number">20</span>] = &#123; <span class="number">0</span> &#125;, right[<span class="number">20</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">    vector&lt;vector&lt;string&gt;&gt;ans;  <span class="comment">//答案</span></span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt;anss;            <span class="comment">//每一种解法</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">found</span><span class="params">()</span>    <span class="comment">//找到一种解法</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        vector&lt;string&gt;ansss;    <span class="comment">//string类型的每一种解法</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= anss.<span class="built_in">size</span>() - <span class="number">1</span>; ++i)<span class="comment">//棋盘初始化</span></span><br><span class="line">        &#123;</span><br><span class="line">            string a;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= anss.<span class="built_in">size</span>() - <span class="number">1</span>; ++j)a += <span class="string">&#x27;.&#x27;</span>;</span><br><span class="line">            ansss.<span class="built_in">push_back</span>(a);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= anss.<span class="built_in">size</span>() - <span class="number">1</span>; ++i)</span><br><span class="line">            ansss[i][anss[i] - <span class="number">1</span>] = <span class="string">&#x27;Q&#x27;</span>;</span><br><span class="line">        ans.<span class="built_in">push_back</span>(ansss);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">nqueens</span><span class="params">(<span class="keyword">int</span> line, <span class="keyword">int</span>&amp; n)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)<span class="comment">//行优先放置，即i为第i列</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (!row[i] &amp;&amp; !left[line + i] &amp;&amp; !right[line - i + <span class="number">10</span>])</span><br><span class="line">            &#123;</span><br><span class="line">                row[i] = <span class="number">1</span>;</span><br><span class="line">                left[line + i] = <span class="number">1</span>;</span><br><span class="line">                right[line - i + <span class="number">10</span>] = <span class="number">1</span>;</span><br><span class="line">                anss.<span class="built_in">push_back</span>(i);</span><br><span class="line">                <span class="keyword">if</span> (anss.<span class="built_in">size</span>() == n)<span class="built_in">found</span>(); <span class="keyword">else</span> <span class="built_in">nqueens</span>(line + <span class="number">1</span>, n);</span><br><span class="line">                row[i] = <span class="number">0</span>;</span><br><span class="line">                left[line + i] = <span class="number">0</span>;</span><br><span class="line">                right[line - i + <span class="number">10</span>] = <span class="number">0</span>;</span><br><span class="line">                anss.<span class="built_in">pop_back</span>();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    vector&lt;vector&lt;string&gt;&gt; <span class="built_in">solveNQueens</span>(<span class="keyword">int</span> n)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">nqueens</span>(<span class="number">1</span>, n);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>思路：</p>
+<p>用三个数组表示占用：<br>row列占用，left左斜占用，right右斜占用</p>
+<p>一共有n列，第i列占用则row[i]置1</p>
+<p>左斜2n-1个，特征为 每一斜 行列下标相加相同，第i斜占用则left[i]置1</p>
+<p>右斜本应2n-1个，特征为 每一斜 行下标减列下标相同，第i斜占用则right[i]置1，但问题在于，行列下标相减可能会出现负数，故右斜下标应该整体右移。</p>
+<p>按行放置，放置到第n行是得到一种解法</p>
+<h1 id="根据题解优化后93-83-74"><a href="#根据题解优化后93-83-74" class="headerlink" title="根据题解优化后93.83%,74%"></a>根据题解优化后93.83%,74%</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">bool</span> row[<span class="number">10</span>] = &#123; <span class="number">0</span> &#125;, left[<span class="number">20</span>] = &#123; <span class="number">0</span> &#125;, right[<span class="number">20</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">    vector&lt;vector&lt;string&gt;&gt;ans;  <span class="comment">//答案</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> line, <span class="keyword">int</span>&amp; n, vector&lt;string&gt;&amp; anss)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (line == n)ans.<span class="built_in">push_back</span>(anss);<span class="comment">//放置完n行，找到一种解法，打入ans</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i)<span class="comment">//行优先放置，即i为第i列</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (!row[i] &amp;&amp; !left[line + i] &amp;&amp; !right[line - i + n])</span><br><span class="line">            &#123;</span><br><span class="line">                row[i] = left[line + i] = right[line - i + n] = <span class="literal">true</span>;</span><br><span class="line">                anss[line][i] = <span class="string">&#x27;Q&#x27;</span>;</span><br><span class="line">                <span class="built_in">dfs</span>(line + <span class="number">1</span>, n, anss);</span><br><span class="line">                row[i] = left[line + i] = right[line - i + n] = <span class="literal">false</span>;</span><br><span class="line">                anss[line][i] = <span class="string">&#x27;.&#x27;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    vector&lt;vector&lt;string&gt;&gt; <span class="built_in">solveNQueens</span>(<span class="keyword">int</span> n)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function">vector&lt;string&gt; <span class="title">anss</span><span class="params">(n, string(n, <span class="string">&#x27;.&#x27;</span>))</span></span>;<span class="comment">//每一种解法的初始化</span></span><br><span class="line">        <span class="built_in">dfs</span>(<span class="number">0</span>, n, anss);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>思路不变，代码优化，空间优化</p>
+<p>新语法：<br>vector<string> anss(n, string(n, ‘.’));</string></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1067,184 +1149,6 @@
 
 <p>PS：CGfsb遗留的问题至此解决</p>
 
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/03/cs/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="爷">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/04/03/cs/" class="post-title-link" itemprop="url">cs</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-04-03 11:58:26" itemprop="dateCreated datePublished" datetime="2021-04-03T11:58:26+08:00">2021-04-03</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-09-04 21:53:09" itemprop="dateModified" datetime="2021-09-04T21:53:09+08:00">2021-09-04</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>写在前面：没有提到的东西跟c++差不多</p>
-<h1 id="第一课"><a href="#第一课" class="headerlink" title="第一课"></a>第一课</h1><p>一个 C# 程序一般结果：<br>using System<br>命名空间声明（namespace betql）<br>    class<br>        class属性<br>        class方法<br>    class<br>        class属性<br>        class方法<br>            语句（Statements）&amp; 表达式（Expressions）<br>        Main方法<br>            语句（Statements）&amp; 表达式（Expressions）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">using System;</span><br><span class="line">namespace HelloWorldApplication</span><br><span class="line">&#123;</span><br><span class="line">   class HelloWorld</span><br><span class="line">   &#123;</span><br><span class="line">      static void Main(string[] args)</span><br><span class="line">      &#123;</span><br><span class="line">         /* 我的第一个 C# 程序*/</span><br><span class="line">         Console.WriteLine(&quot;Hello World&quot;);</span><br><span class="line">         Console.ReadKey();</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">//目前来说，这里基本可以当作格式</span><br></pre></td></tr></table></figure>
-
-<p><strong>类</strong>一般包含多个<strong>方法</strong>。<br><strong>方法</strong>定义了<strong>类</strong>的行为。<br><strong>Main</strong> 方法，是所有 C# 程序的 <strong>入口点</strong>。<strong>Main</strong>  方法说明当执行时 <strong>类</strong>将做什么动作。<br><strong>Console.ReadKey();</strong> 是针对 VS.NET 用户的。这使得程序会等待一个按键的动作，防止程序从 Visual Studio .NET 启动时屏幕会快速运行并关闭。<br><strong>WriteLine</strong> 是一个定义在 <strong>System</strong> 命名空间中的 <strong>Console</strong> 类的一个方法。</p>
-<p>注：<br>C# 是大小写敏感的。<br>所有的语句和表达式必须以分号（;）结尾。<br>程序的执行从 Main 方法开始。</p>
-<h1 id="第二课"><a href="#第二课" class="headerlink" title="第二课"></a>第二课</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">using System;</span><br><span class="line">namespace RectangleApplication</span><br><span class="line">&#123;</span><br><span class="line">    class Rectangle</span><br><span class="line">    &#123;</span><br><span class="line">        // 成员变量</span><br><span class="line">        double length;</span><br><span class="line">        double width;</span><br><span class="line">        public void Acceptdetails()</span><br><span class="line">        &#123;</span><br><span class="line">            length = 4.5;</span><br><span class="line">            width = 3.5;</span><br><span class="line">        &#125;</span><br><span class="line">        public double GetArea()</span><br><span class="line">        &#123;</span><br><span class="line">            return length * width;</span><br><span class="line">        &#125;</span><br><span class="line">        public void Display()</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(&quot;Length: &#123;0&#125;; Width: &#123;1&#125;; Area: &#123;2&#125;&quot;, length, width, GetArea());</span><br><span class="line">            //是的，是顺序和格式</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    class ExecuteRectangle</span><br><span class="line">    &#123;</span><br><span class="line">        static void Main(string[] args)</span><br><span class="line">        &#123;</span><br><span class="line">            Rectangle r = new Rectangle();//类的实例化：通过已有的类（class）创建出该类的一个对象（object）</span><br><span class="line">            r.Display();//输出0</span><br><span class="line">            r.Acceptdetails();</span><br><span class="line">            r.Display();</span><br><span class="line">            Console.ReadLine();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>注：<br>当一个方法有超过两件事情，就分开来写。<br>面向对象&amp;面相对向的原理就是善用Class做分类。<br>不要将所有事情都写在一起，到时候有问题要全部重写。<br>也有可能别人在看代码需要很多时间去理解。<br>因此善用分类，让大家都能轻易读懂。<br>未来Class一定会建立很多，可能一个Class就只有2-3行。<br>但这就是单一职责，高内聚低耦合，让未来debug不会这么痛苦。<br>写不难，逻辑分清楚，让大家都能懂，这才难。</p>
-<h1 id="第三课-数据类型"><a href="#第三课-数据类型" class="headerlink" title="第三课 数据类型"></a>第三课 数据类型</h1><h2 id="值类型"><a href="#值类型" class="headerlink" title="值类型"></a>值类型</h2><p>对于一个变量有专属的一个内存地址</p>
-<h2 id="引用类型"><a href="#引用类型" class="headerlink" title="引用类型"></a>引用类型</h2><p>对于莫个地址有不同的变量指向它<br>比如定义引用类型   a=10，这时候在内存中保存的是 10，当把 a 赋给 b 的时候，他们两个应用的是同一个内存空间，b 的值会保存为 a 的值，当把  b 改为 20 时，应为 a 和 b 引用的是同一个所以 a 也变成 20 了</p>
-<p>装箱：值类型转换为对象类型<br>拆箱：之前由值类型转换而来的对象类型再转回值类型</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int val = 8;</span><br><span class="line">object obj = val;//先装箱</span><br><span class="line">int nval = （int）obj;//再拆箱</span><br></pre></td></tr></table></figure>
-
-<p><strong>字符串（string）类型</strong> 允许您给变量分配任何字符串值。</p>
-<p>字符串（string）类型的值可以通过两种形式进行分配：引号和 @引号。</p>
-<p>C# string 字符串的前面可以加 @（称作”逐字字符串”）将转义字符（\）当作普通字符对待，比如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">string str = @&quot;C:\Windows&quot;;</span><br><span class="line">//等价于</span><br><span class="line">string str = &quot;C:\\Windows&quot;;</span><br></pre></td></tr></table></figure>
-
-<p>@ 字符串中可以任意换行，<strong>换行符</strong>及<strong>缩进空格</strong>都计算在字符串长度之内。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">string str = @&quot;&lt;script type=&quot;&quot;text/javascript&quot;&quot;&gt;</span><br><span class="line">    &lt;!--</span><br><span class="line">    --&gt;</span><br><span class="line">&lt;/script&gt;&quot;;</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="第四课-类型转换"><a href="#第四课-类型转换" class="headerlink" title="第四课 类型转换"></a>第四课 类型转换</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">namespace TypeConversionApplication</span><br><span class="line">&#123;</span><br><span class="line">    class StringConversion</span><br><span class="line">    &#123;</span><br><span class="line">        static void Main(string[] args)</span><br><span class="line">        &#123;</span><br><span class="line">            int i = 75;</span><br><span class="line">            float f = 53.005f;</span><br><span class="line">            double d = 2345.7652;</span><br><span class="line">            bool b = true;</span><br><span class="line"></span><br><span class="line">            Console.WriteLine(i.ToString());//C#提供的内置的类型转换方法</span><br><span class="line">            Console.WriteLine(f.ToString());</span><br><span class="line">            Console.WriteLine(d.ToString());</span><br><span class="line">            Console.WriteLine(b.ToString());</span><br><span class="line">            </span><br><span class="line">            int j = (int)f;//强制/显性进制转化，可能导致数据丢失</span><br><span class="line">            long k= i; //隐性进制转化，不会导致数据丢失</span><br><span class="line">            Console.WriteLine(j);</span><br><span class="line">            Console.WriteLine(k);</span><br><span class="line">            Console.ReadKey();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">/*</span><br><span class="line">75</span><br><span class="line">53.005</span><br><span class="line">2345.7652</span><br><span class="line">True</span><br><span class="line">53</span><br><span class="line">75</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
-
-<h2 id="C-类型转换方法"><a href="#C-类型转换方法" class="headerlink" title="C# 类型转换方法"></a>C# 类型转换方法</h2><table>
-<thead>
-<tr>
-<th>序号</th>
-<th>方法 &amp; 描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1</td>
-<td><strong>ToBoolean</strong> 如果可能的话，把类型转换为布尔型。</td>
-</tr>
-<tr>
-<td>2</td>
-<td><strong>ToByte</strong> 把类型转换为字节类型。</td>
-</tr>
-<tr>
-<td>3</td>
-<td><strong>ToChar</strong> 如果可能的话，把类型转换为单个 Unicode 字符类型。</td>
-</tr>
-<tr>
-<td>4</td>
-<td><strong>ToDateTime</strong> 把类型（整数或字符串类型）转换为 日期-时间 结构。</td>
-</tr>
-<tr>
-<td>5</td>
-<td><strong>ToDecimal</strong> 把浮点型或整数类型转换为十进制类型。</td>
-</tr>
-<tr>
-<td>6</td>
-<td><strong>ToDouble</strong> 把类型转换为双精度浮点型。</td>
-</tr>
-<tr>
-<td>7</td>
-<td><strong>ToInt16</strong> 把类型转换为 16 位整数类型。</td>
-</tr>
-<tr>
-<td>8</td>
-<td><strong>ToInt32</strong> 把类型转换为 32 位整数类型。</td>
-</tr>
-<tr>
-<td>9</td>
-<td><strong>ToInt64</strong> 把类型转换为 64 位整数类型。</td>
-</tr>
-<tr>
-<td>10</td>
-<td><strong>ToSbyte</strong> 把类型转换为有符号字节类型。</td>
-</tr>
-<tr>
-<td>11</td>
-<td><strong>ToSingle</strong> 把类型转换为小浮点数类型。</td>
-</tr>
-<tr>
-<td>12</td>
-<td><strong>ToString</strong> 把类型转换为字符串类型。</td>
-</tr>
-<tr>
-<td>13</td>
-<td><strong>ToType</strong> 把类型转换为指定类型。</td>
-</tr>
-<tr>
-<td>14</td>
-<td><strong>ToUInt16</strong> 把类型转换为 16 位无符号整数类型。</td>
-</tr>
-<tr>
-<td>15</td>
-<td><strong>ToUInt32</strong> 把类型转换为 32 位无符号整数类型。</td>
-</tr>
-<tr>
-<td>16</td>
-<td><strong>ToUInt64</strong> 把类型转换为 64 位无符号整数类型。</td>
-</tr>
-</tbody></table>
-<h1 id="第五课-C-遗产"><a href="#第五课-C-遗产" class="headerlink" title="第五课 C++遗产"></a>第五课 C++遗产</h1><h2 id="读入"><a href="#读入" class="headerlink" title="读入"></a>读入</h2><p><strong>System</strong> 命名空间中的 <strong>Console</strong> 类提供了一个函数 **ReadLine()**，用于接收来自用户的输入，并把它存储到一个变量中。</p>
-<p>例如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int num;</span><br><span class="line">num = Convert.ToInt32(Console.ReadLine());</span><br></pre></td></tr></table></figure>
-
-<p>函数 <strong>Convert.ToInt32()</strong> 把用户输入的数据转换为 int 数据类型，因为 <strong>Console.ReadLine()</strong> 只接受字符串格式的数据。</p>
-<h2 id="foreach"><a href="#foreach" class="headerlink" title="foreach"></a>foreach</h2><p>C# 也支持 foreach 循环，使用foreach可以迭代数组或者一个集合对象。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class ForEachTest</span><br><span class="line">&#123;</span><br><span class="line">    static void Main(string[] args)</span><br><span class="line">    &#123;</span><br><span class="line">        int[] fibarray = new int[] &#123; 0, 1, 1, 2, 3, 5, 8, 13 &#125;;</span><br><span class="line">        foreach (int element in fibarray)</span><br><span class="line">        &#123;</span><br><span class="line">            System.Console.WriteLine(element);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>输出结果为：<br>0<br>1<br>1<br>2<br>3<br>5<br>8<br>13</p>
-<h1 id="第六课-封装"><a href="#第六课-封装" class="headerlink" title="第六课 封装"></a>第六课 封装</h1><p>public：所有对象都可以访问<br>private：对象本身在对象内部可以访问<br>protected：只有该类对象及其子类对象可以访问<br>internal：同一个程序集的对象可以访问<br>protected internal：访问限于当前程序集或派生自包含类的类型</p>
-<h1 id="第七课-数组"><a href="#第七课-数组" class="headerlink" title="第七课 数组"></a>第七课 数组</h1>
       
     </div>
 
