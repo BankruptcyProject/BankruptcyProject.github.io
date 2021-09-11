@@ -116,13 +116,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-count">46</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -206,6 +206,85 @@
     
     <div class="post-body" itemprop="articleBody">
           <img src="/2020/11/16/%E4%B8%BA%E4%BB%80%E4%B9%88%E6%B2%A1%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2%EF%BC%9F/7.jpg" class>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/10/%E5%BC%80%E5%A7%8B%E5%9C%BA%E6%99%AF%E5%92%8C%E5%9C%BA%E6%99%AF%E9%97%B4%E6%95%B0%E6%8D%AE%E4%BF%9D%E5%AD%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="爷">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/09/10/%E5%BC%80%E5%A7%8B%E5%9C%BA%E6%99%AF%E5%92%8C%E5%9C%BA%E6%99%AF%E9%97%B4%E6%95%B0%E6%8D%AE%E4%BF%9D%E5%AD%98/" class="post-title-link" itemprop="url">开始场景和场景间数据保存</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-09-10 20:47:21" itemprop="dateCreated datePublished" datetime="2021-09-10T20:47:21+08:00">2021-09-10</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-09-11 09:18:52" itemprop="dateModified" datetime="2021-09-11T09:18:52+08:00">2021-09-11</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="开始场景">开始场景</h1>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">using UnityEngine.UI;</span><br><span class="line">using UnityEngine.SceneManagement;</span><br></pre></td></tr></table></figure>
+<p>这两个命名空间分别用于一些基础UI（按钮）和场景切换</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">btn_end.onClick.AddListener(() =&gt;</span><br><span class="line">&#123;       </span><br><span class="line">	#if UNITY_EDITOR</span><br><span class="line">		UnityEditor.EditorApplication.isPlaying = false;</span><br><span class="line">	#else</span><br><span class="line">		Application.Quit();</span><br><span class="line">	#endif</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>这是一个名字为btn_end的点击相应事件，中间部分为结束游戏代码（可调式加强版）</p>
+<p>#场景间数据保存</p>
+<p>首先应该有一个对象专门用于存储数据，挂在在这个对象上的脚本上写上要存储的数据，这些数据应为public属性，致使所有地方能访问。 以下是迷宫项目中的一个完整实例代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">using System.Collections;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using UnityEngine;</span><br><span class="line"></span><br><span class="line">public class Data : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    public static bool isAlready;</span><br><span class="line">    public int[,] map = new int[25, 25];</span><br><span class="line">    public Vector3 Spos;</span><br><span class="line">    public Vector3 Epos;</span><br><span class="line">    void Start()</span><br><span class="line">    &#123;</span><br><span class="line">        if (!isAlready)</span><br><span class="line">        &#123;</span><br><span class="line">            map = GameObject.Find(&quot;Gamecontrol&quot;).GetComponent&lt;Init&gt;().map;</span><br><span class="line">            Spos = GameObject.Find(&quot;Gamecontrol&quot;).GetComponent&lt;Init&gt;().Spos;</span><br><span class="line">            Epos = GameObject.Find(&quot;Gamecontrol&quot;).GetComponent&lt;Init&gt;().Epos;</span><br><span class="line">            GameObject.DontDestroyOnLoad(gameObject);</span><br><span class="line">            isAlready = true;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中<code>GameObject.DontDestroyOnLoad(gameObject);</code>最为关键。 场景切换时会销毁原本场景下的所有对象，除了加上这句的对象。 但是这个数据对象也是具体挂在在某个场景下的，当再次切回该场景时，会导致未销毁的数据对象和原本该场景下的数据对象重复，出现两个数据对象。故假设一个全局静态变量和特判，保证只有一个数据对象。</p>
+
       
     </div>
 
@@ -947,86 +1026,6 @@
 <p>pushup(p)：代码上直观的来看更像是是吸收，ans [p]的值来自于p的左右子树<br>pushdown：假设现有区间1到5，很明显，ans1负责存储这个区间的和，tag1负责存储这个区间上次的修改值。现在令这个区间加上2，则ans1加上10，tag1加上2。那么此时的树就不成立了，因为ans1的值不等于ans2和ans3的和了，但无所谓。下次若查询1到5的区间和，直接找ans1就行，不必找ans1以后的值。那么问题来了，现在要查询1到4的区间和怎么办？此时pushdown出场。ans1、tag1对应的区间1到5不是所查询的区间。向下更新这颗树——tag2=tag3=tag1，tag1=0。然后利用tag2和tag3，使得ans2+ans3=ans1。pushdown完毕。此时1到3区间和可直接查，4到5区间可直接查。以此类推。</p>
 <p>问题：<br>1暂时不知道为什么数组开这么大，到时候缩小看看能不能通过</p>
 <h2 id="洛谷题解代码（我加的注释）"><a href="#洛谷题解代码（我加的注释）" class="headerlink" title="洛谷题解代码（我加的注释）"></a>洛谷题解代码（我加的注释）</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 1000001</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">unsigned</span> ll n, m, a[MAXN], ans[MAXN &lt;&lt; <span class="number">2</span>], tag[MAXN &lt;&lt; <span class="number">2</span>];</span><br><span class="line"><span class="comment">//a数组是输入数组，当且仅当建树中使用到</span></span><br><span class="line"><span class="comment">//ans是树形数组，每个节点代表某个区间的和，每个节点的两个子树拆分区间</span></span><br><span class="line"><span class="comment">//tag是和ans对应的树形数组，负责记录修改值</span></span><br><span class="line"><span class="comment">//注意ans树和tag树的更新只显示在树的尽可能上的地方，不会向下实时更新，需要用的时候在更新</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">ls</span><span class="params">(ll x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x &lt;&lt; <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">rs</span><span class="params">(ll x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x &lt;&lt; <span class="number">1</span> | <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">scan</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="keyword">for</span> (ll i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%lld&quot;</span>, &amp;a[i]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">push_up</span><span class="params">(ll p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ans[p] = ans[<span class="built_in">ls</span>(p)] + ans[<span class="built_in">rs</span>(p)];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(ll p, ll l, ll r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    tag[p] = <span class="number">0</span>;<span class="comment">//如果能保证tag数组初始值位全为0的话，那么这行其实可以删掉</span></span><br><span class="line">    <span class="keyword">if</span> (l == r) &#123; ans[p] = a[l]; <span class="keyword">return</span>; &#125;<span class="comment">//l==r，为叶子节点</span></span><br><span class="line">    ll mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">build</span>(<span class="built_in">ls</span>(p), l, mid);<span class="comment">//后面参数2、3持续分割数列，</span></span><br><span class="line">    <span class="built_in">build</span>(<span class="built_in">rs</span>(p), mid + <span class="number">1</span>, r);</span><br><span class="line">    <span class="built_in">push_up</span>(p);<span class="comment">//这行不修改叶子节点</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">f</span><span class="params">(ll p, ll l, ll r, ll k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    tag[p] = tag[p] + k;</span><br><span class="line">    ans[p] = ans[p] + k * (r - l + <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">push_down</span><span class="params">(ll p, ll l, ll r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ll mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">f</span>(<span class="built_in">ls</span>(p), l, mid, tag[p]);</span><br><span class="line">    <span class="built_in">f</span>(<span class="built_in">rs</span>(p), mid + <span class="number">1</span>, r, tag[p]);</span><br><span class="line">    tag[p] = <span class="number">0</span>;<span class="comment">//修改值已经向下传递了</span></span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(ll nl, ll nr, ll l, ll r, ll p, ll k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//nl,nr为要修改的区间</span></span><br><span class="line">    <span class="comment">//l,r为当前节点所存储的区间</span></span><br><span class="line">    <span class="comment">//p为节点编号</span></span><br><span class="line">    <span class="keyword">if</span> (nl &lt;= l &amp;&amp; r &lt;= nr)<span class="comment">//找到一个可直接更新的区间，更新，且直接返回</span></span><br><span class="line">    &#123;</span><br><span class="line">        ans[p] += k * (r - l + <span class="number">1</span>);</span><br><span class="line">        tag[p] += k;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">push_down</span>(p, l, r);</span><br><span class="line">    <span class="comment">//程序走到这一步说明，目前所在区间不在所找区间内，下面会拆分序列，这里先pushdown，将树向下更新之前的修改值（可能存在）</span></span><br><span class="line">    ll mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (nl &lt;= mid) <span class="built_in">update</span>(nl, nr, l, mid, <span class="built_in">ls</span>(p), k);<span class="comment">//向左子树更新</span></span><br><span class="line">    <span class="keyword">if</span> (nr &gt; mid) <span class="built_in">update</span>(nl, nr, mid + <span class="number">1</span>, r, <span class="built_in">rs</span>(p), k);<span class="comment">//向右子树更新</span></span><br><span class="line">    <span class="built_in">push_up</span>(p);<span class="comment">//执行到这一步说明没有更新“总结点”，即上面的if (nl &lt;= l &amp;&amp; r &lt;= nr)没执行，现在合并左右子树</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">query</span><span class="params">(ll q_x, ll q_y, ll l, ll r, ll p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ll res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (q_x &lt;= l &amp;&amp; r &lt;= q_y)<span class="keyword">return</span> ans[p];<span class="comment">//找到所要查询的区间，直接返回，如果查找不到，返回下面的res，res分别是左子树的res和右子树的res的和</span></span><br><span class="line">    ll mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">push_down</span>(p, l, r);<span class="comment">//向下更新信息，因为此时树的底层的信号滞后于树的高层</span></span><br><span class="line">    <span class="keyword">if</span> (q_x &lt;= mid)res += <span class="built_in">query</span>(q_x, q_y, l, mid, <span class="built_in">ls</span>(p));</span><br><span class="line">    <span class="keyword">if</span> (q_y &gt; mid) res += <span class="built_in">query</span>(q_x, q_y, mid + <span class="number">1</span>, r, <span class="built_in">rs</span>(p));</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">freopen</span>(<span class="string">&quot;be.in&quot;</span>,<span class="string">&quot;r&quot;</span>, stdin);</span><br><span class="line">    <span class="built_in">freopen</span>(<span class="string">&quot;be.out&quot;</span>,<span class="string">&quot;w&quot;</span>, stdout);</span><br><span class="line">    ll a1, b, c, d, e, f;</span><br><span class="line">    <span class="built_in">scan</span>();</span><br><span class="line">    <span class="built_in">build</span>(<span class="number">1</span>, <span class="number">1</span>, n);</span><br><span class="line">    <span class="keyword">while</span> (m--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%lld&quot;</span>, &amp;a1);</span><br><span class="line">        <span class="built_in"><span class="keyword">switch</span></span> (a1)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">1</span>: </span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">scanf</span>(<span class="string">&quot;%lld%lld%lld&quot;</span>, &amp;b, &amp;c, &amp;d);</span><br><span class="line">                <span class="built_in">update</span>(b, c, <span class="number">1</span>, n, <span class="number">1</span>, d);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">2</span>: </span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">scanf</span>(<span class="string">&quot;%lld%lld&quot;</span>, &amp;e, &amp;f);</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>, <span class="built_in">query</span>(e, f, <span class="number">1</span>, n, <span class="number">1</span>));</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">fclose</span>(stdin);</span><br><span class="line">    <span class="built_in">fclose</span>(stdout);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/30/Pow(n,x)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="爷">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/05/30/Pow(n,x)/" class="post-title-link" itemprop="url">Pow(x,n)</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-05-30 12:48:30" itemprop="dateCreated datePublished" datetime="2021-05-30T12:48:30+08:00">2021-05-30</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-09-10 09:17:06" itemprop="dateModified" datetime="2021-09-10T09:17:06+08:00">2021-09-10</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="让计算机很快地求出-ab">让计算机很快地求出 $ a^b $</h2>
-<p>暴力相乘的话，电脑要计算 b 次。 用快速幂，计算次数在 <span class="math inline">\(log_2b\)</span> 级别，很实用。</p>
-<h2 id="原理">原理</h2>
-<p>假设我们需要计算<span class="math inline">\(3^{11}\)</span>，因为<span class="math inline">\((11)_{10}=(1011)_{2}\)</span>，即<span class="math inline">\(11=1 \cdot 2^0 + 1 \cdot 2^1 + 0 \cdot 2^2 + 1 \cdot 2^3=1+2+0+8\)</span>，故<span class="math inline">\(3^{11}=3^{1+2+0+8}=3^1\cdot3^2\cdot 3^0\cdot3^8=3^{1\cdot2^0}\cdot3^{1\cdot2^1}\cdot 3^{0\cdot2^2}\cdot3^{1\cdot2^3}\)</span>。</p>
-<p>原本需要3累乘11次如今只需要操作4次</p>
-<p>那么问题的关键就是：b如何展开提取</p>
-<p>b&amp;1 &amp;在这里做运算符，叫做按位与 c=a&amp;b 则c等于a与b分别的二进制的每一位进行“与运算”的结果 b =1011 1 =0001 b&amp;1 =0001</p>
-<p>1.只有b的二进制的最后一位是1时，b&amp;1才会是1 2.同时十进制b/2相当于二进制b砍掉最低位，又或者直接b&gt;&gt;1也有一样的效果 相结合，妙啊，阿sir</p>
-<h1 id="section">100%，72%</h1>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">quickPow</span><span class="params">(<span class="keyword">double</span>&amp; x, <span class="keyword">int</span>&amp; n)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">double</span> ans = <span class="number">1</span>,base = x;<span class="comment">//ans是要返回的答案； base是用于累乘的每一项</span></span><br><span class="line">        <span class="keyword">while</span> (n)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (n &amp; <span class="number">1</span>)ans *= base;</span><br><span class="line">            base *= base;<span class="comment">//base: x^1 --&gt; x^2 --&gt; x^4 --&gt; x^8</span></span><br><span class="line">            n /= <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;<span class="comment">//总结：base累乘增长很快，而我只需判断每一个base要不要乘上去，根据前面乱七八糟的推理，能成。</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">myPow</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">int</span> n)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (n &lt; <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">double</span> ans = <span class="built_in">quickPow</span>(x, n);</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1.0</span> / ans;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">double</span> ans = <span class="built_in">quickPow</span>(x, n);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
       
     </div>
 

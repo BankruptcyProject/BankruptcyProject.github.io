@@ -116,13 +116,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-count">46</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -152,6 +152,86 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/30/Pow(n,x)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="爷">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/05/30/Pow(n,x)/" class="post-title-link" itemprop="url">Pow(x,n)</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-05-30 12:48:30" itemprop="dateCreated datePublished" datetime="2021-05-30T12:48:30+08:00">2021-05-30</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-09-10 09:17:06" itemprop="dateModified" datetime="2021-09-10T09:17:06+08:00">2021-09-10</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="让计算机很快地求出-ab">让计算机很快地求出 $ a^b $</h2>
+<p>暴力相乘的话，电脑要计算 b 次。 用快速幂，计算次数在 <span class="math inline">\(log_2b\)</span> 级别，很实用。</p>
+<h2 id="原理">原理</h2>
+<p>假设我们需要计算<span class="math inline">\(3^{11}\)</span>，因为<span class="math inline">\((11)_{10}=(1011)_{2}\)</span>，即<span class="math inline">\(11=1 \cdot 2^0 + 1 \cdot 2^1 + 0 \cdot 2^2 + 1 \cdot 2^3=1+2+0+8\)</span>，故<span class="math inline">\(3^{11}=3^{1+2+0+8}=3^1\cdot3^2\cdot 3^0\cdot3^8=3^{1\cdot2^0}\cdot3^{1\cdot2^1}\cdot 3^{0\cdot2^2}\cdot3^{1\cdot2^3}\)</span>。</p>
+<p>原本需要3累乘11次如今只需要操作4次</p>
+<p>那么问题的关键就是：b如何展开提取</p>
+<p>b&amp;1 &amp;在这里做运算符，叫做按位与 c=a&amp;b 则c等于a与b分别的二进制的每一位进行“与运算”的结果 b =1011 1 =0001 b&amp;1 =0001</p>
+<p>1.只有b的二进制的最后一位是1时，b&amp;1才会是1 2.同时十进制b/2相当于二进制b砍掉最低位，又或者直接b&gt;&gt;1也有一样的效果 相结合，妙啊，阿sir</p>
+<h1 id="section">100%，72%</h1>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">quickPow</span><span class="params">(<span class="keyword">double</span>&amp; x, <span class="keyword">int</span>&amp; n)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">double</span> ans = <span class="number">1</span>,base = x;<span class="comment">//ans是要返回的答案； base是用于累乘的每一项</span></span><br><span class="line">        <span class="keyword">while</span> (n)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (n &amp; <span class="number">1</span>)ans *= base;</span><br><span class="line">            base *= base;<span class="comment">//base: x^1 --&gt; x^2 --&gt; x^4 --&gt; x^8</span></span><br><span class="line">            n /= <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;<span class="comment">//总结：base累乘增长很快，而我只需判断每一个base要不要乘上去，根据前面乱七八糟的推理，能成。</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">myPow</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">int</span> n)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (n &lt; <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">double</span> ans = <span class="built_in">quickPow</span>(x, n);</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1.0</span> / ans;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">double</span> ans = <span class="built_in">quickPow</span>(x, n);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -350,7 +430,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-09-07 08:47:22" itemprop="dateModified" datetime="2021-09-07T08:47:22+08:00">2021-09-07</time>
+        <time title="Modified: 2021-09-10 20:41:22" itemprop="dateModified" datetime="2021-09-10T20:41:22+08:00">2021-09-10</time>
       </span>
 
   
@@ -363,8 +443,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="暴力解法"><a href="#暴力解法" class="headerlink" title="暴力解法"></a>暴力解法</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:<span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">twoSum</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt; ans;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">unsigned</span> <span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= nums.<span class="built_in">size</span>() - <span class="number">2</span>; ++i)</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">unsigned</span> <span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt;= nums.<span class="built_in">size</span>()<span class="number">-1</span>; ++j)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] + nums[j] == target)</span><br><span class="line">            &#123;</span><br><span class="line">                ans.<span class="built_in">push_back</span>(i);</span><br><span class="line">                ans.<span class="built_in">push_back</span>(j);</span><br><span class="line">                <span class="keyword">return</span> ans;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
+          <h1 id="暴力解法">暴力解法</h1>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:<span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">twoSum</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt; ans;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">unsigned</span> <span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= nums.<span class="built_in">size</span>() - <span class="number">2</span>; ++i)</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">unsigned</span> <span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt;= nums.<span class="built_in">size</span>()<span class="number">-1</span>; ++j)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] + nums[j] == target)</span><br><span class="line">            &#123;</span><br><span class="line">                ans.<span class="built_in">push_back</span>(i);</span><br><span class="line">                ans.<span class="built_in">push_back</span>(j);</span><br><span class="line">                <span class="keyword">return</span> ans;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -517,7 +597,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-09-07 08:47:15" itemprop="dateModified" datetime="2021-09-07T08:47:15+08:00">2021-09-07</time>
+        <time title="Modified: 2021-09-10 20:41:14" itemprop="dateModified" datetime="2021-09-10T20:41:14+08:00">2021-09-10</time>
       </span>
 
   
@@ -530,71 +610,83 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h4 id="网格"><a href="#网格" class="headerlink" title="网格"></a>网格</h4><p>每一个代表为1Unit（对应屏幕上的100像素点）</p>
-<h4 id="摄像机的几个参数："><a href="#摄像机的几个参数：" class="headerlink" title="摄像机的几个参数："></a>摄像机的几个参数：</h4><p> Z坐标：默认是-10，不用修改<br> Background，最底层背景色<br> Size广角，指摄影范围，默认5个单位<br> 其中，5Unit为半高，全高为10Unit ,是摄影范围的高度<br> 长宽比 在Game（游戏）窗口中调整<br> 若要1080p分辨率：长1920像素点，宽1080像素点，则Size=5.4，比例为FH</p>
-<h4 id="游戏对象"><a href="#游戏对象" class="headerlink" title="游戏对象"></a>游戏对象</h4><p> 隐藏/显示 操作在Inspector（检察器）上方的打勾栏<br> 图层顺序越小在越底下<br> 对象轴心（Pivot）修改：在下方文件文件夹中选择素材，右栏中打开sprite editor<br> 父子关系：在左栏拖动完成。子坐标是相对于父的。<br> 一个游戏对象可以拥有不同素材/造型，在右栏sprite renderers可添加造型<br> sprite renderers是一个组件，功能是显示图片</p>
-<h4 id="图片素材："><a href="#图片素材：" class="headerlink" title="图片素材："></a>图片素材：</h4><p> 背景一般为jpg图片，其它一般为png图片。<br> 素材切割：在下方文件文件夹中选择素材，在右栏sprite mode设为multiple，打开sprite editor，执行切割，切割后的素材展开可分别拖出。</p>
-<h4 id="创建一个空对象"><a href="#创建一个空对象" class="headerlink" title="创建一个空对象"></a>创建一个空对象</h4><p> 在左栏某个场景下可以创建<br> 对象可以添加不同组件</p>
-<h4 id="游戏脚本"><a href="#游戏脚本" class="headerlink" title="游戏脚本"></a>游戏脚本</h4><p> 最好在下栏新建文件夹用于存放脚本<br> 这是一个文件名叫Hello的脚本</p>
+          <h4 id="网格">网格</h4>
+<p>每一个代表为1Unit（对应屏幕上的100像素点）</p>
+<h4 id="摄像机的几个参数">摄像机的几个参数：</h4>
+<p>Z坐标：默认是-10，不用修改 Background，最底层背景色 Size广角，指摄影范围，默认5个单位 其中，5Unit为半高，全高为10Unit ,是摄影范围的高度 长宽比 在Game（游戏）窗口中调整 若要1080p分辨率：长1920像素点，宽1080像素点，则Size=5.4，比例为FH</p>
+<h4 id="游戏对象">游戏对象</h4>
+<p>隐藏/显示 操作在Inspector（检察器）上方的打勾栏 图层顺序越小在越底下 对象轴心（Pivot）修改：在下方文件文件夹中选择素材，右栏中打开sprite editor 父子关系：在左栏拖动完成。子坐标是相对于父的。 一个游戏对象可以拥有不同素材/造型，在右栏sprite renderers可添加造型 sprite renderers是一个组件，功能是显示图片</p>
+<h4 id="图片素材">图片素材：</h4>
+<p>背景一般为jpg图片，其它一般为png图片。 素材切割：在下方文件文件夹中选择素材，在右栏sprite mode设为multiple，打开sprite editor，执行切割，切割后的素材展开可分别拖出。</p>
+<h4 id="创建一个空对象">创建一个空对象</h4>
+<p>在左栏某个场景下可以创建 对象可以添加不同组件</p>
+<h4 id="游戏脚本">游戏脚本</h4>
+<p>最好在下栏新建文件夹用于存放脚本 这是一个文件名叫Hello的脚本</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">using System.Collections;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using UnityEngine;</span><br><span class="line"></span><br><span class="line">public class Hello : MonoBehaviour			//继承于MonoBehaviour的父类，这个父类由unity提供</span><br><span class="line">&#123;</span><br><span class="line">    float stepout = 0.8f;		//unity一般使用float类型; public属性才能被检查器看得到，能修改</span><br><span class="line">    void Start()							//在游戏开始时被调用</span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log(&quot;这是我的第一个游戏&quot;);			//于控制台中输出，注意区分大小写</span><br><span class="line">        Application.targetFrameRate = 60;		//尽量以60FPS运行</span><br><span class="line">        GameObject obj22 = GameObject.Find(&quot;/22&quot;);	//创建一个节点变量并获取一个节点</span><br><span class="line">        SpriteRenderer s22 = obj22.GetComponent&lt;SpriteRenderer&gt;();	//创建一个精灵编辑变量并获取某个节点的精灵编辑</span><br><span class="line">        s22.flipX = true;	//水平翻转</span><br><span class="line">        SpriteRenderer splane1 = GetComponent&lt;SpriteRenderer&gt;();	//因为这个脚本挂载在该对象下，有些东西默认</span><br><span class="line">        splane1.flipY = true;</span><br><span class="line">        transform.position =new Vector3(0,0,0);//出现在某个坐标</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    void Update()						//每一帧调用一次</span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log(&quot;In Updata() ... &quot; + Time.deltaTime);//调用间隔</span><br><span class="line">        float step = stepout * Time.deltaTime;//为了达到匀速前进，且deltaTime不能再外调用</span><br><span class="line">        transform.Translate(0, step, 0, Space.self);//组件，方法，x，y，z，沿自己的坐标系（自己为原点），改成Space.World是沿着世界坐标系</span><br><span class="line">        transform.eulerAngles += new Vector3(0, 0, 100*step);//旋转</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p> 将脚本挂载到游戏对象：于游戏对象的检查器中添加脚本组件，或者直接拖动<br> 关于脚本：<br> 1.类名必须和文件名相同<br> 2.必须继承于MonoBehaviour，所有unity脚本都继承于这个类<br> 3.默认定义了一些事件函数，如：Start(),Updata,会被unity引擎自动调用<br> 脚本在引擎内部执行顺序：<br> 1.创建游戏对象<br> 2.创建组件，比如Hello sjtql = new hello();<br> 3.sjtql.Start()<br> 4.定时执行sjtql.Updata()更新游戏显示<br> 5.一个脚本可以挂载在多个对象上，一个对象也可以挂载多个脚本</p>
-<h4 id="父节点和子节点的修改："><a href="#父节点和子节点的修改：" class="headerlink" title="父节点和子节点的修改："></a>父节点和子节点的修改：</h4><p> transform用于设置位置、大小、旋转，也可以用于维护父子节点关系<br> 例子“脚本挂载在阴影，阴影的父节点为角色”</p>
+<p>将脚本挂载到游戏对象：于游戏对象的检查器中添加脚本组件，或者直接拖动 关于脚本： 1.类名必须和文件名相同 2.必须继承于MonoBehaviour，所有unity脚本都继承于这个类 3.默认定义了一些事件函数，如：Start(),Updata,会被unity引擎自动调用 脚本在引擎内部执行顺序： 1.创建游戏对象 2.创建组件，比如Hello sjtql = new hello(); 3.sjtql.Start() 4.定时执行sjtql.Updata()更新游戏显示 5.一个脚本可以挂载在多个对象上，一个对象也可以挂载多个脚本</p>
+<h4 id="父节点和子节点的修改">父节点和子节点的修改：</h4>
+<p>transform用于设置位置、大小、旋转，也可以用于维护父子节点关系 例子“脚本挂载在阴影，阴影的父节点为角色”</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">using System.Collections;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using UnityEngine;</span><br><span class="line">public class shadow22 : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    void Start()</span><br><span class="line">    &#123;</span><br><span class="line">        GameObject shadow = transform.parent.gameObject;</span><br><span class="line">        Debug.Log(&quot;shadow22的父节点：&quot; + transform.parent.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>例子遍历所有子节点(不包括子节点的子节点)</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">using System.Collections;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using UnityEngine;</span><br><span class="line">public class children : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">	void Start()</span><br><span class="line">	&#123;</span><br><span class="line">		foreach(Transform child in transform)//定义一个名字叫child（也可以叫别的）的Tsf型变量</span><br><span class="line">        &#123;</span><br><span class="line">            Debug.Log(&quot;子节点名：&quot; + child.name);</span><br><span class="line">        &#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>修改节点父子关系</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">be.transform.SetParent(sj.transform);//be，sj是两个节点</span><br><span class="line">sj.transform.SetParent(null);//sj的无父节点，直接挂载在场景下</span><br></pre></td></tr></table></figure>
-
-<h4 id="组件属性"><a href="#组件属性" class="headerlink" title="组件属性"></a>组件属性</h4><p>只有public的属性才能在检查器（inspector）中显示 </p>
-<h4 id="脚本单步调试"><a href="#脚本单步调试" class="headerlink" title="脚本单步调试"></a>脚本单步调试</h4><p>在VS里，添加断点<br>在VS里，点击附加到unity<br>在untiy里，点play<br>在VS里，点Step Over（F10）单步调试<br>在VS里，点停止调试，使得VS与unity分离。（此时并没有停止游戏，只是停止调试让它自由运行）</p>
-<h4 id="坐标与旋转"><a href="#坐标与旋转" class="headerlink" title="坐标与旋转"></a>坐标与旋转</h4><p>Vector3是一个类，用于表示一个3维向量（x，y，z），也称为3元数</p>
+<h4 id="组件属性">组件属性</h4>
+<p>只有public的属性才能在检查器（inspector）中显示</p>
+<h4 id="脚本单步调试">脚本单步调试</h4>
+<p>在VS里，添加断点 在VS里，点击附加到unity 在untiy里，点play 在VS里，点Step Over（F10）单步调试 在VS里，点停止调试，使得VS与unity分离。（此时并没有停止游戏，只是停止调试让它自由运行）</p>
+<h4 id="坐标与旋转">坐标与旋转</h4>
+<p>Vector3是一个类，用于表示一个3维向量（x，y，z），也称为3元数</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Vector3 be = new Vector3(0,0.1f,0);//结构体的实体化</span><br><span class="line">transform.position =new Vector3(0,0.1f,0);//出现在某个坐标</span><br><span class="line">transform.localposition =new Vector3(0,0.1f,0);//已父节点为原点计算</span><br></pre></td></tr></table></figure>
-
-<h4 id="向量"><a href="#向量" class="headerlink" title="向量"></a>向量</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Vector3 be = new Vector3(3,4,0);//be.magnitude返回向量长度</span><br><span class="line">Vector3 sj = be.nomalized; //sj=(0.6,0.8,0)化为标准向量</span><br><span class="line">float zzl = Vector3.SignedAngle(b,a,Vector3.forward);//返回a向量逆时针旋转到b向量划过的角度，以z轴作为旋转轴</span><br><span class="line">//Vector3.right=(1,0,0)			Vector3.up=(0,1,0)		Vector3.forward=(0,0,1)</span><br><span class="line">float zzl = Vector3.Angle(b,a,Vector3.forward);//不带正负号</span><br></pre></td></tr></table></figure>
-
-<h4 id="物体的指向"><a href="#物体的指向" class="headerlink" title="物体的指向"></a>物体的指向</h4><p>transform.right<br>transform.up<br>transform.forward<br>代表某物体的x，y，z轴的指向<br>这3个都是标准向量</p>
-<p>让物体1指向另一个物体2<br>方法一：两个物体向量相减，得出方向向量，修改物体1的指向<br>方法二：两个物体向量相减，得出方向向量，再算物体1和方向向量的夹角，旋转物体1    transform.Rotate(0,0,angle)</p>
+<h4 id="向量">向量</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Vector3 be = new Vector3(3,4,0);//be.magnitude返回向量长度</span><br><span class="line">Vector3 sj = be.nomalized; //sj=(0.6,0.8,0)化为标准向量</span><br><span class="line">float zzl = Vector3.SignedAngle(b,a,Vector3.forward);//返回a向量逆时针旋转到b向量划过的角度，以z轴作为旋转轴</span><br><span class="line">//Vector3.right=(1,0,0)			Vector3.up=(0,1,0)		Vector3.forward=(0,0,1)</span><br><span class="line">float zzl = Vector3.Angle(b,a,Vector3.forward);//不带正负号</span><br></pre></td></tr></table></figure>
+<h4 id="物体的指向">物体的指向</h4>
+<p>transform.right<br>
+transform.up<br>
+transform.forward 代表某物体的x，y，z轴的指向 这3个都是标准向量</p>
+<p>让物体1指向另一个物体2 方法一：两个物体向量相减，得出方向向量，修改物体1的指向 方法二：两个物体向量相减，得出方向向量，再算物体1和方向向量的夹角，旋转物体1 transform.Rotate(0,0,angle)</p>
 <p>例子</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">void Start()</span><br><span class="line">&#123;</span><br><span class="line">    Application.targetFrameRate = 60;</span><br><span class="line">    GameObject target = GameObject.Find(&quot;plane&quot;);</span><br><span class="line">    Vector3 d = target.transform.position - transform.position;</span><br><span class="line">    float angle = Vector3.SignedAngle(transform.up, d, Vector3.forward);</span><br><span class="line">    transform.Rotate(0, 0, angle);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="屏幕坐标（摄像机拍摄出的画面）"><a href="#屏幕坐标（摄像机拍摄出的画面）" class="headerlink" title="屏幕坐标（摄像机拍摄出的画面）"></a>屏幕坐标（摄像机拍摄出的画面）</h4><p>左下角为原点，像素点为单位</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int a= Screen.width;	//获取屏幕宽度，单位：像素点</span><br><span class="line">int b= Screen.hegiht;	//获取屏幕高度</span><br><span class="line">Vector3 c = transform.position;	//获取坐标</span><br><span class="line">Vector3 d = Camera.main.WorldToScreenPoint(c);	//坐标转化</span><br><span class="line">Vector3 c = Camera.main.ScreenToWorldPoint(d);	//坐标转化</span><br><span class="line">c.z=0;//屏幕坐标转化为世界坐标时需要将z坐标转化为零</span><br></pre></td></tr></table></figure>
-
+<h4 id="屏幕坐标摄像机拍摄出的画面">屏幕坐标（摄像机拍摄出的画面）</h4>
+<p>左下角为原点，像素点为单位 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int a= Screen.width;	//获取屏幕宽度，单位：像素点</span><br><span class="line">int b= Screen.hegiht;	//获取屏幕高度</span><br><span class="line">Vector3 c = transform.position;	//获取坐标</span><br><span class="line">Vector3 d = Camera.main.WorldToScreenPoint(c);	//坐标转化</span><br><span class="line">Vector3 c = Camera.main.ScreenToWorldPoint(d);	//坐标转化</span><br><span class="line">c.z=0;//屏幕坐标转化为世界坐标时需要将z坐标转化为零</span><br></pre></td></tr></table></figure></p>
 <p>判断一个物体是否到边界，应该用屏幕坐标</p>
-<h4 id="鼠标事件"><a href="#鼠标事件" class="headerlink" title="鼠标事件"></a>鼠标事件</h4><p>区分：<br>Input.GetMouseButtonDown(0) 检查鼠标按下事件<br>Input.GetMouseButtonUp(0)   检查鼠标抬起事件<br>Input.GetMouseButton(0)      检查鼠标状态 ( 是否是按下状态 )<br>其中，前两个事件不会重复触发<br>0代表左键，1代表右键，2代表中键<br>验证：保持鼠标一直按下，观察打印输出</p>
-<p><strong>所有的输入都在Input当中</strong><br>例子</p>
+<h4 id="鼠标事件">鼠标事件</h4>
+<p>区分： Input.GetMouseButtonDown(0) 检查鼠标按下事件 Input.GetMouseButtonUp(0) 检查鼠标抬起事件 Input.GetMouseButton(0) 检查鼠标状态 ( 是否是按下状态 ) 其中，前两个事件不会重复触发 0代表左键，1代表右键，2代表中键 验证：保持鼠标一直按下，观察打印输出</p>
+<p><strong>所有的输入都在Input当中</strong> 例子</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">if (Input.GetMouseButtonDown(0))</span><br><span class="line">&#123;</span><br><span class="line">	Debug.Log(&quot;鼠标按下的位置的屏幕坐标&quot;+Input.mousePosition);</span><br><span class="line">&#125;</span><br><span class="line">if (Input.GetMouseButtonUp(0))</span><br><span class="line">&#123;</span><br><span class="line">	Debug.Log(&quot;鼠标抬起的位置的屏幕坐标&quot;+Input.mousePosition);</span><br><span class="line">&#125;</span><br><span class="line">if (Input.GetMouseButton(0))</span><br><span class="line">&#123;</span><br><span class="line">	Debug.Log(&quot;鼠标左键正在被按下&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>鼠标按下物体跟随做法：判断按下，记录坐标，物体朝目的坐标前进<br>鼠标拖拽物体做法：判断按下，记录鼠标坐标，判断鼠标坐标与物体坐标是否接触，如果接触，让物体出现在鼠标坐标</p>
+<p>鼠标按下物体跟随做法：判断按下，记录坐标，物体朝目的坐标前进 鼠标拖拽物体做法：判断按下，记录鼠标坐标，判断鼠标坐标与物体坐标是否接触，如果接触，让物体出现在鼠标坐标</p>
 <p>鼠标事件有优化</p>
-<h4 id="事件函数"><a href="#事件函数" class="headerlink" title="事件函数"></a>事件函数</h4><p>1.Awake()        2.OnEnable()            3.Start()</p>
+<h4 id="事件函数">事件函数</h4>
+<p>1.Awake() 2.OnEnable() 3.Start()</p>
 <p>比较，当脚本组件被禁用时：只有Awake()会被调用。</p>
 <p>Start()只会调用一次</p>
 <p>OnEnable()在每次被启动时都会被调用一次</p>
-<h4 id="脚本执行顺序"><a href="#脚本执行顺序" class="headerlink" title="脚本执行顺序"></a>脚本执行顺序</h4><p>第一层顺序：先执行所有脚本的Awake 再执行左右脚本的OnEnable 再执行所有脚本的Start<br>第二层顺序：选中脚本在检查器中找执行顺序，添加需要脚本，设定执行参数，越小越前</p>
+<h4 id="脚本执行顺序">脚本执行顺序</h4>
+<p>第一层顺序：先执行所有脚本的Awake 再执行左右脚本的OnEnable 再执行所有脚本的Start 第二层顺序：选中脚本在检查器中找执行顺序，添加需要脚本，设定执行参数，越小越前</p>
 <p>接下来针对每个方法进行详细的说明</p>
-<p>1.Awake<br>   用于在游戏开始之前初始化变量或游戏状态。在脚本整个生命周期内它仅被调用一次.Awake在所有对象被初始化之后调用，所以你可以安全的与其他对象对话或用诸如GameObject.FindWithTag()这样的函数搜索它们。每个游戏物体上的Awake以随机的顺序被调用。因此，你应该用Awake来设置脚本间的引用，并用Start来传递信息Awake总是在Start之前被调用。它不能用来执行协同程序。</p>
-<p>2.Start<br>   仅在Update函数第一次被调用前调用。Start在behaviour的生命周期中只被调用一次。它和Awake的不同是Start只在脚本实例被启用时调用。你可以按需调整延迟初始化代码。Awake总是在Start之前执行。这允许你协调初始化顺序。在所有脚本实例中，Start函数总是在Awake函数之后调用。</p>
-<p>3.FixedUpdate<br>   固定帧更新，在Unity导航菜单栏中，点击“Edit”–&gt;“Project Setting”–&gt;“Time”菜单项后，右侧的Inspector视图将弹出时间管理器，其中“Fixed Timestep”选项用于设置FixedUpdate()的更新频率，更新频率默认为0.02s。</p>
-<p>4.Update<br>   正常帧更新，用于更新逻辑。每一帧都执行，处理Rigidbody时，需要用FixedUpdate代替Update。例如:给刚体加一个作用力时，你必须应用作用力在FixedUpdate里的固定帧，而不是Update中的帧。(两者帧长不同)FixedUpdate，每固定帧绘制时执行一次，和update不同的是FixedUpdate是渲染帧执行，如果你的渲染效率低下的时候FixedUpdate调用次数就会跟着下降。FixedUpdate比较适用于物理引擎的计算，因为是跟每帧渲染有关。Update就比较适合做控制。<br>   Update()与FixedUpdate()的区别<br>   从字面上理解，它们都是在更新时会被调用，并且会循环的调用。但是Update会在每次渲 染新的一帧时，被调用。而FixedUpdate会在每个固定的时间间隔被调用，那么要是Update 和FixedUpdate的时间间隔一样，是不是就一样呢？答案是不一定，因为Update受当前渲染的物体，更确切的说是三角形的数量影响，有时快有时 慢，帧率会变化，update被调用的时间间隔就发生变化。但是FixedUpdate则不受帧率的变化，它是以固定的时间间隔来被调用，那么这个时间间 隔怎么设置呢？Edit-&gt;Project Setting-&gt;time下面的Fixed timestep。</p>
-<p>5.LateUpdate<br>   在所有Update函数调用后被调用，和fixedupdate一样都是每一帧都被调用执行，这可用于调整脚本执行顺序。例如:当物体在Update里移动时，跟随物体的相机可以在LateUpdate里实现。LateUpdate,在每帧Update执行完毕调用，他是在所有update结束后才调用，比较适合用于命令脚本的执行。官网上例子是摄像机的跟随，都是在所有update操作完才跟进摄像机，不然就有可能出现摄像机已经推进了，但是视角里还未有角色的空帧出现。<br>   Update和LateUpdate的区别<br>   在圣典里LateUpdate被解释成一句话,LateUpdate是在所有Update函数调用后被调用。这可用于调整脚本执行顺序。例如:当物体在Update里移动时，跟随物体的相机可以在LateUpdate里实现。<br>   LateUpdate是晚于所有Update执行的。例如：游戏中有2个脚本，脚本1含有Update和LateUpdate，脚本2含有Update，那么当游戏执行时，每一帧都是把2个脚本中的Update执行完后才执行LateUpdate 。虽然是在同一帧中执行的，但是Update会先执行，LateUpdate会晚执行。<br>   现在假设有2个不同的脚本同时在Update中控制一个物体，那么当其中一个脚本改变物体方位、旋转或者其他参数时，另一个脚步也在改变这些东西，那么这个物体的方位、旋转就会出现一定的反复。如果还有个物体在Update中跟随这个物体移动、旋转的话，那跟随的物体就会出现抖动。 如果是在LateUpdate中跟随的话就会只跟随所有Update执行完后的最后位置、旋转，这样就防止了抖动。</p>
-<p>6.OnGUI<br>   在渲染和处理GUI事件时调用。比如：你画一个button或label时常常用到它。这意味着OnGUI也是每帧执行一次。</p>
-<p>7.Reset<br>   在用户点击检视面板的Reset按钮或者首次添加该组件时被调用。此函数只在编辑模式下被调用。Reset最常用于在检视面板中给定一个默认值。</p>
-<p>8.OnDisable<br>   当物体被销毁时 OnDisable将被调用，并且可用于任意清理代码。脚本被卸载时，OnDisable将被调用，OnEnable在脚本被载入后调用。注意： OnDisable不能用于协同程序。</p>
-<p>9.OnDestroy<br>   当MonoBehaviour将被销毁时，这个函数被调用。OnDestroy只会在预先已经被激活的游戏物体上被调用。注意：OnDestroy也不能用于协同程序。</p>
-<h4 id="引用类型参数"><a href="#引用类型参数" class="headerlink" title="引用类型参数"></a>引用类型参数</h4><p>public Sprite be0;<br>public Sprite be1;<br>public GameObject be3;<br>之后可以在unity界面拖动赋值</p>
-<h4 id="预制体"><a href="#预制体" class="headerlink" title="预制体"></a>预制体</h4><p>1.先在场景上做好一个游戏对象<br>2.在层级管理器把游戏对象直接拖到Project窗口，则生成一个预制体资源*.prefab<br>3.给预制体改个名字，以免混淆，重要！！！！！</p>
+<p>1.Awake 用于在游戏开始之前初始化变量或游戏状态。在脚本整个生命周期内它仅被调用一次.Awake在所有对象被初始化之后调用，所以你可以安全的与其他对象对话或用诸如GameObject.FindWithTag()这样的函数搜索它们。每个游戏物体上的Awake以随机的顺序被调用。因此，你应该用Awake来设置脚本间的引用，并用Start来传递信息Awake总是在Start之前被调用。它不能用来执行协同程序。</p>
+<p>2.Start 仅在Update函数第一次被调用前调用。Start在behaviour的生命周期中只被调用一次。它和Awake的不同是Start只在脚本实例被启用时调用。你可以按需调整延迟初始化代码。Awake总是在Start之前执行。这允许你协调初始化顺序。在所有脚本实例中，Start函数总是在Awake函数之后调用。</p>
+<p>3.FixedUpdate 固定帧更新，在Unity导航菜单栏中，点击“Edit”--&gt;“Project Setting”--&gt;“Time”菜单项后，右侧的Inspector视图将弹出时间管理器，其中“Fixed Timestep”选项用于设置FixedUpdate()的更新频率，更新频率默认为0.02s。</p>
+<p>4.Update 正常帧更新，用于更新逻辑。每一帧都执行，处理Rigidbody时，需要用FixedUpdate代替Update。例如:给刚体加一个作用力时，你必须应用作用力在FixedUpdate里的固定帧，而不是Update中的帧。(两者帧长不同)FixedUpdate，每固定帧绘制时执行一次，和update不同的是FixedUpdate是渲染帧执行，如果你的渲染效率低下的时候FixedUpdate调用次数就会跟着下降。FixedUpdate比较适用于物理引擎的计算，因为是跟每帧渲染有关。Update就比较适合做控制。 Update()与FixedUpdate()的区别 从字面上理解，它们都是在更新时会被调用，并且会循环的调用。但是Update会在每次渲 染新的一帧时，被调用。而FixedUpdate会在每个固定的时间间隔被调用，那么要是Update 和FixedUpdate的时间间隔一样，是不是就一样呢？答案是不一定，因为Update受当前渲染的物体，更确切的说是三角形的数量影响，有时快有时 慢，帧率会变化，update被调用的时间间隔就发生变化。但是FixedUpdate则不受帧率的变化，它是以固定的时间间隔来被调用，那么这个时间间 隔怎么设置呢？Edit-&gt;Project Setting-&gt;time下面的Fixed timestep。</p>
+<p>5.LateUpdate 在所有Update函数调用后被调用，和fixedupdate一样都是每一帧都被调用执行，这可用于调整脚本执行顺序。例如:当物体在Update里移动时，跟随物体的相机可以在LateUpdate里实现。LateUpdate,在每帧Update执行完毕调用，他是在所有update结束后才调用，比较适合用于命令脚本的执行。官网上例子是摄像机的跟随，都是在所有update操作完才跟进摄像机，不然就有可能出现摄像机已经推进了，但是视角里还未有角色的空帧出现。 Update和LateUpdate的区别 在圣典里LateUpdate被解释成一句话,LateUpdate是在所有Update函数调用后被调用。这可用于调整脚本执行顺序。例如:当物体在Update里移动时，跟随物体的相机可以在LateUpdate里实现。 LateUpdate是晚于所有Update执行的。例如：游戏中有2个脚本，脚本1含有Update和LateUpdate，脚本2含有Update，那么当游戏执行时，每一帧都是把2个脚本中的Update执行完后才执行LateUpdate 。虽然是在同一帧中执行的，但是Update会先执行，LateUpdate会晚执行。 现在假设有2个不同的脚本同时在Update中控制一个物体，那么当其中一个脚本改变物体方位、旋转或者其他参数时，另一个脚步也在改变这些东西，那么这个物体的方位、旋转就会出现一定的反复。如果还有个物体在Update中跟随这个物体移动、旋转的话，那跟随的物体就会出现抖动。 如果是在LateUpdate中跟随的话就会只跟随所有Update执行完后的最后位置、旋转，这样就防止了抖动。</p>
+<p>6.OnGUI 在渲染和处理GUI事件时调用。比如：你画一个button或label时常常用到它。这意味着OnGUI也是每帧执行一次。</p>
+<p>7.Reset 在用户点击检视面板的Reset按钮或者首次添加该组件时被调用。此函数只在编辑模式下被调用。Reset最常用于在检视面板中给定一个默认值。</p>
+<p>8.OnDisable 当物体被销毁时 OnDisable将被调用，并且可用于任意清理代码。脚本被卸载时，OnDisable将被调用，OnEnable在脚本被载入后调用。注意： OnDisable不能用于协同程序。</p>
+<p>9.OnDestroy 当MonoBehaviour将被销毁时，这个函数被调用。OnDestroy只会在预先已经被激活的游戏物体上被调用。注意：OnDestroy也不能用于协同程序。</p>
+<h4 id="引用类型参数">引用类型参数</h4>
+<p>public Sprite be0; public Sprite be1; public GameObject be3; 之后可以在unity界面拖动赋值</p>
+<h4 id="预制体">预制体</h4>
+<p>1.先在场景上做好一个游戏对象 2.在层级管理器把游戏对象直接拖到Project窗口，则生成一个预制体资源*.prefab 3.给预制体改个名字，以免混淆，重要！！！！！</p>
 <p>主预制体单独编辑，同步更新所有预制体；预制体的一个实例修改，可选应用到主预制体；可选择某个预制体的实例，使其脱离预制体成为一个单独的游戏对象</p>
-<h4 id="动态创建实例"><a href="#动态创建实例" class="headerlink" title="动态创建实例"></a>动态创建实例</h4><p>1 添加脚本，挂载</p>
-<p>2 添加公共变量    public GameObject myPrefab;</p>
-<p>3 在 Inspector 中引用资源    预制体可添加到节点上</p>
+<h4 id="动态创建实例">动态创建实例</h4>
+<p>1 添加脚本，挂载</p>
+<p>2 添加公共变量 public GameObject myPrefab;</p>
+<p>3 在 Inspector 中引用资源 预制体可添加到节点上</p>
 <p>4 当点击鼠标时，创建一个子弹的实例</p>
-<p>   GameObject bullet = Instantiate(myPrefab);</p>
-<p>   bullet.transform.position = transform.position + new Vector3(0, 1f, 0);</p>
+<p>GameObject bullet = Instantiate(myPrefab);</p>
+<p>bullet.transform.position = transform.position + new Vector3(0, 1f, 0);</p>
 <p>其中，Instantiate() 方法根据一个 Prefab ，来创建一个实例，返回值就是创建出来的GameObject 。</p>
-<p>5 运行游戏    在 Hierarchy 窗口中，观察新创建的实例 </p>
+<p>5 运行游戏 在 Hierarchy 窗口中，观察新创建的实例</p>
 <p>Instantiate() 重载了很多版本，常用的如下：</p>
 <p>bullet = Instantiate(myPrefab)</p>
 <p>创建一个实例，position与rotation与当前游戏对象相当，挂载场景根节点下</p>
@@ -602,85 +694,96 @@
 <p>创建一个实例，position与rotation与当前游戏对象相当，同时指定父节点</p>
 <p>bullet = Instantiate(myPrefab, position, rotation)</p>
 <p>创建一个实例，挂载场景根节点下，同时指定 position与rotation</p>
-<p>例如， </p>
+<p>例如，</p>
 <p>bullet = Instantiate(myPrefab, transform.position, transform.rotation)</p>
 <p>bullet = Instantiate(myPrefab, position, rotation, Transform parent)</p>
 <p>创建一个实例，挂载 parent 节点下，同时指定 position与rotation</p>
-<h4 id="实例销毁"><a href="#实例销毁" class="headerlink" title="实例销毁"></a>实例销毁</h4><p>例子，当子弹飞出视野之后，销毁实例</p>
+<h4 id="实例销毁">实例销毁</h4>
+<p>例子，当子弹飞出视野之后，销毁实例</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Vector3 sp = Camera.main.WorldToScreenPoint(transform.position);</span><br><span class="line">if (sp.y &gt; Screen.height)</span><br><span class="line">&#123;</span><br><span class="line">    GameObject.Destory(gameObject);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="定时器"><a href="#定时器" class="headerlink" title="定时器"></a>定时器</h4><p>Time.deltaTime、累计和if语句实现</p>
-<h4 id="键盘事件"><a href="#键盘事件" class="headerlink" title="键盘事件"></a>键盘事件</h4><p>Input.GetKeyDown(KeyCode.Tab)<br>Input.GetKeyUp(KeyCode.Tab)<br>Input.GetKey(KeyCode.Tab)        和鼠标事件很像</p>
-<p>Backspace     退格键<br>Delete      Delete键<br>Tab        TabTab键<br>Clear  Clear键<br>Return  回车键<br>Pause  暂停键<br>Escape  ESC键<br>Space  空格键</p>
-<p>Keypad0  小键盘0<br>Keypad1  小键盘1<br>Keypad2  小键盘2<br>Keypad3  小键盘3<br>Keypad4  小键盘4</p>
-<p> KeypadPeriod  小键盘“.”<br> KeypadDivide  小键盘“/”<br> KeypadMultiply  小键盘“*”<br> KeypadMinus   小键盘“-”<br> KeypadPlus   小键盘“+”<br> KeypadEnter   小键盘“Enter”<br> KeypadEquals   小键盘“=”</p>
-<p> UpArrow  方向键上<br> DownArrow 方向键下<br> RightArrow 方向键右<br> LeftArrow 方向键左</p>
-<p> F1     功能键 F1<br> F2     功能键 F2<br> F3     功能键 F3<br> F4     功能键 F4<br> F5     功能键 F5</p>
-<p> Alpha0 按键0<br> Alpha1 按键1<br> Alpha2 按键2<br> Alpha3 按键3<br> Alpha4 按键4<br> Alpha5 按键5</p>
-<p> A  ‘a’键<br> B  ‘b’键<br> C  ‘c’键<br> D  ‘d’键<br> E  ‘e’键<br> F  ‘f’键</p>
-<p> Capslock 大小写锁定键<br> RightShift 右上档键<br> LeftShift 左上档键<br> RightControl右Ctrl键<br> LeftControl左Ctrl键<br> RightAlt 右Alt键<br> LeftAlt 左Alt键</p>
-<p> Mouse0 鼠标左键<br> Mouse1  鼠标右键<br> Mouse2 鼠标中键<br> Mouse3 鼠标第3个按键<br> Mouse4 鼠标第4个按键</p>
-<h4 id="物理系统"><a href="#物理系统" class="headerlink" title="物理系统"></a>物理系统</h4><p>在组件里可添加物理组件</p>
-<p>刚体有3种类型<br>Dinamic        普通刚体    有质量有速度<br>Static        静态刚体    质量无穷大、无速度    适用于建筑物、地面等固定不动的物体<br>Kinematic    运动学刚体    无质量                忽略物理规律的刚体，一般用于检测 </p>
-<p><strong>碰撞</strong>需要添加碰撞组件    碰撞组件和刚体组件一般一起出现    碰撞范围可编辑    可以给刚体添加材质（<strong>材质</strong>可设置弹性系数、摩擦系数，可以在资源栏里新建）（用边缘行碰撞组件可以设定多边形碰撞范围）</p>
+<h4 id="定时器">定时器</h4>
+<p>Time.deltaTime、累计和if语句实现</p>
+<h4 id="键盘事件">键盘事件</h4>
+<p>Input.GetKeyDown(KeyCode.Tab) Input.GetKeyUp(KeyCode.Tab) Input.GetKey(KeyCode.Tab) 和鼠标事件很像</p>
+<p>Backspace 退格键 Delete Delete键 Tab TabTab键 Clear Clear键 Return 回车键 Pause 暂停键 Escape ESC键 Space 空格键</p>
+<p>Keypad0 小键盘0 Keypad1 小键盘1 Keypad2 小键盘2 Keypad3 小键盘3 Keypad4 小键盘4</p>
+<p>KeypadPeriod 小键盘“.” KeypadDivide 小键盘“/” KeypadMultiply 小键盘“*” KeypadMinus 小键盘“-” KeypadPlus 小键盘“+” KeypadEnter 小键盘“Enter” KeypadEquals 小键盘“=”</p>
+<p>UpArrow 方向键上 DownArrow 方向键下 RightArrow 方向键右 LeftArrow 方向键左</p>
+<p>F1 功能键 F1 F2 功能键 F2 F3 功能键 F3 F4 功能键 F4 F5 功能键 F5</p>
+<p>Alpha0 按键0 Alpha1 按键1 Alpha2 按键2 Alpha3 按键3 Alpha4 按键4 Alpha5 按键5</p>
+<p>A ‘a’键 B ‘b’键 C ‘c’键 D ‘d’键 E ‘e’键 F ‘f’键</p>
+<p>Capslock 大小写锁定键 RightShift 右上档键 LeftShift 左上档键 RightControl右Ctrl键 LeftControl左Ctrl键 RightAlt 右Alt键 LeftAlt 左Alt键</p>
+<p>Mouse0 鼠标左键 Mouse1 鼠标右键 Mouse2 鼠标中键 Mouse3 鼠标第3个按键 Mouse4 鼠标第4个按键</p>
+<h4 id="物理系统">物理系统</h4>
+<p>在组件里可添加物理组件</p>
+<p>刚体有3种类型 Dinamic 普通刚体 有质量有速度 Static 静态刚体 质量无穷大、无速度 适用于建筑物、地面等固定不动的物体 Kinematic 运动学刚体 无质量 忽略物理规律的刚体，一般用于检测</p>
+<p><strong>碰撞</strong>需要添加碰撞组件 碰撞组件和刚体组件一般一起出现 碰撞范围可编辑 可以给刚体添加材质（<strong>材质</strong>可设置弹性系数、摩擦系数，可以在资源栏里新建）（用边缘行碰撞组件可以设定多边形碰撞范围）</p>
 <p>碰撞组件中有触发器</p>
 <p>脚本</p>
-<p>  void OnTriggerEnter2D(Collider2D collision)<br>  {<br>        Debug.Log(“飞机：探测到了碰撞 … “);<br>  }</p>
+<p>void OnTriggerEnter2D(Collider2D collision) { Debug.Log("飞机：探测到了碰撞 ... "); }</p>
 <p>碰撞事件回调，有三个：</p>
 <p>OnTriggerEnter2D ：两个碰撞体开始相遇</p>
 <p>OnTriggerStay2D ： 两个碰撞体接触中</p>
 <p>OnTriggerExit2D： 两个碰撞体分开</p>
 <p>碰撞事件的参数: Collider2D collision ，表示的是对方的碰撞体组件</p>
 <p>例如，</p>
-<p>  collision.gameObject 对方</p>
-<p>  collision.transform 对方的Transform组件</p>
-<p>  collision.name    对方节点的名称</p>
-<p>  collision.tag      对方节点的Tag</p>
+<p>collision.gameObject 对方</p>
+<p>collision.transform 对方的Transform组件</p>
+<p>collision.name 对方节点的名称</p>
+<p>collision.tag 对方节点的Tag</p>
 <p>在 OnTriggerEnter2D 中 ，Destroy(collision.gameObject) 销毁对象</p>
 <p>相应的回调名字：</p>
 <p>OnCollisionEnter ，OnCollisionStay ，OnCollisionExit</p>
-<h4 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h4><p>在碰撞事件中可以检测碰撞对象的标签，区分敌人和队友</p>
-<p>if(collision.tag.Equals(“Enemy”))<br>{</p>
+<h4 id="标签">标签</h4>
+<p>在碰撞事件中可以检测碰撞对象的标签，区分敌人和队友</p>
+<p>if(collision.tag.Equals("Enemy")) {</p>
 <p>}</p>
-<h4 id="Layer"><a href="#Layer" class="headerlink" title="Layer"></a>Layer</h4><p>可以在项目设定里编辑，碰撞是否检测</p>
-<h4 id="随机"><a href="#随机" class="headerlink" title="随机"></a>随机</h4><p>Random.Range(-2,2);</p>
-<h4 id="重复调用"><a href="#重复调用" class="headerlink" title="重复调用"></a>重复调用</h4><p>InvokeRepeating(“be”,delay,jiange);//字符串：函数名，第一次延时，间隔</p>
-<h4 id="随机选择头像"><a href="#随机选择头像" class="headerlink" title="随机选择头像"></a>随机选择头像</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public sprite[] be;</span><br><span class="line">int sj = Random.Range(0,8);</span><br><span class="line">SpriteRenderer wlw = enemy.Getcomponent&lt;SpriteRenderer&gt;();</span><br><span class="line">wlw.Sprite = be[index];</span><br></pre></td></tr></table></figure>
-
-<h4 id="游戏背景"><a href="#游戏背景" class="headerlink" title="游戏背景"></a>游戏背景</h4><h4 id="声音"><a href="#声音" class="headerlink" title="声音"></a>声音</h4><p>支持格式mp3/wav/ogg/aiff</p>
+<h4 id="layer">Layer</h4>
+<p>可以在项目设定里编辑，碰撞是否检测</p>
+<h4 id="随机">随机</h4>
+<p>Random.Range(-2,2);</p>
+<h4 id="重复调用">重复调用</h4>
+<p>InvokeRepeating("be",delay,jiange);//字符串：函数名，第一次延时，间隔</p>
+<h4 id="随机选择头像">随机选择头像</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public sprite[] be;</span><br><span class="line">int sj = Random.Range(0,8);</span><br><span class="line">SpriteRenderer wlw = enemy.Getcomponent&lt;SpriteRenderer&gt;();</span><br><span class="line">wlw.Sprite = be[index];</span><br></pre></td></tr></table></figure>
+<h4 id="游戏背景">游戏背景</h4>
+<h4 id="声音">声音</h4>
+<p>支持格式mp3/wav/ogg/aiff</p>
 <p>分为声音播放者和声音采集者</p>
 <p>默认情况下camera自带了一个声音采集者</p>
 <p>声源是组件</p>
-<h4 id="延时调用"><a href="#延时调用" class="headerlink" title="延时调用"></a>延时调用</h4><p>Invoke(“be”,3); 3秒后调用</p>
+<h4 id="延时调用">延时调用</h4>
+<p>Invoke("be",3); 3秒后调用</p>
 <p>invoke API很有用，去官方手册查</p>
-<h4 id="UI"><a href="#UI" class="headerlink" title="UI"></a>UI</h4><p>​    添加Canvas画布，用于摆放所有的GUI元素</p>
-<p>​    Canvas和eventsystem系统配合使用</p>
-<p>​    修改Canvas参数：</p>
-<p>​        渲染模式：摄像机。还有其余的渲染模式</p>
-<p>​        渲染摄像机</p>
-<p>​        平面距离摄像机距离</p>
-<p>​    Canvas节点下添加ui元素</p>
-<p>​        rect transform（transform的子类）</p>
-<p>​            相对中心点的位置，单位：像素</p>
-<p>​            相对中心点可修改，选已有的模板，或者修改Anchors</p>
-<p>​        image：填充模式九宫格边角美化：在素材中sprite editor 改出九宫格</p>
-<p>​        按钮自定义按下特性：将transition改为图片切换模式</p>
-<p>​        文本输入框</p>
-<p>​        面板panel，人称小画布（Canvas）</p>
-<p>​    using Unityengine.UI;</p>
-<p>​        InputField类型变量获取文本输入框内容，string sj = be.text</p>
-<p>​        on click()下添加方法</p>
-<p>​        图片转按钮：挂载脚本，脚本：创建方法继承已有的类：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">using UnityEngine;</span><br><span class="line">using UnityEngine.EventSystems;</span><br><span class="line"></span><br><span class="line">/** 事件列表</span><br><span class="line">IPointerEnterHandler - OnPointerEnter - Called when a pointer enters the object</span><br><span class="line">IPointerExitHandler - OnPointerExit - Called when a pointer exits the object</span><br><span class="line">IPointerDownHandler - OnPointerDown - Called when a pointer is pressed on the object</span><br><span class="line">IPointerUpHandler - OnPointerUp - Called when a pointer is released (called on the GameObject that the pointer is clicking)</span><br><span class="line">IPointerClickHandler - OnPointerClick - Called when a pointer is pressed and released on the same object</span><br><span class="line">IInitializePotentialDragHandler - OnInitializePotentialDrag - Called when a drag target is found, can be used to initialise values</span><br><span class="line">IBeginDragHandler - OnBeginDrag - Called on the drag object when dragging is about to begin</span><br><span class="line">IDragHandler - OnDrag - Called on the drag object when a drag is happening</span><br><span class="line">IEndDragHandler - OnEndDrag - Called on the drag object when a drag finishes</span><br><span class="line">IDropHandler - OnDrop - Called on the object where a drag finishes</span><br><span class="line">IScrollHandler - OnScroll - Called when a mouse wheel scrolls</span><br><span class="line">IUpdateSelectedHandler - OnUpdateSelected - Called on the selected object each tick</span><br><span class="line">ISelectHandler - OnSelect - Called when the object becomes the selected object</span><br><span class="line">IDeselectHandler - OnDeselect - Called on the selected object becomes deselected</span><br><span class="line">IMoveHandler - OnMove - Called when a move event occurs (left, right, up, down, ect)</span><br><span class="line">ISubmitHandler - OnSubmit - Called when the submit button is pressed</span><br><span class="line">ICancelHandler - OnCancel - Called when the cancel button is pressed</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">public class OkButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler</span><br><span class="line">&#123;</span><br><span class="line">    // Start is called before the first frame update</span><br><span class="line">    void Start()</span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // Update is called once per frame</span><br><span class="line">    void Update()</span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void OnPointerDown(PointerEventData eventData)</span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log(&quot;鼠标按下...&quot;);</span><br><span class="line">        transform.localScale = new Vector3(1.05f, 1.05f, 1.05f);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void OnPointerUp(PointerEventData eventData)</span><br><span class="line">    &#123;</span><br><span class="line">        transform.localScale = new Vector3(1, 1, 1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//点击放大一下，打印日志</span><br><span class="line">//机制：射线投射器和射线接收器</span><br></pre></td></tr></table></figure>
-
-<h4 id="unity中三种调用其他脚本函数的方法"><a href="#unity中三种调用其他脚本函数的方法" class="headerlink" title="unity中三种调用其他脚本函数的方法"></a>unity中三种调用其他脚本函数的方法</h4><p>第一种，被调用脚本函数为static类型，调用时直接用  脚本名.函数名()。很不实用……</p>
-<p>第二种，GameObject.Find(“脚本所在物体名”).SendMessage(“函数名”);  此种方法可以调用public和private类型函数//无返回值</p>
-<p>第三种，GameObject.Find(“脚本所在物体名”).GetComponent&lt;脚本名&gt;().函数名();此种方法只可以调用public类型函数//有返回值</p>
-<h4 id="退出游戏"><a href="#退出游戏" class="headerlink" title="退出游戏"></a>退出游戏</h4><p>在unity编辑界面实现退出游戏</p>
+<h4 id="ui">UI</h4>
+<p>​ 添加Canvas画布，用于摆放所有的GUI元素</p>
+<p>​ Canvas和eventsystem系统配合使用</p>
+<p>​ 修改Canvas参数：</p>
+<p>​ 渲染模式：摄像机。还有其余的渲染模式</p>
+<p>​ 渲染摄像机</p>
+<p>​ 平面距离摄像机距离</p>
+<p>​ Canvas节点下添加ui元素</p>
+<p>​ rect transform（transform的子类）</p>
+<p>​ 相对中心点的位置，单位：像素</p>
+<p>​ 相对中心点可修改，选已有的模板，或者修改Anchors</p>
+<p>​ image：填充模式九宫格边角美化：在素材中sprite editor 改出九宫格</p>
+<p>​ 按钮自定义按下特性：将transition改为图片切换模式</p>
+<p>​ 文本输入框</p>
+<p>​ 面板panel，人称小画布（Canvas）</p>
+<p>​ using Unityengine.UI;</p>
+<p>​ InputField类型变量获取文本输入框内容，string sj = be.text</p>
+<p>​ on click()下添加方法</p>
+<p>​ 图片转按钮：挂载脚本，脚本：创建方法继承已有的类： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">using UnityEngine;</span><br><span class="line">using UnityEngine.EventSystems;</span><br><span class="line"></span><br><span class="line">/** 事件列表</span><br><span class="line">IPointerEnterHandler - OnPointerEnter - Called when a pointer enters the object</span><br><span class="line">IPointerExitHandler - OnPointerExit - Called when a pointer exits the object</span><br><span class="line">IPointerDownHandler - OnPointerDown - Called when a pointer is pressed on the object</span><br><span class="line">IPointerUpHandler - OnPointerUp - Called when a pointer is released (called on the GameObject that the pointer is clicking)</span><br><span class="line">IPointerClickHandler - OnPointerClick - Called when a pointer is pressed and released on the same object</span><br><span class="line">IInitializePotentialDragHandler - OnInitializePotentialDrag - Called when a drag target is found, can be used to initialise values</span><br><span class="line">IBeginDragHandler - OnBeginDrag - Called on the drag object when dragging is about to begin</span><br><span class="line">IDragHandler - OnDrag - Called on the drag object when a drag is happening</span><br><span class="line">IEndDragHandler - OnEndDrag - Called on the drag object when a drag finishes</span><br><span class="line">IDropHandler - OnDrop - Called on the object where a drag finishes</span><br><span class="line">IScrollHandler - OnScroll - Called when a mouse wheel scrolls</span><br><span class="line">IUpdateSelectedHandler - OnUpdateSelected - Called on the selected object each tick</span><br><span class="line">ISelectHandler - OnSelect - Called when the object becomes the selected object</span><br><span class="line">IDeselectHandler - OnDeselect - Called on the selected object becomes deselected</span><br><span class="line">IMoveHandler - OnMove - Called when a move event occurs (left, right, up, down, ect)</span><br><span class="line">ISubmitHandler - OnSubmit - Called when the submit button is pressed</span><br><span class="line">ICancelHandler - OnCancel - Called when the cancel button is pressed</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">public class OkButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler</span><br><span class="line">&#123;</span><br><span class="line">    // Start is called before the first frame update</span><br><span class="line">    void Start()</span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // Update is called once per frame</span><br><span class="line">    void Update()</span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void OnPointerDown(PointerEventData eventData)</span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log(&quot;鼠标按下...&quot;);</span><br><span class="line">        transform.localScale = new Vector3(1.05f, 1.05f, 1.05f);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void OnPointerUp(PointerEventData eventData)</span><br><span class="line">    &#123;</span><br><span class="line">        transform.localScale = new Vector3(1, 1, 1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//点击放大一下，打印日志</span><br><span class="line">//机制：射线投射器和射线接收器</span><br></pre></td></tr></table></figure></p>
+<h4 id="unity中三种调用其他脚本函数的方法">unity中三种调用其他脚本函数的方法</h4>
+<p>第一种，被调用脚本函数为static类型，调用时直接用 脚本名.函数名()。很不实用……</p>
+<p>第二种，GameObject.Find("脚本所在物体名").SendMessage("函数名"); 此种方法可以调用public和private类型函数//无返回值</p>
+<p>第三种，GameObject.Find("脚本所在物体名").GetComponent<脚本名>().函数名();此种方法只可以调用public类型函数//有返回值</脚本名></p>
+<h4 id="退出游戏">退出游戏</h4>
+<p>在unity编辑界面实现退出游戏</p>
 <p>调用这个</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">    void QuitGame()</span><br><span class="line">    &#123;</span><br><span class="line">#if UNITY_EDITOR</span><br><span class="line">        UnityEditor.EditorApplication.isPlaying = false;</span><br><span class="line">#else</span><br><span class="line">            Application.Quit();</span><br><span class="line">#endif</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="开始界面"><a href="#开始界面" class="headerlink" title="开始界面"></a>开始界面</h4><p>using UnityEngine.UI</p>
+<h4 id="开始界面">开始界面</h4>
+<p>using UnityEngine.UI</p>
 <p>using UnityEngine.Scenemanagement</p>
 
       
@@ -1062,92 +1165,6 @@
 <p>一个例子</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> <span class="number">1</span>:</span><br><span class="line">	io = remote(<span class="string">&quot;node2.hackingfor.fun&quot;</span>,<span class="number">36058</span>)</span><br><span class="line">	io.send(<span class="string">&quot;a&quot;</span>*<span class="number">16</span>+p16(<span class="number">0x64e1</span>))</span><br><span class="line">	res = io.recvall()</span><br><span class="line">	<span class="keyword">if</span> <span class="string">&quot;&#123;&quot;</span> <span class="keyword">in</span> res: <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
 
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/04/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8-%E6%A0%88%E5%B8%A7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="爷">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/04/04/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8-%E6%A0%88%E5%B8%A7/" class="post-title-link" itemprop="url">函数调用-栈帧</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-04-04 20:28:56" itemprop="dateCreated datePublished" datetime="2021-04-04T20:28:56+08:00">2021-04-04</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-17 23:35:17" itemprop="dateModified" datetime="2021-04-17T23:35:17+08:00">2021-04-17</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><strong>代码</strong>生成<strong>可执行文件</strong><br><strong>可执行文件</strong>运行加载到<strong>内存</strong><br>其中<strong>机器指令</strong>位于<strong>代码段</strong></p>
-<img src="/2021/04/04/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8-%E6%A0%88%E5%B8%A7/1.jpg" class>
-
-<p>栈有高地址向低地址生成</p>
-<p>函数调用时，用栈来存放局部变量、参数、返回地址等。</p>
-<p>ebp指向栈底部（在高地址）（该寄存器存放的是栈地址）（可以用来索引确定函数参数或局部变量的位置）<br>esp指向栈顶（在低地址）（该寄存器存放的是栈地址）<br>eip指向下一条需要指向的指令（在代码段）（该寄存器存放的是代码段的地址）</p>
-<p>call指令之前：<br>首先将被调用函数的参数按照逆序依次压入栈内。如果被调用函数不需要参数，则没有这一步骤。</p>
-<p>call指令只做两件事：<br>1.打入返回地址 （push eip）<br>2.跳转（eip=%%%%）</p>
-<p>函数开头：<br>1.分配栈帧大小（esp=esp-n）（之后用栈就往[esp+m]里写东西）<br>2.保存母函数的栈基地址于栈中（[esp+m1]=ebp）（母函数也有其栈帧）<br>3.确定子函数的栈基地址，即当前栈最新空着的地方（ebp=esp+m2）<br>函数中间：<br>执行该子函数在代码段的其它指令，其中栈会刚好用到esp+n处<br>函数结尾：<br>1.恢复ebp存储母函数的栈基地址（ebp=[esp+m1]）<br>2.释放该子栈帧的空间（esp=esp+n）</p>
-<p>ret指令只做两件事：<br>1.弹出返回地址 （eip=pop）<br>2.跳转</p>
-<p>这是函数嵌套调用时栈的模样：</p>
-<img src="/2021/04/04/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8-%E6%A0%88%E5%B8%A7/1.png" class>
-
-
-
-<p>PS：CGfsb遗留的问题至此解决</p>
 
       
     </div>
