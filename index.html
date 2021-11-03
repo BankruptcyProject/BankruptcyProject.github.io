@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-count">52</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -206,6 +206,79 @@
     
     <div class="post-body" itemprop="articleBody">
           <h1 id="年纪轻轻只有尸体才每天躺着摆烂有一天没事不更必被创死">“年纪轻轻只有尸体才每天躺着摆烂，有一天没事不更必被创死”</h1>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/03/Java-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E7%B1%BB%E7%9A%84%E7%BB%A7%E6%89%BF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="甜药补习班吊尾生">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/11/03/Java-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E7%B1%BB%E7%9A%84%E7%BB%A7%E6%89%BF/" class="post-title-link" itemprop="url">Java-面向对象-类的继承</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-11-03 10:58:33 / Modified: 11:22:59" itemprop="dateCreated datePublished" datetime="2021-11-03T10:58:33+08:00">2021-11-03</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="继承">继承</h1>
+<p>类的继承格式 class 父类 {</p>
+<p>}</p>
+<p>class 子类 extends 父类 {</p>
+<p>}</p>
+<p>继承的特性 子类拥有父类非 private 的属性、方法。 子类可以拥有自己的属性和方法，即子类可以对父类进行扩展。 子类可以用自己的方式实现父类的方法。 Java 的继承是单继承，但是可以多重继承，这是 Java 继承区别于 C++ 继承的一个特性。 Java 不可多继承</p>
+<p>implements关键字（继承接口） 使用 implements 关键字可以变相的使java具有多继承的特性，使用范围：类继承接口的情况 可以同时继承多个接口（接口跟接口之间采用逗号分隔）。</p>
+<p>super 与 this 关键字 super关键字：我们可以通过super关键字来实现对父类成员的访问，用来引用当前对象的父类。 this关键字：指向自己的引用。</p>
+<h1 id="重写与重载">重写与重载</h1>
 
       
     </div>
@@ -488,7 +561,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-10-30 17:14:20" itemprop="dateModified" datetime="2021-10-30T17:14:20+08:00">2021-10-30</time>
+        <time title="Modified: 2021-11-03 11:24:43" itemprop="dateModified" datetime="2021-11-03T11:24:43+08:00">2021-11-03</time>
       </span>
 
   
@@ -501,7 +574,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          
+          <h1 id="方案一显性">方案一(显性)</h1>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br></pre></td><td class="code"><pre><span class="line">class Solution </span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	vector&lt;int&gt;nums;</span><br><span class="line">	int a = 0, b = 0;</span><br><span class="line">	void recoverTree(TreeNode* root) </span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; &quot;中根序： &quot;;//调试</span><br><span class="line">		dfsPrint(root);</span><br><span class="line">		cout &lt;&lt; endl;//调试 </span><br><span class="line">		dfsTreeToNums(root);</span><br><span class="line">		findProblem();</span><br><span class="line">		dfsForSwitch(root);</span><br><span class="line">		dfsPrint(root);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	void findProblem()//这里整个函数没写清楚</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; &quot;start findProblem&quot; &lt;&lt; endl;</span><br><span class="line">		int len = nums.size();</span><br><span class="line"></span><br><span class="line">		cout &lt;&lt; &quot;输出原数组:&quot;;//调试</span><br><span class="line">		for (int i = 0; i &lt;= len - 1; ++i)printf(&quot;%d &quot;, nums[i]);//调试</span><br><span class="line">		cout &lt;&lt; endl;//调试</span><br><span class="line"></span><br><span class="line">		vector&lt;int&gt;index;</span><br><span class="line">		for (int i = 0; i &lt;= len - 2; ++i)</span><br><span class="line">			if (nums[i] &gt; nums[i + 1])index.push_back(i);</span><br><span class="line">		if (index.size() == 1)index.push_back(index[0]);//错位的两数相邻</span><br><span class="line"></span><br><span class="line">		a = nums[index[0]];</span><br><span class="line">		b = nums[index[1] + 1];</span><br><span class="line">		printf(&quot;a: %d \nb: %d \n&quot;, a, b);//调试</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	void dfsPrint(TreeNode* now)//调试打印，中根序</span><br><span class="line">	&#123;</span><br><span class="line">		if (now-&gt;left)</span><br><span class="line">			dfsPrint(now-&gt;left);</span><br><span class="line">		cout &lt;&lt; now-&gt;val &lt;&lt; &#x27; &#x27;;</span><br><span class="line">		if (now-&gt;right)</span><br><span class="line">			dfsPrint(now-&gt;right);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	void dfsForSwitch(TreeNode* now)//随便什么顺序，这里用先根序</span><br><span class="line">	&#123;</span><br><span class="line">		if (now-&gt;val == a) now-&gt;val = b;</span><br><span class="line">		else if (now-&gt;val == b) now-&gt;val = a;</span><br><span class="line"></span><br><span class="line">		if (now-&gt;left)</span><br><span class="line">			dfsForSwitch(now-&gt;left);</span><br><span class="line">		if (now-&gt;right)</span><br><span class="line">			dfsForSwitch(now-&gt;right);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	void dfsTreeToNums(TreeNode* now)//中根序搜索</span><br><span class="line">	&#123;</span><br><span class="line">		if (now-&gt;left)</span><br><span class="line">			dfsTreeToNums(now-&gt;left);</span><br><span class="line">		nums.push_back(now-&gt;val);</span><br><span class="line">		if (now-&gt;right)</span><br><span class="line">			dfsTreeToNums(now-&gt;right);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	TreeNode* build(queue&lt;string&gt;&amp; nums)</span><br><span class="line">	&#123;</span><br><span class="line">		TreeNode* root = new TreeNode(stoi(nums.front())); nums.pop();</span><br><span class="line">		queue&lt;TreeNode*&gt;q;</span><br><span class="line">		q.push(root);</span><br><span class="line"></span><br><span class="line">		while (!q.empty())</span><br><span class="line">		&#123;</span><br><span class="line">			TreeNode* now = q.front(); q.pop();</span><br><span class="line"></span><br><span class="line">			if (nums.empty())break;</span><br><span class="line">			if (nums.front() != &quot;null&quot;)</span><br><span class="line">			&#123;</span><br><span class="line">				int leftnum = stoi(nums.front());</span><br><span class="line">				now-&gt;left = new TreeNode(leftnum);</span><br><span class="line">				q.push(now-&gt;left);</span><br><span class="line">			&#125;</span><br><span class="line">			nums.pop();</span><br><span class="line"></span><br><span class="line">			if (nums.empty())break;</span><br><span class="line">			if (nums.front() != &quot;null&quot;)</span><br><span class="line">			&#123;</span><br><span class="line">				int rightnum = stoi(nums.front());</span><br><span class="line">				now-&gt;right = new TreeNode(rightnum);</span><br><span class="line">				q.push(now-&gt;right);</span><br><span class="line">			&#125;</span><br><span class="line">			nums.pop();</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		return root;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	void stringToQueue(string&amp; str, queue&lt;string&gt;&amp; q)</span><br><span class="line">	&#123;</span><br><span class="line">		string short_str = &quot;&quot;;</span><br><span class="line">		for (int i = 0; i &lt;= str.size() - 1; ++i)</span><br><span class="line">		&#123;</span><br><span class="line">			if (str[i] != &#x27; &#x27;)</span><br><span class="line">				short_str += str[i];</span><br><span class="line">			else</span><br><span class="line">			&#123;</span><br><span class="line">				q.push(short_str);</span><br><span class="line">				short_str = &quot;&quot;;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		queue&lt;string&gt;Q = q;</span><br><span class="line">		printf(&quot;输入数据队列：&quot;);</span><br><span class="line">		while (!Q.empty())</span><br><span class="line">		&#123;</span><br><span class="line">			cout &lt;&lt; Q.front() &lt;&lt; &#x27; &#x27;;</span><br><span class="line">			Q.pop();</span><br><span class="line">		&#125;</span><br><span class="line">		cout &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -559,7 +633,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-11-02 21:32:55" itemprop="dateModified" datetime="2021-11-02T21:32:55+08:00">2021-11-02</time>
+        <time title="Modified: 2021-11-03 10:59:40" itemprop="dateModified" datetime="2021-11-03T10:59:40+08:00">2021-11-03</time>
       </span>
 
   
@@ -591,6 +665,8 @@
 <p><code>System.out.println("Hello World"); // 输出 Hello World</code> <code>System.out.println( "菜鸟教程网址长度 : " + len );</code></p>
 <p>instanceof 运算符 该运算符用于操作对象实例，检查该对象是否是一个特定类型（类类型或接口类型）。 <code>boolean result =  a instanceof Car;</code></p>
 <p>增强for <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(声明语句 : 表达式)</span><br><span class="line">&#123;</span><br><span class="line">   <span class="comment">//代码句子</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>变量</p>
+<img src="/2021/09/16/Java%E5%9F%BA%E7%A1%80/1.png" class>
 <p>String 类型不可改 StringBuffer 类型可改</p>
 <h1 id="对象和类">对象和类</h1>
 <p>对象是类的一个实例</p>
@@ -879,81 +955,6 @@
     <div class="post-body" itemprop="articleBody">
           <h1 id="一次过"><a href="#一次过" class="headerlink" title="一次过"></a>一次过</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; <span class="built_in">subsets</span>(vector&lt;<span class="keyword">int</span>&gt;&amp; nums) </span><br><span class="line">    &#123;</span><br><span class="line">        vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;ans;</span><br><span class="line">        ans.<span class="built_in">push_back</span>(vector&lt;<span class="keyword">int</span>&gt;());<span class="comment">//空集是任何集合的子集</span></span><br><span class="line">        <span class="keyword">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        n = <span class="built_in">pow</span>(<span class="number">2</span>, n);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n - <span class="number">1</span>; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> j = i;</span><br><span class="line">            <span class="keyword">int</span> order = <span class="number">0</span>;</span><br><span class="line">            vector&lt;<span class="keyword">int</span>&gt;smallAns;</span><br><span class="line">            <span class="keyword">while</span> (j &gt; <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (j &amp; <span class="number">1</span>)smallAns.<span class="built_in">push_back</span>(nums[order]);</span><br><span class="line">                ++order;</span><br><span class="line">                j /= <span class="number">2</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            ans.<span class="built_in">push_back</span>(smallAns);</span><br><span class="line">        &#125;	</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/08/30/c-%E5%86%85%E7%BD%AE%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="甜药补习班吊尾生">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/30/c-%E5%86%85%E7%BD%AE%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" class="post-title-link" itemprop="url">c++内置二分查找</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-08-30 16:00:50" itemprop="dateCreated datePublished" datetime="2021-08-30T16:00:50+08:00">2021-08-30</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-09-05 10:37:01" itemprop="dateModified" datetime="2021-09-05T10:37:01+08:00">2021-09-05</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>库：algorithm</p>
-<p>binary_search：查找某个元素是否出现。<br>lower_bound：查找第一个大于或等于某个元素的位置。<br>upper_bound：查找第一个大于某个元素的位置。</p>
-<p>函数模板：<br>    binary_search(arr[], arr[]+size, indx)<br>    lower_bound(arr[],arr[]+size ,  indx)<br>    upper_bound：查找第一个大于某个元素的位置。</p>
-<p>参数说明：<br>    arr[]： 数组首地址<br>    size：数组元素个数<br>    indx：需要查找的值</p>
-<p>注意事项：<br>    binary_search在数组中以二分法检索的方式查找，若在数组(要求数组元素非递减)中查找到indx元素则真，若查找不到则返回值为假<br>    函数lower_bound()在first和last中的<strong>前闭后开</strong>区间进行二分查找，返回大于或等于val的第一个元素位置**(注意是地址)(减去首地址得到下标)**。如果所有元素都小于val，则返回last的位置<br>    函数upper_bound()返回的在前闭后开区间查找的关键字的上界，返回大于val的第一个元素位置</p>
 
       
     </div>
