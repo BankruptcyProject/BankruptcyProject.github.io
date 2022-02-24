@@ -20,15 +20,15 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="写在前面：没有提到的东西跟c++差不多 第一课一个 C# 程序一般结果：using System命名空间声明（namespace betql）    class        class属性        class方法    class        class属性        class方法            语句（Statements）&amp; 表达式（Expressions）">
+<meta name="description" content="写在前面：没有提到的东西跟c++差不多 第一课 一个 C# 程序一般结果： using System 命名空间声明（namespace betql） class class属性 class方法 class class属性 class方法 语句（Statements）&amp; 表达式（Expressions） Main方法 语句（Statements）&amp; 表达式（Expressions">
 <meta property="og:type" content="article">
 <meta property="og:title" content="cs">
 <meta property="og:url" content="http://example.com/2021/04/03/cs/index.html">
 <meta property="og:site_name" content="划水骗分二十年，没人比我更懂蒻">
-<meta property="og:description" content="写在前面：没有提到的东西跟c++差不多 第一课一个 C# 程序一般结果：using System命名空间声明（namespace betql）    class        class属性        class方法    class        class属性        class方法            语句（Statements）&amp; 表达式（Expressions）">
+<meta property="og:description" content="写在前面：没有提到的东西跟c++差不多 第一课 一个 C# 程序一般结果： using System 命名空间声明（namespace betql） class class属性 class方法 class class属性 class方法 语句（Statements）&amp; 表达式（Expressions） Main方法 语句（Statements）&amp; 表达式（Expressions">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-04-03T03:58:26.000Z">
-<meta property="article:modified_time" content="2021-09-04T13:53:09.491Z">
+<meta property="article:modified_time" content="2021-09-07T00:48:18.766Z">
 <meta property="article:author" content="甜药补习班吊尾生">
 <meta property="article:tag" content="C#">
 <meta name="twitter:card" content="summary">
@@ -108,7 +108,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E8%AF%BE"><span class="nav-number">1.</span> <span class="nav-text">第一课</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E8%AF%BE"><span class="nav-number">2.</span> <span class="nav-text">第二课</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E8%AF%BE-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.</span> <span class="nav-text">第三课 数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%80%BC%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.1.</span> <span class="nav-text">值类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.2.</span> <span class="nav-text">引用类型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E8%AF%BE-%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="nav-number">4.</span> <span class="nav-text">第四课 类型转换</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#C-%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E6%96%B9%E6%B3%95"><span class="nav-number">4.1.</span> <span class="nav-text">C# 类型转换方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%BA%94%E8%AF%BE-C-%E9%81%97%E4%BA%A7"><span class="nav-number">5.</span> <span class="nav-text">第五课 C++遗产</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%BB%E5%85%A5"><span class="nav-number">5.1.</span> <span class="nav-text">读入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#foreach"><span class="nav-number">5.2.</span> <span class="nav-text">foreach</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E5%85%AD%E8%AF%BE-%E5%B0%81%E8%A3%85"><span class="nav-number">6.</span> <span class="nav-text">第六课 封装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%83%E8%AF%BE-%E6%95%B0%E7%BB%84"><span class="nav-number">7.</span> <span class="nav-text">第七课 数组</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E8%AF%BE"><span class="nav-number">1.</span> <span class="nav-text">第一课</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E8%AF%BE"><span class="nav-number">2.</span> <span class="nav-text">第二课</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E8%AF%BE-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.</span> <span class="nav-text">第三课 数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%80%BC%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.1.</span> <span class="nav-text">值类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.2.</span> <span class="nav-text">引用类型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E8%AF%BE-%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="nav-number">4.</span> <span class="nav-text">第四课 类型转换</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#c-%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E6%96%B9%E6%B3%95"><span class="nav-number">4.1.</span> <span class="nav-text">C# 类型转换方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%BA%94%E8%AF%BE-c%E9%81%97%E4%BA%A7"><span class="nav-number">5.</span> <span class="nav-text">第五课 C++遗产</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%BB%E5%85%A5"><span class="nav-number">5.1.</span> <span class="nav-text">读入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#foreach"><span class="nav-number">5.2.</span> <span class="nav-text">foreach</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E5%85%AD%E8%AF%BE-%E5%B0%81%E8%A3%85"><span class="nav-number">6.</span> <span class="nav-text">第六课 封装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%83%E8%AF%BE-%E6%95%B0%E7%BB%84"><span class="nav-number">7.</span> <span class="nav-text">第七课 数组</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -199,7 +199,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-09-04 21:53:09" itemprop="dateModified" datetime="2021-09-04T21:53:09+08:00">2021-09-04</time>
+        <time title="Modified: 2021-09-07 08:48:18" itemprop="dateModified" datetime="2021-09-07T08:48:18+08:00">2021-09-07</time>
       </span>
 
   
@@ -213,114 +213,117 @@
     
     <div class="post-body" itemprop="articleBody">
         <p>写在前面：没有提到的东西跟c++差不多</p>
-<h1 id="第一课"><a href="#第一课" class="headerlink" title="第一课"></a>第一课</h1><p>一个 C# 程序一般结果：<br>using System<br>命名空间声明（namespace betql）<br>    class<br>        class属性<br>        class方法<br>    class<br>        class属性<br>        class方法<br>            语句（Statements）&amp; 表达式（Expressions）<br>        Main方法<br>            语句（Statements）&amp; 表达式（Expressions）</p>
+<h1 id="第一课">第一课</h1>
+<p>一个 C# 程序一般结果： using System 命名空间声明（namespace betql） class class属性 class方法 class class属性 class方法 语句（Statements）&amp; 表达式（Expressions） Main方法 语句（Statements）&amp; 表达式（Expressions）</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">using System;</span><br><span class="line">namespace HelloWorldApplication</span><br><span class="line">&#123;</span><br><span class="line">   class HelloWorld</span><br><span class="line">   &#123;</span><br><span class="line">      static void Main(string[] args)</span><br><span class="line">      &#123;</span><br><span class="line">         /* 我的第一个 C# 程序*/</span><br><span class="line">         Console.WriteLine(&quot;Hello World&quot;);</span><br><span class="line">         Console.ReadKey();</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">//目前来说，这里基本可以当作格式</span><br></pre></td></tr></table></figure>
-
-<p><strong>类</strong>一般包含多个<strong>方法</strong>。<br><strong>方法</strong>定义了<strong>类</strong>的行为。<br><strong>Main</strong> 方法，是所有 C# 程序的 <strong>入口点</strong>。<strong>Main</strong>  方法说明当执行时 <strong>类</strong>将做什么动作。<br><strong>Console.ReadKey();</strong> 是针对 VS.NET 用户的。这使得程序会等待一个按键的动作，防止程序从 Visual Studio .NET 启动时屏幕会快速运行并关闭。<br><strong>WriteLine</strong> 是一个定义在 <strong>System</strong> 命名空间中的 <strong>Console</strong> 类的一个方法。</p>
-<p>注：<br>C# 是大小写敏感的。<br>所有的语句和表达式必须以分号（;）结尾。<br>程序的执行从 Main 方法开始。</p>
-<h1 id="第二课"><a href="#第二课" class="headerlink" title="第二课"></a>第二课</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">using System;</span><br><span class="line">namespace RectangleApplication</span><br><span class="line">&#123;</span><br><span class="line">    class Rectangle</span><br><span class="line">    &#123;</span><br><span class="line">        // 成员变量</span><br><span class="line">        double length;</span><br><span class="line">        double width;</span><br><span class="line">        public void Acceptdetails()</span><br><span class="line">        &#123;</span><br><span class="line">            length = 4.5;</span><br><span class="line">            width = 3.5;</span><br><span class="line">        &#125;</span><br><span class="line">        public double GetArea()</span><br><span class="line">        &#123;</span><br><span class="line">            return length * width;</span><br><span class="line">        &#125;</span><br><span class="line">        public void Display()</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(&quot;Length: &#123;0&#125;; Width: &#123;1&#125;; Area: &#123;2&#125;&quot;, length, width, GetArea());</span><br><span class="line">            //是的，是顺序和格式</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    class ExecuteRectangle</span><br><span class="line">    &#123;</span><br><span class="line">        static void Main(string[] args)</span><br><span class="line">        &#123;</span><br><span class="line">            Rectangle r = new Rectangle();//类的实例化：通过已有的类（class）创建出该类的一个对象（object）</span><br><span class="line">            r.Display();//输出0</span><br><span class="line">            r.Acceptdetails();</span><br><span class="line">            r.Display();</span><br><span class="line">            Console.ReadLine();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>注：<br>当一个方法有超过两件事情，就分开来写。<br>面向对象&amp;面相对向的原理就是善用Class做分类。<br>不要将所有事情都写在一起，到时候有问题要全部重写。<br>也有可能别人在看代码需要很多时间去理解。<br>因此善用分类，让大家都能轻易读懂。<br>未来Class一定会建立很多，可能一个Class就只有2-3行。<br>但这就是单一职责，高内聚低耦合，让未来debug不会这么痛苦。<br>写不难，逻辑分清楚，让大家都能懂，这才难。</p>
-<h1 id="第三课-数据类型"><a href="#第三课-数据类型" class="headerlink" title="第三课 数据类型"></a>第三课 数据类型</h1><h2 id="值类型"><a href="#值类型" class="headerlink" title="值类型"></a>值类型</h2><p>对于一个变量有专属的一个内存地址</p>
-<h2 id="引用类型"><a href="#引用类型" class="headerlink" title="引用类型"></a>引用类型</h2><p>对于莫个地址有不同的变量指向它<br>比如定义引用类型   a=10，这时候在内存中保存的是 10，当把 a 赋给 b 的时候，他们两个应用的是同一个内存空间，b 的值会保存为 a 的值，当把  b 改为 20 时，应为 a 和 b 引用的是同一个所以 a 也变成 20 了</p>
-<p>装箱：值类型转换为对象类型<br>拆箱：之前由值类型转换而来的对象类型再转回值类型</p>
+<p><strong>类</strong>一般包含多个<strong>方法</strong>。 <strong>方法</strong>定义了<strong>类</strong>的行为。 <strong>Main</strong> 方法，是所有 C# 程序的 <strong>入口点</strong>。<strong>Main</strong> 方法说明当执行时 <strong>类</strong>将做什么动作。 <strong>Console.ReadKey();</strong> 是针对 VS.NET 用户的。这使得程序会等待一个按键的动作，防止程序从 Visual Studio .NET 启动时屏幕会快速运行并关闭。 <strong>WriteLine</strong> 是一个定义在 <strong>System</strong> 命名空间中的 <strong>Console</strong> 类的一个方法。</p>
+<p>注： C# 是大小写敏感的。 所有的语句和表达式必须以分号（;）结尾。 程序的执行从 Main 方法开始。</p>
+<h1 id="第二课">第二课</h1>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">using System;</span><br><span class="line">namespace RectangleApplication</span><br><span class="line">&#123;</span><br><span class="line">    class Rectangle</span><br><span class="line">    &#123;</span><br><span class="line">        // 成员变量</span><br><span class="line">        double length;</span><br><span class="line">        double width;</span><br><span class="line">        public void Acceptdetails()</span><br><span class="line">        &#123;</span><br><span class="line">            length = 4.5;</span><br><span class="line">            width = 3.5;</span><br><span class="line">        &#125;</span><br><span class="line">        public double GetArea()</span><br><span class="line">        &#123;</span><br><span class="line">            return length * width;</span><br><span class="line">        &#125;</span><br><span class="line">        public void Display()</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(&quot;Length: &#123;0&#125;; Width: &#123;1&#125;; Area: &#123;2&#125;&quot;, length, width, GetArea());</span><br><span class="line">            //是的，是顺序和格式</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    class ExecuteRectangle</span><br><span class="line">    &#123;</span><br><span class="line">        static void Main(string[] args)</span><br><span class="line">        &#123;</span><br><span class="line">            Rectangle r = new Rectangle();//类的实例化：通过已有的类（class）创建出该类的一个对象（object）</span><br><span class="line">            r.Display();//输出0</span><br><span class="line">            r.Acceptdetails();</span><br><span class="line">            r.Display();</span><br><span class="line">            Console.ReadLine();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注： 当一个方法有超过两件事情，就分开来写。 面向对象&amp;面相对向的原理就是善用Class做分类。 不要将所有事情都写在一起，到时候有问题要全部重写。 也有可能别人在看代码需要很多时间去理解。 因此善用分类，让大家都能轻易读懂。 未来Class一定会建立很多，可能一个Class就只有2-3行。 但这就是单一职责，高内聚低耦合，让未来debug不会这么痛苦。 写不难，逻辑分清楚，让大家都能懂，这才难。</p>
+<h1 id="第三课-数据类型">第三课 数据类型</h1>
+<h2 id="值类型">值类型</h2>
+<p>对于一个变量有专属的一个内存地址</p>
+<h2 id="引用类型">引用类型</h2>
+<p>对于莫个地址有不同的变量指向它 比如定义引用类型 a=10，这时候在内存中保存的是 10，当把 a 赋给 b 的时候，他们两个应用的是同一个内存空间，b 的值会保存为 a 的值，当把 b 改为 20 时，应为 a 和 b 引用的是同一个所以 a 也变成 20 了</p>
+<p>装箱：值类型转换为对象类型 拆箱：之前由值类型转换而来的对象类型再转回值类型</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int val = 8;</span><br><span class="line">object obj = val;//先装箱</span><br><span class="line">int nval = （int）obj;//再拆箱</span><br></pre></td></tr></table></figure>
-
 <p><strong>字符串（string）类型</strong> 允许您给变量分配任何字符串值。</p>
-<p>字符串（string）类型的值可以通过两种形式进行分配：引号和 @引号。</p>
-<p>C# string 字符串的前面可以加 @（称作”逐字字符串”）将转义字符（\）当作普通字符对待，比如：</p>
+<p>字符串（string）类型的值可以通过两种形式进行分配：引号和 <span class="citation" data-cites="引号">@引号</span>。</p>
+<p>C# string 字符串的前面可以加 @（称作"逐字字符串"）将转义字符（）当作普通字符对待，比如：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">string str = @&quot;C:\Windows&quot;;</span><br><span class="line">//等价于</span><br><span class="line">string str = &quot;C:\\Windows&quot;;</span><br></pre></td></tr></table></figure>
-
 <p>@ 字符串中可以任意换行，<strong>换行符</strong>及<strong>缩进空格</strong>都计算在字符串长度之内。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">string str = @&quot;&lt;script type=&quot;&quot;text/javascript&quot;&quot;&gt;</span><br><span class="line">    &lt;!--</span><br><span class="line">    --&gt;</span><br><span class="line">&lt;/script&gt;&quot;;</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="第四课-类型转换"><a href="#第四课-类型转换" class="headerlink" title="第四课 类型转换"></a>第四课 类型转换</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">namespace TypeConversionApplication</span><br><span class="line">&#123;</span><br><span class="line">    class StringConversion</span><br><span class="line">    &#123;</span><br><span class="line">        static void Main(string[] args)</span><br><span class="line">        &#123;</span><br><span class="line">            int i = 75;</span><br><span class="line">            float f = 53.005f;</span><br><span class="line">            double d = 2345.7652;</span><br><span class="line">            bool b = true;</span><br><span class="line"></span><br><span class="line">            Console.WriteLine(i.ToString());//C#提供的内置的类型转换方法</span><br><span class="line">            Console.WriteLine(f.ToString());</span><br><span class="line">            Console.WriteLine(d.ToString());</span><br><span class="line">            Console.WriteLine(b.ToString());</span><br><span class="line">            </span><br><span class="line">            int j = (int)f;//强制/显性进制转化，可能导致数据丢失</span><br><span class="line">            long k= i; //隐性进制转化，不会导致数据丢失</span><br><span class="line">            Console.WriteLine(j);</span><br><span class="line">            Console.WriteLine(k);</span><br><span class="line">            Console.ReadKey();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">/*</span><br><span class="line">75</span><br><span class="line">53.005</span><br><span class="line">2345.7652</span><br><span class="line">True</span><br><span class="line">53</span><br><span class="line">75</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
-
-<h2 id="C-类型转换方法"><a href="#C-类型转换方法" class="headerlink" title="C# 类型转换方法"></a>C# 类型转换方法</h2><table>
+<h1 id="第四课-类型转换">第四课 类型转换</h1>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">namespace TypeConversionApplication</span><br><span class="line">&#123;</span><br><span class="line">    class StringConversion</span><br><span class="line">    &#123;</span><br><span class="line">        static void Main(string[] args)</span><br><span class="line">        &#123;</span><br><span class="line">            int i = 75;</span><br><span class="line">            float f = 53.005f;</span><br><span class="line">            double d = 2345.7652;</span><br><span class="line">            bool b = true;</span><br><span class="line"></span><br><span class="line">            Console.WriteLine(i.ToString());//C#提供的内置的类型转换方法</span><br><span class="line">            Console.WriteLine(f.ToString());</span><br><span class="line">            Console.WriteLine(d.ToString());</span><br><span class="line">            Console.WriteLine(b.ToString());</span><br><span class="line">            </span><br><span class="line">            int j = (int)f;//强制/显性进制转化，可能导致数据丢失</span><br><span class="line">            long k= i; //隐性进制转化，不会导致数据丢失</span><br><span class="line">            Console.WriteLine(j);</span><br><span class="line">            Console.WriteLine(k);</span><br><span class="line">            Console.ReadKey();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">/*</span><br><span class="line">75</span><br><span class="line">53.005</span><br><span class="line">2345.7652</span><br><span class="line">True</span><br><span class="line">53</span><br><span class="line">75</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
+<h2 id="c-类型转换方法">C# 类型转换方法</h2>
+<table>
 <thead>
-<tr>
+<tr class="header">
 <th>序号</th>
 <th>方法 &amp; 描述</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr class="odd">
 <td>1</td>
 <td><strong>ToBoolean</strong> 如果可能的话，把类型转换为布尔型。</td>
 </tr>
-<tr>
+<tr class="even">
 <td>2</td>
 <td><strong>ToByte</strong> 把类型转换为字节类型。</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>3</td>
 <td><strong>ToChar</strong> 如果可能的话，把类型转换为单个 Unicode 字符类型。</td>
 </tr>
-<tr>
+<tr class="even">
 <td>4</td>
 <td><strong>ToDateTime</strong> 把类型（整数或字符串类型）转换为 日期-时间 结构。</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>5</td>
 <td><strong>ToDecimal</strong> 把浮点型或整数类型转换为十进制类型。</td>
 </tr>
-<tr>
+<tr class="even">
 <td>6</td>
 <td><strong>ToDouble</strong> 把类型转换为双精度浮点型。</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>7</td>
 <td><strong>ToInt16</strong> 把类型转换为 16 位整数类型。</td>
 </tr>
-<tr>
+<tr class="even">
 <td>8</td>
 <td><strong>ToInt32</strong> 把类型转换为 32 位整数类型。</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>9</td>
 <td><strong>ToInt64</strong> 把类型转换为 64 位整数类型。</td>
 </tr>
-<tr>
+<tr class="even">
 <td>10</td>
 <td><strong>ToSbyte</strong> 把类型转换为有符号字节类型。</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>11</td>
 <td><strong>ToSingle</strong> 把类型转换为小浮点数类型。</td>
 </tr>
-<tr>
+<tr class="even">
 <td>12</td>
 <td><strong>ToString</strong> 把类型转换为字符串类型。</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>13</td>
 <td><strong>ToType</strong> 把类型转换为指定类型。</td>
 </tr>
-<tr>
+<tr class="even">
 <td>14</td>
 <td><strong>ToUInt16</strong> 把类型转换为 16 位无符号整数类型。</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>15</td>
 <td><strong>ToUInt32</strong> 把类型转换为 32 位无符号整数类型。</td>
 </tr>
-<tr>
+<tr class="even">
 <td>16</td>
 <td><strong>ToUInt64</strong> 把类型转换为 64 位无符号整数类型。</td>
 </tr>
-</tbody></table>
-<h1 id="第五课-C-遗产"><a href="#第五课-C-遗产" class="headerlink" title="第五课 C++遗产"></a>第五课 C++遗产</h1><h2 id="读入"><a href="#读入" class="headerlink" title="读入"></a>读入</h2><p><strong>System</strong> 命名空间中的 <strong>Console</strong> 类提供了一个函数 **ReadLine()**，用于接收来自用户的输入，并把它存储到一个变量中。</p>
+</tbody>
+</table>
+<h1 id="第五课-c遗产">第五课 C++遗产</h1>
+<h2 id="读入">读入</h2>
+<p><strong>System</strong> 命名空间中的 <strong>Console</strong> 类提供了一个函数 <strong>ReadLine()</strong>，用于接收来自用户的输入，并把它存储到一个变量中。</p>
 <p>例如：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int num;</span><br><span class="line">num = Convert.ToInt32(Console.ReadLine());</span><br></pre></td></tr></table></figure>
-
 <p>函数 <strong>Convert.ToInt32()</strong> 把用户输入的数据转换为 int 数据类型，因为 <strong>Console.ReadLine()</strong> 只接受字符串格式的数据。</p>
-<h2 id="foreach"><a href="#foreach" class="headerlink" title="foreach"></a>foreach</h2><p>C# 也支持 foreach 循环，使用foreach可以迭代数组或者一个集合对象。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class ForEachTest</span><br><span class="line">&#123;</span><br><span class="line">    static void Main(string[] args)</span><br><span class="line">    &#123;</span><br><span class="line">        int[] fibarray = new int[] &#123; 0, 1, 1, 2, 3, 5, 8, 13 &#125;;</span><br><span class="line">        foreach (int element in fibarray)</span><br><span class="line">        &#123;</span><br><span class="line">            System.Console.WriteLine(element);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="foreach">foreach</h2>
+<p>C# 也支持 foreach 循环，使用foreach可以迭代数组或者一个集合对象。 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class ForEachTest</span><br><span class="line">&#123;</span><br><span class="line">    static void Main(string[] args)</span><br><span class="line">    &#123;</span><br><span class="line">        int[] fibarray = new int[] &#123; 0, 1, 1, 2, 3, 5, 8, 13 &#125;;</span><br><span class="line">        foreach (int element in fibarray)</span><br><span class="line">        &#123;</span><br><span class="line">            System.Console.WriteLine(element);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>输出结果为： 0 1 1 2 3 5 8 13</p>
+<h1 id="第六课-封装">第六课 封装</h1>
+<p>public：所有对象都可以访问 private：对象本身在对象内部可以访问 protected：只有该类对象及其子类对象可以访问 internal：同一个程序集的对象可以访问 protected internal：访问限于当前程序集或派生自包含类的类型</p>
+<h1 id="第七课-数组">第七课 数组</h1>
 
-<p>输出结果为：<br>0<br>1<br>1<br>2<br>3<br>5<br>8<br>13</p>
-<h1 id="第六课-封装"><a href="#第六课-封装" class="headerlink" title="第六课 封装"></a>第六课 封装</h1><p>public：所有对象都可以访问<br>private：对象本身在对象内部可以访问<br>protected：只有该类对象及其子类对象可以访问<br>internal：同一个程序集的对象可以访问<br>protected internal：访问限于当前程序集或派生自包含类的类型</p>
-<h1 id="第七课-数组"><a href="#第七课-数组" class="headerlink" title="第七课 数组"></a>第七课 数组</h1>
     </div>
 
     

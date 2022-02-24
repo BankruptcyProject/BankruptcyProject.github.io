@@ -20,12 +20,12 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="从相对于 FS 段开头的偏移量指定的位置读取内存。 语法C 1234unsigned char __readfsbyte(unsigned long Offset);unsigned short __readfsword(unsigned long Offset);unsigned long __readfsdword(unsigned long Offset);unsigned __int64">
+<meta name="description" content="从相对于 FS 段开头的偏移量指定的位置读取内存。 语法 C 1234unsigned char __readfsbyte(unsigned long Offset);unsigned short __readfsword(unsigned long Offset);unsigned long __readfsdword(unsigned long Offset);unsigned __in">
 <meta property="og:type" content="article">
 <meta property="og:title" content="read_byte_word">
 <meta property="og:url" content="http://example.com/2021/04/29/read-byte-word/index.html">
 <meta property="og:site_name" content="划水骗分二十年，没人比我更懂蒻">
-<meta property="og:description" content="从相对于 FS 段开头的偏移量指定的位置读取内存。 语法C 1234unsigned char __readfsbyte(unsigned long Offset);unsigned short __readfsword(unsigned long Offset);unsigned long __readfsdword(unsigned long Offset);unsigned __int64">
+<meta property="og:description" content="从相对于 FS 段开头的偏移量指定的位置读取内存。 语法 C 1234unsigned char __readfsbyte(unsigned long Offset);unsigned short __readfsword(unsigned long Offset);unsigned long __readfsdword(unsigned long Offset);unsigned __in">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2021/04/29/read-byte-word/1.png">
 <meta property="og:image" content="http://example.com/2021/04/29/read-byte-word/2.png">
@@ -210,39 +210,43 @@
     
     <div class="post-body" itemprop="articleBody">
         <p>从相对于 FS 段开头的偏移量指定的位置读取内存。</p>
-<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p>C</p>
+<h2 id="语法">语法</h2>
+<p>C</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">unsigned</span> <span class="keyword">char</span> __readfsbyte(<span class="keyword">unsigned</span> <span class="keyword">long</span> Offset);</span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">short</span> __readfsword(<span class="keyword">unsigned</span> <span class="keyword">long</span> Offset);</span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">long</span> __readfsdword(<span class="keyword">unsigned</span> <span class="keyword">long</span> Offset);</span><br><span class="line"><span class="keyword">unsigned</span> __int64 __readfsqword(<span class="keyword">unsigned</span> <span class="keyword">long</span> Offset);</span><br></pre></td></tr></table></figure>
-
-<h2 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h2><p>字节、字、双字名为的函数的名称指示 <code>FS:[Offset]</code> 。</p>
-<h2 id="要求"><a href="#要求" class="headerlink" title="要求"></a>要求</h2><table>
+<h2 id="返回值">返回值</h2>
+<p>字节、字、双字名为的函数的名称指示 <code>FS:[Offset]</code> 。</p>
+<h2 id="要求">要求</h2>
+<table>
 <thead>
-<tr>
+<tr class="header">
 <th>Intrinsic</th>
 <th>体系结构</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr class="odd">
 <td><code>__readfsbyte</code></td>
 <td>x86</td>
 </tr>
-<tr>
+<tr class="even">
 <td><code>__readfsdword</code></td>
 <td>x86</td>
 </tr>
-<tr>
+<tr class="odd">
 <td><code>__readfsqword</code></td>
 <td>x86</td>
 </tr>
-<tr>
+<tr class="even">
 <td><code>__readfsword</code></td>
 <td>x86</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p><strong>头文件</strong> &lt;intrin.h&gt;</p>
 <p>例子：</p>
 <img src="/2021/04/29/read-byte-word/1.png" class>
-
 <img src="/2021/04/29/read-byte-word/2.png" class>
+
     </div>
 
     

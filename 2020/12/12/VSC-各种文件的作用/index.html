@@ -20,15 +20,15 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="VC++各种文件的作用.APS：存放二进制资源的中间文件，VC把当前资源文件转换成二进制格式，并存放在APS文件中，以加快资源装载速度。资源辅助文件。 .BMP：位图资源文件。 .BSC：浏览信息文件，由浏览信息维护工具（BSCMAKE）从原始浏览信息文件（.SBR）中生成，BSC文件可以用来在源代码编辑窗口中进行快速定位。用于浏览项目信息的，如果用source brower的话就必须有这个文件。">
+<meta name="description" content="VC++各种文件的作用 .APS：存放二进制资源的中间文件，VC把当前资源文件转换成二进制格式，并存放在APS文件中，以加快资源装载速度。资源辅助文件。 .BMP：位图资源文件。 .BSC：浏览信息文件，由浏览信息维护工具（BSCMAKE）从原始浏览信息文件（.SBR）中生成，BSC文件可以用来在源代码编辑窗口中进行快速定位。用于浏览项目信息的，如果用source brower的话就必须有这">
 <meta property="og:type" content="article">
 <meta property="og:title" content="VSC++各种文件的作用">
 <meta property="og:url" content="http://example.com/2020/12/12/VSC-%E5%90%84%E7%A7%8D%E6%96%87%E4%BB%B6%E7%9A%84%E4%BD%9C%E7%94%A8/index.html">
 <meta property="og:site_name" content="划水骗分二十年，没人比我更懂蒻">
-<meta property="og:description" content="VC++各种文件的作用.APS：存放二进制资源的中间文件，VC把当前资源文件转换成二进制格式，并存放在APS文件中，以加快资源装载速度。资源辅助文件。 .BMP：位图资源文件。 .BSC：浏览信息文件，由浏览信息维护工具（BSCMAKE）从原始浏览信息文件（.SBR）中生成，BSC文件可以用来在源代码编辑窗口中进行快速定位。用于浏览项目信息的，如果用source brower的话就必须有这个文件。">
+<meta property="og:description" content="VC++各种文件的作用 .APS：存放二进制资源的中间文件，VC把当前资源文件转换成二进制格式，并存放在APS文件中，以加快资源装载速度。资源辅助文件。 .BMP：位图资源文件。 .BSC：浏览信息文件，由浏览信息维护工具（BSCMAKE）从原始浏览信息文件（.SBR）中生成，BSC文件可以用来在源代码编辑窗口中进行快速定位。用于浏览项目信息的，如果用source brower的话就必须有这">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-12-12T07:58:36.000Z">
-<meta property="article:modified_time" content="2021-05-08T13:20:23.714Z">
+<meta property="article:modified_time" content="2021-09-04T13:53:22.791Z">
 <meta property="article:author" content="甜药补习班吊尾生">
 <meta property="article:tag" content="其他">
 <meta name="twitter:card" content="summary">
@@ -108,7 +108,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#VC-%E5%90%84%E7%A7%8D%E6%96%87%E4%BB%B6%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">VC++各种文件的作用</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#vc%E5%90%84%E7%A7%8D%E6%96%87%E4%BB%B6%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">VC++各种文件的作用</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -199,7 +199,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-05-08 21:20:23" itemprop="dateModified" datetime="2021-05-08T21:20:23+08:00">2021-05-08</time>
+        <time title="Modified: 2021-09-04 21:53:22" itemprop="dateModified" datetime="2021-09-04T21:53:22+08:00">2021-09-04</time>
       </span>
 
   
@@ -212,9 +212,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="VC-各种文件的作用"><a href="#VC-各种文件的作用" class="headerlink" title="VC++各种文件的作用"></a>VC++各种文件的作用</h1><p>.APS：存放二进制资源的中间文件，VC把当前资源文件转换成二进制格式，并存放在APS文件中，以加快资源装载速度。资源辅助文件。</p>
+        <h1 id="vc各种文件的作用">VC++各种文件的作用</h1>
+<p>.APS：存放二进制资源的中间文件，VC把当前资源文件转换成二进制格式，并存放在APS文件中，以加快资源装载速度。资源辅助文件。</p>
 <p>.BMP：位图资源文件。</p>
-<p>.BSC：浏览信息文件，由浏览信息维护工具（BSCMAKE）从原始浏览信息文件（.SBR）中生成，BSC文件可以用来在源代码编辑窗口中进行快速定位。用于浏览项目信息的，如果用source brower的话就必须有这个文件。可以在project options里去掉Generate Browse Info  File，这样可以加快编译进度。</p>
+<p>.BSC：浏览信息文件，由浏览信息维护工具（BSCMAKE）从原始浏览信息文件（.SBR）中生成，BSC文件可以用来在源代码编辑窗口中进行快速定位。用于浏览项目信息的，如果用source brower的话就必须有这个文件。可以在project options里去掉Generate Browse Info File，这样可以加快编译进度。</p>
 <p>.C：用C语言编写的源代码文件。</p>
 <p>.CLW：ClassWizard生成的用来存放类信息的文件。classwizard信息文件，ini文件的格式。</p>
 <p>.CNT：用来定义帮助文件中“Contents”的结构。</p>
@@ -238,7 +239,7 @@
 <p>.MAK：即MAKE文件，VC4及以前版本使用的工程文件，用来指定如何建立一个工程，VC6把MAK文件转换成DSP文件来处理。</p>
 <p>.MAP：由LINK工具生成的一种文本文件，其中包含有被连接的程序的某些信息，例如程序中的组信息和公共符号信息等。执行文件的映像信息记录文件。</p>
 <p>.MDP：旧版本的项目文件，相当于.dsp</p>
-<p>.NCB：NCB是“No Compile Browser”的缩写，其中存放了供ClassView、WizardBar和Component  Gallery使用的信息，由VC开发环境自动生成。无编译浏览文件。当自动完成功能出问题时可以删除此文件。编译工程后会自动生成。</p>
+<p>.NCB：NCB是“No Compile Browser”的缩写，其中存放了供ClassView、WizardBar和Component Gallery使用的信息，由VC开发环境自动生成。无编译浏览文件。当自动完成功能出问题时可以删除此文件。编译工程后会自动生成。</p>
 <p>.OBJ：由编译器或汇编工具生成的目标文件，是模块的二进制中间文件。</p>
 <p>.ODL：用对象描述语言编写的源代码文件，VC用它来生成TLB文件。</p>
 <p>.OLB：带有类型库资源的一种特殊的动态链接库，也叫对象库文件。</p>
@@ -254,7 +255,7 @@
 <p>.RTF：Rich Text Format（丰富文本格式）文档，可由Word或写字板来创建，常被用来生成Help文件。</p>
 <p>.SBR：VC编译器为每个OBJ文件生成的原始浏览信息文件，浏览信息维护工具（BSCMAKE）将利用SBR文件来生成BSC文件。</p>
 <p>.TLB：OLE库文件，其中存放了OLE自动化对象的数据类型、模块和接口定义，自动化服务器通过TLB文件就能了解自动化对象的使用方法。</p>
-<p>.WAV：声音资源文件。 </p>
+<p>.WAV：声音资源文件。</p>
 
     </div>
 

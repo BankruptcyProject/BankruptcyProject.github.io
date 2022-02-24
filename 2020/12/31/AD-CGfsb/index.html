@@ -20,12 +20,12 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="得到信息：32位程序Partial RELRO容易受到攻击，例如攻击者可以atoi.got为system.plt进而输入&#x2F;bin&#x2F;sh\x00获得shell开启了栈溢出保护PIE未开启，在编译时将程序编译为位置相关，程序运行时各个段（如代码但等）加载的虚拟地址确定 printf与%n 12int b&#x3D;0;printf(&quot;01234568789%n&quot;,b); &#x2F;&#x2F;%n将之前输">
+<meta name="description" content="得到信息： 32位程序 Partial RELRO容易受到攻击，例如攻击者可以atoi.got为system.plt进而输入&#x2F;bin&#x2F;sh00获得shell 开启了栈溢出保护 PIE未开启，在编译时将程序编译为位置相关，程序运行时各个段（如代码但等）加载的虚拟地址确定 printf与%n 12int b&#x3D;0;printf(&quot;01234568789%n&quot;,b); &#x2F;&#x2F;%n">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AD_CGfsb">
 <meta property="og:url" content="http://example.com/2020/12/31/AD-CGfsb/index.html">
 <meta property="og:site_name" content="划水骗分二十年，没人比我更懂蒻">
-<meta property="og:description" content="得到信息：32位程序Partial RELRO容易受到攻击，例如攻击者可以atoi.got为system.plt进而输入&#x2F;bin&#x2F;sh\x00获得shell开启了栈溢出保护PIE未开启，在编译时将程序编译为位置相关，程序运行时各个段（如代码但等）加载的虚拟地址确定 printf与%n 12int b&#x3D;0;printf(&quot;01234568789%n&quot;,b); &#x2F;&#x2F;%n将之前输">
+<meta property="og:description" content="得到信息： 32位程序 Partial RELRO容易受到攻击，例如攻击者可以atoi.got为system.plt进而输入&#x2F;bin&#x2F;sh00获得shell 开启了栈溢出保护 PIE未开启，在编译时将程序编译为位置相关，程序运行时各个段（如代码但等）加载的虚拟地址确定 printf与%n 12int b&#x3D;0;printf(&quot;01234568789%n&quot;,b); &#x2F;&#x2F;%n">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2020/12/31/AD-CGfsb/1.png">
 <meta property="og:image" content="http://example.com/2020/12/31/AD-CGfsb/2.png">
@@ -216,95 +216,91 @@
     
     <div class="post-body" itemprop="articleBody">
         <img src="/2020/12/31/AD-CGfsb/1.png" class>
-
-<p>得到信息：<br>32位程序<br>Partial RELRO容易受到攻击，例如攻击者可以atoi.got为system.plt进而输入/bin/sh\x00获得shell<br>开启了栈溢出保护<br>PIE未开启，在编译时将程序编译为位置相关，程序运行时各个段（如代码但等）加载的虚拟地址确定</p>
+<p>得到信息： 32位程序 Partial RELRO容易受到攻击，例如攻击者可以atoi.got为system.plt进而输入/bin/sh00获得shell 开启了栈溢出保护 PIE未开启，在编译时将程序编译为位置相关，程序运行时各个段（如代码但等）加载的虚拟地址确定</p>
 <p><strong>printf与%n</strong></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> b=<span class="number">0</span>;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;01234568789%n&quot;</span>,b); <span class="comment">//%n将之前输出的字符个数存入b，同时不输出字符串</span></span><br></pre></td></tr></table></figure>
-<p>%n前面写了10个字符，所以向ESP（栈顶指针）所指向的地址处所指向的地址处（ESP指向了栈顶，此处存储着一个地址）写入10。<br>%10$n，与%n类似，不过是向[ESP + 10]处指向的内存处写入7。</p>
+<p>%n前面写了10个字符，所以向ESP（栈顶指针）所指向的地址处所指向的地址处（ESP指向了栈顶，此处存储着一个地址）写入10。 %10$n，与%n类似，不过是向[ESP + 10]处指向的内存处写入7。</p>
 <p><strong>关于fgets</strong></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> a;</span><br><span class="line"><span class="built_in">fgets</span>(a,<span class="number">10</span>,stdin);<span class="comment">//从键盘输入中获取数据，当读取 (10-1) 个字符时，或者读取到换行符时停止</span></span><br><span class="line"><span class="comment">//如果成功，该函数返回相同的 a 参数。</span></span><br><span class="line"><span class="comment">//如果到达文件末尾或者没有读取到任何字符，a 的内容保持不变，并返回一个空指针。如果发生错误，返回一个空指针。</span></span><br><span class="line">fp = <span class="built_in">fopen</span>(<span class="string">&quot;file.txt&quot;</span> , <span class="string">&quot;r&quot;</span>);</span><br><span class="line">	<span class="keyword">if</span>(fp == <span class="literal">NULL</span>) &#123;<span class="built_in">perror</span>(<span class="string">&quot;打开文件时发生错误&quot;</span>);<span class="keyword">return</span>(<span class="number">-1</span>);&#125;</span><br><span class="line">	<span class="keyword">if</span>( <span class="built_in">fgets</span> (str, <span class="number">60</span>, fp)!=<span class="literal">NULL</span> ) &#123;...&#125;<span class="comment">//从文件中获取数据</span></span><br><span class="line"><span class="built_in">fclose</span>(fp);</span><br><span class="line"><span class="comment">//-----------------------------------------------------------------------------------------</span></span><br><span class="line"><span class="keyword">char</span> c;</span><br><span class="line"><span class="built_in">fgets</span>(&amp;c,<span class="number">100</span>,stdin);<span class="comment">//改写c的地址</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-
 <p><strong>堆栈中的printf函数</strong></p>
-<p>printf(“format”,输出表列)<br>format意思是格式化字符串</p>
+<p>printf("format",输出表列) format意思是格式化字符串</p>
 <p>printf函数右序进栈</p>
-<p>printf 函数有一个 bug 就是当 format 字符串中所需要替换的参数数量，多于提供的参数数量，就会产生任意地址读漏洞。<br>例如，printf(“abcde%X %p %x %x”, a, b, c)这句命令中，format 需要 4 个参数，我们只提供了 3 个，所以 printf就会在栈上延续读取数据作为其参数。<br>如下所示，位于栈上的数据“我是你爹”由于挨着参数 3，在 printf 函数需要的参数不够时，被认作为 printf所缺的参数读取了</p>
+<p>printf 函数有一个 bug 就是当 format 字符串中所需要替换的参数数量，多于提供的参数数量，就会产生任意地址读漏洞。 例如，printf(“abcde%X %p %x %x”, a, b, c)这句命令中，format 需要 4 个参数，我们只提供了 3 个，所以 printf就会在栈上延续读取数据作为其参数。 如下所示，位于栈上的数据“我是你爹”由于挨着参数 3，在 printf 函数需要的参数不够时，被认作为 printf所缺的参数读取了</p>
 <table>
 <thead>
-<tr>
-<th align="center">地址</th>
-<th align="center">栈</th>
-<th align="center">内容</th>
+<tr class="header">
+<th style="text-align: center;">地址</th>
+<th style="text-align: center;">栈</th>
+<th style="text-align: center;">内容</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">高地址</td>
-<td align="center">返回地址</td>
-<td align="center">不晓得</td>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">高地址</td>
+<td style="text-align: center;">返回地址</td>
+<td style="text-align: center;">不晓得</td>
 </tr>
-<tr>
-<td align="center"></td>
-<td align="center">EBP</td>
-<td align="center">某个指针，不晓得</td>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">EBP</td>
+<td style="text-align: center;">某个指针，不晓得</td>
 </tr>
-<tr>
-<td align="center"></td>
-<td align="center">main函数局部变量</td>
-<td align="center">保存用</td>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">main函数局部变量</td>
+<td style="text-align: center;">保存用</td>
 </tr>
-<tr>
-<td align="center">0x12</td>
-<td align="center">format字符串</td>
-<td align="center">abcde%X %p %x %x</td>
+<tr class="even">
+<td style="text-align: center;">0x12</td>
+<td style="text-align: center;">format字符串</td>
+<td style="text-align: center;">abcde%X %p %x %x</td>
 </tr>
-<tr>
-<td align="center"></td>
-<td align="center">main函数局部变量</td>
-<td align="center">不晓得为什么有两个</td>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">main函数局部变量</td>
+<td style="text-align: center;">不晓得为什么有两个</td>
 </tr>
-<tr>
-<td align="center"></td>
-<td align="center">printf参数：我是你爹</td>
-<td align="center">%x形式读取，可能是来自main的某个局部变量</td>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">printf参数：我是你爹</td>
+<td style="text-align: center;">%x形式读取，可能是来自main的某个局部变量</td>
 </tr>
-<tr>
-<td align="center"></td>
-<td align="center">printf参数：参数3</td>
-<td align="center">%x形式读取</td>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">printf参数：参数3</td>
+<td style="text-align: center;">%x形式读取</td>
 </tr>
-<tr>
-<td align="center"></td>
-<td align="center">printf参数：参数2</td>
-<td align="center">%p形式读取</td>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">printf参数：参数2</td>
+<td style="text-align: center;">%p形式读取</td>
 </tr>
-<tr>
-<td align="center"></td>
-<td align="center">printf参数：参数1</td>
-<td align="center">%X形式读取</td>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">printf参数：参数1</td>
+<td style="text-align: center;">%X形式读取</td>
 </tr>
-<tr>
-<td align="center"></td>
-<td align="center">printf参数：format地址</td>
-<td align="center">0x12</td>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">printf参数：format地址</td>
+<td style="text-align: center;">0x12</td>
 </tr>
-<tr>
-<td align="center"></td>
-<td align="center">返回地址</td>
-<td align="center">不晓得为什么有两个</td>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">返回地址</td>
+<td style="text-align: center;">不晓得为什么有两个</td>
 </tr>
-<tr>
-<td align="center">低地址</td>
-<td align="center">printf母函数EBP</td>
-<td align="center">不晓得</td>
+<tr class="even">
+<td style="text-align: center;">低地址</td>
+<td style="text-align: center;">printf母函数EBP</td>
+<td style="text-align: center;">不晓得</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <img src="/2020/12/31/AD-CGfsb/2.png" class>
-<p>由上图计算出<strong>format字符串</strong>距离<strong>format地址</strong>的偏移量是10。<br>在32位运行时堆栈中，ESP 寄存器存放的是堆栈中某个位置的 32 位偏移量，相当于每4个字节1偏移量。</p>
+<p>由上图计算出<strong>format字符串</strong>距离<strong>format地址</strong>的偏移量是10。 在32位运行时堆栈中，ESP 寄存器存放的是堆栈中某个位置的 32 位偏移量，相当于每4个字节1偏移量。</p>
 <img src="/2020/12/31/AD-CGfsb/3.png" class>
-<p>DB定义字节类型变量，一个字节数据占1个字节单元，读完一个，偏移量加1<br>DW定义字类型变量，一个字数据占2个字节单元，读完一个，偏移量加2<br>DD定义双字类型变量，一个双字数据占4个字节单元，读完一个，偏移量加4<br>pwnme的地址为0x0804A068，是一个字节的double word。p32函数将pwnme地址转化成了四个字节的小端序字符。c语言中，char类型，一个字符占一个字节，故一般意义上的字符数相当于字节数。</p>
+<p>DB定义字节类型变量，一个字节数据占1个字节单元，读完一个，偏移量加1 DW定义字类型变量，一个字数据占2个字节单元，读完一个，偏移量加2 DD定义双字类型变量，一个双字数据占4个字节单元，读完一个，偏移量加4 pwnme的地址为0x0804A068，是一个字节的double word。p32函数将pwnme地址转化成了四个字节的小端序字符。c语言中，char类型，一个字符占一个字节，故一般意义上的字符数相当于字节数。</p>
 <p>完结撒花</p>
 
     </div>

