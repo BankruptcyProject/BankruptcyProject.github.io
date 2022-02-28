@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">60</span>
+          <span class="site-state-item-count">61</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -192,7 +192,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-02-28 17:10:28" itemprop="dateModified" datetime="2022-02-28T17:10:28+08:00">2022-02-28</time>
+        <time title="Modified: 2022-02-28 20:57:22" itemprop="dateModified" datetime="2022-02-28T20:57:22+08:00">2022-02-28</time>
       </span>
 
   
@@ -212,11 +212,100 @@
 <font size="72">"有一天没事不更必被创死” </font>
 </center>
 <center>
-<font size="72">"但凡回头一下” </font>
+<font size="72">"既然路是我自己选的” </font>
+</center>
+<center>
+<font size="72">"那但凡回头一下” </font>
 </center>
 <center>
 <font size="72">"我都该死” </font>
 </center>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/28/%E5%8D%8F%E7%A8%8BIEnumerator/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="甜药补习班吊尾生">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/02/28/%E5%8D%8F%E7%A8%8BIEnumerator/" class="post-title-link" itemprop="url">协程IEnumerator</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-02-28 19:58:11 / Modified: 21:34:59" itemprop="dateCreated datePublished" datetime="2022-02-28T19:58:11+08:00">2022-02-28</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="协程注意事项">协程注意事项</h1>
+<p>协程在当前主程序运行时,开启另一段逻辑处理,协程主要用于代码等待</p>
+<p>协程的方法名最前面最好加上大写的IE表示这是一个协程</p>
+<p>如果协程中有嵌套协程的时候,关闭当前协程不会影响嵌套的协程,只会关闭当前协程,嵌套协程继续执行</p>
+<p>协程所在脚本关闭的时候协程不会停止,但是协程所在的游戏对象删除的时候协程将会被系统回收</p>
+<p>协程的返回值必须是IEnumerator</p>
+<p>协程的内部必须体验Yield return 值</p>
+<p>协程可以重载</p>
+<p>协程可以多次调用,但是不可以关闭后继续运行,只能重新开启协程</p>
+<p>协程可以嵌套</p>
+<p>协程的参数不能使用ref 和out 修饰</p>
+<p>协程在执行完内部所有代码的时候会退出协程</p>
+<p>#关于yield return</p>
+<p>yiled return 0; 0可以换成任意的int类型的值,都是当前暂停一帧,从下一帧开始执行</p>
+<p>yiled return 协程; yiled return 后面可以跟一个协程,当执行到该行代码的时候执行yiled return 后面的协程,如果下面还有代码在执行完该协程的时候,回来继续执行。</p>
+<p>yiled return new WaitForSeconds(时间); 时间可以随意设置,该方法主要作用是等待几秒钟后执行,yiled return 后面的代码</p>
+<p>yiled return 后面可以跟一个类,等等根据自己的需要进行使用</p>
+<p>例 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">StartCoroutine(&quot;Injured&quot;, 2f);</span><br><span class="line">IEnumerator Injured(float FlashTime)</span><br><span class="line">&#123;</span><br><span class="line">    yield return new WaitForSeconds(0.125f);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="开启和关闭协程">开启和关闭协程</h1>
+<p><strong>1.直接使用协程方法名</strong> 开启协程 StartCoroutine(“协程方法名 “); 关闭协程 StopCoroutine(“协程方法名 “);</p>
+<p><strong>2.使用协程方法名加参数</strong> 开启协程 StartCoroutine(“协程方法名”,参数); 关闭协程 StopCoroutine(“协程方法名”); //该方法只适用于协程只有一个参数的时候</p>
+<p><strong>3.使用方法</strong> 开启协程 StartCoroutine(协程方法名(参数)); 关闭协程 StopCoroutine(协程方法名(参数)); //该方法中的参数个数随意 //该方法不能关闭该协程,但是开启可以使用 使用方法参数正确开启关闭协程: &lt;1&gt;定义一个IEnumerator 类型的全局变量StopIE public IEnumerator StopIE; &lt;2&gt;接收 协程方法名(参数) StopIE = 协程方法名(参数); &lt;3&gt;开启协程 在这里开启协程可以直接用变量代替方法名加参数 StartCoroutine(StopIE); &lt;4&gt;关闭协程 在这里同样 StopCoroutine(StopIE);</p>
 
       
     </div>
@@ -820,7 +909,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-02-28 12:18:38" itemprop="dateModified" datetime="2022-02-28T12:18:38+08:00">2022-02-28</time>
+        <time title="Modified: 2022-02-28 19:05:59" itemprop="dateModified" datetime="2022-02-28T19:05:59+08:00">2022-02-28</time>
       </span>
 
   
@@ -835,79 +924,7 @@
     <div class="post-body" itemprop="articleBody">
           <p>sprite 精灵一般代表对象的图片素材属性，例如一个对象cfq，他的精灵可以被这样调用：cfq.sprite</p>
 <p>一个存放一组图片的对象可以被定义为public Sprite be[]; 随后在引擎界面赋值变量be</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/03/Java-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E7%B1%BB%E7%9A%84%E7%BB%A7%E6%89%BF/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="甜药补习班吊尾生">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/11/03/Java-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E7%B1%BB%E7%9A%84%E7%BB%A7%E6%89%BF/" class="post-title-link" itemprop="url">Java-面向对象-类的继承</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-11-03 10:58:33 / Modified: 11:22:59" itemprop="dateCreated datePublished" datetime="2021-11-03T10:58:33+08:00">2021-11-03</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="继承">继承</h1>
-<p>类的继承格式 class 父类 {</p>
-<p>}</p>
-<p>class 子类 extends 父类 {</p>
-<p>}</p>
-<p>继承的特性 子类拥有父类非 private 的属性、方法。 子类可以拥有自己的属性和方法，即子类可以对父类进行扩展。 子类可以用自己的方式实现父类的方法。 Java 的继承是单继承，但是可以多重继承，这是 Java 继承区别于 C++ 继承的一个特性。 Java 不可多继承</p>
-<p>implements关键字（继承接口） 使用 implements 关键字可以变相的使java具有多继承的特性，使用范围：类继承接口的情况 可以同时继承多个接口（接口跟接口之间采用逗号分隔）。</p>
-<p>super 与 this 关键字 super关键字：我们可以通过super关键字来实现对父类成员的访问，用来引用当前对象的父类。 this关键字：指向自己的引用。</p>
-<h1 id="重写与重载">重写与重载</h1>
+<p>精灵的颜色属性color color.a 的值1为完全不透明，0为完全透明 修改SpriteRenderder的color可以达到闪烁效果 例 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">private SpriteRenderer spriteRenderer=GetComponent&lt;SpriteRenderer&gt;();</span><br><span class="line">Color color = spriteRenderer.color;</span><br><span class="line">for (float i = 0; i&lt;=FlashTime * 4; ++i)</span><br><span class="line">&#123;</span><br><span class="line">    color.a = 0;</span><br><span class="line">    spriteRenderer.color = colo	r;</span><br><span class="line">    yield return new WaitForSeconds(0.125f);//挂起0.125秒后重开</span><br><span class="line">    color.a = 1;</span><br><span class="line">    spriteRenderer.color = color;</span><br><span class="line">    yield return new WaitForSeconds(0.125f);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -927,7 +944,7 @@
 
 
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 </div>
