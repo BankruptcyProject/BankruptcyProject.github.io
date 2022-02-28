@@ -268,7 +268,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2022-02-28 16:27:51 / Modified: 17:00:32" itemprop="dateCreated datePublished" datetime="2022-02-28T16:27:51+08:00">2022-02-28</time>
+      <time title="Created: 2022-02-28 16:27:51 / Modified: 17:18:00" itemprop="dateCreated datePublished" datetime="2022-02-28T16:27:51+08:00">2022-02-28</time>
     </span>
 
   
@@ -283,7 +283,7 @@
     <div class="post-body" itemprop="articleBody">
           <p>选中一个对象，创建一个动画片段，然后引擎会在对象上自动创建一个动画状态机</p>
 <p>制作动画 一般会有一个默认动画idle</p>
-<p>打开动画器制作不同动画之间的关系 左侧参数中可以增加参数，右侧Transitions中可以增加动画之间的变换，conditions可以让变化联系参数。 右侧参数包括动画之间切换的连贯性</p>
+<p>打开动画器制作不同动画之间的关系 左侧参数中可以增加参数，右侧Transitions中可以增加动画之间的变换，conditions可以让变化联系参数。 脚本中响应设置： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public Animator anim;</span><br><span class="line">anim = GetComponent&lt;Animator&gt;();</span><br><span class="line">anim.SetInteger(&quot;vertical&quot;, vertical);</span><br><span class="line">anim.SetInteger(&quot;horizontal&quot;, horizontal);</span><br><span class="line">//该例子中参数为vertical</span><br></pre></td></tr></table></figure> 右侧参数包括动画之间切换的连贯性</p>
 <p>注： Unity animation三角播放按钮灰色，无法点击播放怎么办？ 需要选中角色, 或者动画所对应的GameObject,才可以点击播放按钮</p>
 
       
@@ -336,7 +336,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2022-02-28 16:21:55 / Modified: 16:42:52" itemprop="dateCreated datePublished" datetime="2022-02-28T16:21:55+08:00">2022-02-28</time>
+      <time title="Created: 2022-02-28 16:21:55 / Modified: 17:22:16" itemprop="dateCreated datePublished" datetime="2022-02-28T16:21:55+08:00">2022-02-28</time>
     </span>
 
   
@@ -393,6 +393,9 @@
 <p>在 OnTriggerEnter2D 中 ，Destroy(collision.gameObject) 销毁对象</p>
 <p>相应的回调名字：</p>
 <p>OnCollisionEnter ，OnCollisionStay ，OnCollisionExit</p>
+<h1 id="射线">射线</h1>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if (Physics2D.Raycast((Vector2)transform.position, Vector2.up, 0.8f, 1 &lt;&lt; 6) == false)</span><br><span class="line">&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>四个参数：射线起点，方向，长度，检测图层（1&lt;&lt;6表示只检测图层6）（0&lt;&lt;6表示忽略图层6）</p>
 
       
     </div>
