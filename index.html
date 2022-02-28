@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">53</span>
+          <span class="site-state-item-count">56</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -206,6 +206,306 @@
     
     <div class="post-body" itemprop="articleBody">
           <h1 id="年纪轻轻只有尸体才每天躺着摆烂有一天没事不更必被创死">“年纪轻轻只有尸体才每天躺着摆烂，有一天没事不更必被创死”</h1>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/28/%E8%B0%83%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="甜药补习班吊尾生">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/02/28/%E8%B0%83%E7%94%A8/" class="post-title-link" itemprop="url">调用</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-02-28 12:30:38 / Modified: 13:42:50" itemprop="dateCreated datePublished" datetime="2022-02-28T12:30:38+08:00">2022-02-28</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="重复调用">重复调用</h1>
+<p>InvokeRepeating("be",delay,jiange);//字符串：函数名，第一次延时，间隔</p>
+<h1 id="延时调用">延时调用</h1>
+<p>Invoke("be",3); 3秒后调用</p>
+<p>invoke API很有用，去官方手册查</p>
+<h1 id="三种调用其他脚本函数的方法">三种调用其他脚本函数的方法</h1>
+<p>第一种，被调用脚本函数为static类型，调用时直接用 脚本名.函数名()。很不实用……</p>
+<p>第二种，GameObject.Find("脚本所在物体名").SendMessage("函数名"); 此种方法可以调用public和private类型函数//无返回值</p>
+<p>第三种，GameObject.Find("脚本所在物体名").GetComponent<脚本名>().函数名();此种方法只可以调用public类型函数//有返回值</脚本名></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/28/%E8%84%9A%E6%9C%AC%E4%B8%8E%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="甜药补习班吊尾生">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/02/28/%E8%84%9A%E6%9C%AC%E4%B8%8E%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F/" class="post-title-link" itemprop="url">脚本与执行顺序</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-02-28 12:23:10 / Modified: 12:26:35" itemprop="dateCreated datePublished" datetime="2022-02-28T12:23:10+08:00">2022-02-28</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>#脚本执行顺序 第一层顺序：先执行所有脚本的Awake 再执行左右脚本的OnEnable 再执行所有脚本的Start 第二层顺序：选中脚本在检查器中找执行顺序，添加需要脚本，设定执行参数，越小越前</p>
+<p>#方法介绍 <strong>1.Awake</strong> 用于在游戏开始之前初始化变量或游戏状态。在脚本整个生命周期内它仅被调用一次.Awake在所有对象被初始化之后调用，所以你可以安全的与其他对象对话或用诸如GameObject.FindWithTag()这样的函数搜索它们。每个游戏物体上的Awake以随机的顺序被调用。因此，你应该用Awake来设置脚本间的引用，并用Start来传递信息Awake总是在Start之前被调用。它不能用来执行协同程序。</p>
+<p><strong>2.Start</strong> 仅在Update函数第一次被调用前调用。Start在behaviour的生命周期中只被调用一次。它和Awake的不同是Start只在脚本实例被启用时调用。你可以按需调整延迟初始化代码。Awake总是在Start之前执行。这允许你协调初始化顺序。在所有脚本实例中，Start函数总是在Awake函数之后调用。</p>
+<p><strong>3.FixedUpdate</strong> 固定帧更新，在Unity导航菜单栏中，点击“Edit”--&gt;“Project Setting”--&gt;“Time”菜单项后，右侧的Inspector视图将弹出时间管理器，其中“Fixed Timestep”选项用于设置FixedUpdate()的更新频率，更新频率默认为0.02s。</p>
+<p><strong>4.Update</strong> 正常帧更新，用于更新逻辑。每一帧都执行，处理Rigidbody时，需要用FixedUpdate代替Update。例如:给刚体加一个作用力时，你必须应用作用力在FixedUpdate里的固定帧，而不是Update中的帧。(两者帧长不同)FixedUpdate，每固定帧绘制时执行一次，和update不同的是FixedUpdate是渲染帧执行，如果你的渲染效率低下的时候FixedUpdate调用次数就会跟着下降。FixedUpdate比较适用于物理引擎的计算，因为是跟每帧渲染有关。Update就比较适合做控制。 Update()与FixedUpdate()的区别 从字面上理解，它们都是在更新时会被调用，并且会循环的调用。但是Update会在每次渲 染新的一帧时，被调用。而FixedUpdate会在每个固定的时间间隔被调用，那么要是Update 和FixedUpdate的时间间隔一样，是不是就一样呢？答案是不一定，因为Update受当前渲染的物体，更确切的说是三角形的数量影响，有时快有时 慢，帧率会变化，update被调用的时间间隔就发生变化。但是FixedUpdate则不受帧率的变化，它是以固定的时间间隔来被调用，那么这个时间间 隔怎么设置呢？Edit-&gt;Project Setting-&gt;time下面的Fixed timestep。</p>
+<p><strong>5.LateUpdate</strong> 在所有Update函数调用后被调用，和fixedupdate一样都是每一帧都被调用执行，这可用于调整脚本执行顺序。例如:当物体在Update里移动时，跟随物体的相机可以在LateUpdate里实现。LateUpdate,在每帧Update执行完毕调用，他是在所有update结束后才调用，比较适合用于命令脚本的执行。官网上例子是摄像机的跟随，都是在所有update操作完才跟进摄像机，不然就有可能出现摄像机已经推进了，但是视角里还未有角色的空帧出现。 Update和LateUpdate的区别 在圣典里LateUpdate被解释成一句话,LateUpdate是在所有Update函数调用后被调用。这可用于调整脚本执行顺序。例如:当物体在Update里移动时，跟随物体的相机可以在LateUpdate里实现。 LateUpdate是晚于所有Update执行的。例如：游戏中有2个脚本，脚本1含有Update和LateUpdate，脚本2含有Update，那么当游戏执行时，每一帧都是把2个脚本中的Update执行完后才执行LateUpdate 。虽然是在同一帧中执行的，但是Update会先执行，LateUpdate会晚执行。 现在假设有2个不同的脚本同时在Update中控制一个物体，那么当其中一个脚本改变物体方位、旋转或者其他参数时，另一个脚步也在改变这些东西，那么这个物体的方位、旋转就会出现一定的反复。如果还有个物体在Update中跟随这个物体移动、旋转的话，那跟随的物体就会出现抖动。 如果是在LateUpdate中跟随的话就会只跟随所有Update执行完后的最后位置、旋转，这样就防止了抖动。</p>
+<p><strong>6.OnGUI</strong> 在渲染和处理GUI事件时调用。比如：你画一个button或label时常常用到它。这意味着OnGUI也是每帧执行一次。</p>
+<p><strong>7.Reset</strong> 在用户点击检视面板的Reset按钮或者首次添加该组件时被调用。此函数只在编辑模式下被调用。Reset最常用于在检视面板中给定一个默认值。</p>
+<p><strong>8.OnDisable</strong> 当物体被销毁时 OnDisable将被调用，并且可用于任意清理代码。脚本被卸载时，OnDisable将被调用，OnEnable在脚本被载入后调用。注意： OnDisable不能用于协同程序。</p>
+<p><strong>9.OnDestroy</strong> 当MonoBehaviour将被销毁时，这个函数被调用。OnDestroy只会在预先已经被激活的游戏物体上被调用。注意：OnDestroy也不能用于协同程序。</p>
+<p>#注意：</p>
+<p>1.Awake() 2.OnEnable() 3.Start()</p>
+<p>比较，当脚本组件被禁用时：只有Awake()会被调用。</p>
+<p>Start()只会调用一次</p>
+<p>OnEnable()在每次被启动时都会被调用一次</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/27/UI/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="甜药补习班吊尾生">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/02/27/UI/" class="post-title-link" itemprop="url">UI</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-02-27 22:22:32" itemprop="dateCreated datePublished" datetime="2022-02-27T22:22:32+08:00">2022-02-27</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-02-28 12:19:48" itemprop="dateModified" datetime="2022-02-28T12:19:48+08:00">2022-02-28</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>添加Canvas画布，用于摆放所有的GUI元素</p>
+<p>Canvas和eventsystem系统配合使用</p>
+<p>修改Canvas参数： 渲染模式：摄像机。还有其余的渲染模式 渲染摄像机 平面距离摄像机距离</p>
+<p>Canvas节点下添加ui元素 rect transform（transform的子类） 相对中心点的位置，单位：像素 相对中心点可修改，选已有的模板，或者修改Anchors image：填充模式九宫格边角美化：在素材中sprite editor 改出九宫格 按钮自定义按下特性：将transition改为图片切换模式 文本输入框 面板panel，人称小画布（Canvas）</p>
+<p>using Unityengine.UI; InputField类型变量获取文本输入框内容，string sj = be.text on click()下添加方法 图片转按钮：挂载脚本，脚本：创建方法继承已有的类：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">using UnityEngine;</span><br><span class="line">using UnityEngine.EventSystems;</span><br><span class="line"></span><br><span class="line">public class OkButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler</span><br><span class="line">&#123;</span><br><span class="line">    public void OnPointerDown(PointerEventData eventData)</span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log(&quot;鼠标按下...&quot;);</span><br><span class="line">        transform.localScale = new Vector3(1.05f, 1.05f, 1.05f);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void OnPointerUp(PointerEventData eventData)</span><br><span class="line">    &#123;</span><br><span class="line">        transform.localScale = new Vector3(1, 1, 1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//点击放大一下，打印日志</span><br><span class="line">//机制：射线投射器和射线接收器</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/** 事件列表</span><br><span class="line">IPointerEnterHandler - OnPointerEnter - Called when a pointer enters the object</span><br><span class="line">IPointerExitHandler - OnPointerExit - Called when a pointer exits the object</span><br><span class="line">IPointerDownHandler - OnPointerDown - Called when a pointer is pressed on the object</span><br><span class="line">IPointerUpHandler - OnPointerUp - Called when a pointer is released (called on the GameObject that the pointer is clicking)</span><br><span class="line">IPointerClickHandler - OnPointerClick - Called when a pointer is pressed and released on the same object</span><br><span class="line">IInitializePotentialDragHandler - OnInitializePotentialDrag - Called when a drag target is found, can be used to initialise values</span><br><span class="line">IBeginDragHandler - OnBeginDrag - Called on the drag object when dragging is about to begin</span><br><span class="line">IDragHandler - OnDrag - Called on the drag object when a drag is happening</span><br><span class="line">IEndDragHandler - OnEndDrag - Called on the drag object when a drag finishes</span><br><span class="line">IDropHandler - OnDrop - Called on the object where a drag finishes</span><br><span class="line">IScrollHandler - OnScroll - Called when a mouse wheel scrolls</span><br><span class="line">IUpdateSelectedHandler - OnUpdateSelected - Called on the selected object each tick</span><br><span class="line">ISelectHandler - OnSelect - Called when the object becomes the selected object</span><br><span class="line">IDeselectHandler - OnDeselect - Called on the selected object becomes deselected</span><br><span class="line">IMoveHandler - OnMove - Called when a move event occurs (left, right, up, down, ect)</span><br><span class="line">ISubmitHandler - OnSubmit - Called when the submit button is pressed</span><br><span class="line">ICancelHandler - OnCancel - Called when the cancel button is pressed</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/27/%E7%B2%BE%E7%81%B5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="甜药补习班吊尾生">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/02/27/%E7%B2%BE%E7%81%B5/" class="post-title-link" itemprop="url">精灵</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-02-27 22:17:04" itemprop="dateCreated datePublished" datetime="2022-02-27T22:17:04+08:00">2022-02-27</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-02-28 12:18:38" itemprop="dateModified" datetime="2022-02-28T12:18:38+08:00">2022-02-28</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>sprite 精灵一般代表对象的图片素材属性，例如一个对象cfq，他的精灵可以被这样调用：cfq.sprite</p>
+<p>一个存放一组图片的对象可以被定义为public Sprite be[]; 随后在引擎界面赋值变量be</p>
 
       
     </div>
@@ -595,391 +895,6 @@
 <p>一、root存在左孩，找出root左树最右节点p。 1、p右孩为空，根节点路过，不算在中序遍历中，将p右连接root（这个连接不算在树的结构上），root=root-&gt;left（结束）。 2、p右孩不为空（说明来过一次了，即root左树遍历完毕），根节点的位置记录在中序遍历中，将p右置空，root=root-&gt;right（结束）。</p>
 <p>二、root不存在左孩，根节点的位置记录在中序遍历中，root=root-&gt;right（结束）</p>
 <p>本题中，在morris中序遍历中加入一个判断函数解题 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">morrisSearch</span><span class="params">(TreeNode* root)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span> (root != <span class="literal">nullptr</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (root-&gt;left != <span class="literal">nullptr</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			TreeNode* predecessor = root-&gt;left;</span><br><span class="line">			<span class="keyword">while</span> (predecessor-&gt;right != <span class="literal">nullptr</span> &amp;&amp; predecessor-&gt;right != root)</span><br><span class="line">				predecessor = predecessor-&gt;right;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (predecessor-&gt;right == <span class="literal">nullptr</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				predecessor-&gt;right = root;</span><br><span class="line">				root = root-&gt;left;</span><br><span class="line">            &#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">compare</span>(root);</span><br><span class="line">				predecessor-&gt;right = <span class="literal">nullptr</span>;</span><br><span class="line">				root = root-&gt;right;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">compare</span>(root);</span><br><span class="line">			root = root-&gt;right;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">compare</span><span class="params">(TreeNode* root)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (lastRoot != <span class="literal">nullptr</span> &amp;&amp; lastRoot-&gt;val &gt; root-&gt;val)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (x == <span class="literal">nullptr</span>)x = lastRoot;</span><br><span class="line">		y = root;</span><br><span class="line">	&#125;</span><br><span class="line">	lastRoot = root;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//x，y，lastRoot为本题专有，与Morris无关</span></span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/16/Java%E5%9F%BA%E7%A1%80/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="甜药补习班吊尾生">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/16/Java%E5%9F%BA%E7%A1%80/" class="post-title-link" itemprop="url">Java基础</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-09-16 12:47:10" itemprop="dateCreated datePublished" datetime="2021-09-16T12:47:10+08:00">2021-09-16</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-11-03 10:59:40" itemprop="dateModified" datetime="2021-11-03T10:59:40+08:00">2021-11-03</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="前言">前言</h1>
-<p>Java网络编程选修课，擅自联系到Java Socket编程就选了。 从坏的方面来看，选修课教外院讲得太基础了，还有我语言学太杂太浅了 从好的方面来看，C++、Java、C#相似处很多，希望能从中受益</p>
-<h1 id="eclipse-java">Eclipse Java</h1>
-<p>工作区（workspace） 工作区是一个目录，程序和程序所需要用到的资源都在workspace里，中间缓存文件也存在工作区中。</p>
-<p>项目（Project） 为一个需求所服务的代码文件，一个workspace 可以拥有个项目，而你的代码必须有归属于某个项目的，不能单独存在。</p>
-<p>第一个程序 新建项目，在项目下新建包（为了易于管理），在包下新建类，打开这个类，可以写代码了</p>
-<p>其他 关于继承和调试，遇到再说 https://blog.csdn.net/qq_36243942/article/details/81607906</p>
-<h1 id="基础语法">基础语法</h1>
-<p><strong>大小写敏感</strong></p>
-<p><strong>类名</strong>：对于所有的类来说，类名的首字母应该大写。如果类名由若干单词组成，那么每个单词的首字母应该大写，例如： <strong>MyFirstJavaClass</strong> 。</p>
-<p><strong>方法名</strong>：所有的方法名都应该以小写字母开头。如果方法名含有若干单词，则后面的每个单词首字母大写。例如：<strong>startSearch</strong></p>
-<p><strong>源文件名</strong>：源文件名必须和类名相同。当保存文件的时候，你应该使用类名作为文件名保存（切记 Java 是大小写敏感的），文件名的后缀为 <strong>.java</strong>。（如果文件名和类名不相同则会导致编译错误）。</p>
-<p><strong>主方法入口</strong>：所有的 Java 程序由 <strong>public static void main(String[] args)</strong> 方法开始执行。</p>
-<p>继承：被继承的类称为超类（super class），派生类称为子类（subclass）。</p>
-<p>接口：在 Java 中，接口可理解为对象间相互通信的协议。接口在继承中扮演着很重要的角色。接口只定义派生要用到的方法，但是方法的具体实现完全取决于派生类。</p>
-<h2 id="常用">常用</h2>
-<p><code>System.out.println("Hello World"); // 输出 Hello World</code> <code>System.out.println( "菜鸟教程网址长度 : " + len );</code></p>
-<p>instanceof 运算符 该运算符用于操作对象实例，检查该对象是否是一个特定类型（类类型或接口类型）。 <code>boolean result =  a instanceof Car;</code></p>
-<p>增强for <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(声明语句 : 表达式)</span><br><span class="line">&#123;</span><br><span class="line">   <span class="comment">//代码句子</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>变量</p>
-<img src="/2021/09/16/Java%E5%9F%BA%E7%A1%80/1.png" class>
-<p>String 类型不可改 StringBuffer 类型可改</p>
-<h1 id="对象和类">对象和类</h1>
-<p>对象是类的一个实例</p>
-<h2 id="构造方法">构造方法</h2>
-<p><strong>每个类都有构造方法。</strong>如果没有显式地为类定义构造方法，Java 编译器将会为该类提供一个默认构造方法。</p>
-<p><strong>在创建一个对象的时候，至少要调用一个构造方法。构造方法的名称必须与类同名，一个类可以有多个构造方法。</strong></p>
-<h2 id="创建对象">创建对象</h2>
-<p>对象是根据类创建的。创建对象需要以下三步： - <strong>声明</strong>：声明一个对象，包括对象名称和对象类型。 - <strong>实例化</strong>：使用关键字 new 来创建一个对象。 - <strong>初始化</strong>：使用 new 创建对象时，会调用构造方法初始化对象。</p>
-<h1 id="源文件声明规则">源文件声明规则</h1>
-<p>一个源文件中只能有一个 public 类</p>
-<p>一个源文件可以有多个非 public 类</p>
-<p>源文件的名称应该和 public 类的类名保持一致。</p>
-<p>如果一个类定义在某个包中，那么 package 语句应该在源文件的首行。</p>
-<p>如果源文件包含 import 语句，那么应该放在 package 语句和类定义之间。如果没有 package 语句，那么 import 语句应该在源文件中最前面。</p>
-<p>import 语句和 package 语句对源文件中定义的所有类都有效。在同一源文件中，不能给不同的类不同的包声明。</p>
-<p>一个包下多个源文件，只有一个能有main函数，可互相调用</p>
-<h1 id="修饰符">修饰符</h1>
-<table>
-<thead>
-<tr class="header">
-<th>修饰符</th>
-<th>当前类</th>
-<th>同一包内</th>
-<th>子孙类（同一包）</th>
-<th>子孙类不同包</th>
-<th>其他包</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>public</td>
-<td>Y</td>
-<td>Y</td>
-<td>Y</td>
-<td>Y</td>
-<td>Y</td>
-</tr>
-<tr class="even">
-<td>protected</td>
-<td>Y</td>
-<td>Y</td>
-<td>Y</td>
-<td>Y/N</td>
-<td>N</td>
-</tr>
-<tr class="odd">
-<td>default</td>
-<td>Y</td>
-<td>Y</td>
-<td>N</td>
-<td>N</td>
-<td>N</td>
-</tr>
-<tr class="even">
-<td>private</td>
-<td>Y</td>
-<td>N</td>
-<td>N</td>
-<td>N</td>
-<td>N</td>
-</tr>
-</tbody>
-</table>
-<p><strong>final 变量</strong> 变量一旦赋值后，不能被重新赋值。被 final 修饰的实例变量必须显式指定初始值。 final 修饰符通常和 static 修饰符一起使用来创建类常量。 <strong>final 方法</strong> 父类中的 final 方法可以被子类继承，但是不能被子类重写。 声明 final 方法的主要目的是防止该方法的内容被修改。 <strong>final 类</strong> final 类不能被继承，没有类能够继承 final 类的任何特性。</p>
-<p><strong>abstract 修饰符</strong> <strong>抽象类：</strong> 抽象类不能用来实例化对象，声明抽象类的唯一目的是为了将来对该类进行扩充。 抽象类可以包含抽象方法和非抽象方法。</p>
-<p><strong>抽象方法</strong> 抽象方法是一种没有任何实现的方法，该方法的具体实现由子类提供。</p>
-<p>任何继承抽象类的子类必须实现父类的所有抽象方法，除非该子类也是抽象类。 如果一个类包含若干个抽象方法，那么该类必须声明为抽象类。抽象类可以不包含抽象方法。 抽象方法的声明以分号结尾，例如：public abstract sample();。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/10/%E5%BC%80%E5%A7%8B%E5%9C%BA%E6%99%AF%E5%92%8C%E5%9C%BA%E6%99%AF%E9%97%B4%E6%95%B0%E6%8D%AE%E4%BF%9D%E5%AD%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="甜药补习班吊尾生">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/10/%E5%BC%80%E5%A7%8B%E5%9C%BA%E6%99%AF%E5%92%8C%E5%9C%BA%E6%99%AF%E9%97%B4%E6%95%B0%E6%8D%AE%E4%BF%9D%E5%AD%98/" class="post-title-link" itemprop="url">开始场景和场景间数据保存</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-09-10 20:47:21" itemprop="dateCreated datePublished" datetime="2021-09-10T20:47:21+08:00">2021-09-10</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-09-11 09:22:28" itemprop="dateModified" datetime="2021-09-11T09:22:28+08:00">2021-09-11</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="开始场景">开始场景</h1>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">using UnityEngine.UI;</span><br><span class="line">using UnityEngine.SceneManagement;</span><br></pre></td></tr></table></figure>
-<p>这两个命名空间分别用于一些基础UI（按钮）和场景切换</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">btn_end.onClick.AddListener(() =&gt;</span><br><span class="line">&#123;       </span><br><span class="line">	#if UNITY_EDITOR</span><br><span class="line">		UnityEditor.EditorApplication.isPlaying = false;</span><br><span class="line">	#else</span><br><span class="line">		Application.Quit();</span><br><span class="line">	#endif</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>这是一个名字为btn_end的点击相应事件，中间部分为结束游戏代码（可调式加强版）</p>
-<p>#场景间数据保存</p>
-<p>首先应该有一个对象专门用于存储数据，挂在在这个对象上的脚本上写上要存储的数据，这些数据应为public属性，致使所有地方能访问。 以下是迷宫项目中的一个完整实例代码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">using System.Collections;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using UnityEngine;</span><br><span class="line"></span><br><span class="line">public class Data : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    public static bool isAlready;</span><br><span class="line">    public int[,] map = new int[25, 25];</span><br><span class="line">    public Vector3 Spos;</span><br><span class="line">    public Vector3 Epos;</span><br><span class="line">    void Start()</span><br><span class="line">    &#123;</span><br><span class="line">        if (!isAlready)</span><br><span class="line">        &#123;</span><br><span class="line">            map = GameObject.Find(&quot;Gamecontrol&quot;).GetComponent&lt;Init&gt;().map;</span><br><span class="line">            Spos = GameObject.Find(&quot;Gamecontrol&quot;).GetComponent&lt;Init&gt;().Spos;</span><br><span class="line">            Epos = GameObject.Find(&quot;Gamecontrol&quot;).GetComponent&lt;Init&gt;().Epos;</span><br><span class="line">            GameObject.DontDestroyOnLoad(gameObject);</span><br><span class="line">            isAlready = true;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>其中<code>GameObject.DontDestroyOnLoad(gameObject);</code>最为关键。 场景切换时会销毁原本场景下的所有对象，除了加上这句的对象。 但是这个数据对象也是具体挂在在某个场景下的，当再次切回该场景时，会导致未销毁的数据对象和原本该场景下的数据对象重复，出现两个数据对象。故假设一个全局静态变量和特判，保证只有一个数据对象。</p>
-<h2 id="一个取出数据的例子">一个取出数据的例子</h2>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public void GetData()//从数据中心取出数据</span><br><span class="line">&#123;</span><br><span class="line">    map = GameObject.Find(&quot;DataObject&quot;).GetComponent&lt;Data&gt;().map;</span><br><span class="line">    Spos = GameObject.Find(&quot;DataObject&quot;).GetComponent&lt;Data&gt;().Spos;</span><br><span class="line">    Epos = GameObject.Find(&quot;DataObject&quot;).GetComponent&lt;Data&gt;().Epos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/07/LC-BinaryTreeLevelOrderTraversal/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="甜药补习班吊尾生">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/07/LC-BinaryTreeLevelOrderTraversal/" class="post-title-link" itemprop="url">LC-BinaryTreeLevelOrderTraversal</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-09-07 13:12:27" itemprop="dateCreated datePublished" datetime="2021-09-07T13:12:27+08:00">2021-09-07</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-02-24 14:00:07" itemprop="dateModified" datetime="2022-02-24T14:00:07+08:00">2022-02-24</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="非顺序存储二叉树层次序遍历">非顺序存储二叉树层次序遍历</h1>
-<p>两种方法： 方法一： 对于树的每个节点多维护一个层次属性 方法二： 关键在于对普通BFS的修改，普通BFS一次从队列中取出一个元素进行搜索，现在修改为每一次取出都将队列中的所有元素取出，按顺序对这些元素搜索完毕后，再进行下一次取出</p>
-<h1 id="方法二-7594">方法二 75%，94%</h1>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; <span class="built_in">levelOrder</span>(TreeNode* root) </span><br><span class="line">    &#123;</span><br><span class="line">        vector&lt;<span class="keyword">int</span>&gt;smallAns;</span><br><span class="line">        vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;ans;</span><br><span class="line">        <span class="keyword">if</span> (!root)<span class="keyword">return</span> ans;<span class="comment">//这里TM卡了我好久</span></span><br><span class="line">        queue&lt;TreeNode*&gt;q;</span><br><span class="line">        q.<span class="built_in">push</span>(root);</span><br><span class="line">        <span class="keyword">while</span> (!q.<span class="built_in">empty</span>())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> currentSize = q.<span class="built_in">size</span>();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= currentSize; ++i)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (q.<span class="built_in">front</span>()-&gt;left)q.<span class="built_in">push</span>(q.<span class="built_in">front</span>()-&gt;left);</span><br><span class="line">                <span class="keyword">if</span> (q.<span class="built_in">front</span>()-&gt;right)q.<span class="built_in">push</span>(q.<span class="built_in">front</span>()-&gt;right);</span><br><span class="line">                smallAns.<span class="built_in">push_back</span>(q.<span class="built_in">front</span>()-&gt;val);</span><br><span class="line">                q.<span class="built_in">pop</span>();</span><br><span class="line">            &#125;</span><br><span class="line">            ans.<span class="built_in">push_back</span>(smallAns);</span><br><span class="line">            smallAns.<span class="built_in">clear</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/05/LC-Subsets/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="甜药补习班吊尾生">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/05/LC-Subsets/" class="post-title-link" itemprop="url">LC-Subsets</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-09-05 10:51:58" itemprop="dateCreated datePublished" datetime="2021-09-05T10:51:58+08:00">2021-09-05</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-02-24 14:04:15" itemprop="dateModified" datetime="2022-02-24T14:04:15+08:00">2022-02-24</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="一次过">一次过</h1>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; <span class="built_in">subsets</span>(vector&lt;<span class="keyword">int</span>&gt;&amp; nums) </span><br><span class="line">    &#123;</span><br><span class="line">        vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;ans;</span><br><span class="line">        ans.<span class="built_in">push_back</span>(vector&lt;<span class="keyword">int</span>&gt;());<span class="comment">//空集是任何集合的子集</span></span><br><span class="line">        <span class="keyword">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        n = <span class="built_in">pow</span>(<span class="number">2</span>, n);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n - <span class="number">1</span>; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> j = i;</span><br><span class="line">            <span class="keyword">int</span> order = <span class="number">0</span>;</span><br><span class="line">            vector&lt;<span class="keyword">int</span>&gt;smallAns;</span><br><span class="line">            <span class="keyword">while</span> (j &gt; <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (j &amp; <span class="number">1</span>)smallAns.<span class="built_in">push_back</span>(nums[order]);</span><br><span class="line">                ++order;</span><br><span class="line">                j /= <span class="number">2</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            ans.<span class="built_in">push_back</span>(smallAns);</span><br><span class="line">        &#125;	</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
       
     </div>
