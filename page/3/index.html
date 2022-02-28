@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-count">60</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,272 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/07/18/C-inline/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="甜药补习班吊尾生">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/07/18/C-inline/" class="post-title-link" itemprop="url">C++inline</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-07-18 13:09:57 / Modified: 13:35:55" itemprop="dateCreated datePublished" datetime="2021-07-18T13:09:57+08:00">2021-07-18</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>在 c/c++ 中，为了解决一些频繁调用的小函数大量消耗栈空间（栈内存）的问题，特别的引入了 inline 修饰符，表示为内联函数。 内联是以代码膨胀（复制）为代价，仅仅省去了函数调用的开销，从而提高函数的执行效率。 如果执行函数体内代码的时间，相比于函数调用的开销较大，那么效率的收获会很少。另一方面，每一处内联函数的调用都要复制代码，将使程序的总代码量增大，消耗更多的内存空间。</p>
+<p>inline 的使用是有所限制的，inline 只适合函数体内代码简单的函数使用，<strong>不能包含复杂的结构控制语句</strong>例如 while、switch，并且不能内联函数本身<strong>不能是直接递归函数</strong>。</p>
+<p><strong>inline 函数仅仅是一个对编译器的建议，所以最后能否真正内联，看编译器的意思</strong>，它如果认为函数不复杂，能在调用点展开，就会真正内联，并不是说声明了内联就会内联，声明内联只是一个建议而已。</p>
+<p><strong>建议 inline 函数的定义放在头文件中。</strong> 因为内联函数要在调用点展开，所以编译器必须随处可见内联函数的定义，要不然就成了非内联函数的调用了，所以，这要求每个调用了内联函数的文件都出现了该内联函数的定义。 因此，将内联函数的定义放在头文件里实现是合适的，省却你为每个文件实现一次的麻烦。</p>
+<p><strong>定义在类中的成员函数默认都是内联的</strong>，如果在类定义时就在类内给出函数定义，那当然最好。如果在类中未给出成员函数定义，而又想内联该函数的话，那在类外要加上 inline，否则就认为不是内联的。</p>
+<p><strong>关键字 inline 必须与函数定义体放在一起才能使函数成为内联，仅将 inline 放在函数声明前面不起任何作用</strong>。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/07/16/%E8%9A%8C%E5%9F%A0%E4%BD%8F%E4%BA%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="甜药补习班吊尾生">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/07/16/%E8%9A%8C%E5%9F%A0%E4%BD%8F%E4%BA%86/" class="post-title-link" itemprop="url">第三次弄坏博客，蚌埠住了</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-07-16 22:55:11" itemprop="dateCreated datePublished" datetime="2021-07-16T22:55:11+08:00">2021-07-16</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-09-07 10:26:02" itemprop="dateModified" datetime="2021-09-07T10:26:02+08:00">2021-09-07</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="重装">重装</h1>
+<p>首先前置的git，node.js，npm都有了。这些没坏。 新建一个文件夹作为博客，在其中用git命令安装hexo <code>npm install -g hexo-cli</code> 安装完后用<code>hexo -v</code> 查看安装是否成功以及版本 初始化 <code>hexo init</code> <code>npm install</code> 至此在本地建完hexo</p>
+<p>已经有github账号和仓库了，就用原来的就行，但把原仓库清空，原钥匙删除</p>
+<p>连接hexo和github <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name yourname</span><br><span class="line">git config --global user.email youremail</span><br></pre></td></tr></table></figure> 检查一下 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config user.name</span><br><span class="line">git config user.email</span><br></pre></td></tr></table></figure></p>
+<p>接下来创建SSH <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C youremail</span><br></pre></td></tr></table></figure></p>
+<p>会提示在某个文件夹中生成了私钥和公钥 在GitHub的setting中，找到SSH keys的设置选项，点击<code>New SSH key</code> 把你的<code>id_rsa.pub</code>里面的信息复制进去。</p>
+<p>在gitbash中，查看是否成功</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+<p>将hexo部署到GitHub 这一步，我们就可以将hexo和GitHub关联起来，也就是将hexo生成的文章部署到GitHub上，打开站点配置文件 <code>_config.yml</code>，翻到最后，修改为YourgithubName就是你的GitHub账户</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:YourgithubName/YourgithubName.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+<p>这个时候需要先安装deploy-git ，也就是部署的命令,这样你才能用命令部署到GitHub。 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></p>
+<h1 id="主题">主题</h1>
+<p>https://hexo.io/themes/</p>
+<p>部署方式和一些设置根据主题的不同有所不同，所以选好主题后按主题要求布置</p>
+<p>注意next主题文件滚到mod里去了，不知道为啥</p>
+<h1 id="图片">图片</h1>
+<h3 id="一插件安装与配置">一、插件安装与配置</h3>
+<p>首先我们需要安装一个图片路径转换的插件，这个插件名字是<strong>hexo-asset-image</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install https://github.com/CodeFalling/hexo-asset-image --save</span><br></pre></td></tr></table></figure>
+<p>但是这个插件的内容需要修改【不然可能会出Bug】</p>
+<p>打开/node_modules/hexo-asset-image/index.js，将内容更换为下面的代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">&#x27;use strict&#x27;;</span><br><span class="line">var cheerio = require(&#x27;cheerio&#x27;);</span><br><span class="line"></span><br><span class="line">// http://stackoverflow.com/questions/14480345/how-to-get-the-nth-occurrence-in-a-string</span><br><span class="line">function getPosition(str, m, i) &#123;</span><br><span class="line">  return str.split(m, i).join(m).length;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var version = String(hexo.version).split(&#x27;.&#x27;);</span><br><span class="line">hexo.extend.filter.register(&#x27;after_post_render&#x27;, function(data)&#123;</span><br><span class="line">  var config = hexo.config;</span><br><span class="line">  if(config.post_asset_folder)&#123;</span><br><span class="line">    	var link = data.permalink;</span><br><span class="line">	if(version.length &gt; 0 &amp;&amp; Number(version[0]) == 3)</span><br><span class="line">	   var beginPos = getPosition(link, &#x27;/&#x27;, 1) + 1;</span><br><span class="line">	else</span><br><span class="line">	   var beginPos = getPosition(link, &#x27;/&#x27;, 3) + 1;</span><br><span class="line">	// In hexo 3.1.1, the permalink of &quot;about&quot; page is like &quot;.../about/index.html&quot;.</span><br><span class="line">	var endPos = link.lastIndexOf(&#x27;/&#x27;) + 1;</span><br><span class="line">    link = link.substring(beginPos, endPos);</span><br><span class="line"></span><br><span class="line">    var toprocess = [&#x27;excerpt&#x27;, &#x27;more&#x27;, &#x27;content&#x27;];</span><br><span class="line">    for(var i = 0; i &lt; toprocess.length; i++)&#123;</span><br><span class="line">      var key = toprocess[i];</span><br><span class="line"> </span><br><span class="line">      var $ = cheerio.load(data[key], &#123;</span><br><span class="line">        ignoreWhitespace: false,</span><br><span class="line">        xmlMode: false,</span><br><span class="line">        lowerCaseTags: false,</span><br><span class="line">        decodeEntities: false</span><br><span class="line">      &#125;);</span><br><span class="line"></span><br><span class="line">      $(&#x27;img&#x27;).each(function()&#123;</span><br><span class="line">		if ($(this).attr(&#x27;src&#x27;))&#123;</span><br><span class="line">			// For windows style path, we replace &#x27;\&#x27; to &#x27;/&#x27;.</span><br><span class="line">			var src = $(this).attr(&#x27;src&#x27;).replace(&#x27;\\&#x27;, &#x27;/&#x27;);</span><br><span class="line">			if(!/http[s]*.*|\/\/.*/.test(src) &amp;&amp;</span><br><span class="line">			   !/^\s*\//.test(src)) &#123;</span><br><span class="line">			  // For &quot;about&quot; page, the first part of &quot;src&quot; can&#x27;t be removed.</span><br><span class="line">			  // In addition, to support multi-level local directory.</span><br><span class="line">			  var linkArray = link.split(&#x27;/&#x27;).filter(function(elem)&#123;</span><br><span class="line">				return elem != &#x27;&#x27;;</span><br><span class="line">			  &#125;);</span><br><span class="line">			  var srcArray = src.split(&#x27;/&#x27;).filter(function(elem)&#123;</span><br><span class="line">				return elem != &#x27;&#x27; &amp;&amp; elem != &#x27;.&#x27;;</span><br><span class="line">			  &#125;);</span><br><span class="line">			  if(srcArray.length &gt; 1)</span><br><span class="line">				srcArray.shift();</span><br><span class="line">			  src = srcArray.join(&#x27;/&#x27;);</span><br><span class="line">			  $(this).attr(&#x27;src&#x27;, config.root + link + src);</span><br><span class="line">			  console.info&amp;&amp;console.info(&quot;update link as:--&gt;&quot;+config.root + link + src);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;else&#123;</span><br><span class="line">			console.info&amp;&amp;console.info(&quot;no src attr, skipped...&quot;);</span><br><span class="line">			console.info&amp;&amp;console.info($(this));</span><br><span class="line">		&#125;</span><br><span class="line">      &#125;);</span><br><span class="line">      data[key] = $.html();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>打开_config.yml文件，修改下述内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">post_asset_folder: true</span><br></pre></td></tr></table></figure>
+<p>转自：https://blog.csdn.net/xjm850552586/article/details/84101345</p>
+<h1 id="排序">排序</h1>
+<p>Hexo博文置顶（自定义排序）</p>
+<p>使用的是top属性，top值越高，排序越在前，不设置top值得博文按照时间顺序排序。 修改Hexo文件夹下的node_modules/hexo-generator-index/lib/generator.js</p>
+<p>打开在最后更改为如下javascript代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&#x27;use strict&#x27;;</span><br><span class="line">var pagination = require(&#x27;hexo-pagination&#x27;);</span><br><span class="line">module.exports = function(locals)&#123;</span><br><span class="line">  var config = this.config;</span><br><span class="line">  var posts = locals.posts;</span><br><span class="line">    posts.data = posts.data.sort(function(a, b) &#123;</span><br><span class="line">        if(a.top &amp;&amp; b.top) &#123;</span><br><span class="line">            if(a.top == b.top) return b.date - a.date;</span><br><span class="line">            else return b.top - a.top;</span><br><span class="line">        &#125;</span><br><span class="line">        else if(a.top &amp;&amp; !b.top) &#123;</span><br><span class="line">            return -1;</span><br><span class="line">        &#125;</span><br><span class="line">        else if(!a.top &amp;&amp; b.top) &#123;</span><br><span class="line">            return 1;</span><br><span class="line">        &#125;</span><br><span class="line">        else return b.date - a.date;</span><br><span class="line">    &#125;);</span><br><span class="line">  var paginationDir = config.pagination_dir || &#x27;page&#x27;;</span><br><span class="line">  return pagination(&#x27;&#x27;, posts, &#123;</span><br><span class="line">    perPage: config.index_generator.per_page,</span><br><span class="line">    layout: [&#x27;index&#x27;, &#x27;archive&#x27;],</span><br><span class="line">    format: paginationDir + &#x27;/%d/&#x27;,</span><br><span class="line">    data: &#123;</span><br><span class="line">      __index: true</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>在写文章的时候添加top属性就行了。</p>
+<h1 id="标签">标签</h1>
+<p>在source文件夹下新建tags文件夹，在tags文件夹下新建md文件，头内容为</p>
+<p>title: tags date: 2020-12-17 10:49:26 type: "tags"</p>
+<h1 id="数学公式">数学公式</h1>
+<p>用next主题官方教学</p>
+<p><a target="_blank" rel="noopener" href="https://theme-next.js.org/docs/third-party-services/math-equations.html">Math Equations | NexT (theme-next.js.org)</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/07/09/LC-RangeSumQueryMutable/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="甜药补习班吊尾生">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/07/09/LC-RangeSumQueryMutable/" class="post-title-link" itemprop="url">LC-RangeSumQueryMutable</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-07-09 21:59:31" itemprop="dateCreated datePublished" datetime="2021-07-09T21:59:31+08:00">2021-07-09</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-02-24 14:02:51" itemprop="dateModified" datetime="2022-02-24T14:02:51+08:00">2022-02-24</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="树状数组解决方案">树状数组解决方案</h1>
+<h2 id="第一次手写-99.71-20.81">第一次手写 (99.71% ,20.81%)</h2>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NumArray</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> size = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> a[<span class="number">30007</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">    <span class="keyword">int</span> b[<span class="number">30007</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">NumArray</span>(vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span><br><span class="line">    &#123;</span><br><span class="line">        size = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= size - <span class="number">1</span>; ++i)<span class="built_in">update</span>(i, nums[i]);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= size - <span class="number">1</span>; ++i)b[i + <span class="number">1</span>] = nums[i];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> index, <span class="keyword">int</span> val)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        ++index;</span><br><span class="line">        <span class="keyword">int</span> diff = val - b[index];</span><br><span class="line">        b[index] = val;</span><br><span class="line">        <span class="keyword">while</span> (index &lt;= size)</span><br><span class="line">        &#123;</span><br><span class="line">            a[index] += diff;</span><br><span class="line">            index += index &amp; (-index);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">sumRange</span><span class="params">(<span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> leftsum = <span class="number">0</span>, rightsum = <span class="number">0</span>;</span><br><span class="line">        ++right;</span><br><span class="line">        <span class="keyword">while</span> (left &gt;= <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            leftsum += a[left];</span><br><span class="line">            left -= left &amp; (-left);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (right &gt;= <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            rightsum += a[right];</span><br><span class="line">            right -= right &amp; (-right);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> rightsum - leftsum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="优化">优化</h2>
+<p>仅仅只是加了个动态数组，小幅度优化空间复杂度。</p>
+<p>（这道题的双Beat100%可能需要用线段树？）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NumArray</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> size = <span class="number">0</span>;</span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt; nums, tree;<span class="comment">//nums用于计算差值，tree是树状数组</span></span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">NumArray</span>(vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;size = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">this</span>-&gt;nums = vector&lt;<span class="keyword">int</span>&gt;(size, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">this</span>-&gt;tree = vector&lt;<span class="keyword">int</span>&gt;(size + <span class="number">1</span>, <span class="number">0</span>);<span class="comment">//树状数组下标必须从1开始，原因：0加减lowbit还是0</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= size - <span class="number">1</span>; ++i)<span class="built_in">update</span>(i, nums[i]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> index, <span class="keyword">int</span> val)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> diff = val - nums[index];<span class="comment">//计算差值</span></span><br><span class="line">        nums[index] = val;<span class="comment">//更新nums</span></span><br><span class="line">        ++index;<span class="comment">//树状数组下标必须从1开始</span></span><br><span class="line">        <span class="keyword">while</span> (index &lt;= size)</span><br><span class="line">        &#123;</span><br><span class="line">            tree[index] += diff;</span><br><span class="line">            index += index &amp; (-index);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">sumRange</span><span class="params">(<span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> leftsum = <span class="number">0</span>, rightsum = <span class="number">0</span>;</span><br><span class="line">        ++right;<span class="comment">//（left+1-1），树状数组下标必须从1开始，但计算区间差值左下标前移一位</span></span><br><span class="line">        <span class="keyword">while</span> (left &gt;= <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            leftsum += tree[left];</span><br><span class="line">            left -= left &amp; (-left);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (right &gt;= <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            rightsum += tree[right];</span><br><span class="line">            right -= right &amp; (-right);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> rightsum - leftsum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>PS: this这个语法我只在c#里遇到过，现在看来来源于这里，很好用，解决了我之前变量重名后强迫症发作的问题。</p>
+<h1 id="线段树解决方案">线段树解决方案</h1>
+<img src="/2021/07/09/LC-RangeSumQueryMutable/1.png" class>
+<h2 id="第一次手写1114">第一次手写，11%，14%</h2>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NumArray</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt; nums, sum, tag;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">NumArray</span>(vector&lt;<span class="keyword">int</span>&gt;&amp; nums) </span><br><span class="line">    &#123;</span><br><span class="line">        n = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">this</span>-&gt;nums = vector&lt;<span class="keyword">int</span>&gt;(n + <span class="number">1</span>, <span class="number">0</span>);<span class="comment">//还不知道该数组从0开始能不能成</span></span><br><span class="line">        <span class="keyword">this</span>-&gt;sum = vector&lt;<span class="keyword">int</span>&gt;(n &lt;&lt; <span class="number">2</span> | <span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">this</span>-&gt;tag = vector&lt;<span class="keyword">int</span>&gt;(n &lt;&lt; <span class="number">2</span> | <span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">        <span class="comment">//不是一颗完全二叉树，但除了最后一层是满二叉树，单个数字存在叶子节点，所以数组要开大</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= n - <span class="number">1</span>; ++i)<span class="keyword">this</span>-&gt;nums[i+<span class="number">1</span>] = nums[i];</span><br><span class="line">        <span class="built_in">build</span>(<span class="number">1</span>, <span class="number">1</span>, n);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">lt</span><span class="params">(<span class="keyword">int</span> p)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> p &lt;&lt; <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">rt</span><span class="params">(<span class="keyword">int</span> p)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> p &lt;&lt; <span class="number">1</span> | <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">pushUp</span><span class="params">(<span class="keyword">int</span> p)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        sum[p] = sum[<span class="built_in">lt</span>(p)] + sum[<span class="built_in">rt</span>(p)];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">pushDown</span><span class="params">(<span class="keyword">int</span> p, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> mid)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="built_in">f</span>(<span class="built_in">lt</span>(p), l, mid, tag[p]);</span><br><span class="line">        <span class="built_in">f</span>(<span class="built_in">rt</span>(p), mid + <span class="number">1</span>, r, tag[p]);</span><br><span class="line">        tag[p] = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span> p, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> k)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        tag[p] += k;</span><br><span class="line">        sum[p] += k * (r - l + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> p, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (l == r) &#123; sum[p] = nums[r]; <span class="keyword">return</span>; &#125;</span><br><span class="line">        <span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        <span class="built_in">build</span>(<span class="built_in">lt</span>(p), l, mid);</span><br><span class="line">        <span class="built_in">build</span>(<span class="built_in">rt</span>(p), mid + <span class="number">1</span>, r);</span><br><span class="line">        <span class="built_in">pushUp</span>(p);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> index, <span class="keyword">int</span> val)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        ++index;</span><br><span class="line">        val -= nums[index];</span><br><span class="line">        nums[index] += val;<span class="comment">//更新原始数组，卡了我好久</span></span><br><span class="line">        <span class="built_in">realUpdate</span>(index, index, <span class="number">1</span>, <span class="number">1</span>, n, val);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">realUpdate</span><span class="params">(<span class="keyword">int</span> left, <span class="keyword">int</span> right, <span class="keyword">int</span> p, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> k)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (left &lt;= l &amp;&amp; r &lt;= right)</span><br><span class="line">        &#123;</span><br><span class="line">            tag[p] += k;</span><br><span class="line">            sum[p] += k * (r - l + <span class="number">1</span>);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> mid = (r + l) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        <span class="built_in">pushDown</span>(p, l, r, mid);</span><br><span class="line">        <span class="keyword">if</span> (left &lt;= mid)<span class="built_in">realUpdate</span>(left, right, <span class="built_in">lt</span>(p), l, mid, k);</span><br><span class="line">        <span class="keyword">if</span> (right &gt;= mid + <span class="number">1</span>)<span class="built_in">realUpdate</span>(left, right, <span class="built_in">rt</span>(p), mid + <span class="number">1</span>, r, k);</span><br><span class="line">        <span class="built_in">pushUp</span>(p);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">sumRange</span><span class="params">(<span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">getSum</span>(left + <span class="number">1</span>, right + <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, n);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getSum</span><span class="params">(<span class="keyword">int</span> left, <span class="keyword">int</span> right, <span class="keyword">int</span> p, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span><span class="comment">//变量left和right可以考虑放在外面</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (left &lt;= l &amp;&amp; r &lt;= right)<span class="keyword">return</span> sum[p];</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        <span class="built_in">pushDown</span>(p, l, r, mid);</span><br><span class="line">        <span class="keyword">if</span> (left &lt;= mid)res += <span class="built_in">getSum</span>(left, right, <span class="built_in">lt</span>(p), l, mid);</span><br><span class="line">        <span class="keyword">if</span> (right &gt;= mid + <span class="number">1</span>)res += <span class="built_in">getSum</span>(left, right, <span class="built_in">rt</span>(p), mid + <span class="number">1</span>, r);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>不论如何终于写出来了 我猜想这一题没有涉及区间修改，只有单点修改，而在上面这段代码强行将区间修改套用在单点修改上，导致效率低下。 也可能是线段树也有自己的单点修改方式，只是我还不知道，因为我看题解有使用线段树 又或者我只是太菜了写了垃圾代码需要优化 <img src="/2021/07/09/LC-RangeSumQueryMutable/1.jpg" class></p>
+<p>ps：数字右移左移比起除法和乘法快很多。这个版本写法基本没错，空间上还能优化，但我懒得写了。</p>
+<h2 id="简单线段树">简单线段树</h2>
+<p>好吧如果仅支持单点修改，那么代码确实可以精简很多。如果我先学这个再去学区间修改那么我就不用硬啃下这么难的代码了。 首先信息延迟不再需要了，也就是说tag和pushdown不再需要了。只需要建树建好就行。更新时准确找到要的点更新，再修改所以相关父节点。求区间值时不需要将滞后的信息更新，直接切分区间返回区间和即可。 但是倘若需要用线段树求区间和，那么上面的代码仍然可行。</p>
+<h2 id="线段树不支持区间修改96-22">线段树，不支持区间修改，96% 22%</h2>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NumArray</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt;nums, sum;</span><br><span class="line">    <span class="keyword">int</span> n, index, val, left, right;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">NumArray</span>(vector&lt;<span class="keyword">int</span>&gt;&amp; nums) </span><br><span class="line">    &#123;</span><br><span class="line">        n = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">this</span>-&gt;nums = vector&lt;<span class="keyword">int</span>&gt;(n + <span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">this</span>-&gt;sum = vector&lt;<span class="keyword">int</span>&gt;(n &lt;&lt; <span class="number">2</span>, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= n - <span class="number">1</span>; ++i)<span class="keyword">this</span>-&gt;nums[i + <span class="number">1</span>] = nums[i];</span><br><span class="line">        <span class="built_in">build</span>(<span class="number">1</span>, <span class="number">1</span>, n);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> root, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (l == r)</span><br><span class="line">        &#123;</span><br><span class="line">            sum[root] = nums[r];</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        <span class="built_in">build</span>(root &lt;&lt; <span class="number">1</span>, l, mid);</span><br><span class="line">        <span class="built_in">build</span>(root &lt;&lt; <span class="number">1</span> | <span class="number">1</span>, mid + <span class="number">1</span>, r);</span><br><span class="line">        sum[root] = sum[root &lt;&lt; <span class="number">1</span>] + sum[root &lt;&lt; <span class="number">1</span> | <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> index, <span class="keyword">int</span> val)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        ++index;</span><br><span class="line">        val -= nums[index];</span><br><span class="line">        nums[index] += val;</span><br><span class="line">        <span class="keyword">this</span>-&gt;val = val;</span><br><span class="line">        <span class="keyword">this</span>-&gt;index = index;</span><br><span class="line">        <span class="built_in">realUpdate</span>(<span class="number">1</span>, <span class="number">1</span>, n);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">realUpdate</span><span class="params">(<span class="keyword">int</span> root, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (l == r &amp;&amp; l == index)&#123; sum[root] += val; <span class="keyword">return</span>; &#125;</span><br><span class="line">        <span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (index &lt;= mid)<span class="built_in">realUpdate</span>(root &lt;&lt; <span class="number">1</span>, l, mid);</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">realUpdate</span>(root &lt;&lt; <span class="number">1</span> | <span class="number">1</span>, mid + <span class="number">1</span>, r);</span><br><span class="line">        sum[root] += val;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">sumRange</span><span class="params">(<span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;left = left + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">this</span>-&gt;right = right + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">getSum</span>(<span class="number">1</span>, <span class="number">1</span>, n);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getSum</span><span class="params">(<span class="keyword">int</span> root, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (left &lt;= l &amp;&amp; r &lt;= right)<span class="keyword">return</span> sum[root];</span><br><span class="line">        <span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (right &lt;= mid)<span class="keyword">return</span> <span class="built_in">getSum</span>(root &lt;&lt; <span class="number">1</span>, l, mid);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (left &gt;= mid + <span class="number">1</span>)<span class="keyword">return</span> <span class="built_in">getSum</span>(root &lt;&lt; <span class="number">1</span> | <span class="number">1</span>, mid + <span class="number">1</span>, r);</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">getSum</span>(root &lt;&lt; <span class="number">1</span>, l, mid) + <span class="built_in">getSum</span>(root &lt;&lt; <span class="number">1</span> | <span class="number">1</span>, mid + <span class="number">1</span>, r);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>爷放弃了，爷写不出双百，也找不到双百题解，那么就到此为止把。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -784,7 +1050,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-02-28 13:55:09" itemprop="dateModified" datetime="2022-02-28T13:55:09+08:00">2022-02-28</time>
+        <time title="Modified: 2022-02-28 16:27:53" itemprop="dateModified" datetime="2022-02-28T16:27:53+08:00">2022-02-28</time>
       </span>
 
   
@@ -882,26 +1148,6 @@ transform.forward 代表某物体的x，y，z轴的指向 这3个都是标准向
 <p>A ‘a’键 B ‘b’键 C ‘c’键 D ‘d’键 E ‘e’键 F ‘f’键</p>
 <p>Capslock 大小写锁定键 RightShift 右上档键 LeftShift 左上档键 RightControl右Ctrl键 LeftControl左Ctrl键 RightAlt 右Alt键 LeftAlt 左Alt键</p>
 <p>Mouse0 鼠标左键 Mouse1 鼠标右键 Mouse2 鼠标中键 Mouse3 鼠标第3个按键 Mouse4 鼠标第4个按键</p>
-<h4 id="物理系统">物理系统</h4>
-<p>在组件里可添加物理组件</p>
-<p>刚体有3种类型 Dinamic 普通刚体 有质量有速度 Static 静态刚体 质量无穷大、无速度 适用于建筑物、地面等固定不动的物体 Kinematic 运动学刚体 无质量 忽略物理规律的刚体，一般用于检测</p>
-<p><strong>碰撞</strong>需要添加碰撞组件 碰撞组件和刚体组件一般一起出现 碰撞范围可编辑 可以给刚体添加材质（<strong>材质</strong>可设置弹性系数、摩擦系数，可以在资源栏里新建）（用边缘行碰撞组件可以设定多边形碰撞范围）</p>
-<p>碰撞组件中有触发器</p>
-<p>脚本</p>
-<p>void OnTriggerEnter2D(Collider2D collision) { Debug.Log("飞机：探测到了碰撞 ... "); }</p>
-<p>碰撞事件回调，有三个：</p>
-<p>OnTriggerEnter2D ：两个碰撞体开始相遇</p>
-<p>OnTriggerStay2D ： 两个碰撞体接触中</p>
-<p>OnTriggerExit2D： 两个碰撞体分开</p>
-<p>碰撞事件的参数: Collider2D collision ，表示的是对方的碰撞体组件</p>
-<p>例如，</p>
-<p>collision.gameObject 对方</p>
-<p>collision.transform 对方的Transform组件</p>
-<p>collision.name 对方节点的名称</p>
-<p>collision.tag 对方节点的Tag</p>
-<p>在 OnTriggerEnter2D 中 ，Destroy(collision.gameObject) 销毁对象</p>
-<p>相应的回调名字：</p>
-<p>OnCollisionEnter ，OnCollisionStay ，OnCollisionExit</p>
 <h4 id="标签tag">标签(tag)</h4>
 <p>在碰撞事件中可以检测碰撞对象的标签，区分敌人和队友</p>
 <p>if(collision.tag.Equals("Enemy")) {</p>
@@ -915,295 +1161,6 @@ transform.forward 代表某物体的x，y，z轴的指向 这3个都是标准向
 <p>声源是组件</p>
 <h4 id="小坑">小坑</h4>
 <p>各种路径不要出现中文，每次保存加载一万年</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/29/read-byte-word/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="甜药补习班吊尾生">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/04/29/read-byte-word/" class="post-title-link" itemprop="url">read_byte_word</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-04-29 14:50:27 / Modified: 22:12:11" itemprop="dateCreated datePublished" datetime="2021-04-29T14:50:27+08:00">2021-04-29</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>从相对于 FS 段开头的偏移量指定的位置读取内存。</p>
-<h2 id="语法">语法</h2>
-<p>C</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">unsigned</span> <span class="keyword">char</span> __readfsbyte(<span class="keyword">unsigned</span> <span class="keyword">long</span> Offset);</span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">short</span> __readfsword(<span class="keyword">unsigned</span> <span class="keyword">long</span> Offset);</span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">long</span> __readfsdword(<span class="keyword">unsigned</span> <span class="keyword">long</span> Offset);</span><br><span class="line"><span class="keyword">unsigned</span> __int64 __readfsqword(<span class="keyword">unsigned</span> <span class="keyword">long</span> Offset);</span><br></pre></td></tr></table></figure>
-<h2 id="返回值">返回值</h2>
-<p>字节、字、双字名为的函数的名称指示 <code>FS:[Offset]</code> 。</p>
-<h2 id="要求">要求</h2>
-<table>
-<thead>
-<tr class="header">
-<th>Intrinsic</th>
-<th>体系结构</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>__readfsbyte</code></td>
-<td>x86</td>
-</tr>
-<tr class="even">
-<td><code>__readfsdword</code></td>
-<td>x86</td>
-</tr>
-<tr class="odd">
-<td><code>__readfsqword</code></td>
-<td>x86</td>
-</tr>
-<tr class="even">
-<td><code>__readfsword</code></td>
-<td>x86</td>
-</tr>
-</tbody>
-</table>
-<p><strong>头文件</strong> &lt;intrin.h&gt;</p>
-<p>例子：</p>
-<img src="/2021/04/29/read-byte-word/1.png" class>
-<img src="/2021/04/29/read-byte-word/2.png" class>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/29/mmap%E5%87%BD%E6%95%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="甜药补习班吊尾生">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/04/29/mmap%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">mmap函数</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-04-29 14:18:38 / Modified: 15:37:39" itemprop="dateCreated datePublished" datetime="2021-04-29T14:18:38+08:00">2021-04-29</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>getpagesize()获得分页大小</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line">#include &lt;sys/mman.h&gt;</span><br><span class="line">void *mmap(void *start, size_t length, int prot, int flags, int fd, off_t offsize)//定义</span><br><span class="line">//说明：mmap()用来将某个文件内容映射到内存中，对该内存区域的存取即是直接对该文件内容的读写</span><br></pre></td></tr></table></figure>
-<table>
-<colgroup>
-<col style="width: 9%">
-<col style="width: 90%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>参数</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>start</td>
-<td>指向欲对应的内存起始地址，通常设为NULL，代表让系统自动选定地址，对应成功后该地址会返回。</td>
-</tr>
-<tr class="even">
-<td>length</td>
-<td>代表将文件中多大的部分对应到内存。</td>
-</tr>
-<tr class="odd">
-<td>prot</td>
-<td>代表映射区域的保护方式，有下列组合：1.PROT_EXEC 映射区域可被执行；2.PROT_READ 映射区域可被读取； PROT_WRITE 映射区域可被写入；3.PROT_NONE 映射区域不能存取。</td>
-</tr>
-<tr class="even">
-<td>flags</td>
-<td>会影响映射区域的各种特性： MAP_FIXED 如果参数 start 所指的地址无法成功建立映射时，则放弃映射，不对地址做修正。通常不鼓励用此旗标。 MAP_SHARED 对应射区域的写入数据会复制回文件内，而且允许其他映射该文件的进程共享。 MAP_PRIVATE 对应射区域的写入操作会产生一个映射文件的复制，即私人的"写入时复制" (copy on write)对此区域作的任何修改都不会写回原来的文件内容。 MAP_ANONYMOUS 建立匿名映射，此时会忽略参数fd，不涉及文件，而且映射区域无法和其他进程共享。 MAP_DENYWRITE 只允许对应射区域的写入操作，其他对文件直接写入的操作将会被拒绝。 MAP_LOCKED 将映射区域锁定住，这表示该区域不会被置换(swap)。 在调用mmap()时必须要指定MAP_SHARED 或MAP_PRIVATE。</td>
-</tr>
-<tr class="odd">
-<td>fd</td>
-<td>open()返回的文件描述词，代表欲映射到内存的文件。</td>
-</tr>
-<tr class="even">
-<td>offset</td>
-<td>文件映射的偏移量，通常设置为0，代表从文件最前方开始对应，offset必须是分页大小的整数倍。</td>
-</tr>
-</tbody>
-</table>
-<p>返回值：若映射成功则返回映射区的内存起始地址，否则返回MAP_FAILED(-1)，错误原因存于errno 中。</p>
-<p>错误代码： - EBADF 参数fd 不是有效的文件描述词。 - EACCES 存取权限有误。如果是MAP_PRIVATE 情况下文件必须可读，使用MAP_SHARED 则要有PROT_WRITE 以及该文件要能写入。 - EINVAL 参数start、length 或offset 有一个不合法。 - EAGAIN 文件被锁住，或是有太多内存被锁住。 - ENOMEM 内存不足。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/11/AD-forgot/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="甜药补习班吊尾生">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/04/11/AD-forgot/" class="post-title-link" itemprop="url">AD_forgot</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-04-11 17:46:36" itemprop="dateCreated datePublished" datetime="2021-04-11T17:46:36+08:00">2021-04-11</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-19 23:03:29" itemprop="dateModified" datetime="2021-04-19T23:03:29+08:00">2021-04-19</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><code>RELRO:    Partial RELRO</code> <code>Stack:    No canary found</code> <code>NX:       NX enabled</code> <code>PIE:      No PIE (0x8048000)</code></p>
-<p>目前所学所有攻击手法均需要有输入漏洞 本题有两个入口 第二个入口可产生数据溢出 <code>char v2[32]; // [esp+10h] [ebp-74h]</code> <code>__isoc99_scanf("%s", v2);</code> v2真正大小只有：32个字节，即ebp-74到ebp-54</p>
-<p>在从后往前分析一下：</p>
-<p>找到一个system函数可用，但没有关键字符串可用，或许可以自己构造</p>
-<p>又找到一个函数，几乎可以确定为目标函数 int sub_80486CC() { ​ char s; // [esp+1Eh] [ebp-3Ah] ​ snprintf(&amp;s, 0x32u, "cat %s", "./flag"); ​ return system(&amp;s); } 目标函数首地址为：0x080486CC</p>
-<p>找到一个反编译失败函数，地址：0x8048A61</p>
-<img src="/2021/04/11/AD-forgot/1.png" class>
-<p><code>(*(&amp;v3 + --v14))();</code></p>
-<p>取v3函数的地址，对其进行偏移，得到一个新的地址，调用这个函数</p>
-<p>第一想法是用这里直接TM的偏移到目标函数，试一试：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> * </span><br><span class="line">context(log_level = <span class="string">&#x27;debug&#x27;</span>, arch = <span class="string">&#x27;amd64&#x27;</span>, os =<span class="string">&#x27;linux&#x27;</span>)</span><br><span class="line">io=remote(<span class="string">&quot;&quot;</span>)</span><br><span class="line">io.recvuntil(<span class="string">&quot;&gt;&quot;</span>)</span><br><span class="line">io.sendline(<span class="string">&quot;555&quot;</span>)</span><br><span class="line">io.recvuntil(<span class="string">&quot;&gt;&quot;</span>)</span><br><span class="line">payload=<span class="number">0x68</span>*<span class="string">&quot;a&quot;</span>+p32(-<span class="number">238</span>)+p32(<span class="number">0x80486CC</span>)</span><br><span class="line">io.sendline(payload)</span><br><span class="line">io.interative()</span><br><span class="line"><span class="comment"># 骗分过样例，暴力出奇迹</span></span><br></pre></td></tr></table></figure>
-<p>但是攻防世界网站又炸了，我是它爹</p>
 
       
     </div>

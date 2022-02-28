@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-count">60</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,240 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/30/%E8%AE%B0%E5%BD%95%E4%B8%80%E4%BA%9B%E9%A2%98%E5%BB%BA%E6%A0%91%E8%B8%A9%E5%9D%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="甜药补习班吊尾生">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/30/%E8%AE%B0%E5%BD%95%E4%B8%80%E4%BA%9B%E9%A2%98%E5%BB%BA%E6%A0%91%E8%B8%A9%E5%9D%91/" class="post-title-link" itemprop="url">记录一些题建树踩坑</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-10-30 17:15:19" itemprop="dateCreated datePublished" datetime="2021-10-30T17:15:19+08:00">2021-10-30</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-02-24 13:38:18" itemprop="dateModified" datetime="2022-02-24T13:38:18+08:00">2022-02-24</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="和null">0和null</h1>
+<p>首先c和c++在底层分不清0和null，当输入数据既包括0和null时，出带问题。</p>
+<p>我首先想到的解决方案是对结点赋极小值或极大值，但这么做浪费空间。同时，如果输入的数据大小包括了该数据类型的所有取值，这么做也不行。</p>
+<p>最后解决方案是通过字符串输入，在手动辨认0和null的同时，进行其它操作。如此在建树时便不需要浪费空间了。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">stringToQueue</span><span class="params">(string&amp; str, queue&lt;string&gt;&amp; q)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	string short_str = <span class="string">&quot;&quot;</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= str.<span class="built_in">size</span>() - <span class="number">1</span>; ++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (str[i] != <span class="string">&#x27; &#x27;</span>)</span><br><span class="line">			short_str += str[i];</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			q.<span class="built_in">push</span>(short_str);</span><br><span class="line">			short_str = <span class="string">&quot;&quot;</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	queue&lt;string&gt;Q = q;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;输入数据队列：&quot;</span>);</span><br><span class="line">	<span class="keyword">while</span> (!Q.<span class="built_in">empty</span>())</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; Q.<span class="built_in">front</span>() &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">		Q.<span class="built_in">pop</span>();</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">TreeNode* <span class="title">build</span><span class="params">(queue&lt;string&gt;&amp; nums)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	TreeNode* root = <span class="keyword">new</span> <span class="built_in">TreeNode</span>(<span class="built_in">stoi</span>(nums.<span class="built_in">front</span>())); nums.<span class="built_in">pop</span>();</span><br><span class="line">	queue&lt;TreeNode*&gt;q;</span><br><span class="line">	q.<span class="built_in">push</span>(root);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> (!q.<span class="built_in">empty</span>())</span><br><span class="line">	&#123;</span><br><span class="line">		TreeNode* now = q.<span class="built_in">front</span>(); q.<span class="built_in">pop</span>();</span><br><span class="line">		<span class="keyword">if</span> (nums.<span class="built_in">empty</span>())<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">if</span> (nums.<span class="built_in">front</span>() != <span class="string">&quot;null&quot;</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> leftnum = <span class="built_in">stoi</span>(nums.<span class="built_in">front</span>());</span><br><span class="line">			now-&gt;left = <span class="keyword">new</span> <span class="built_in">TreeNode</span>(leftnum);</span><br><span class="line">			q.<span class="built_in">push</span>(now-&gt;left);</span><br><span class="line">		&#125;</span><br><span class="line">		nums.<span class="built_in">pop</span>();</span><br><span class="line">		<span class="keyword">if</span> (nums.<span class="built_in">empty</span>())<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">if</span> (nums.<span class="built_in">front</span>() != <span class="string">&quot;null&quot;</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> rightnum = <span class="built_in">stoi</span>(nums.<span class="built_in">front</span>());</span><br><span class="line">			now-&gt;right = <span class="keyword">new</span> <span class="built_in">TreeNode</span>(rightnum);</span><br><span class="line">			q.<span class="built_in">push</span>(now-&gt;right);</span><br><span class="line">		&#125;</span><br><span class="line">		nums.<span class="built_in">pop</span>();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="访问树时越界">访问树时越界</h1>
+<p>结构体在定义时左右子树也没有赋值 建树过程中在给树赋值的时候，完全没有对左右子树进行操作 所以之后访问树越界</p>
+<p>所以应该在定义时给子树指向赋初值，或建树过程中给树赋值时同步对左右子树进行赋值，可赋值成null</p>
+<p>现在我知道了c++结构体中可以包含函数，这些操作都可以同一在函数内。 例： <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">TreeNode</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    TreeNode* left;</span><br><span class="line">    TreeNode* right;</span><br><span class="line">    <span class="built_in">TreeNode</span>() : <span class="built_in">val</span>(<span class="number">0</span>), <span class="built_in">left</span>(<span class="literal">nullptr</span>), <span class="built_in">right</span>(<span class="literal">nullptr</span>) &#123;&#125;</span><br><span class="line">    <span class="built_in">TreeNode</span>(<span class="keyword">int</span> x) : <span class="built_in">val</span>(x), <span class="built_in">left</span>(<span class="literal">nullptr</span>), <span class="built_in">right</span>(<span class="literal">nullptr</span>) &#123;&#125;</span><br><span class="line">    <span class="built_in">TreeNode</span>(<span class="keyword">int</span> x, TreeNode* left, TreeNode* right) : <span class="built_in">val</span>(x), <span class="built_in">left</span>(left), <span class="built_in">right</span>(right) &#123;&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/30/C-%E6%95%B0%E5%AD%97%E5%92%8C%E5%AD%97%E7%AC%A6%E6%95%B0%E5%AD%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="甜药补习班吊尾生">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/30/C-%E6%95%B0%E5%AD%97%E5%92%8C%E5%AD%97%E7%AC%A6%E6%95%B0%E5%AD%97/" class="post-title-link" itemprop="url">C++数字和字符数字</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-10-30 16:53:21 / Modified: 17:13:15" itemprop="dateCreated datePublished" datetime="2021-10-30T16:53:21+08:00">2021-10-30</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="atof">atof()</h1>
+<p>头文件#include&lt;stdlib.h&gt;/include<cstdlib></cstdlib></p>
+<p>原型：double atof(const char *nptr);</p>
+<p>作用：<strong>把字符串转换成浮点数</strong>，直至遇到第一个空格。</p>
+<h1 id="itoa">itoa()</h1>
+<p>头文件#include&lt;stdlib.h&gt;/include<cstdlib></cstdlib></p>
+<p>原型：char* itoa(int value, char* string, int radix);</p>
+<p>其中，value是要转换的整数值，string是存储转换后值的字符数组，radix代表进制，radix=10就是十进制，radix=2就是二进制。</p>
+<p>作用：<strong>将整数转换为字符串</strong>。</p>
+<p>下面是我在使用这个函数时遇到的一些问题，</p>
+<ol type="1">
+<li><p>第二个参数只能是char*,不能是string；</p></li>
+<li><p>第二个参数在使用之前必须提前分配存储空间，在C++中就是new一块内存。</p></li>
+</ol>
+<h1 id="atoi与stoi">atoi()与stoi()</h1>
+<p>头文件: #include&lt;stdlib.h&gt;/#include<cstdlib></cstdlib></p>
+<p>原型：int atoi(const char *nptr);</p>
+<p>作用：<strong>把字符串转换成整型数</strong>。如果第一个非空格字符不存在或者不是数字也不是正负号则返回零，否则开始做类型转换，之后检测到非数字或结束符 \0 时停止转换，返回整型数。atoi()不会做范围检查，如果超出范围的话，超出上界，则输出上界，超出下界，则输出下界；stoi()会做范围检查，默认范围是在int的范围内的，如果超出范围的话则会runtime error！</p>
+<h1 id="c_str">c_str()</h1>
+<p>头文件：include<cstring></cstring></p>
+<p>作用：将string对象，转化为char*对象。它是String类中的一个函数，它返回当前字符串的首字符地址。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/30/C%E7%BB%93%E6%9E%84%E4%BD%93%E3%80%81C-%E7%BB%93%E6%9E%84%E4%BD%93%E5%92%8C%E7%B1%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="甜药补习班吊尾生">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/30/C%E7%BB%93%E6%9E%84%E4%BD%93%E3%80%81C-%E7%BB%93%E6%9E%84%E4%BD%93%E5%92%8C%E7%B1%BB/" class="post-title-link" itemprop="url">C结构体、C++结构体和类</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-10-30 16:02:32 / Modified: 16:05:32" itemprop="dateCreated datePublished" datetime="2021-10-30T16:02:32+08:00">2021-10-30</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><strong>C的结构体和C++结构体的区别</strong></p>
+<p>C的结构体内不允许有函数存在，C++允许有内部成员函数。 C的结构体对内部成员变量的访问权限只能是public，而C++允许public,protected,private三种。 C语言的结构体是不可以继承的，C++的结构体是可以从其他的结构体或者类继承过来的。</p>
+<p>以上都是表面的区别，实际区别就是<strong>面向过程</strong>和<strong>面向对象</strong>编程思路的区别 C的结构体只是把数据变量给包裹起来了，并不涉及算法。 C++是把数据变量及对这些数据变量的相关算法给封装起来，并且给对这些数据和类不同的访问权限。</p>
+<p><strong>C++的结构体和C++类的区别</strong></p>
+<p>C++结构体内部成员变量及成员函数默认的访问级别是public,而c++类的内部成员变量及成员函数的默认访问级别是private。</p>
+<p>C++结构体的继承默认是public，而c++类的继承默认是private。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -756,272 +990,6 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minSubArrayLen</span><span class="params">(<span class="keyword">int</span> target, vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> length = INT_MAX;</span><br><span class="line">        <span class="keyword">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        vector&lt;<span class="keyword">int</span>&gt;sum = vector&lt;<span class="keyword">int</span>&gt;(n + <span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)sum[i] = sum[i - <span class="number">1</span>] + nums[i - <span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span>* addr = <span class="built_in">lower_bound</span>(&amp;sum[i], &amp;sum[n], target);</span><br><span class="line">            <span class="keyword">if</span> (*addr &lt; target) &#123; target += nums[i - <span class="number">1</span>]; <span class="keyword">continue</span>; &#125;<span class="comment">//判断二分是否失败</span></span><br><span class="line">            length = <span class="built_in">min</span>(length, <span class="built_in"><span class="keyword">int</span></span> (addr - &amp;sum[i] + <span class="number">1</span>));<span class="comment">//更新长度</span></span><br><span class="line">            target += nums[i - <span class="number">1</span>];<span class="comment">//更新target</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> length &lt; INT_MAX ? length : <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h1 id="滑动窗口解法最优ono1">滑动窗口解法（最优）O(n),O(1)</h1>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> //滑动窗口</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minSubArrayLen</span><span class="params">(<span class="keyword">int</span> target, vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> start = <span class="number">0</span>, end = <span class="number">0</span>, length = INT_MAX, sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (end &lt; n)</span><br><span class="line">        &#123;</span><br><span class="line">            sum += nums[end];</span><br><span class="line">            <span class="keyword">while</span> (sum &gt;= target)</span><br><span class="line">            &#123;</span><br><span class="line">                length = <span class="built_in">min</span>(length, end - start + <span class="number">1</span>);</span><br><span class="line">                sum -= nums[start++];<span class="comment">//如果start出现在end前面，那么sum必然等于零</span></span><br><span class="line">            &#125;</span><br><span class="line">            ++end;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> length &lt; INT_MAX ? length : <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/07/18/C-inline/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="甜药补习班吊尾生">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/07/18/C-inline/" class="post-title-link" itemprop="url">C++inline</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-07-18 13:09:57 / Modified: 13:35:55" itemprop="dateCreated datePublished" datetime="2021-07-18T13:09:57+08:00">2021-07-18</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>在 c/c++ 中，为了解决一些频繁调用的小函数大量消耗栈空间（栈内存）的问题，特别的引入了 inline 修饰符，表示为内联函数。 内联是以代码膨胀（复制）为代价，仅仅省去了函数调用的开销，从而提高函数的执行效率。 如果执行函数体内代码的时间，相比于函数调用的开销较大，那么效率的收获会很少。另一方面，每一处内联函数的调用都要复制代码，将使程序的总代码量增大，消耗更多的内存空间。</p>
-<p>inline 的使用是有所限制的，inline 只适合函数体内代码简单的函数使用，<strong>不能包含复杂的结构控制语句</strong>例如 while、switch，并且不能内联函数本身<strong>不能是直接递归函数</strong>。</p>
-<p><strong>inline 函数仅仅是一个对编译器的建议，所以最后能否真正内联，看编译器的意思</strong>，它如果认为函数不复杂，能在调用点展开，就会真正内联，并不是说声明了内联就会内联，声明内联只是一个建议而已。</p>
-<p><strong>建议 inline 函数的定义放在头文件中。</strong> 因为内联函数要在调用点展开，所以编译器必须随处可见内联函数的定义，要不然就成了非内联函数的调用了，所以，这要求每个调用了内联函数的文件都出现了该内联函数的定义。 因此，将内联函数的定义放在头文件里实现是合适的，省却你为每个文件实现一次的麻烦。</p>
-<p><strong>定义在类中的成员函数默认都是内联的</strong>，如果在类定义时就在类内给出函数定义，那当然最好。如果在类中未给出成员函数定义，而又想内联该函数的话，那在类外要加上 inline，否则就认为不是内联的。</p>
-<p><strong>关键字 inline 必须与函数定义体放在一起才能使函数成为内联，仅将 inline 放在函数声明前面不起任何作用</strong>。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/07/16/%E8%9A%8C%E5%9F%A0%E4%BD%8F%E4%BA%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="甜药补习班吊尾生">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/07/16/%E8%9A%8C%E5%9F%A0%E4%BD%8F%E4%BA%86/" class="post-title-link" itemprop="url">第三次弄坏博客，蚌埠住了</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-07-16 22:55:11" itemprop="dateCreated datePublished" datetime="2021-07-16T22:55:11+08:00">2021-07-16</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-09-07 10:26:02" itemprop="dateModified" datetime="2021-09-07T10:26:02+08:00">2021-09-07</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="重装">重装</h1>
-<p>首先前置的git，node.js，npm都有了。这些没坏。 新建一个文件夹作为博客，在其中用git命令安装hexo <code>npm install -g hexo-cli</code> 安装完后用<code>hexo -v</code> 查看安装是否成功以及版本 初始化 <code>hexo init</code> <code>npm install</code> 至此在本地建完hexo</p>
-<p>已经有github账号和仓库了，就用原来的就行，但把原仓库清空，原钥匙删除</p>
-<p>连接hexo和github <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name yourname</span><br><span class="line">git config --global user.email youremail</span><br></pre></td></tr></table></figure> 检查一下 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config user.name</span><br><span class="line">git config user.email</span><br></pre></td></tr></table></figure></p>
-<p>接下来创建SSH <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C youremail</span><br></pre></td></tr></table></figure></p>
-<p>会提示在某个文件夹中生成了私钥和公钥 在GitHub的setting中，找到SSH keys的设置选项，点击<code>New SSH key</code> 把你的<code>id_rsa.pub</code>里面的信息复制进去。</p>
-<p>在gitbash中，查看是否成功</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
-<p>将hexo部署到GitHub 这一步，我们就可以将hexo和GitHub关联起来，也就是将hexo生成的文章部署到GitHub上，打开站点配置文件 <code>_config.yml</code>，翻到最后，修改为YourgithubName就是你的GitHub账户</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:YourgithubName/YourgithubName.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-<p>这个时候需要先安装deploy-git ，也就是部署的命令,这样你才能用命令部署到GitHub。 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></p>
-<h1 id="主题">主题</h1>
-<p>https://hexo.io/themes/</p>
-<p>部署方式和一些设置根据主题的不同有所不同，所以选好主题后按主题要求布置</p>
-<p>注意next主题文件滚到mod里去了，不知道为啥</p>
-<h1 id="图片">图片</h1>
-<h3 id="一插件安装与配置">一、插件安装与配置</h3>
-<p>首先我们需要安装一个图片路径转换的插件，这个插件名字是<strong>hexo-asset-image</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install https://github.com/CodeFalling/hexo-asset-image --save</span><br></pre></td></tr></table></figure>
-<p>但是这个插件的内容需要修改【不然可能会出Bug】</p>
-<p>打开/node_modules/hexo-asset-image/index.js，将内容更换为下面的代码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">&#x27;use strict&#x27;;</span><br><span class="line">var cheerio = require(&#x27;cheerio&#x27;);</span><br><span class="line"></span><br><span class="line">// http://stackoverflow.com/questions/14480345/how-to-get-the-nth-occurrence-in-a-string</span><br><span class="line">function getPosition(str, m, i) &#123;</span><br><span class="line">  return str.split(m, i).join(m).length;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var version = String(hexo.version).split(&#x27;.&#x27;);</span><br><span class="line">hexo.extend.filter.register(&#x27;after_post_render&#x27;, function(data)&#123;</span><br><span class="line">  var config = hexo.config;</span><br><span class="line">  if(config.post_asset_folder)&#123;</span><br><span class="line">    	var link = data.permalink;</span><br><span class="line">	if(version.length &gt; 0 &amp;&amp; Number(version[0]) == 3)</span><br><span class="line">	   var beginPos = getPosition(link, &#x27;/&#x27;, 1) + 1;</span><br><span class="line">	else</span><br><span class="line">	   var beginPos = getPosition(link, &#x27;/&#x27;, 3) + 1;</span><br><span class="line">	// In hexo 3.1.1, the permalink of &quot;about&quot; page is like &quot;.../about/index.html&quot;.</span><br><span class="line">	var endPos = link.lastIndexOf(&#x27;/&#x27;) + 1;</span><br><span class="line">    link = link.substring(beginPos, endPos);</span><br><span class="line"></span><br><span class="line">    var toprocess = [&#x27;excerpt&#x27;, &#x27;more&#x27;, &#x27;content&#x27;];</span><br><span class="line">    for(var i = 0; i &lt; toprocess.length; i++)&#123;</span><br><span class="line">      var key = toprocess[i];</span><br><span class="line"> </span><br><span class="line">      var $ = cheerio.load(data[key], &#123;</span><br><span class="line">        ignoreWhitespace: false,</span><br><span class="line">        xmlMode: false,</span><br><span class="line">        lowerCaseTags: false,</span><br><span class="line">        decodeEntities: false</span><br><span class="line">      &#125;);</span><br><span class="line"></span><br><span class="line">      $(&#x27;img&#x27;).each(function()&#123;</span><br><span class="line">		if ($(this).attr(&#x27;src&#x27;))&#123;</span><br><span class="line">			// For windows style path, we replace &#x27;\&#x27; to &#x27;/&#x27;.</span><br><span class="line">			var src = $(this).attr(&#x27;src&#x27;).replace(&#x27;\\&#x27;, &#x27;/&#x27;);</span><br><span class="line">			if(!/http[s]*.*|\/\/.*/.test(src) &amp;&amp;</span><br><span class="line">			   !/^\s*\//.test(src)) &#123;</span><br><span class="line">			  // For &quot;about&quot; page, the first part of &quot;src&quot; can&#x27;t be removed.</span><br><span class="line">			  // In addition, to support multi-level local directory.</span><br><span class="line">			  var linkArray = link.split(&#x27;/&#x27;).filter(function(elem)&#123;</span><br><span class="line">				return elem != &#x27;&#x27;;</span><br><span class="line">			  &#125;);</span><br><span class="line">			  var srcArray = src.split(&#x27;/&#x27;).filter(function(elem)&#123;</span><br><span class="line">				return elem != &#x27;&#x27; &amp;&amp; elem != &#x27;.&#x27;;</span><br><span class="line">			  &#125;);</span><br><span class="line">			  if(srcArray.length &gt; 1)</span><br><span class="line">				srcArray.shift();</span><br><span class="line">			  src = srcArray.join(&#x27;/&#x27;);</span><br><span class="line">			  $(this).attr(&#x27;src&#x27;, config.root + link + src);</span><br><span class="line">			  console.info&amp;&amp;console.info(&quot;update link as:--&gt;&quot;+config.root + link + src);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;else&#123;</span><br><span class="line">			console.info&amp;&amp;console.info(&quot;no src attr, skipped...&quot;);</span><br><span class="line">			console.info&amp;&amp;console.info($(this));</span><br><span class="line">		&#125;</span><br><span class="line">      &#125;);</span><br><span class="line">      data[key] = $.html();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>打开_config.yml文件，修改下述内容</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">post_asset_folder: true</span><br></pre></td></tr></table></figure>
-<p>转自：https://blog.csdn.net/xjm850552586/article/details/84101345</p>
-<h1 id="排序">排序</h1>
-<p>Hexo博文置顶（自定义排序）</p>
-<p>使用的是top属性，top值越高，排序越在前，不设置top值得博文按照时间顺序排序。 修改Hexo文件夹下的node_modules/hexo-generator-index/lib/generator.js</p>
-<p>打开在最后更改为如下javascript代码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&#x27;use strict&#x27;;</span><br><span class="line">var pagination = require(&#x27;hexo-pagination&#x27;);</span><br><span class="line">module.exports = function(locals)&#123;</span><br><span class="line">  var config = this.config;</span><br><span class="line">  var posts = locals.posts;</span><br><span class="line">    posts.data = posts.data.sort(function(a, b) &#123;</span><br><span class="line">        if(a.top &amp;&amp; b.top) &#123;</span><br><span class="line">            if(a.top == b.top) return b.date - a.date;</span><br><span class="line">            else return b.top - a.top;</span><br><span class="line">        &#125;</span><br><span class="line">        else if(a.top &amp;&amp; !b.top) &#123;</span><br><span class="line">            return -1;</span><br><span class="line">        &#125;</span><br><span class="line">        else if(!a.top &amp;&amp; b.top) &#123;</span><br><span class="line">            return 1;</span><br><span class="line">        &#125;</span><br><span class="line">        else return b.date - a.date;</span><br><span class="line">    &#125;);</span><br><span class="line">  var paginationDir = config.pagination_dir || &#x27;page&#x27;;</span><br><span class="line">  return pagination(&#x27;&#x27;, posts, &#123;</span><br><span class="line">    perPage: config.index_generator.per_page,</span><br><span class="line">    layout: [&#x27;index&#x27;, &#x27;archive&#x27;],</span><br><span class="line">    format: paginationDir + &#x27;/%d/&#x27;,</span><br><span class="line">    data: &#123;</span><br><span class="line">      __index: true</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>在写文章的时候添加top属性就行了。</p>
-<h1 id="标签">标签</h1>
-<p>在source文件夹下新建tags文件夹，在tags文件夹下新建md文件，头内容为</p>
-<p>title: tags date: 2020-12-17 10:49:26 type: "tags"</p>
-<h1 id="数学公式">数学公式</h1>
-<p>用next主题官方教学</p>
-<p><a target="_blank" rel="noopener" href="https://theme-next.js.org/docs/third-party-services/math-equations.html">Math Equations | NexT (theme-next.js.org)</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/07/09/LC-RangeSumQueryMutable/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="甜药补习班吊尾生">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/07/09/LC-RangeSumQueryMutable/" class="post-title-link" itemprop="url">LC-RangeSumQueryMutable</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-07-09 21:59:31" itemprop="dateCreated datePublished" datetime="2021-07-09T21:59:31+08:00">2021-07-09</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-02-24 14:02:51" itemprop="dateModified" datetime="2022-02-24T14:02:51+08:00">2022-02-24</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="树状数组解决方案">树状数组解决方案</h1>
-<h2 id="第一次手写-99.71-20.81">第一次手写 (99.71% ,20.81%)</h2>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NumArray</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> size = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> a[<span class="number">30007</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">    <span class="keyword">int</span> b[<span class="number">30007</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">NumArray</span>(vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span><br><span class="line">    &#123;</span><br><span class="line">        size = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= size - <span class="number">1</span>; ++i)<span class="built_in">update</span>(i, nums[i]);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= size - <span class="number">1</span>; ++i)b[i + <span class="number">1</span>] = nums[i];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> index, <span class="keyword">int</span> val)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        ++index;</span><br><span class="line">        <span class="keyword">int</span> diff = val - b[index];</span><br><span class="line">        b[index] = val;</span><br><span class="line">        <span class="keyword">while</span> (index &lt;= size)</span><br><span class="line">        &#123;</span><br><span class="line">            a[index] += diff;</span><br><span class="line">            index += index &amp; (-index);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">sumRange</span><span class="params">(<span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> leftsum = <span class="number">0</span>, rightsum = <span class="number">0</span>;</span><br><span class="line">        ++right;</span><br><span class="line">        <span class="keyword">while</span> (left &gt;= <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            leftsum += a[left];</span><br><span class="line">            left -= left &amp; (-left);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (right &gt;= <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            rightsum += a[right];</span><br><span class="line">            right -= right &amp; (-right);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> rightsum - leftsum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h2 id="优化">优化</h2>
-<p>仅仅只是加了个动态数组，小幅度优化空间复杂度。</p>
-<p>（这道题的双Beat100%可能需要用线段树？）</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NumArray</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> size = <span class="number">0</span>;</span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt; nums, tree;<span class="comment">//nums用于计算差值，tree是树状数组</span></span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">NumArray</span>(vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;size = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">this</span>-&gt;nums = vector&lt;<span class="keyword">int</span>&gt;(size, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">this</span>-&gt;tree = vector&lt;<span class="keyword">int</span>&gt;(size + <span class="number">1</span>, <span class="number">0</span>);<span class="comment">//树状数组下标必须从1开始，原因：0加减lowbit还是0</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= size - <span class="number">1</span>; ++i)<span class="built_in">update</span>(i, nums[i]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> index, <span class="keyword">int</span> val)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> diff = val - nums[index];<span class="comment">//计算差值</span></span><br><span class="line">        nums[index] = val;<span class="comment">//更新nums</span></span><br><span class="line">        ++index;<span class="comment">//树状数组下标必须从1开始</span></span><br><span class="line">        <span class="keyword">while</span> (index &lt;= size)</span><br><span class="line">        &#123;</span><br><span class="line">            tree[index] += diff;</span><br><span class="line">            index += index &amp; (-index);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">sumRange</span><span class="params">(<span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> leftsum = <span class="number">0</span>, rightsum = <span class="number">0</span>;</span><br><span class="line">        ++right;<span class="comment">//（left+1-1），树状数组下标必须从1开始，但计算区间差值左下标前移一位</span></span><br><span class="line">        <span class="keyword">while</span> (left &gt;= <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            leftsum += tree[left];</span><br><span class="line">            left -= left &amp; (-left);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (right &gt;= <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            rightsum += tree[right];</span><br><span class="line">            right -= right &amp; (-right);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> rightsum - leftsum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>PS: this这个语法我只在c#里遇到过，现在看来来源于这里，很好用，解决了我之前变量重名后强迫症发作的问题。</p>
-<h1 id="线段树解决方案">线段树解决方案</h1>
-<img src="/2021/07/09/LC-RangeSumQueryMutable/1.png" class>
-<h2 id="第一次手写1114">第一次手写，11%，14%</h2>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NumArray</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt; nums, sum, tag;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">NumArray</span>(vector&lt;<span class="keyword">int</span>&gt;&amp; nums) </span><br><span class="line">    &#123;</span><br><span class="line">        n = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">this</span>-&gt;nums = vector&lt;<span class="keyword">int</span>&gt;(n + <span class="number">1</span>, <span class="number">0</span>);<span class="comment">//还不知道该数组从0开始能不能成</span></span><br><span class="line">        <span class="keyword">this</span>-&gt;sum = vector&lt;<span class="keyword">int</span>&gt;(n &lt;&lt; <span class="number">2</span> | <span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">this</span>-&gt;tag = vector&lt;<span class="keyword">int</span>&gt;(n &lt;&lt; <span class="number">2</span> | <span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">        <span class="comment">//不是一颗完全二叉树，但除了最后一层是满二叉树，单个数字存在叶子节点，所以数组要开大</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= n - <span class="number">1</span>; ++i)<span class="keyword">this</span>-&gt;nums[i+<span class="number">1</span>] = nums[i];</span><br><span class="line">        <span class="built_in">build</span>(<span class="number">1</span>, <span class="number">1</span>, n);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">lt</span><span class="params">(<span class="keyword">int</span> p)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> p &lt;&lt; <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">rt</span><span class="params">(<span class="keyword">int</span> p)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> p &lt;&lt; <span class="number">1</span> | <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">pushUp</span><span class="params">(<span class="keyword">int</span> p)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        sum[p] = sum[<span class="built_in">lt</span>(p)] + sum[<span class="built_in">rt</span>(p)];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">pushDown</span><span class="params">(<span class="keyword">int</span> p, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> mid)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="built_in">f</span>(<span class="built_in">lt</span>(p), l, mid, tag[p]);</span><br><span class="line">        <span class="built_in">f</span>(<span class="built_in">rt</span>(p), mid + <span class="number">1</span>, r, tag[p]);</span><br><span class="line">        tag[p] = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span> p, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> k)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        tag[p] += k;</span><br><span class="line">        sum[p] += k * (r - l + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> p, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (l == r) &#123; sum[p] = nums[r]; <span class="keyword">return</span>; &#125;</span><br><span class="line">        <span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        <span class="built_in">build</span>(<span class="built_in">lt</span>(p), l, mid);</span><br><span class="line">        <span class="built_in">build</span>(<span class="built_in">rt</span>(p), mid + <span class="number">1</span>, r);</span><br><span class="line">        <span class="built_in">pushUp</span>(p);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> index, <span class="keyword">int</span> val)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        ++index;</span><br><span class="line">        val -= nums[index];</span><br><span class="line">        nums[index] += val;<span class="comment">//更新原始数组，卡了我好久</span></span><br><span class="line">        <span class="built_in">realUpdate</span>(index, index, <span class="number">1</span>, <span class="number">1</span>, n, val);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">realUpdate</span><span class="params">(<span class="keyword">int</span> left, <span class="keyword">int</span> right, <span class="keyword">int</span> p, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> k)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (left &lt;= l &amp;&amp; r &lt;= right)</span><br><span class="line">        &#123;</span><br><span class="line">            tag[p] += k;</span><br><span class="line">            sum[p] += k * (r - l + <span class="number">1</span>);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> mid = (r + l) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        <span class="built_in">pushDown</span>(p, l, r, mid);</span><br><span class="line">        <span class="keyword">if</span> (left &lt;= mid)<span class="built_in">realUpdate</span>(left, right, <span class="built_in">lt</span>(p), l, mid, k);</span><br><span class="line">        <span class="keyword">if</span> (right &gt;= mid + <span class="number">1</span>)<span class="built_in">realUpdate</span>(left, right, <span class="built_in">rt</span>(p), mid + <span class="number">1</span>, r, k);</span><br><span class="line">        <span class="built_in">pushUp</span>(p);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">sumRange</span><span class="params">(<span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">getSum</span>(left + <span class="number">1</span>, right + <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, n);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getSum</span><span class="params">(<span class="keyword">int</span> left, <span class="keyword">int</span> right, <span class="keyword">int</span> p, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span><span class="comment">//变量left和right可以考虑放在外面</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (left &lt;= l &amp;&amp; r &lt;= right)<span class="keyword">return</span> sum[p];</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        <span class="built_in">pushDown</span>(p, l, r, mid);</span><br><span class="line">        <span class="keyword">if</span> (left &lt;= mid)res += <span class="built_in">getSum</span>(left, right, <span class="built_in">lt</span>(p), l, mid);</span><br><span class="line">        <span class="keyword">if</span> (right &gt;= mid + <span class="number">1</span>)res += <span class="built_in">getSum</span>(left, right, <span class="built_in">rt</span>(p), mid + <span class="number">1</span>, r);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>不论如何终于写出来了 我猜想这一题没有涉及区间修改，只有单点修改，而在上面这段代码强行将区间修改套用在单点修改上，导致效率低下。 也可能是线段树也有自己的单点修改方式，只是我还不知道，因为我看题解有使用线段树 又或者我只是太菜了写了垃圾代码需要优化 <img src="/2021/07/09/LC-RangeSumQueryMutable/1.jpg" class></p>
-<p>ps：数字右移左移比起除法和乘法快很多。这个版本写法基本没错，空间上还能优化，但我懒得写了。</p>
-<h2 id="简单线段树">简单线段树</h2>
-<p>好吧如果仅支持单点修改，那么代码确实可以精简很多。如果我先学这个再去学区间修改那么我就不用硬啃下这么难的代码了。 首先信息延迟不再需要了，也就是说tag和pushdown不再需要了。只需要建树建好就行。更新时准确找到要的点更新，再修改所以相关父节点。求区间值时不需要将滞后的信息更新，直接切分区间返回区间和即可。 但是倘若需要用线段树求区间和，那么上面的代码仍然可行。</p>
-<h2 id="线段树不支持区间修改96-22">线段树，不支持区间修改，96% 22%</h2>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NumArray</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt;nums, sum;</span><br><span class="line">    <span class="keyword">int</span> n, index, val, left, right;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">NumArray</span>(vector&lt;<span class="keyword">int</span>&gt;&amp; nums) </span><br><span class="line">    &#123;</span><br><span class="line">        n = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">this</span>-&gt;nums = vector&lt;<span class="keyword">int</span>&gt;(n + <span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">this</span>-&gt;sum = vector&lt;<span class="keyword">int</span>&gt;(n &lt;&lt; <span class="number">2</span>, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= n - <span class="number">1</span>; ++i)<span class="keyword">this</span>-&gt;nums[i + <span class="number">1</span>] = nums[i];</span><br><span class="line">        <span class="built_in">build</span>(<span class="number">1</span>, <span class="number">1</span>, n);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> root, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (l == r)</span><br><span class="line">        &#123;</span><br><span class="line">            sum[root] = nums[r];</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        <span class="built_in">build</span>(root &lt;&lt; <span class="number">1</span>, l, mid);</span><br><span class="line">        <span class="built_in">build</span>(root &lt;&lt; <span class="number">1</span> | <span class="number">1</span>, mid + <span class="number">1</span>, r);</span><br><span class="line">        sum[root] = sum[root &lt;&lt; <span class="number">1</span>] + sum[root &lt;&lt; <span class="number">1</span> | <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> index, <span class="keyword">int</span> val)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        ++index;</span><br><span class="line">        val -= nums[index];</span><br><span class="line">        nums[index] += val;</span><br><span class="line">        <span class="keyword">this</span>-&gt;val = val;</span><br><span class="line">        <span class="keyword">this</span>-&gt;index = index;</span><br><span class="line">        <span class="built_in">realUpdate</span>(<span class="number">1</span>, <span class="number">1</span>, n);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">realUpdate</span><span class="params">(<span class="keyword">int</span> root, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (l == r &amp;&amp; l == index)&#123; sum[root] += val; <span class="keyword">return</span>; &#125;</span><br><span class="line">        <span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (index &lt;= mid)<span class="built_in">realUpdate</span>(root &lt;&lt; <span class="number">1</span>, l, mid);</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">realUpdate</span>(root &lt;&lt; <span class="number">1</span> | <span class="number">1</span>, mid + <span class="number">1</span>, r);</span><br><span class="line">        sum[root] += val;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">sumRange</span><span class="params">(<span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;left = left + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">this</span>-&gt;right = right + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">getSum</span>(<span class="number">1</span>, <span class="number">1</span>, n);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getSum</span><span class="params">(<span class="keyword">int</span> root, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (left &lt;= l &amp;&amp; r &lt;= right)<span class="keyword">return</span> sum[root];</span><br><span class="line">        <span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (right &lt;= mid)<span class="keyword">return</span> <span class="built_in">getSum</span>(root &lt;&lt; <span class="number">1</span>, l, mid);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (left &gt;= mid + <span class="number">1</span>)<span class="keyword">return</span> <span class="built_in">getSum</span>(root &lt;&lt; <span class="number">1</span> | <span class="number">1</span>, mid + <span class="number">1</span>, r);</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">getSum</span>(root &lt;&lt; <span class="number">1</span>, l, mid) + <span class="built_in">getSum</span>(root &lt;&lt; <span class="number">1</span> | <span class="number">1</span>, mid + <span class="number">1</span>, r);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>爷放弃了，爷写不出双百，也找不到双百题解，那么就到此为止把。</p>
 
       
     </div>
