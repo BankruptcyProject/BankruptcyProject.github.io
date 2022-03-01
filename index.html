@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-count">60</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -269,10 +269,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2022-02-28 19:58:11 / Modified: 21:34:59" itemprop="dateCreated datePublished" datetime="2022-02-28T19:58:11+08:00">2022-02-28</time>
+      <time title="Created: 2022-02-28 19:58:11" itemprop="dateCreated datePublished" datetime="2022-02-28T19:58:11+08:00">2022-02-28</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-03-01 08:49:47" itemprop="dateModified" datetime="2022-03-01T08:49:47+08:00">2022-03-01</time>
+      </span>
 
   
 </div>
@@ -296,16 +302,39 @@
 <p>协程可以嵌套</p>
 <p>协程的参数不能使用ref 和out 修饰</p>
 <p>协程在执行完内部所有代码的时候会退出协程</p>
-<p>#关于yield return</p>
-<p>yiled return 0; 0可以换成任意的int类型的值,都是当前暂停一帧,从下一帧开始执行</p>
-<p>yiled return 协程; yiled return 后面可以跟一个协程,当执行到该行代码的时候执行yiled return 后面的协程,如果下面还有代码在执行完该协程的时候,回来继续执行。</p>
-<p>yiled return new WaitForSeconds(时间); 时间可以随意设置,该方法主要作用是等待几秒钟后执行,yiled return 后面的代码</p>
+<h1 id="关于yield-return">关于yield return</h1>
+<p>yiled return 0;<br>
+0可以换成任意的int类型的值,都是当前暂停一帧,从下一帧开始执行</p>
+<p>yiled return 协程;<br>
+yiled return 后面可以跟一个协程,当执行到该行代码的时候执行yiled return 后面的协程,如果下面还有代码在执行完该协程的时候,回来继续执行。</p>
+<p>yiled return new WaitForSeconds(时间);<br>
+时间可以随意设置,该方法主要作用是等待几秒钟后执行,yiled return 后面的代码</p>
 <p>yiled return 后面可以跟一个类,等等根据自己的需要进行使用</p>
 <p>例 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">StartCoroutine(&quot;Injured&quot;, 2f);</span><br><span class="line">IEnumerator Injured(float FlashTime)</span><br><span class="line">&#123;</span><br><span class="line">    yield return new WaitForSeconds(0.125f);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h1 id="开启和关闭协程">开启和关闭协程</h1>
-<p><strong>1.直接使用协程方法名</strong> 开启协程 StartCoroutine(“协程方法名 “); 关闭协程 StopCoroutine(“协程方法名 “);</p>
-<p><strong>2.使用协程方法名加参数</strong> 开启协程 StartCoroutine(“协程方法名”,参数); 关闭协程 StopCoroutine(“协程方法名”); //该方法只适用于协程只有一个参数的时候</p>
-<p><strong>3.使用方法</strong> 开启协程 StartCoroutine(协程方法名(参数)); 关闭协程 StopCoroutine(协程方法名(参数)); //该方法中的参数个数随意 //该方法不能关闭该协程,但是开启可以使用 使用方法参数正确开启关闭协程: &lt;1&gt;定义一个IEnumerator 类型的全局变量StopIE public IEnumerator StopIE; &lt;2&gt;接收 协程方法名(参数) StopIE = 协程方法名(参数); &lt;3&gt;开启协程 在这里开启协程可以直接用变量代替方法名加参数 StartCoroutine(StopIE); &lt;4&gt;关闭协程 在这里同样 StopCoroutine(StopIE);</p>
+<p><strong>1.直接使用协程方法名</strong><br>
+开启协程 StartCoroutine(“协程方法名 “);<br>
+关闭协程 StopCoroutine(“协程方法名 “);</p>
+<p><strong>2.使用协程方法名加参数</strong><br>
+开启协程 StartCoroutine(“协程方法名”,参数);<br>
+关闭协程 StopCoroutine(“协程方法名”);<br>
+//该方法只适用于协程只有一个参数的时候</p>
+<p><strong>3.使用方法</strong><br>
+开启协程 StartCoroutine(协程方法名(参数));<br>
+关闭协程 StopCoroutine(协程方法名(参数));<br>
+//该方法中的参数个数随意<br>
+//该方法不能关闭该协程,但是开启可以使用<br>
+使用方法参数正确开启关闭协程:<br>
+&lt;1&gt;定义一个IEnumerator 类型的全局变量StopIE<br>
+public IEnumerator StopIE;<br>
+&lt;2&gt;接收 协程方法名(参数)<br>
+StopIE = 协程方法名(参数);<br>
+&lt;3&gt;开启协程<br>
+在这里开启协程可以直接用变量代替方法名加参数<br>
+StartCoroutine(StopIE);<br>
+&lt;4&gt;关闭协程<br>
+在这里同样<br>
+StopCoroutine(StopIE);</p>
 
       
     </div>
@@ -423,10 +452,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2022-02-28 16:21:55 / Modified: 17:22:16" itemprop="dateCreated datePublished" datetime="2022-02-28T16:21:55+08:00">2022-02-28</time>
+      <time title="Created: 2022-02-28 16:21:55" itemprop="dateCreated datePublished" datetime="2022-02-28T16:21:55+08:00">2022-02-28</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-03-01 11:57:51" itemprop="dateModified" datetime="2022-03-01T11:57:51+08:00">2022-03-01</time>
+      </span>
 
   
 </div>
@@ -485,6 +520,10 @@
 <h1 id="射线">射线</h1>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if (Physics2D.Raycast((Vector2)transform.position, Vector2.up, 0.8f, 1 &lt;&lt; 6) == false)</span><br><span class="line">&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>四个参数：射线起点，方向，长度，检测图层（1&lt;&lt;6表示只检测图层6）（0&lt;&lt;6表示忽略图层6）</p>
+<h1 id="物理材质">物理材质</h1>
+<p>创建物理材质（物理材质2D）</p>
+<p>修改摩擦力和弹力</p>
+<p>将该物理材质拖入其他组件（例如碰撞组件或刚体组件）</p>
 
       
     </div>
@@ -746,10 +785,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2022-02-28 12:23:10 / Modified: 12:26:35" itemprop="dateCreated datePublished" datetime="2022-02-28T12:23:10+08:00">2022-02-28</time>
+      <time title="Created: 2022-02-28 12:23:10" itemprop="dateCreated datePublished" datetime="2022-02-28T12:23:10+08:00">2022-02-28</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-03-01 08:51:44" itemprop="dateModified" datetime="2022-03-01T08:51:44+08:00">2022-03-01</time>
+      </span>
 
   
 </div>
@@ -761,17 +806,32 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>#脚本执行顺序 第一层顺序：先执行所有脚本的Awake 再执行左右脚本的OnEnable 再执行所有脚本的Start 第二层顺序：选中脚本在检查器中找执行顺序，添加需要脚本，设定执行参数，越小越前</p>
-<p>#方法介绍 <strong>1.Awake</strong> 用于在游戏开始之前初始化变量或游戏状态。在脚本整个生命周期内它仅被调用一次.Awake在所有对象被初始化之后调用，所以你可以安全的与其他对象对话或用诸如GameObject.FindWithTag()这样的函数搜索它们。每个游戏物体上的Awake以随机的顺序被调用。因此，你应该用Awake来设置脚本间的引用，并用Start来传递信息Awake总是在Start之前被调用。它不能用来执行协同程序。</p>
-<p><strong>2.Start</strong> 仅在Update函数第一次被调用前调用。Start在behaviour的生命周期中只被调用一次。它和Awake的不同是Start只在脚本实例被启用时调用。你可以按需调整延迟初始化代码。Awake总是在Start之前执行。这允许你协调初始化顺序。在所有脚本实例中，Start函数总是在Awake函数之后调用。</p>
-<p><strong>3.FixedUpdate</strong> 固定帧更新，在Unity导航菜单栏中，点击“Edit”--&gt;“Project Setting”--&gt;“Time”菜单项后，右侧的Inspector视图将弹出时间管理器，其中“Fixed Timestep”选项用于设置FixedUpdate()的更新频率，更新频率默认为0.02s。</p>
-<p><strong>4.Update</strong> 正常帧更新，用于更新逻辑。每一帧都执行，处理Rigidbody时，需要用FixedUpdate代替Update。例如:给刚体加一个作用力时，你必须应用作用力在FixedUpdate里的固定帧，而不是Update中的帧。(两者帧长不同)FixedUpdate，每固定帧绘制时执行一次，和update不同的是FixedUpdate是渲染帧执行，如果你的渲染效率低下的时候FixedUpdate调用次数就会跟着下降。FixedUpdate比较适用于物理引擎的计算，因为是跟每帧渲染有关。Update就比较适合做控制。 Update()与FixedUpdate()的区别 从字面上理解，它们都是在更新时会被调用，并且会循环的调用。但是Update会在每次渲 染新的一帧时，被调用。而FixedUpdate会在每个固定的时间间隔被调用，那么要是Update 和FixedUpdate的时间间隔一样，是不是就一样呢？答案是不一定，因为Update受当前渲染的物体，更确切的说是三角形的数量影响，有时快有时 慢，帧率会变化，update被调用的时间间隔就发生变化。但是FixedUpdate则不受帧率的变化，它是以固定的时间间隔来被调用，那么这个时间间 隔怎么设置呢？Edit-&gt;Project Setting-&gt;time下面的Fixed timestep。</p>
-<p><strong>5.LateUpdate</strong> 在所有Update函数调用后被调用，和fixedupdate一样都是每一帧都被调用执行，这可用于调整脚本执行顺序。例如:当物体在Update里移动时，跟随物体的相机可以在LateUpdate里实现。LateUpdate,在每帧Update执行完毕调用，他是在所有update结束后才调用，比较适合用于命令脚本的执行。官网上例子是摄像机的跟随，都是在所有update操作完才跟进摄像机，不然就有可能出现摄像机已经推进了，但是视角里还未有角色的空帧出现。 Update和LateUpdate的区别 在圣典里LateUpdate被解释成一句话,LateUpdate是在所有Update函数调用后被调用。这可用于调整脚本执行顺序。例如:当物体在Update里移动时，跟随物体的相机可以在LateUpdate里实现。 LateUpdate是晚于所有Update执行的。例如：游戏中有2个脚本，脚本1含有Update和LateUpdate，脚本2含有Update，那么当游戏执行时，每一帧都是把2个脚本中的Update执行完后才执行LateUpdate 。虽然是在同一帧中执行的，但是Update会先执行，LateUpdate会晚执行。 现在假设有2个不同的脚本同时在Update中控制一个物体，那么当其中一个脚本改变物体方位、旋转或者其他参数时，另一个脚步也在改变这些东西，那么这个物体的方位、旋转就会出现一定的反复。如果还有个物体在Update中跟随这个物体移动、旋转的话，那跟随的物体就会出现抖动。 如果是在LateUpdate中跟随的话就会只跟随所有Update执行完后的最后位置、旋转，这样就防止了抖动。</p>
-<p><strong>6.OnGUI</strong> 在渲染和处理GUI事件时调用。比如：你画一个button或label时常常用到它。这意味着OnGUI也是每帧执行一次。</p>
-<p><strong>7.Reset</strong> 在用户点击检视面板的Reset按钮或者首次添加该组件时被调用。此函数只在编辑模式下被调用。Reset最常用于在检视面板中给定一个默认值。</p>
-<p><strong>8.OnDisable</strong> 当物体被销毁时 OnDisable将被调用，并且可用于任意清理代码。脚本被卸载时，OnDisable将被调用，OnEnable在脚本被载入后调用。注意： OnDisable不能用于协同程序。</p>
-<p><strong>9.OnDestroy</strong> 当MonoBehaviour将被销毁时，这个函数被调用。OnDestroy只会在预先已经被激活的游戏物体上被调用。注意：OnDestroy也不能用于协同程序。</p>
-<p>#注意：</p>
+          <h1 id="脚本执行顺序">脚本执行顺序</h1>
+<p>第一层顺序：先执行所有脚本的Awake 再执行左右脚本的OnEnable 再执行所有脚本的Start<br>
+第二层顺序：选中脚本在检查器中找执行顺序，添加需要脚本，设定执行参数，越小越前</p>
+<h1 id="方法介绍">方法介绍</h1>
+<p><strong>1.Awake</strong><br>
+用于在游戏开始之前初始化变量或游戏状态。在脚本整个生命周期内它仅被调用一次.Awake在所有对象被初始化之后调用，所以你可以安全的与其他对象对话或用诸如GameObject.FindWithTag()这样的函数搜索它们。每个游戏物体上的Awake以随机的顺序被调用。因此，你应该用Awake来设置脚本间的引用，并用Start来传递信息Awake总是在Start之前被调用。它不能用来执行协同程序。</p>
+<p><strong>2.Start</strong><br>
+仅在Update函数第一次被调用前调用。Start在behaviour的生命周期中只被调用一次。它和Awake的不同是Start只在脚本实例被启用时调用。你可以按需调整延迟初始化代码。Awake总是在Start之前执行。这允许你协调初始化顺序。在所有脚本实例中，Start函数总是在Awake函数之后调用。</p>
+<p><strong>3.FixedUpdate</strong><br>
+固定帧更新，在Unity导航菜单栏中，点击“Edit”--&gt;“Project Setting”--&gt;“Time”菜单项后，右侧的Inspector视图将弹出时间管理器，其中“Fixed Timestep”选项用于设置FixedUpdate()的更新频率，更新频率默认为0.02s。</p>
+<p><strong>4.Update</strong><br>
+正常帧更新，用于更新逻辑。每一帧都执行，处理Rigidbody时，需要用FixedUpdate代替Update。例如:给刚体加一个作用力时，你必须应用作用力在FixedUpdate里的固定帧，而不是Update中的帧。(两者帧长不同)FixedUpdate，每固定帧绘制时执行一次，和update不同的是FixedUpdate是渲染帧执行，如果你的渲染效率低下的时候FixedUpdate调用次数就会跟着下降。FixedUpdate比较适用于物理引擎的计算，因为是跟每帧渲染有关。Update就比较适合做控制。 Update()与FixedUpdate()的区别<br>
+从字面上理解，它们都是在更新时会被调用，并且会循环的调用。但是Update会在每次渲 染新的一帧时，被调用。而FixedUpdate会在每个固定的时间间隔被调用，那么要是Update 和FixedUpdate的时间间隔一样，是不是就一样呢？答案是不一定，因为Update受当前渲染的物体，更确切的说是三角形的数量影响，有时快有时 慢，帧率会变化，update被调用的时间间隔就发生变化。但是FixedUpdate则不受帧率的变化，它是以固定的时间间隔来被调用，那么这个时间间 隔怎么设置呢？Edit-&gt;Project Setting-&gt;time下面的Fixed timestep。</p>
+<p><strong>5.LateUpdate</strong><br>
+在所有Update函数调用后被调用，和fixedupdate一样都是每一帧都被调用执行，这可用于调整脚本执行顺序。例如:当物体在Update里移动时，跟随物体的相机可以在LateUpdate里实现。LateUpdate,在每帧Update执行完毕调用，他是在所有update结束后才调用，比较适合用于命令脚本的执行。官网上例子是摄像机的跟随，都是在所有update操作完才跟进摄像机，不然就有可能出现摄像机已经推进了，但是视角里还未有角色的空帧出现。 Update和LateUpdate的区别<br>
+在圣典里LateUpdate被解释成一句话,LateUpdate是在所有Update函数调用后被调用。这可用于调整脚本执行顺序。例如:当物体在Update里移动时，跟随物体的相机可以在LateUpdate里实现。<br>
+LateUpdate是晚于所有Update执行的。例如：游戏中有2个脚本，脚本1含有Update和LateUpdate，脚本2含有Update，那么当游戏执行时，每一帧都是把2个脚本中的Update执行完后才执行LateUpdate 。虽然是在同一帧中执行的，但是Update会先执行，LateUpdate会晚执行。 现在假设有2个不同的脚本同时在Update中控制一个物体，那么当其中一个脚本改变物体方位、旋转或者其他参数时，另一个脚步也在改变这些东西，那么这个物体的方位、旋转就会出现一定的反复。如果还有个物体在Update中跟随这个物体移动、旋转的话，那跟随的物体就会出现抖动。 如果是在LateUpdate中跟随的话就会只跟随所有Update执行完后的最后位置、旋转，这样就防止了抖动。</p>
+<p><strong>6.OnGUI</strong><br>
+在渲染和处理GUI事件时调用。比如：你画一个button或label时常常用到它。这意味着OnGUI也是每帧执行一次。</p>
+<p><strong>7.Reset</strong><br>
+在用户点击检视面板的Reset按钮或者首次添加该组件时被调用。此函数只在编辑模式下被调用。Reset最常用于在检视面板中给定一个默认值。</p>
+<p><strong>8.OnDisable</strong><br>
+当物体被销毁时 OnDisable将被调用，并且可用于任意清理代码。脚本被卸载时，OnDisable将被调用，OnEnable在脚本被载入后调用。注意： OnDisable不能用于协同程序。</p>
+<p><strong>9.OnDestroy</strong><br>
+当MonoBehaviour将被销毁时，这个函数被调用。OnDestroy只会在预先已经被激活的游戏物体上被调用。注意：OnDestroy也不能用于协同程序。</p>
+<h1 id="注意">注意：</h1>
 <p>1.Awake() 2.OnEnable() 3.Start()</p>
 <p>比较，当脚本组件被禁用时：只有Awake()会被调用。</p>
 <p>Start()只会调用一次</p>
@@ -944,7 +1004,7 @@
 
 
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 </div>
