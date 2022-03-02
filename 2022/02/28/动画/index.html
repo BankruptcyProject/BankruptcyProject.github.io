@@ -28,7 +28,7 @@
 <meta property="og:description" content="选中一个对象，创建一个动画片段，然后引擎会在对象上自动创建一个动画状态机 制作动画 一般会有一个默认动画idle 打开动画器制作不同动画之间的关系 左侧参数中可以增加参数，右侧Transitions中可以增加动画之间的变换，conditions可以让变化联系参数。 脚本中响应设置： 12345public Animator anim;anim &#x3D; GetComponent&lt;Animato">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-02-28T08:27:51.000Z">
-<meta property="article:modified_time" content="2022-02-28T09:18:00.924Z">
+<meta property="article:modified_time" content="2022-03-01T13:46:47.876Z">
 <meta property="article:author" content="甜药补习班吊尾生">
 <meta property="article:tag" content="unity">
 <meta name="twitter:card" content="summary">
@@ -95,7 +95,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -108,6 +108,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A8%E7%94%BB%E4%BA%8B%E4%BB%B6"><span class="nav-number">1.</span> <span class="nav-text">动画事件</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -190,10 +191,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2022-02-28 16:27:51 / Modified: 17:18:00" itemprop="dateCreated datePublished" datetime="2022-02-28T16:27:51+08:00">2022-02-28</time>
+      <time title="Created: 2022-02-28 16:27:51" itemprop="dateCreated datePublished" datetime="2022-02-28T16:27:51+08:00">2022-02-28</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-03-01 21:46:47" itemprop="dateModified" datetime="2022-03-01T21:46:47+08:00">2022-03-01</time>
+      </span>
 
   
 </div>
@@ -209,6 +216,9 @@
 <p>制作动画 一般会有一个默认动画idle</p>
 <p>打开动画器制作不同动画之间的关系 左侧参数中可以增加参数，右侧Transitions中可以增加动画之间的变换，conditions可以让变化联系参数。 脚本中响应设置： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public Animator anim;</span><br><span class="line">anim = GetComponent&lt;Animator&gt;();</span><br><span class="line">anim.SetInteger(&quot;vertical&quot;, vertical);</span><br><span class="line">anim.SetInteger(&quot;horizontal&quot;, horizontal);</span><br><span class="line">//该例子中参数为vertical</span><br></pre></td></tr></table></figure> 右侧参数包括动画之间切换的连贯性</p>
 <p>注： Unity animation三角播放按钮灰色，无法点击播放怎么办？ 需要选中角色, 或者动画所对应的GameObject,才可以点击播放按钮</p>
+<h1 id="动画事件">动画事件</h1>
+<p>在引擎的动画界面，可以在某一帧中添加事件（一个函数），当动画播放到这一帧的时候会调用这个函数</p>
+<p>或者在脚本中添加事件，例子： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Animator anim = GetComponent&lt;Animator&gt;();</span><br><span class="line">AnimatorStateInfo info = anim.GetCurrentAnimatorStateInfo(0);</span><br><span class="line">//获取动画器中的信息，0代表着某个动画层</span><br><span class="line">if (info.IsName(&quot;xxxx&quot;) &amp;&amp;info.normalizedTime &gt;= 1)</span><br><span class="line">&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">//判断动画名字，和动画是否播完（normalizedTime中0为开始1为结束）</span><br></pre></td></tr></table></figure></p>
 
     </div>
 

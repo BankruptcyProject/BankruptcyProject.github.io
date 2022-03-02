@@ -1050,7 +1050,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-02-28 16:27:53" itemprop="dateModified" datetime="2022-02-28T16:27:53+08:00">2022-02-28</time>
+        <time title="Modified: 2022-03-01 22:11:29" itemprop="dateModified" datetime="2022-03-01T22:11:29+08:00">2022-03-01</time>
       </span>
 
   
@@ -1132,6 +1132,7 @@ transform.forward 代表某物体的x，y，z轴的指向 这3个都是标准向
 <p>bullet = Instantiate(myPrefab, transform.position, transform.rotation)</p>
 <p>bullet = Instantiate(myPrefab, position, rotation, Transform parent)</p>
 <p>创建一个实例，挂载 parent 节点下，同时指定 position与rotation</p>
+<p>实例化一个对象后可以重命名它</p>
 <h4 id="实例销毁">实例销毁</h4>
 <p>例子，当子弹飞出视野之后，销毁实例</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Vector3 sp = Camera.main.WorldToScreenPoint(transform.position);</span><br><span class="line">if (sp.y &gt; Screen.height)</span><br><span class="line">&#123;</span><br><span class="line">    GameObject.Destory(gameObject);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>

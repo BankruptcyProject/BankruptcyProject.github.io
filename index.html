@@ -384,10 +384,16 @@ StopCoroutine(StopIE);</p>
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2022-02-28 16:27:51 / Modified: 17:18:00" itemprop="dateCreated datePublished" datetime="2022-02-28T16:27:51+08:00">2022-02-28</time>
+      <time title="Created: 2022-02-28 16:27:51" itemprop="dateCreated datePublished" datetime="2022-02-28T16:27:51+08:00">2022-02-28</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-03-01 21:46:47" itemprop="dateModified" datetime="2022-03-01T21:46:47+08:00">2022-03-01</time>
+      </span>
 
   
 </div>
@@ -403,6 +409,9 @@ StopCoroutine(StopIE);</p>
 <p>制作动画 一般会有一个默认动画idle</p>
 <p>打开动画器制作不同动画之间的关系 左侧参数中可以增加参数，右侧Transitions中可以增加动画之间的变换，conditions可以让变化联系参数。 脚本中响应设置： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public Animator anim;</span><br><span class="line">anim = GetComponent&lt;Animator&gt;();</span><br><span class="line">anim.SetInteger(&quot;vertical&quot;, vertical);</span><br><span class="line">anim.SetInteger(&quot;horizontal&quot;, horizontal);</span><br><span class="line">//该例子中参数为vertical</span><br></pre></td></tr></table></figure> 右侧参数包括动画之间切换的连贯性</p>
 <p>注： Unity animation三角播放按钮灰色，无法点击播放怎么办？ 需要选中角色, 或者动画所对应的GameObject,才可以点击播放按钮</p>
+<h1 id="动画事件">动画事件</h1>
+<p>在引擎的动画界面，可以在某一帧中添加事件（一个函数），当动画播放到这一帧的时候会调用这个函数</p>
+<p>或者在脚本中添加事件，例子： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Animator anim = GetComponent&lt;Animator&gt;();</span><br><span class="line">AnimatorStateInfo info = anim.GetCurrentAnimatorStateInfo(0);</span><br><span class="line">//获取动画器中的信息，0代表着某个动画层</span><br><span class="line">if (info.IsName(&quot;xxxx&quot;) &amp;&amp;info.normalizedTime &gt;= 1)</span><br><span class="line">&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">//判断动画名字，和动画是否播完（normalizedTime中0为开始1为结束）</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -638,10 +647,16 @@ StopCoroutine(StopIE);</p>
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2022-02-28 13:52:17 / Modified: 16:20:35" itemprop="dateCreated datePublished" datetime="2022-02-28T13:52:17+08:00">2022-02-28</time>
+      <time title="Created: 2022-02-28 13:52:17" itemprop="dateCreated datePublished" datetime="2022-02-28T13:52:17+08:00">2022-02-28</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-03-02 18:44:03" itemprop="dateModified" datetime="2022-03-02T18:44:03+08:00">2022-03-02</time>
+      </span>
 
   
 </div>
@@ -654,13 +669,24 @@ StopCoroutine(StopIE);</p>
     
     <div class="post-body" itemprop="articleBody">
           <h1 id="库">库</h1>
-<p>using UnityEngine.UI using UnityEngine.Scenemanagement</p>
+<p>using UnityEngine.UI<br>
+using UnityEngine.Scenemanagement</p>
 <h1 id="场景切换">场景切换</h1>
-<p>在文件夹中创建多个场景，在生成设置中调整加载场景顺序 SceneManager.LoadScene(1);或 SceneManager.LoadScene("main"); //1是某个场景在生成设置中的代号</p>
+<p>在文件夹中创建多个场景，在生成设置中调整加载场景顺序<br>
+SceneManager.LoadScene(1);或<br>
+SceneManager.LoadScene("main");<br>
+//1是某个场景在生成设置中的代号</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">public class SceneStart : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    public Button btn_start, btn_end, btn_change;</span><br><span class="line">    public void Awake()</span><br><span class="line">    &#123;</span><br><span class="line">        btn_start.onClick.AddListener(() =&gt;</span><br><span class="line">        &#123;</span><br><span class="line">            SceneManager.LoadScene(&quot;main&quot;);</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        btn_change.onClick.AddListener(() =&gt;</span><br><span class="line">        &#123;</span><br><span class="line">            SceneManager.LoadScene(&quot;Change&quot;);</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        btn_end.onClick.AddListener(() =&gt;</span><br><span class="line">        &#123;       </span><br><span class="line">            #if UNITY_EDITOR</span><br><span class="line">                UnityEditor.EditorApplication.isPlaying = false;</span><br><span class="line">            #else</span><br><span class="line">                Application.Quit();</span><br><span class="line">            #endif</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="场景间数据保存">场景间数据保存</h1>
 <p>一个专门存放数据的空节点挂在一个Data脚本，该脚本存放需要在场景间生存的变量。其余脚本会从该脚本读取变量使用。</p>
-<p>首先，从一个场景A切换到另一个场景B，会导致场景A下的所有节点被销毁。但挂有 GameObject.DontDestroyOnLoad(gameObject); 属性的节点（此处成为节点G）在场景A被销毁后，会在下一个场景重生。 问题来了，当场景B切回场景A时，A场景创建时自带一个节点G，同时从场景B中会再重生一个节点G，于是就有了两个节点G。</p>
-<p>如何解决： 在场景A创建一个初始化脚本init，脚本中写一个全局静态变量public static bool isAlready = false; init脚本中创建所有变量并初始化，data脚本从init获取变量，随后将isAlready置真 例： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class Init : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    //</span><br><span class="line">    public static bool initAlready;</span><br><span class="line">    void Awake()</span><br><span class="line">    &#123;</span><br><span class="line">        if (!initAlready)</span><br><span class="line">        &#123;</span><br><span class="line">            //</span><br><span class="line">            initAlready = true;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class Data : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    public static bool isAlready;</span><br><span class="line">    //</span><br><span class="line">    void Start()</span><br><span class="line">    &#123;</span><br><span class="line">        if (!isAlready)</span><br><span class="line">        &#123;</span><br><span class="line">            map = GameObject.Find(&quot;Gamecontrol&quot;).GetComponent&lt;Init&gt;().map;</span><br><span class="line">            GameObject.DontDestroyOnLoad(gameObject);</span><br><span class="line">            isAlready = true;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>首先，从一个场景A切换到另一个场景B，会导致场景A下的所有节点被销毁。但挂有<br>
+GameObject.DontDestroyOnLoad(gameObject);<br>
+属性的节点（此处成为节点G）在场景A被销毁后，会在下一个场景重生。<br>
+问题来了，当场景B切回场景A时，A场景创建时自带一个节点G，同时从场景B中会再重生一个节点G，于是就有了两个节点G。</p>
+<p>如何解决： 在场景A创建一个初始化脚本init，脚本中写一个全局静态变量public static bool isAlready = false;<br>
+init脚本中创建所有变量并初始化，data脚本从init获取变量，随后将isAlready置真 例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class Init : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    //</span><br><span class="line">    public static bool initAlready;</span><br><span class="line">    void Awake()</span><br><span class="line">    &#123;</span><br><span class="line">        if (!initAlready)</span><br><span class="line">        &#123;</span><br><span class="line">            //</span><br><span class="line">            initAlready = true;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class Data : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    public static bool isAlready;</span><br><span class="line">    //</span><br><span class="line">    void Start()</span><br><span class="line">    &#123;</span><br><span class="line">        if (!isAlready)</span><br><span class="line">        &#123;</span><br><span class="line">            map = GameObject.Find(&quot;Gamecontrol&quot;).GetComponent&lt;Init&gt;().map;</span><br><span class="line">            GameObject.DontDestroyOnLoad(gameObject);</span><br><span class="line">            isAlready = true;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="退出游戏">退出游戏</h1>
 <p>在unity编辑界面实现退出游戏 调用这个 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">  void QuitGame()</span><br><span class="line">  &#123;</span><br><span class="line">#if UNITY_EDITOR</span><br><span class="line">      	UnityEditor.EditorApplication.isPlaying = false;</span><br><span class="line">#else</span><br><span class="line">          Application.Quit();</span><br><span class="line">#endif</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
 
@@ -893,7 +919,7 @@ LateUpdate是晚于所有Update执行的。例如：游戏中有2个脚本，脚
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-02-28 12:19:48" itemprop="dateModified" datetime="2022-02-28T12:19:48+08:00">2022-02-28</time>
+        <time title="Modified: 2022-03-02 18:40:10" itemprop="dateModified" datetime="2022-03-02T18:40:10+08:00">2022-03-02</time>
       </span>
 
   
@@ -908,9 +934,22 @@ LateUpdate是晚于所有Update执行的。例如：游戏中有2个脚本，脚
     <div class="post-body" itemprop="articleBody">
           <p>添加Canvas画布，用于摆放所有的GUI元素</p>
 <p>Canvas和eventsystem系统配合使用</p>
-<p>修改Canvas参数： 渲染模式：摄像机。还有其余的渲染模式 渲染摄像机 平面距离摄像机距离</p>
-<p>Canvas节点下添加ui元素 rect transform（transform的子类） 相对中心点的位置，单位：像素 相对中心点可修改，选已有的模板，或者修改Anchors image：填充模式九宫格边角美化：在素材中sprite editor 改出九宫格 按钮自定义按下特性：将transition改为图片切换模式 文本输入框 面板panel，人称小画布（Canvas）</p>
-<p>using Unityengine.UI; InputField类型变量获取文本输入框内容，string sj = be.text on click()下添加方法 图片转按钮：挂载脚本，脚本：创建方法继承已有的类：</p>
+<p>修改Canvas参数：<br>
+渲染模式：摄像机。还有其余的渲染模式<br>
+渲染摄像机<br>
+平面距离摄像机距离</p>
+<p>Canvas节点下添加ui元素<br>
+rect transform（transform的子类）<br>
+相对中心点的位置，单位：像素<br>
+相对中心点可修改，选已有的模板，或者修改Anchors<br>
+image：填充模式九宫格边角美化：在素材中sprite editor 改出九宫格<br>
+按钮自定义按下特性：将transition改为图片切换模式<br>
+文本输入框<br>
+面板panel，人称小画布（Canvas）</p>
+<p>using Unityengine.UI;<br>
+InputField类型变量获取文本输入框内容，string sj = be.text<br>
+on click()下添加方法<br>
+图片转按钮：挂载脚本，脚本：创建方法继承已有的类：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">using UnityEngine;</span><br><span class="line">using UnityEngine.EventSystems;</span><br><span class="line"></span><br><span class="line">public class OkButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler</span><br><span class="line">&#123;</span><br><span class="line">    public void OnPointerDown(PointerEventData eventData)</span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log(&quot;鼠标按下...&quot;);</span><br><span class="line">        transform.localScale = new Vector3(1.05f, 1.05f, 1.05f);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void OnPointerUp(PointerEventData eventData)</span><br><span class="line">    &#123;</span><br><span class="line">        transform.localScale = new Vector3(1, 1, 1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//点击放大一下，打印日志</span><br><span class="line">//机制：射线投射器和射线接收器</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/** 事件列表</span><br><span class="line">IPointerEnterHandler - OnPointerEnter - Called when a pointer enters the object</span><br><span class="line">IPointerExitHandler - OnPointerExit - Called when a pointer exits the object</span><br><span class="line">IPointerDownHandler - OnPointerDown - Called when a pointer is pressed on the object</span><br><span class="line">IPointerUpHandler - OnPointerUp - Called when a pointer is released (called on the GameObject that the pointer is clicking)</span><br><span class="line">IPointerClickHandler - OnPointerClick - Called when a pointer is pressed and released on the same object</span><br><span class="line">IInitializePotentialDragHandler - OnInitializePotentialDrag - Called when a drag target is found, can be used to initialise values</span><br><span class="line">IBeginDragHandler - OnBeginDrag - Called on the drag object when dragging is about to begin</span><br><span class="line">IDragHandler - OnDrag - Called on the drag object when a drag is happening</span><br><span class="line">IEndDragHandler - OnEndDrag - Called on the drag object when a drag finishes</span><br><span class="line">IDropHandler - OnDrop - Called on the object where a drag finishes</span><br><span class="line">IScrollHandler - OnScroll - Called when a mouse wheel scrolls</span><br><span class="line">IUpdateSelectedHandler - OnUpdateSelected - Called on the selected object each tick</span><br><span class="line">ISelectHandler - OnSelect - Called when the object becomes the selected object</span><br><span class="line">IDeselectHandler - OnDeselect - Called on the selected object becomes deselected</span><br><span class="line">IMoveHandler - OnMove - Called when a move event occurs (left, right, up, down, ect)</span><br><span class="line">ISubmitHandler - OnSubmit - Called when the submit button is pressed</span><br><span class="line">ICancelHandler - OnCancel - Called when the cancel button is pressed</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
 
       
