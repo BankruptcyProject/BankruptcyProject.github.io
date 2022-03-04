@@ -20,13 +20,15 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="地形（Terrian） 创建相邻地形 地形设置 像素误差 投影阴影 树距离 速度 地形长宽高 地形刷 Raise or Lower Terrain（抬高或降低地形），点击左键不放并移动抬高地形，降低不透明度以减少抬高速度，同时按下Shift降低地形 Paint Holes（绘制坑洞）拆除被笼罩的网格 Paint Texture（绘制纹理），使用不同的地形层绘制不同的纹理 ，漫反射中规">
 <meta property="og:type" content="article">
 <meta property="og:title" content="地形">
 <meta property="og:url" content="http://example.com/2022/03/04/%E5%9C%B0%E5%BD%A2/index.html">
 <meta property="og:site_name" content="划水骗分二十年，没人比我更懂蒻">
+<meta property="og:description" content="地形（Terrian） 创建相邻地形 地形设置 像素误差 投影阴影 树距离 速度 地形长宽高 地形刷 Raise or Lower Terrain（抬高或降低地形），点击左键不放并移动抬高地形，降低不透明度以减少抬高速度，同时按下Shift降低地形 Paint Holes（绘制坑洞）拆除被笼罩的网格 Paint Texture（绘制纹理），使用不同的地形层绘制不同的纹理 ，漫反射中规">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-03-03T16:02:22.000Z">
-<meta property="article:modified_time" content="2022-03-03T16:10:10.923Z">
+<meta property="article:modified_time" content="2022-03-04T09:44:03.538Z">
 <meta property="article:author" content="甜药补习班吊尾生">
 <meta property="article:tag" content="unity">
 <meta name="twitter:card" content="summary">
@@ -93,7 +95,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -106,6 +108,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9C%B0%E5%BD%A2terrian"><span class="nav-number">1.</span> <span class="nav-text">地形（Terrian）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E7%9B%B8%E9%82%BB%E5%9C%B0%E5%BD%A2"><span class="nav-number">1.0.1.</span> <span class="nav-text">创建相邻地形</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%B0%E5%BD%A2%E8%AE%BE%E7%BD%AE"><span class="nav-number">1.0.2.</span> <span class="nav-text">地形设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%B0%E5%BD%A2%E5%88%B7"><span class="nav-number">1.0.3.</span> <span class="nav-text">地形刷</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%91"><span class="nav-number">1.0.4.</span> <span class="nav-text">树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8D%89"><span class="nav-number">1.0.5.</span> <span class="nav-text">草</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B0%B4"><span class="nav-number">1.0.6.</span> <span class="nav-text">水</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -190,7 +193,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2022-03-04 00:02:22 / Modified: 00:10:10" itemprop="dateCreated datePublished" datetime="2022-03-04T00:02:22+08:00">2022-03-04</time>
+      <time title="Created: 2022-03-04 00:02:22 / Modified: 17:44:03" itemprop="dateCreated datePublished" datetime="2022-03-04T00:02:22+08:00">2022-03-04</time>
     </span>
 
   
@@ -203,7 +206,25 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        
+        <h1 id="地形terrian">地形（Terrian）</h1>
+<h3 id="创建相邻地形">创建相邻地形</h3>
+<h3 id="地形设置">地形设置</h3>
+<p>像素误差 投影阴影 树距离 速度 地形长宽高</p>
+<h3 id="地形刷">地形刷</h3>
+<p><strong>Raise or Lower Terrain（抬高或降低地形）</strong>，点击左键不放并移动抬高地形，降低不透明度以减少抬高速度，同时按下Shift降低地形<br>
+<strong>Paint Holes（绘制坑洞）</strong>拆除被笼罩的网格<br>
+<strong>Paint Texture（绘制纹理）</strong>，使用不同的地形层绘制不同的纹理 ，漫反射中规定纹理的重复模式<br>
+<strong>Set Height（设置高度）</strong>主要用于调整地形高度，一般初始时使用。”展平瓦片“可将该高度应用于当前地形，“全部展平”可将该高度应用于相邻地形 <strong>Smooth Height（平滑处理）</strong><br>
+<strong>Stamp Terrain（图章操作）</strong></p>
+<h3 id="树">树</h3>
+<p>树本质上是3D预制体的批量随机生成，可定义随机高度、宽度范围，可定义随机宽度。</p>
+<p>Bend Factor（树木弯曲因子）：该参数会受风力的影响</p>
+<h3 id="草">草</h3>
+<p>草本质上是2D黑白纹理图片，可定义颜色，高度，密度，随机范围等等参数</p>
+<p>注意：放置草或树时很容易造成密度过大（某个小区域内对象过多），此时引擎会给出警告并强行删除一部分树木</p>
+<h3 id="水">水</h3>
+<p>水本质上是预制体，更准确的来讲，只是（2D）一片动态的图。</p>
+<p>将这层图放在一个坑上，达到视觉上的水坑的效果</p>
 
     </div>
 
