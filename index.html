@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">66</span>
+          <span class="site-state-item-count">67</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -220,6 +220,95 @@
 <center>
 <font size="72">"我都该死” </font>
 </center>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/06/%E7%B2%92%E5%AD%90%E7%B3%BB%E7%BB%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="甜药补习班吊尾生">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/03/06/%E7%B2%92%E5%AD%90%E7%B3%BB%E7%BB%9F/" class="post-title-link" itemprop="url">粒子系统</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-03-06 01:26:56 / Modified: 16:13:06" itemprop="dateCreated datePublished" datetime="2022-03-06T01:26:56+08:00">2022-03-06</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><strong>粒子系统</strong>由<strong>粒子</strong>和<strong>发射器</strong>组成，发射器创建并发射粒子</p>
+<p><strong>粒子系统</strong>参数如下：<br>
+持续时间（一个周期时间）<br>
+是否循环<br>
+是否预热<br>
+启动延迟（和循环、预热不能同时用）<br>
+生命周期（总时间）<br>
+起始速度（粒子）<br>
+起始大小（粒子）<br>
+开始旋转（粒子起始角度）<br>
+翻转旋转（其中的负起始角度比例（0~1））<br>
+起始颜色<br>
+重力修改器<br>
+模拟空间（相对坐标（世界或局部））<br>
+模拟速度（播放速度）<br>
+时间差（是否受timescale影响）<br>
+是否唤醒是播放<br>
+发射器速度（发射器移动方式rig或trans）<br>
+最大粒子（最多发射多少粒子数目）<br>
+是否随机（每次播放效果不同）<br>
+停止行动（播放完后是否会销毁自身对象）<br>
+剔除模式（粒子不在视野内的行动模式）</p>
+<p><strong>发射器</strong> 在发射模块中<br>
+随单位时间产生的粒子数 随移动距离产生的粒子数（发射器移动） 突发</p>
+<p><strong>发射形状</strong> 在形状模块中，例如锥形</p>
 
       
     </div>
@@ -1018,205 +1107,6 @@ StopCoroutine(StopIE);</p>
 <h1 id="动画事件">动画事件</h1>
 <p>在引擎的动画界面，可以在某一帧中添加事件（一个函数），当动画播放到这一帧的时候会调用这个函数</p>
 <p>或者在脚本中添加事件，例子： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Animator anim = GetComponent&lt;Animator&gt;();</span><br><span class="line">AnimatorStateInfo info = anim.GetCurrentAnimatorStateInfo(0);</span><br><span class="line">//获取动画器中的信息，0代表着某个动画层</span><br><span class="line">if (info.IsName(&quot;xxxx&quot;) &amp;&amp;info.normalizedTime &gt;= 1)</span><br><span class="line">&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">//判断动画名字，和动画是否播完（normalizedTime中0为开始1为结束）</span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/28/%E7%89%A9%E7%90%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="甜药补习班吊尾生">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/02/28/%E7%89%A9%E7%90%86/" class="post-title-link" itemprop="url">物理</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-02-28 16:21:55" itemprop="dateCreated datePublished" datetime="2022-02-28T16:21:55+08:00">2022-02-28</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-03-06 00:00:28" itemprop="dateModified" datetime="2022-03-06T00:00:28+08:00">2022-03-06</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="刚体">刚体</h1>
-<p>在组件里可添加物理组件</p>
-<p><strong>刚体</strong>有3种类型</p>
-<table>
-<tbody>
-<tr class="odd">
-<td>Dinamic</td>
-<td>普通刚体</td>
-<td>有质量有速度</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Static</td>
-<td>静态刚体</td>
-<td>质量无穷大、无速度</td>
-<td>适用于建筑物、地面等固定不动的物体</td>
-</tr>
-<tr class="odd">
-<td>Kinematic</td>
-<td>运动学刚体</td>
-<td>无质量</td>
-<td>忽略物理规律的刚体，一般用于检测</td>
-</tr>
-</tbody>
-</table>
-<p>阻力和角阻力：设置的是空气阻力</p>
-<p>插值：根据上一帧的变化进行插值</p>
-<p>外推：根据下一帧的变化进行插值</p>
-<p>碰撞检测：离散的（节省性能，但可能穿墙），连续（性能消耗大，一般让墙体设置），连续动态（性能消耗大，一般让高速物体设置）</p>
-<p>Constraints（冻结）：冻结物体某个轴向的旋转</p>
-<table>
-<thead>
-<tr class="header">
-<th>方法</th>
-<th>详解</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>position</td>
-<td>刚体的位置</td>
-</tr>
-<tr class="even">
-<td>rotation</td>
-<td>刚体的旋转</td>
-</tr>
-<tr class="odd">
-<td>velocity</td>
-<td>刚体的速度</td>
-</tr>
-<tr class="even">
-<td>AddForce</td>
-<td>向刚体添加一个力</td>
-</tr>
-<tr class="odd">
-<td>AddExplosionForce</td>
-<td>向模拟爆炸的刚体添加一个力</td>
-</tr>
-<tr class="even">
-<td>AddTorque</td>
-<td>向刚体添加一个扭矩</td>
-</tr>
-<tr class="odd">
-<td>MovePosition</td>
-<td>移动刚体</td>
-</tr>
-<tr class="even">
-<td>MoveRotation</td>
-<td>旋转刚体</td>
-</tr>
-<tr class="odd">
-<td>IsSleeping</td>
-<td>是否在休眠状态</td>
-</tr>
-<tr class="even">
-<td>Sleep</td>
-<td>让刚体进入至少一帧的休眠</td>
-</tr>
-<tr class="odd">
-<td>WakeUp</td>
-<td>唤醒刚体</td>
-</tr>
-</tbody>
-</table>
-<h1 id="碰撞">碰撞</h1>
-<p><strong>碰撞</strong>需要添加碰撞组件，碰撞组件和刚体组件一般一起出现，碰撞范围可编辑。（用边缘行碰撞组件可以设定多边形碰撞范围）<br>
-两个物体碰撞需要两个碰撞组件和其中至少一个刚体组件，从性能上考虑，一般设墙体等静态物体无刚体，运动物体有刚体组件</p>
-<p><strong>碰撞检测</strong>碰撞组件中有触发器，两个物体碰撞检测至少需要勾选其中一个的触发器。碰撞检测和碰撞，二者只能得其一</p>
-<p>脚本</p>
-<p>void OnTriggerEnter2D(Collider2D collision) { Debug.Log("飞机：探测到了碰撞 ... "); }</p>
-<p>碰撞事件回调，有三个：</p>
-<p>OnTriggerEnter2D ：两个碰撞体开始相遇</p>
-<p>OnTriggerStay2D ： 两个碰撞体接触中</p>
-<p>OnTriggerExit2D： 两个碰撞体分开</p>
-<p>碰撞事件的参数: Collider2D collision ，表示的是对方的碰撞体组件</p>
-<p>例如，</p>
-<p>collision.gameObject 对方</p>
-<p>collision.transform 对方的Transform组件</p>
-<p>collision.name 对方节点的名称</p>
-<p>collision.tag 对方节点的Tag</p>
-<p>在 OnTriggerEnter2D 中 ，Destroy(collision.gameObject) 销毁对象</p>
-<p>相应的回调名字：</p>
-<p>OnCollisionEnter ，OnCollisionStay ，OnCollisionExit</p>
-<h1 id="关节">关节</h1>
-<p><strong>铰链关节（Hinge Joint）</strong> 编辑角度限制（Edit Angular Limits），注意要先勾选“使用限制”（use Limits）<br>
-Connected Body，设置连接另一个刚体。注意：未设置则连接世界<br>
-Connected Articulation Body，设置连接另一个关节<br>
-Anchor（锚点）<br>
-轴：关节轴的方向<br>
-Spring：弹簧<br>
-Damper阻尼<br>
-Target Position（目标角度）：弹簧会朝目标角度变化<br>
-Use Motor（使用动力）<br>
-目标速度<br>
-Force（力）：为了达到目标速度而施加的力<br>
-Limits（限制）：限制角度范围<br>
-断开力/断开力矩：破坏此关节需要的数值</p>
-<p><strong>弹簧关节（Spring Joint）</strong> 与铰链关节差不多，但可以让两个刚体像粘在弹簧两端一样运动</p>
-<p><strong>固定关节</strong> 物理层面的实现父子级关系，而不需要关心其内部逻辑，同时可以设置一个阚值力使其分离</p>
-<h1 id="射线">射线</h1>
-<p><strong>射线碰撞检测</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Ray ray = Camera.main.ScreenPonitToRay(Input.mousePosition);</span><br><span class="line">//从屏幕（摄像机）某一点（鼠标的位置）向世界发射一条射线</span><br><span class="line"></span><br><span class="line">Ray ray2 = new Ray(Vector3.zero, Vector3.up);</span><br><span class="line">//创建一条射线，给出起点和方向，不包含距离</span><br><span class="line"></span><br><span class="line">RaycastHit hit;//一个射线碰撞信息类</span><br><span class="line">if (Physics.Raycast(ray, out hit))</span><br><span class="line">&#123;</span><br><span class="line">    Debug.Log(hit.point);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p><strong>射线多碰撞检测</strong> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">RaycastHit[] hits;</span><br><span class="line">Ray ray = Camera.main.ScreenPonitToRay(Input.mousePosition);</span><br><span class="line">hits = Physics.RaycastAll(ray);</span><br><span class="line">hits = Physics.RaycastAll(ray, 100);</span><br><span class="line">hits = Physics.RaycastAll(ray, 100, 1&lt;&lt;10);//只检测第十图层</span><br><span class="line">hits = Physics.RaycastAll(ray, 100, 0&lt;&lt;10);//忽略第十图层</span><br></pre></td></tr></table></figure></p>
-<h1 id="物理材质">物理材质</h1>
-<p>创建物理材质（物理材质2D）<br>
-修改摩擦力和弹力<br>
-将该物理材质拖入其他组件（例如碰撞组件或刚体组件）</p>
-<p>Dynamic Friction（动摩擦力）0~1<br>
-Static Friction（静摩擦力）0~1 Bounciness（弹力）0~1 Friction Combine（摩擦力组合） Bounce Combine（弹力组合）</p>
 
       
     </div>
