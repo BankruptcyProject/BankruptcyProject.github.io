@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-count">68</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -246,6 +246,75 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/06/%E7%BA%BF%E6%9D%A1%E6%95%88%E6%9E%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="甜药补习班吊尾生">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/03/06/%E7%BA%BF%E6%9D%A1%E6%95%88%E6%9E%9C/" class="post-title-link" itemprop="url">线条效果</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-03-06 16:52:54 / Modified: 18:08:47" itemprop="dateCreated datePublished" datetime="2022-03-06T16:52:54+08:00">2022-03-06</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="线段渲染器">线段渲染器</h1>
+<p>添加在层级，创建，游戏对象，效果中</p>
+<p>将线段渲染器加上脚本组件，使用脚本动态绘制线条： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">private LinRenderer lineRenderer;</span><br><span class="line">lineRenderer = GetComponent&lt;LineRenderer&gt;();</span><br><span class="line">lineRenderer.startColor = Color.red;</span><br><span class="line">lineRenderer.endColor = Color.blue;//起点和终点的颜色</span><br><span class="line">LineRenderer.startWidth = 1f;</span><br><span class="line">LineRenderer.endWidth = 0.5f;//起点和终点的宽度</span><br><span class="line">lineRenderer.positionCount = 3;//一共几个端点</span><br><span class="line">lineRenderer.SetPosition(0, Vector3.zero);</span><br><span class="line">lineRenderer.SetPosition(1, Vector3(10,0,0));</span><br><span class="line">lineRenderer.SetPosition(2, Vector3(10,10,0));</span><br></pre></td></tr></table></figure></p>
+<h1 id="拖尾渲染器">拖尾渲染器</h1>
+<p>在某个对象上添加Trail Renderer组件，在脚本上的使用和线段相似</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/06/%E7%B2%92%E5%AD%90%E7%B3%BB%E7%BB%9F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -271,7 +340,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2022-03-06 01:26:56 / Modified: 16:13:06" itemprop="dateCreated datePublished" datetime="2022-03-06T01:26:56+08:00">2022-03-06</time>
+      <time title="Created: 2022-03-06 01:26:56 / Modified: 16:41:22" itemprop="dateCreated datePublished" datetime="2022-03-06T01:26:56+08:00">2022-03-06</time>
     </span>
 
   
@@ -309,6 +378,9 @@
 <p><strong>发射器</strong> 在发射模块中<br>
 随单位时间产生的粒子数 随移动距离产生的粒子数（发射器移动） 突发</p>
 <p><strong>发射形状</strong> 在形状模块中，例如锥形</p>
+<p><strong>渲染</strong> 材质 排序 最大最小粒子的尺寸 阴影 图层ID 图层顺序</p>
+<p><strong>颜色</strong> 上标代表Alpha值，下标代表颜色值，双击增加新的颜色或Alpha</p>
+<p>还有粒子的大小旋转等等</p>
 
       
     </div>
@@ -1030,83 +1102,6 @@ StartCoroutine(StopIE);<br>
 &lt;4&gt;关闭协程<br>
 在这里同样<br>
 StopCoroutine(StopIE);</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/28/%E5%8A%A8%E7%94%BB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="甜药补习班吊尾生">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/02/28/%E5%8A%A8%E7%94%BB/" class="post-title-link" itemprop="url">动画</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-02-28 16:27:51" itemprop="dateCreated datePublished" datetime="2022-02-28T16:27:51+08:00">2022-02-28</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-03-01 23:07:36" itemprop="dateModified" datetime="2022-03-01T23:07:36+08:00">2022-03-01</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>选中一个对象，创建一个动画片段，然后引擎会在对象上自动创建一个动画状态机</p>
-<p>制作动画 一般会有一个默认动画idle</p>
-<p>打开动画器制作不同动画之间的关系 左侧参数中可以增加参数，右侧Transitions中可以增加动画之间的变换，conditions可以让变化联系参数。 脚本中响应设置： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public Animator anim;</span><br><span class="line">anim = GetComponent&lt;Animator&gt;();</span><br><span class="line">anim.SetInteger(&quot;vertical&quot;, vertical);</span><br><span class="line">anim.SetInteger(&quot;horizontal&quot;, horizontal);</span><br><span class="line">//该例子中参数为vertical</span><br></pre></td></tr></table></figure> 右侧参数包括动画之间切换的连贯性</p>
-<p>注： Unity animation三角播放按钮灰色，无法点击播放怎么办？ 需要选中角色, 或者动画所对应的GameObject,才可以点击播放按钮</p>
-<h1 id="动画事件">动画事件</h1>
-<p>在引擎的动画界面，可以在某一帧中添加事件（一个函数），当动画播放到这一帧的时候会调用这个函数</p>
-<p>或者在脚本中添加事件，例子： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Animator anim = GetComponent&lt;Animator&gt;();</span><br><span class="line">AnimatorStateInfo info = anim.GetCurrentAnimatorStateInfo(0);</span><br><span class="line">//获取动画器中的信息，0代表着某个动画层</span><br><span class="line">if (info.IsName(&quot;xxxx&quot;) &amp;&amp;info.normalizedTime &gt;= 1)</span><br><span class="line">&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">//判断动画名字，和动画是否播完（normalizedTime中0为开始1为结束）</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
