@@ -122,7 +122,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -848,7 +848,7 @@ LateUpdate是晚于所有Update执行的。例如：游戏中有2个脚本，脚
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-03-02 18:40:10" itemprop="dateModified" datetime="2022-03-02T18:40:10+08:00">2022-03-02</time>
+        <time title="Modified: 2022-03-07 17:28:59" itemprop="dateModified" datetime="2022-03-07T17:28:59+08:00">2022-03-07</time>
       </span>
 
   
@@ -864,10 +864,9 @@ LateUpdate是晚于所有Update执行的。例如：游戏中有2个脚本，脚
           <p>添加Canvas画布，用于摆放所有的GUI元素</p>
 <p>Canvas和eventsystem系统配合使用</p>
 <p>修改Canvas参数：<br>
-渲染模式：摄像机。还有其余的渲染模式<br>
-渲染摄像机<br>
-平面距离摄像机距离</p>
+渲染模式：屏幕空间-覆盖（所有UI会覆盖所有游戏物体）、屏幕空间-摄像机（UI一定面对摄像机，根据与摄像机的距离决定覆盖关系）、世界空间（和上一个一样，但UI不一定面对摄像机）</p>
 <p>Canvas节点下添加ui元素<br>
+锚点和轴心的位置和距离永远不会改变<br>
 rect transform（transform的子类）<br>
 相对中心点的位置，单位：像素<br>
 相对中心点可修改，选已有的模板，或者修改Anchors<br>
@@ -880,6 +879,10 @@ InputField类型变量获取文本输入框内容，string sj = be.text<br>
 on click()下添加方法<br>
 图片转按钮：挂载脚本，脚本：创建方法继承已有的类：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">using UnityEngine;</span><br><span class="line">using UnityEngine.EventSystems;</span><br><span class="line"></span><br><span class="line">public class OkButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler</span><br><span class="line">&#123;</span><br><span class="line">    public void OnPointerDown(PointerEventData eventData)</span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log(&quot;鼠标按下...&quot;);</span><br><span class="line">        transform.localScale = new Vector3(1.05f, 1.05f, 1.05f);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void OnPointerUp(PointerEventData eventData)</span><br><span class="line">    &#123;</span><br><span class="line">        transform.localScale = new Vector3(1, 1, 1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//点击放大一下，打印日志</span><br><span class="line">//机制：射线投射器和射线接收器</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/** 事件列表</span><br><span class="line">IPointerEnterHandler - OnPointerEnter - Called when a pointer enters the object</span><br><span class="line">IPointerExitHandler - OnPointerExit - Called when a pointer exits the object</span><br><span class="line">IPointerDownHandler - OnPointerDown - Called when a pointer is pressed on the object</span><br><span class="line">IPointerUpHandler - OnPointerUp - Called when a pointer is released (called on the GameObject that the pointer is clicking)</span><br><span class="line">IPointerClickHandler - OnPointerClick - Called when a pointer is pressed and released on the same object</span><br><span class="line">IInitializePotentialDragHandler - OnInitializePotentialDrag - Called when a drag target is found, can be used to initialise values</span><br><span class="line">IBeginDragHandler - OnBeginDrag - Called on the drag object when dragging is about to begin</span><br><span class="line">IDragHandler - OnDrag - Called on the drag object when a drag is happening</span><br><span class="line">IEndDragHandler - OnEndDrag - Called on the drag object when a drag finishes</span><br><span class="line">IDropHandler - OnDrop - Called on the object where a drag finishes</span><br><span class="line">IScrollHandler - OnScroll - Called when a mouse wheel scrolls</span><br><span class="line">IUpdateSelectedHandler - OnUpdateSelected - Called on the selected object each tick</span><br><span class="line">ISelectHandler - OnSelect - Called when the object becomes the selected object</span><br><span class="line">IDeselectHandler - OnDeselect - Called on the selected object becomes deselected</span><br><span class="line">IMoveHandler - OnMove - Called when a move event occurs (left, right, up, down, ect)</span><br><span class="line">ISubmitHandler - OnSubmit - Called when the submit button is pressed</span><br><span class="line">ICancelHandler - OnCancel - Called when the cancel button is pressed</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
+<p>常用UI组件：<br>
+遮罩组件：使得子图片不得超出父图片显示<br>
+内容尺寸适应器：一般在文字对象中使用，让对象大小适应输入文本大小<br>
+网格布局组件（Layout Group）：在一个面板中添加该组件，对其子对象进行排列，一般用于制作背包。</p>
 
       
     </div>
@@ -937,7 +940,7 @@ on click()下添加方法<br>
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-02-28 19:58:20" itemprop="dateModified" datetime="2022-02-28T19:58:20+08:00">2022-02-28</time>
+        <time title="Modified: 2022-03-07 17:30:02" itemprop="dateModified" datetime="2022-03-07T17:30:02+08:00">2022-03-07</time>
       </span>
 
   
@@ -952,7 +955,9 @@ on click()下添加方法<br>
     <div class="post-body" itemprop="articleBody">
           <p>sprite 精灵一般代表对象的图片素材属性，例如一个对象cfq，他的精灵可以被这样调用：cfq.sprite</p>
 <p>一个存放一组图片的对象可以被定义为public Sprite be[]; 随后在引擎界面赋值变量be</p>
-<p>精灵的颜色属性color color.a 的值1为完全不透明，0为完全透明 修改SpriteRenderder的color可以达到闪烁效果 例 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">private SpriteRenderer spriteRenderer=GetComponent&lt;SpriteRenderer&gt;();</span><br><span class="line">Color color = spriteRenderer.color;</span><br><span class="line">for (float i = 0; i&lt;=FlashTime * 4; ++i)</span><br><span class="line">&#123;</span><br><span class="line">    color.a = 0;</span><br><span class="line">    spriteRenderer.color = colo	r;</span><br><span class="line">    yield return new WaitForSeconds(0.125f);//挂起0.125秒后重开</span><br><span class="line">    color.a = 1;</span><br><span class="line">    spriteRenderer.color = color;</span><br><span class="line">    yield return new WaitForSeconds(0.125f);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>精灵的颜色属性color color.a 的值1为完全不透明，0为完全透明 修改SpriteRenderder的color可以达到闪烁效果 例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">private SpriteRenderer spriteRenderer=GetComponent&lt;SpriteRenderer&gt;();</span><br><span class="line">Color color = spriteRenderer.color;</span><br><span class="line">for (float i = 0; i&lt;=FlashTime * 4; ++i)</span><br><span class="line">&#123;</span><br><span class="line">    color.a = 0;</span><br><span class="line">    spriteRenderer.color = colo	r;</span><br><span class="line">    yield return new WaitForSeconds(0.125f);//挂起0.125秒后重开</span><br><span class="line">    color.a = 1;</span><br><span class="line">    spriteRenderer.color = color;</span><br><span class="line">    yield return new WaitForSeconds(0.125f);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>精灵在放大后会失真，在绘制模式中选择平铺来保证不会失真，一般用于土地和地图上。</p>
 
       
     </div>

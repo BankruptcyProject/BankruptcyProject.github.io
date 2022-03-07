@@ -122,7 +122,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -1026,7 +1026,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/02/28/%E5%8D%8F%E7%A8%8BIEnumerator/" class="post-title-link" itemprop="url">协程IEnumerator</a>
+          <a href="/2022/02/28/%E5%8D%8F%E7%A8%8BIEnumerator/" class="post-title-link" itemprop="url">多线程与协程IEnumerator</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1044,7 +1044,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-03-01 08:49:47" itemprop="dateModified" datetime="2022-03-01T08:49:47+08:00">2022-03-01</time>
+        <time title="Modified: 2022-03-07 18:14:59" itemprop="dateModified" datetime="2022-03-07T18:14:59+08:00">2022-03-07</time>
       </span>
 
   
@@ -1057,7 +1057,11 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="协程注意事项">协程注意事项</h1>
+          <h1 id="多线程">多线程</h1>
+<p>创建一个子线程。在unity中国子线程许多操作都是被禁止的，但仍可用于数据处理、网络信息的传输，读写文件操作和复杂的逻辑计算等。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">using System.Threading;</span><br><span class="line">using UnityEngine;</span><br><span class="line"></span><br><span class="line">public class ThreadTest:MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    void Start()</span><br><span class="line">    &#123;</span><br><span class="line">        ThreadStart ts = new ThreadStart(threadTest);//创建子线程</span><br><span class="line">        Thread thread = new Thread(ts);//创建子线程</span><br><span class="line">        thread.Start();//开始子线程</span><br><span class="line">	&#125;</span><br><span class="line">    void threadTest()</span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log(&quot;线程中&quot;);</span><br><span class="line">        Thread.Sleep(5000);//子线程休眠</span><br><span class="line">        Debug.Log(&quot;5秒过去了&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>比起多线程，unity更推荐使用协程来进行一些异步操作，但协程本质上是单线程。主线程停下会进入协程执行代码，知道协程宣布挂起，然后后主线程会回到主代码执行，协程则在挂起状态等待，知道等待时间结束。</p>
+<h1 id="协程注意事项">协程注意事项</h1>
 <p>协程在当前主程序运行时,开启另一段逻辑处理,协程主要用于代码等待</p>
 <p>协程的方法名最前面最好加上大写的IE表示这是一个协程</p>
 <p>如果协程中有嵌套协程的时候,关闭当前协程不会影响嵌套的协程,只会关闭当前协程,嵌套协程继续执行</p>
