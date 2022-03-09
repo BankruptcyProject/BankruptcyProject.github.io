@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">69</span>
+          <span class="site-state-item-count">70</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -192,7 +192,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-02-28 20:57:22" itemprop="dateModified" datetime="2022-02-28T20:57:22+08:00">2022-02-28</time>
+        <time title="Modified: 2022-03-09 16:05:11" itemprop="dateModified" datetime="2022-03-09T16:05:11+08:00">2022-03-09</time>
       </span>
 
   
@@ -206,20 +206,94 @@
     
     <div class="post-body" itemprop="articleBody">
           <center>
-<font size="72">“年纪轻轻只有尸体才每天躺着摆烂” </font>
+<font size="72">"但凡回头一下，我该死” </font>
 </center>
-<center>
-<font size="72">"有一天没事不更必被创死” </font>
-</center>
-<center>
-<font size="72">"既然路是我自己选的” </font>
-</center>
-<center>
-<font size="72">"那但凡回头一下” </font>
-</center>
-<center>
-<font size="72">"我都该死” </font>
-</center>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/09/%E5%93%88%E5%B8%8C%E8%A1%A8-unorderer-map%E5%92%8Cunorderer-set/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="甜药补习班吊尾生">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/03/09/%E5%93%88%E5%B8%8C%E8%A1%A8-unorderer-map%E5%92%8Cunorderer-set/" class="post-title-link" itemprop="url">哈希表(unorderer_map和unorderer_set)</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-03-09 13:31:33 / Modified: 16:03:35" itemprop="dateCreated datePublished" datetime="2022-03-09T13:31:33+08:00">2022-03-09</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="unorderer_map">unorderer_map</h1>
+<p>简单来说，就是一个无序哈希表，时间复杂度O(1)</p>
+<p>两个常用方法：</p>
+<p>count()返回要查找的key在map的所有key中的出现次数。因为此容器不允许重复，故count()只可能返回 1 或 0，即可判断此key是否存在。有返回1，无返回0。<br>
+unordered_map也有find方法，得到的对象是一个iterator，在unordered_map中，如果find()没找到要找的key，就返回和end()一样的iterator值。</p>
+<h1 id="unorderer_set">unorderer_set</h1>
+<p>unordered_set基于哈希表，也是无序的，但是，unordered_set是在哈希表中插入value，同时这个value也是它自己的key，和unordered_map不同，这里的key-value只是为了方便查阅，</p>
+<p>两个常用方法：<br>
+同上，count（）和find（）</p>
+<h1 id="map和set区别">map和set区别</h1>
+<p>map：<br>
+map的值不作为键，键和值是分开的，所有元素都是键+值存在<br>
+不允许键重复<br>
+所有元素是通过键进行自动排序的<br>
+map的键是不能修改的，但是其键对应的值是可以修改的</p>
+<p>set：<br>
+所得元素的只有key没有value，value就是key<br>
+不允许出现键值重复<br>
+所有的元素都会被自动排序<br>
+不能通过迭代器来改变set的值，因为set的值就是键</p>
+<h1 id="用法实例">用法实例</h1>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">unordered_set&lt;<span class="keyword">char</span>&gt; occ;</span><br><span class="line">occ.<span class="built_in">insert</span>(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">occ.<span class="built_in">erase</span>(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">cout &lt;&lt; occ.<span class="built_in">count</span>(<span class="string">&quot;a&quot;</span>);</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -277,7 +351,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-03-09 00:06:21" itemprop="dateModified" datetime="2022-03-09T00:06:21+08:00">2022-03-09</time>
+        <time title="Modified: 2022-03-09 16:21:29" itemprop="dateModified" datetime="2022-03-09T16:21:29+08:00">2022-03-09</time>
       </span>
 
   
@@ -292,9 +366,14 @@
     <div class="post-body" itemprop="articleBody">
           <h1 id="第一次手写97.2189.08">第一次手写（97.21%，89.08%）</h1>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> hashTable[<span class="number">129</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">    <span class="keyword">int</span> start = <span class="number">0</span>, end = <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(string s)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//特判</span></span><br><span class="line">        <span class="keyword">if</span> (s == <span class="string">&quot;&quot;</span>)<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (s.<span class="built_in">length</span>() == <span class="number">1</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="comment">//初始化</span></span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> len = s.<span class="built_in">length</span>();</span><br><span class="line">        hashTable[(<span class="keyword">int</span>)s[<span class="number">0</span>]] = <span class="literal">true</span>;</span><br><span class="line">        <span class="comment">//首先尾巴前进直到不能前进为止(重复的)，则头前进直到(去掉那个重复的)，然后循环，直到尾巴不能再前进了</span></span><br><span class="line">        <span class="keyword">while</span> (end &lt; len - <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            ++end;</span><br><span class="line">            hashTable[(<span class="keyword">int</span>)s[end]]++;</span><br><span class="line">            <span class="keyword">if</span> (hashTable[(<span class="keyword">int</span>)s[end]] == <span class="number">1</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                ans = <span class="built_in">max</span>(ans, end - start + <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">while</span> (start &lt; end)</span><br><span class="line">                &#123;</span><br><span class="line">                    hashTable[(<span class="keyword">int</span>)s[start]]--;</span><br><span class="line">                    <span class="keyword">if</span> (hashTable[(<span class="keyword">int</span>)s[start]] == <span class="number">1</span>)</span><br><span class="line">                    &#123;</span><br><span class="line">                        ++start;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    ++start;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>注：事实证明，在能不看题解纯手撕之前，都是不会。</p>
-<p>边看题解边写自己的答案，通过后声称自己会了，纯属扯淡。</p>
-<p>顶多算了解了有这么个算法的存在。</p>
+<p>标签是哈希和滑动窗口，但是哈希部分非常简单，我直接使用ASCII映射。滑动窗口之前写过一题，但掌握得很不熟练，只懂个大概。这次纯手打增进了不少对滑动窗口的掌握。</p>
+<p>注：事实证明，只有理解性纯手撕才算掌握。<br>
+看着题解写代码纯属扯淡，顶多算了解了有这么个算法的存在。</p>
+<h1 id="官方题解-50-44">官方题解 (50%, 44%)</h1>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 哈希集合，记录每个字符是否出现过</span></span><br><span class="line">        unordered_set&lt;<span class="keyword">char</span>&gt; occ;</span><br><span class="line">        <span class="keyword">int</span> n = s.<span class="built_in">size</span>();</span><br><span class="line">        <span class="comment">// 右指针，初始值为 -1，相当于我们在字符串的左边界的左侧，还没有开始移动</span></span><br><span class="line">        <span class="keyword">int</span> rk = <span class="number">-1</span>, ans = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// 枚举左指针的位置，初始值隐性地表示为 -1</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i != <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="comment">// 左指针向右移动一格，移除一个字符</span></span><br><span class="line">                occ.<span class="built_in">erase</span>(s[i - <span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">while</span> (rk + <span class="number">1</span> &lt; n &amp;&amp; !occ.<span class="built_in">count</span>(s[rk + <span class="number">1</span>])) &#123;</span><br><span class="line">                <span class="comment">// 不断地移动右指针</span></span><br><span class="line">                occ.<span class="built_in">insert</span>(s[rk + <span class="number">1</span>]);</span><br><span class="line">                ++rk;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 第 i 到 rk 个字符是一个极长的无重复字符子串</span></span><br><span class="line">            ans = <span class="built_in">max</span>(ans, rk - i + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>官方题解思路更间接，但效率却低，也许是因为unorderer_set效率不足</p>
+<h1 id="加工整理得到版本之子97-95">加工整理得到版本之子(97%, 95%)</h1>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(string s)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// 特判</span></span><br><span class="line">        <span class="keyword">if</span> (s == <span class="string">&quot;&quot;</span>)<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (s.<span class="built_in">length</span>() == <span class="number">1</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="comment">// 初始化</span></span><br><span class="line">        <span class="keyword">int</span> hashTable[<span class="number">129</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">        <span class="keyword">int</span> lk = <span class="number">0</span>, rk = <span class="number">1</span>, ans = <span class="number">1</span>;<span class="comment">// 左右指针，闭区间</span></span><br><span class="line">        <span class="keyword">int</span> len = s.<span class="built_in">length</span>();</span><br><span class="line">        hashTable[(<span class="keyword">int</span>)s[<span class="number">0</span>]] = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (rk &lt;= len - <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (++hashTable[(<span class="keyword">int</span>)s[rk]] == <span class="number">1</span>) <span class="comment">// 判断右指针是否遇到重复字符</span></span><br><span class="line">                ans = <span class="built_in">max</span>(ans, rk - lk + <span class="number">1</span>);</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="keyword">while</span> (lk &lt; rk) <span class="comment">//左指针不断前进直至将重复字符剔除</span></span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span> (--hashTable[(<span class="keyword">int</span>)s[lk++]] == <span class="number">1</span>) <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            ++rk; <span class="comment">// 右指针不断前进直到结束</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -635,10 +714,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2022-03-05 17:34:14 / Modified: 19:28:21" itemprop="dateCreated datePublished" datetime="2022-03-05T17:34:14+08:00">2022-03-05</time>
+      <time title="Created: 2022-03-05 17:34:14" itemprop="dateCreated datePublished" datetime="2022-03-05T17:34:14+08:00">2022-03-05</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-03-09 16:05:12" itemprop="dateModified" datetime="2022-03-09T16:05:12+08:00">2022-03-09</time>
+      </span>
 
   
 </div>
@@ -984,84 +1069,6 @@
 <h3 id="水">水</h3>
 <p>水本质上是预制体，更准确的来讲，只是（2D）一片动态的图。</p>
 <p>将这层图放在一个坑上，达到视觉上的水坑的效果</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/03/3D%E5%9F%BA%E7%A1%80/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="甜药补习班吊尾生">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/03/03/3D%E5%9F%BA%E7%A1%80/" class="post-title-link" itemprop="url">3D基础</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-03-03 22:58:04" itemprop="dateCreated datePublished" datetime="2022-03-03T22:58:04+08:00">2022-03-03</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-03-05 23:02:17" itemprop="dateModified" datetime="2022-03-05T23:02:17+08:00">2022-03-05</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>采用左手系，有固定的世界坐标系和相对的本地坐标系</p>
-<p>场景视图下Q、W、E、R、T、Y的基本操作</p>
-<p>3D物体的形状由<strong>网格（Mesh）</strong>决定，网格由多个<strong>面</strong>组成，每个面由多个<strong>三角形</strong>组成。<br>
-在某个3D对象的<strong>网格过滤器</strong>可以选择<strong>网格</strong>，改变<strong>网格</strong>则改变了整个对象的形状</p>
-<p><strong>网格渲染器（Mesh Renderer）</strong>下的<strong>材质（Material）</strong>负责物体的，额，材质。<br>
-同时<strong>材质</strong>下有不同的<strong>着色器（shader）</strong>，来具体模拟不同的材质。<br>
-有时可以直接将<strong>图片</strong>拖入场景视图下的3D物体，引擎会自动创建<strong>材质</strong>。</p>
-<p>CharacterController组件（类型）。其中有一个isGrounded属性，来判断角色是否在地面。</p>
 
       
     </div>
