@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="动态数组    属性 描述     Count 获取 ArrayList 中实际包含的元素个数   IsReadOnly 获取一个值，表示 ArrayList 是否只读   IsSynchronized 获取一个值，表示访问 ArrayList 是否同步（线程安全）           方法 描述     int Add( o">
+<meta property="og:type" content="article">
+<meta property="og:title" content="c#集合">
+<meta property="og:url" content="http://example.com/2022/03/11/c-%E9%9B%86%E5%90%88/index.html">
+<meta property="og:site_name" content="划水骗分二十年，没人比我更懂蒻">
+<meta property="og:description" content="动态数组    属性 描述     Count 获取 ArrayList 中实际包含的元素个数   IsReadOnly 获取一个值，表示 ArrayList 是否只读   IsSynchronized 获取一个值，表示访问 ArrayList 是否同步（线程安全）           方法 描述     int Add( o">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-03-11T14:43:13.000Z">
+<meta property="article:modified_time" content="2022-03-11T15:19:54.310Z">
+<meta property="article:author" content="甜药补习班吊尾生">
+<meta property="article:tag" content="C#">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2022/03/11/c-%E9%9B%86%E5%90%88/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/03/11/c-%E9%9B%86%E5%90%88/","path":"2022/03/11/c-集合/","title":"c#集合"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>c#集合 | 划水骗分二十年，没人比我更懂蒻</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">划水骗分二十年，没人比我更懂蒻</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84"><span class="nav-number">1.</span> <span class="nav-text">动态数组</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%93%88%E5%B8%8C%E8%A1%A8hashtable"><span class="nav-number">2.</span> <span class="nav-text">哈希表（Hashtable）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8E%92%E5%BA%8F%E5%88%97%E8%A1%A8sortedlist"><span class="nav-number">3.</span> <span class="nav-text">排序列表（SortedList）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A0%86%E6%A0%88stack"><span class="nav-number">4.</span> <span class="nav-text">堆栈（Stack）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#queue-%E7%B1%BB%E7%9A%84%E6%96%B9%E6%B3%95%E5%92%8C%E5%B1%9E%E6%80%A7"><span class="nav-number">5.</span> <span class="nav-text">Queue 类的方法和属性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%82%B9%E9%98%B5%E5%88%97bitarray"><span class="nav-number">6.</span> <span class="nav-text">点阵列（BitArray）</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">甜药补习班吊尾生</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">72</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/11/c-%E9%9B%86%E5%90%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="甜药补习班吊尾生">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          c#集合
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-03-11 22:43:13 / Modified: 23:19:54" itemprop="dateCreated datePublished" datetime="2022-03-11T22:43:13+08:00">2022-03-11</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="动态数组">动态数组</h1>
+<table>
+<thead>
+<tr class="header">
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Count</td>
+<td>获取 ArrayList 中实际包含的元素个数</td>
+</tr>
+<tr class="even">
+<td>IsReadOnly</td>
+<td>获取一个值，表示 ArrayList 是否只读</td>
+</tr>
+<tr class="odd">
+<td>IsSynchronized</td>
+<td>获取一个值，表示访问 ArrayList 是否同步（线程安全）</td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col style="width: 46%">
+<col style="width: 53%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>int Add( object value )</strong></td>
+<td>在 ArrayList 的末尾添加一个对象</td>
+</tr>
+<tr class="even">
+<td><strong>void AddRange( ICollection c )</strong></td>
+<td>在 ArrayList 的末尾添加 ICollection 的元素</td>
+</tr>
+<tr class="odd">
+<td><strong>void Clear()</strong></td>
+<td>从 ArrayList 中移除所有的元素</td>
+</tr>
+<tr class="even">
+<td><strong>bool Contains( object item )</strong></td>
+<td>判断某个元素是否在 ArrayList 中</td>
+</tr>
+<tr class="odd">
+<td><strong>ArrayList GetRange( int index, int count )</strong></td>
+<td>返回一个 ArrayList，表示源 ArrayList 中元素的子集</td>
+</tr>
+<tr class="even">
+<td><strong>int IndexOf(object)</strong></td>
+<td>返回某个值在 ArrayList 中第一次出现的索引，索引从零开始</td>
+</tr>
+<tr class="odd">
+<td><strong>void Insert( int index, object value )</strong></td>
+<td>在 ArrayList 的指定索引处，插入一个元素</td>
+</tr>
+<tr class="even">
+<td><strong>void InsertRange( int index, ICollection c )</strong></td>
+<td>在 ArrayList 的指定索引处，插入某个集合的元素</td>
+</tr>
+<tr class="odd">
+<td><strong>void Remove( object obj )</strong></td>
+<td>从 ArrayList 中移除第一次出现的指定对象</td>
+</tr>
+<tr class="even">
+<td><strong>void RemoveAt( int index )</strong></td>
+<td>移除 ArrayList 的指定索引处的元素</td>
+</tr>
+<tr class="odd">
+<td><strong>void RemoveRange( int index, int count )</strong></td>
+<td>从 ArrayList 中移除某个范围的元素</td>
+</tr>
+<tr class="even">
+<td><strong>void Reverse()</strong></td>
+<td>逆转 ArrayList 中元素的顺序</td>
+</tr>
+<tr class="odd">
+<td><strong>void SetRange( int index, ICollection c )</strong></td>
+<td>复制某个集合的元素到 ArrayList 中某个范围的元素上</td>
+</tr>
+<tr class="even">
+<td><strong>void Sort()</strong></td>
+<td>对 ArrayList 中的元素进行排序</td>
+</tr>
+</tbody>
+</table>
+<h1 id="哈希表hashtable">哈希表（Hashtable）</h1>
+<p>Hashtable 类代表了一系列基于键的哈希代码组织起来的键/值对。它使用键来访问集合中的元素。</p>
+<p>当您使用键访问元素时，则使用哈希表，而且您可以识别一个有用的键值。哈希表中的每一项都有一个键/值对。键用于访问集合中的项目。</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">属性</th>
+<th style="text-align: left;">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Count</td>
+<td style="text-align: left;">获取 Hashtable 中包含的键值对个数。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">IsFixedSize</td>
+<td style="text-align: left;">获取一个值，表示 Hashtable 是否具有固定大小。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">IsReadOnly</td>
+<td style="text-align: left;">获取一个值，表示 Hashtable 是否只读。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Item</td>
+<td style="text-align: left;">获取或设置与指定的键相关的值。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Keys</td>
+<td style="text-align: left;">获取一个 ICollection，包含 Hashtable 中的键。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Values</td>
+<td style="text-align: left;">获取一个 ICollection，包含 Hashtable 中的值。</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">方法</th>
+<th style="text-align: left;">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>void Add( object key, object value );</strong></td>
+<td style="text-align: left;">向 Hashtable 添加一个带有指定的键和值的元素。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>void Clear();</strong></td>
+<td style="text-align: left;">从 Hashtable 中移除所有的元素。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>bool ContainsKey( object key );</strong></td>
+<td style="text-align: left;">判断 Hashtable 是否包含指定的键。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>bool ContainsValue( object value );</strong></td>
+<td style="text-align: left;">判断 Hashtable 是否包含指定的值。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>void Remove( object key );</strong></td>
+<td style="text-align: left;">从 Hashtable 中移除带有指定的键的元素。</td>
+</tr>
+</tbody>
+</table>
+<h1 id="排序列表sortedlist">排序列表（SortedList）</h1>
+<p>SortedList 类代表了一系列按照键来排序的<strong>键/值</strong>对，这些键值对可以通过键和索引来访问。</p>
+<p>排序列表是数组和哈希表的组合。它包含一个可使用键或索引访问各项的列表。<br>
+如果使用索引访问各项，则它是一个动态数组（ArrayList）；<br>
+如果使用键访问各项，则它是一个哈希表（Hashtable）。<br>
+集合中的各项总是按键值排序。</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">属性</th>
+<th style="text-align: left;">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Capacity</td>
+<td style="text-align: left;">获取或设置 SortedList 的容量。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Count</td>
+<td style="text-align: left;">获取 SortedList 中的元素个数。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">IsFixedSize</td>
+<td style="text-align: left;">获取一个值，表示 SortedList 是否具有固定大小。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">IsReadOnly</td>
+<td style="text-align: left;">获取一个值，表示 SortedList 是否只读。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Item</td>
+<td style="text-align: left;">获取或设置与 SortedList 中指定的键相关的值。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Keys</td>
+<td style="text-align: left;">获取 SortedList 中的键。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Values</td>
+<td style="text-align: left;">获取 SortedList 中的值。</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">方法名</th>
+<th style="text-align: left;">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>void Add( object key, object value );</strong></td>
+<td style="text-align: left;">向 SortedList 添加一个带有指定的键和值的元素。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>void Clear();</strong></td>
+<td style="text-align: left;">从 SortedList 中移除所有的元素。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>bool ContainsKey( object key );</strong></td>
+<td style="text-align: left;">判断 SortedList 是否包含指定的键。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>bool ContainsValue( object value );</strong></td>
+<td style="text-align: left;">判断 SortedList 是否包含指定的值。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>object GetByIndex( int index );</strong></td>
+<td style="text-align: left;">获取 SortedList 的指定索引处的值。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>object GetKey( int index );</strong></td>
+<td style="text-align: left;">获取 SortedList 的指定索引处的键。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>IList GetKeyList();</strong></td>
+<td style="text-align: left;">获取 SortedList 中的键。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>IList GetValueList();</strong></td>
+<td style="text-align: left;">获取 SortedList 中的值。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>int IndexOfKey( object key );</strong></td>
+<td style="text-align: left;">返回 SortedList 中的指定键的索引，索引从零开始。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>int IndexOfValue( object value );</strong></td>
+<td style="text-align: left;">返回 SortedList 中的指定值第一次出现的索引，索引从零开始。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>void Remove( object key );</strong></td>
+<td style="text-align: left;">从 SortedList 中移除带有指定的键的元素。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>void RemoveAt( int index );</strong></td>
+<td style="text-align: left;">移除 SortedList 的指定索引处的元素。</td>
+</tr>
+</tbody>
+</table>
+<h1 id="堆栈stack">堆栈（Stack）</h1>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">属性</th>
+<th style="text-align: left;">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Count</td>
+<td style="text-align: left;">获取 Stack 中包含的元素个数。</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">方法名</th>
+<th style="text-align: left;">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>void Clear();</strong></td>
+<td style="text-align: left;">从 Stack 中移除所有的元素。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>bool Contains( object obj );</strong></td>
+<td style="text-align: left;">判断某个元素是否在 Stack 中。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>object Peek();</strong></td>
+<td style="text-align: left;">返回在 Stack 的顶部的对象，但不移除它。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>object Pop();</strong></td>
+<td style="text-align: left;">移除并返回在 Stack 的顶部的对象。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>void Push( object obj );</strong></td>
+<td style="text-align: left;">向 Stack 的顶部添加一个对象。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>object[] ToArray();</strong></td>
+<td style="text-align: left;">复制 Stack 到一个新的数组中。</td>
+</tr>
+</tbody>
+</table>
+<h1 id="queue-类的方法和属性">Queue 类的方法和属性</h1>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">属性</th>
+<th style="text-align: left;">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Count</td>
+<td style="text-align: left;">获取 Queue 中包含的元素个数。</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">方法名</th>
+<th style="text-align: left;">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>void Clear();</strong></td>
+<td style="text-align: left;">从 Queue 中移除所有的元素。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>bool Contains( object obj );</strong></td>
+<td style="text-align: left;">判断某个元素是否在 Queue 中。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>object Dequeue();</strong></td>
+<td style="text-align: left;">移除并返回在 Queue 的开头的对象。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>void Enqueue( object obj );</strong></td>
+<td style="text-align: left;">向 Queue 的末尾添加一个对象。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>object[] ToArray();</strong></td>
+<td style="text-align: left;">复制 Queue 到一个新的数组中。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>void TrimToSize();</strong></td>
+<td style="text-align: left;">设置容量为 Queue 中元素的实际个数。</td>
+</tr>
+</tbody>
+</table>
+<h1 id="点阵列bitarray">点阵列（BitArray）</h1>
+<p>BitArray 类管理一个紧凑型的位值数组，它使用布尔值来表示，其中 true 表示位是开启的（1），false 表示位是关闭的（0）。</p>
+<p>当您需要存储位，但是事先不知道位数时，则使用点阵列。您可以使用<strong>整型索引</strong>从点阵列集合中访问各项，索引从零开始。</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">属性</th>
+<th style="text-align: left;">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Count</td>
+<td style="text-align: left;">获取 BitArray 中包含的元素个数。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">IsReadOnly</td>
+<td style="text-align: left;">获取一个值，表示 BitArray 是否只读。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Item</td>
+<td style="text-align: left;">获取或设置 BitArray 中指定位置的位的值。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Length</td>
+<td style="text-align: left;">获取或设置 BitArray 中的元素个数。</td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col style="width: 38%">
+<col style="width: 61%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">方法</th>
+<th style="text-align: left;">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>BitArray And( BitArray value );</strong></td>
+<td style="text-align: left;">对当前的 BitArray 中的元素和指定的 BitArray 中的相对应的元素执行按位与操作。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>bool Get( int index );</strong></td>
+<td style="text-align: left;">获取 BitArray 中指定位置的位的值。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>BitArray Not();</strong></td>
+<td style="text-align: left;">把当前的 BitArray 中的位值反转，以便设置为 true 的元素变为 false，设置为 false 的元素变为 true。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>BitArray Or( BitArray value );</strong></td>
+<td style="text-align: left;">对当前的 BitArray 中的元素和指定的 BitArray 中的相对应的元素执行按位或操作。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>void Set( int index, bool value );</strong></td>
+<td style="text-align: left;">把 BitArray 中指定位置的位设置为指定的值。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>void SetAll( bool value );</strong></td>
+<td style="text-align: left;">把 BitArray 中的所有位设置为指定的值。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>BitArray Xor( BitArray value );</strong></td>
+<td style="text-align: left;">对当前的 BitArray 中的元素和指定的 BitArray 中的相对应的元素执行按位异或操作。</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/C/" rel="tag"># C#</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/03/09/Blender%E5%85%A5%E9%97%A8/" rel="prev" title="Blender入门">
+                  <i class="fa fa-chevron-left"></i> Blender入门
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">甜药补习班吊尾生</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

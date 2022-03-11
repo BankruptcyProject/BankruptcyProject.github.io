@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">71</span>
+          <span class="site-state-item-count">72</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,98 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/27/UI/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="甜药补习班吊尾生">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/02/27/UI/" class="post-title-link" itemprop="url">UI</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-02-27 22:22:32" itemprop="dateCreated datePublished" datetime="2022-02-27T22:22:32+08:00">2022-02-27</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-03-07 17:28:59" itemprop="dateModified" datetime="2022-03-07T17:28:59+08:00">2022-03-07</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>添加Canvas画布，用于摆放所有的GUI元素</p>
+<p>Canvas和eventsystem系统配合使用</p>
+<p>修改Canvas参数：<br>
+渲染模式：屏幕空间-覆盖（所有UI会覆盖所有游戏物体）、屏幕空间-摄像机（UI一定面对摄像机，根据与摄像机的距离决定覆盖关系）、世界空间（和上一个一样，但UI不一定面对摄像机）</p>
+<p>Canvas节点下添加ui元素<br>
+锚点和轴心的位置和距离永远不会改变<br>
+rect transform（transform的子类）<br>
+相对中心点的位置，单位：像素<br>
+相对中心点可修改，选已有的模板，或者修改Anchors<br>
+image：填充模式九宫格边角美化：在素材中sprite editor 改出九宫格<br>
+按钮自定义按下特性：将transition改为图片切换模式<br>
+文本输入框<br>
+面板panel，人称小画布（Canvas）</p>
+<p>using Unityengine.UI;<br>
+InputField类型变量获取文本输入框内容，string sj = be.text<br>
+on click()下添加方法<br>
+图片转按钮：挂载脚本，脚本：创建方法继承已有的类：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">using UnityEngine;</span><br><span class="line">using UnityEngine.EventSystems;</span><br><span class="line"></span><br><span class="line">public class OkButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler</span><br><span class="line">&#123;</span><br><span class="line">    public void OnPointerDown(PointerEventData eventData)</span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log(&quot;鼠标按下...&quot;);</span><br><span class="line">        transform.localScale = new Vector3(1.05f, 1.05f, 1.05f);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void OnPointerUp(PointerEventData eventData)</span><br><span class="line">    &#123;</span><br><span class="line">        transform.localScale = new Vector3(1, 1, 1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//点击放大一下，打印日志</span><br><span class="line">//机制：射线投射器和射线接收器</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/** 事件列表</span><br><span class="line">IPointerEnterHandler - OnPointerEnter - Called when a pointer enters the object</span><br><span class="line">IPointerExitHandler - OnPointerExit - Called when a pointer exits the object</span><br><span class="line">IPointerDownHandler - OnPointerDown - Called when a pointer is pressed on the object</span><br><span class="line">IPointerUpHandler - OnPointerUp - Called when a pointer is released (called on the GameObject that the pointer is clicking)</span><br><span class="line">IPointerClickHandler - OnPointerClick - Called when a pointer is pressed and released on the same object</span><br><span class="line">IInitializePotentialDragHandler - OnInitializePotentialDrag - Called when a drag target is found, can be used to initialise values</span><br><span class="line">IBeginDragHandler - OnBeginDrag - Called on the drag object when dragging is about to begin</span><br><span class="line">IDragHandler - OnDrag - Called on the drag object when a drag is happening</span><br><span class="line">IEndDragHandler - OnEndDrag - Called on the drag object when a drag finishes</span><br><span class="line">IDropHandler - OnDrop - Called on the object where a drag finishes</span><br><span class="line">IScrollHandler - OnScroll - Called when a mouse wheel scrolls</span><br><span class="line">IUpdateSelectedHandler - OnUpdateSelected - Called on the selected object each tick</span><br><span class="line">ISelectHandler - OnSelect - Called when the object becomes the selected object</span><br><span class="line">IDeselectHandler - OnDeselect - Called on the selected object becomes deselected</span><br><span class="line">IMoveHandler - OnMove - Called when a move event occurs (left, right, up, down, ect)</span><br><span class="line">ISubmitHandler - OnSubmit - Called when the submit button is pressed</span><br><span class="line">ICancelHandler - OnCancel - Called when the cancel button is pressed</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
+<p>常用UI组件：<br>
+遮罩组件：使得子图片不得超出父图片显示<br>
+内容尺寸适应器：一般在文字对象中使用，让对象大小适应输入文本大小<br>
+网格布局组件（Layout Group）：在一个面板中添加该组件，对其子对象进行排列，一般用于制作背包。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -903,81 +995,6 @@
     <div class="post-body" itemprop="articleBody">
           <h1 id="一次过">一次过</h1>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; <span class="built_in">subsets</span>(vector&lt;<span class="keyword">int</span>&gt;&amp; nums) </span><br><span class="line">    &#123;</span><br><span class="line">        vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;ans;</span><br><span class="line">        ans.<span class="built_in">push_back</span>(vector&lt;<span class="keyword">int</span>&gt;());<span class="comment">//空集是任何集合的子集</span></span><br><span class="line">        <span class="keyword">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        n = <span class="built_in">pow</span>(<span class="number">2</span>, n);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n - <span class="number">1</span>; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> j = i;</span><br><span class="line">            <span class="keyword">int</span> order = <span class="number">0</span>;</span><br><span class="line">            vector&lt;<span class="keyword">int</span>&gt;smallAns;</span><br><span class="line">            <span class="keyword">while</span> (j &gt; <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (j &amp; <span class="number">1</span>)smallAns.<span class="built_in">push_back</span>(nums[order]);</span><br><span class="line">                ++order;</span><br><span class="line">                j /= <span class="number">2</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            ans.<span class="built_in">push_back</span>(smallAns);</span><br><span class="line">        &#125;	</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/08/30/c-%E5%86%85%E7%BD%AE%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="甜药补习班吊尾生">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/30/c-%E5%86%85%E7%BD%AE%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" class="post-title-link" itemprop="url">c++内置二分查找</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-08-30 16:00:50" itemprop="dateCreated datePublished" datetime="2021-08-30T16:00:50+08:00">2021-08-30</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-02-28 12:19:03" itemprop="dateModified" datetime="2022-02-28T12:19:03+08:00">2022-02-28</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>库：algorithm</p>
-<p>binary_search：查找某个元素是否出现。 lower_bound：查找第一个大于或等于某个元素的位置。 upper_bound：查找第一个大于某个元素的位置。</p>
-<p>函数模板： binary_search(arr[], arr[]+size, indx) lower_bound(arr[],arr[]+size , indx) upper_bound：查找第一个大于某个元素的位置。</p>
-<p>参数说明： arr[]： 数组首地址 size：数组元素个数 indx：需要查找的值</p>
-<p>注意事项： binary_search在数组中以二分法检索的方式查找，若在数组(要求数组元素非递减)中查找到indx元素则真，若查找不到则返回值为假 函数lower_bound()在first和last中的<strong>前闭后开</strong>区间进行二分查找，返回大于或等于val的第一个元素位置<strong>(注意是地址)(减去首地址得到下标)</strong>。如果所有元素都小于val，则返回last的位置 函数upper_bound()返回的在前闭后开区间查找的关键字的上界，返回大于val的第一个元素位置</p>
 
       
     </div>
