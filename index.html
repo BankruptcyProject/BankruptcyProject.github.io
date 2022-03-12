@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">72</span>
+          <span class="site-state-item-count">73</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -208,6 +208,88 @@
           <center>
 <font size="72">"但凡回头一下，我该死” </font>
 </center>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/12/%E5%AF%86%E7%A0%81%E5%AD%A6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="甜药补习班吊尾生">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/03/12/%E5%AF%86%E7%A0%81%E5%AD%A6/" class="post-title-link" itemprop="url">密码学</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-03-12 15:15:40 / Modified: 17:26:49" itemprop="dateCreated datePublished" datetime="2022-03-12T15:15:40+08:00">2022-03-12</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="单表替换密码">单表替换密码</h1>
+<h2 id="移位密码">移位密码</h2>
+<p>首先将字母表用整数0~25来标识，选取密钥为一个整数k（0&lt;=k&lt;=25），则移位密码的加密和解密过程可表示为：</p>
+<p>加密过程：c = m + k (mod 26) 解密过程：m = c - k (mod 26)</p>
+<p>例如：在凯撒密码中：k取23，或者说-3</p>
+<h2 id="仿射密码">仿射密码</h2>
+<p>加密过程： gcd(a, 26) = 1<br>
+c = a * m + b (mod 26)<br>
+解密过程：<br>
+m = <span class="math inline">\(a^{-1}\)</span> * (c - b) (mod 26)</p>
+<h2 id="破解频率攻击">破解：频率攻击</h2>
+<p>明确字母频率表</p>
+<p>得到密文，统计出使用频率最高的两个字母</p>
+<p>解二元一次方程组，得到（k1，k2）（mod 26），满足k1、k2为整数且gcd(k1, 26) = 1。</p>
+<p>最多解26*26 = 676组，使用计算机解</p>
+<p>得到n组密钥，进行解密，选取其中最和逻辑的一种。</p>
+<h1 id="多表替换密码">多表替换密码</h1>
+<h2 id="vigenere密码">Vigenere密码</h2>
 
       
     </div>
@@ -760,7 +842,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-03-11 15:28:20" itemprop="dateModified" datetime="2022-03-11T15:28:20+08:00">2022-03-11</time>
+        <time title="Modified: 2022-03-12 00:18:02" itemprop="dateModified" datetime="2022-03-12T00:18:02+08:00">2022-03-12</time>
       </span>
 
   
@@ -773,7 +855,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="快捷键">快捷键</h1>
+          <h1 id="入门快捷键">入门快捷键</h1>
 <p>快捷键很多，平时别瞎按键盘</p>
 <p>鼠标中键+Shift：负责主界面移动</p>
 <p>n键：打开sidebar面板</p>
@@ -788,8 +870,12 @@
 <h1 id="游标">游标</h1>
 <p>辅助定位</p>
 <p>右键吸附中调整游标位置，或者勾选磁铁、选择吸附模式。</p>
+<p>游标可隐藏</p>
 <h1 id="原点">原点</h1>
 <p>物体基准点，默认为物体几何中心，可更改。</p>
+<h1 id="编辑模型">编辑模型</h1>
+<p>选择物体，按TAB进入编辑模式，此时左上角有点、线、面可选编辑</p>
+<p>”选择“工具有框选（常用）、刷选、套索、调整四种模式，长按”选择“工具可调出。快捷键：Shift加选，Ctrl减选，A全选。</p>
 
       
     </div>
@@ -1320,101 +1406,6 @@ map的键是不能修改的，但是其键对应的值是可以修改的</p>
           <p>清除标志：设置空白区域的信息，默认为天空盒。此外还有纯色、仅深度（融合多个摄像机的内容）、不清除可选。</p>
 <p>剔除遮罩：选择需要在镜头中显示的图层</p>
 <p>投影：可以调整远近平面距离，视野，视窗大小等属性</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/04/%E5%85%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="甜药补习班吊尾生">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/03/04/%E5%85%89/" class="post-title-link" itemprop="url">光</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-03-04 22:43:24" itemprop="dateCreated datePublished" datetime="2022-03-04T22:43:24+08:00">2022-03-04</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-03-05 17:30:45" itemprop="dateModified" datetime="2022-03-05T17:30:45+08:00">2022-03-05</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="定向光">定向光</h1>
-<p>模式：实时，混合，烘培</p>
-<p>强度：0，1，2</p>
-<p>间接乘数：改变间接光的强度</p>
-<p>阴影类型：硬阴影、软阴影（最耗费资源）、无阴影</p>
-<p>绘制光晕</p>
-<p>剔除遮罩：设定受灯光照射的图层</p>
-<h1 id="点光源">点光源</h1>
-<p>从一个点向球面发出光线，光强逐渐衰减至0</p>
-<p>性能上，点光源比定向光源更耗费资源，尤其是在开启阴影的情况下</p>
-<h1 id="聚光源">聚光源</h1>
-<p>锥形光，比点光源更耗费资源</p>
-<h1 id="区域光">区域光</h1>
-<p>从一个面发出的光，发出的光十分柔和，好的区域光可以很好的营造氛围</p>
-<p>区域光不支持实时照明，只支持烘培照明</p>
-<h1 id="烘培">烘培</h1>
-<p>在窗口，渲染，照明中</p>
-<p>对 拥有固定阴影的静态物体 绘制光照贴图，使其不参与阴影计算，节省大量性能</p>
-<h1 id="环境光">环境光</h1>
-<p>天空材质</p>
-<p>太阳源：对象池中的某个光源</p>
-<p>环境照明：设置环境光，有“天空盒”、“渐变”、“颜色”，3种光源，还能设置光强和模式</p>
-<p>环境反射</p>
-<p>雾</p>
-<p>光晕</p>
 
       
     </div>
