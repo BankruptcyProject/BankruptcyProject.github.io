@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">73</span>
+          <span class="site-state-item-count">74</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -208,6 +208,74 @@
           <center>
 <font size="72">"但凡回头一下，我该死” </font>
 </center>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/14/LC-MergeKSortedLists/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="甜药补习班吊尾生">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/03/14/LC-MergeKSortedLists/" class="post-title-link" itemprop="url">LC-MergeKSortedLists</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-03-14 16:51:45 / Modified: 17:53:34" itemprop="dateCreated datePublished" datetime="2022-03-14T16:51:45+08:00">2022-03-14</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="第一次手打21-39">第一次手打(21%, 39%)</h1>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">public class Solution</span><br><span class="line">&#123;</span><br><span class="line">	public ListNode MergeKLists(ListNode[] lists)</span><br><span class="line">	&#123;</span><br><span class="line">		ListNode ansHead = new ListNode();</span><br><span class="line">		ListNode ans = ansHead;</span><br><span class="line">		int count = lists.Count();//链表个数</span><br><span class="line">		while (true)</span><br><span class="line">		&#123;</span><br><span class="line">			int smallest = 99999;</span><br><span class="line">			int mark = -1;</span><br><span class="line">			for (int i = 0; i &lt;= count - 1; ++i)</span><br><span class="line">			&#123;</span><br><span class="line">				if (lists[i] == null) continue;</span><br><span class="line">				if (lists[i].val &lt;= smallest)</span><br><span class="line">				&#123;</span><br><span class="line">					smallest = lists[i].val;</span><br><span class="line">					mark = i;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			if (mark == -1) break;</span><br><span class="line">			ans = ans.next = new ListNode();</span><br><span class="line">			ans.val = lists[mark].val;</span><br><span class="line">			lists[mark] = lists[mark].next;</span><br><span class="line">		&#125;</span><br><span class="line">		return ansHead.next;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>第一次用C#语言写算法题，效率很低，但总算写出来了。首先是用类来描述结点，注意记录结点头，注意类在内存的位置和变量的引用关系。链表结尾置空注意。这次手打基本可以看作是暴力。</p>
+<p>分析时间复杂度为O(kn)，空间复杂度为O(n)</p>
 
       
     </div>
@@ -339,10 +407,16 @@ m = <span class="math inline">\(a^{-1}\)</span> * (c - b) (mod 26)</p>
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2022-03-11 22:43:13 / Modified: 23:19:54" itemprop="dateCreated datePublished" datetime="2022-03-11T22:43:13+08:00">2022-03-11</time>
+      <time title="Created: 2022-03-11 22:43:13" itemprop="dateCreated datePublished" datetime="2022-03-11T22:43:13+08:00">2022-03-11</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-03-13 22:54:45" itemprop="dateModified" datetime="2022-03-13T22:54:45+08:00">2022-03-13</time>
+      </span>
 
   
 </div>
@@ -782,6 +856,58 @@ m = <span class="math inline">\(a^{-1}\)</span> * (c - b) (mod 26)</p>
 <tr class="odd">
 <td style="text-align: left;"><strong>BitArray Xor( BitArray value );</strong></td>
 <td style="text-align: left;">对当前的 BitArray 中的元素和指定的 BitArray 中的相对应的元素执行按位异或操作。</td>
+</tr>
+</tbody>
+</table>
+<h1 id="list">List</h1>
+<p>System.Collections.Generic命名空间</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;T&gt; ListOfT = new List&lt;T&gt;();</span><br></pre></td></tr></table></figure>
+<p>其中的"T"就是所要使用的类型，既可以是简单类型，如string、int，也可以是用户自定义类型。下面看一个具体例子。　</p>
+<p><strong>二、List的方法和属性 方法或属性 作用</strong></p>
+<p>　　Count 属性，用于获取数组中当前元素数量</p>
+<table>
+<thead>
+<tr class="header">
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Add( )</td>
+<td>在List中添加一个对象的公有方法</td>
+</tr>
+<tr class="even">
+<td>Clear( )</td>
+<td>在List内移除所有元素</td>
+</tr>
+<tr class="odd">
+<td>Contains( )</td>
+<td>测试一个元素是否在List内</td>
+</tr>
+<tr class="even">
+<td>CopyTo( )</td>
+<td>重载的公有方法，把一个List拷贝到一维数组内</td>
+</tr>
+<tr class="odd">
+<td>FindAll( )</td>
+<td>查找并返回List内的所有匹配元素</td>
+</tr>
+<tr class="even">
+<td>Insert()</td>
+<td>方法插入元素</td>
+</tr>
+<tr class="odd">
+<td>Sort()</td>
+<td>对列表中是元素进行从小到大排序</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -1333,79 +1459,6 @@ map的键是不能修改的，但是其键对应的值是可以修改的</p>
 </tbody>
 </table>
 <h1 id="播放画面">播放画面</h1>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/05/%E6%91%84%E5%83%8F%E5%A4%B4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="甜药补习班吊尾生">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/03/05/%E6%91%84%E5%83%8F%E5%A4%B4/" class="post-title-link" itemprop="url">摄像头</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-03-05 17:34:14" itemprop="dateCreated datePublished" datetime="2022-03-05T17:34:14+08:00">2022-03-05</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-03-09 16:05:12" itemprop="dateModified" datetime="2022-03-09T16:05:12+08:00">2022-03-09</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>清除标志：设置空白区域的信息，默认为天空盒。此外还有纯色、仅深度（融合多个摄像机的内容）、不清除可选。</p>
-<p>剔除遮罩：选择需要在镜头中显示的图层</p>
-<p>投影：可以调整远近平面距离，视野，视窗大小等属性</p>
 
       
     </div>

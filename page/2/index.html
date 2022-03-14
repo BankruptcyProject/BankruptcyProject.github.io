@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">73</span>
+          <span class="site-state-item-count">74</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,79 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/05/%E6%91%84%E5%83%8F%E5%A4%B4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="甜药补习班吊尾生">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/03/05/%E6%91%84%E5%83%8F%E5%A4%B4/" class="post-title-link" itemprop="url">摄像头</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-03-05 17:34:14" itemprop="dateCreated datePublished" datetime="2022-03-05T17:34:14+08:00">2022-03-05</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-03-09 16:05:12" itemprop="dateModified" datetime="2022-03-09T16:05:12+08:00">2022-03-09</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>清除标志：设置空白区域的信息，默认为天空盒。此外还有纯色、仅深度（融合多个摄像机的内容）、不清除可选。</p>
+<p>剔除遮罩：选择需要在镜头中显示的图层</p>
+<p>投影：可以调整远近平面距离，视野，视窗大小等属性</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1034,10 +1107,16 @@ Bounce Combine（弹力组合）</p>
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2022-02-28 14:05:02 / Modified: 16:28:29" itemprop="dateCreated datePublished" datetime="2022-02-28T14:05:02+08:00">2022-02-28</time>
+      <time title="Created: 2022-02-28 14:05:02" itemprop="dateCreated datePublished" datetime="2022-02-28T14:05:02+08:00">2022-02-28</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-03-13 16:26:14" itemprop="dateModified" datetime="2022-03-13T16:26:14+08:00">2022-03-13</time>
+      </span>
 
   
 </div>
@@ -1049,7 +1128,12 @@ Bounce Combine（弹力组合）</p>
     
     
     <div class="post-body" itemprop="articleBody">
-          
+          <h1 id="数据持续化方案">数据持续化方案</h1>
+<h1 id="序列化与反序列化">序列化与反序列化</h1>
+<p>创建保存类，不继承组件</p>
+<h2 id="二进制">二进制</h2>
+<h2 id="json">JSON</h2>
+<h2 id="xml">Xml</h2>
 
       
     </div>
@@ -1141,85 +1225,6 @@ init脚本中创建所有变量并初始化，data脚本从init获取变量，�
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class Data : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    public static bool isAlready;</span><br><span class="line">    //</span><br><span class="line">    void Start()</span><br><span class="line">    &#123;</span><br><span class="line">        if (!isAlready)</span><br><span class="line">        &#123;</span><br><span class="line">            map = GameObject.Find(&quot;Gamecontrol&quot;).GetComponent&lt;Init&gt;().map;</span><br><span class="line">            GameObject.DontDestroyOnLoad(gameObject);</span><br><span class="line">            isAlready = true;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="退出游戏">退出游戏</h1>
 <p>在unity编辑界面实现退出游戏 调用这个 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">  void QuitGame()</span><br><span class="line">  &#123;</span><br><span class="line">#if UNITY_EDITOR</span><br><span class="line">      	UnityEditor.EditorApplication.isPlaying = false;</span><br><span class="line">#else</span><br><span class="line">          Application.Quit();</span><br><span class="line">#endif</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/28/%E8%B0%83%E7%94%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="甜药补习班吊尾生">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/02/28/%E8%B0%83%E7%94%A8/" class="post-title-link" itemprop="url">调用</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-02-28 12:30:38" itemprop="dateCreated datePublished" datetime="2022-02-28T12:30:38+08:00">2022-02-28</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-03-02 16:32:23" itemprop="dateModified" datetime="2022-03-02T16:32:23+08:00">2022-03-02</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="重复调用">重复调用</h1>
-<p>InvokeRepeating("be",delay,jiange);//字符串：函数名，第一次延时，间隔</p>
-<h1 id="延时调用">延时调用</h1>
-<p>Invoke("be",3); 3秒后调用</p>
-<p>invoke API很有用，去官方手册查</p>
-<h1 id="三种调用其他脚本函数的方法">三种调用其他脚本函数的方法</h1>
-<p>第一种，被调用脚本函数为static类型，调用时直接用 脚本名.函数名()。很不实用……</p>
-<p>第二种，GameObject.Find("脚本所在物体名").SendMessage("函数名"); 此种方法可以调用public和private类型函数//无返回值</p>
-<p>第三种，GameObject.Find("脚本所在物体名").GetComponent<脚本名>().函数名();此种方法只可以调用public类型函数//有返回值</脚本名></p>
 
       
     </div>
