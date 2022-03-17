@@ -234,6 +234,71 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/17/%E6%A1%88%E4%BE%8B-K3%E7%94%9F%E6%97%A5%E7%A4%BC%E7%89%A9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="甜药补习班吊尾生">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/03/17/%E6%A1%88%E4%BE%8B-K3%E7%94%9F%E6%97%A5%E7%A4%BC%E7%89%A9/" class="post-title-link" itemprop="url">案例-K3生日礼物</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-03-17 14:23:25 / Modified: 14:31:31" itemprop="dateCreated datePublished" datetime="2022-03-17T14:23:25+08:00">2022-03-17</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/14/LC-MergeKSortedLists/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -276,88 +341,6 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">public class Solution</span><br><span class="line">&#123;</span><br><span class="line">	public ListNode MergeKLists(ListNode[] lists)</span><br><span class="line">	&#123;</span><br><span class="line">		ListNode ansHead = new ListNode();</span><br><span class="line">		ListNode ans = ansHead;</span><br><span class="line">		int count = lists.Count();//链表个数</span><br><span class="line">		while (true)</span><br><span class="line">		&#123;</span><br><span class="line">			int smallest = 99999;</span><br><span class="line">			int mark = -1;</span><br><span class="line">			for (int i = 0; i &lt;= count - 1; ++i)</span><br><span class="line">			&#123;</span><br><span class="line">				if (lists[i] == null) continue;</span><br><span class="line">				if (lists[i].val &lt;= smallest)</span><br><span class="line">				&#123;</span><br><span class="line">					smallest = lists[i].val;</span><br><span class="line">					mark = i;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			if (mark == -1) break;</span><br><span class="line">			ans = ans.next = new ListNode();</span><br><span class="line">			ans.val = lists[mark].val;</span><br><span class="line">			lists[mark] = lists[mark].next;</span><br><span class="line">		&#125;</span><br><span class="line">		return ansHead.next;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>第一次用C#语言写算法题，效率很低，但总算写出来了。首先是用类来描述结点，注意记录结点头，注意类在内存的位置和变量的引用关系。链表结尾置空注意。这次手打基本可以看作是暴力。</p>
 <p>分析时间复杂度为O(kn)，空间复杂度为O(n)</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/12/%E5%AF%86%E7%A0%81%E5%AD%A6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="甜药补习班吊尾生">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/03/12/%E5%AF%86%E7%A0%81%E5%AD%A6/" class="post-title-link" itemprop="url">密码学</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-03-12 15:15:40 / Modified: 17:26:49" itemprop="dateCreated datePublished" datetime="2022-03-12T15:15:40+08:00">2022-03-12</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="单表替换密码">单表替换密码</h1>
-<h2 id="移位密码">移位密码</h2>
-<p>首先将字母表用整数0~25来标识，选取密钥为一个整数k（0&lt;=k&lt;=25），则移位密码的加密和解密过程可表示为：</p>
-<p>加密过程：c = m + k (mod 26) 解密过程：m = c - k (mod 26)</p>
-<p>例如：在凯撒密码中：k取23，或者说-3</p>
-<h2 id="仿射密码">仿射密码</h2>
-<p>加密过程： gcd(a, 26) = 1<br>
-c = a * m + b (mod 26)<br>
-解密过程：<br>
-m = <span class="math inline">\(a^{-1}\)</span> * (c - b) (mod 26)</p>
-<h2 id="破解频率攻击">破解：频率攻击</h2>
-<p>明确字母频率表</p>
-<p>得到密文，统计出使用频率最高的两个字母</p>
-<p>解二元一次方程组，得到（k1，k2）（mod 26），满足k1、k2为整数且gcd(k1, 26) = 1。</p>
-<p>最多解26*26 = 676组，使用计算机解</p>
-<p>得到n组密钥，进行解密，选取其中最和逻辑的一种。</p>
-<h1 id="多表替换密码">多表替换密码</h1>
-<h2 id="vigenere密码">Vigenere密码</h2>
 
       
     </div>
@@ -1288,7 +1271,7 @@ map的键是不能修改的，但是其键对应的值是可以修改的</p>
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2022-03-06 01:26:56 / Modified: 16:41:22" itemprop="dateCreated datePublished" datetime="2022-03-06T01:26:56+08:00">2022-03-06</time>
+      <time title="Created: 2022-03-06 01:26:56 / Modified: 16:53:05" itemprop="dateCreated datePublished" datetime="2022-03-06T01:26:56+08:00">2022-03-06</time>
     </span>
 
   
