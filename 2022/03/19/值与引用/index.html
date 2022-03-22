@@ -22,13 +22,13 @@
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 <meta name="description" content="C#中的数据类型，分值类型和引用类型两大类 值类型 直接存储数据的值，保存在内存中的stack(堆栈)中 　　 #### 引用类型 存储对值的引用，实际上存储的就是一个内存的地址。引用类型的保存分成两块，实际值保存在托管堆(heap)中，实际值的内存地址保存在stack中 当使用引用类型时先找到stack中的地址，再找到heap中的实际值 也就是说保存引用类型时要用到stack和heap，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="值与引用">
+<meta property="og:title" content="C#值与引用">
 <meta property="og:url" content="http://example.com/2022/03/19/%E5%80%BC%E4%B8%8E%E5%BC%95%E7%94%A8/index.html">
 <meta property="og:site_name" content="划水骗分二十年，没人比我更懂蒻">
 <meta property="og:description" content="C#中的数据类型，分值类型和引用类型两大类 值类型 直接存储数据的值，保存在内存中的stack(堆栈)中 　　 #### 引用类型 存储对值的引用，实际上存储的就是一个内存的地址。引用类型的保存分成两块，实际值保存在托管堆(heap)中，实际值的内存地址保存在stack中 当使用引用类型时先找到stack中的地址，再找到heap中的实际值 也就是说保存引用类型时要用到stack和heap，">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-03-19T09:36:55.000Z">
-<meta property="article:modified_time" content="2022-03-19T11:09:00.460Z">
+<meta property="article:modified_time" content="2022-03-22T04:38:20.113Z">
 <meta property="article:author" content="甜药补习班吊尾生">
 <meta property="article:tag" content="C#">
 <meta name="twitter:card" content="summary">
@@ -38,10 +38,10 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/03/19/%E5%80%BC%E4%B8%8E%E5%BC%95%E7%94%A8/","path":"2022/03/19/值与引用/","title":"值与引用"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/03/19/%E5%80%BC%E4%B8%8E%E5%BC%95%E7%94%A8/","path":"2022/03/19/值与引用/","title":"C#值与引用"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>值与引用 | 划水骗分二十年，没人比我更懂蒻</title>
+<title>C#值与引用 | 划水骗分二十年，没人比我更懂蒻</title>
   
 
 
@@ -181,7 +181,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          值与引用
+          C#值与引用
         </h1>
 
         <div class="post-meta-container">
@@ -191,10 +191,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2022-03-19 17:36:55 / Modified: 19:09:00" itemprop="dateCreated datePublished" datetime="2022-03-19T17:36:55+08:00">2022-03-19</time>
+      <time title="Created: 2022-03-19 17:36:55" itemprop="dateCreated datePublished" datetime="2022-03-19T17:36:55+08:00">2022-03-19</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-03-22 12:38:20" itemprop="dateModified" datetime="2022-03-22T12:38:20+08:00">2022-03-22</time>
+      </span>
 
   
 </div>
