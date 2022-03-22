@@ -20,13 +20,15 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="C# I&#x2F;O 类 System.IO 命名空间有各种不同的类，用于执行各种文件操作，如创建和删除文件、读取或写入文件，关闭文件等。 下表列出了一些 System.IO 命名空间中常用的非抽象类：    I&#x2F;O 类 描述     BinaryReader 从二进制流读取原始数据。   BinaryWriter 以二进制格式写入原始数据。   BufferedS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="c#文件输入输出">
 <meta property="og:url" content="http://example.com/2022/03/21/c-%E6%96%87%E4%BB%B6%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/index.html">
 <meta property="og:site_name" content="划水骗分二十年，没人比我更懂蒻">
+<meta property="og:description" content="C# I&#x2F;O 类 System.IO 命名空间有各种不同的类，用于执行各种文件操作，如创建和删除文件、读取或写入文件，关闭文件等。 下表列出了一些 System.IO 命名空间中常用的非抽象类：    I&#x2F;O 类 描述     BinaryReader 从二进制流读取原始数据。   BinaryWriter 以二进制格式写入原始数据。   BufferedS">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-03-21T14:01:49.000Z">
-<meta property="article:modified_time" content="2022-03-21T14:02:12.305Z">
+<meta property="article:modified_time" content="2022-03-22T09:11:42.273Z">
 <meta property="article:author" content="甜药补习班吊尾生">
 <meta property="article:tag" content="C#">
 <meta name="twitter:card" content="summary">
@@ -93,7 +95,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -106,6 +108,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#c-io-%E7%B1%BB"><span class="nav-number">1.</span> <span class="nav-text">C# I&#x2F;O 类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#streamreader-%E7%B1%BB"><span class="nav-number">1.1.</span> <span class="nav-text">StreamReader 类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#streamwriter-%E7%B1%BB"><span class="nav-number">1.2.</span> <span class="nav-text">StreamWriter 类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#filestream-%E7%B1%BB"><span class="nav-number">1.3.</span> <span class="nav-text">FileStream 类</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -188,10 +191,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2022-03-21 22:01:49 / Modified: 22:02:12" itemprop="dateCreated datePublished" datetime="2022-03-21T22:01:49+08:00">2022-03-21</time>
+      <time title="Created: 2022-03-21 22:01:49" itemprop="dateCreated datePublished" datetime="2022-03-21T22:01:49+08:00">2022-03-21</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-03-22 17:11:42" itemprop="dateModified" datetime="2022-03-22T17:11:42+08:00">2022-03-22</time>
+      </span>
 
   
 </div>
@@ -203,7 +212,192 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        
+        <h1 id="c-io-类">C# I/O 类</h1>
+<p>System.IO 命名空间有各种不同的类，用于执行各种文件操作，如创建和删除文件、读取或写入文件，关闭文件等。</p>
+<p>下表列出了一些 System.IO 命名空间中常用的非抽象类：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">I/O 类</th>
+<th style="text-align: left;">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">BinaryReader</td>
+<td style="text-align: left;">从二进制流读取原始数据。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BinaryWriter</td>
+<td style="text-align: left;">以二进制格式写入原始数据。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">BufferedStream</td>
+<td style="text-align: left;">字节流的临时存储。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Directory</td>
+<td style="text-align: left;">有助于操作目录结构。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">DirectoryInfo</td>
+<td style="text-align: left;">用于对目录执行操作。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">DriveInfo</td>
+<td style="text-align: left;">提供驱动器的信息。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">File</td>
+<td style="text-align: left;">有助于处理文件。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FileInfo</td>
+<td style="text-align: left;">用于对文件执行操作。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">FileStream</td>
+<td style="text-align: left;">用于文件中任何位置的读写。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MemoryStream</td>
+<td style="text-align: left;">用于随机访问存储在内存中的数据流。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Path</td>
+<td style="text-align: left;">对路径信息执行操作。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">StreamReader</td>
+<td style="text-align: left;">用于从字节流中读取字符。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">StreamWriter</td>
+<td style="text-align: left;">用于向一个流中写入字符。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">StringReader</td>
+<td style="text-align: left;">用于读取字符串缓冲区。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">StringWriter</td>
+<td style="text-align: left;">用于写入字符串缓冲区。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="streamreader-类">StreamReader 类</h2>
+<p>下表列出了 <strong>StreamReader</strong> 类中一些常用的<strong>方法</strong>：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">方法</th>
+<th style="text-align: left;">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>public override void Close()</strong></td>
+<td style="text-align: left;">关闭 StreamReader 对象和基础流，并释放任何与读者相关的系统资源。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>public override int Peek()</strong></td>
+<td style="text-align: left;">返回下一个可用的字符，但不使用它。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>public override int Read()</strong></td>
+<td style="text-align: left;">从输入流中读取下一个字符，并把字符位置往前移一个字符。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>public override int ReadToEnd()</strong></td>
+<td style="text-align: left;">从输入流中读取。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>public override int ReadLine()</strong></td>
+<td style="text-align: left;">从输入流中读取。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="streamwriter-类">StreamWriter 类</h2>
+<p><strong>StreamWriter</strong> 类继承自抽象类 TextWriter，表示编写器写入一系列字符。</p>
+<p>下表列出了 <strong>StreamWriter</strong> 类中一些常用的<strong>方法</strong>：</p>
+<table>
+<colgroup>
+<col style="width: 6%">
+<col style="width: 93%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">方法</th>
+<th style="text-align: left;">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>public override void Close()</strong></td>
+<td style="text-align: left;">关闭当前的 StreamWriter 对象和基础流。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>public override void Flush()</strong></td>
+<td style="text-align: left;">清理当前编写器的所有缓冲区，使得所有缓冲数据写入基础流。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>public virtual void Write(bool value)</strong></td>
+<td style="text-align: left;">把一个布尔值的文本表示形式写入到文本字符串或流。（继承自 TextWriter。）</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>public override void Write( char value )</strong></td>
+<td style="text-align: left;">把一个字符写入到流。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>public virtual void Write( decimal value )</strong></td>
+<td style="text-align: left;">把一个十进制值的文本表示形式写入到文本字符串或流。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>public virtual void Write( double value )</strong></td>
+<td style="text-align: left;">把一个 8 字节浮点值的文本表示形式写入到文本字符串或流。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>public virtual void Write( int value )</strong></td>
+<td style="text-align: left;">把一个 4 字节有符号整数的文本表示形式写入到文本字符串或流。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>public override void Write( string value )</strong></td>
+<td style="text-align: left;">把一个字符串写入到流。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>public virtual void WriteLine()</strong></td>
+<td style="text-align: left;">把行结束符写入到文本字符串或流。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="filestream-类">FileStream 类</h2>
+<p>System.IO 命名空间中的 <strong>FileStream</strong> 类有助于文件的读写与关闭。该类派生自抽象类 Stream。</p>
+<p>您需要创建一个 <strong>FileStream</strong> 对象来创建一个新的文件，或打开一个已有的文件。创建 <strong>FileStream</strong> 对象的语法如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FileStream &lt;object_name&gt; = new FileStream( &lt;file_name&gt;, &lt;FileMode Enumerator&gt;, &lt;FileAccess Enumerator&gt;, &lt;FileShare Enumerator&gt;);</span><br></pre></td></tr></table></figure>
+<p>例如，创建一个 FileStream 对象 <strong>F</strong> 来读取名为 <strong>sample.txt</strong> 的文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FileStream F = new FileStream(&quot;sample.txt&quot;, FileMode.Open, FileAccess.Read, FileShare.Read);</span><br></pre></td></tr></table></figure>
+<table>
+<colgroup>
+<col style="width: 14%">
+<col style="width: 85%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">参数</th>
+<th style="text-align: left;">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">FileMode</td>
+<td style="text-align: left;"><strong>FileMode</strong> 枚举定义了各种打开文件的方法。FileMode 枚举的成员有：<strong>Append</strong>：打开一个已有的文件，并将光标放置在文件的末尾。如果文件不存在，则创建文件。<strong>Create</strong>：创建一个新的文件。如果文件已存在，则删除旧文件，然后创建新文件。<strong>CreateNew</strong>：指定操作系统应创建一个新的文件。如果文件已存在，则抛出异常。<strong>Open</strong>：打开一个已有的文件。如果文件不存在，则抛出异常。<strong>OpenOrCreate</strong>：指定操作系统应打开一个已有的文件。如果文件不存在，则用指定的名称创建一个新的文件打开。<strong>Truncate</strong>：打开一个已有的文件，文件一旦打开，就将被截断为零字节大小。然后我们可以向文件写入全新的数据，但是保留文件的初始创建日期。如果文件不存在，则抛出异常。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FileAccess</td>
+<td style="text-align: left;"><strong>FileAccess</strong> 枚举的成员有：<strong>Read</strong>、<strong>ReadWrite</strong> 和 <strong>Write</strong>。</td>
+</tr>
+</tbody>
+</table>
 
     </div>
 
