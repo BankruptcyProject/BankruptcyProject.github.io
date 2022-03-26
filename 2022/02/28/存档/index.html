@@ -28,7 +28,7 @@
 <meta property="og:description" content="数据持续化方案 PlayerPrefs 的用法很简单。通过它，能够简单保存某些设置如玩家的图形设置、登录信息，以及需要保存的玩家其它设置。但是，PlayerPrefs 不是为了游戏存档而设计的。因此，需要用到序列化。 PlayerPrefs类下的静态函数        函数名 描述     DeleteAll 从偏好中删除所有键和值。请谨慎使用。   Del">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-02-28T06:05:02.000Z">
-<meta property="article:modified_time" content="2022-03-22T08:06:16.905Z">
+<meta property="article:modified_time" content="2022-03-26T14:40:12.639Z">
 <meta property="article:author" content="甜药补习班吊尾生">
 <meta property="article:tag" content="unity">
 <meta name="twitter:card" content="summary">
@@ -199,7 +199,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-03-22 16:06:16" itemprop="dateModified" datetime="2022-03-22T16:06:16+08:00">2022-03-22</time>
+        <time title="Modified: 2022-03-26 22:40:12" itemprop="dateModified" datetime="2022-03-26T22:40:12+08:00">2022-03-26</time>
       </span>
 
   
@@ -286,7 +286,7 @@
 <h2 id="json">JSON</h2>
 <p>对象-&gt;JSON</p>
 <p>JSON-&gt;对象</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">using LitJson;//需要额外下载文件</span><br><span class="line">private void SaveByJson()</span><br><span class="line">&#123;</span><br><span class="line">    Save save = CreateSaveGO();</span><br><span class="line">    string filePath = Application.dataPath + &quot;/StreamingFile&quot; + &quot;/save.txt&quot;;</span><br><span class="line">    string saveJsonStr = JsonMapper.ToJson(filePath);</span><br><span class="line">    StringWriter sw = new StringWriter(filePath);</span><br><span class="line">    sw.Write(saveJsonStr);</span><br><span class="line">    sw.Close();</span><br><span class="line">&#125;</span><br><span class="line">private void LoadByJson()</span><br><span class="line">&#123;</span><br><span class="line">    string filePath = Application.dataPath + &quot;/StreamingFile&quot; + &quot;/save.txt&quot;;</span><br><span class="line">    if (!File.Exists(filePath))return;</span><br><span class="line">    StreamReader sr = new StreamReader(filePath);</span><br><span class="line">    string jsonStr = sr.ReadToEnd();</span><br><span class="line">    sr.Close();</span><br><span class="line">    Save save = JsonMapper.ToObject&lt;Save&gt;(jsonStr);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">using LitJson;//需要额外下载文件</span><br><span class="line">private void SaveByJson()</span><br><span class="line">&#123;</span><br><span class="line">    Save save = CreateSaveGO();</span><br><span class="line">    string filePath = Application.dataPath + &quot;/StreamingFile&quot; + &quot;/save.txt&quot;;</span><br><span class="line">    string saveJsonStr = JsonMapper.ToJson(save);</span><br><span class="line">    StreamWriter sw = new StreamWriter(filePath);</span><br><span class="line">    sw.Write(saveJsonStr);</span><br><span class="line">    sw.Close();</span><br><span class="line">&#125;</span><br><span class="line">private void LoadByJson()</span><br><span class="line">&#123;</span><br><span class="line">    string filePath = Application.dataPath + &quot;/StreamingFile&quot; + &quot;/save.txt&quot;;</span><br><span class="line">    if (!File.Exists(filePath))return;</span><br><span class="line">    StreamReader sr = new StreamReader(filePath);</span><br><span class="line">    string jsonStr = sr.ReadToEnd();</span><br><span class="line">    sr.Close();</span><br><span class="line">    Save save = JsonMapper.ToObject&lt;Save&gt;(jsonStr);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="xml">Xml</h2>
 
     </div>
