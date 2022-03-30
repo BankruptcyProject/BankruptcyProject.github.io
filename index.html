@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">81</span>
+          <span class="site-state-item-count">83</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -208,6 +208,215 @@
           <center>
 <font size="72">“但凡回头一下，我该死” </font>
 </center>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/29/C-%E5%A7%94%E6%89%98%EF%BC%88Delegate%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="一个废物捏">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/03/29/C-%E5%A7%94%E6%89%98%EF%BC%88Delegate%EF%BC%89/" class="post-title-link" itemprop="url">C# 委托（Delegate）</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-03-29 15:43:50 / Modified: 16:21:35" itemprop="dateCreated datePublished" datetime="2022-03-29T15:43:50+08:00">2022-03-29</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>C# 中的<strong>委托</strong>（Delegate）类似于 C 或 C++ 中<strong>函数的指针</strong>。</p>
+<p>委托（Delegate） 是 <strong>存有对某个方法的引用</strong> 的 <strong>一种引用类型变量</strong>。引用可在运行时被改变。</p>
+<p>委托（Delegate）特别用于实现事件和回调方法。</p>
+<p>所有的委托（Delegate）都派生自 System.Delegate 类。</p>
+<h2 id="声明委托delegate">声明委托（Delegate）</h2>
+<p>委托声明决定了可由该委托引用的方法。委托可指向一个与其具有相同标签的方法。</p>
+<p>例如，假设有一个委托：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public delegate int eg (string s);</span><br></pre></td></tr></table></figure>
+<p>上面的委托可被用于，（引用任何一个带有一个单一的 <em>string</em> 参数并返回一个 <em>int</em> 类型变量的方法）。</p>
+<h2 id="实例化委托delegate">实例化委托（Delegate）</h2>
+<p>一旦声明了委托类型，委托对象必须使用 <strong>new</strong> 关键字来创建，且与一个特定的方法有关。当创建委托时，传递到 <strong>new</strong> 语句的参数就像方法调用一样书写，但是不带有参数。例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public delegate void printString(string s);</span><br><span class="line">...</span><br><span class="line">printString ps1 = new printString(WriteToScreen);</span><br><span class="line">printString ps2 = new printString(WriteToFile);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/29/Echo%E5%BC%82%E6%AD%A5%E7%BD%91%E7%BB%9C%E7%A8%8B%E5%BA%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="一个废物捏">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/03/29/Echo%E5%BC%82%E6%AD%A5%E7%BD%91%E7%BB%9C%E7%A8%8B%E5%BA%8F/" class="post-title-link" itemprop="url">Echo异步网络程序</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-03-29 14:59:21" itemprop="dateCreated datePublished" datetime="2022-03-29T14:59:21+08:00">2022-03-29</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-03-30 13:31:40" itemprop="dateModified" datetime="2022-03-30T13:31:40+08:00">2022-03-30</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="异步connect">异步Connect</h1>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public IAsyncResult BeginConnect(string host, int port, AsyncCallback requestCallback, object state)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public void EndConnect(IAsyncReasult asyncResult)</span><br></pre></td></tr></table></figure>
+<p>begin方法的参数：<br>
+一个<strong>AsyncCallback</strong>委托（用来调用 回调方法）<br>
+一个用户定义的状态对象（用来向 回调方法 传递状态信息）<br>
+begin方法：<br>
+返回一个 实现<strong>IAsyncResult</strong>接口的对象。<br>
+end方法的参数：<br>
+一个<strong>IAsyncResult</strong>参数，用于获取异步操作是否完成的信息，他的返回值与同步方法相同。</p>
+<h1 id="异步receive">异步Receive</h1>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public IAsyncResult BeginReceive(</span><br><span class="line">    byte[] buffer, </span><br><span class="line">    int offset, </span><br><span class="line">    int size, </span><br><span class="line">    SocketFlags socketFlags, </span><br><span class="line">    AsyncCallback callback, </span><br><span class="line">    object state</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public int EndReceive(IAsyncResult asyncResult)</span><br></pre></td></tr></table></figure>
+<h1 id="客户端代码">客户端代码</h1>
+<p>using System.Collections; using System.Collections.Generic; using UnityEngine; using System.Net.Sockets; using UnityEngine.UI; using System;</p>
+<p>public class Echo : MonoBehaviour { Socket socket; byte[] readBuff = new byte[1024]; string recvStr = ""; public InputField inputField; public Text text;</p>
+<pre><code>public void Connection()
+&#123;
+    //Socket
+    socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+    //Connect
+    socket.BeginConnect(&quot;127.0.0.1&quot;, 8888, ConnectCallback, socket);//socket 这个参数可由 ar.AsyncState 获取到
+&#125;
+public void ConnectCallback(IAsyncResult ar)
+&#123;
+    try
+    &#123;
+        Socket socket = (Socket)ar.AsyncState;
+        socket.EndConnect(ar);
+        Debug.Log(&quot;Socket Connect Succ&quot;);
+        socket.BeginReceive(readBuff, 0, 1024, 0, ReceiveCallback, socket);
+    &#125;
+    catch(SocketException ex)
+    &#123;
+        Debug.Log(&quot;Socket Connect fail&quot; + ex.ToString());
+    &#125;
+&#125;
+public void ReceiveCallback(IAsyncResult ar)
+&#123;
+    try
+    &#123;
+        Socket socket = (Socket)ar.AsyncState;
+        int count = socket.EndReceive(ar);
+        recvStr = System.Text.Encoding.UTF8.GetString(readBuff, 0, count);
+
+        socket.BeginReceive(readBuff, 0, 1024, 0, ReceiveCallback, socket);
+    &#125;
+    catch (SocketException ex)
+    &#123;
+        Debug.Log(&quot;Socket Receive fall&quot; + ex.ToString());
+    &#125;
+&#125;
+public void Send()
+&#123;
+    string sendStr = inputField.text;
+    byte[] sendBytes = System.Text.Encoding.UTF8.GetBytes(sendStr);
+    socket.Send(sendBytes);
+&#125;
+void Update()
+&#123;
+    text.text = recvStr;
+&#125;</code></pre>
+<p>}</p>
 
       
     </div>
@@ -1229,139 +1438,6 @@ string、数组、自定义的class就都是引用类型了。<br>
 引用参数是一个对变量的内存位置的引用。当按引用传递参数时，与值参数不同的是，它不会为这些参数创建一个新的存储位置。引用参数表示与提供给方法的实际参数具有相同的内存位置。 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public void swap(ref int x, ref int y)</span><br><span class="line">&#123;</span><br><span class="line">	int temp;</span><br><span class="line"></span><br><span class="line">	temp = x; /* 保存 x 的值 */</span><br><span class="line">	x = y;    /* 把 y 赋值给 x */</span><br><span class="line">	y = temp; /* 把 temp 赋值给 y */</span><br><span class="line">&#125;</span><br><span class="line">n.swap(ref a, ref b);</span><br></pre></td></tr></table></figure></p>
 <h4 id="out">out</h4>
 <p>return 语句可用于只从函数中返回一个值。但是，可以使用 输出参数 来从函数中返回两个值。输出参数会把方法输出的数据赋给自己，其他方面与引用参数相似。 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public void getValue(out int x )</span><br><span class="line">&#123;</span><br><span class="line">	int temp = 5;</span><br><span class="line">	x = temp;</span><br><span class="line">&#125;</span><br><span class="line">n.getValue(out a);</span><br></pre></td></tr></table></figure> 提供给输出参数的变量不需要赋值。当需要从一个参数没有指定初始值的方法中返回值时，输出参数特别有用</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/17/%E6%A1%88%E4%BE%8B-K3%E7%94%9F%E6%97%A5%E7%A4%BC%E7%89%A9/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="一个废物捏">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/03/17/%E6%A1%88%E4%BE%8B-K3%E7%94%9F%E6%97%A5%E7%A4%BC%E7%89%A9/" class="post-title-link" itemprop="url">案例-K3生日礼物</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-03-17 14:23:25 / Modified: 14:31:31" itemprop="dateCreated datePublished" datetime="2022-03-17T14:23:25+08:00">2022-03-17</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/14/LC-MergeKSortedLists/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="一个废物捏">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/03/14/LC-MergeKSortedLists/" class="post-title-link" itemprop="url">LC-MergeKSortedLists</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-03-14 16:51:45 / Modified: 17:53:34" itemprop="dateCreated datePublished" datetime="2022-03-14T16:51:45+08:00">2022-03-14</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="第一次手打21-39">第一次手打(21%, 39%)</h1>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">public class Solution</span><br><span class="line">&#123;</span><br><span class="line">	public ListNode MergeKLists(ListNode[] lists)</span><br><span class="line">	&#123;</span><br><span class="line">		ListNode ansHead = new ListNode();</span><br><span class="line">		ListNode ans = ansHead;</span><br><span class="line">		int count = lists.Count();//链表个数</span><br><span class="line">		while (true)</span><br><span class="line">		&#123;</span><br><span class="line">			int smallest = 99999;</span><br><span class="line">			int mark = -1;</span><br><span class="line">			for (int i = 0; i &lt;= count - 1; ++i)</span><br><span class="line">			&#123;</span><br><span class="line">				if (lists[i] == null) continue;</span><br><span class="line">				if (lists[i].val &lt;= smallest)</span><br><span class="line">				&#123;</span><br><span class="line">					smallest = lists[i].val;</span><br><span class="line">					mark = i;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			if (mark == -1) break;</span><br><span class="line">			ans = ans.next = new ListNode();</span><br><span class="line">			ans.val = lists[mark].val;</span><br><span class="line">			lists[mark] = lists[mark].next;</span><br><span class="line">		&#125;</span><br><span class="line">		return ansHead.next;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>第一次用C#语言写算法题，效率很低，但总算写出来了。首先是用类来描述结点，注意记录结点头，注意类在内存的位置和变量的引用关系。链表结尾置空注意。这次手打基本可以看作是暴力。</p>
-<p>分析时间复杂度为O(kn)，空间复杂度为O(n)</p>
 
       
     </div>
