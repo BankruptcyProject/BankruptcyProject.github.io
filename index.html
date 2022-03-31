@@ -341,7 +341,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-03-30 13:35:57" itemprop="dateModified" datetime="2022-03-30T13:35:57+08:00">2022-03-30</time>
+        <time title="Modified: 2022-03-31 09:09:30" itemprop="dateModified" datetime="2022-03-31T09:09:30+08:00">2022-03-31</time>
       </span>
 
   
@@ -368,55 +368,13 @@ end方法的参数：<br>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public IAsyncResult BeginReceive(</span><br><span class="line">    byte[] buffer, </span><br><span class="line">    int offset, </span><br><span class="line">    int size, </span><br><span class="line">    SocketFlags socketFlags, </span><br><span class="line">    AsyncCallback callback, </span><br><span class="line">    object state</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public int EndReceive(IAsyncResult asyncResult)</span><br></pre></td></tr></table></figure>
 <h1 id="客户端代码">客户端代码</h1>
-<p>using System.Collections; using System.Collections.Generic; using UnityEngine; using System.Net.Sockets; using UnityEngine.UI; using System;</p>
-<p>public class Echo : MonoBehaviour { Socket socket; byte[] readBuff = new byte[1024]; string recvStr = ""; public InputField inputField; public Text text;</p>
-<pre><code>public void Connection()
-&#123;
-    //Socket
-    socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-    //Connect
-    socket.BeginConnect(&quot;127.0.0.1&quot;, 8888, ConnectCallback, socket);//socket 这个参数可由 ar.AsyncState 获取到
-&#125;
-public void ConnectCallback(IAsyncResult ar)
-&#123;
-    try
-    &#123;
-        Socket socket = (Socket)ar.AsyncState;
-        socket.EndConnect(ar);
-        Debug.Log(&quot;Socket Connect Succ&quot;);
-        socket.BeginReceive(readBuff, 0, 1024, 0, ReceiveCallback, socket);
-    &#125;
-    catch(SocketException ex)
-    &#123;
-        Debug.Log(&quot;Socket Connect fail&quot; + ex.ToString());
-    &#125;
-&#125;
-public void ReceiveCallback(IAsyncResult ar)
-&#123;
-    try
-    &#123;
-        Socket socket = (Socket)ar.AsyncState;
-        int count = socket.EndReceive(ar);
-        recvStr = System.Text.Encoding.UTF8.GetString(readBuff, 0, count);
-
-        socket.BeginReceive(readBuff, 0, 1024, 0, ReceiveCallback, socket);
-    &#125;
-    catch (SocketException ex)
-    &#123;
-        Debug.Log(&quot;Socket Receive fall&quot; + ex.ToString());
-    &#125;
-&#125;
-public void Send()
-&#123;
-    string sendStr = inputField.text;
-    byte[] sendBytes = System.Text.Encoding.UTF8.GetBytes(sendStr);
-    socket.Send(sendBytes);
-&#125;
-void Update()
-&#123;
-    text.text = recvStr;
-&#125;</code></pre>
-<p>}</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">using System.Collections;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using UnityEngine;</span><br><span class="line">using System.Net.Sockets;</span><br><span class="line">using UnityEngine.UI;</span><br><span class="line">using System;</span><br><span class="line"></span><br><span class="line">public class Echo : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    Socket socket;</span><br><span class="line">    byte[] readBuff = new byte[1024];</span><br><span class="line">    string recvStr = &quot;&quot;;</span><br><span class="line">    public InputField inputField;</span><br><span class="line">    public Text text;</span><br><span class="line"></span><br><span class="line">    public void Connection()</span><br><span class="line">    &#123;</span><br><span class="line">        //Socket</span><br><span class="line">        socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);</span><br><span class="line">        //Connect</span><br><span class="line">        socket.BeginConnect(&quot;127.0.0.1&quot;, 8888, ConnectCallback, socket);</span><br><span class="line">        //socket 这个参数可由 ar.AsyncState 获取到</span><br><span class="line">    &#125;</span><br><span class="line">    public void ConnectCallback(IAsyncResult ar)</span><br><span class="line">    &#123;</span><br><span class="line">        try</span><br><span class="line">        &#123;</span><br><span class="line">            Socket socket = (Socket)ar.AsyncState;</span><br><span class="line">            socket.EndConnect(ar);</span><br><span class="line">            Debug.Log(&quot;Socket Connect Succ&quot;);</span><br><span class="line">            socket.BeginReceive(readBuff, 0, 1024, 0, ReceiveCallback, socket);</span><br><span class="line">            //开始异步接收数据，接收完数据后，回调函数ReceiveCallback被调用。</span><br><span class="line">        &#125;</span><br><span class="line">        catch(SocketException ex)</span><br><span class="line">        &#123;</span><br><span class="line">            Debug.Log(&quot;Socket Connect fail&quot; + ex.ToString());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public void ReceiveCallback(IAsyncResult ar)</span><br><span class="line">    &#123;</span><br><span class="line">        try</span><br><span class="line">        &#123;</span><br><span class="line">            Socket socket = (Socket)ar.AsyncState;</span><br><span class="line">            int count = socket.EndReceive(ar);</span><br><span class="line">            recvStr = System.Text.Encoding.UTF8.GetString(readBuff, 0, count);</span><br><span class="line">    </span><br><span class="line">            socket.BeginReceive(readBuff, 0, 1024, 0, ReceiveCallback, socket);</span><br><span class="line">        &#125;</span><br><span class="line">        catch (SocketException ex)</span><br><span class="line">        &#123;</span><br><span class="line">            Debug.Log(&quot;Socket Receive fall&quot; + ex.ToString());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public void Send()</span><br><span class="line">    &#123;</span><br><span class="line">        string sendStr = inputField.text;</span><br><span class="line">        byte[] sendBytes = System.Text.Encoding.UTF8.GetBytes(sendStr);</span><br><span class="line">        socket.Send(sendBytes);</span><br><span class="line">    &#125;</span><br><span class="line">    void Update()</span><br><span class="line">    &#123;</span><br><span class="line">        text.text = recvStr;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<img src="/2022/03/29/Echo%E5%BC%82%E6%AD%A5%E7%BD%91%E7%BB%9C%E7%A8%8B%E5%BA%8F/1.jpg" class>
+<h1 id="异步send">异步Send</h1>
+<p>socket用户层面：协议、ip、端口。这些属性可以直接修改。</p>
+<p>socket操作系统层面：发送缓冲区，接收缓冲区。不对用户开放。</p>
+<p>缓冲区：长度默认为8KB，如果缓冲区满、则Send就会阻塞直到缓冲区的数据被确认腾出空间。</p>
+<img src="/2022/03/29/Echo%E5%BC%82%E6%AD%A5%E7%BD%91%E7%BB%9C%E7%A8%8B%E5%BA%8F/2.jpg" class>
 
       
     </div>
@@ -658,10 +616,16 @@ void Update()
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2022-03-27 20:35:43 / Modified: 20:56:24" itemprop="dateCreated datePublished" datetime="2022-03-27T20:35:43+08:00">2022-03-27</time>
+      <time title="Created: 2022-03-27 20:35:43" itemprop="dateCreated datePublished" datetime="2022-03-27T20:35:43+08:00">2022-03-27</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-03-31 08:43:59" itemprop="dateModified" datetime="2022-03-31T08:43:59+08:00">2022-03-31</time>
+      </span>
 
   
 </div>
