@@ -257,10 +257,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2022-07-18 09:04:42 / Modified: 11:20:13" itemprop="dateCreated datePublished" datetime="2022-07-18T09:04:42+08:00">2022-07-18</time>
+      <time title="Created: 2022-07-18 09:04:42" itemprop="dateCreated datePublished" datetime="2022-07-18T09:04:42+08:00">2022-07-18</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-07-19 15:24:34" itemprop="dateModified" datetime="2022-07-19T15:24:34+08:00">2022-07-19</time>
+      </span>
 
   
 </div>
@@ -465,7 +471,10 @@
 </tbody>
 </table>
 <p>例子</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">22	</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">void Update()</span><br><span class="line">&#123;</span><br><span class="line">    float horizontal = Input.GetAxis(&quot;Horizontal&quot;);</span><br><span class="line">    Debug.Log(horizontal);</span><br><span class="line">&#125;</span><br><span class="line">//获取水平轴数值，-1代表左方向键，1代表右方向键，0代表没有按键</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">void Update()</span><br><span class="line">&#123;</span><br><span class="line">    if(Input.GetButtonDown(&quot;Fire1&quot;))</span><br><span class="line">    &#123;</span><br><span class="line">	&#125;</span><br><span class="line">    if(Input.GetButton(&quot;Fire1&quot;))</span><br><span class="line">    &#123;</span><br><span class="line">	&#125;</span><br><span class="line">    if(Input.GetButtonUp(&quot;Fire1&quot;))</span><br><span class="line">    &#123;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="触屏">触屏</h1>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">void Start()</span><br><span class="line">&#123;</span><br><span class="line">    Input.multiTouchEnabled = true;//开启多点触摸</span><br><span class="line">&#125;</span><br><span class="line">void Update()</span><br><span class="line">&#123;</span><br><span class="line">    if(Input.touchCount == 1)//判断单点触摸</span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log(Input.touches[0].position);//触摸位置</span><br><span class="line">	&#125;</span><br><span class="line">    switch(Input.touches[0].phase)</span><br><span class="line">    &#123;</span><br><span class="line">        case TouchPhase.Begin:</span><br><span class="line">            Debug.Log(&quot;开始触摸&quot;);</span><br><span class="line">            break;</span><br><span class="line">        case TouchPhase.Moved;</span><br><span class="line">            Debug.Log(&quot;触摸中并且在移动&quot;);</span><br><span class="line">            break;</span><br><span class="line">        case TouchPhase.Ended;</span><br><span class="line">            Debug.Log(&quot;触摸结束&quot;);</span><br><span class="line">            break;</span><br><span class="line">        case TouchPhase.Canceled;</span><br><span class="line">            Debug.Log(&quot;触摸取消&quot;);</span><br><span class="line">            break;</span><br><span class="line">        case TouchPhase.Stationary;</span><br><span class="line">            Debug.Log(&quot;触摸但未移动&quot;);</span><br><span class="line">            break;</span><br><span class="line">	&#125;</span><br><span class="line">    if (Input.touchCount == 2)//判断两点触摸</span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log(Input.touches[0].position);</span><br><span class="line">        Debug.Log(Input.touches[1].position);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
