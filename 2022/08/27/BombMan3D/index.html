@@ -20,15 +20,15 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="资源来源于资源商店 RPG&#x2F;FPS Game Assets for PC&#x2F;Mobile。使用Map_v1场景。 Easy Primitive People">
+<meta name="description" content="资源来源于资源商店 RPG&#x2F;FPS Game Assets for PC&#x2F;Mobile。使用Map_v1场景。 Easy Primitive People。使用人物Stant。 3D Monster Bomb!!。使用炸弹模型 Procedural fire。使用爆炸特效 角色移动代码摘要 1234567891011void Update()&amp;#123;	float horizonta">
 <meta property="og:type" content="article">
 <meta property="og:title" content="BombMan3D">
 <meta property="og:url" content="http://example.com/2022/08/27/BombMan3D/index.html">
 <meta property="og:site_name" content="划水骗分二十年，没人比我更懂蒻">
-<meta property="og:description" content="资源来源于资源商店 RPG&#x2F;FPS Game Assets for PC&#x2F;Mobile。使用Map_v1场景。 Easy Primitive People">
+<meta property="og:description" content="资源来源于资源商店 RPG&#x2F;FPS Game Assets for PC&#x2F;Mobile。使用Map_v1场景。 Easy Primitive People。使用人物Stant。 3D Monster Bomb!!。使用炸弹模型 Procedural fire。使用爆炸特效 角色移动代码摘要 1234567891011void Update()&amp;#123;	float horizonta">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-08-27T14:30:58.000Z">
-<meta property="article:modified_time" content="2022-08-27T16:58:37.187Z">
+<meta property="article:modified_time" content="2022-08-28T10:36:06.506Z">
 <meta property="article:author" content="一个废物捏">
 <meta property="article:tag" content="实例">
 <meta name="twitter:card" content="summary">
@@ -121,7 +121,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">86</span>
+          <span class="site-state-item-count">88</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -198,7 +198,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-08-28 00:58:37" itemprop="dateModified" datetime="2022-08-28T00:58:37+08:00">2022-08-28</time>
+        <time title="Modified: 2022-08-28 18:36:06" itemprop="dateModified" datetime="2022-08-28T18:36:06+08:00">2022-08-28</time>
       </span>
 
   
@@ -211,7 +211,16 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>资源来源于资源商店 RPG/FPS Game Assets for PC/Mobile。使用Map_v1场景。 Easy Primitive People</p>
+        <p><strong>资源</strong>来源于资源商店<br>
+RPG/FPS Game Assets for PC/Mobile。使用Map_v1场景。<br>
+Easy Primitive People。使用人物Stant。<br>
+3D Monster Bomb!!。使用炸弹模型<br>
+Procedural fire。使用爆炸特效</p>
+<p><strong>角色移动代码摘要</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">void Update()</span><br><span class="line">&#123;</span><br><span class="line">	float horizontal = Input.GetAxis(&quot;Horizontal&quot;);</span><br><span class="line">	float vertical = Input.GetAxis(&quot;Vertical&quot;);</span><br><span class="line">    Vector3 dir = new Vector3(horizontal, 0, vertical);//3D世界中，xz轴组成地面，y轴指向天空。2D世界中无z轴。</span><br><span class="line">	if (dir!=Vector3.zero)</span><br><span class="line">	&#123;</span><br><span class="line">		transform.rotation = Quaternion.LookRotation(dir);//转向</span><br><span class="line">		transform.Translate(Vector3.forward * 2 * Time.deltaTime);//移动</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>摄像头跟随摘要</strong></p>
+<p>仅实现固定距离跟随，不会转向</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class CameraControl : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    private Vector3 vector;</span><br><span class="line">    private Transform player;</span><br><span class="line">    void Start()</span><br><span class="line">    &#123;</span><br><span class="line">        player = GameObject.FindWithTag(&quot;Player&quot;).transform;</span><br><span class="line">        vector = player.transform.position - transform.position;</span><br><span class="line">    &#125;</span><br><span class="line">    void Update()</span><br><span class="line">    &#123;</span><br><span class="line">        transform.position = player.transform.position - vector;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -233,6 +242,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2022/08/28/unity%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" rel="next" title="unity线性代数">
+                  unity线性代数 <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>

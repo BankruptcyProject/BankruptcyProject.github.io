@@ -20,28 +20,28 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="非顺序存储二叉树层次序遍历 两种方法： 方法一： 对于树的每个节点多维护一个层次属性 方法二： 关键在于对普通BFS的修改，普通BFS一次从队列中取出一个元素进行搜索，现在修改为每一次取出都将队列中的所有元素取出，按顺序对这些元素搜索完毕后，再进行下一次取出 方法二 75%，94% 1234567891011121314151617181920212223242526class Soluti">
+<meta name="description" content="点乘获取两个向量夹角 叉乘获取两个向量的平面垂直向量 旋转 静态欧拉角 围绕世界坐标的旋转，用三个标量表示围绕三个轴的旋转角度。可以将物体旋转到任意位置。 动态欧拉角 围绕自身坐标旋转，用三个标量表示围绕三个轴的旋转角度。及围绕其中一个轴旋转时另外两个坐标轴的位置会发生变化。可能出现万向锁问题。 Quaternion结构体代表一个四元数，包含一个标量和一个三维向量，用于描述一个物体的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LC-BinaryTreeLevelOrderTraversal">
-<meta property="og:url" content="http://example.com/2021/09/07/LC-BinaryTreeLevelOrderTraversal/index.html">
+<meta property="og:title" content="unity线性代数">
+<meta property="og:url" content="http://example.com/2022/08/28/unity%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/index.html">
 <meta property="og:site_name" content="划水骗分二十年，没人比我更懂蒻">
-<meta property="og:description" content="非顺序存储二叉树层次序遍历 两种方法： 方法一： 对于树的每个节点多维护一个层次属性 方法二： 关键在于对普通BFS的修改，普通BFS一次从队列中取出一个元素进行搜索，现在修改为每一次取出都将队列中的所有元素取出，按顺序对这些元素搜索完毕后，再进行下一次取出 方法二 75%，94% 1234567891011121314151617181920212223242526class Soluti">
+<meta property="og:description" content="点乘获取两个向量夹角 叉乘获取两个向量的平面垂直向量 旋转 静态欧拉角 围绕世界坐标的旋转，用三个标量表示围绕三个轴的旋转角度。可以将物体旋转到任意位置。 动态欧拉角 围绕自身坐标旋转，用三个标量表示围绕三个轴的旋转角度。及围绕其中一个轴旋转时另外两个坐标轴的位置会发生变化。可能出现万向锁问题。 Quaternion结构体代表一个四元数，包含一个标量和一个三维向量，用于描述一个物体的">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-09-07T05:12:27.000Z">
-<meta property="article:modified_time" content="2022-03-27T12:59:51.689Z">
+<meta property="article:published_time" content="2022-08-28T06:35:46.000Z">
+<meta property="article:modified_time" content="2022-08-28T08:01:42.936Z">
 <meta property="article:author" content="一个废物捏">
-<meta property="article:tag" content="算法">
+<meta property="article:tag" content="unity">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/2021/09/07/LC-BinaryTreeLevelOrderTraversal/">
+<link rel="canonical" href="http://example.com/2022/08/28/unity%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2021/09/07/LC-BinaryTreeLevelOrderTraversal/","path":"2021/09/07/LC-BinaryTreeLevelOrderTraversal/","title":"LC-BinaryTreeLevelOrderTraversal"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/08/28/unity%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/","path":"2022/08/28/unity线性代数/","title":"unity线性代数"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>LC-BinaryTreeLevelOrderTraversal | 划水骗分二十年，没人比我更懂蒻</title>
+<title>unity线性代数 | 划水骗分二十年，没人比我更懂蒻</title>
   
 
 
@@ -108,7 +108,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9D%9E%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8%E4%BA%8C%E5%8F%89%E6%A0%91%E5%B1%82%E6%AC%A1%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="nav-number">1.</span> <span class="nav-text">非顺序存储二叉树层次序遍历</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C-7594"><span class="nav-number">2.</span> <span class="nav-text">方法二 75%，94%</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%8B%E8%BD%AC"><span class="nav-number">1.</span> <span class="nav-text">旋转</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -168,7 +168,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/07/LC-BinaryTreeLevelOrderTraversal/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/28/unity%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -181,7 +181,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          LC-BinaryTreeLevelOrderTraversal
+          unity线性代数
         </h1>
 
         <div class="post-meta-container">
@@ -191,16 +191,10 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
+      
 
-      <time title="Created: 2021-09-07 13:12:27" itemprop="dateCreated datePublished" datetime="2021-09-07T13:12:27+08:00">2021-09-07</time>
+      <time title="Created: 2022-08-28 14:35:46 / Modified: 16:01:42" itemprop="dateCreated datePublished" datetime="2022-08-28T14:35:46+08:00">2022-08-28</time>
     </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-03-27 20:59:51" itemprop="dateModified" datetime="2022-03-27T20:59:51+08:00">2022-03-27</time>
-      </span>
 
   
 </div>
@@ -212,10 +206,89 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="非顺序存储二叉树层次序遍历">非顺序存储二叉树层次序遍历</h1>
-<p>两种方法： 方法一： 对于树的每个节点多维护一个层次属性 方法二： 关键在于对普通BFS的修改，普通BFS一次从队列中取出一个元素进行搜索，现在修改为每一次取出都将队列中的所有元素取出，按顺序对这些元素搜索完毕后，再进行下一次取出</p>
-<h1 id="方法二-7594">方法二 75%，94%</h1>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; <span class="built_in">levelOrder</span>(TreeNode* root) </span><br><span class="line">    &#123;</span><br><span class="line">        vector&lt;<span class="keyword">int</span>&gt;smallAns;</span><br><span class="line">        vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;ans;</span><br><span class="line">        <span class="keyword">if</span> (!root)<span class="keyword">return</span> ans;<span class="comment">//这里TM卡了我好久</span></span><br><span class="line">        queue&lt;TreeNode*&gt;q;</span><br><span class="line">        q.<span class="built_in">push</span>(root);</span><br><span class="line">        <span class="keyword">while</span> (!q.<span class="built_in">empty</span>())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> currentSize = q.<span class="built_in">size</span>();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= currentSize; ++i)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (q.<span class="built_in">front</span>()-&gt;left)q.<span class="built_in">push</span>(q.<span class="built_in">front</span>()-&gt;left);</span><br><span class="line">                <span class="keyword">if</span> (q.<span class="built_in">front</span>()-&gt;right)q.<span class="built_in">push</span>(q.<span class="built_in">front</span>()-&gt;right);</span><br><span class="line">                smallAns.<span class="built_in">push_back</span>(q.<span class="built_in">front</span>()-&gt;val);</span><br><span class="line">                q.<span class="built_in">pop</span>();</span><br><span class="line">            &#125;</span><br><span class="line">            ans.<span class="built_in">push_back</span>(smallAns);</span><br><span class="line">            smallAns.<span class="built_in">clear</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+        <p>点乘获取两个向量夹角<br>
+叉乘获取两个向量的平面垂直向量</p>
+<h1 id="旋转">旋转</h1>
+<p><strong>静态欧拉角</strong><br>
+围绕世界坐标的旋转，用三个标量表示围绕三个轴的旋转角度。可以将物体旋转到任意位置。<br>
+<strong>动态欧拉角</strong><br>
+围绕自身坐标旋转，用三个标量表示围绕三个轴的旋转角度。及围绕其中一个轴旋转时另外两个坐标轴的位置会发生变化。可能出现万向锁问题。<br>
+<strong>Quaternion</strong>结构体代表一个四元数，包含一个标量和一个三维向量，用于描述一个物体的原地旋转。（给一个物体定一个轴（三维向量），绕这个轴旋转一定角度（标量））</p>
+<p><strong>Quaternion常用属性方法</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">属性方法</th>
+<th style="text-align: left;">详解</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">identity</td>
+<td style="text-align: left;">单位旋转，相当于无旋转</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">eulerAngles</td>
+<td style="text-align: left;">转化为（返回）欧拉角</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">Quaternion</td>
+<td style="text-align: left;">使用x，y，z，w分量构造一个四元数</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">Angle</td>
+<td style="text-align: left;">范围两个旋转（向量）之间的角度</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">Euler</td>
+<td style="text-align: left;">通过欧拉角创建一个四元数</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">LookRotation</td>
+<td style="text-align: left;">返回 forward向量 旋转至 参数向量 的四元数。可以理解位看向某向量</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Transform旋转相关属性方法</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">属性方法</th>
+<th style="text-align: left;">详解</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">rotation</td>
+<td style="text-align: left;">在世界坐标系中旋转，使用四元数</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">eulerAngles</td>
+<td style="text-align: left;">在世界坐标系中的欧拉角旋转，使用Vector3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">localRotation</td>
+<td style="text-align: left;">相对于父物体的旋转</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">localEulerAngles</td>
+<td style="text-align: left;">相对于父物体的欧拉角旋转</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">LookAt</td>
+<td style="text-align: left;">旋转物体使forward向量指向目标点</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">Rotate</td>
+<td style="text-align: left;">旋转物体（动态欧拉角旋转）</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">RotateAround</td>
+<td style="text-align: left;">绕着莫个点旋转</td>
+</tr>
+</tbody>
+</table>
+<p>例子 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">transform.rotation = Quaternion.LookRotation(dir);</span><br><span class="line">//看向某个方向</span><br></pre></td></tr></table></figure></p>
 
     </div>
 
@@ -225,20 +298,20 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"># 算法</a>
+              <a href="/tags/unity/" rel="tag"># unity</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/09/05/LC-Subsets/" rel="prev" title="LC-Subsets">
-                  <i class="fa fa-chevron-left"></i> LC-Subsets
+                <a href="/2022/08/27/BombMan3D/" rel="prev" title="BombMan3D">
+                  <i class="fa fa-chevron-left"></i> BombMan3D
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/09/16/Eclipse%20Java/" rel="next" title="Eclipse Java">
-                  Eclipse Java <i class="fa fa-chevron-right"></i>
+                <a href="/2022/08/28/%E8%B5%84%E6%BA%90%E6%B8%85%E5%8D%95%E6%95%B4%E7%90%86/" rel="next" title="资源清单整理">
+                  资源清单整理 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>

