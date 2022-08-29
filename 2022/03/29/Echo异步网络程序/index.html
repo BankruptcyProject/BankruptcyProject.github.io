@@ -20,17 +20,18 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="异步Connect 123456public IAsyncResult BeginConnect(    string host,     int port,     AsyncCallback requestCallback,     object state) 1public void EndConnect(IAsyncReasult asyncResult) begin方法的参数：">
+<meta name="description" content="异步客户端 异步Connect 123456public IAsyncResult BeginConnect(    string host,     int port,     AsyncCallback requestCallback,     object state) 1public void EndConnect(IAsyncReasult asyncResult) begin方">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Echo异步网络程序">
 <meta property="og:url" content="http://example.com/2022/03/29/Echo%E5%BC%82%E6%AD%A5%E7%BD%91%E7%BB%9C%E7%A8%8B%E5%BA%8F/index.html">
 <meta property="og:site_name" content="划水骗分二十年，没人比我更懂蒻">
-<meta property="og:description" content="异步Connect 123456public IAsyncResult BeginConnect(    string host,     int port,     AsyncCallback requestCallback,     object state) 1public void EndConnect(IAsyncReasult asyncResult) begin方法的参数：">
+<meta property="og:description" content="异步客户端 异步Connect 123456public IAsyncResult BeginConnect(    string host,     int port,     AsyncCallback requestCallback,     object state) 1public void EndConnect(IAsyncReasult asyncResult) begin方">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2022/03/29/Echo%E5%BC%82%E6%AD%A5%E7%BD%91%E7%BB%9C%E7%A8%8B%E5%BA%8F/1.jpg">
 <meta property="og:image" content="http://example.com/2022/03/29/Echo%E5%BC%82%E6%AD%A5%E7%BD%91%E7%BB%9C%E7%A8%8B%E5%BA%8F/2.jpg">
+<meta property="og:image" content="http://example.com/2022/03/29/Echo%E5%BC%82%E6%AD%A5%E7%BD%91%E7%BB%9C%E7%A8%8B%E5%BA%8F/3.jpg">
 <meta property="article:published_time" content="2022-03-29T06:59:21.000Z">
-<meta property="article:modified_time" content="2022-04-19T04:04:51.607Z">
+<meta property="article:modified_time" content="2022-08-29T13:17:47.945Z">
 <meta property="article:author" content="一个废物捏">
 <meta property="article:tag" content="unity">
 <meta property="article:tag" content="C#">
@@ -113,7 +114,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%82%E6%AD%A5connect"><span class="nav-number">1.</span> <span class="nav-text">异步Connect</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%82%E6%AD%A5receive"><span class="nav-number">2.</span> <span class="nav-text">异步Receive</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BB%A3%E7%A0%81"><span class="nav-number">3.</span> <span class="nav-text">客户端代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%82%E6%AD%A5send"><span class="nav-number">4.</span> <span class="nav-text">异步Send</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%82%E6%AD%A5%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="nav-number">1.</span> <span class="nav-text">异步客户端</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%82%E6%AD%A5connect"><span class="nav-number">1.1.</span> <span class="nav-text">异步Connect</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%82%E6%AD%A5receive"><span class="nav-number">1.2.</span> <span class="nav-text">异步Receive</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%82%E6%AD%A5send"><span class="nav-number">1.3.</span> <span class="nav-text">异步Send</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%82%E6%AD%A5%E6%9C%8D%E5%8A%A1%E7%AB%AF"><span class="nav-number">2.</span> <span class="nav-text">异步服务端</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%82%E6%AD%A5accept"><span class="nav-number">2.1.</span> <span class="nav-text">异步Accept</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -127,7 +128,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">88</span>
+          <span class="site-state-item-count">89</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -204,7 +205,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-04-19 12:04:51" itemprop="dateModified" datetime="2022-04-19T12:04:51+08:00">2022-04-19</time>
+        <time title="Modified: 2022-08-29 21:17:47" itemprop="dateModified" datetime="2022-08-29T21:17:47+08:00">2022-08-29</time>
       </span>
 
   
@@ -217,7 +218,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="异步connect">异步Connect</h1>
+        <h1 id="异步客户端">异步客户端</h1>
+<h2 id="异步connect">异步Connect</h2>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public IAsyncResult BeginConnect(</span><br><span class="line">    string host, </span><br><span class="line">    int port, </span><br><span class="line">    AsyncCallback requestCallback, </span><br><span class="line">    object state</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public void EndConnect(IAsyncReasult asyncResult)</span><br></pre></td></tr></table></figure>
 <p>begin方法的参数：<br>
@@ -228,18 +230,29 @@ begin方法：<br>
 end方法的参数：<br>
 一个<strong>IAsyncResult</strong>参数，用于获取异步操作是否完成的信息，他的返回值与同步方法相同。</p>
 <p>注：回调方法在调用其的方法完成后被调用，且线程与调用其的方法线程相同。例如，下面例子中，BeginConnect方法开启新线程，改方法结束后，调用ConnectCallback回调方法，ConnectCallback与BeginConnect处于同一个线程。</p>
-<h1 id="异步receive">异步Receive</h1>
+<h2 id="异步receive">异步Receive</h2>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public IAsyncResult BeginReceive(</span><br><span class="line">    byte[] buffer, </span><br><span class="line">    int offset, </span><br><span class="line">    int size, </span><br><span class="line">    SocketFlags socketFlags, </span><br><span class="line">    AsyncCallback callback, </span><br><span class="line">    object state</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public int EndReceive(IAsyncResult asyncResult)</span><br></pre></td></tr></table></figure>
-<h1 id="客户端代码">客户端代码</h1>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">using System.Collections;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using UnityEngine;</span><br><span class="line">using System.Net.Sockets;</span><br><span class="line">using UnityEngine.UI;</span><br><span class="line">using System;</span><br><span class="line"></span><br><span class="line">public class Echo : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    Socket socket;</span><br><span class="line">    byte[] readBuff = new byte[1024];</span><br><span class="line">    string recvStr = &quot;&quot;;</span><br><span class="line">    public InputField inputField;</span><br><span class="line">    public Text text;</span><br><span class="line"></span><br><span class="line">    public void Connection()</span><br><span class="line">    &#123;</span><br><span class="line">        //Socket</span><br><span class="line">        socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);</span><br><span class="line">        //Connect</span><br><span class="line">        socket.BeginConnect(&quot;127.0.0.1&quot;, 8888, ConnectCallback, socket);</span><br><span class="line">        //socket 这个参数可由 ar.AsyncState 获取到</span><br><span class="line">    &#125;</span><br><span class="line">    public void ConnectCallback(IAsyncResult ar)</span><br><span class="line">    &#123;</span><br><span class="line">        try</span><br><span class="line">        &#123;</span><br><span class="line">            Socket socket = (Socket)ar.AsyncState;</span><br><span class="line">            socket.EndConnect(ar);</span><br><span class="line">            Debug.Log(&quot;Socket Connect Succ&quot;);</span><br><span class="line">            socket.BeginReceive(readBuff, 0, 1024, 0, ReceiveCallback, socket);</span><br><span class="line">            //开始异步接收数据，接收完数据后，回调函数ReceiveCallback被调用。</span><br><span class="line">        &#125;</span><br><span class="line">        catch(SocketException ex)</span><br><span class="line">        &#123;</span><br><span class="line">            Debug.Log(&quot;Socket Connect fail&quot; + ex.ToString());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public void ReceiveCallback(IAsyncResult ar)</span><br><span class="line">    &#123;</span><br><span class="line">        try</span><br><span class="line">        &#123;</span><br><span class="line">            Socket socket = (Socket)ar.AsyncState;</span><br><span class="line">            int count = socket.EndReceive(ar);</span><br><span class="line">            recvStr = System.Text.Encoding.UTF8.GetString(readBuff, 0, count);</span><br><span class="line">    </span><br><span class="line">            socket.BeginReceive(readBuff, 0, 1024, 0, ReceiveCallback, socket);</span><br><span class="line">        &#125;</span><br><span class="line">        catch (SocketException ex)</span><br><span class="line">        &#123;</span><br><span class="line">            Debug.Log(&quot;Socket Receive fall&quot; + ex.ToString());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public void Send()</span><br><span class="line">    &#123;</span><br><span class="line">        string sendStr = inputField.text;</span><br><span class="line">        byte[] sendBytes = System.Text.Encoding.UTF8.GetBytes(sendStr);</span><br><span class="line">        socket.Send(sendBytes);</span><br><span class="line">    &#125;</span><br><span class="line">    void Update()</span><br><span class="line">    &#123;</span><br><span class="line">        text.text = recvStr;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>buffer：Byte类型数组，存储接收到的数据 offset：buffer中存储数据的位置，该位置从0开始计数 size：最多接收的字节数 socketFlags：SocketFlags值的按位组合，这里设置为0 callback：回调函数，一个AsyncCallback委托 state：一个用户自定义对象，其中包含接收操作的相关信息。当操作完成时，此对象会被传递给EndReceive委托</p>
 <img src="/2022/03/29/Echo%E5%BC%82%E6%AD%A5%E7%BD%91%E7%BB%9C%E7%A8%8B%E5%BA%8F/1.jpg" class>
-<h1 id="异步send">异步Send</h1>
+<h2 id="异步send">异步Send</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public IAsyncResult BeginSend(</span><br><span class="line">	byte[] buffer,</span><br><span class="line">    int offset,</span><br><span class="line">    int size,</span><br><span class="line">    SocketFlags socketFlags,</span><br><span class="line">    AsyncCallback callback,</span><br><span class="line">    object state</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public int EndSend(IAsyncResult asyncResult)</span><br></pre></td></tr></table></figure>
 <p>每个Socket都会有一个发送缓冲区</p>
 <p>socket用户层面：协议、ip、端口。这些属性可以直接修改。</p>
 <p>socket操作系统层面：发送缓冲区，接收缓冲区。不对用户开放。</p>
 <p>缓冲区：长度默认为8KB，如果缓冲区满、则Send就会阻塞直到缓冲区的数据被确认腾出空间。</p>
 <img src="/2022/03/29/Echo%E5%BC%82%E6%AD%A5%E7%BD%91%E7%BB%9C%E7%A8%8B%E5%BA%8F/2.jpg" class>
+<h1 id="异步服务端">异步服务端</h1>
+<p>同时处理多个客户端的数据</p>
+<p>管理客户端的类</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class ClientState</span><br><span class="line">&#123;</span><br><span class="line">    public Socket socket;//保存客户端的基本信息</span><br><span class="line">    public byte[] readBuff = new byte[1024];//保存客户端接收到的数据</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">static Dictionary&lt;Socket, ClientState&gt; clients = new Dictionary&lt;Socket, ClientState&gt;();</span><br></pre></td></tr></table></figure>
+<h2 id="异步accept">异步Accept</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public IAsyncResult BeginAccept(</span><br><span class="line">	AsyncCallback callback,</span><br><span class="line">    object state</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public Socket EndAccept(IAsyncResult asyncResult)</span><br></pre></td></tr></table></figure>
+<p>异步服务端程序结构</p>
+<img src="/2022/03/29/Echo%E5%BC%82%E6%AD%A5%E7%BD%91%E7%BB%9C%E7%A8%8B%E5%BA%8F/3.jpg" class>
 
     </div>
 
