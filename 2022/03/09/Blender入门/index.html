@@ -27,11 +27,13 @@
 <meta property="og:site_name" content="划水骗分二十年，没人比我更懂蒻">
 <meta property="og:description" content="入门快捷键 快捷键很多，平时别瞎按键盘 鼠标中键+Shift：负责主界面移动 n键：打开sidebar面板 左下角有微调面板：可微调上次的调整 数字键7、3、1：三视图 Ctrl+Alt+Q：四视图 Alt+G：坐标归零 Alt+R：旋转归零 Alt+S：缩放归零 g：进入grab模式（x、y、z键） Shift+d：复制物体并进入grab模式 游标 一个坐标，用于辅助定">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2022/03/09/Blender%E5%85%A5%E9%97%A8/1.png">
 <meta property="article:published_time" content="2022-03-09T13:47:16.000Z">
-<meta property="article:modified_time" content="2022-08-30T17:31:25.638Z">
+<meta property="article:modified_time" content="2022-08-31T15:55:17.218Z">
 <meta property="article:author" content="一个废物捏">
 <meta property="article:tag" content="其他">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/03/09/Blender%E5%85%A5%E9%97%A8/1.png">
 
 
 <link rel="canonical" href="http://example.com/2022/03/09/Blender%E5%85%A5%E9%97%A8/">
@@ -108,7 +110,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%A5%E9%97%A8%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="nav-number">1.</span> <span class="nav-text">入门快捷键</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B8%B8%E6%A0%87"><span class="nav-number">2.</span> <span class="nav-text">游标</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8E%9F%E7%82%B9"><span class="nav-number">3.</span> <span class="nav-text">原点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BC%96%E8%BE%91%E6%A8%A1%E5%9E%8B"><span class="nav-number">4.</span> <span class="nav-text">编辑模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%A2%E6%93%8D%E4%BD%9C"><span class="nav-number">4.1.</span> <span class="nav-text">面操作</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%A5%E9%97%A8%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="nav-number">1.</span> <span class="nav-text">入门快捷键</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B8%B8%E6%A0%87"><span class="nav-number">2.</span> <span class="nav-text">游标</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8E%9F%E7%82%B9"><span class="nav-number">3.</span> <span class="nav-text">原点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BC%96%E8%BE%91%E6%A8%A1%E5%9E%8B"><span class="nav-number">4.</span> <span class="nav-text">编辑模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%A2%E6%93%8D%E4%BD%9C"><span class="nav-number">4.1.</span> <span class="nav-text">面操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%B9%E6%93%8D%E4%BD%9C"><span class="nav-number">4.2.</span> <span class="nav-text">边操作</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -122,7 +124,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">91</span>
+          <span class="site-state-item-count">92</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -199,7 +201,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-08-31 01:31:25" itemprop="dateModified" datetime="2022-08-31T01:31:25+08:00">2022-08-31</time>
+        <time title="Modified: 2022-08-31 23:55:17" itemprop="dateModified" datetime="2022-08-31T23:55:17+08:00">2022-08-31</time>
       </span>
 
   
@@ -244,6 +246,10 @@
 <p>融并面：取消选中面中间的线</p>
 <p>切割工具knife：快捷键k，手动拆分一个面。分支下由切分工具，类似一刀下一块物体</p>
 <p>面的法向Normal，代表一个正面的朝向</p>
+<p>填充面：面删除的相反，需要选中边，自动填充为三角形。栅格填充为四边形，需要偶数边。</p>
+<p>X-Ray透视模式</p>
+<img src="/2022/03/09/Blender%E5%85%A5%E9%97%A8/1.png" class>
+<h2 id="边操作">边操作</h2>
 
     </div>
 

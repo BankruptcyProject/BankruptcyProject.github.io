@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">91</span>
+          <span class="site-state-item-count">92</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -208,6 +208,82 @@
           <center>
 <font size="72">“但凡回头一下，我该死” </font>
 </center>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/01/%E7%8A%B6%E6%80%81%E6%A3%80%E6%B5%8BPoll/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="一个废物捏">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/09/01/%E7%8A%B6%E6%80%81%E6%A3%80%E6%B5%8BPoll/" class="post-title-link" itemprop="url">状态检测Poll</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-09-01 00:00:42 / Modified: 00:15:51" itemprop="dateCreated datePublished" datetime="2022-09-01T00:00:42+08:00">2022-09-01</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>解决阻塞的方法有异步和Poll两种，异步写在之前的博客，Poll比起异步代码结构更简单清晰。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public bool Poll(</span><br><span class="line">	int microSeconds,</span><br><span class="line">	SelectMode mode</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>microSeconds：等待回应的时间，以微秒为单位。如果该参数为-1，表示一直等待；如果为0，表示非阻塞。</p>
+<p>mode：有三种可选模式<br>
+SelectRead：如果Socket可读（可以接收数据），返回true，反则返回false<br>
+SelectWrite：如果Socket可写，返回true，否则返回false<br>
+SelectError：如果连接失败，返回true，否则返回false</p>
+<p>Poll方法将会在指定时段（以微秒为单位）内阻止执行，如果希望无限期地等待响应，可将microSeconds设置为一个负整数；如果希望不阻塞，设置为0。<br>
+Poll方法会检查Socket的状态。<br>
+指定参数为SelectMode.SelectRead，则可确定Socket是否为可读；<br>
+指定参数为SelectMode.SelectWrite，可确定Socket是否为可写；<br>
+指定参数为SelectMode.SelectError，可以检测错误条件。</p>
 
       
     </div>
@@ -1067,82 +1143,6 @@ Procedural fire。使用爆炸特效</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">void Update()</span><br><span class="line">&#123;</span><br><span class="line">    if(Input.GetButtonDown(&quot;Fire1&quot;))</span><br><span class="line">    &#123;</span><br><span class="line">	&#125;</span><br><span class="line">    if(Input.GetButton(&quot;Fire1&quot;))</span><br><span class="line">    &#123;</span><br><span class="line">	&#125;</span><br><span class="line">    if(Input.GetButtonUp(&quot;Fire1&quot;))</span><br><span class="line">    &#123;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="触屏">触屏</h1>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">void Start()</span><br><span class="line">&#123;</span><br><span class="line">    Input.multiTouchEnabled = true;//开启多点触摸</span><br><span class="line">&#125;</span><br><span class="line">void Update()</span><br><span class="line">&#123;</span><br><span class="line">    if(Input.touchCount == 1)//判断单点触摸</span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log(Input.touches[0].position);//触摸位置</span><br><span class="line">	&#125;</span><br><span class="line">    switch(Input.touches[0].phase)</span><br><span class="line">    &#123;</span><br><span class="line">        case TouchPhase.Begin:</span><br><span class="line">            Debug.Log(&quot;开始触摸&quot;);</span><br><span class="line">            break;</span><br><span class="line">        case TouchPhase.Moved;</span><br><span class="line">            Debug.Log(&quot;触摸中并且在移动&quot;);</span><br><span class="line">            break;</span><br><span class="line">        case TouchPhase.Ended;</span><br><span class="line">            Debug.Log(&quot;触摸结束&quot;);</span><br><span class="line">            break;</span><br><span class="line">        case TouchPhase.Canceled;</span><br><span class="line">            Debug.Log(&quot;触摸取消&quot;);</span><br><span class="line">            break;</span><br><span class="line">        case TouchPhase.Stationary;</span><br><span class="line">            Debug.Log(&quot;触摸但未移动&quot;);</span><br><span class="line">            break;</span><br><span class="line">	&#125;</span><br><span class="line">    if (Input.touchCount == 2)//判断两点触摸</span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log(Input.touches[0].position);</span><br><span class="line">        Debug.Log(Input.touches[1].position);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/29/C-%E5%A7%94%E6%89%98%EF%BC%88Delegate%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="一个废物捏">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/03/29/C-%E5%A7%94%E6%89%98%EF%BC%88Delegate%EF%BC%89/" class="post-title-link" itemprop="url">C# 委托（Delegate）</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-03-29 15:43:50 / Modified: 16:21:35" itemprop="dateCreated datePublished" datetime="2022-03-29T15:43:50+08:00">2022-03-29</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>C# 中的<strong>委托</strong>（Delegate）类似于 C 或 C++ 中<strong>函数的指针</strong>。</p>
-<p>委托（Delegate） 是 <strong>存有对某个方法的引用</strong> 的 <strong>一种引用类型变量</strong>。引用可在运行时被改变。</p>
-<p>委托（Delegate）特别用于实现事件和回调方法。</p>
-<p>所有的委托（Delegate）都派生自 System.Delegate 类。</p>
-<h2 id="声明委托delegate">声明委托（Delegate）</h2>
-<p>委托声明决定了可由该委托引用的方法。委托可指向一个与其具有相同标签的方法。</p>
-<p>例如，假设有一个委托：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public delegate int eg (string s);</span><br></pre></td></tr></table></figure>
-<p>上面的委托可被用于，（引用任何一个带有一个单一的 <em>string</em> 参数并返回一个 <em>int</em> 类型变量的方法）。</p>
-<h2 id="实例化委托delegate">实例化委托（Delegate）</h2>
-<p>一旦声明了委托类型，委托对象必须使用 <strong>new</strong> 关键字来创建，且与一个特定的方法有关。当创建委托时，传递到 <strong>new</strong> 语句的参数就像方法调用一样书写，但是不带有参数。例如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public delegate void printString(string s);</span><br><span class="line">...</span><br><span class="line">printString ps1 = new printString(WriteToScreen);</span><br><span class="line">printString ps2 = new printString(WriteToFile);</span><br></pre></td></tr></table></figure>
 
       
     </div>
