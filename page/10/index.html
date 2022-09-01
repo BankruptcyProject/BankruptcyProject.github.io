@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">92</span>
+          <span class="site-state-item-count">93</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,84 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/03/%E9%82%BB%E6%8E%A5%E8%A1%A8%E5%8F%8A%E5%85%B6cpp%E4%BB%A3%E7%A0%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="一个废物捏">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/11/03/%E9%82%BB%E6%8E%A5%E8%A1%A8%E5%8F%8A%E5%85%B6cpp%E4%BB%A3%E7%A0%81/" class="post-title-link" itemprop="url">邻接表及其cpp代码</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-11-03 19:39:36" itemprop="dateCreated datePublished" datetime="2020-11-03T19:39:36+08:00">2020-11-03</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-02-24 13:46:05" itemprop="dateModified" datetime="2022-02-24T13:46:05+08:00">2022-02-24</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="邻接表">邻接表</h1>
+<h3 id="邻接表的建立">邻接表的建立</h3>
+<p>直接上cpp代码</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span>&#123;</span><span class="keyword">int</span> w,v,next;&#125;G[MAXM];</span><br><span class="line"><span class="keyword">int</span> head [MAXN];</span><br><span class="line"><span class="keyword">int</span> tot=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> n,m;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> w)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	G[++tot].next=head[u];</span><br><span class="line">	G[tot].w=w;</span><br><span class="line">	G[tot].v=v;</span><br><span class="line">	head[u]=tot;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">	<span class="keyword">int</span> u,v,w;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=m; ++i)</span><br><span class="line">	&#123;</span><br><span class="line">		cin &gt;&gt; u &gt;&gt; v &gt;&gt; w;</span><br><span class="line">		<span class="built_in">add</span>(u,v,w);   </span><br><span class="line">		<span class="comment">//如果是无向图再加上一句add(v,u,w);</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>n</strong> 个点，<strong>m</strong> 条边，<strong>MAXN</strong>、<strong>MAXM</strong> 是数据范围 <strong>w</strong> 为当前边权值，<strong>v</strong> 为当前边可到达的点，<strong>next</strong> 为下一条边的位置 <strong>G</strong> 数组是邻接表主体，是图 具体来说，<strong>G[1]</strong> 是第一条边，<strong>G[2]</strong> 是第二条边 <strong>head[i]</strong> 存储：以 <strong>i</strong> 为起点的第一条边再数组里的位置，其中 <strong>i</strong> 是具体的点，即是<strong>u</strong> <strong>tot</strong>为当前已经存在的边的数量</p>
+<img src="/2020/11/03/%E9%82%BB%E6%8E%A5%E8%A1%A8%E5%8F%8A%E5%85%B6cpp%E4%BB%A3%E7%A0%81/QQ%E5%9B%BE%E7%89%8720201104165325.jpg" class>
+<h3 id="邻接表的遍历">邻接表的遍历</h3>
+<p>cpp代码 （待更新）</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
