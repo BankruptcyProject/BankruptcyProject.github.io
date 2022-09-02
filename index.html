@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">93</span>
+          <span class="site-state-item-count">94</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -208,6 +208,75 @@
           <center>
 <font size="72">“但凡回头一下，我该死” </font>
 </center>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/02/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E6%97%8B%E9%92%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="一个废物捏">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/09/02/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E6%97%8B%E9%92%AE/" class="post-title-link" itemprop="url">（练习）旋钮</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-09-02 22:06:09 / Modified: 22:48:37" itemprop="dateCreated datePublished" datetime="2022-09-02T22:06:09+08:00">2022-09-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <img src="/2022/09/02/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E6%97%8B%E9%92%AE/1.png" class>
+<p>原型是一个圆柱体，通过内插面和挤出面做上下的小柱体，边缘用倒角磨平。<br>
+做内插面多卡线，以后可能会用到，用不到最后再融掉。<br>
+侧面循环面可以隔一个格子选。（先全选侧面，再在选择里选隔项弃选）</p>
+<p>该练习为学习3D建模的第一个作品。</p>
 
       
     </div>
@@ -873,81 +942,6 @@ Procedural fire。使用爆炸特效</p>
 <p><strong>摄像头跟随摘要</strong></p>
 <p>仅实现固定距离跟随，不会转向</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class CameraControl : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    private Vector3 vector;</span><br><span class="line">    private Transform player;</span><br><span class="line">    void Start()</span><br><span class="line">    &#123;</span><br><span class="line">        player = GameObject.FindWithTag(&quot;Player&quot;).transform;</span><br><span class="line">        vector = player.transform.position - transform.position;</span><br><span class="line">    &#125;</span><br><span class="line">    void Update()</span><br><span class="line">    &#123;</span><br><span class="line">        transform.position = player.transform.position - vector;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/07/29/%E9%AA%91%E7%A0%8Dmod%E7%BC%96%E8%BE%91%E5%85%A5%E9%97%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="一个废物捏">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/07/29/%E9%AA%91%E7%A0%8Dmod%E7%BC%96%E8%BE%91%E5%85%A5%E9%97%A8/" class="post-title-link" itemprop="url">骑砍mod编辑入门</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-07-29 13:28:09" itemprop="dateCreated datePublished" datetime="2022-07-29T13:28:09+08:00">2022-07-29</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-08-28 16:02:33" itemprop="dateModified" datetime="2022-08-28T16:02:33+08:00">2022-08-28</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>1.下载源码文件，文件里是一堆py文件，将该文件放在module下<br>
-2.在module文件夹下复制native文件重命名作为新mod<br>
-3.源码文件中header开头的为头文件<br>
-4.源码文件中module_info文件中存放了编译生成路径，将路径改为步骤2的文件<br>
-5.源码文件中，build_module批处理类型文件为编译功能，双击编译</p>
 
       
     </div>
