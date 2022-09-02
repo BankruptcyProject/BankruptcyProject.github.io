@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">94</span>
+          <span class="site-state-item-count">95</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,106 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/28/%E5%9C%BA%E6%99%AF%E5%88%87%E6%8D%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="一个废物捏">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/02/28/%E5%9C%BA%E6%99%AF%E5%88%87%E6%8D%A2/" class="post-title-link" itemprop="url">场景切换</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-02-28 13:52:17" itemprop="dateCreated datePublished" datetime="2022-02-28T13:52:17+08:00">2022-02-28</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-03-22 00:45:59" itemprop="dateModified" datetime="2022-03-22T00:45:59+08:00">2022-03-22</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="库">库</h1>
+<p>using UnityEngine.UI<br>
+using UnityEngine.Scenemanagement</p>
+<h1 id="场景切换">场景切换</h1>
+<p>在文件夹中创建多个场景，在生成设置中调整加载场景顺序<br>
+SceneManager.LoadScene(1);或<br>
+SceneManager.LoadScene("main");<br>
+//1是某个场景在生成设置中的代号</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">public class SceneStart : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    public Button btn_start, btn_end, btn_change;</span><br><span class="line">    public void Awake()</span><br><span class="line">    &#123;</span><br><span class="line">        btn_start.onClick.AddListener(() =&gt;</span><br><span class="line">        &#123;</span><br><span class="line">            SceneManager.LoadScene(&quot;main&quot;);</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        btn_change.onClick.AddListener(() =&gt;</span><br><span class="line">        &#123;</span><br><span class="line">            SceneManager.LoadScene(&quot;Change&quot;);</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        btn_end.onClick.AddListener(() =&gt;</span><br><span class="line">        &#123;       </span><br><span class="line">            #if UNITY_EDITOR</span><br><span class="line">                UnityEditor.EditorApplication.isPlaying = false;</span><br><span class="line">            #else</span><br><span class="line">                Application.Quit();</span><br><span class="line">            #endif</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="场景间数据保存">场景间数据保存</h1>
+<p>一个专门存放数据的数据节点挂在一个Data脚本，该脚本存放需要在场景间生存的变量。其余脚本会从该脚本读取变量使用。</p>
+<p>首先，从一个场景A切换到另一个场景B，会导致场景A下的所有节点被销毁。但挂有<br>
+GameObject.DontDestroyOnLoad(gameObject);<br>
+属性的节点（此处称之为节点G）在场景A被销毁后，会在下一个场景重生。<br>
+实际上，会在下一个场景场景生成一个子场景，并将G挂载在子场景上，但这不重要<br>
+问题来了，当场景B切回场景A时，A场景创建时自带一个节点G，同时从场景B中会再重生一个节点G，于是就有了两个节点G，同时这两个节点G会同时启动DontDestoryOnLoad，于是G越来越多</p>
+<p>如何解决： 在场景A创建一个初始化脚本init，脚本中写一个全局静态变量public static bool isAlready = false;<br>
+将G节点做成一个预制体，在init脚本中生成<br>
+init脚本中创建所有变量并初始化，data脚本从init获取变量，随后将isAlready置真<br>
+例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public class Init : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    //在这里定义需要在场景间保存的变量</span><br><span class="line">    public static bool initAlready;</span><br><span class="line">    public GameObject Data;</span><br><span class="line">    void Awake()</span><br><span class="line">    &#123;</span><br><span class="line">        if (!initAlready)</span><br><span class="line">        &#123;</span><br><span class="line">            //在这里为变量赋初值、默认值</span><br><span class="line">            Instantiate(Data);</span><br><span class="line">            initAlready = true;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class Data : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    //在这里定义需要在场景间保存的变量</span><br><span class="line">    void Start()</span><br><span class="line">    &#123;</span><br><span class="line">		//在这里获得数据</span><br><span class="line">        GameObject.DontDestroyOnLoad(gameObject);</span><br><span class="line">		name = &quot;DataGO&quot;;//在DontDestroyOnLoad场景下的节点名字会增加(Clone)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>注：</strong><br>
+获取数据除了Find的另一个方法 ——单例模式 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class Data : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    public static Data onlyDataScript;//定义全局静态变量，刚好对应Data对象始终只有一个且只实例化一次</span><br><span class="line">    //在这里定义需要在场景间保存的变量</span><br><span class="line">    void Start()</span><br><span class="line">    &#123;</span><br><span class="line">        public Data onlyDataScript = this;//第一次实例化赋值</span><br><span class="line">		//在这里获得数据</span><br><span class="line">        GameObject.DontDestroyOnLoad(gameObject);</span><br><span class="line">		name = &quot;DataGO&quot;;//在DontDestroyOnLoad场景下的节点名字会增加(Clone)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Data.onlyDataScript.time = 300;</span><br><span class="line">float time = Data.onlyDataScript.time;</span><br><span class="line">//使用例子</span><br></pre></td></tr></table></figure>
+<p>注：</p>
+<p>在VS2019中，右键查找所有的引用。</p>
+<h1 id="退出游戏">退出游戏</h1>
+<p>在unity编辑界面实现退出游戏 调用这个 ​```c# void QuitGame() { #if UNITY_EDITOR UnityEditor.EditorApplication.isPlaying = false; #else Application.Quit(); #endif }</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -904,80 +1004,6 @@ import 语句和 package 语句对源文件中定义的所有类都有效。在�
 <p>变量</p>
 <img src="/2021/09/16/Eclipse%20Java/1.png" class>
 <p>String 类型不可改 StringBuffer 类型可改</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/07/LC-BinaryTreeLevelOrderTraversal/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="一个废物捏">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/07/LC-BinaryTreeLevelOrderTraversal/" class="post-title-link" itemprop="url">LC-BinaryTreeLevelOrderTraversal</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-09-07 13:12:27" itemprop="dateCreated datePublished" datetime="2021-09-07T13:12:27+08:00">2021-09-07</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-03-27 20:59:51" itemprop="dateModified" datetime="2022-03-27T20:59:51+08:00">2022-03-27</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="非顺序存储二叉树层次序遍历">非顺序存储二叉树层次序遍历</h1>
-<p>两种方法： 方法一： 对于树的每个节点多维护一个层次属性 方法二： 关键在于对普通BFS的修改，普通BFS一次从队列中取出一个元素进行搜索，现在修改为每一次取出都将队列中的所有元素取出，按顺序对这些元素搜索完毕后，再进行下一次取出</p>
-<h1 id="方法二-7594">方法二 75%，94%</h1>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; <span class="built_in">levelOrder</span>(TreeNode* root) </span><br><span class="line">    &#123;</span><br><span class="line">        vector&lt;<span class="keyword">int</span>&gt;smallAns;</span><br><span class="line">        vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;ans;</span><br><span class="line">        <span class="keyword">if</span> (!root)<span class="keyword">return</span> ans;<span class="comment">//这里TM卡了我好久</span></span><br><span class="line">        queue&lt;TreeNode*&gt;q;</span><br><span class="line">        q.<span class="built_in">push</span>(root);</span><br><span class="line">        <span class="keyword">while</span> (!q.<span class="built_in">empty</span>())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> currentSize = q.<span class="built_in">size</span>();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= currentSize; ++i)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (q.<span class="built_in">front</span>()-&gt;left)q.<span class="built_in">push</span>(q.<span class="built_in">front</span>()-&gt;left);</span><br><span class="line">                <span class="keyword">if</span> (q.<span class="built_in">front</span>()-&gt;right)q.<span class="built_in">push</span>(q.<span class="built_in">front</span>()-&gt;right);</span><br><span class="line">                smallAns.<span class="built_in">push_back</span>(q.<span class="built_in">front</span>()-&gt;val);</span><br><span class="line">                q.<span class="built_in">pop</span>();</span><br><span class="line">            &#125;</span><br><span class="line">            ans.<span class="built_in">push_back</span>(smallAns);</span><br><span class="line">            smallAns.<span class="built_in">clear</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
       
     </div>
