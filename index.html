@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">96</span>
+          <span class="site-state-item-count">97</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -208,6 +208,74 @@
           <center>
 <font size="72">“但凡回头一下，我该死” </font>
 </center>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/03/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="一个废物捏">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/09/03/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" class="post-title-link" itemprop="url">消息队列</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-09-03 22:05:00 / Modified: 22:18:00" itemprop="dateCreated datePublished" datetime="2022-09-03T22:05:00+08:00">2022-09-03</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>由于单线程消息处理足以满足游戏客户端的需要，因此大部分游戏会使用消息队列让主线程去处理异步Socket接收到的消息。</p>
+<p>C#的异步通信由线程池实现，不同的BeginReceive不一定在同一线程中执行。创建一个消息列表，每当收到消息便在列表末端添加数据，这个列表由主线程读取，它可以作为主线程和异步接收线程之间的桥梁。</p>
+<p>由于MonoBehaviour的Update方法在主线程中执行，可让Update方法每次从消息列表中读取几条信息并处理，处理后便在消息列表中删除它们。</p>
+<img src="/2022/09/03/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/1.png" class>
 
       
     </div>
@@ -792,82 +860,6 @@ Poll方法会检查Socket的状态。<br>
 其中源部分若为视频剪辑，则添加本地视频文件<br>
 渲染器模式选择渲染器纹理，渲染器纹理模式的目标纹理文件需要另外创建，该文件中可以对视频进行设置，最重要的是将该文件拖到目标物体上才可播放。</p>
 <img src="/2022/08/29/%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE/1.png" class>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/28/%E8%B5%84%E6%BA%90%E6%B8%85%E5%8D%95%E6%95%B4%E7%90%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="一个废物捏">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/08/28/%E8%B5%84%E6%BA%90%E6%B8%85%E5%8D%95%E6%95%B4%E7%90%86/" class="post-title-link" itemprop="url">资源清单整理</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-08-28 16:12:39" itemprop="dateCreated datePublished" datetime="2022-08-28T16:12:39+08:00">2022-08-28</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-08-29 00:11:11" itemprop="dateModified" datetime="2022-08-29T00:11:11+08:00">2022-08-29</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="easy-primitive-people">Easy Primitive People</h1>
-<p>无代码，仅模型。仅包含预制体和预制体的材质。<br>
-圆柱小人包含各种职业，以及一个粉色圆柱猪</p>
-<h1 id="procedural-fire">Procedural fire</h1>
-<p>无代码，预制体中的特效可直接使用。<br>
-包含一个小型爆炸效果和几个不同颜色的火焰燃烧效果。</p>
 
       
     </div>

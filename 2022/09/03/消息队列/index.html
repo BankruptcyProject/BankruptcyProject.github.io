@@ -20,23 +20,30 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta property="og:type" content="website">
-<meta property="og:title" content="划水骗分二十年，没人比我更懂蒻">
-<meta property="og:url" content="http://example.com/archives/2022/03/page/3/index.html">
+<meta name="description" content="由于单线程消息处理足以满足游戏客户端的需要，因此大部分游戏会使用消息队列让主线程去处理异步Socket接收到的消息。 C#的异步通信由线程池实现，不同的BeginReceive不一定在同一线程中执行。创建一个消息列表，每当收到消息便在列表末端添加数据，这个列表由主线程读取，它可以作为主线程和异步接收线程之间的桥梁。 由于MonoBehaviour的Update方法在主线程中执行，可让Updat">
+<meta property="og:type" content="article">
+<meta property="og:title" content="消息队列">
+<meta property="og:url" content="http://example.com/2022/09/03/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/index.html">
 <meta property="og:site_name" content="划水骗分二十年，没人比我更懂蒻">
+<meta property="og:description" content="由于单线程消息处理足以满足游戏客户端的需要，因此大部分游戏会使用消息队列让主线程去处理异步Socket接收到的消息。 C#的异步通信由线程池实现，不同的BeginReceive不一定在同一线程中执行。创建一个消息列表，每当收到消息便在列表末端添加数据，这个列表由主线程读取，它可以作为主线程和异步接收线程之间的桥梁。 由于MonoBehaviour的Update方法在主线程中执行，可让Updat">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2022/09/03/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/1.png">
+<meta property="article:published_time" content="2022-09-03T14:05:00.000Z">
+<meta property="article:modified_time" content="2022-09-03T14:18:00.505Z">
 <meta property="article:author" content="一个废物捏">
+<meta property="article:tag" content="网络">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/09/03/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/1.png">
 
 
-<link rel="canonical" href="http://example.com/archives/2022/03/page/3/">
+<link rel="canonical" href="http://example.com/2022/09/03/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"en","comments":"","permalink":"","path":"archives/2022/03/page/3/index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/09/03/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/","path":"2022/09/03/消息队列/","title":"消息队列"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Archive | 划水骗分二十年，没人比我更懂蒻</title>
+<title>消息队列 | 划水骗分二十年，没人比我更懂蒻</title>
   
 
 
@@ -151,113 +158,90 @@
 </noscript>
 
 
-    <div class="main-inner archive posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
+
+
+<div class="post-block">
   
   
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/03/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="一个废物捏">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          消息队列
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-09-03 22:05:00 / Modified: 22:18:00" itemprop="dateCreated datePublished" datetime="2022-09-03T22:05:00+08:00">2022-09-03</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>由于单线程消息处理足以满足游戏客户端的需要，因此大部分游戏会使用消息队列让主线程去处理异步Socket接收到的消息。</p>
+<p>C#的异步通信由线程池实现，不同的BeginReceive不一定在同一线程中执行。创建一个消息列表，每当收到消息便在列表末端添加数据，这个列表由主线程读取，它可以作为主线程和异步接收线程之间的桥梁。</p>
+<p>由于MonoBehaviour的Update方法在主线程中执行，可让Update方法每次从消息列表中读取几条信息并处理，处理后便在消息列表中删除它们。</p>
+<img src="/2022/09/03/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/1.png" class>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag"># 网络</a>
+          </div>
+
         
-        <span class="collection-header">Good! 97 posts in total. Keep on posting.</span>
-      </div>
 
-      
-    <div class="collection-year">
-      <span class="collection-header">2022</span>
-    </div>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-03-04T22:43:24+08:00"
-              content="2022-03-04">
-          03-04
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/03/04/%E5%85%89/" itemprop="url">
-            <span itemprop="name">光</span>
-          </a>
-      </div>
-
-      
-    </header>
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/09/03/%E6%A1%88%E4%BE%8B-%E8%81%8A%E5%A4%A9%E5%AE%A4Select/" rel="prev" title="案例-聊天室Select">
+                  <i class="fa fa-chevron-left"></i> 案例-聊天室Select
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
   </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-03-04T20:25:29+08:00"
-              content="2022-03-04">
-          03-04
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/03/04/%E7%B3%BB%E7%BB%9F%E8%84%9A%E6%9C%AC%E4%B8%8E%E5%B8%B8%E7%94%A8API/" itemprop="url">
-            <span itemprop="name">系统脚本与常用API</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-03-04T00:02:22+08:00"
-              content="2022-03-04">
-          03-04
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/03/04/%E5%9C%B0%E5%BD%A2/" itemprop="url">
-            <span itemprop="name">地形</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-03-03T22:58:04+08:00"
-              content="2022-03-03">
-          03-03
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/03/03/3D%E5%9F%BA%E7%A1%80/" itemprop="url">
-            <span itemprop="name">3D基础</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
+</div>
 
 
-    </div>
-  </div>
-  
-  
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/2022/03/page/2/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/archives/2022/03/">1</a><a class="page-number" href="/archives/2022/03/page/2/">2</a><span class="page-number current">3</span>
-  </nav>
+
+
+
 
 </div>
   </main>

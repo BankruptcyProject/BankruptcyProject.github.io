@@ -20,15 +20,15 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="C# 中的委托（Delegate）类似于 C 或 C++ 中函数的指针。 委托（Delegate） 是 存有对某个方法的引用 的 一种引用类型变量。引用可在运行时被改变。 委托（Delegate）特别用于实现事件和回调方法。 所有的委托（Delegate）都派生自 System.Delegate 类。 声明委托（Delegate） 委托声明决定了可由该委托引用的方法。委托可指向一个与其具">
+<meta name="description" content="C# 中的委托（Delegate）类似于 C 或 C++ 中函数的指针。委托是一个类，定义了方法的类型，从而可以将方法当作另一个方法的参数来进行传递，这种将方法动态地赋给参数地做法，可以避免在程序中大量使用if-else语句。 委托（Delegate） 是 存有对某个方法的引用 的 一种引用类型变量。引用可在运行时被改变。 委托（Delegate）特别用于实现事件和回调方法。 所有的委托（D">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C# 委托（Delegate）">
 <meta property="og:url" content="http://example.com/2022/03/29/C-%E5%A7%94%E6%89%98%EF%BC%88Delegate%EF%BC%89/index.html">
 <meta property="og:site_name" content="划水骗分二十年，没人比我更懂蒻">
-<meta property="og:description" content="C# 中的委托（Delegate）类似于 C 或 C++ 中函数的指针。 委托（Delegate） 是 存有对某个方法的引用 的 一种引用类型变量。引用可在运行时被改变。 委托（Delegate）特别用于实现事件和回调方法。 所有的委托（Delegate）都派生自 System.Delegate 类。 声明委托（Delegate） 委托声明决定了可由该委托引用的方法。委托可指向一个与其具">
+<meta property="og:description" content="C# 中的委托（Delegate）类似于 C 或 C++ 中函数的指针。委托是一个类，定义了方法的类型，从而可以将方法当作另一个方法的参数来进行传递，这种将方法动态地赋给参数地做法，可以避免在程序中大量使用if-else语句。 委托（Delegate） 是 存有对某个方法的引用 的 一种引用类型变量。引用可在运行时被改变。 委托（Delegate）特别用于实现事件和回调方法。 所有的委托（D">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-03-29T07:43:50.000Z">
-<meta property="article:modified_time" content="2022-03-29T08:21:35.934Z">
+<meta property="article:modified_time" content="2022-09-03T14:04:23.277Z">
 <meta property="article:author" content="一个废物捏">
 <meta property="article:tag" content="C#">
 <meta name="twitter:card" content="summary">
@@ -108,7 +108,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A3%B0%E6%98%8E%E5%A7%94%E6%89%98delegate"><span class="nav-number">1.</span> <span class="nav-text">声明委托（Delegate）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E4%BE%8B%E5%8C%96%E5%A7%94%E6%89%98delegate"><span class="nav-number">2.</span> <span class="nav-text">实例化委托（Delegate）</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A3%B0%E6%98%8E%E5%A7%94%E6%89%98delegate"><span class="nav-number">1.</span> <span class="nav-text">声明委托（Delegate）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E4%BE%8B%E5%8C%96%E5%A7%94%E6%89%98delegate"><span class="nav-number">2.</span> <span class="nav-text">实例化委托（Delegate）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E7%AC%A6-"><span class="nav-number">3.</span> <span class="nav-text">操作符+&#x3D;，-&#x3D;</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -122,7 +122,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">96</span>
+          <span class="site-state-item-count">97</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -191,10 +191,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2022-03-29 15:43:50 / Modified: 16:21:35" itemprop="dateCreated datePublished" datetime="2022-03-29T15:43:50+08:00">2022-03-29</time>
+      <time title="Created: 2022-03-29 15:43:50" itemprop="dateCreated datePublished" datetime="2022-03-29T15:43:50+08:00">2022-03-29</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-09-03 22:04:23" itemprop="dateModified" datetime="2022-09-03T22:04:23+08:00">2022-09-03</time>
+      </span>
 
   
 </div>
@@ -206,18 +212,20 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>C# 中的<strong>委托</strong>（Delegate）类似于 C 或 C++ 中<strong>函数的指针</strong>。</p>
+        <p>C# 中的<strong>委托</strong>（Delegate）类似于 C 或 C++ 中<strong>函数的指针</strong>。委托是一个类，定义了方法的类型，从而可以将方法当作另一个方法的参数来进行传递，这种将方法动态地赋给参数地做法，可以避免在程序中大量使用if-else语句。</p>
 <p>委托（Delegate） 是 <strong>存有对某个方法的引用</strong> 的 <strong>一种引用类型变量</strong>。引用可在运行时被改变。</p>
 <p>委托（Delegate）特别用于实现事件和回调方法。</p>
 <p>所有的委托（Delegate）都派生自 System.Delegate 类。</p>
 <h2 id="声明委托delegate">声明委托（Delegate）</h2>
-<p>委托声明决定了可由该委托引用的方法。委托可指向一个与其具有相同标签的方法。</p>
+<p>委托声明决定了可由该委托引用的方法。委托可指向一个与其具有相同标签的方法。声明一个delegate类型，它必须与要传递的方法具有相同的参数和返回值类型。</p>
 <p>例如，假设有一个委托：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public delegate int eg (string s);</span><br></pre></td></tr></table></figure>
 <p>上面的委托可被用于，（引用任何一个带有一个单一的 <em>string</em> 参数并返回一个 <em>int</em> 类型变量的方法）。</p>
 <h2 id="实例化委托delegate">实例化委托（Delegate）</h2>
-<p>一旦声明了委托类型，委托对象必须使用 <strong>new</strong> 关键字来创建，且与一个特定的方法有关。当创建委托时，传递到 <strong>new</strong> 语句的参数就像方法调用一样书写，但是不带有参数。例如：</p>
+<p>创建delegate对象，要将传递的方法作为参数传入。一旦声明了委托类型，委托对象必须使用 <strong>new</strong> 关键字来创建，且与一个特定的方法有关。当创建委托时，传递到 <strong>new</strong> 语句的参数就像方法调用一样书写，但是不带有参数。例如：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public delegate void printString(string s);</span><br><span class="line">...</span><br><span class="line">printString ps1 = new printString(WriteToScreen);</span><br><span class="line">printString ps2 = new printString(WriteToFile);</span><br></pre></td></tr></table></figure>
+<h2 id="操作符-">操作符+=，-=</h2>
+<p>"+="和“-=”是委托对象的操作符，可以为委托添加方法或删除方法。一个委托中有多个方法则依次调用。</p>
 
     </div>
 

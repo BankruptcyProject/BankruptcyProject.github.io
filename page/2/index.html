@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">96</span>
+          <span class="site-state-item-count">97</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,82 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/28/%E8%B5%84%E6%BA%90%E6%B8%85%E5%8D%95%E6%95%B4%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="一个废物捏">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/08/28/%E8%B5%84%E6%BA%90%E6%B8%85%E5%8D%95%E6%95%B4%E7%90%86/" class="post-title-link" itemprop="url">资源清单整理</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-08-28 16:12:39" itemprop="dateCreated datePublished" datetime="2022-08-28T16:12:39+08:00">2022-08-28</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-08-29 00:11:11" itemprop="dateModified" datetime="2022-08-29T00:11:11+08:00">2022-08-29</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="easy-primitive-people">Easy Primitive People</h1>
+<p>无代码，仅模型。仅包含预制体和预制体的材质。<br>
+圆柱小人包含各种职业，以及一个粉色圆柱猪</p>
+<h1 id="procedural-fire">Procedural fire</h1>
+<p>无代码，预制体中的特效可直接使用。<br>
+包含一个小型爆炸效果和几个不同颜色的火焰燃烧效果。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -754,10 +830,16 @@ Procedural fire。使用爆炸特效</p>
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2022-03-29 15:43:50 / Modified: 16:21:35" itemprop="dateCreated datePublished" datetime="2022-03-29T15:43:50+08:00">2022-03-29</time>
+      <time title="Created: 2022-03-29 15:43:50" itemprop="dateCreated datePublished" datetime="2022-03-29T15:43:50+08:00">2022-03-29</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-09-03 22:04:23" itemprop="dateModified" datetime="2022-09-03T22:04:23+08:00">2022-09-03</time>
+      </span>
 
   
 </div>
@@ -769,18 +851,20 @@ Procedural fire。使用爆炸特效</p>
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>C# 中的<strong>委托</strong>（Delegate）类似于 C 或 C++ 中<strong>函数的指针</strong>。</p>
+          <p>C# 中的<strong>委托</strong>（Delegate）类似于 C 或 C++ 中<strong>函数的指针</strong>。委托是一个类，定义了方法的类型，从而可以将方法当作另一个方法的参数来进行传递，这种将方法动态地赋给参数地做法，可以避免在程序中大量使用if-else语句。</p>
 <p>委托（Delegate） 是 <strong>存有对某个方法的引用</strong> 的 <strong>一种引用类型变量</strong>。引用可在运行时被改变。</p>
 <p>委托（Delegate）特别用于实现事件和回调方法。</p>
 <p>所有的委托（Delegate）都派生自 System.Delegate 类。</p>
 <h2 id="声明委托delegate">声明委托（Delegate）</h2>
-<p>委托声明决定了可由该委托引用的方法。委托可指向一个与其具有相同标签的方法。</p>
+<p>委托声明决定了可由该委托引用的方法。委托可指向一个与其具有相同标签的方法。声明一个delegate类型，它必须与要传递的方法具有相同的参数和返回值类型。</p>
 <p>例如，假设有一个委托：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public delegate int eg (string s);</span><br></pre></td></tr></table></figure>
 <p>上面的委托可被用于，（引用任何一个带有一个单一的 <em>string</em> 参数并返回一个 <em>int</em> 类型变量的方法）。</p>
 <h2 id="实例化委托delegate">实例化委托（Delegate）</h2>
-<p>一旦声明了委托类型，委托对象必须使用 <strong>new</strong> 关键字来创建，且与一个特定的方法有关。当创建委托时，传递到 <strong>new</strong> 语句的参数就像方法调用一样书写，但是不带有参数。例如：</p>
+<p>创建delegate对象，要将传递的方法作为参数传入。一旦声明了委托类型，委托对象必须使用 <strong>new</strong> 关键字来创建，且与一个特定的方法有关。当创建委托时，传递到 <strong>new</strong> 语句的参数就像方法调用一样书写，但是不带有参数。例如：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public delegate void printString(string s);</span><br><span class="line">...</span><br><span class="line">printString ps1 = new printString(WriteToScreen);</span><br><span class="line">printString ps2 = new printString(WriteToFile);</span><br></pre></td></tr></table></figure>
+<h2 id="操作符-">操作符+=，-=</h2>
+<p>"+="和“-=”是委托对象的操作符，可以为委托添加方法或删除方法。一个委托中有多个方法则依次调用。</p>
 
       
     </div>
@@ -1172,263 +1256,6 @@ OS：自动完成数据的确认、重传等，确保传输的数据准确</p>
 <p>6、<br>
 某一方断开连接（使用API Close）<br>
 OS：自动执行”四次握手“，关闭连接。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/21/c-%E6%96%87%E4%BB%B6%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="一个废物捏">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/03/21/c-%E6%96%87%E4%BB%B6%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/" class="post-title-link" itemprop="url">C#文件输入输出</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-03-21 22:01:49" itemprop="dateCreated datePublished" datetime="2022-03-21T22:01:49+08:00">2022-03-21</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-03-27 17:07:03" itemprop="dateModified" datetime="2022-03-27T17:07:03+08:00">2022-03-27</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="c-io-类">C# I/O 类</h1>
-<p>System.IO 命名空间有各种不同的类，用于执行各种文件操作，如创建和删除文件、读取或写入文件，关闭文件等。</p>
-<p>下表列出了一些 System.IO 命名空间中常用的非抽象类：</p>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;">I/O 类</th>
-<th style="text-align: left;">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">BinaryReader</td>
-<td style="text-align: left;">从二进制流读取原始数据。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">BinaryWriter</td>
-<td style="text-align: left;">以二进制格式写入原始数据。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">BufferedStream</td>
-<td style="text-align: left;">字节流的临时存储。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Directory</td>
-<td style="text-align: left;">有助于操作目录结构。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">DirectoryInfo</td>
-<td style="text-align: left;">用于对目录执行操作。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">DriveInfo</td>
-<td style="text-align: left;">提供驱动器的信息。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">File</td>
-<td style="text-align: left;">有助于处理文件。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">FileInfo</td>
-<td style="text-align: left;">用于对文件执行操作。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">FileStream</td>
-<td style="text-align: left;">用于文件中任何位置的读写。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">MemoryStream</td>
-<td style="text-align: left;">用于随机访问存储在内存中的数据流。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Path</td>
-<td style="text-align: left;">对路径信息执行操作。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">StreamReader</td>
-<td style="text-align: left;">用于从字节流中读取字符。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">StreamWriter</td>
-<td style="text-align: left;">用于向一个流中写入字符。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">StringReader</td>
-<td style="text-align: left;">用于读取字符串缓冲区。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">StringWriter</td>
-<td style="text-align: left;">用于写入字符串缓冲区。</td>
-</tr>
-</tbody>
-</table>
-<h2 id="streamreader-类">StreamReader 类</h2>
-<p>下表列出了 <strong>StreamReader</strong> 类中一些常用的<strong>方法</strong>：</p>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;">方法</th>
-<th style="text-align: left;">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><strong>public override void Close()</strong></td>
-<td style="text-align: left;">关闭 StreamReader 对象和基础流，并释放任何与读者相关的系统资源。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>public override int Peek()</strong></td>
-<td style="text-align: left;">返回下一个可用的字符，但不使用它。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>public override int Read()</strong></td>
-<td style="text-align: left;">从输入流中读取下一个字符，并把字符位置往前移一个字符。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>public override int ReadToEnd()</strong></td>
-<td style="text-align: left;">从输入流中读取。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>public override int ReadLine()</strong></td>
-<td style="text-align: left;">从输入流中读取。</td>
-</tr>
-</tbody>
-</table>
-<h2 id="streamwriter-类">StreamWriter 类</h2>
-<p><strong>StreamWriter</strong> 类继承自抽象类 TextWriter，表示编写器写入一系列字符。</p>
-<p><strong>StreamWriter</strong>专用于特定编码的字符输出，而从派生的类 <strong>Stream</strong>则设计用于字节输入和输出。</p>
-<p>下表列出了 <strong>StreamWriter</strong> 类中一些常用的<strong>方法</strong>：</p>
-<table>
-<colgroup>
-<col style="width: 35%">
-<col style="width: 64%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">方法</th>
-<th style="text-align: left;">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><strong>public override void Close()</strong></td>
-<td style="text-align: left;">关闭当前的 StreamWriter 对象和基础流。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>public override void Flush()</strong></td>
-<td style="text-align: left;">清理当前编写器的所有缓冲区，使得所有缓冲数据写入基础流。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>public virtual void Write(bool value)</strong></td>
-<td style="text-align: left;">把一个布尔值的文本表示形式写入到文本字符串或流。（继承自 TextWriter。）</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>public override void Write( char value )</strong></td>
-<td style="text-align: left;">把一个字符写入到流。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>public virtual void Write( decimal value )</strong></td>
-<td style="text-align: left;">把一个十进制值的文本表示形式写入到文本字符串或流。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>public virtual void Write( double value )</strong></td>
-<td style="text-align: left;">把一个 8 字节浮点值的文本表示形式写入到文本字符串或流。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>public virtual void Write( int value )</strong></td>
-<td style="text-align: left;">把一个 4 字节有符号整数的文本表示形式写入到文本字符串或流。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>public override void Write( string value )</strong></td>
-<td style="text-align: left;">把一个字符串写入到流。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>public virtual void WriteLine()</strong></td>
-<td style="text-align: left;">把行结束符写入到文本字符串或流。</td>
-</tr>
-</tbody>
-</table>
-<h2 id="filestream-类">FileStream 类</h2>
-<p>System.IO 命名空间中的 <strong>FileStream</strong> 类有助于文件的读写与关闭。该类派生自抽象类 Stream。</p>
-<p>您需要创建一个 <strong>FileStream</strong> 对象来创建一个新的文件，或打开一个已有的文件。创建 <strong>FileStream</strong> 对象的语法如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FileStream &lt;object_name&gt; = new FileStream( &lt;file_name&gt;, &lt;FileMode Enumerator&gt;, &lt;FileAccess Enumerator&gt;, &lt;FileShare Enumerator&gt;);</span><br></pre></td></tr></table></figure>
-<p>例如，创建一个 FileStream 对象 <strong>F</strong> 来读取名为 <strong>sample.txt</strong> 的文件：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FileStream F = new FileStream(&quot;sample.txt&quot;, FileMode.Open, FileAccess.Read, FileShare.Read);</span><br></pre></td></tr></table></figure>
-<table>
-<colgroup>
-<col style="width: 14%">
-<col style="width: 85%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">参数</th>
-<th style="text-align: left;">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">FileMode</td>
-<td style="text-align: left;"><strong>FileMode</strong> 枚举定义了各种打开文件的方法。FileMode 枚举的成员有：<strong>Append</strong>：打开一个已有的文件，并将光标放置在文件的末尾。如果文件不存在，则创建文件。<strong>Create</strong>：创建一个新的文件。如果文件已存在，则删除旧文件，然后创建新文件。<strong>CreateNew</strong>：指定操作系统应创建一个新的文件。如果文件已存在，则抛出异常。<strong>Open</strong>：打开一个已有的文件。如果文件不存在，则抛出异常。<strong>OpenOrCreate</strong>：指定操作系统应打开一个已有的文件。如果文件不存在，则用指定的名称创建一个新的文件打开。<strong>Truncate</strong>：打开一个已有的文件，文件一旦打开，就将被截断为零字节大小。然后我们可以向文件写入全新的数据，但是保留文件的初始创建日期。如果文件不存在，则抛出异常。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">FileAccess</td>
-<td style="text-align: left;"><strong>FileAccess</strong> 枚举的成员有：<strong>Read</strong>、<strong>ReadWrite</strong> 和 <strong>Write</strong>。</td>
-</tr>
-</tbody>
-</table>
 
       
     </div>
