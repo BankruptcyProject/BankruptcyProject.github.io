@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">98</span>
+          <span class="site-state-item-count">99</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,74 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/28/C-%E9%A2%84%E5%A4%84%E7%90%86%E6%8C%87%E4%BB%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="一个废物捏">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/03/28/C-%E9%A2%84%E5%A4%84%E7%90%86%E6%8C%87%E4%BB%A4/" class="post-title-link" itemprop="url">C#预处理指令</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-03-28 22:20:07 / Modified: 23:44:20" itemprop="dateCreated datePublished" datetime="2022-03-28T22:20:07+08:00">2022-03-28</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>在 C# 中，预处理器指令用于在<strong>条件编译</strong>中起作用。 预处理器指令指导编译器在<strong>实际编译开始之前对信息进行预处理</strong>。</p>
+<p>实际应用中使用过：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">btn_end.onClick.AddListener(() =&gt;</span><br><span class="line">&#123;       </span><br><span class="line">	#if UNITY_EDITOR</span><br><span class="line">		UnityEditor.EditorApplication.isPlaying = false;</span><br><span class="line">	#else</span><br><span class="line">		Application.Quit();</span><br><span class="line">	#endif</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public void LoadByJson()</span><br><span class="line">&#123;</span><br><span class="line">    string filePath = &quot;&quot;;</span><br><span class="line">	#if UNITY_EDITOR</span><br><span class="line">        filePath = Application.dataPath + &quot;/StreamingFile&quot; + &quot;/save.txt&quot;;</span><br><span class="line">	#else</span><br><span class="line">        filePath = System.Environment.CurrentDirectory + &quot;/StreamingFile&quot; + &quot;/save.txt&quot;;</span><br><span class="line">	#endif        </span><br><span class="line">	if (!File.Exists(filePath)) return;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1778,98 +1846,6 @@ string、数组、自定义的class就都是引用类型了。<br>
 <p>四边形优势：方便切割执行循环边操作</p>
 <p>桥接循环边：需要选中两个边数相同的循环边，桥接循环边可以自动添加面连接两条循环边。选项位于坐上边选项中。</p>
 <p>边的法向：边具有法向量，选择倒角或挤出都可以观察到。改变坐标系模式从世界模式变成法向模式也能观察到。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/09/%E5%93%88%E5%B8%8C%E8%A1%A8-unorderer-map%E5%92%8Cunorderer-set/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="一个废物捏">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/03/09/%E5%93%88%E5%B8%8C%E8%A1%A8-unorderer-map%E5%92%8Cunorderer-set/" class="post-title-link" itemprop="url">哈希表(unorderer_map和unorderer_set)</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-03-09 13:31:33" itemprop="dateCreated datePublished" datetime="2022-03-09T13:31:33+08:00">2022-03-09</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-04-08 20:22:49" itemprop="dateModified" datetime="2022-04-08T20:22:49+08:00">2022-04-08</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="unorderer_map">unorderer_map</h1>
-<p>简单来说，就是一个无序哈希表，时间复杂度O(1)</p>
-<p>两个常用方法：</p>
-<p>count()返回要查找的key在map的所有key中的出现次数。因为此容器不允许重复，故count()只可能返回 1 或 0，即可判断此key是否存在。有返回1，无返回0。<br>
-unordered_map也有find方法，得到的对象是一个iterator，在unordered_map中，如果find()没找到要找的key，就返回和end()一样的iterator值。</p>
-<h1 id="unorderer_set">unorderer_set</h1>
-<p>unordered_set基于哈希表，也是无序的，但是，unordered_set是在哈希表中插入value，同时这个value也是它自己的key，和unordered_map不同，这里的key-value只是为了方便查阅，</p>
-<p>两个常用方法：<br>
-同上，count（）和find（）</p>
-<h1 id="map和set区别">map和set区别</h1>
-<p>map：<br>
-map的值不作为键，键和值是分开的，所有元素都是键+值存在<br>
-不允许键重复<br>
-所有元素是通过键进行自动排序的<br>
-map的键是不能修改的，但是其键对应的值是可以修改的</p>
-<p>set：<br>
-所得元素的只有key没有value，value就是key<br>
-不允许出现键值重复<br>
-所有的元素都会被自动排序<br>
-不能通过迭代器来改变set的值，因为set的值就是键</p>
-<h1 id="用法实例">用法实例</h1>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">unordered_set&lt;<span class="keyword">char</span>&gt; occ;</span><br><span class="line">occ.<span class="built_in">insert</span>(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">occ.<span class="built_in">erase</span>(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">cout &lt;&lt; occ.<span class="built_in">count</span>(<span class="string">&quot;a&quot;</span>);</span><br></pre></td></tr></table></figure>
 
       
     </div>
