@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">100</span>
+          <span class="site-state-item-count">101</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,107 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/29/read-byte-word/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="一个废物捏">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/04/29/read-byte-word/" class="post-title-link" itemprop="url">read_byte_word</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-04-29 14:50:27 / Modified: 22:12:11" itemprop="dateCreated datePublished" datetime="2021-04-29T14:50:27+08:00">2021-04-29</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>从相对于 FS 段开头的偏移量指定的位置读取内存。</p>
+<h2 id="语法">语法</h2>
+<p>C</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">unsigned</span> <span class="keyword">char</span> __readfsbyte(<span class="keyword">unsigned</span> <span class="keyword">long</span> Offset);</span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">short</span> __readfsword(<span class="keyword">unsigned</span> <span class="keyword">long</span> Offset);</span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">long</span> __readfsdword(<span class="keyword">unsigned</span> <span class="keyword">long</span> Offset);</span><br><span class="line"><span class="keyword">unsigned</span> __int64 __readfsqword(<span class="keyword">unsigned</span> <span class="keyword">long</span> Offset);</span><br></pre></td></tr></table></figure>
+<h2 id="返回值">返回值</h2>
+<p>字节、字、双字名为的函数的名称指示 <code>FS:[Offset]</code> 。</p>
+<h2 id="要求">要求</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Intrinsic</th>
+<th>体系结构</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>__readfsbyte</code></td>
+<td>x86</td>
+</tr>
+<tr class="even">
+<td><code>__readfsdword</code></td>
+<td>x86</td>
+</tr>
+<tr class="odd">
+<td><code>__readfsqword</code></td>
+<td>x86</td>
+</tr>
+<tr class="even">
+<td><code>__readfsword</code></td>
+<td>x86</td>
+</tr>
+</tbody>
+</table>
+<p><strong>头文件</strong> &lt;intrin.h&gt;</p>
+<p>例子：</p>
+<img src="/2021/04/29/read-byte-word/1.png" class>
+<img src="/2021/04/29/read-byte-word/2.png" class>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1334,103 +1435,8 @@ p16()----2个字节</p>
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/16/AD-guess-num/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="一个废物捏">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/16/AD-guess-num/" class="post-title-link" itemprop="url">AD_guess_num</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-03-16 17:18:41" itemprop="dateCreated datePublished" datetime="2021-03-16T17:18:41+08:00">2021-03-16</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-19 21:20:22" itemprop="dateModified" datetime="2021-03-19T21:20:22+08:00">2021-03-19</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <img src="/2021/03/16/AD-guess-num/1.png" class>
-<p>可以看出要进行10次猜测，保证每次猜测（v4）与v6相等，即可执行sub_C3E，sub_C3E是能得到的flag函数。</p>
-<p>v6来自伪随机函数rand()</p>
-<p>rand()需要srand()提供的种子，只要种子相同，rand()就一定相同。</p>
-<p>此处种子为seed</p>
-<img src="/2021/03/16/AD-guess-num/2.png" class>
-<p>该图中地址为ida地址，1代表1个字节 <img src="/2021/03/16/AD-guess-num/1.jpg" class></p>
-<p>该程序用gets来读取&amp;v7（name）（），所以可以用名字覆盖种子（写入我们需要的种子），再另外写一个cpp程序来看看该种子对应的rand（）函数值。</p>
-<p><strong>ida地址表示1相当于1个字节</strong></p>
-<p>名字写入0x24个a，相当于从客户端·输入32个a，一个a一个字节，刚好覆盖完-30h到-10h的地址，触及seed的地址，seed的类型是unsigned int，故seed[0]的大小为4个字节，故选取的种子4个a。</p>
-<p>这里特别要注意，由于题目本身是在linux下的，所以我们自己写的程序也要在linux下进行测试，不同的平台所产生的结果是不同的（我吐了，卡了老子这久）</p>
-<img src="/2021/03/16/AD-guess-num/2.jpg" class>
-<p><em>顺便需要学习在Linux中编写c</em></p>
-<p><em>首先确保安装了gcc，g++。我的linux里已经有了</em></p>
-<p><em>新建文件夹命名为xxx.cpp或xxx.c</em></p>
-<p><em>编写，保存</em></p>
-<p><em>用命令编译，g++ xxx.cpp 或 gcc xxx.c</em></p>
-<p><em>如果成功，会得到一个可执行程序，xxx.out</em></p>
-<p><em>运行，./xxx.out，会输出结果</em></p>
-<p>回到这题</p>
-<p>附件只提供参考，flag不在附件中，如果单纯运行附件答题能成功，但给不出flag（怎么想怎么对，我之前竟然不知道）</p>
-<p>所以有两个方法完成这题</p>
-<p>第一种方法nc服务器，输入0x24个a，也就是36个a，答题，得到flag</p>
-<p>第二种方法是使用脚本</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> * </span><br><span class="line">io = remote(<span class="string">&quot;111.200.241.244&quot;</span>, <span class="number">47746</span>)</span><br><span class="line"></span><br><span class="line">io.recvuntil(<span class="string">&quot;Your name:&quot;</span>)</span><br><span class="line">payload=<span class="string">&#x27;a&#x27;</span>*<span class="number">0x24</span></span><br><span class="line">io.sendline(payload)</span><br><span class="line"></span><br><span class="line">ans=[<span class="number">5</span>,<span class="number">6</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">6</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">6</span>,<span class="number">2</span>,<span class="number">2</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> ans:</span><br><span class="line">	io.recvuntil(<span class="string">&quot;Please input your guess number:&quot;</span>)</span><br><span class="line">	io.sendline(<span class="built_in">str</span>(i))</span><br><span class="line"></span><br><span class="line">io.interactive()</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 </div>

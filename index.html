@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">100</span>
+          <span class="site-state-item-count">101</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -234,7 +234,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/08/Mirro%E5%85%A5%E9%97%A8/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/08/Network-Manager/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -247,7 +247,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/08/Mirro%E5%85%A5%E9%97%A8/" class="post-title-link" itemprop="url">Mirror入门</a>
+          <a href="/2022/09/08/Network-Manager/" class="post-title-link" itemprop="url">Network Manager</a>
         </h2>
 
         <div class="post-meta-container">
@@ -259,7 +259,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2022-09-08 13:34:09 / Modified: 13:44:49" itemprop="dateCreated datePublished" datetime="2022-09-08T13:34:09+08:00">2022-09-08</time>
+      <time title="Created: 2022-09-08 15:50:33 / Modified: 17:10:19" itemprop="dateCreated datePublished" datetime="2022-09-08T15:50:33+08:00">2022-09-08</time>
     </span>
 
   
@@ -272,7 +272,113 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          
+          <p>用于管理（游戏状态、角色生成位置、场景）。</p>
+<p>多人联机的核心组件，创建一个空对象挂上该组件。</p>
+<p>同时Network Manager组件不能于Network Identity组件共存于一个对象上。因为场景在进行本地加载时会禁用带有Network Identity组件的对象。</p>
+<p>有Client模式、Server模式、Host模式。使用HUD可以直接选择，如果是自写UI需要在代码中选择模式<br>
+NetworkManager.StartClient<br>
+NetworkManager.StartServer<br>
+NetworkManager.StartHost<br>
+在客户端模式下，游戏会试图连杀NetworkManager中设置的ip和端口。在主机或服务器模式下，游戏会监听NetworkManager中设置的ip和端口。</p>
+<h1 id="spwan">Spwan</h1>
+<p>拖入本地控制的玩家预制体，该预制体需要有Network Identity。离线是将自动摧毁该对象。</p>
+<p>除了玩家预制体外，还需将有其他有网络标识的对象注册进列表。<br>
+也可以通过代码注册，用ClientScene.RegisterPrefab方法.</p>
+<p>一个场景有且只能有一个Network Manager。Network Manager有DDOL选项，勾选以贯穿所有场景。同时Network Manager身上注册的所有生成预制体也会跟着到下一个场景生成。如果勾选没有DDOL选项，则需要在每个场景上挂一个NetworkManager，并且每一个NetworkManager上要重新注册生成预制体。</p>
+<p>生成位置 Choose Random to spawn players at randomly chosen startPosition options.<br>
+Choose Round Robin to cycle through startPosition options in a set list.<br>
+Network Start Postion组件可以自定义生成位置相关设置</p>
+<h1 id="scene-management">Scene Management</h1>
+<p>当服务器或主机启动，Online场景会在所有客户端上加载。networkSceneName属性中存有被加载场景的名字。<br>
+断线时offine场景会被加载。<br>
+在代码中 ServerChangeScene方法可以改变场景，此时所有客户端都会跟着一起切换场景。ServerChangeScene的值会被更新</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/08/Mirror%E5%85%A5%E9%97%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="一个废物捏">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/09/08/Mirror%E5%85%A5%E9%97%A8/" class="post-title-link" itemprop="url">Mirror入门</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-09-08 13:34:09 / Modified: 18:01:15" itemprop="dateCreated datePublished" datetime="2022-09-08T13:34:09+08:00">2022-09-08</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="network-identity">Network Identity</h2>
+<p>Network Identity 组件是 Unity 网络高级 API 的核心。它控制游戏对象在网络上的唯一身份，并使用该身份使网络系统知道该游戏对象。</p>
+<p>Server Only<br>
+勾选此复选框以确保 Unity 仅在服务器上生成游戏对象，而不是在客户端上。</p>
+<p>Mirror 不支持嵌套游戏对象上的网络身份。即父对象和子对象中只能有一个Network Identity。</p>
+<h2 id="实例化的网络游戏对象">实例化的网络游戏对象</h2>
+<p>使用 Mirror 的服务器权限网络系统，服务器必须使用 NetworkServer.Spawn 生成具有网络身份的网络游戏对象。这会自动在连接到服务器的客户端上创建它们，并为它们分配一个 NetId。</p>
+<p>必须在运行时生成的任何 Prefab 上放置一个 Network Identity 组件，以便网络系统使用它们。</p>
+<h2 id="networktransform">NetworkTransform</h2>
+<p>为角色预制体添加NetworkTransform 组件<br>
+勾选客户端权限<br>
+在代码中注意isLocalPlayer变量<br>
+Override OnStartLocalPlayer方法，来控制主摄像机 For example using UnityEngine; using Mirror; <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public class Controls : NetworkBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    void Update()</span><br><span class="line">    &#123;</span><br><span class="line">        // exit from update if this is not the local player</span><br><span class="line">        if (!isLocalPlayer) return;</span><br><span class="line">        // handle player input for movement</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="基本玩家游戏状态">基本玩家游戏状态</h2>
+<p>将包含重要数据的脚本制作成 NetworkBehaviours 而不是 MonoBehaviours</p>
+<p>将重要的成员变量制作成 SyncVars</p>
+<p>Register spawnable Prefabs with the NetworkManager</p>
+<h2 id="spawners">Spawners</h2>
+<p>只在服务端修改 spawners (用 isServer 变量 或者 OnStartServer() 方法) Call NetworkServer.Spawn() for created game objects</p>
+<h2 id="玩家生成位置">玩家生成位置</h2>
+<p>添加一个新的空对象并将其放置在玩家的起始位置，将 NetworkStartPosition 组件添加到该对象</p>
+<h2 id="udp">UDP</h2>
+<p>默认使用KCP，类似UDP协议</p>
 
       
     </div>
@@ -858,93 +964,8 @@ microSeconds：等待回应的时间，以微妙为单位，如果该参数为-1
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/01/%E7%8A%B6%E6%80%81%E6%A3%80%E6%B5%8BPoll/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="一个废物捏">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/01/%E7%8A%B6%E6%80%81%E6%A3%80%E6%B5%8BPoll/" class="post-title-link" itemprop="url">状态检测Poll</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-09-01 00:00:42" itemprop="dateCreated datePublished" datetime="2022-09-01T00:00:42+08:00">2022-09-01</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-09-08 13:42:36" itemprop="dateModified" datetime="2022-09-08T13:42:36+08:00">2022-09-08</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>解决阻塞的方法有异步和Poll两种，异步写在之前的博客，Poll比起异步代码结构更简单清晰。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public bool Poll(</span><br><span class="line">	int microSeconds,</span><br><span class="line">	SelectMode mode</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p>microSeconds：等待回应的时间，以微秒为单位。如果该参数为-1，表示一直等待；如果为0，表示非阻塞。</p>
-<p>mode：有三种可选模式<br>
-SelectRead：如果Socket可读（可以接收数据），返回true，反则返回false<br>
-SelectWrite：如果Socket可写，返回true，否则返回false<br>
-SelectError：如果连接失败，返回true，否则返回false</p>
-<p>Poll方法将会在指定时段（以微秒为单位）内阻止执行，如果希望无限期地等待响应，可将microSeconds设置为一个负整数；如果希望不阻塞，设置为0。<br>
-Poll方法会检查Socket的状态。<br>
-指定参数为SelectMode.SelectRead，则可确定Socket是否为可读；<br>
-指定参数为SelectMode.SelectWrite，可确定Socket是否为可写；<br>
-指定参数为SelectMode.SelectError，可以检测错误条件。</p>
-<p><strong>Poll服务端</strong> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">初始化listenfd</span><br><span class="line">初始化clients列表</span><br><span class="line">while(true)</span><br><span class="line">&#123;</span><br><span class="line">	if(listenfd可读) Accept;</span><br><span class="line">	for(遍历clients列表)</span><br><span class="line">	&#123;</span><br><span class="line">		if(这个客户端可读)	消息处理;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>具体代码见案例-Poll</p>
-<p>尽管逻辑清晰，但Poll服务端的弊端也很明显，若没有收到客户端数据，服务端一直在循环，浪费了CPU。Poll客户端也是同理，没有数据的时候也总在Update中检测数据，同样是一种浪费。从性能角度考虑，还有不小的改进空间。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 </div>

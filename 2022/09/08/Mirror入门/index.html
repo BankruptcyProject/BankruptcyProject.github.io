@@ -20,23 +20,25 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="Network Identity Network Identity 组件是 Unity 网络高级 API 的核心。它控制游戏对象在网络上的唯一身份，并使用该身份使网络系统知道该游戏对象。 Server Only 勾选此复选框以确保 Unity 仅在服务器上生成游戏对象，而不是在客户端上。 Mirror 不支持嵌套游戏对象上的网络身份。即父对象和子对象中只能有一个Network Identi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mirror入门">
-<meta property="og:url" content="http://example.com/2022/09/08/Mirro%E5%85%A5%E9%97%A8/index.html">
+<meta property="og:url" content="http://example.com/2022/09/08/Mirror%E5%85%A5%E9%97%A8/index.html">
 <meta property="og:site_name" content="划水骗分二十年，没人比我更懂蒻">
+<meta property="og:description" content="Network Identity Network Identity 组件是 Unity 网络高级 API 的核心。它控制游戏对象在网络上的唯一身份，并使用该身份使网络系统知道该游戏对象。 Server Only 勾选此复选框以确保 Unity 仅在服务器上生成游戏对象，而不是在客户端上。 Mirror 不支持嵌套游戏对象上的网络身份。即父对象和子对象中只能有一个Network Identi">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-09-08T05:34:09.000Z">
-<meta property="article:modified_time" content="2022-09-08T05:44:49.878Z">
+<meta property="article:modified_time" content="2022-09-08T10:01:15.782Z">
 <meta property="article:author" content="一个废物捏">
 <meta property="article:tag" content="Mirror">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/2022/09/08/Mirro%E5%85%A5%E9%97%A8/">
+<link rel="canonical" href="http://example.com/2022/09/08/Mirror%E5%85%A5%E9%97%A8/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/09/08/Mirro%E5%85%A5%E9%97%A8/","path":"2022/09/08/Mirro入门/","title":"Mirror入门"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/09/08/Mirror%E5%85%A5%E9%97%A8/","path":"2022/09/08/Mirror入门/","title":"Mirror入门"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>Mirror入门 | 划水骗分二十年，没人比我更懂蒻</title>
@@ -93,7 +95,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -106,6 +108,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#network-identity"><span class="nav-number">1.</span> <span class="nav-text">Network Identity</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E4%BE%8B%E5%8C%96%E7%9A%84%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E5%AF%B9%E8%B1%A1"><span class="nav-number">2.</span> <span class="nav-text">实例化的网络游戏对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#networktransform"><span class="nav-number">3.</span> <span class="nav-text">NetworkTransform</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%8E%A9%E5%AE%B6%E6%B8%B8%E6%88%8F%E7%8A%B6%E6%80%81"><span class="nav-number">4.</span> <span class="nav-text">基本玩家游戏状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spawners"><span class="nav-number">5.</span> <span class="nav-text">Spawners</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%A9%E5%AE%B6%E7%94%9F%E6%88%90%E4%BD%8D%E7%BD%AE"><span class="nav-number">6.</span> <span class="nav-text">玩家生成位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#udp"><span class="nav-number">7.</span> <span class="nav-text">UDP</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -119,7 +122,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">100</span>
+          <span class="site-state-item-count">101</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -165,7 +168,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/08/Mirro%E5%85%A5%E9%97%A8/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/08/Mirror%E5%85%A5%E9%97%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -190,7 +193,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2022-09-08 13:34:09 / Modified: 13:44:49" itemprop="dateCreated datePublished" datetime="2022-09-08T13:34:09+08:00">2022-09-08</time>
+      <time title="Created: 2022-09-08 13:34:09 / Modified: 18:01:15" itemprop="dateCreated datePublished" datetime="2022-09-08T13:34:09+08:00">2022-09-08</time>
     </span>
 
   
@@ -203,7 +206,29 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        
+        <h2 id="network-identity">Network Identity</h2>
+<p>Network Identity 组件是 Unity 网络高级 API 的核心。它控制游戏对象在网络上的唯一身份，并使用该身份使网络系统知道该游戏对象。</p>
+<p>Server Only<br>
+勾选此复选框以确保 Unity 仅在服务器上生成游戏对象，而不是在客户端上。</p>
+<p>Mirror 不支持嵌套游戏对象上的网络身份。即父对象和子对象中只能有一个Network Identity。</p>
+<h2 id="实例化的网络游戏对象">实例化的网络游戏对象</h2>
+<p>使用 Mirror 的服务器权限网络系统，服务器必须使用 NetworkServer.Spawn 生成具有网络身份的网络游戏对象。这会自动在连接到服务器的客户端上创建它们，并为它们分配一个 NetId。</p>
+<p>必须在运行时生成的任何 Prefab 上放置一个 Network Identity 组件，以便网络系统使用它们。</p>
+<h2 id="networktransform">NetworkTransform</h2>
+<p>为角色预制体添加NetworkTransform 组件<br>
+勾选客户端权限<br>
+在代码中注意isLocalPlayer变量<br>
+Override OnStartLocalPlayer方法，来控制主摄像机 For example using UnityEngine; using Mirror; <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public class Controls : NetworkBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    void Update()</span><br><span class="line">    &#123;</span><br><span class="line">        // exit from update if this is not the local player</span><br><span class="line">        if (!isLocalPlayer) return;</span><br><span class="line">        // handle player input for movement</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="基本玩家游戏状态">基本玩家游戏状态</h2>
+<p>将包含重要数据的脚本制作成 NetworkBehaviours 而不是 MonoBehaviours</p>
+<p>将重要的成员变量制作成 SyncVars</p>
+<p>Register spawnable Prefabs with the NetworkManager</p>
+<h2 id="spawners">Spawners</h2>
+<p>只在服务端修改 spawners (用 isServer 变量 或者 OnStartServer() 方法) Call NetworkServer.Spawn() for created game objects</p>
+<h2 id="玩家生成位置">玩家生成位置</h2>
+<p>添加一个新的空对象并将其放置在玩家的起始位置，将 NetworkStartPosition 组件添加到该对象</p>
+<h2 id="udp">UDP</h2>
+<p>默认使用KCP，类似UDP协议</p>
 
     </div>
 
@@ -225,6 +250,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2022/09/08/Network-Manager/" rel="next" title="Network Manager">
+                  Network Manager <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>
