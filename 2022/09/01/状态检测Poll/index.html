@@ -28,9 +28,9 @@
 <meta property="og:description" content="解决阻塞的方法有异步和Poll两种，异步写在之前的博客，Poll比起异步代码结构更简单清晰。 1234public bool Poll(	int microSeconds,	SelectMode mode) microSeconds：等待回应的时间，以微秒为单位。如果该参数为-1，表示一直等待；如果为0，表示非阻塞。 mode：有三种可选模式 SelectRead：如果Socket可读（可">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-08-31T16:00:42.000Z">
-<meta property="article:modified_time" content="2022-09-01T04:34:02.335Z">
+<meta property="article:modified_time" content="2022-09-08T05:42:36.118Z">
 <meta property="article:author" content="一个废物捏">
-<meta property="article:tag" content="网络">
+<meta property="article:tag" content="Socket">
 <meta name="twitter:card" content="summary">
 
 
@@ -121,7 +121,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">99</span>
+          <span class="site-state-item-count">100</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -190,10 +190,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2022-09-01 00:00:42 / Modified: 12:34:02" itemprop="dateCreated datePublished" datetime="2022-09-01T00:00:42+08:00">2022-09-01</time>
+      <time title="Created: 2022-09-01 00:00:42" itemprop="dateCreated datePublished" datetime="2022-09-01T00:00:42+08:00">2022-09-01</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-09-08 13:42:36" itemprop="dateModified" datetime="2022-09-08T13:42:36+08:00">2022-09-08</time>
+      </span>
 
   
 </div>
@@ -229,7 +235,7 @@ Poll方法会检查Socket的状态。<br>
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag"># 网络</a>
+              <a href="/tags/Socket/" rel="tag"># Socket</a>
           </div>
 
         
