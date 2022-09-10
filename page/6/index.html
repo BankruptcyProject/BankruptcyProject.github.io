@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">105</span>
+          <span class="site-state-item-count">107</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,355 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/28/%E7%89%A9%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="一个废物捏">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/02/28/%E7%89%A9%E7%90%86/" class="post-title-link" itemprop="url">物理</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-02-28 16:21:55" itemprop="dateCreated datePublished" datetime="2022-02-28T16:21:55+08:00">2022-02-28</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-03-07 22:35:55" itemprop="dateModified" datetime="2022-03-07T22:35:55+08:00">2022-03-07</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="刚体">刚体</h1>
+<p>在组件里可添加物理组件</p>
+<p><strong>刚体</strong>有3种类型</p>
+<table>
+<tbody>
+<tr class="odd">
+<td>Dinamic</td>
+<td>普通刚体</td>
+<td>有质量有速度</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Static</td>
+<td>静态刚体</td>
+<td>质量无穷大、无速度</td>
+<td>适用于建筑物、地面等固定不动的物体</td>
+</tr>
+<tr class="odd">
+<td>Kinematic</td>
+<td>运动学刚体</td>
+<td>无质量</td>
+<td>忽略物理规律的刚体，一般用于检测</td>
+</tr>
+</tbody>
+</table>
+<p>阻力和角阻力：设置的是空气阻力</p>
+<p>插值：根据上一帧的变化进行插值</p>
+<p>外推：根据下一帧的变化进行插值</p>
+<p>碰撞检测：离散的（节省性能，但可能穿墙），连续（性能消耗大，一般让墙体设置），连续动态（性能消耗大，一般让高速物体设置）</p>
+<p>Constraints（冻结）：冻结物体某个轴向的旋转</p>
+<table>
+<thead>
+<tr class="header">
+<th>方法</th>
+<th>详解</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>position</td>
+<td>刚体的位置</td>
+</tr>
+<tr class="even">
+<td>rotation</td>
+<td>刚体的旋转</td>
+</tr>
+<tr class="odd">
+<td>velocity</td>
+<td>刚体的速度</td>
+</tr>
+<tr class="even">
+<td>AddForce</td>
+<td>向刚体添加一个力</td>
+</tr>
+<tr class="odd">
+<td>AddExplosionForce</td>
+<td>向模拟爆炸的刚体添加一个力</td>
+</tr>
+<tr class="even">
+<td>AddTorque</td>
+<td>向刚体添加一个扭矩</td>
+</tr>
+<tr class="odd">
+<td>MovePosition</td>
+<td>移动刚体</td>
+</tr>
+<tr class="even">
+<td>MoveRotation</td>
+<td>旋转刚体</td>
+</tr>
+<tr class="odd">
+<td>IsSleeping</td>
+<td>是否在休眠状态</td>
+</tr>
+<tr class="even">
+<td>Sleep</td>
+<td>让刚体进入至少一帧的休眠</td>
+</tr>
+<tr class="odd">
+<td>WakeUp</td>
+<td>唤醒刚体</td>
+</tr>
+</tbody>
+</table>
+<h1 id="碰撞">碰撞</h1>
+<p><strong>碰撞</strong>需要添加碰撞组件，碰撞组件和刚体组件一般一起出现，碰撞范围可编辑。（用边缘行碰撞组件可以设定多边形碰撞范围）<br>
+两个物体碰撞需要两个碰撞组件和其中至少一个刚体组件，从性能上考虑，一般设墙体等静态物体无刚体，运动物体有刚体组件</p>
+<p><strong>碰撞检测</strong>碰撞组件中有触发器，两个物体碰撞检测至少需要勾选其中一个的触发器。碰撞检测和碰撞，二者只能得其一</p>
+<p>脚本</p>
+<p>void OnTriggerEnter2D(Collider2D collision) { Debug.Log("飞机：探测到了碰撞 ... "); }</p>
+<p>碰撞事件回调，有三个：</p>
+<p>OnTriggerEnter2D ：两个碰撞体开始相遇</p>
+<p>OnTriggerStay2D ： 两个碰撞体接触中</p>
+<p>OnTriggerExit2D： 两个碰撞体分开</p>
+<p>碰撞事件的参数: Collider2D collision ，表示的是对方的碰撞体组件</p>
+<p>例如，</p>
+<p>collision.gameObject 对方</p>
+<p>collision.transform 对方的Transform组件</p>
+<p>collision.name 对方节点的名称</p>
+<p>collision.tag 对方节点的Tag</p>
+<p>在 OnTriggerEnter2D 中 ，Destroy(collision.gameObject) 销毁对象</p>
+<p>相应的回调名字：</p>
+<p>OnCollisionEnter ，OnCollisionStay ，OnCollisionExit</p>
+<h1 id="关节">关节</h1>
+<p><strong>铰链关节（Hinge Joint）</strong> 编辑角度限制（Edit Angular Limits），注意要先勾选“使用限制”（use Limits）<br>
+Connected Body，设置连接另一个刚体。注意：未设置则连接世界<br>
+Connected Articulation Body，设置连接另一个关节<br>
+Anchor（锚点）<br>
+轴：关节轴的方向<br>
+Spring：弹簧<br>
+Damper阻尼<br>
+Target Position（目标角度）：弹簧会朝目标角度变化<br>
+Use Motor（使用动力）<br>
+目标速度<br>
+Force（力）：为了达到目标速度而施加的力<br>
+Limits（限制）：限制角度范围<br>
+断开力/断开力矩：破坏此关节需要的数值</p>
+<p><strong>弹簧关节（Spring Joint）</strong> 与铰链关节差不多，但可以让两个刚体像粘在弹簧两端一样运动</p>
+<p><strong>固定关节</strong> 物理层面的实现父子级关系，而不需要关心其内部逻辑，同时可以设置一个阚值力使其分离</p>
+<h1 id="射线">射线</h1>
+<p><strong>射线碰撞检测</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Ray ray = Camera.main.ScreenPonitToRay(Input.mousePosition);</span><br><span class="line">//从屏幕（摄像机）某一点（鼠标的位置）向世界发射一条射线</span><br><span class="line"></span><br><span class="line">Ray ray2 = new Ray(Vector3.zero, Vector3.up);</span><br><span class="line">//创建一条射线，给出起点和方向，不包含距离</span><br><span class="line"></span><br><span class="line">RaycastHit hit;//一个射线碰撞信息类，其中包含被碰撞的对象</span><br><span class="line">if (Physics.Raycast(ray, out hit))</span><br><span class="line">&#123;</span><br><span class="line">    Debug.Log(hit.point);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><strong>射线多碰撞检测</strong> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">RaycastHit[] hits;</span><br><span class="line">Ray ray = Camera.main.ScreenPonitToRay(Input.mousePosition);</span><br><span class="line">hits = Physics.RaycastAll(ray);</span><br><span class="line">hits = Physics.RaycastAll(ray, 100);</span><br><span class="line">hits = Physics.RaycastAll(ray, 100, 1&lt;&lt;10);//只检测第十图层</span><br><span class="line">hits = Physics.RaycastAll(ray, 100, 0&lt;&lt;10);//忽略第十图层</span><br></pre></td></tr></table></figure></p>
+<p><strong>调试线</strong> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Debug.DrawLine(new Vector3(0,0,0), new Vector(1,1,1), Color.red);</span><br><span class="line">//绘制一条从红色线段</span><br><span class="line">Debug.DrawRay(new Vector3(0,0,0), new Vector(1,1,1), Color.red);</span><br><span class="line">//绘制一条蓝色射线</span><br><span class="line">//因为是调试线，故不会在游戏中显示，但需要在运行后的场景下看</span><br></pre></td></tr></table></figure></p>
+<h1 id="物理材质">物理材质</h1>
+<p>创建物理材质（物理材质2D）<br>
+修改摩擦力和弹力<br>
+将该物理材质拖入其他组件（例如碰撞组件或刚体组件）</p>
+<p>Dynamic Friction（动摩擦力）0~1<br>
+Static Friction（静摩擦力）0~1<br>
+Bounciness（弹力）0~1<br>
+Friction Combine（摩擦力组合）<br>
+Bounce Combine（弹力组合）</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/28/%E5%AD%98%E6%A1%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="一个废物捏">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/02/28/%E5%AD%98%E6%A1%A3/" class="post-title-link" itemprop="url">存档</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-02-28 14:05:02" itemprop="dateCreated datePublished" datetime="2022-02-28T14:05:02+08:00">2022-02-28</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-03-26 22:40:12" itemprop="dateModified" datetime="2022-03-26T22:40:12+08:00">2022-03-26</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="数据持续化方案">数据持续化方案</h1>
+<p>PlayerPrefs 的用法很简单。通过它，能够简单保存某些设置如玩家的图形设置、登录信息，以及需要保存的玩家其它设置。但是，PlayerPrefs 不是为了游戏存档而设计的。因此，需要用到序列化。</p>
+<h2 id="playerprefs类下的静态函数">PlayerPrefs类下的静态函数</h2>
+<table>
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>函数名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>DeleteAll</td>
+<td>从偏好中删除所有键和值。请谨慎使用。</td>
+</tr>
+<tr class="even">
+<td>DeleteKey</td>
+<td>Removes the given key from the PlayerPrefs. If the key does not exist, DeleteKey has no impact.</td>
+</tr>
+<tr class="odd">
+<td>GetFloat</td>
+<td>返回偏好设置文件中与 key 对应的值（如果存在）。</td>
+</tr>
+<tr class="even">
+<td>GetInt</td>
+<td>返回偏好设置文件中与 key 对应的值（如果存在）。</td>
+</tr>
+<tr class="odd">
+<td>GetString</td>
+<td>返回偏好设置文件中与 key 对应的值（如果存在）。</td>
+</tr>
+<tr class="even">
+<td>HasKey</td>
+<td>Returns true if the given key exists in PlayerPrefs, otherwise returns false.（可用于读档）</td>
+</tr>
+<tr class="odd">
+<td>Save</td>
+<td>将所有修改的偏好写入磁盘。（存档）</td>
+</tr>
+<tr class="even">
+<td>SetFloat</td>
+<td>Sets the float value of the preference identified by the given key. You can use PlayerPrefs.GetFloat to retrieve this value.</td>
+</tr>
+<tr class="odd">
+<td>SetInt</td>
+<td>Sets a single integer value for the preference identified by the given key. You can use PlayerPrefs.GetInt to retrieve this value.</td>
+</tr>
+<tr class="even">
+<td>SetString</td>
+<td>Sets a single string value for the preference identified by the given key. You can use PlayerPrefs.GetString to retrieve this value.</td>
+</tr>
+</tbody>
+</table>
+<h1 id="序列化与反序列化">序列化与反序列化</h1>
+<p>创建保存类，不继承组件</p>
+<p>[SerializeField] 让某些东西在检查器中显示出来</p>
+<p>在类声明之上，添加：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[System.Serializable]</span><br></pre></td></tr></table></figure>
+<p>这是一个属性，它标明了代码的一个元数据。它告诉 Unity 这个类<strong>可以</strong>被序列化，这意味着你可以将它转换成字节流并保存到磁盘文件中。</p>
+<p>该属性的使用非常广泛，它允许你在类、方法和变量上附加数据（这种数据叫做元数据）。甚至你可以定义自己的元数据并用于你的代码。序列化中使用了 [SerializeField] 和 [System.Serializable] 属性，这样在序列化对象时它知道要写入什么。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[System.Serializable]</span><br><span class="line">public class Save</span><br><span class="line">&#123;</span><br><span class="line">    //这里定义需要序列化的变量</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public Save CreatSaveGO()</span><br><span class="line">&#123;</span><br><span class="line">	Save save = new Save();</span><br><span class="line">	save.time = Data.onlyDataGO.time;//配合场景切换来看</span><br><span class="line">	return save;</span><br><span class="line">&#125;</span><br><span class="line">//之后利用二进制或JSON方法，都需要预先调用这个方法</span><br></pre></td></tr></table></figure>
+<h2 id="二进制binary-formatter">二进制Binary Formatter</h2>
+<p>序列化：新建或打开一个<strong>二进制文件</strong>，通过<strong>二进制格式器</strong>将<strong>对象</strong>写入该二进制文件</p>
+<p>反序列化：打开以及序列化的二进制文件，通过<strong>二进制格式器</strong>将文件解析成<strong>对象</strong>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">using System.Runtime.Serialization.Formatters.Binary;</span><br><span class="line"></span><br><span class="line">private void SaveByBin()</span><br><span class="line">&#123;</span><br><span class="line">    string filePath = Application.dataPath + &quot;/StreamingFile&quot; + &quot;/save.txt&quot;;</span><br><span class="line">    Save save = CreatSaveGO();//创建一个可以被序列化且含有需要保存数据的对象</span><br><span class="line">    BinaryFormatter bf = new BinaryFormatter();//创建一个二进制格式化程序</span><br><span class="line">    FileStream fileStream = File.Create(filePath);</span><br><span class="line">	//创建一个文件流</span><br><span class="line">    //参数为路径，Application.dataPath是游戏所在位置，/StreamingFile是预先自建文件夹</span><br><span class="line">    bf.Serialize(fileStream, save);</span><br><span class="line">    //用（二进制格式化程序的序列化方法）来序列化一个（可被序列号的对象）</span><br><span class="line">    fileStream.Close();</span><br><span class="line">    //关闭文件流</span><br><span class="line">&#125;</span><br><span class="line">private void LoadByBin()</span><br><span class="line">&#123;</span><br><span class="line">	string filePath = Application.dataPath + &quot;/StreamingFile&quot; + &quot;/save.txt&quot;;</span><br><span class="line">    if (!File.Exists(filePath))return;</span><br><span class="line">    BinaryFormatter bf = new BinaryFormatter();</span><br><span class="line">    FileStream fileStream = File.Open(filePath, FileMode.Open);</span><br><span class="line">    Save save = (Save)bf.Derialize(fileStream);</span><br><span class="line">    fileStream.Close();</span><br><span class="line">    Data.onlyDataGO.time = save.time;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注：string filepath = System.Environment.CurrentDirectory + "/StreamFile" + "byJson.json"</p>
+<h2 id="json">JSON</h2>
+<p>对象-&gt;JSON</p>
+<p>JSON-&gt;对象</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">using LitJson;//需要额外下载文件</span><br><span class="line">private void SaveByJson()</span><br><span class="line">&#123;</span><br><span class="line">    Save save = CreateSaveGO();</span><br><span class="line">    string filePath = Application.dataPath + &quot;/StreamingFile&quot; + &quot;/save.txt&quot;;</span><br><span class="line">    string saveJsonStr = JsonMapper.ToJson(save);</span><br><span class="line">    StreamWriter sw = new StreamWriter(filePath);</span><br><span class="line">    sw.Write(saveJsonStr);</span><br><span class="line">    sw.Close();</span><br><span class="line">&#125;</span><br><span class="line">private void LoadByJson()</span><br><span class="line">&#123;</span><br><span class="line">    string filePath = Application.dataPath + &quot;/StreamingFile&quot; + &quot;/save.txt&quot;;</span><br><span class="line">    if (!File.Exists(filePath))return;</span><br><span class="line">    StreamReader sr = new StreamReader(filePath);</span><br><span class="line">    string jsonStr = sr.ReadToEnd();</span><br><span class="line">    sr.Close();</span><br><span class="line">    Save save = JsonMapper.ToObject&lt;Save&gt;(jsonStr);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="xml">Xml</h2>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -827,183 +1176,6 @@ on click()下添加方法<br>
 <p><strong>C++的结构体和C++类的区别</strong></p>
 <p>C++结构体内部成员变量及成员函数默认的访问级别是public,而c++类的内部成员变量及成员函数的默认访问级别是private。</p>
 <p>C++结构体的继承默认是public，而c++类的继承默认是private。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/22/LC-RecoverBinarySearchTree/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="一个废物捏">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/22/LC-RecoverBinarySearchTree/" class="post-title-link" itemprop="url">LC-RecoverBinarySearchTree</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-09-22 11:27:13" itemprop="dateCreated datePublished" datetime="2021-09-22T11:27:13+08:00">2021-09-22</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-03-27 20:59:12" itemprop="dateModified" datetime="2022-03-27T20:59:12+08:00">2022-03-27</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="方案一显性差别不大40">方案一(显性)(差别不大,40%)</h1>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	vector&lt;<span class="keyword">int</span>&gt;nums;</span><br><span class="line">	<span class="keyword">int</span> a = <span class="number">0</span>, b = <span class="number">0</span>;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">recoverTree</span><span class="params">(TreeNode* root)</span> </span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="built_in">dfsTreeToNums</span>(root);</span><br><span class="line">		<span class="built_in">findProblem</span>();</span><br><span class="line">		<span class="built_in">dfsForSwitch</span>(root);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">findProblem</span><span class="params">()</span><span class="comment">//这里整个函数没写清楚</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">int</span> len = nums.<span class="built_in">size</span>();</span><br><span class="line">		vector&lt;<span class="keyword">int</span>&gt;index;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= len - <span class="number">2</span>; ++i)</span><br><span class="line">			<span class="keyword">if</span> (nums[i] &gt; nums[i + <span class="number">1</span>])index.<span class="built_in">push_back</span>(i);</span><br><span class="line">		<span class="keyword">if</span> (index.<span class="built_in">size</span>() == <span class="number">1</span>)index.<span class="built_in">push_back</span>(index[<span class="number">0</span>]);<span class="comment">//错位的两数相邻</span></span><br><span class="line">		a = nums[index[<span class="number">0</span>]];</span><br><span class="line">		b = nums[index[<span class="number">1</span>] + <span class="number">1</span>];</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">dfsForSwitch</span><span class="params">(TreeNode* now)</span><span class="comment">//随便什么顺序，这里用先根序</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (now-&gt;val == a) now-&gt;val = b;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (now-&gt;val == b) now-&gt;val = a;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (now-&gt;left)</span><br><span class="line">			<span class="built_in">dfsForSwitch</span>(now-&gt;left);</span><br><span class="line">		<span class="keyword">if</span> (now-&gt;right)</span><br><span class="line">			<span class="built_in">dfsForSwitch</span>(now-&gt;right);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">dfsTreeToNums</span><span class="params">(TreeNode* now)</span><span class="comment">//中根序搜索</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (now-&gt;left)</span><br><span class="line">			<span class="built_in">dfsTreeToNums</span>(now-&gt;left);</span><br><span class="line">		nums.<span class="built_in">push_back</span>(now-&gt;val);</span><br><span class="line">		<span class="keyword">if</span> (now-&gt;right)</span><br><span class="line">			<span class="built_in">dfsTreeToNums</span>(now-&gt;right);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>时间复杂度O(N)，空间复杂度O(N) N个数字，树高H，H小于N 对树进行遍历的空间复杂度为O(H) 这个算法需要用额外一个数组存储排序好的数列，空间复杂度为O(N) 因此总的来说空间复杂度为O(N)</p>
-<h1 id="方案二隐性差别不大55">方案二(隐性)(差别不大,55%)</h1>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	vector&lt;TreeNode*&gt;problem;</span><br><span class="line">	TreeNode* pre;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">recoverTree</span><span class="params">(TreeNode* root)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="built_in">dfsFindProblem</span>(root);</span><br><span class="line">		<span class="keyword">if</span> (problem.<span class="built_in">size</span>() == <span class="number">2</span>)<span class="comment">//问题数相邻</span></span><br><span class="line">			<span class="built_in">swap</span>(problem[<span class="number">0</span>]-&gt;val, problem[<span class="number">1</span>]-&gt;val);</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (problem.<span class="built_in">size</span>() == <span class="number">3</span>)<span class="comment">//问题数不相邻</span></span><br><span class="line">			<span class="built_in">swap</span>(problem[<span class="number">0</span>]-&gt;val, problem[<span class="number">2</span>]-&gt;val);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">dfsFindProblem</span><span class="params">(TreeNode* now)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (now-&gt;left)</span><br><span class="line">			<span class="built_in">dfsFindProblem</span>(now-&gt;left);</span><br><span class="line">		<span class="keyword">if</span> (pre)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (pre-&gt;val &gt; now-&gt;val)</span><br><span class="line">				<span class="keyword">if</span> (problem.<span class="built_in">size</span>() == <span class="number">0</span>)</span><br><span class="line">				&#123;</span><br><span class="line">					problem.<span class="built_in">push_back</span>(pre);</span><br><span class="line">					problem.<span class="built_in">push_back</span>(now);</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span></span><br><span class="line">					problem.<span class="built_in">push_back</span>(now);</span><br><span class="line">		&#125;</span><br><span class="line">		pre = now;</span><br><span class="line">		<span class="keyword">if</span> (now-&gt;right)</span><br><span class="line">			<span class="built_in">dfsFindProblem</span>(now-&gt;right);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>优化：不再使用数组完整存储数列，在遍历的过程中找出问题数，因此空间复杂度优化为O(H)</p>
-<h1 id="morris中序遍历">Morris中序遍历</h1>
-<p>Morris中序遍历算法，在给出一个完全二叉树的前提下，能在O(1)空间遍历完这棵树</p>
-<p>原理： 对于一个根节点root</p>
-<p>一、root存在左孩，找出root左树最右节点p。 1、p右孩为空，根节点路过，不算在中序遍历中，将p右连接root（这个连接不算在树的结构上），root=root-&gt;left（结束）。 2、p右孩不为空（说明来过一次了，即root左树遍历完毕），根节点的位置记录在中序遍历中，将p右置空，root=root-&gt;right（结束）。</p>
-<p>二、root不存在左孩，根节点的位置记录在中序遍历中，root=root-&gt;right（结束）</p>
-<p>本题中，在morris中序遍历中加入一个判断函数解题 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">morrisSearch</span><span class="params">(TreeNode* root)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span> (root != <span class="literal">nullptr</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (root-&gt;left != <span class="literal">nullptr</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			TreeNode* predecessor = root-&gt;left;</span><br><span class="line">			<span class="keyword">while</span> (predecessor-&gt;right != <span class="literal">nullptr</span> &amp;&amp; predecessor-&gt;right != root)</span><br><span class="line">				predecessor = predecessor-&gt;right;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (predecessor-&gt;right == <span class="literal">nullptr</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				predecessor-&gt;right = root;</span><br><span class="line">				root = root-&gt;left;</span><br><span class="line">            &#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">compare</span>(root);</span><br><span class="line">				predecessor-&gt;right = <span class="literal">nullptr</span>;</span><br><span class="line">				root = root-&gt;right;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">compare</span>(root);</span><br><span class="line">			root = root-&gt;right;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">compare</span><span class="params">(TreeNode* root)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (lastRoot != <span class="literal">nullptr</span> &amp;&amp; lastRoot-&gt;val &gt; root-&gt;val)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (x == <span class="literal">nullptr</span>)x = lastRoot;</span><br><span class="line">		y = root;</span><br><span class="line">	&#125;</span><br><span class="line">	lastRoot = root;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//x，y，lastRoot为本题专有，与Morris无关</span></span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/16/Eclipse%20Java/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="一个废物捏">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/16/Eclipse%20Java/" class="post-title-link" itemprop="url">Eclipse Java</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-09-16 12:47:10" itemprop="dateCreated datePublished" datetime="2021-09-16T12:47:10+08:00">2021-09-16</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-03-22 01:04:55" itemprop="dateModified" datetime="2022-03-22T01:04:55+08:00">2022-03-22</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="eclipse-java">Eclipse Java</h1>
-<p>工作区（workspace） 工作区是一个目录，程序和程序所需要用到的资源都在workspace里，中间缓存文件也存在工作区中。</p>
-<p>项目（Project） 为一个需求所服务的代码文件，一个workspace 可以拥有个项目，而你的代码必须有归属于某个项目的，不能单独存在。</p>
-<p>第一个程序 新建项目，在项目下新建包（为了易于管理），在包下新建类，打开这个类，可以写代码了</p>
-<p>其他 关于继承和调试，遇到再说 https://blog.csdn.net/qq_36243942/article/details/81607906</p>
-<h1 id="基础格式">基础格式</h1>
-<p><strong>大小写敏感</strong></p>
-<p><strong>类名</strong>：对于所有的类来说，类名的首字母应该大写。如果类名由若干单词组成，那么每个单词的首字母应该大写，例如： <strong>MyFirstJavaClass</strong> 。</p>
-<p><strong>方法名</strong>：所有的方法名都应该以小写字母开头。如果方法名含有若干单词，则后面的每个单词首字母大写。例如：<strong>startSearch</strong></p>
-<p><strong>源文件名</strong>：源文件名必须和类名相同。当保存文件的时候，你应该使用类名作为文件名保存（切记 Java 是大小写敏感的），文件名的后缀为 <strong>.java</strong>。（如果文件名和类名不相同则会导致编译错误）。</p>
-<p><strong>主方法入口</strong>：所有的 Java 程序由 <strong>public static void main(String[] args)</strong> 方法开始执行。</p>
-<p>一个源文件中只能有一个 public 类<br>
-一个源文件可以有多个非 public 类<br>
-源文件的名称应该和 public 类的类名保持一致。<br>
-如果一个类定义在某个包中，那么 package 语句应该在源文件的首行。<br>
-如果源文件包含 import 语句，那么应该放在 package 语句和类定义之间。如果没有 package 语句，那么 import 语句应该在源文件中最前面。<br>
-import 语句和 package 语句对源文件中定义的所有类都有效。在同一源文件中，不能给不同的类不同的包声明。<br>
-一个包下多个源文件，只有一个能有main函数，可互相调用</p>
-<h1 id="常用">常用</h1>
-<p><code>System.out.println("Hello World"); // 输出 Hello World</code> <code>System.out.println( "菜鸟教程网址长度 : " + len );</code></p>
-<p>instanceof 运算符 该运算符用于操作对象实例，检查该对象是否是一个特定类型（类类型或接口类型）。 <code>boolean result =  a instanceof Car;</code></p>
-<p>增强for <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(声明语句 : 表达式)</span><br><span class="line">&#123;</span><br><span class="line">   <span class="comment">//代码句子</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>变量</p>
-<img src="/2021/09/16/Eclipse%20Java/1.png" class>
-<p>String 类型不可改 StringBuffer 类型可改</p>
 
       
     </div>
