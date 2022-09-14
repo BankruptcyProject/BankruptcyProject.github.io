@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">107</span>
+          <span class="site-state-item-count">108</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,126 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/28/%E5%8A%A8%E7%94%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="一个废物捏">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/02/28/%E5%8A%A8%E7%94%BB/" class="post-title-link" itemprop="url">动画</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-02-28 16:27:51" itemprop="dateCreated datePublished" datetime="2022-02-28T16:27:51+08:00">2022-02-28</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-08-29 16:26:09" itemprop="dateModified" datetime="2022-08-29T16:26:09+08:00">2022-08-29</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>注： 1.动画分为旧版的动画（Animation）和新版的动画器（Animator）<br>
+2.unity一般使用FBX的模型和动画，如果希望进行复杂的建模操作，一般使用3DS MAX、Maya等进行动画制作，再导出为FBX格式。</p>
+<h1 id="动画组件animation">动画组件（Animation）</h1>
+<p>重要参数:<br>
+动画：默认使用的<strong>动画剪辑</strong>，需要拖入<br>
+Animations：可以使用的<strong>动画剪辑</strong>数组<br>
+Play Automatically：勾选后会自动播放默认的<strong>动画剪辑</strong><br>
+Animate Physics：勾选后动画将使用物理循环来驱动<br>
+Culling Type（剔除方式）<br>
+总是动画化：离开屏幕后动画也会执行</p>
+<h1 id="动画剪辑">动画剪辑</h1>
+<p>也就是动画文件</p>
+<p>关键帧使用来记录方便查找的</p>
+<p>动画制作器需要选中物体才能使用，可以添加不同属性，例如图片、transform、刚体等等。在不同帧改变这些属性达到动态效果。其中transform等属性可以在左下角面板中修改曲线达到平滑效果</p>
+<h1 id="动画事件">动画事件</h1>
+<p>在引擎的动画界面，可以在某一帧中添加事件（一个函数），当动画播放到这一帧的时候会调用这个函数</p>
+<p>或者在脚本中添加事件，例子： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Animator anim = GetComponent&lt;Animator&gt;();</span><br><span class="line">AnimatorStateInfo info = anim.GetCurrentAnimatorStateInfo(0);</span><br><span class="line">//获取动画器中的信息，0代表着某个动画层</span><br><span class="line">if (info.IsName(&quot;xxxx&quot;) &amp;&amp;info.normalizedTime &gt;= 1)</span><br><span class="line">&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">//判断动画名字，和动画是否播完（normalizedTime中0为开始1为结束）</span><br></pre></td></tr></table></figure></p>
+<h1 id="动画器animator">动画器（Animator）</h1>
+<p>Animator用于管理大量的Animation以及Animation之间的切换和过渡，同时区分了普通动画和人物骨骼动画。</p>
+<p><strong>重要参数</strong><br>
+控制器：该组件使用的动画控制器<br>
+Avatar（替身）：该动画使用的骨骼映射<br>
+应用根运动：是否使用动画本身的位移旋转<br>
+更新模式：设定动画何时更新</p>
+<p><strong>动画器面板</strong>中有初始三个节点：Entry代表入口节点，Any State代表任意状态节点，Exit代表退出节点。</p>
+<p>动画器面板有参数：Float、Int、Bool、Trigger（单次触发类型，在代码中每触发一次，状态就过渡一次）。在节点间的过渡线中可以打开条件（condition）中，将参数作为状态过渡条件。</p>
+<p><strong>对于导入的动画来说</strong> 动画类型：包括：无（不导入动画）、旧版（旧版动画系统的动画）、泛型（通过动画，适合各种类型的动画）、人形<br>
+Avatar定义：骨骼动画的来源<br>
+Skin Weights（蒙皮权重）：设置骨骼数量和权重<br>
+剪辑：可在本动画基础上创建剪辑<br>
+循环时间：动画是否需要循环播放<br>
+循环动作：自动过渡首位动画使得动画更加流畅，出现绿色图标代表首尾动画非常匹配<br>
+根变换旋转：控制旋转是否烘培到骨骼动作中<br>
+根变换位置：控制移动是否烘培到骨骼动作中 （如走路旋转是否真的会在世界中产生位移）<br>
+可创建（播放与参数）的曲线，配合脚本使用 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">float curve = GetComponent&lt;Animator&gt;().GetFloat(&quot;MyCurve&quot;);</span><br><span class="line">Debug.log(curve);</span><br></pre></td></tr></table></figure> 脚本中响应设置： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public Animator anim;</span><br><span class="line">anim = GetComponent&lt;Animator&gt;();</span><br><span class="line">anim.SetInteger(&quot;vertical&quot;, vertical);</span><br><span class="line">anim.SetInteger(&quot;horizontal&quot;, horizontal);</span><br><span class="line">//该例子中参数为vertical</span><br></pre></td></tr></table></figure></p>
+<p><strong>帧事件</strong><br>
+······</p>
+<p><strong>混合动画</strong><br>
+用于多个动画混合播放</p>
+<p><strong>动画层</strong><br>
+用于不同动画的分类，例如手持刀和手持枪动画可设置为不同动画层，动画层有权重，默认播放权重小的动画层，在代码中改变权重可轻易切换动画逻辑</p>
+<p><strong>状态机</strong><br>
+在同一动画面板中创造子状态机来使结构更清晰</p>
+<p><strong>Avatar遮罩</strong><br>
+对物体不同部位进行多层动画混合，例如：上半身播放攻击动画，下半身播放跑步动画。<br>
+在项目面板中创建遮罩文件，将该文件关联到动画层的遮罩选项框中<br>
+绿色部分代表当前动画层使用的身体部分，红色部分代表未使用的。</p>
+<p><strong>IK反向动力学</strong><br>
+用身体末端带动其它部位运动<br>
+熟练使用反动动力学，可使用少量动画给角色制作出大量动画，而且动画连贯性较好。例如：当角色走在斜坡上时，脚掌会贴合地地面；当角色打击敌人时，能准确贴合到敌人受击的位置；当角色路过NPC时，NPC都转头看向角色。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1100,82 +1220,6 @@ on click()下添加方法<br>
 <h1 id="c_str">c_str()</h1>
 <p>头文件：include<cstring></cstring></p>
 <p>作用：将string对象，转化为char*对象。它是String类中的一个函数，它返回当前字符串的首字符地址。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/30/C%E7%BB%93%E6%9E%84%E4%BD%93%E3%80%81C-%E7%BB%93%E6%9E%84%E4%BD%93%E5%92%8C%E7%B1%BB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="一个废物捏">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/30/C%E7%BB%93%E6%9E%84%E4%BD%93%E3%80%81C-%E7%BB%93%E6%9E%84%E4%BD%93%E5%92%8C%E7%B1%BB/" class="post-title-link" itemprop="url">C结构体、C++结构体和类</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-10-30 16:02:32" itemprop="dateCreated datePublished" datetime="2021-10-30T16:02:32+08:00">2021-10-30</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-09-08 13:43:41" itemprop="dateModified" datetime="2022-09-08T13:43:41+08:00">2022-09-08</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><strong>C的结构体和C++结构体的区别</strong></p>
-<p>C的结构体内不允许有函数存在，C++允许有内部成员函数。 C的结构体对内部成员变量的访问权限只能是public，而C++允许public,protected,private三种。 C语言的结构体是不可以继承的，C++的结构体是可以从其他的结构体或者类继承过来的。</p>
-<p>以上都是表面的区别，实际区别就是<strong>面向过程</strong>和<strong>面向对象</strong>编程思路的区别 C的结构体只是把数据变量给包裹起来了，并不涉及算法。 C++是把数据变量及对这些数据变量的相关算法给封装起来，并且给对这些数据和类不同的访问权限。</p>
-<p><strong>C++的结构体和C++类的区别</strong></p>
-<p>C++结构体内部成员变量及成员函数默认的访问级别是public,而c++类的内部成员变量及成员函数的默认访问级别是private。</p>
-<p>C++结构体的继承默认是public，而c++类的继承默认是private。</p>
 
       
     </div>
