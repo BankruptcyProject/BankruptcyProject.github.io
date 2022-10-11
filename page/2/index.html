@@ -116,13 +116,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">110</span>
+          <span class="site-state-item-count">114</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -152,6 +152,372 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/08/Network-Start-Position/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="一个废物捏">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/09/08/Network-Start-Position/" class="post-title-link" itemprop="url">Network Start Position</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-09-08 23:58:21" itemprop="dateCreated datePublished" datetime="2022-09-08T23:58:21+08:00">2022-09-08</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-09-09 00:08:04" itemprop="dateModified" datetime="2022-09-09T00:08:04+08:00">2022-09-09</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>要控制玩家的生成位置，可以使用“Network Start Position”组件。</p>
+<p>若要使用这些，请将“Network Start Position”组件附加到场景中的游戏对象，并将游戏对象定位到希望其中一个玩家开始的位置。可以向场景添加任意多个开始位置。Network Manager检测场景中的所有开始位置，当生成每个玩家实例时，它使用其中一个的位置和方向。</p>
+<p>默认情况下，Network Manager将在（0，0，0）生成玩家。将此组件添加到游戏对象将自动向Network Manager注册/取消注册其游戏对象的变换，作为可用的生成位置。</p>
+<p>根据Network Manager的玩家spwan方法设置，spwan是随机的（可能两个或多个玩家将使用相同的spwan位置）或循环的（使用每个可用位置，直到客户端多于spwan点）。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/08/Network-Attributes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="一个废物捏">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/09/08/Network-Attributes/" class="post-title-link" itemprop="url">Network Attributes</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-09-08 23:15:05" itemprop="dateCreated datePublished" datetime="2022-09-08T23:15:05+08:00">2022-09-08</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-09-13 20:35:01" itemprop="dateModified" datetime="2022-09-13T20:35:01+08:00">2022-09-13</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>标记变量和方法</p>
+<p><strong>[Server]</strong><br>
+只有服务器可以调用该方法（在客户端上调用时抛出警告）。</p>
+<p><strong>[ServerCallback]</strong><br>
+Same as Server but does not throw a warning when called on client.</p>
+<p><strong>[Client]</strong><br>
+只有客户端可以调用该方法（在服务器上调用时抛出警告）。</p>
+<p><strong>[ClientCallback]</strong><br>
+Same as Client but does not throw a warning when called on server.</p>
+<p><strong>[Command]</strong><br>
+从客户端调用此函数以在服务器上运行此函数。用于反作弊。不可能从服务器调用。<br>
+核心逻辑就是，当客户端的脚本调用此特性修饰的函数时，服务端的对应的对象执行此函数。任何允许数据类型的参数都将通过命令自动传递到服务器。<br>
+小心每帧从客户端发送命令！这可能会导致大量网络流量。</p>
+<p><strong>[ClientRpc]</strong><br>
+服务器使用远程过程调用（RPC）在客户端上运行该函数。<br>
+核心逻辑就是，当服务器的脚本调用此特性修饰的函数时，客户端的对应的对象执行此函数。<br>
+这意味着函数中的代码不会在服务器执行。</p>
+<p><strong>[TargetRpc]</strong><br>
+允许从服务器在客户端上调用它们。与ClientRpc属性不同，这些函数是在单个目标客户机上调用的，而不是在所有就绪客户机上。 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[TargetRpc]</span><br><span class="line">void TargetRemoteDamaged(NetworkConnection target, int damage)&#123;&#125;</span><br><span class="line">//第一个参数可忽略，默认发给自己，也就是调用此方法的客户端实体</span><br></pre></td></tr></table></figure> 可以获取到挂载在目标对象上的NetworkIdentity，可以通过此获取到目标客户端与服务器的连接的通道NetworkIdentity.connectionToClient。<br>
+将其作为参数TargetRpc的第一个参数由服务器执行，即可只发送给目标客户端。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">public class Player : NetworkBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    public int health;</span><br><span class="line"></span><br><span class="line">    [Command]//攻击对方</span><br><span class="line">    void CmdMagic(GameObject target, int damage)</span><br><span class="line">    &#123;</span><br><span class="line">        target.GetComponent&lt;Player&gt;().health -= damage;</span><br><span class="line">        NetworkIdentity opponentIdentity = target.GetComponent&lt;NetworkIdentity&gt;();//对方的ID</span><br><span class="line">        TargetDoMagic(opponentIdentity.connectionToClient, damage);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    [TargetRpc]//在被攻击方的电脑上执行</span><br><span class="line">    public void TargetDoMagic(NetworkConnection target, int damage)</span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log($&quot;Magic Damage = &#123;damage&#125;&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">//----------------------------------------------------------------------------------------</span><br><span class="line">    [Command]//治疗自己</span><br><span class="line">    public void CmdHealMe()</span><br><span class="line">    &#123;</span><br><span class="line">        health += 10;</span><br><span class="line">        TargetHealed(10);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    [TargetRpc]</span><br><span class="line">    public void TargetHealed(int amount)</span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log($&quot;Health increased by &#123;amount&#125;&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>[SyncVar]</strong><br>
+SyncVars用于自动将变量从服务器同步到所有客户端。不要从客户端修改这些变量，这是没有意义的。不要让它们为空，否则会出错。当客户端从服务器接收更新时，可以使用SyncVar Hooks在客户端上运行代码。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/08/Network-Behaviour/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="一个废物捏">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/09/08/Network-Behaviour/" class="post-title-link" itemprop="url">Network Behaviour</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-09-08 22:08:35" itemprop="dateCreated datePublished" datetime="2022-09-08T22:08:35+08:00">2022-09-08</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-09-09 00:00:00" itemprop="dateModified" datetime="2022-09-09T00:00:00+08:00">2022-09-09</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>NetworkBehaviour脚本用于具有Network Identity组件的游戏对象。这些脚本可以执行高级API功能，如命令、客户端RPC和同步变量。<br>
+这个组件NetworkBehaviour一般用于被其他脚本继承。<br>
+注意：不要在Awake中是使用DDOL，可以在Start中使用</p>
+<img src="/2022/09/08/Network-Behaviour/1.png" class>
+<h1 id="属性">属性</h1>
+<p><strong>isServer</strong></p>
+<p><strong>isClient</strong></p>
+<p><strong>isLocalPlayer</strong></p>
+<p><strong>hasAuthority</strong> 如果此客户端控制此游戏对象，则在客户端上返回true。它在服务器上下文中没有意义。 <strong>netId</strong> 此游戏对象的唯一网络ID。服务器在运行时分配此值。它对于网络上的所有游戏对象都是唯一的。 <strong>netIdentity</strong> 返回此对象的网络标识 <strong>connectionToServer</strong> 连接上服务器，只对玩家有效，对克隆玩家无效 <strong>connectionToClient</strong></p>
+<h1 id="network-callbacks">Network Callbacks</h1>
+<p>Network Behaviour scripts 中内置 callback functions 它们是基类上的虚函数 可以在自己的代码上 override 它们。</p>
+<table>
+<colgroup>
+<col style="width: 26%">
+<col style="width: 73%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>方法</th>
+<th style="text-align: left;">callback</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>OnStartServer</strong></td>
+<td style="text-align: left;"><strong>called on server</strong> when <strong>a game object spawns on the server</strong>, or when the <strong>server is started for game objects in the Scene</strong></td>
+</tr>
+<tr class="even">
+<td><strong>OnStopServer</strong></td>
+<td style="text-align: left;"><strong>called on server</strong> when <strong>a game object is destroyed on the server</strong>, or when the <strong>server is stopped for game objects in the Scene</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>OnStartClient</strong></td>
+<td style="text-align: left;"><strong>called on clients</strong> when the <strong>game object spawns on the client</strong>, or when the <strong>client connects to a server for game objects in the Scene</strong></td>
+</tr>
+<tr class="even">
+<td><strong>OnStopClient</strong></td>
+<td style="text-align: left;"><strong>called on clients</strong> when the <strong>server destroys the game object</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>OnStartLocalPlayer</strong></td>
+<td style="text-align: left;"><strong>called on clients</strong> <strong>after <code>OnStartClient</code></strong> for the player game object <strong>on the local client</strong></td>
+</tr>
+<tr class="even">
+<td><strong>OnStopLocalPlayer</strong></td>
+<td style="text-align: left;"><strong>called on clients before <code>OnStopClient</code></strong> for the player game object on the local client</td>
+</tr>
+<tr class="odd">
+<td><strong>OnStartAuthority</strong></td>
+<td style="text-align: left;"><strong>called on owner client</strong> when <strong>assigned authority by the server</strong>. <code>hasAuthority</code> will be true for such objects in client context.</td>
+</tr>
+<tr class="even">
+<td><strong>OnStopAuthority</strong></td>
+<td style="text-align: left;"><strong>called on owner client</strong> when <strong>authority is removed by the server.</strong></td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/08/Network-Transform/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="一个废物捏">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/09/08/Network-Transform/" class="post-title-link" itemprop="url">Network Transform</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-09-08 19:28:36 / Modified: 21:49:23" itemprop="dateCreated datePublished" datetime="2022-09-08T19:28:36+08:00">2022-09-08</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>The Network Transform component synchronizes the position, rotation, and scale of networked game objects across the network.</p>
+<p>该组件需要Network Identity组件</p>
+<p>默认情况下Network Transform有服务器权限，除非专门勾选客户端选项。<br>
+客户端权限适用于玩家对象以及专门分配给客户端的非玩家对象，但仅适用于该组件。启用此功能后，位置更改将从客户端发送到服务器。</p>
+<p>压缩勾选框Compression压缩传送数据，压缩四元数适合3d不适合2d</p>
+<p>Authority：操作权限。如果Client Authority被勾上，那么<strong>只有在客户端改变物体Transform时才会同步Transform，且服务端无权改变物体的Transform；反之亦然。</strong>从反作弊的角度来看，通常不勾上是更好的选择，即只有服务端有权限改变物体的Transform</p>
+<p>Sync Position / Sync Rotation：是否同步位置/旋转。如果不勾上的话，如果服务端改变的物体的位置/旋转，客户端将不会有反映。</p>
+<p>Interpolation：是否进行补间动画。这个意思是，通常由于网络延迟等问题客户端可能出现丢包的情况，即没有来得及/能够同步服务端的位置/旋转。如果不勾上的话，物体会在客户端这里发射”瞬移“的情况。如果勾上的话，物体将会平滑地移动过去。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -791,325 +1157,8 @@ Select性能相对于Poll有提升，代码逻辑也不复杂，但性能相对�
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/02/%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8-Select/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="一个废物捏">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/02/%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8-Select/" class="post-title-link" itemprop="url">多路复用 Select</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-09-02 22:52:20" itemprop="dateCreated datePublished" datetime="2022-09-02T22:52:20+08:00">2022-09-02</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-09-08 13:41:10" itemprop="dateModified" datetime="2022-09-08T13:41:10+08:00">2022-09-08</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>多路复用，就是同时处理多路信号，比如同时检测多个Socket的状态。</p>
-<p>函数原型 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public static void Select</span><br><span class="line">&#123;</span><br><span class="line">	IList checkRead,</span><br><span class="line">	IList checkWrite,</span><br><span class="line">	IList checkError,</span><br><span class="line">	int microSeconds</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>checkRead：检测是否有可读的Select列表<br>
-checkWrite：检测是否有可写的Socket列表<br>
-checkError：检测是否有出错的Socekt列表<br>
-microSeconds：等待回应的时间，以微妙为单位，如果该参数为-1表示一直等待，如果为0表示非阻塞。</p>
-<p>Select可以确定一个或多个Socket对象的状态。使用它时，需先将一个或多个Socket放入IList中。<br>
-通过调用Select函数（IList作为参数）。调用之后，Select将修改IList列表，仅保留那些满足条件的Socket。没有可用的Socket时，程序将会阻塞，不占用CPU资源。</p>
-<p>Select服务端流程 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">初始化Listenfd</span><br><span class="line">初始化clients列表</span><br><span class="line">while(true)</span><br><span class="line">&#123;</span><br><span class="line">	checkList = 待检测Socket列表</span><br><span class="line">	Select(checkList ···)</span><br><span class="line">	for(遍历可读checkList 列表)</span><br><span class="line">	&#123;</span><br><span class="line">		if(listenfd可读) Accept;</span><br><span class="line">		if(这个客户端可读) 消息处理;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 解析：</p>
-<p>将监听Socket（listenfd）和客户端Socket（遍历clients列表）添加到待检测Socket可读状态的列表checkList中。<br>
-调用Select，程序中设置超过时间为1毫秒，若1毫秒没没有任何可读信息，Select方法将checkList列表变成空列表，然后返回。<br>
-对Select处理后的每个Socket做处理，如果监听Socket（listenfd）可读，说明有客户端连接，需调用Accept。如果客户端Socket可读，说明客户端发送了消息（或关闭），将消息广播给所有客户端。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/02/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E6%97%8B%E9%92%AE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="一个废物捏">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/02/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E6%97%8B%E9%92%AE/" class="post-title-link" itemprop="url">（练习）旋钮</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-09-02 22:06:09" itemprop="dateCreated datePublished" datetime="2022-09-02T22:06:09+08:00">2022-09-02</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-09-08 13:38:45" itemprop="dateModified" datetime="2022-09-08T13:38:45+08:00">2022-09-08</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <img src="/2022/09/02/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E6%97%8B%E9%92%AE/1.png" class>
-<p>原型是一个圆柱体，通过内插面和挤出面做上下的小柱体，边缘用倒角磨平。<br>
-做内插面多卡线，以后可能会用到，用不到最后再融掉。<br>
-侧面循环面可以隔一个格子选。（先全选侧面，再在选择里选隔项弃选）</p>
-<p>该练习为学习3D建模的第一个作品。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/01/%E6%A1%88%E4%BE%8B-%E8%81%8A%E5%A4%A9%E5%AE%A4Poll/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="一个废物捏">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/01/%E6%A1%88%E4%BE%8B-%E8%81%8A%E5%A4%A9%E5%AE%A4Poll/" class="post-title-link" itemprop="url">案例-聊天室Poll</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-09-01 14:08:40" itemprop="dateCreated datePublished" datetime="2022-09-01T14:08:40+08:00">2022-09-01</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-09-08 13:40:13" itemprop="dateModified" datetime="2022-09-08T13:40:13+08:00">2022-09-08</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>部分使用异步技术，部分使用Poll，也有一部分阻塞没做处理</p>
-<p>客户端部分代码 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">public class EchoPoll : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    //定义套接字</span><br><span class="line">    Socket socket;</span><br><span class="line">    //UI</span><br><span class="line">    public InputField inputField;</span><br><span class="line">    public Text text;</span><br><span class="line">    //接收缓冲区</span><br><span class="line">    byte[] readBuff = new byte[1024];</span><br><span class="line">    string recvStr = &quot;&quot;;</span><br><span class="line">    public void Connection()</span><br><span class="line">    &#123;</span><br><span class="line">        socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);</span><br><span class="line">        socket.BeginConnect(&quot;127.0.0.1&quot;, 8888, ConnectCallback, socket);</span><br><span class="line">    &#125;</span><br><span class="line">    public void ConnectCallback(IAsyncResult ar)</span><br><span class="line">    &#123;</span><br><span class="line">        try</span><br><span class="line">        &#123;</span><br><span class="line">            Socket socket = (Socket)ar.AsyncState;</span><br><span class="line">            socket.EndConnect(ar);</span><br><span class="line">            Debug.Log(&quot;Socket Connect Succ&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        catch (SocketException ex)</span><br><span class="line">        &#123;</span><br><span class="line">            Debug.Log(&quot;Socket Connect fail &quot; + ex.ToString());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public void Send()</span><br><span class="line">    &#123;</span><br><span class="line">        string sendStr = inputField.text;</span><br><span class="line">        byte[] sendBytes = System.Text.Encoding.Default.GetBytes(sendStr);</span><br><span class="line"></span><br><span class="line">        socket.BeginSend(sendBytes, 0, sendBytes.Length, 0, SendCallback, socket);</span><br><span class="line">    &#125;</span><br><span class="line">    public void SendCallback(IAsyncResult ar)</span><br><span class="line">    &#123;</span><br><span class="line">        try</span><br><span class="line">        &#123;</span><br><span class="line">            Socket socket = (Socket)ar.AsyncState;</span><br><span class="line">            int count = socket.EndSend(ar);</span><br><span class="line">            Debug.Log(&quot;Socket Send succ &quot; + count);</span><br><span class="line">        &#125;</span><br><span class="line">        catch (SocketException ex)</span><br><span class="line">        &#123;</span><br><span class="line">            Debug.Log(&quot;Socket Send fail &quot; + ex.ToString());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    void Update()</span><br><span class="line">    &#123;</span><br><span class="line">        if (socket == null) return;</span><br><span class="line">        if (socket.Poll(0,SelectMode.SelectRead))</span><br><span class="line">        &#123;</span><br><span class="line">            byte[] readBuff = new byte[1024];</span><br><span class="line">            int count = socket.Receive(readBuff);</span><br><span class="line">            string recvStr = System.Text.Encoding.Default.GetString(readBuff, 0, count);</span><br><span class="line">            text.text += &quot;\n&quot; + recvStr;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>服务器部分代码 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">class PollServer</span><br><span class="line">&#123;</span><br><span class="line">    //监听Socket</span><br><span class="line">    static Socket listenfd;</span><br><span class="line">    //客户端Socket及状态信息</span><br><span class="line">    static Dictionary&lt;Socket, ClientState&gt; clients = new Dictionary&lt;Socket, ClientState&gt;();</span><br><span class="line">    public static void Start()</span><br><span class="line">   	&#123;</span><br><span class="line">        //Socket</span><br><span class="line">        listenfd = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);</span><br><span class="line">        //Bind</span><br><span class="line">        IPAddress ipAdr = IPAddress.Parse(&quot;127.0.0.1&quot;);</span><br><span class="line">        IPEndPoint ipEp = new IPEndPoint(ipAdr, 8888);</span><br><span class="line">        listenfd.Bind(ipEp);</span><br><span class="line">        //Listen</span><br><span class="line">        istenfd.Listen(0);</span><br><span class="line">        Console.WriteLine(&quot;[服务器]启动成功&quot;);</span><br><span class="line">        //主循环</span><br><span class="line">        while(true)</span><br><span class="line">        &#123;</span><br><span class="line">            //检测listenfd</span><br><span class="line">            if(listenfd.Poll(0, SelectMode.SelectRead))</span><br><span class="line">            &#123;</span><br><span class="line">                ReadListenfd(listenfd);</span><br><span class="line">            &#125;</span><br><span class="line">            //检查clientfd</span><br><span class="line">            foreach (ClientState s in clients.Values)</span><br><span class="line">            &#123;</span><br><span class="line">                Socket clientfd = s.socket;</span><br><span class="line">                if(clientfd.Poll(0, SelectMode.SelectRead))</span><br><span class="line">                &#123;</span><br><span class="line">                    if (!ReadClientfd(clientfd)) break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            System.Threading.Thread.Sleep(1);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public static void ReadListenfd(Socket listenfd)</span><br><span class="line">    &#123;</span><br><span class="line"> 		Console.WriteLine(&quot;Accept&quot;);</span><br><span class="line">        Socket clientfd = listenfd.Accept();</span><br><span class="line">        ClientState state = new ClientState();</span><br><span class="line">        state.socket = clientfd;</span><br><span class="line">        clients.Add(clientfd, state);</span><br><span class="line">    &#125;</span><br><span class="line">    public static bool ReadClientfd(Socket clientfd)</span><br><span class="line">    &#123;</span><br><span class="line">        ClientState state = clients[clientfd];</span><br><span class="line">        int count = 0;</span><br><span class="line">        try</span><br><span class="line">            &#123;count = clientfd.Receive(state.readBuff);&#125;</span><br><span class="line">        catch(SocketException ex)</span><br><span class="line">        &#123;</span><br><span class="line">            clientfd.Close();</span><br><span class="line">            clients.Remove(clientfd);</span><br><span class="line">            Console.WriteLine(&quot;Receive SocketException &quot; + ex.ToString());</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">        if(count == 0)//客户端关闭</span><br><span class="line">        &#123;</span><br><span class="line">            clientfd.Close();</span><br><span class="line">            clients.Remove(clientfd);</span><br><span class="line">            Console.WriteLine(&quot;Socket Close&quot;);</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">        //广播</span><br><span class="line">        string recvStr = System.Text.Encoding.Default.GetString(state.readBuff, 0, count);</span><br><span class="line">        Console.WriteLine(&quot;Receive &quot; + recvStr);</span><br><span class="line">        string sendStr = clientfd.RemoteEndPoint.ToString() + &quot;:&quot; + recvStr;</span><br><span class="line">        byte[] sendBytes = System.Text.Encoding.Default.GetBytes(sendStr);</span><br><span class="line">        foreach(ClientState cs in clients.Values)</span><br><span class="line">        &#123;</span><br><span class="line">            cs.socket.Send(sendBytes);//？</span><br><span class="line">        &#125;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<img src="/2022/09/01/%E6%A1%88%E4%BE%8B-%E8%81%8A%E5%A4%A9%E5%AE%A4Poll/1.png" class>
-<img src="/2022/09/01/%E6%A1%88%E4%BE%8B-%E8%81%8A%E5%A4%A9%E5%AE%A4Poll/2.png" class>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/01/%E7%8A%B6%E6%80%81%E6%A3%80%E6%B5%8BPoll/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="一个废物捏">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/01/%E7%8A%B6%E6%80%81%E6%A3%80%E6%B5%8BPoll/" class="post-title-link" itemprop="url">状态检测Poll</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-09-01 00:00:42" itemprop="dateCreated datePublished" datetime="2022-09-01T00:00:42+08:00">2022-09-01</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-09-08 13:42:36" itemprop="dateModified" datetime="2022-09-08T13:42:36+08:00">2022-09-08</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>解决阻塞的方法有异步和Poll两种，异步写在之前的博客，Poll比起异步代码结构更简单清晰。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public bool Poll(</span><br><span class="line">	int microSeconds,</span><br><span class="line">	SelectMode mode</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p>microSeconds：等待回应的时间，以微秒为单位。如果该参数为-1，表示一直等待；如果为0，表示非阻塞。</p>
-<p>mode：有三种可选模式<br>
-SelectRead：如果Socket可读（可以接收数据），返回true，反则返回false<br>
-SelectWrite：如果Socket可写，返回true，否则返回false<br>
-SelectError：如果连接失败，返回true，否则返回false</p>
-<p>Poll方法将会在指定时段（以微秒为单位）内阻止执行，如果希望无限期地等待响应，可将microSeconds设置为一个负整数；如果希望不阻塞，设置为0。<br>
-Poll方法会检查Socket的状态。<br>
-指定参数为SelectMode.SelectRead，则可确定Socket是否为可读；<br>
-指定参数为SelectMode.SelectWrite，可确定Socket是否为可写；<br>
-指定参数为SelectMode.SelectError，可以检测错误条件。</p>
-<p><strong>Poll服务端</strong> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">初始化listenfd</span><br><span class="line">初始化clients列表</span><br><span class="line">while(true)</span><br><span class="line">&#123;</span><br><span class="line">	if(listenfd可读) Accept;</span><br><span class="line">	for(遍历clients列表)</span><br><span class="line">	&#123;</span><br><span class="line">		if(这个客户端可读)	消息处理;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>具体代码见案例-Poll</p>
-<p>尽管逻辑清晰，但Poll服务端的弊端也很明显，若没有收到客户端数据，服务端一直在循环，浪费了CPU。Poll客户端也是同理，没有数据的时候也总在Update中检测数据，同样是一种浪费。从性能角度考虑，还有不小的改进空间。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 </div>
