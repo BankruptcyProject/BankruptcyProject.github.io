@@ -28,12 +28,12 @@
 <meta property="og:description" content="贝塞尔曲线建模 在物品模式下添加曲线，按TAB编辑曲线。改曲线有两个控制点和两个控制柄。 曲线和网格是不同的东西，可以将曲线转化为网格。 按 A键 选择所有点。 添加控制点：右键细分。或者选中控制点按 E键 挤出控制点。 删除控制点：融并端点，快捷键X。 选择控制柄：选择控制柄，按 V键。 控制柄类型：自由（左右控制柄不对称）、对齐（左右控制柄对称）、矢量（自由的一种，对直线对齐下一">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2022/10/11/%E6%9B%B2%E7%BA%BF%E5%BB%BA%E6%A8%A1/1.png">
-<meta property="og:image" content="http://example.com/2022/10/11/%E6%9B%B2%E7%BA%BF%E5%BB%BA%E6%A8%A1/2.png">
 <meta property="og:image" content="http://example.com/2022/10/11/%E6%9B%B2%E7%BA%BF%E5%BB%BA%E6%A8%A1/3.png">
 <meta property="og:image" content="http://example.com/2022/10/11/%E6%9B%B2%E7%BA%BF%E5%BB%BA%E6%A8%A1/4.png">
 <meta property="og:image" content="http://example.com/2022/10/11/%E6%9B%B2%E7%BA%BF%E5%BB%BA%E6%A8%A1/5.png">
+<meta property="og:image" content="http://example.com/2022/10/11/%E6%9B%B2%E7%BA%BF%E5%BB%BA%E6%A8%A1/2.png">
 <meta property="article:published_time" content="2022-10-11T09:04:23.000Z">
-<meta property="article:modified_time" content="2022-10-13T09:09:03.616Z">
+<meta property="article:modified_time" content="2022-10-13T09:23:04.741Z">
 <meta property="article:author" content="一个废物捏">
 <meta property="article:tag" content="Blender">
 <meta name="twitter:card" content="summary">
@@ -114,7 +114,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B4%9D%E5%A1%9E%E5%B0%94%E6%9B%B2%E7%BA%BF%E5%BB%BA%E6%A8%A1"><span class="nav-number">1.</span> <span class="nav-text">贝塞尔曲线建模</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%83%8C%E6%99%AF%E5%9B%BE"><span class="nav-number">2.</span> <span class="nav-text">背景图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9B%B2%E7%BA%BF%E5%80%92%E8%A7%92"><span class="nav-number">3.</span> <span class="nav-text">曲线倒角</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B4%9D%E5%A1%9E%E5%B0%94%E6%9B%B2%E7%BA%BF%E5%BB%BA%E6%A8%A1"><span class="nav-number">1.</span> <span class="nav-text">贝塞尔曲线建模</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%B2%E7%BA%BF%E5%80%92%E8%A7%92"><span class="nav-number">1.1.</span> <span class="nav-text">曲线倒角</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#nurbs%E8%B7%AF%E5%BE%84%E6%9B%B2%E7%BA%BF%E5%BB%BA%E6%A8%A1"><span class="nav-number">2.</span> <span class="nav-text">Nurbs路径曲线建模</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%83%8C%E6%99%AF%E5%9B%BE"><span class="nav-number">3.</span> <span class="nav-text">背景图</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -128,7 +128,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">115</span>
+          <span class="site-state-item-count">116</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -205,7 +205,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-10-13 17:09:03" itemprop="dateModified" datetime="2022-10-13T17:09:03+08:00">2022-10-13</time>
+        <time title="Modified: 2022-10-13 17:23:04" itemprop="dateModified" datetime="2022-10-13T17:23:04+08:00">2022-10-13</time>
       </span>
 
   
@@ -231,17 +231,19 @@
 <img src="/2022/10/11/%E6%9B%B2%E7%BA%BF%E5%BB%BA%E6%A8%A1/1.png" class></p>
 <p>自由线绘制：<br>
 按 F键 自动封闭；允许多段曲线不要求相连；可以在垂直面绘制；</p>
-<h1 id="背景图">背景图</h1>
-<p>添加，图像，背景图。用于参考建模。只在正交视图下显示，在 透视图 下不显示。作为背景显示，不会遮盖物体。</p>
-<img src="/2022/10/11/%E6%9B%B2%E7%BA%BF%E5%BB%BA%E6%A8%A1/2.png" class>
-<p>在这里做调整。</p>
-<h1 id="曲线倒角">曲线倒角</h1>
+<h2 id="曲线倒角">曲线倒角</h2>
 <p>倒角后本质上还是一个曲线 <img src="/2022/10/11/%E6%9B%B2%E7%BA%BF%E5%BB%BA%E6%A8%A1/3.png" class>在这里做整体调整</p>
 <img src="/2022/10/11/%E6%9B%B2%E7%BA%BF%E5%BB%BA%E6%A8%A1/4.png" class>
 <p>在这里做单个点的调整（粗细、旋转）</p>
 <p>曲线倒角的横截面<br>
 使用另一个封闭的曲线来作为横截面（横截面为二维产物，blender选取局部坐标xy平面来做横截面） <img src="/2022/10/11/%E6%9B%B2%E7%BA%BF%E5%BB%BA%E6%A8%A1/5.png" class></p>
 <p>通过曲线移动形成面 创建两个曲线，一个作为移动路线，一个作为横截面。</p>
+<h1 id="nurbs路径曲线建模">Nurbs路径曲线建模</h1>
+<p>添加 中选择 路径曲线</p>
+<h1 id="背景图">背景图</h1>
+<p>添加，图像，背景图。用于参考建模。只在正交视图下显示，在 透视图 下不显示。作为背景显示，不会遮盖物体。</p>
+<img src="/2022/10/11/%E6%9B%B2%E7%BA%BF%E5%BB%BA%E6%A8%A1/2.png" class>
+<p>在这里做调整。</p>
 
     </div>
 
@@ -263,6 +265,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2022/10/13/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E5%A5%94%E9%A9%B0%E8%BD%A6%E6%A0%87/" rel="next" title="（练习）奔驰车标">
+                  （练习）奔驰车标 <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>
