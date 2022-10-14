@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">116</span>
+          <span class="site-state-item-count">117</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,263 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/21/c-%E6%96%87%E4%BB%B6%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="一个废物捏">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/03/21/c-%E6%96%87%E4%BB%B6%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/" class="post-title-link" itemprop="url">C#文件输入输出</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-03-21 22:01:49" itemprop="dateCreated datePublished" datetime="2022-03-21T22:01:49+08:00">2022-03-21</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-09-08 13:43:21" itemprop="dateModified" datetime="2022-09-08T13:43:21+08:00">2022-09-08</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="c-io-类">C# I/O 类</h1>
+<p>System.IO 命名空间有各种不同的类，用于执行各种文件操作，如创建和删除文件、读取或写入文件，关闭文件等。</p>
+<p>下表列出了一些 System.IO 命名空间中常用的非抽象类：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">I/O 类</th>
+<th style="text-align: left;">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">BinaryReader</td>
+<td style="text-align: left;">从二进制流读取原始数据。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BinaryWriter</td>
+<td style="text-align: left;">以二进制格式写入原始数据。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">BufferedStream</td>
+<td style="text-align: left;">字节流的临时存储。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Directory</td>
+<td style="text-align: left;">有助于操作目录结构。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">DirectoryInfo</td>
+<td style="text-align: left;">用于对目录执行操作。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">DriveInfo</td>
+<td style="text-align: left;">提供驱动器的信息。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">File</td>
+<td style="text-align: left;">有助于处理文件。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FileInfo</td>
+<td style="text-align: left;">用于对文件执行操作。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">FileStream</td>
+<td style="text-align: left;">用于文件中任何位置的读写。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MemoryStream</td>
+<td style="text-align: left;">用于随机访问存储在内存中的数据流。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Path</td>
+<td style="text-align: left;">对路径信息执行操作。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">StreamReader</td>
+<td style="text-align: left;">用于从字节流中读取字符。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">StreamWriter</td>
+<td style="text-align: left;">用于向一个流中写入字符。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">StringReader</td>
+<td style="text-align: left;">用于读取字符串缓冲区。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">StringWriter</td>
+<td style="text-align: left;">用于写入字符串缓冲区。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="streamreader-类">StreamReader 类</h2>
+<p>下表列出了 <strong>StreamReader</strong> 类中一些常用的<strong>方法</strong>：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">方法</th>
+<th style="text-align: left;">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>public override void Close()</strong></td>
+<td style="text-align: left;">关闭 StreamReader 对象和基础流，并释放任何与读者相关的系统资源。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>public override int Peek()</strong></td>
+<td style="text-align: left;">返回下一个可用的字符，但不使用它。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>public override int Read()</strong></td>
+<td style="text-align: left;">从输入流中读取下一个字符，并把字符位置往前移一个字符。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>public override int ReadToEnd()</strong></td>
+<td style="text-align: left;">从输入流中读取。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>public override int ReadLine()</strong></td>
+<td style="text-align: left;">从输入流中读取。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="streamwriter-类">StreamWriter 类</h2>
+<p><strong>StreamWriter</strong> 类继承自抽象类 TextWriter，表示编写器写入一系列字符。</p>
+<p><strong>StreamWriter</strong>专用于特定编码的字符输出，而从派生的类 <strong>Stream</strong>则设计用于字节输入和输出。</p>
+<p>下表列出了 <strong>StreamWriter</strong> 类中一些常用的<strong>方法</strong>：</p>
+<table>
+<colgroup>
+<col style="width: 35%">
+<col style="width: 64%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">方法</th>
+<th style="text-align: left;">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>public override void Close()</strong></td>
+<td style="text-align: left;">关闭当前的 StreamWriter 对象和基础流。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>public override void Flush()</strong></td>
+<td style="text-align: left;">清理当前编写器的所有缓冲区，使得所有缓冲数据写入基础流。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>public virtual void Write(bool value)</strong></td>
+<td style="text-align: left;">把一个布尔值的文本表示形式写入到文本字符串或流。（继承自 TextWriter。）</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>public override void Write( char value )</strong></td>
+<td style="text-align: left;">把一个字符写入到流。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>public virtual void Write( decimal value )</strong></td>
+<td style="text-align: left;">把一个十进制值的文本表示形式写入到文本字符串或流。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>public virtual void Write( double value )</strong></td>
+<td style="text-align: left;">把一个 8 字节浮点值的文本表示形式写入到文本字符串或流。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>public virtual void Write( int value )</strong></td>
+<td style="text-align: left;">把一个 4 字节有符号整数的文本表示形式写入到文本字符串或流。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>public override void Write( string value )</strong></td>
+<td style="text-align: left;">把一个字符串写入到流。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>public virtual void WriteLine()</strong></td>
+<td style="text-align: left;">把行结束符写入到文本字符串或流。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="filestream-类">FileStream 类</h2>
+<p>System.IO 命名空间中的 <strong>FileStream</strong> 类有助于文件的读写与关闭。该类派生自抽象类 Stream。</p>
+<p>您需要创建一个 <strong>FileStream</strong> 对象来创建一个新的文件，或打开一个已有的文件。创建 <strong>FileStream</strong> 对象的语法如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FileStream &lt;object_name&gt; = new FileStream( &lt;file_name&gt;, &lt;FileMode Enumerator&gt;, &lt;FileAccess Enumerator&gt;, &lt;FileShare Enumerator&gt;);</span><br></pre></td></tr></table></figure>
+<p>例如，创建一个 FileStream 对象 <strong>F</strong> 来读取名为 <strong>sample.txt</strong> 的文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FileStream F = new FileStream(&quot;sample.txt&quot;, FileMode.Open, FileAccess.Read, FileShare.Read);</span><br></pre></td></tr></table></figure>
+<table>
+<colgroup>
+<col style="width: 14%">
+<col style="width: 85%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">参数</th>
+<th style="text-align: left;">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">FileMode</td>
+<td style="text-align: left;"><strong>FileMode</strong> 枚举定义了各种打开文件的方法。FileMode 枚举的成员有：<strong>Append</strong>：打开一个已有的文件，并将光标放置在文件的末尾。如果文件不存在，则创建文件。<strong>Create</strong>：创建一个新的文件。如果文件已存在，则删除旧文件，然后创建新文件。<strong>CreateNew</strong>：指定操作系统应创建一个新的文件。如果文件已存在，则抛出异常。<strong>Open</strong>：打开一个已有的文件。如果文件不存在，则抛出异常。<strong>OpenOrCreate</strong>：指定操作系统应打开一个已有的文件。如果文件不存在，则用指定的名称创建一个新的文件打开。<strong>Truncate</strong>：打开一个已有的文件，文件一旦打开，就将被截断为零字节大小。然后我们可以向文件写入全新的数据，但是保留文件的初始创建日期。如果文件不存在，则抛出异常。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FileAccess</td>
+<td style="text-align: left;"><strong>FileAccess</strong> 枚举的成员有：<strong>Read</strong>、<strong>ReadWrite</strong> 和 <strong>Write</strong>。</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1615,75 +1872,6 @@ map的键是不能修改的，但是其键对应的值是可以修改的</p>
 <p>官方题解思路更间接，但效率却低，也许是因为unorderer_set效率不足</p>
 <h1 id="加工整理得到版本之子97-95">加工整理得到版本之子(97%, 95%)</h1>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(string s)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// 特判</span></span><br><span class="line">        <span class="keyword">if</span> (s == <span class="string">&quot;&quot;</span>)<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (s.<span class="built_in">length</span>() == <span class="number">1</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="comment">// 初始化</span></span><br><span class="line">        <span class="keyword">int</span> hashTable[<span class="number">129</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">        <span class="keyword">int</span> lk = <span class="number">0</span>, rk = <span class="number">1</span>, ans = <span class="number">1</span>;<span class="comment">// 左右指针，闭区间</span></span><br><span class="line">        <span class="keyword">int</span> len = s.<span class="built_in">length</span>();</span><br><span class="line">        hashTable[(<span class="keyword">int</span>)s[<span class="number">0</span>]] = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (rk &lt;= len - <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (++hashTable[(<span class="keyword">int</span>)s[rk]] == <span class="number">1</span>) <span class="comment">// 判断右指针是否遇到重复字符</span></span><br><span class="line">                ans = <span class="built_in">max</span>(ans, rk - lk + <span class="number">1</span>);</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="keyword">while</span> (lk &lt; rk) <span class="comment">//左指针不断前进直至将重复字符剔除</span></span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span> (--hashTable[(<span class="keyword">int</span>)s[lk++]] == <span class="number">1</span>) <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            ++rk; <span class="comment">// 右指针不断前进直到结束</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/06/%E7%BA%BF%E6%9D%A1%E6%95%88%E6%9E%9C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="一个废物捏">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/03/06/%E7%BA%BF%E6%9D%A1%E6%95%88%E6%9E%9C/" class="post-title-link" itemprop="url">线条效果</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-03-06 16:52:54 / Modified: 18:08:47" itemprop="dateCreated datePublished" datetime="2022-03-06T16:52:54+08:00">2022-03-06</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="线段渲染器">线段渲染器</h1>
-<p>添加在层级，创建，游戏对象，效果中</p>
-<p>将线段渲染器加上脚本组件，使用脚本动态绘制线条： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">private LinRenderer lineRenderer;</span><br><span class="line">lineRenderer = GetComponent&lt;LineRenderer&gt;();</span><br><span class="line">lineRenderer.startColor = Color.red;</span><br><span class="line">lineRenderer.endColor = Color.blue;//起点和终点的颜色</span><br><span class="line">LineRenderer.startWidth = 1f;</span><br><span class="line">LineRenderer.endWidth = 0.5f;//起点和终点的宽度</span><br><span class="line">lineRenderer.positionCount = 3;//一共几个端点</span><br><span class="line">lineRenderer.SetPosition(0, Vector3.zero);</span><br><span class="line">lineRenderer.SetPosition(1, Vector3(10,0,0));</span><br><span class="line">lineRenderer.SetPosition(2, Vector3(10,10,0));</span><br></pre></td></tr></table></figure></p>
-<h1 id="拖尾渲染器">拖尾渲染器</h1>
-<p>在某个对象上添加Trail Renderer组件，在脚本上的使用和线段相似</p>
 
       
     </div>

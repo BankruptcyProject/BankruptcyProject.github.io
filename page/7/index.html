@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">116</span>
+          <span class="site-state-item-count">117</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,209 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/28/%E7%89%A9%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="一个废物捏">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/02/28/%E7%89%A9%E7%90%86/" class="post-title-link" itemprop="url">物理</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-02-28 16:21:55" itemprop="dateCreated datePublished" datetime="2022-02-28T16:21:55+08:00">2022-02-28</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-03-07 22:35:55" itemprop="dateModified" datetime="2022-03-07T22:35:55+08:00">2022-03-07</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="刚体">刚体</h1>
+<p>在组件里可添加物理组件</p>
+<p><strong>刚体</strong>有3种类型</p>
+<table>
+<tbody>
+<tr class="odd">
+<td>Dinamic</td>
+<td>普通刚体</td>
+<td>有质量有速度</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Static</td>
+<td>静态刚体</td>
+<td>质量无穷大、无速度</td>
+<td>适用于建筑物、地面等固定不动的物体</td>
+</tr>
+<tr class="odd">
+<td>Kinematic</td>
+<td>运动学刚体</td>
+<td>无质量</td>
+<td>忽略物理规律的刚体，一般用于检测</td>
+</tr>
+</tbody>
+</table>
+<p>阻力和角阻力：设置的是空气阻力</p>
+<p>插值：根据上一帧的变化进行插值</p>
+<p>外推：根据下一帧的变化进行插值</p>
+<p>碰撞检测：离散的（节省性能，但可能穿墙），连续（性能消耗大，一般让墙体设置），连续动态（性能消耗大，一般让高速物体设置）</p>
+<p>Constraints（冻结）：冻结物体某个轴向的旋转</p>
+<table>
+<thead>
+<tr class="header">
+<th>方法</th>
+<th>详解</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>position</td>
+<td>刚体的位置</td>
+</tr>
+<tr class="even">
+<td>rotation</td>
+<td>刚体的旋转</td>
+</tr>
+<tr class="odd">
+<td>velocity</td>
+<td>刚体的速度</td>
+</tr>
+<tr class="even">
+<td>AddForce</td>
+<td>向刚体添加一个力</td>
+</tr>
+<tr class="odd">
+<td>AddExplosionForce</td>
+<td>向模拟爆炸的刚体添加一个力</td>
+</tr>
+<tr class="even">
+<td>AddTorque</td>
+<td>向刚体添加一个扭矩</td>
+</tr>
+<tr class="odd">
+<td>MovePosition</td>
+<td>移动刚体</td>
+</tr>
+<tr class="even">
+<td>MoveRotation</td>
+<td>旋转刚体</td>
+</tr>
+<tr class="odd">
+<td>IsSleeping</td>
+<td>是否在休眠状态</td>
+</tr>
+<tr class="even">
+<td>Sleep</td>
+<td>让刚体进入至少一帧的休眠</td>
+</tr>
+<tr class="odd">
+<td>WakeUp</td>
+<td>唤醒刚体</td>
+</tr>
+</tbody>
+</table>
+<h1 id="碰撞">碰撞</h1>
+<p><strong>碰撞</strong>需要添加碰撞组件，碰撞组件和刚体组件一般一起出现，碰撞范围可编辑。（用边缘行碰撞组件可以设定多边形碰撞范围）<br>
+两个物体碰撞需要两个碰撞组件和其中至少一个刚体组件，从性能上考虑，一般设墙体等静态物体无刚体，运动物体有刚体组件</p>
+<p><strong>碰撞检测</strong>碰撞组件中有触发器，两个物体碰撞检测至少需要勾选其中一个的触发器。碰撞检测和碰撞，二者只能得其一</p>
+<p>脚本</p>
+<p>void OnTriggerEnter2D(Collider2D collision) { Debug.Log("飞机：探测到了碰撞 ... "); }</p>
+<p>碰撞事件回调，有三个：</p>
+<p>OnTriggerEnter2D ：两个碰撞体开始相遇</p>
+<p>OnTriggerStay2D ： 两个碰撞体接触中</p>
+<p>OnTriggerExit2D： 两个碰撞体分开</p>
+<p>碰撞事件的参数: Collider2D collision ，表示的是对方的碰撞体组件</p>
+<p>例如，</p>
+<p>collision.gameObject 对方</p>
+<p>collision.transform 对方的Transform组件</p>
+<p>collision.name 对方节点的名称</p>
+<p>collision.tag 对方节点的Tag</p>
+<p>在 OnTriggerEnter2D 中 ，Destroy(collision.gameObject) 销毁对象</p>
+<p>相应的回调名字：</p>
+<p>OnCollisionEnter ，OnCollisionStay ，OnCollisionExit</p>
+<h1 id="关节">关节</h1>
+<p><strong>铰链关节（Hinge Joint）</strong> 编辑角度限制（Edit Angular Limits），注意要先勾选“使用限制”（use Limits）<br>
+Connected Body，设置连接另一个刚体。注意：未设置则连接世界<br>
+Connected Articulation Body，设置连接另一个关节<br>
+Anchor（锚点）<br>
+轴：关节轴的方向<br>
+Spring：弹簧<br>
+Damper阻尼<br>
+Target Position（目标角度）：弹簧会朝目标角度变化<br>
+Use Motor（使用动力）<br>
+目标速度<br>
+Force（力）：为了达到目标速度而施加的力<br>
+Limits（限制）：限制角度范围<br>
+断开力/断开力矩：破坏此关节需要的数值</p>
+<p><strong>弹簧关节（Spring Joint）</strong> 与铰链关节差不多，但可以让两个刚体像粘在弹簧两端一样运动</p>
+<p><strong>固定关节</strong> 物理层面的实现父子级关系，而不需要关心其内部逻辑，同时可以设置一个阚值力使其分离</p>
+<h1 id="射线">射线</h1>
+<p><strong>射线碰撞检测</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Ray ray = Camera.main.ScreenPonitToRay(Input.mousePosition);</span><br><span class="line">//从屏幕（摄像机）某一点（鼠标的位置）向世界发射一条射线</span><br><span class="line"></span><br><span class="line">Ray ray2 = new Ray(Vector3.zero, Vector3.up);</span><br><span class="line">//创建一条射线，给出起点和方向，不包含距离</span><br><span class="line"></span><br><span class="line">RaycastHit hit;//一个射线碰撞信息类，其中包含被碰撞的对象</span><br><span class="line">if (Physics.Raycast(ray, out hit))</span><br><span class="line">&#123;</span><br><span class="line">    Debug.Log(hit.point);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><strong>射线多碰撞检测</strong> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">RaycastHit[] hits;</span><br><span class="line">Ray ray = Camera.main.ScreenPonitToRay(Input.mousePosition);</span><br><span class="line">hits = Physics.RaycastAll(ray);</span><br><span class="line">hits = Physics.RaycastAll(ray, 100);</span><br><span class="line">hits = Physics.RaycastAll(ray, 100, 1&lt;&lt;10);//只检测第十图层</span><br><span class="line">hits = Physics.RaycastAll(ray, 100, 0&lt;&lt;10);//忽略第十图层</span><br></pre></td></tr></table></figure></p>
+<p><strong>调试线</strong> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Debug.DrawLine(new Vector3(0,0,0), new Vector(1,1,1), Color.red);</span><br><span class="line">//绘制一条从红色线段</span><br><span class="line">Debug.DrawRay(new Vector3(0,0,0), new Vector(1,1,1), Color.red);</span><br><span class="line">//绘制一条蓝色射线</span><br><span class="line">//因为是调试线，故不会在游戏中显示，但需要在运行后的场景下看</span><br></pre></td></tr></table></figure></p>
+<h1 id="物理材质">物理材质</h1>
+<p>创建物理材质（物理材质2D）<br>
+修改摩擦力和弹力<br>
+将该物理材质拖入其他组件（例如碰撞组件或刚体组件）</p>
+<p>Dynamic Friction（动摩擦力）0~1<br>
+Static Friction（静摩擦力）0~1<br>
+Bounciness（弹力）0~1<br>
+Friction Combine（摩擦力组合）<br>
+Bounce Combine（弹力组合）</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -973,88 +1176,6 @@ on click()下添加方法<br>
 <p><strong>C++的结构体和C++类的区别</strong></p>
 <p>C++结构体内部成员变量及成员函数默认的访问级别是public,而c++类的内部成员变量及成员函数的默认访问级别是private。</p>
 <p>C++结构体的继承默认是public，而c++类的继承默认是private。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/22/LC-RecoverBinarySearchTree/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="一个废物捏">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/22/LC-RecoverBinarySearchTree/" class="post-title-link" itemprop="url">LC-RecoverBinarySearchTree</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-09-22 11:27:13" itemprop="dateCreated datePublished" datetime="2021-09-22T11:27:13+08:00">2021-09-22</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-03-27 20:59:12" itemprop="dateModified" datetime="2022-03-27T20:59:12+08:00">2022-03-27</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="方案一显性差别不大40">方案一(显性)(差别不大,40%)</h1>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	vector&lt;<span class="keyword">int</span>&gt;nums;</span><br><span class="line">	<span class="keyword">int</span> a = <span class="number">0</span>, b = <span class="number">0</span>;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">recoverTree</span><span class="params">(TreeNode* root)</span> </span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="built_in">dfsTreeToNums</span>(root);</span><br><span class="line">		<span class="built_in">findProblem</span>();</span><br><span class="line">		<span class="built_in">dfsForSwitch</span>(root);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">findProblem</span><span class="params">()</span><span class="comment">//这里整个函数没写清楚</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">int</span> len = nums.<span class="built_in">size</span>();</span><br><span class="line">		vector&lt;<span class="keyword">int</span>&gt;index;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= len - <span class="number">2</span>; ++i)</span><br><span class="line">			<span class="keyword">if</span> (nums[i] &gt; nums[i + <span class="number">1</span>])index.<span class="built_in">push_back</span>(i);</span><br><span class="line">		<span class="keyword">if</span> (index.<span class="built_in">size</span>() == <span class="number">1</span>)index.<span class="built_in">push_back</span>(index[<span class="number">0</span>]);<span class="comment">//错位的两数相邻</span></span><br><span class="line">		a = nums[index[<span class="number">0</span>]];</span><br><span class="line">		b = nums[index[<span class="number">1</span>] + <span class="number">1</span>];</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">dfsForSwitch</span><span class="params">(TreeNode* now)</span><span class="comment">//随便什么顺序，这里用先根序</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (now-&gt;val == a) now-&gt;val = b;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (now-&gt;val == b) now-&gt;val = a;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (now-&gt;left)</span><br><span class="line">			<span class="built_in">dfsForSwitch</span>(now-&gt;left);</span><br><span class="line">		<span class="keyword">if</span> (now-&gt;right)</span><br><span class="line">			<span class="built_in">dfsForSwitch</span>(now-&gt;right);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">dfsTreeToNums</span><span class="params">(TreeNode* now)</span><span class="comment">//中根序搜索</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (now-&gt;left)</span><br><span class="line">			<span class="built_in">dfsTreeToNums</span>(now-&gt;left);</span><br><span class="line">		nums.<span class="built_in">push_back</span>(now-&gt;val);</span><br><span class="line">		<span class="keyword">if</span> (now-&gt;right)</span><br><span class="line">			<span class="built_in">dfsTreeToNums</span>(now-&gt;right);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>时间复杂度O(N)，空间复杂度O(N) N个数字，树高H，H小于N 对树进行遍历的空间复杂度为O(H) 这个算法需要用额外一个数组存储排序好的数列，空间复杂度为O(N) 因此总的来说空间复杂度为O(N)</p>
-<h1 id="方案二隐性差别不大55">方案二(隐性)(差别不大,55%)</h1>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	vector&lt;TreeNode*&gt;problem;</span><br><span class="line">	TreeNode* pre;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">recoverTree</span><span class="params">(TreeNode* root)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="built_in">dfsFindProblem</span>(root);</span><br><span class="line">		<span class="keyword">if</span> (problem.<span class="built_in">size</span>() == <span class="number">2</span>)<span class="comment">//问题数相邻</span></span><br><span class="line">			<span class="built_in">swap</span>(problem[<span class="number">0</span>]-&gt;val, problem[<span class="number">1</span>]-&gt;val);</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (problem.<span class="built_in">size</span>() == <span class="number">3</span>)<span class="comment">//问题数不相邻</span></span><br><span class="line">			<span class="built_in">swap</span>(problem[<span class="number">0</span>]-&gt;val, problem[<span class="number">2</span>]-&gt;val);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">dfsFindProblem</span><span class="params">(TreeNode* now)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (now-&gt;left)</span><br><span class="line">			<span class="built_in">dfsFindProblem</span>(now-&gt;left);</span><br><span class="line">		<span class="keyword">if</span> (pre)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (pre-&gt;val &gt; now-&gt;val)</span><br><span class="line">				<span class="keyword">if</span> (problem.<span class="built_in">size</span>() == <span class="number">0</span>)</span><br><span class="line">				&#123;</span><br><span class="line">					problem.<span class="built_in">push_back</span>(pre);</span><br><span class="line">					problem.<span class="built_in">push_back</span>(now);</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span></span><br><span class="line">					problem.<span class="built_in">push_back</span>(now);</span><br><span class="line">		&#125;</span><br><span class="line">		pre = now;</span><br><span class="line">		<span class="keyword">if</span> (now-&gt;right)</span><br><span class="line">			<span class="built_in">dfsFindProblem</span>(now-&gt;right);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>优化：不再使用数组完整存储数列，在遍历的过程中找出问题数，因此空间复杂度优化为O(H)</p>
-<h1 id="morris中序遍历">Morris中序遍历</h1>
-<p>Morris中序遍历算法，在给出一个完全二叉树的前提下，能在O(1)空间遍历完这棵树</p>
-<p>原理： 对于一个根节点root</p>
-<p>一、root存在左孩，找出root左树最右节点p。 1、p右孩为空，根节点路过，不算在中序遍历中，将p右连接root（这个连接不算在树的结构上），root=root-&gt;left（结束）。 2、p右孩不为空（说明来过一次了，即root左树遍历完毕），根节点的位置记录在中序遍历中，将p右置空，root=root-&gt;right（结束）。</p>
-<p>二、root不存在左孩，根节点的位置记录在中序遍历中，root=root-&gt;right（结束）</p>
-<p>本题中，在morris中序遍历中加入一个判断函数解题 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">morrisSearch</span><span class="params">(TreeNode* root)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span> (root != <span class="literal">nullptr</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (root-&gt;left != <span class="literal">nullptr</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			TreeNode* predecessor = root-&gt;left;</span><br><span class="line">			<span class="keyword">while</span> (predecessor-&gt;right != <span class="literal">nullptr</span> &amp;&amp; predecessor-&gt;right != root)</span><br><span class="line">				predecessor = predecessor-&gt;right;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (predecessor-&gt;right == <span class="literal">nullptr</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				predecessor-&gt;right = root;</span><br><span class="line">				root = root-&gt;left;</span><br><span class="line">            &#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">compare</span>(root);</span><br><span class="line">				predecessor-&gt;right = <span class="literal">nullptr</span>;</span><br><span class="line">				root = root-&gt;right;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">compare</span>(root);</span><br><span class="line">			root = root-&gt;right;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">compare</span><span class="params">(TreeNode* root)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (lastRoot != <span class="literal">nullptr</span> &amp;&amp; lastRoot-&gt;val &gt; root-&gt;val)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (x == <span class="literal">nullptr</span>)x = lastRoot;</span><br><span class="line">		y = root;</span><br><span class="line">	&#125;</span><br><span class="line">	lastRoot = root;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//x，y，lastRoot为本题专有，与Morris无关</span></span><br></pre></td></tr></table></figure></p>
 
       
     </div>
