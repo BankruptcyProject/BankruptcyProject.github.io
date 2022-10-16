@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">119</span>
+          <span class="site-state-item-count">120</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,120 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/07/16/%E8%9A%8C%E5%9F%A0%E4%BD%8F%E4%BA%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="一个废物捏">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/07/16/%E8%9A%8C%E5%9F%A0%E4%BD%8F%E4%BA%86/" class="post-title-link" itemprop="url">第三次弄坏博客，蚌埠住了</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-07-16 22:55:11" itemprop="dateCreated datePublished" datetime="2021-07-16T22:55:11+08:00">2021-07-16</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-03-20 12:11:00" itemprop="dateModified" datetime="2022-03-20T12:11:00+08:00">2022-03-20</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="重装">重装</h1>
+<p>首先前置的git，node.js，npm都有了。这些没坏。 新建一个文件夹作为博客，在其中用git命令安装hexo <code>npm install -g hexo-cli</code> 安装完后用<code>hexo -v</code> 查看安装是否成功以及版本 初始化 <code>hexo init</code> <code>npm install</code> 至此在本地建完hexo</p>
+<p>已经有github账号和仓库了，就用原来的就行，但把原仓库清空，原钥匙删除</p>
+<p>连接hexo和github <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name yourname</span><br><span class="line">git config --global user.email youremail</span><br></pre></td></tr></table></figure> 检查一下 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config user.name</span><br><span class="line">git config user.email</span><br></pre></td></tr></table></figure></p>
+<p>接下来创建SSH <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C youremail</span><br></pre></td></tr></table></figure></p>
+<p>会提示在某个文件夹中生成了私钥和公钥 在GitHub的setting中，找到SSH keys的设置选项，点击<code>New SSH key</code> 把你的<code>id_rsa.pub</code>里面的信息复制进去。</p>
+<p>在gitbash中，查看是否成功</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+<p>将hexo部署到GitHub 这一步，我们就可以将hexo和GitHub关联起来，也就是将hexo生成的文章部署到GitHub上，打开站点配置文件 <code>_config.yml</code>，翻到最后，修改为YourgithubName就是你的GitHub账户</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:YourgithubName/YourgithubName.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+<p>这个时候需要先安装deploy-git ，也就是部署的命令,这样你才能用命令部署到GitHub。 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></p>
+<h1 id="主题">主题</h1>
+<p>https://hexo.io/themes/</p>
+<p>部署方式和一些设置根据主题的不同有所不同，所以选好主题后按主题要求布置</p>
+<p>注意next主题文件滚到mod里去了，不知道为啥</p>
+<h1 id="图片">图片</h1>
+<h3 id="一插件安装与配置">一、插件安装与配置</h3>
+<p>首先我们需要安装一个图片路径转换的插件，这个插件名字是<strong>hexo-asset-image</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install https://github.com/CodeFalling/hexo-asset-image --save</span><br></pre></td></tr></table></figure>
+<p>但是这个插件的内容需要修改【不然可能会出Bug】</p>
+<p>打开/node_modules/hexo-asset-image/index.js，将内容更换为下面的代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">&#x27;use strict&#x27;;</span><br><span class="line">var cheerio = require(&#x27;cheerio&#x27;);</span><br><span class="line"></span><br><span class="line">// http://stackoverflow.com/questions/14480345/how-to-get-the-nth-occurrence-in-a-string</span><br><span class="line">function getPosition(str, m, i) &#123;</span><br><span class="line">  return str.split(m, i).join(m).length;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var version = String(hexo.version).split(&#x27;.&#x27;);</span><br><span class="line">hexo.extend.filter.register(&#x27;after_post_render&#x27;, function(data)&#123;</span><br><span class="line">  var config = hexo.config;</span><br><span class="line">  if(config.post_asset_folder)&#123;</span><br><span class="line">    	var link = data.permalink;</span><br><span class="line">	if(version.length &gt; 0 &amp;&amp; Number(version[0]) == 3)</span><br><span class="line">	   var beginPos = getPosition(link, &#x27;/&#x27;, 1) + 1;</span><br><span class="line">	else</span><br><span class="line">	   var beginPos = getPosition(link, &#x27;/&#x27;, 3) + 1;</span><br><span class="line">	// In hexo 3.1.1, the permalink of &quot;about&quot; page is like &quot;.../about/index.html&quot;.</span><br><span class="line">	var endPos = link.lastIndexOf(&#x27;/&#x27;) + 1;</span><br><span class="line">    link = link.substring(beginPos, endPos);</span><br><span class="line"></span><br><span class="line">    var toprocess = [&#x27;excerpt&#x27;, &#x27;more&#x27;, &#x27;content&#x27;];</span><br><span class="line">    for(var i = 0; i &lt; toprocess.length; i++)&#123;</span><br><span class="line">      var key = toprocess[i];</span><br><span class="line"> </span><br><span class="line">      var $ = cheerio.load(data[key], &#123;</span><br><span class="line">        ignoreWhitespace: false,</span><br><span class="line">        xmlMode: false,</span><br><span class="line">        lowerCaseTags: false,</span><br><span class="line">        decodeEntities: false</span><br><span class="line">      &#125;);</span><br><span class="line"></span><br><span class="line">      $(&#x27;img&#x27;).each(function()&#123;</span><br><span class="line">		if ($(this).attr(&#x27;src&#x27;))&#123;</span><br><span class="line">			// For windows style path, we replace &#x27;\&#x27; to &#x27;/&#x27;.</span><br><span class="line">			var src = $(this).attr(&#x27;src&#x27;).replace(&#x27;\\&#x27;, &#x27;/&#x27;);</span><br><span class="line">			if(!/http[s]*.*|\/\/.*/.test(src) &amp;&amp;</span><br><span class="line">			   !/^\s*\//.test(src)) &#123;</span><br><span class="line">			  // For &quot;about&quot; page, the first part of &quot;src&quot; can&#x27;t be removed.</span><br><span class="line">			  // In addition, to support multi-level local directory.</span><br><span class="line">			  var linkArray = link.split(&#x27;/&#x27;).filter(function(elem)&#123;</span><br><span class="line">				return elem != &#x27;&#x27;;</span><br><span class="line">			  &#125;);</span><br><span class="line">			  var srcArray = src.split(&#x27;/&#x27;).filter(function(elem)&#123;</span><br><span class="line">				return elem != &#x27;&#x27; &amp;&amp; elem != &#x27;.&#x27;;</span><br><span class="line">			  &#125;);</span><br><span class="line">			  if(srcArray.length &gt; 1)</span><br><span class="line">				srcArray.shift();</span><br><span class="line">			  src = srcArray.join(&#x27;/&#x27;);</span><br><span class="line">			  $(this).attr(&#x27;src&#x27;, config.root + link + src);</span><br><span class="line">			  console.info&amp;&amp;console.info(&quot;update link as:--&gt;&quot;+config.root + link + src);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;else&#123;</span><br><span class="line">			console.info&amp;&amp;console.info(&quot;no src attr, skipped...&quot;);</span><br><span class="line">			console.info&amp;&amp;console.info($(this));</span><br><span class="line">		&#125;</span><br><span class="line">      &#125;);</span><br><span class="line">      data[key] = $.html();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>打开_config.yml文件，修改下述内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">post_asset_folder: true</span><br></pre></td></tr></table></figure>
+<p>转自：https://blog.csdn.net/xjm850552586/article/details/84101345</p>
+<h1 id="排序">排序</h1>
+<p>Hexo博文置顶（自定义排序）</p>
+<p>使用的是top属性，top值越高，排序越在前，不设置top值得博文按照时间顺序排序。 修改Hexo文件夹下的node_modules/hexo-generator-index/lib/generator.js</p>
+<p>打开在最后更改为如下javascript代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&#x27;use strict&#x27;;</span><br><span class="line">var pagination = require(&#x27;hexo-pagination&#x27;);</span><br><span class="line">module.exports = function(locals)&#123;</span><br><span class="line">  var config = this.config;</span><br><span class="line">  var posts = locals.posts;</span><br><span class="line">    posts.data = posts.data.sort(function(a, b) &#123;</span><br><span class="line">        if(a.top &amp;&amp; b.top) &#123;</span><br><span class="line">            if(a.top == b.top) return b.date - a.date;</span><br><span class="line">            else return b.top - a.top;</span><br><span class="line">        &#125;</span><br><span class="line">        else if(a.top &amp;&amp; !b.top) &#123;</span><br><span class="line">            return -1;</span><br><span class="line">        &#125;</span><br><span class="line">        else if(!a.top &amp;&amp; b.top) &#123;</span><br><span class="line">            return 1;</span><br><span class="line">        &#125;</span><br><span class="line">        else return b.date - a.date;</span><br><span class="line">    &#125;);</span><br><span class="line">  var paginationDir = config.pagination_dir || &#x27;page&#x27;;</span><br><span class="line">  return pagination(&#x27;&#x27;, posts, &#123;</span><br><span class="line">    perPage: config.index_generator.per_page,</span><br><span class="line">    layout: [&#x27;index&#x27;, &#x27;archive&#x27;],</span><br><span class="line">    format: paginationDir + &#x27;/%d/&#x27;,</span><br><span class="line">    data: &#123;</span><br><span class="line">      __index: true</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>在写文章的时候添加top属性就行了。</p>
+<h1 id="标签">标签</h1>
+<p>在source文件夹下新建tags文件夹，在tags文件夹下新建md文件，头内容为</p>
+<p>title: tags date: 2020-12-17 10:49:26 type: "tags"</p>
+<h1 id="数学公式">数学公式</h1>
+<p>用next主题官方教学</p>
+<p><a target="_blank" rel="noopener" href="https://theme-next.js.org/docs/third-party-services/math-equations.html">Math Equations | NexT (theme-next.js.org)</a></p>
+<h1 id="注">注</h1>
+<p>git界面中文出现乱码，应该是文本出问题。git界面右键选择文本尝试改变中文编码方式。<br>
+我试了半天，CN-zh没一个可以的。最后使用默认编码Default反而可以了，坑爹！！！</p>
+<p>我不懂：hexo d</p>
+<p>kex_exchange_identification: read: Connection reset by peer Connection reset by 20.205.243.166 port 22 fatal: Could not read from remote repository.</p>
+<p>解决方案：</p>
+<p>多d几次，可能是给墙了，<strong>FUCK!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</strong></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1092,112 +1206,6 @@ transform.forward 代表某物体的x，y，z轴的指向 这3个都是标准向
 <p>例子：</p>
 <img src="/2021/04/29/read-byte-word/1.png" class>
 <img src="/2021/04/29/read-byte-word/2.png" class>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/29/mmap%E5%87%BD%E6%95%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="一个废物捏">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/04/29/mmap%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">mmap函数</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-04-29 14:18:38 / Modified: 15:37:39" itemprop="dateCreated datePublished" datetime="2021-04-29T14:18:38+08:00">2021-04-29</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>getpagesize()获得分页大小</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line">#include &lt;sys/mman.h&gt;</span><br><span class="line">void *mmap(void *start, size_t length, int prot, int flags, int fd, off_t offsize)//定义</span><br><span class="line">//说明：mmap()用来将某个文件内容映射到内存中，对该内存区域的存取即是直接对该文件内容的读写</span><br></pre></td></tr></table></figure>
-<table>
-<colgroup>
-<col style="width: 9%">
-<col style="width: 90%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>参数</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>start</td>
-<td>指向欲对应的内存起始地址，通常设为NULL，代表让系统自动选定地址，对应成功后该地址会返回。</td>
-</tr>
-<tr class="even">
-<td>length</td>
-<td>代表将文件中多大的部分对应到内存。</td>
-</tr>
-<tr class="odd">
-<td>prot</td>
-<td>代表映射区域的保护方式，有下列组合：1.PROT_EXEC 映射区域可被执行；2.PROT_READ 映射区域可被读取； PROT_WRITE 映射区域可被写入；3.PROT_NONE 映射区域不能存取。</td>
-</tr>
-<tr class="even">
-<td>flags</td>
-<td>会影响映射区域的各种特性： MAP_FIXED 如果参数 start 所指的地址无法成功建立映射时，则放弃映射，不对地址做修正。通常不鼓励用此旗标。 MAP_SHARED 对应射区域的写入数据会复制回文件内，而且允许其他映射该文件的进程共享。 MAP_PRIVATE 对应射区域的写入操作会产生一个映射文件的复制，即私人的"写入时复制" (copy on write)对此区域作的任何修改都不会写回原来的文件内容。 MAP_ANONYMOUS 建立匿名映射，此时会忽略参数fd，不涉及文件，而且映射区域无法和其他进程共享。 MAP_DENYWRITE 只允许对应射区域的写入操作，其他对文件直接写入的操作将会被拒绝。 MAP_LOCKED 将映射区域锁定住，这表示该区域不会被置换(swap)。 在调用mmap()时必须要指定MAP_SHARED 或MAP_PRIVATE。</td>
-</tr>
-<tr class="odd">
-<td>fd</td>
-<td>open()返回的文件描述词，代表欲映射到内存的文件。</td>
-</tr>
-<tr class="even">
-<td>offset</td>
-<td>文件映射的偏移量，通常设置为0，代表从文件最前方开始对应，offset必须是分页大小的整数倍。</td>
-</tr>
-</tbody>
-</table>
-<p>返回值：若映射成功则返回映射区的内存起始地址，否则返回MAP_FAILED(-1)，错误原因存于errno 中。</p>
-<p>错误代码： - EBADF 参数fd 不是有效的文件描述词。 - EACCES 存取权限有误。如果是MAP_PRIVATE 情况下文件必须可读，使用MAP_SHARED 则要有PROT_WRITE 以及该文件要能写入。 - EINVAL 参数start、length 或offset 有一个不合法。 - EAGAIN 文件被锁住，或是有太多内存被锁住。 - ENOMEM 内存不足。</p>
 
       
     </div>
