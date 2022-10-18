@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">124</span>
+          <span class="site-state-item-count">125</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,87 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/27/%E6%A1%88%E4%BE%8B-BombMan3D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="一个废物捏">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/08/27/%E6%A1%88%E4%BE%8B-BombMan3D/" class="post-title-link" itemprop="url">案例-BombMan3D</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-08-27 22:30:58" itemprop="dateCreated datePublished" datetime="2022-08-27T22:30:58+08:00">2022-08-27</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-09-08 13:40:22" itemprop="dateModified" datetime="2022-09-08T13:40:22+08:00">2022-09-08</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>一个简陋的3D炸弹人Demo</p>
+<p><strong>资源</strong>来源于资源商店<br>
+RPG/FPS Game Assets for PC/Mobile。使用Map_v1场景。<br>
+Easy Primitive People。使用人物Stant。<br>
+3D Monster Bomb!!。使用炸弹模型<br>
+Procedural fire。使用爆炸特效</p>
+<p><strong>角色移动代码摘要</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">void Update()</span><br><span class="line">&#123;</span><br><span class="line">	float horizontal = Input.GetAxis(&quot;Horizontal&quot;);</span><br><span class="line">	float vertical = Input.GetAxis(&quot;Vertical&quot;);</span><br><span class="line">    Vector3 dir = new Vector3(horizontal, 0, vertical);//3D世界中，xz轴组成地面，y轴指向天空。2D世界中无z轴。</span><br><span class="line">	if (dir!=Vector3.zero)</span><br><span class="line">	&#123;</span><br><span class="line">		transform.rotation = Quaternion.LookRotation(dir);//转向</span><br><span class="line">		transform.Translate(Vector3.forward * 2 * Time.deltaTime);//移动</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>摄像头跟随摘要</strong></p>
+<p>仅实现固定距离跟随，不会转向</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class CameraControl : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    private Vector3 vector;</span><br><span class="line">    private Transform player;</span><br><span class="line">    void Start()</span><br><span class="line">    &#123;</span><br><span class="line">        player = GameObject.FindWithTag(&quot;Player&quot;).transform;</span><br><span class="line">        vector = player.transform.position - transform.position;</span><br><span class="line">    &#125;</span><br><span class="line">    void Update()</span><br><span class="line">    &#123;</span><br><span class="line">        transform.position = player.transform.position - vector;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1382,237 +1463,6 @@ OS：自动执行”四次握手“，关闭连接。</p>
 <p>用到再说</p>
 <h2 id="navigation导航选项">Navigation（导航选项）</h2>
 <p>用到再说</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/19/Slider&Scrollbar/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="一个废物捏">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/03/19/Slider&Scrollbar/" class="post-title-link" itemprop="url">Slider&Scrollbar</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-03-19 22:12:58" itemprop="dateCreated datePublished" datetime="2022-03-19T22:12:58+08:00">2022-03-19</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-03-20 17:47:51" itemprop="dateModified" datetime="2022-03-20T17:47:51+08:00">2022-03-20</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="区别">区别</h1>
-<p>__滑动条__控件允许用户通过拖动鼠标从预定范围中选择数值。请注意，类似的滚动条控件用于滚动而不是选择数值。</p>
-<p>__滚动条__控件允许用户滚动由于太大而无法完全看到的图像或其他视图。请注意，类似的滑动条 控件用于选择数值而不是滚动。</p>
-<h1 id="滑动条slider">滑动条Slider</h1>
-<h2 id="属性">属性</h2>
-<table>
-<colgroup>
-<col style="width: 51%">
-<col style="width: 48%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;"><strong>属性</strong></th>
-<th style="text-align: left;"><strong>功能</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><strong>Interactable </strong></td>
-<td style="text-align: left;">此组件是否接受输入？请参阅 [Interactable]。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>Transition（过渡）</strong></td>
-<td style="text-align: left;">确定控件以何种方式对用户操作进行可视化响应的属性。请参阅[过渡选项]。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>Navigation（导航）</strong></td>
-<td style="text-align: left;">确定控件顺序的属性。请参阅[导航选项]。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>Fill Rect（填充矩阵）</strong></td>
-<td style="text-align: left;">用于控件填充区域的图形。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>Handle Rect（处理矩阵）</strong></td>
-<td style="text-align: left;">用于控件滑动“控制柄”部分的图形</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>Direction（方向）</strong></td>
-<td style="text-align: left;">拖动控制柄时滑动条值增加的方向。选项包括 <em>Left To Right</em>、<em>Right To Left</em>、<em>Bottom To Top</em> 和 <em>Top To Bottom</em>。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>Min Value</strong></td>
-<td style="text-align: left;">控制柄处于极下端（由 <em>Direction</em> 属性确定）时的滑动条值。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>Max Value</strong></td>
-<td style="text-align: left;">控制柄处于极上端（由 <em>Direction</em> 属性确定）时的滑动条值。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>Whole Numbers（整数）</strong></td>
-<td style="text-align: left;">是否应该将滑动条约束为整数值？</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>Value</strong></td>
-<td style="text-align: left;">滑动条的当前数值。如果在 Inspector 中设置了该值，则该值将用作初始值，但是当值变化时，运行时的值也将变化。</td>
-</tr>
-</tbody>
-</table>
-<h2 id="事件">事件</h2>
-<table>
-<colgroup>
-<col style="width: 25%">
-<col style="width: 75%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;"><strong>属性</strong></th>
-<th style="text-align: left;"><strong>功能</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><strong>On Value Changed </strong></td>
-<td style="text-align: left;">滑动条的当前值已变化时调用的 [UnityEvent]。该事件可将当前值作为 <code>float</code> 类型动态参数发送。无论是否已启用 <em>Whole Numbers</em> 属性，该值都将作为 float 类型传递。</td>
-</tr>
-</tbody>
-</table>
-<h2 id="详细信息">详细信息</h2>
-<p>滑动条的值由控制柄沿其长度的位置确定。该值从 <em>Min Value</em> 增加到 <em>Max Value</em>，与拖动控制柄的距离成比例。默认行为是滑动条从左向右增加，但也可以使用<em>Direction</em> 属性反转此行为。通过将 <em>Direction</em> 属性设置为 <em>Bottom To Top</em> 或 <em>Top To Bottom</em>，还可以将滑动条设置为垂直增加。</p>
-<p>滑动条有一个名为 <em>On Value Changed</em> 的事件，当用户拖动控制柄时会响应。滑动条的当前数值作为 <code>float</code> 参数传递给函数。典型用例包括：</p>
-<ul>
-<li>选择游戏难度、光源亮度等。</li>
-<li>设置距离、大小、时间或角度。</li>
-</ul>
-<h1 id="滚动条scrollbar">滚动条Scrollbar</h1>
-<h2 id="属性-1">属性</h2>
-<table>
-<colgroup>
-<col style="width: 24%">
-<col style="width: 75%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;"><strong>属性</strong></th>
-<th style="text-align: left;"><strong>功能</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><strong>Interactable</strong></td>
-<td style="text-align: left;">此组件是否接受输入？请参阅 [Interactable]。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>Transition</strong></td>
-<td style="text-align: left;">确定控件以何种方式对用户操作进行可视化响应的属性。请参阅[过渡选项]。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>Navigation</strong></td>
-<td style="text-align: left;">确定控件顺序的属性。请参阅[导航选项]。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>Fill Rect</strong></td>
-<td style="text-align: left;">用于控件背景区域的图形。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>Handle Rect</strong></td>
-<td style="text-align: left;">用于控件滑动“控制柄”部分的图形</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>Direction</strong></td>
-<td style="text-align: left;">拖动控制柄时滚动条值增加的方向。选项包括 <em>Left To Right</em>、<em>Right To Left</em>、<em>Bottom To Top</em> 和 <em>Top To Bottom</em>。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>Value</strong></td>
-<td style="text-align: left;">滚动条的初始位置值，范围为 0.0 到 1.0。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>Size</strong></td>
-<td style="text-align: left;">控制柄在滚动条内的比例大小，范围为 0.0 到 1.0。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>Number Of Steps（步骤数量）</strong></td>
-<td style="text-align: left;">滚动条允许的不同滚动位置的数量。</td>
-</tr>
-</tbody>
-</table>
-<h2 id="事件-1">事件</h2>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;"><strong>属性</strong></th>
-<th style="text-align: left;"><strong>功能</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><strong>On Value Changed</strong></td>
-<td style="text-align: left;">滚动条的当前值发生变化时调用的 [UnityEvent]。该事件可将值作为 <code>float</code> 类型动态参数发送。</td>
-</tr>
-</tbody>
-</table>
-<h2 id="详细信息-1">详细信息</h2>
-<p>滚动条的值由控制柄沿其长度的位置确定，该值表示为两个端点之间的分数。例如，默认的从左到右滚动条的左端值为 0.0，右端值为 1.0，0.5 表示中间点。通过将 <em>Direction</em> 属性设置为 <em>Top To Bottom</em> 或 <em>Bottom To Top</em>，可以垂直定向滚动条。</p>
-<p>滚动条和类似的[滑动条]控件之间的显著区别在于，滚动条可以改变控制柄大小来表示可用的滚动距离；当视图只能在很短距离内滚动时，控制柄将填充大部分滚动条，并仅允许在任一方向轻微移动。</p>
-<p>滚动条有一个名为 <em>On Value Changed</em> 的事件，当用户拖动控制柄时会响应。当前值作为 <code>float</code> 参数传递给事件函数。滚动条的典型用例包括：</p>
-<ul>
-<li>垂直滚动一段文字。</li>
-<li>水平滚动时间轴。</li>
-<li>成对使用在水平和垂直方向滚动大型图像以查看缩放的部分。控制柄的大小会发生变化来指示缩放程度，从而表明可滚动的距离。</li>
-</ul>
 
       
     </div>

@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">124</span>
+          <span class="site-state-item-count">125</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,84 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/03/%E6%A1%88%E4%BE%8B-%E8%81%8A%E5%A4%A9%E5%AE%A4Select/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="一个废物捏">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/09/03/%E6%A1%88%E4%BE%8B-%E8%81%8A%E5%A4%A9%E5%AE%A4Select/" class="post-title-link" itemprop="url">案例-聊天室Select</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-09-03 14:11:07" itemprop="dateCreated datePublished" datetime="2022-09-03T14:11:07+08:00">2022-09-03</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-09-08 13:40:16" itemprop="dateModified" datetime="2022-09-08T13:40:16+08:00">2022-09-08</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>服务器和客户端均部分使用Select技术，部分使用异步技术，部分直接发送接收。</p>
+<img src="/2022/09/03/%E6%A1%88%E4%BE%8B-%E8%81%8A%E5%A4%A9%E5%AE%A4Select/1.png" class>
+<p>服务器部分代码 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line">class SelectServer</span><br><span class="line">&#123;</span><br><span class="line">    //监听Socket</span><br><span class="line">    static Socket listenfd;</span><br><span class="line">    //客户端Socket及状态信息</span><br><span class="line">    static Dictionary&lt;Socket, ClientState&gt; clients = new Dictionary&lt;Socket, ClientState&gt;();</span><br><span class="line">    public static void Start()</span><br><span class="line">    &#123;</span><br><span class="line">        //Socket</span><br><span class="line">        listenfd = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);</span><br><span class="line">        //Bind</span><br><span class="line">        IPAddress ipAdr = IPAddress.Parse(&quot;127.0.0.1&quot;);</span><br><span class="line">        IPEndPoint ipEp = new IPEndPoint(ipAdr, 8888);</span><br><span class="line">        listenfd.Bind(ipEp);</span><br><span class="line">        //Listen</span><br><span class="line">        listenfd.Listen(0);</span><br><span class="line">        Console.WriteLine(&quot;[服务器]启动成功&quot;);</span><br><span class="line">        //checkRead</span><br><span class="line">        List&lt;Socket&gt; checkRead = new List&lt;Socket&gt;();</span><br><span class="line">        //主循环</span><br><span class="line">        while (true)</span><br><span class="line">        &#123;</span><br><span class="line">            //填充checkRead列表</span><br><span class="line">            checkRead.Clear();</span><br><span class="line">            checkRead.Add(listenfd);</span><br><span class="line">            foreach(ClientState s in clients.Values)</span><br><span class="line">            &#123;</span><br><span class="line">                checkRead.Add(s.socket);</span><br><span class="line">            &#125;</span><br><span class="line">            Socket.Select(checkRead, null, null, 1000);</span><br><span class="line">            foreach(Socket s in checkRead)</span><br><span class="line">            &#123;</span><br><span class="line">                if (s == listenfd)</span><br><span class="line">                    ReadListenfd(s);</span><br><span class="line">                else</span><br><span class="line">                    ReadClientfd(s);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public static void ReadListenfd(Socket listenfd)</span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(&quot;Accept&quot;);</span><br><span class="line">        Socket clientfd = listenfd.Accept();</span><br><span class="line">        ClientState state = new ClientState();</span><br><span class="line">        state.socket = clientfd;</span><br><span class="line">        clients.Add(clientfd, state);</span><br><span class="line">    &#125;</span><br><span class="line">    public static bool ReadClientfd(Socket clientfd)</span><br><span class="line">    &#123;</span><br><span class="line">        ClientState state = clients[clientfd];</span><br><span class="line">        int count = 0;</span><br><span class="line">        try</span><br><span class="line">        &#123; count = clientfd.Receive(state.readBuff); &#125;</span><br><span class="line">        catch (SocketException ex)</span><br><span class="line">        &#123;</span><br><span class="line">            clientfd.Close();</span><br><span class="line">            clients.Remove(clientfd);</span><br><span class="line">            Console.WriteLine(&quot;Receive SocketException &quot; + ex.ToString());</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">        if (count == 0)//客户端关闭</span><br><span class="line">        &#123;</span><br><span class="line">            clientfd.Close();</span><br><span class="line">            clients.Remove(clientfd);</span><br><span class="line">            Console.WriteLine(&quot;Socket Close&quot;);</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">        //广播</span><br><span class="line">        string recvStr = System.Text.Encoding.Default.GetString(state.readBuff, 0, count);</span><br><span class="line">        Console.WriteLine(&quot;Receive &quot; + recvStr);</span><br><span class="line">        string sendStr = clientfd.RemoteEndPoint.ToString() + &quot;:&quot; + recvStr;</span><br><span class="line">        byte[] sendBytes = System.Text.Encoding.Default.GetBytes(sendStr);</span><br><span class="line">        foreach (ClientState cs in clients.Values)</span><br><span class="line">        &#123;</span><br><span class="line">            cs.socket.Send(sendBytes);//？</span><br><span class="line">        &#125;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>客户端部分代码 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">public class EchoSelect : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    //定义套接字</span><br><span class="line">    Socket socket;</span><br><span class="line">    //UI</span><br><span class="line">    public InputField inputField;</span><br><span class="line">    public Text text;</span><br><span class="line">    //接收缓冲区</span><br><span class="line">    byte[] readBuff = new byte[1024];</span><br><span class="line">    string recvStr = &quot;&quot;;</span><br><span class="line">    List&lt;Socket&gt; checkRead = new List&lt;Socket&gt;();</span><br><span class="line">    public void Connection()</span><br><span class="line">    &#123;</span><br><span class="line">        socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);</span><br><span class="line">        socket.BeginConnect(&quot;127.0.0.1&quot;, 8888, ConnectCallback, socket);</span><br><span class="line">    &#125;</span><br><span class="line">    public void ConnectCallback(IAsyncResult ar)</span><br><span class="line">    &#123;</span><br><span class="line">        try</span><br><span class="line">        &#123;</span><br><span class="line">            Socket socket = (Socket)ar.AsyncState;</span><br><span class="line">            socket.EndConnect(ar);</span><br><span class="line">            Debug.Log(&quot;Socket Connect Succ&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        catch (SocketException ex)</span><br><span class="line">        &#123;</span><br><span class="line">            Debug.Log(&quot;Socket Connect fail &quot; + ex.ToString());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public void Send()</span><br><span class="line">    &#123;</span><br><span class="line">        string sendStr = inputField.text;</span><br><span class="line">        byte[] sendBytes = System.Text.Encoding.Default.GetBytes(sendStr);</span><br><span class="line"></span><br><span class="line">        socket.BeginSend(sendBytes, 0, sendBytes.Length, 0, SendCallback, socket);</span><br><span class="line">    &#125;</span><br><span class="line">    public void SendCallback(IAsyncResult ar)</span><br><span class="line">    &#123;</span><br><span class="line">        try</span><br><span class="line">        &#123;</span><br><span class="line">            Socket socket = (Socket)ar.AsyncState;</span><br><span class="line">            int count = socket.EndSend(ar);</span><br><span class="line">            Debug.Log(&quot;Socket Send succ &quot; + count);</span><br><span class="line">        &#125;</span><br><span class="line">        catch (SocketException ex)</span><br><span class="line">        &#123;</span><br><span class="line">            Debug.Log(&quot;Socket Send fail &quot; + ex.ToString());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    void Update()</span><br><span class="line">    &#123;</span><br><span class="line">        if (socket == null) return;</span><br><span class="line">        checkRead.Clear();</span><br><span class="line">        checkRead.Add(socket);</span><br><span class="line">        Socket.Select(checkRead, null, null, 0);</span><br><span class="line">        foreach(Socket s in checkRead)</span><br><span class="line">        &#123;</span><br><span class="line">            byte[] readbuff = new byte[1024];</span><br><span class="line">            int count = s.Receive(readbuff);</span><br><span class="line">            string recvStr = System.Text.Encoding.Default.GetString(readbuff, 0, count);</span><br><span class="line">            text.text += &#x27;\n&#x27; + recvStr;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>聊天室案例总结：<br>
+异步技术代码逻辑复杂但性能强大。<br>
+Poll技术代码逻辑简单，但存在弊端——在没有接收到数据时，总是在检测是否有数据，是对性能的浪费。CPU占用率过高。<br>
+Select性能相对于Poll有提升，代码逻辑也不复杂，但性能相对于异步技术仍是落后的。在商业上为了做到性能上的极致，多使用异步技术（或者使用多线程模拟异步程序）。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -897,87 +975,6 @@ Poll方法会检查Socket的状态。<br>
 </tbody>
 </table>
 <p>例子 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">transform.rotation = Quaternion.LookRotation(dir);</span><br><span class="line">//看向某个方向</span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/27/%E6%A1%88%E4%BE%8B-BombMan3D/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="一个废物捏">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/08/27/%E6%A1%88%E4%BE%8B-BombMan3D/" class="post-title-link" itemprop="url">案例-BombMan3D</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-08-27 22:30:58" itemprop="dateCreated datePublished" datetime="2022-08-27T22:30:58+08:00">2022-08-27</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-09-08 13:40:22" itemprop="dateModified" datetime="2022-09-08T13:40:22+08:00">2022-09-08</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>一个简陋的3D炸弹人Demo</p>
-<p><strong>资源</strong>来源于资源商店<br>
-RPG/FPS Game Assets for PC/Mobile。使用Map_v1场景。<br>
-Easy Primitive People。使用人物Stant。<br>
-3D Monster Bomb!!。使用炸弹模型<br>
-Procedural fire。使用爆炸特效</p>
-<p><strong>角色移动代码摘要</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">void Update()</span><br><span class="line">&#123;</span><br><span class="line">	float horizontal = Input.GetAxis(&quot;Horizontal&quot;);</span><br><span class="line">	float vertical = Input.GetAxis(&quot;Vertical&quot;);</span><br><span class="line">    Vector3 dir = new Vector3(horizontal, 0, vertical);//3D世界中，xz轴组成地面，y轴指向天空。2D世界中无z轴。</span><br><span class="line">	if (dir!=Vector3.zero)</span><br><span class="line">	&#123;</span><br><span class="line">		transform.rotation = Quaternion.LookRotation(dir);//转向</span><br><span class="line">		transform.Translate(Vector3.forward * 2 * Time.deltaTime);//移动</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>摄像头跟随摘要</strong></p>
-<p>仅实现固定距离跟随，不会转向</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class CameraControl : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    private Vector3 vector;</span><br><span class="line">    private Transform player;</span><br><span class="line">    void Start()</span><br><span class="line">    &#123;</span><br><span class="line">        player = GameObject.FindWithTag(&quot;Player&quot;).transform;</span><br><span class="line">        vector = player.transform.position - transform.position;</span><br><span class="line">    &#125;</span><br><span class="line">    void Update()</span><br><span class="line">    &#123;</span><br><span class="line">        transform.position = player.transform.position - vector;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
