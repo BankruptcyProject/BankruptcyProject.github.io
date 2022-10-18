@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">125</span>
+          <span class="site-state-item-count">126</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,80 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/11/Network-Room-Player/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="一个废物捏">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/09/11/Network-Room-Player/" class="post-title-link" itemprop="url">Network Room Player</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-09-11 06:49:22 / Modified: 07:52:20" itemprop="dateCreated datePublished" datetime="2022-09-11T06:49:22+08:00">2022-09-11</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>Network Room Player在房间中存储 Network Room Manager的每个Player状态。使用此组件时，您需要编写一个脚本，允许玩家指示他们已准备好开始play，并设置ReadyToBegin属性。</p>
+<p><strong>Show Room GUI</strong><br>
+启用此选项可为房间中的玩家显示开发人员GUI。此UI仅用于简化开发。这在默认情况下是启用的。<br>
+<strong>Ready To Begin</strong><br>
+玩家准备就绪的诊断指示器。<br>
+<strong>Index</strong> 玩家的诊断索引，例如玩家1、玩家2等。<br>
+<strong>Network Sync Interval</strong><br>
+信息从 Network Room Player发送到服务器的速率。</p>
+<h2 id="client-virtual-methods">Client Virtual Methods</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public virtual void OnClientEnterRoom() &#123;&#125;</span><br><span class="line">public virtual void OnClientExitRoom() &#123;&#125;</span><br><span class="line">public virtual void OnClientReady(bool readyState) &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1075,80 +1149,6 @@ SyncHuman继承于BaseHuman控制异地人物。</p>
 <p>BaseHuman代码 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">using System.Collections;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using UnityEngine;</span><br><span class="line"></span><br><span class="line">public class BaseHuman : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    //是否正在攻击</span><br><span class="line">    internal bool isAttacking = false;</span><br><span class="line">    internal float attackTime = float.MinValue;</span><br><span class="line">    //是否正在移动</span><br><span class="line">    protected bool isMoving = false;</span><br><span class="line">    //移动目标点</span><br><span class="line">    private Vector3 targetPosition;</span><br><span class="line">    //移动速度</span><br><span class="line">    public float speed = 1.2f;</span><br><span class="line">    //动画组件</span><br><span class="line">    private Animator animator;</span><br><span class="line">    //描述</span><br><span class="line">    public string desc = &quot;&quot;;</span><br><span class="line"></span><br><span class="line">    public void Attack()//攻击动作</span><br><span class="line">    &#123;</span><br><span class="line">        isAttacking = true;</span><br><span class="line">        attackTime = Time.time;</span><br><span class="line">        animator.SetBool(&quot;isAttacking&quot;, true);</span><br><span class="line">    &#125;</span><br><span class="line">    public void AttackUpdate()</span><br><span class="line">    &#123;</span><br><span class="line">        if (!isAttacking) return;</span><br><span class="line">        if (Time.time - attackTime &lt; 0.5f) return;</span><br><span class="line">        isAttacking = false;</span><br><span class="line">        animator.SetBool(&quot;isAttacking&quot;, false);</span><br><span class="line">    &#125;</span><br><span class="line">    public void MoveTo(Vector3 pos)//移动到某处</span><br><span class="line">    &#123;</span><br><span class="line">        targetPosition = pos;</span><br><span class="line">        isMoving = true;</span><br><span class="line">        animator.SetBool(&quot;isMoving&quot;, true);</span><br><span class="line">    &#125;</span><br><span class="line">    public void MoveUpdate()</span><br><span class="line">    &#123;</span><br><span class="line">        if (isMoving == false) return;</span><br><span class="line">        Vector3 pos = transform.position;</span><br><span class="line">        transform.position = Vector3.MoveTowards(pos, targetPosition, speed * Time.deltaTime);//计算pos朝targetPosition方向移动一段距离后的位置</span><br><span class="line">        transform.LookAt(targetPosition);</span><br><span class="line">        if(Vector3.Distance(pos,targetPosition) &lt; 0.05f)</span><br><span class="line">        &#123;</span><br><span class="line">            isMoving = false;</span><br><span class="line">            animator.SetBool(&quot;isMoving&quot;, false);//该处isMoving为动画器中的参数</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    protected void Start()</span><br><span class="line">    &#123;</span><br><span class="line">        animator = GetComponent&lt;Animator&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">    protected void Update()</span><br><span class="line">    &#123;</span><br><span class="line">        MoveUpdate();</span><br><span class="line">        AttackUpdate();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> CtrlHuman代码 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">using System.Collections;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using UnityEngine;</span><br><span class="line"></span><br><span class="line">public class CtrlHuman : BaseHuman</span><br><span class="line">&#123;</span><br><span class="line">    new void Start()//new关键字显示隐藏从基类继承来的成员，避免警告。</span><br><span class="line">    &#123;</span><br><span class="line">        base.Start();</span><br><span class="line">    &#125;</span><br><span class="line">    new void Update()</span><br><span class="line">    &#123;</span><br><span class="line">        base.Update();</span><br><span class="line">        //移动</span><br><span class="line">        if(Input.GetMouseButtonDown(0))</span><br><span class="line">        &#123;</span><br><span class="line">            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);</span><br><span class="line">            RaycastHit hit;</span><br><span class="line">            Physics.Raycast(ray, out hit);</span><br><span class="line">            if(hit.collider.tag == &quot;Terrain&quot;)</span><br><span class="line">            &#123;</span><br><span class="line">                MoveTo(hit.point);</span><br><span class="line">                string sendStr = &quot;Move|&quot;;</span><br><span class="line">                sendStr += NetManager.GetDesc() + &quot;,&quot;;</span><br><span class="line">                sendStr += hit.point.x + &quot;,&quot;;</span><br><span class="line">                sendStr += hit.point.y + &quot;,&quot;;</span><br><span class="line">                sendStr += hit.point.z + &quot;,&quot;;</span><br><span class="line">                NetManager.Send(sendStr);</span><br><span class="line">                //Debug.Log(&quot;MoveSend: &quot; + sendStr);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        //攻击</span><br><span class="line">        if(Input.GetMouseButtonDown(1))</span><br><span class="line">        &#123;</span><br><span class="line">            if (isAttacking) return;</span><br><span class="line">            if (isMoving) return;</span><br><span class="line">            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);</span><br><span class="line">            RaycastHit hit;</span><br><span class="line">            Physics.Raycast(ray, out hit);</span><br><span class="line"></span><br><span class="line">            transform.LookAt(hit.point);</span><br><span class="line">            Attack();</span><br><span class="line"></span><br><span class="line">            //发送协议</span><br><span class="line">            string sendStr = &quot;Attack|&quot;;</span><br><span class="line">            sendStr += NetManager.GetDesc() + &quot;,&quot;;</span><br><span class="line">            sendStr += transform.eulerAngles.y + &quot;,&quot;;</span><br><span class="line">            NetManager.Send(sendStr);</span><br><span class="line">            //击中敌人判定</span><br><span class="line">            Vector3 lineEnd = transform.position + 0.5f * Vector3.up;</span><br><span class="line">            Vector3 lineStart = lineEnd + 20 * transform.forward;</span><br><span class="line">            if(Physics.Linecast(lineStart,lineEnd,out hit))</span><br><span class="line">            &#123;</span><br><span class="line">                GameObject hitObj = hit.collider.gameObject;</span><br><span class="line">                if (hitObj == gameObject) return;</span><br><span class="line">                SyncHuman h = hitObj.GetComponent&lt;SyncHuman&gt;();</span><br><span class="line">                if (h == null) return;</span><br><span class="line">                //发送击中协议</span><br><span class="line">                sendStr = &quot;Hit|&quot;;</span><br><span class="line">                sendStr += NetManager.GetDesc() + &quot;,&quot;;</span><br><span class="line">                sendStr += h.desc + &quot;,&quot;;</span><br><span class="line">                NetManager.Send(sendStr);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
 <p>SyncHuman代码</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">using System.Collections;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using UnityEngine;</span><br><span class="line"></span><br><span class="line">public class SyncHuman : BaseHuman</span><br><span class="line">&#123;</span><br><span class="line">    new void Start()</span><br><span class="line">    &#123;</span><br><span class="line">        base.Start();</span><br><span class="line">    &#125;</span><br><span class="line">    new void Update()</span><br><span class="line">    &#123;</span><br><span class="line">        base.Update();</span><br><span class="line">    &#125;</span><br><span class="line">    public void SyncAttack(float eulY)</span><br><span class="line">    &#123;</span><br><span class="line">        transform.eulerAngles = new Vector3(0, eulY, 0);</span><br><span class="line">        Attack();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/03/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="一个废物捏">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/03/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" class="post-title-link" itemprop="url">消息队列</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-09-03 22:05:00" itemprop="dateCreated datePublished" datetime="2022-09-03T22:05:00+08:00">2022-09-03</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-09-08 13:42:07" itemprop="dateModified" datetime="2022-09-08T13:42:07+08:00">2022-09-08</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>由于单线程消息处理足以满足游戏客户端的需要，因此大部分游戏会使用消息队列让主线程去处理异步Socket接收到的消息。</p>
-<p>C#的异步通信由线程池实现，不同的BeginReceive不一定在同一线程中执行。创建一个消息列表，每当收到消息便在列表末端添加数据，这个列表由主线程读取，它可以作为主线程和异步接收线程之间的桥梁。</p>
-<p>由于MonoBehaviour的Update方法在主线程中执行，可让Update方法每次从消息列表中读取几条信息并处理，处理后便在消息列表中删除它们。</p>
-<img src="/2022/09/03/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/1.png" class>
 
       
     </div>
