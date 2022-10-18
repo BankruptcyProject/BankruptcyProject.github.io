@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">120</span>
+          <span class="site-state-item-count">121</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,78 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/10/ExtraObjects%E6%8F%92%E4%BB%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="一个废物捏">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/10/10/ExtraObjects%E6%8F%92%E4%BB%B6/" class="post-title-link" itemprop="url">ExtraObjects插件</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-10-10 19:14:54 / Modified: 21:43:08" itemprop="dateCreated datePublished" datetime="2022-10-10T19:14:54+08:00">2022-10-10</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>Round Cube 圆角立方体<br>
+Capsule 胶囊 Clay Bar 枕头状 Octahedron 八面体 Quadsphere 球体</p>
+<p>Torus 环形、绳结</p>
+<p>Math Function 数学函数曲面 z = f (x, y)</p>
+<p>Math Function | Regular Solid 正多面体</p>
+<p>Gear 齿轮</p>
+<p>Pipe Joint 管道接头</p>
+<p>Diamond 钻石</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -952,80 +1024,8 @@ SyncVars用于自动将变量从服务器同步到所有客户端。不要从客
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/08/Network-Transform/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="一个废物捏">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/08/Network-Transform/" class="post-title-link" itemprop="url">Network Transform</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-09-08 19:28:36 / Modified: 21:49:23" itemprop="dateCreated datePublished" datetime="2022-09-08T19:28:36+08:00">2022-09-08</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>The Network Transform component synchronizes the position, rotation, and scale of networked game objects across the network.</p>
-<p>该组件需要Network Identity组件</p>
-<p>默认情况下Network Transform有服务器权限，除非专门勾选客户端选项。<br>
-客户端权限适用于玩家对象以及专门分配给客户端的非玩家对象，但仅适用于该组件。启用此功能后，位置更改将从客户端发送到服务器。</p>
-<p>压缩勾选框Compression压缩传送数据，压缩四元数适合3d不适合2d</p>
-<p>Authority：操作权限。如果Client Authority被勾上，那么<strong>只有在客户端改变物体Transform时才会同步Transform，且服务端无权改变物体的Transform；反之亦然。</strong>从反作弊的角度来看，通常不勾上是更好的选择，即只有服务端有权限改变物体的Transform</p>
-<p>Sync Position / Sync Rotation：是否同步位置/旋转。如果不勾上的话，如果服务端改变的物体的位置/旋转，客户端将不会有反映。</p>
-<p>Interpolation：是否进行补间动画。这个意思是，通常由于网络延迟等问题客户端可能出现丢包的情况，即没有来得及/能够同步服务端的位置/旋转。如果不勾上的话，物体会在客户端这里发射”瞬移“的情况。如果勾上的话，物体将会平滑地移动过去。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 </div>
