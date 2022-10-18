@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">123</span>
+          <span class="site-state-item-count">124</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,80 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/08/Network-Start-Position/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="一个废物捏">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/09/08/Network-Start-Position/" class="post-title-link" itemprop="url">Network Start Position</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-09-08 23:58:21" itemprop="dateCreated datePublished" datetime="2022-09-08T23:58:21+08:00">2022-09-08</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-09-09 00:08:04" itemprop="dateModified" datetime="2022-09-09T00:08:04+08:00">2022-09-09</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>要控制玩家的生成位置，可以使用“Network Start Position”组件。</p>
+<p>若要使用这些，请将“Network Start Position”组件附加到场景中的游戏对象，并将游戏对象定位到希望其中一个玩家开始的位置。可以向场景添加任意多个开始位置。Network Manager检测场景中的所有开始位置，当生成每个玩家实例时，它使用其中一个的位置和方向。</p>
+<p>默认情况下，Network Manager将在（0，0，0）生成玩家。将此组件添加到游戏对象将自动向Network Manager注册/取消注册其游戏对象的变换，作为可用的生成位置。</p>
+<p>根据Network Manager的玩家spwan方法设置，spwan是随机的（可能两个或多个玩家将使用相同的spwan位置）或循环的（使用每个可用位置，直到客户端多于spwan点）。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1065,88 +1139,6 @@ SyncHuman继承于BaseHuman控制异地人物。</p>
 异步技术代码逻辑复杂但性能强大。<br>
 Poll技术代码逻辑简单，但存在弊端——在没有接收到数据时，总是在检测是否有数据，是对性能的浪费。CPU占用率过高。<br>
 Select性能相对于Poll有提升，代码逻辑也不复杂，但性能相对于异步技术仍是落后的。在商业上为了做到性能上的极致，多使用异步技术（或者使用多线程模拟异步程序）。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/02/%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8-Select/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="一个废物捏">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/02/%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8-Select/" class="post-title-link" itemprop="url">多路复用 Select</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-09-02 22:52:20" itemprop="dateCreated datePublished" datetime="2022-09-02T22:52:20+08:00">2022-09-02</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-09-08 13:41:10" itemprop="dateModified" datetime="2022-09-08T13:41:10+08:00">2022-09-08</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>多路复用，就是同时处理多路信号，比如同时检测多个Socket的状态。</p>
-<p>函数原型 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public static void Select</span><br><span class="line">&#123;</span><br><span class="line">	IList checkRead,</span><br><span class="line">	IList checkWrite,</span><br><span class="line">	IList checkError,</span><br><span class="line">	int microSeconds</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>checkRead：检测是否有可读的Select列表<br>
-checkWrite：检测是否有可写的Socket列表<br>
-checkError：检测是否有出错的Socekt列表<br>
-microSeconds：等待回应的时间，以微妙为单位，如果该参数为-1表示一直等待，如果为0表示非阻塞。</p>
-<p>Select可以确定一个或多个Socket对象的状态。使用它时，需先将一个或多个Socket放入IList中。<br>
-通过调用Select函数（IList作为参数）。调用之后，Select将修改IList列表，仅保留那些满足条件的Socket。没有可用的Socket时，程序将会阻塞，不占用CPU资源。</p>
-<p>Select服务端流程 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">初始化Listenfd</span><br><span class="line">初始化clients列表</span><br><span class="line">while(true)</span><br><span class="line">&#123;</span><br><span class="line">	checkList = 待检测Socket列表</span><br><span class="line">	Select(checkList ···)</span><br><span class="line">	for(遍历可读checkList 列表)</span><br><span class="line">	&#123;</span><br><span class="line">		if(listenfd可读) Accept;</span><br><span class="line">		if(这个客户端可读) 消息处理;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 解析：</p>
-<p>将监听Socket（listenfd）和客户端Socket（遍历clients列表）添加到待检测Socket可读状态的列表checkList中。<br>
-调用Select，程序中设置超过时间为1毫秒，若1毫秒没没有任何可读信息，Select方法将checkList列表变成空列表，然后返回。<br>
-对Select处理后的每个Socket做处理，如果监听Socket（listenfd）可读，说明有客户端连接，需调用Accept。如果客户端Socket可读，说明客户端发送了消息（或关闭），将消息广播给所有客户端。</p>
 
       
     </div>
