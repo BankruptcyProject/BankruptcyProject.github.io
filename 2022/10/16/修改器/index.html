@@ -20,18 +20,19 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="一系列有意义修改的合集，类似于一个函数 y &#x3D; f(模型)。 修改器作用于物体模式，意思是它的效果仅限于美颜，只能看到物体面貌发生了改变，但实际上在编辑模式中，物体的点线面并无发生改变。  修改器的名称可以修改 开启实时才能在看到修改器效果，否则必须渲染后才能看到效果。">
+<meta name="description" content="修改器   一系列有意义修改的合集，类似于一个函数 y &#x3D; f(模型)。 可以同时存在多个修改器 修改器在为应用时仅仅作用于物体模式，意思是它的效果仅限于美颜，只能看到物体面貌发生了改变，但实际上在编辑模式中，物体的点线面并无发生改变。  修改器的名称可以修改 开启实时才能在看到修改器效果，否则必须渲染后才能看到效果。 选择应用使得修改器的效果释放于编辑模式，修改点线面。（一般情">
 <meta property="og:type" content="article">
 <meta property="og:title" content="修改器">
 <meta property="og:url" content="http://example.com/2022/10/16/%E4%BF%AE%E6%94%B9%E5%99%A8/index.html">
 <meta property="og:site_name" content="划水骗分二十年，没人比我更懂蒻">
-<meta property="og:description" content="一系列有意义修改的合集，类似于一个函数 y &#x3D; f(模型)。 修改器作用于物体模式，意思是它的效果仅限于美颜，只能看到物体面貌发生了改变，但实际上在编辑模式中，物体的点线面并无发生改变。  修改器的名称可以修改 开启实时才能在看到修改器效果，否则必须渲染后才能看到效果。">
+<meta property="og:description" content="修改器   一系列有意义修改的合集，类似于一个函数 y &#x3D; f(模型)。 可以同时存在多个修改器 修改器在为应用时仅仅作用于物体模式，意思是它的效果仅限于美颜，只能看到物体面貌发生了改变，但实际上在编辑模式中，物体的点线面并无发生改变。  修改器的名称可以修改 开启实时才能在看到修改器效果，否则必须渲染后才能看到效果。 选择应用使得修改器的效果释放于编辑模式，修改点线面。（一般情">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2022/10/16/%E4%BF%AE%E6%94%B9%E5%99%A8/1.png">
 <meta property="og:image" content="http://example.com/2022/10/16/%E4%BF%AE%E6%94%B9%E5%99%A8/2.png">
 <meta property="og:image" content="http://example.com/2022/10/16/%E4%BF%AE%E6%94%B9%E5%99%A8/3.png">
+<meta property="og:image" content="http://example.com/2022/10/16/%E4%BF%AE%E6%94%B9%E5%99%A8/4.png">
 <meta property="article:published_time" content="2022-10-16T13:07:14.000Z">
-<meta property="article:modified_time" content="2022-10-18T04:13:34.251Z">
+<meta property="article:modified_time" content="2022-10-18T05:35:22.093Z">
 <meta property="article:author" content="一个废物捏">
 <meta property="article:tag" content="Blender">
 <meta name="twitter:card" content="summary">
@@ -99,7 +100,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -112,6 +113,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E5%99%A8"><span class="nav-number">1.</span> <span class="nav-text">修改器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%98%B5%E5%88%97%E4%BF%AE%E6%94%B9%E5%99%A8"><span class="nav-number">1.1.</span> <span class="nav-text">阵列修改器</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -202,7 +204,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-10-18 12:13:34" itemprop="dateModified" datetime="2022-10-18T12:13:34+08:00">2022-10-18</time>
+        <time title="Modified: 2022-10-18 13:35:22" itemprop="dateModified" datetime="2022-10-18T13:35:22+08:00">2022-10-18</time>
       </span>
 
   
@@ -215,13 +217,22 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <img src="/2022/10/16/%E4%BF%AE%E6%94%B9%E5%99%A8/1.png" class>
+        <h1 id="修改器">修改器</h1>
+<img src="/2022/10/16/%E4%BF%AE%E6%94%B9%E5%99%A8/1.png" class>
 <img src="/2022/10/16/%E4%BF%AE%E6%94%B9%E5%99%A8/2.png" class>
 <p>一系列有意义修改的合集，类似于一个函数 y = f(模型)。<br>
-修改器作用于物体模式，意思是它的效果仅限于美颜，只能看到物体面貌发生了改变，但实际上在编辑模式中，物体的点线面并无发生改变。</p>
+可以同时存在多个修改器<br>
+修改器在为应用时仅仅作用于物体模式，意思是它的效果仅限于美颜，只能看到物体面貌发生了改变，但实际上在编辑模式中，物体的点线面并无发生改变。</p>
 <img src="/2022/10/16/%E4%BF%AE%E6%94%B9%E5%99%A8/3.png" class>
 <p>修改器的名称可以修改<br>
-开启实时才能在看到修改器效果，否则必须渲染后才能看到效果。</p>
+开启实时才能在看到修改器效果，否则必须渲染后才能看到效果。<br>
+选择应用使得修改器的效果释放于编辑模式，修改点线面。（一般情况下不会轻易使用应用）</p>
+<p>可以理解为用“美颜”相机看效果，满意后“整容”。</p>
+<h2 id="阵列修改器">阵列修改器</h2>
+<p>阵列修改器用于批量复制物体，可以设置物体生成数量、方式、间隔等等。<br>
+相对偏移量参考物体大小，设置为1时物体刚好连接不重叠。<br>
+阵列修改器在未应用之前，对一个物体的修改会同步到所有物体上。<br>
+一个阵列修改器只能生成一行东西，两个阵列修改器可以生成x行y列的东西。 <img src="/2022/10/16/%E4%BF%AE%E6%94%B9%E5%99%A8/4.png" class></p>
 
     </div>
 
