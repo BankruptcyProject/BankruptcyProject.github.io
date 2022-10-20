@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">127</span>
+          <span class="site-state-item-count">128</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,71 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/16/C-Lock/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="一个废物捏">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/10/16/C-Lock/" class="post-title-link" itemprop="url">C# Lock</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-10-16 08:52:12 / Modified: 09:16:51" itemprop="dateCreated datePublished" datetime="2022-10-16T08:52:12+08:00">2022-10-16</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>lock语法是： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">private object o = new object();//创建一个对象</span><br><span class="line">public void Work()</span><br><span class="line">&#123;</span><br><span class="line">　　lock(o)//锁住这个对象</span><br><span class="line">　　&#123;</span><br><span class="line">　　　　//做一些必须按照顺序做的事情</span><br><span class="line">　　&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 目的是，在多线程中，使用lock后，能使该代码块按照指定的顺序执行，被lock这块代码已经被其中一个线程访问了，那么另外一个线程只能等待。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -818,81 +883,6 @@ Capsule 胶囊 Clay Bar 枕头状 Octahedron 八面体 Quadsphere 球体</p>
           <p>Event 在 Class 中声明且生成，且通过使用 delegate 与 Event 处理程序关联。</p>
 <p>发布器（publisher） 类 声明事件和委托 订阅器（subscriber） 类 接受事件并处理</p>
 <p>在发布器（publisher）类中的委托 调用 订阅器（subscriber）类中的方法（事件处理程序）。 委托 调用 方法</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/27/%E6%A1%88%E4%BE%8B-Auction/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="一个废物捏">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/27/%E6%A1%88%E4%BE%8B-Auction/" class="post-title-link" itemprop="url">案例-Auction</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-09-27 13:58:29 / Modified: 14:29:04" itemprop="dateCreated datePublished" datetime="2022-09-27T13:58:29+08:00">2022-09-27</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><code>NetworkServer.Spwan</code><br>
-这个函数只能在服务器调用。<br>
-<code>NetworkServer.Spwan(Instatelate(GO))</code><br>
-其中这个函数重载在服务端生成一个GO，并在所有客户端各生成一个GO克隆。这些GO都没有Client Authority。<br>
-<code>NetworkServer.Spwan(Instatelate(GO), NetworkConnection)</code><br>
-在某个客户端（也可以是主机）生成一个GO，并在所有客户端各生成一个GO克隆。在目标主机的GO有Client Authority。其他GO克隆没有Client Authority。</p>
-<p>只有拥有Client Authority的对象能调用Cmd函数，Cmd函数会在这个对象的服务器克隆上执行。通过网络生成的克隆统统无Client Authority故无法调用Cmd函数。<br>
-Cmd函数中除了传递过来的参数，其它所有变量都是服务器上的 对象克隆 身上的。</p>
-<p>Client Authority可以理解为真身。一个物体A通过网络生成，每个客户端上都会有一个A，其中只有一个是真的，其它都是克隆体。真身有Client Authority，克隆体无Clietn Authority。<br>
-在服务器上我们可以移除真身或修改哪个是真身，<code>AssignClientAuthority</code>，但真身最多只有一个。</p>
-<p>假设物体A有Client Authority和Cmd函数，那么其它任何物体（不论有无联网）都可以在各自脚本里通过Find物体A来调用Cmd函数。因为本质上是A执行Cmd函数，不是其它物体执行该函数。</p>
 
       
     </div>
