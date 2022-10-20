@@ -20,28 +20,30 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="unorderer_map 简单来说，就是一个无序哈希表，时间复杂度O(1) 两个常用方法： count()返回要查找的key在map的所有key中的出现次数。因为此容器不允许重复，故count()只可能返回 1 或 0，即可判断此key是否存在。有返回1，无返回0。 unordered_map也有find方法，得到的对象是一个iterator，在unordered_map中，如果find">
+<meta name="description" content="添加圆柱网格，放大顶面，分离上下面，成三个物体。 中间主体细分，反细分，做出菱形，添加线框修改器。 底面添加线框修改器来增粗边，不替换原来物体。 顶面添加线框修改器。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="哈希表(unorderer_map和unorderer_set)">
-<meta property="og:url" content="http://example.com/2022/03/09/%E5%93%88%E5%B8%8C%E8%A1%A8-unorderer-map%E5%92%8Cunorderer-set/index.html">
+<meta property="og:title" content="（练习）垃圾桶">
+<meta property="og:url" content="http://example.com/2022/10/20/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E5%9E%83%E5%9C%BE%E6%A1%B6/index.html">
 <meta property="og:site_name" content="划水骗分二十年，没人比我更懂蒻">
-<meta property="og:description" content="unorderer_map 简单来说，就是一个无序哈希表，时间复杂度O(1) 两个常用方法： count()返回要查找的key在map的所有key中的出现次数。因为此容器不允许重复，故count()只可能返回 1 或 0，即可判断此key是否存在。有返回1，无返回0。 unordered_map也有find方法，得到的对象是一个iterator，在unordered_map中，如果find">
+<meta property="og:description" content="添加圆柱网格，放大顶面，分离上下面，成三个物体。 中间主体细分，反细分，做出菱形，添加线框修改器。 底面添加线框修改器来增粗边，不替换原来物体。 顶面添加线框修改器。">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-03-09T05:31:33.000Z">
-<meta property="article:modified_time" content="2022-09-08T05:41:21.613Z">
+<meta property="og:image" content="http://example.com/2022/10/20/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E5%9E%83%E5%9C%BE%E6%A1%B6/1.png">
+<meta property="article:published_time" content="2022-10-20T02:40:28.000Z">
+<meta property="article:modified_time" content="2022-10-20T02:46:25.938Z">
 <meta property="article:author" content="一个废物捏">
-<meta property="article:tag" content="其他">
+<meta property="article:tag" content="Blender">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/10/20/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E5%9E%83%E5%9C%BE%E6%A1%B6/1.png">
 
 
-<link rel="canonical" href="http://example.com/2022/03/09/%E5%93%88%E5%B8%8C%E8%A1%A8-unorderer-map%E5%92%8Cunorderer-set/">
+<link rel="canonical" href="http://example.com/2022/10/20/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E5%9E%83%E5%9C%BE%E6%A1%B6/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/03/09/%E5%93%88%E5%B8%8C%E8%A1%A8-unorderer-map%E5%92%8Cunorderer-set/","path":"2022/03/09/哈希表-unorderer-map和unorderer-set/","title":"哈希表(unorderer_map和unorderer_set)"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/10/20/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E5%9E%83%E5%9C%BE%E6%A1%B6/","path":"2022/10/20/（练习）垃圾桶/","title":"（练习）垃圾桶"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>哈希表(unorderer_map和unorderer_set) | 划水骗分二十年，没人比我更懂蒻</title>
+<title>（练习）垃圾桶 | 划水骗分二十年，没人比我更懂蒻</title>
   
 
 
@@ -95,7 +97,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <div class="sidebar-inner sidebar-overview-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -108,7 +110,6 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#unorderer_map"><span class="nav-number">1.</span> <span class="nav-text">unorderer_map</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#unorderer_set"><span class="nav-number">2.</span> <span class="nav-text">unorderer_set</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#map%E5%92%8Cset%E5%8C%BA%E5%88%AB"><span class="nav-number">3.</span> <span class="nav-text">map和set区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%A8%E6%B3%95%E5%AE%9E%E4%BE%8B"><span class="nav-number">4.</span> <span class="nav-text">用法实例</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -168,7 +169,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/09/%E5%93%88%E5%B8%8C%E8%A1%A8-unorderer-map%E5%92%8Cunorderer-set/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/20/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E5%9E%83%E5%9C%BE%E6%A1%B6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -181,7 +182,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          哈希表(unorderer_map和unorderer_set)
+          （练习）垃圾桶
         </h1>
 
         <div class="post-meta-container">
@@ -191,16 +192,10 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
+      
 
-      <time title="Created: 2022-03-09 13:31:33" itemprop="dateCreated datePublished" datetime="2022-03-09T13:31:33+08:00">2022-03-09</time>
+      <time title="Created: 2022-10-20 10:40:28 / Modified: 10:46:25" itemprop="dateCreated datePublished" datetime="2022-10-20T10:40:28+08:00">2022-10-20</time>
     </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-09-08 13:41:21" itemprop="dateModified" datetime="2022-09-08T13:41:21+08:00">2022-09-08</time>
-      </span>
 
   
 </div>
@@ -212,28 +207,11 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="unorderer_map">unorderer_map</h1>
-<p>简单来说，就是一个无序哈希表，时间复杂度O(1)</p>
-<p>两个常用方法：</p>
-<p>count()返回要查找的key在map的所有key中的出现次数。因为此容器不允许重复，故count()只可能返回 1 或 0，即可判断此key是否存在。有返回1，无返回0。<br>
-unordered_map也有find方法，得到的对象是一个iterator，在unordered_map中，如果find()没找到要找的key，就返回和end()一样的iterator值。</p>
-<h1 id="unorderer_set">unorderer_set</h1>
-<p>unordered_set基于哈希表，也是无序的，但是，unordered_set是在哈希表中插入value，同时这个value也是它自己的key，和unordered_map不同，这里的key-value只是为了方便查阅，</p>
-<p>两个常用方法：<br>
-同上，count（）和find（）</p>
-<h1 id="map和set区别">map和set区别</h1>
-<p>map：<br>
-map的值不作为键，键和值是分开的，所有元素都是键+值存在<br>
-不允许键重复<br>
-所有元素是通过键进行自动排序的<br>
-map的键是不能修改的，但是其键对应的值是可以修改的</p>
-<p>set：<br>
-所得元素的只有key没有value，value就是key<br>
-不允许出现键值重复<br>
-所有的元素都会被自动排序<br>
-不能通过迭代器来改变set的值，因为set的值就是键</p>
-<h1 id="用法实例">用法实例</h1>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">unordered_set&lt;<span class="keyword">char</span>&gt; occ;</span><br><span class="line">occ.<span class="built_in">insert</span>(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">occ.<span class="built_in">erase</span>(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">cout &lt;&lt; occ.<span class="built_in">count</span>(<span class="string">&quot;a&quot;</span>);</span><br></pre></td></tr></table></figure>
+        <img src="/2022/10/20/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E5%9E%83%E5%9C%BE%E6%A1%B6/1.png" class>
+<p>添加圆柱网格，放大顶面，分离上下面，成三个物体。</p>
+<p>中间主体细分，反细分，做出菱形，添加线框修改器。</p>
+<p>底面添加线框修改器来增粗边，不替换原来物体。</p>
+<p>顶面添加线框修改器。</p>
 
     </div>
 
@@ -243,21 +221,18 @@ map的键是不能修改的，但是其键对应的值是可以修改的</p>
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E5%85%B6%E4%BB%96/" rel="tag"># 其他</a>
+              <a href="/tags/Blender/" rel="tag"># Blender</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2022/03/08/LC-LongestSubstringWithoutRepeatingCharacters/" rel="prev" title="LC-LongestSubstringWithoutRepeatingCharacters">
-                  <i class="fa fa-chevron-left"></i> LC-LongestSubstringWithoutRepeatingCharacters
+                <a href="/2022/10/18/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E7%A7%AF%E6%9C%A8%E6%BB%91%E9%81%93/" rel="prev" title="（练习）积木滑道">
+                  <i class="fa fa-chevron-left"></i> （练习）积木滑道
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2022/03/09/Blender%E5%85%A5%E9%97%A8/" rel="next" title="Blender入门">
-                  Blender入门 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
