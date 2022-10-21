@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">130</span>
+          <span class="site-state-item-count">131</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,82 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/07/18/C-inline/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="一个废物捏">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/07/18/C-inline/" class="post-title-link" itemprop="url">C++inline</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-07-18 13:09:57" itemprop="dateCreated datePublished" datetime="2021-07-18T13:09:57+08:00">2021-07-18</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-09-08 13:43:35" itemprop="dateModified" datetime="2022-09-08T13:43:35+08:00">2022-09-08</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>在 c/c++ 中，为了解决一些频繁调用的小函数大量消耗栈空间（栈内存）的问题，特别的引入了 inline 修饰符，表示为内联函数。 内联是以代码膨胀（复制）为代价，仅仅省去了函数调用的开销，从而提高函数的执行效率。 如果执行函数体内代码的时间，相比于函数调用的开销较大，那么效率的收获会很少。另一方面，每一处内联函数的调用都要复制代码，将使程序的总代码量增大，消耗更多的内存空间。</p>
+<p>inline 的使用是有所限制的，inline 只适合函数体内代码简单的函数使用，<strong>不能包含复杂的结构控制语句</strong>例如 while、switch，并且不能内联函数本身<strong>不能是直接递归函数</strong>。</p>
+<p><strong>inline 函数仅仅是一个对编译器的建议，所以最后能否真正内联，看编译器的意思</strong>，它如果认为函数不复杂，能在调用点展开，就会真正内联，并不是说声明了内联就会内联，声明内联只是一个建议而已。</p>
+<p><strong>建议 inline 函数的定义放在头文件中。</strong> 因为内联函数要在调用点展开，所以编译器必须随处可见内联函数的定义，要不然就成了非内联函数的调用了，所以，这要求每个调用了内联函数的文件都出现了该内联函数的定义。 因此，将内联函数的定义放在头文件里实现是合适的，省却你为每个文件实现一次的麻烦。</p>
+<p><strong>定义在类中的成员函数默认都是内联的</strong>，如果在类定义时就在类内给出函数定义，那当然最好。如果在类中未给出成员函数定义，而又想内联该函数的话，那在类外要加上 inline，否则就认为不是内联的。</p>
+<p><strong>关键字 inline 必须与函数定义体放在一起才能使函数成为内联，仅将 inline 放在函数声明前面不起任何作用</strong>。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1123,109 +1199,8 @@ transform.forward 代表某物体的x，y，z轴的指向 这3个都是标准向
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/29/read-byte-word/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="一个废物捏">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="划水骗分二十年，没人比我更懂蒻">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/04/29/read-byte-word/" class="post-title-link" itemprop="url">read_byte_word</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-04-29 14:50:27 / Modified: 22:12:11" itemprop="dateCreated datePublished" datetime="2021-04-29T14:50:27+08:00">2021-04-29</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>从相对于 FS 段开头的偏移量指定的位置读取内存。</p>
-<h2 id="语法">语法</h2>
-<p>C</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">unsigned</span> <span class="keyword">char</span> __readfsbyte(<span class="keyword">unsigned</span> <span class="keyword">long</span> Offset);</span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">short</span> __readfsword(<span class="keyword">unsigned</span> <span class="keyword">long</span> Offset);</span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">long</span> __readfsdword(<span class="keyword">unsigned</span> <span class="keyword">long</span> Offset);</span><br><span class="line"><span class="keyword">unsigned</span> __int64 __readfsqword(<span class="keyword">unsigned</span> <span class="keyword">long</span> Offset);</span><br></pre></td></tr></table></figure>
-<h2 id="返回值">返回值</h2>
-<p>字节、字、双字名为的函数的名称指示 <code>FS:[Offset]</code> 。</p>
-<h2 id="要求">要求</h2>
-<table>
-<thead>
-<tr class="header">
-<th>Intrinsic</th>
-<th>体系结构</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>__readfsbyte</code></td>
-<td>x86</td>
-</tr>
-<tr class="even">
-<td><code>__readfsdword</code></td>
-<td>x86</td>
-</tr>
-<tr class="odd">
-<td><code>__readfsqword</code></td>
-<td>x86</td>
-</tr>
-<tr class="even">
-<td><code>__readfsword</code></td>
-<td>x86</td>
-</tr>
-</tbody>
-</table>
-<p><strong>头文件</strong> &lt;intrin.h&gt;</p>
-<p>例子：</p>
-<img src="/2021/04/29/read-byte-word/1.png" class>
-<img src="/2021/04/29/read-byte-word/2.png" class>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 </div>
