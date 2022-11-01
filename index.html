@@ -116,13 +116,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">132</span>
+          <span class="site-state-item-count">133</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -152,6 +152,78 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/01/%E7%BA%B9%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="一个废物捏">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="要roll就莱！我是卡莎！！！">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/11/01/%E7%BA%B9%E7%90%86/" class="post-title-link" itemprop="url">纹理</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-11-01 13:55:58 / Modified: 17:09:52" itemprop="dateCreated datePublished" datetime="2022-11-01T13:55:58+08:00">2022-11-01</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>纹理 Texture 贴图，一个东西</p>
+<p>对于一个物体，材质使用原理化BSDF，在着色器编辑器里打开这个BSDF，添加纹理图片作为输入基础色。</p>
+<p>UV编辑工作区</p>
+<p>暂时不要打开UV选区同步</p>
+<p>在UV编辑工作区打开n栏，XY坐标的原点是图片的左下角</p>
+<p>UV展开 UV下拉栏中有导出UV布局图，根据UI布局图绘制纹理，再导入纹理<br>
+自动UV展开：在模型编辑工作区中，全选面，UV下拉栏的 智能UV投射<br>
+手动UV展开：在模型编辑工作区中，边模式选择需要剪开的边，UV下拉栏选 标记为缝合边。最后全选面，UV下拉栏选 展开 UV布局调整：在UV编辑工作区中有点、边、面、孤岛模式，孤岛模式是剪开后相连的面，选择孤岛模式方便UV布局调整</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -192,7 +264,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-10-23 16:03:52" itemprop="dateModified" datetime="2022-10-23T16:03:52+08:00">2022-10-23</time>
+        <time title="Modified: 2022-11-01 13:53:36" itemprop="dateModified" datetime="2022-11-01T13:53:36+08:00">2022-11-01</time>
       </span>
 
   
@@ -205,8 +277,13 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <img src="/2022/10/22/%E6%9D%90%E8%B4%A8/2.png" class>
-<p>打开材质预览着色方式</p>
+          <h1 id="管理材质">管理材质</h1>
+<p>打开材质预览着色 <img src="/2022/10/22/%E6%9D%90%E8%B4%A8/2.png" class></p>
+<p>在编辑模式下可以 指定 不同面的材质<br>
+在这里可以创建新的材质，选择材质和取消选择材质，但无法删除材质<br>
+<img src="/2022/10/22/%E6%9D%90%E8%B4%A8/1.png" class></p>
+<p>需在文件视图里删除材质<br>
+<img src="/2022/10/22/%E6%9D%90%E8%B4%A8/3.png" class></p>
 <p><strong>RGB颜色空间：</strong><br>
 R，Red，红色<br>
 G，Green，绿色<br>
@@ -215,21 +292,21 @@ B，Blue，蓝色</p>
 H，色相<br>
 S，饱和度<br>
 V，亮度</p>
-<p><strong>属性</strong><br>
-颜色<br>
-金属/非金属<br>
-光滑/粗糙<br>
-透明/半透明/不透明<br>
-凹陷/凸起</p>
-<img src="/2022/10/22/%E6%9D%90%E8%B4%A8/1.png" class>
-<p>材质属性子页面中关闭使用节点。<br>
-在编辑模式下可以 指定 不同面的材质</p>
-<p><strong>着色器 Shader</strong><br>
-着色器本质上是一段程序（算法），材质本质上是由着色器执行的。<br>
+<h1 id="着色器-shader">着色器 Shader</h1>
+<p>着色器本质上是一段程序（算法），材质本质上是由着色器执行的。<br>
 （基础色、金属度、高光度、粗糙度）+（入射光的颜色、强度、角度）= 最终表面着色</p>
+<h2 id="bsdf">BSDF</h2>
 <p>BSDF，Bidirectional scattering distribution function<br>
 双向散射分布函数<br>
 一类着色器算法</p>
+<p>原理化BSDF<br>
+是一个通用的BSDF，参数多，可以调出所有材质</p>
+<p>漫反射BSDF</p>
+<p>光泽BSDF</p>
+<p>玻璃BSDF</p>
+<p>透明BSDF 需要在材质设置里将混合模式改成Alpha混合</p>
+<h2 id="混合着色器">混合着色器</h2>
+<img src="/2022/10/22/%E6%9D%90%E8%B4%A8/4.png" class>
 
       
     </div>
@@ -774,71 +851,6 @@ V，亮度</p>
     <div class="post-body" itemprop="articleBody">
           <img src="/2022/10/18/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E7%BA%B8%E9%A3%9E%E6%9C%BA/1.png" class>
 <img src="/2022/10/18/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E7%BA%B8%E9%A3%9E%E6%9C%BA/2.png" class>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/18/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E6%A1%8C%E5%AD%90/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="一个废物捏">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="要roll就莱！我是卡莎！！！">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/10/18/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E6%A1%8C%E5%AD%90/" class="post-title-link" itemprop="url">（练习）桌子</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-10-18 18:26:08 / Modified: 18:27:00" itemprop="dateCreated datePublished" datetime="2022-10-18T18:26:08+08:00">2022-10-18</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <img src="/2022/10/18/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E6%A1%8C%E5%AD%90/1.png" class>
 
       
     </div>
