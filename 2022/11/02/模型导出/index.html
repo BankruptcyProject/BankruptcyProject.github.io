@@ -20,30 +20,30 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="两层圆环的桥接 添加曲线圆环，U向分辨率调小，因为后续要用表面细分修改器。 横截面为另一个六边形环。 复制出一个圆环，将两个圆环转换为网格并合并成一个物体。 用环切切除需要截断的部分，截出四个缺口。将其中了两个桥接，其中两个封口。 选中四条循环边做折痕，选中两个封口的面做内插。 最后上表面细分修改器。">
+<meta name="description" content="模型导出为fbx文件 导出模型之前，完成以下准备工作： 1 校正原点，一般置于底部中心 2 应用修改器 3 应用旋转和缩放 4 模型的朝向，脸朝 -Y 方向  blender 到 unity 的材质不一定兼容，需要重新在 unity 调整 unity 不支持内嵌 贴图，需要将贴图手动添加到 unity">
 <meta property="og:type" content="article">
-<meta property="og:title" content="（练习）钥匙环">
-<meta property="og:url" content="http://example.com/2022/10/20/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E9%92%A5%E5%8C%99%E7%8E%AF/index.html">
+<meta property="og:title" content="模型导出">
+<meta property="og:url" content="http://example.com/2022/11/02/%E6%A8%A1%E5%9E%8B%E5%AF%BC%E5%87%BA/index.html">
 <meta property="og:site_name" content="要roll就莱！我是卡莎！！！">
-<meta property="og:description" content="两层圆环的桥接 添加曲线圆环，U向分辨率调小，因为后续要用表面细分修改器。 横截面为另一个六边形环。 复制出一个圆环，将两个圆环转换为网格并合并成一个物体。 用环切切除需要截断的部分，截出四个缺口。将其中了两个桥接，其中两个封口。 选中四条循环边做折痕，选中两个封口的面做内插。 最后上表面细分修改器。">
+<meta property="og:description" content="模型导出为fbx文件 导出模型之前，完成以下准备工作： 1 校正原点，一般置于底部中心 2 应用修改器 3 应用旋转和缩放 4 模型的朝向，脸朝 -Y 方向  blender 到 unity 的材质不一定兼容，需要重新在 unity 调整 unity 不支持内嵌 贴图，需要将贴图手动添加到 unity">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2022/10/20/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E9%92%A5%E5%8C%99%E7%8E%AF/1.png">
-<meta property="article:published_time" content="2022-10-20T09:17:45.000Z">
-<meta property="article:modified_time" content="2022-10-20T09:31:38.233Z">
+<meta property="og:image" content="http://example.com/2022/11/02/%E6%A8%A1%E5%9E%8B%E5%AF%BC%E5%87%BA/1.png">
+<meta property="article:published_time" content="2022-11-02T13:48:05.000Z">
+<meta property="article:modified_time" content="2022-11-02T14:28:29.450Z">
 <meta property="article:author" content="一个废物捏">
-<meta property="article:tag" content="Blender">
+<meta property="article:tag" content="blender">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2022/10/20/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E9%92%A5%E5%8C%99%E7%8E%AF/1.png">
+<meta name="twitter:image" content="http://example.com/2022/11/02/%E6%A8%A1%E5%9E%8B%E5%AF%BC%E5%87%BA/1.png">
 
 
-<link rel="canonical" href="http://example.com/2022/10/20/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E9%92%A5%E5%8C%99%E7%8E%AF/">
+<link rel="canonical" href="http://example.com/2022/11/02/%E6%A8%A1%E5%9E%8B%E5%AF%BC%E5%87%BA/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/10/20/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E9%92%A5%E5%8C%99%E7%8E%AF/","path":"2022/10/20/（练习）钥匙环/","title":"（练习）钥匙环"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/11/02/%E6%A8%A1%E5%9E%8B%E5%AF%BC%E5%87%BA/","path":"2022/11/02/模型导出/","title":"模型导出"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>（练习）钥匙环 | 要roll就莱！我是卡莎！！！</title>
+<title>模型导出 | 要roll就莱！我是卡莎！！！</title>
   
 
 
@@ -169,7 +169,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/20/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E9%92%A5%E5%8C%99%E7%8E%AF/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/02/%E6%A8%A1%E5%9E%8B%E5%AF%BC%E5%87%BA/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -182,7 +182,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          （练习）钥匙环
+          模型导出
         </h1>
 
         <div class="post-meta-container">
@@ -194,7 +194,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2022-10-20 17:17:45 / Modified: 17:31:38" itemprop="dateCreated datePublished" datetime="2022-10-20T17:17:45+08:00">2022-10-20</time>
+      <time title="Created: 2022-11-02 21:48:05 / Modified: 22:28:29" itemprop="dateCreated datePublished" datetime="2022-11-02T21:48:05+08:00">2022-11-02</time>
     </span>
 
   
@@ -207,14 +207,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <img src="/2022/10/20/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E9%92%A5%E5%8C%99%E7%8E%AF/1.png" class>
-<p>两层圆环的桥接</p>
-<p>添加曲线圆环，U向分辨率调小，因为后续要用表面细分修改器。<br>
-横截面为另一个六边形环。<br>
-复制出一个圆环，将两个圆环转换为网格并合并成一个物体。<br>
-用环切切除需要截断的部分，截出四个缺口。将其中了两个桥接，其中两个封口。<br>
-选中四条循环边做折痕，选中两个封口的面做内插。<br>
-最后上表面细分修改器。</p>
+        <p>模型导出为fbx文件</p>
+<p>导出模型之前，完成以下准备工作：<br>
+1 校正原点，一般置于底部中心<br>
+2 应用修改器<br>
+3 应用旋转和缩放<br>
+4 模型的朝向，脸朝 -Y 方向</p>
+<img src="/2022/11/02/%E6%A8%A1%E5%9E%8B%E5%AF%BC%E5%87%BA/1.png" class>
+<p>blender 到 unity 的材质不一定兼容，需要重新在 unity 调整</p>
+<p>unity 不支持内嵌 贴图，需要将贴图手动添加到 unity</p>
 
     </div>
 
@@ -224,21 +225,18 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Blender/" rel="tag"># Blender</a>
+              <a href="/tags/blender/" rel="tag"># blender</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2022/10/20/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E6%B0%B4%E6%9D%AF/" rel="prev" title="（练习）水杯">
-                  <i class="fa fa-chevron-left"></i> （练习）水杯
+                <a href="/2022/11/01/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E5%BC%AF%E6%9B%B2%E6%96%87%E5%AD%97/" rel="prev" title="（练习）弯曲文字">
+                  <i class="fa fa-chevron-left"></i> （练习）弯曲文字
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2022/10/21/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E8%88%AA%E5%8F%91%E9%A3%8E%E6%89%87/" rel="next" title="（练习）航发风扇">
-                  （练习）航发风扇 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
