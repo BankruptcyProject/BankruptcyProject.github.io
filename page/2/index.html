@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">136</span>
+          <span class="site-state-item-count">137</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,72 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/20/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E6%B0%B4%E6%9D%AF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="一个废物捏">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="要roll就莱！我是卡莎！！！">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/10/20/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E6%B0%B4%E6%9D%AF/" class="post-title-link" itemprop="url">（练习）水杯</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-10-20 16:43:40 / Modified: 17:16:54" itemprop="dateCreated datePublished" datetime="2022-10-20T16:43:40+08:00">2022-10-20</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <img src="/2022/10/20/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E6%B0%B4%E6%9D%AF/1.png" class>
+<img src="/2022/10/20/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E6%B0%B4%E6%9D%AF/2.png" class>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -665,7 +731,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-10-22 00:20:31" itemprop="dateModified" datetime="2022-10-22T00:20:31+08:00">2022-10-22</time>
+        <time title="Modified: 2022-11-03 19:45:16" itemprop="dateModified" datetime="2022-11-03T19:45:16+08:00">2022-11-03</time>
       </span>
 
   
@@ -731,6 +797,8 @@
 <h3 id="变换节点">变换节点</h3>
 <p>（添加，几何数据，变换）<br>
 包含位置、旋转、缩放变换。</p>
+<h3 id="在表面上分布点">在表面上分布点</h3>
+<p>（添加，点，在表面上分布点） 在物体表面上随机（可以选择随机算法为泊松随机）做出点来，输入网格输出点</p>
 <h3 id="点上实例结点">点上实例结点</h3>
 <p>（添加，实例，点上的实例）（添加，输入，物体信息） <img src="/2022/10/16/%E4%BF%AE%E6%94%B9%E5%99%A8/17.png" class> 输入一个物体，获取这个物体的所有点，将所有点替换为一个实例，输出。<br>
 实例来源于另一个物体，从物体信息中选择和获得。（注：对实例的改变需要应用）</p>
@@ -754,6 +822,10 @@
 <h2 id="晶格修改器">晶格修改器</h2>
 <p>添加晶格来定义一个扭曲的空间<br>
 物体添加晶格修改器选择晶格，当物体进入晶格是会产生扭曲（顶点的位置发生变换）</p>
+<h2 id="简易形变修改器">简易形变修改器</h2>
+<p>Simple Deform 简易形变修改器。</p>
+<p>实现 扭曲、弯曲、锥化 等功能。</p>
+<p>弯曲需要设置一个子物体——空物体作为形变轴。</p>
 
       
     </div>
@@ -829,71 +901,6 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">static void Main(string[] args)</span><br><span class="line">&#123;</span><br><span class="line">	Action&lt;string,string&gt; a = func;</span><br><span class="line">	a(&quot;hello&quot;,&quot; world&quot;);</span><br><span class="line">&#125;</span><br><span class="line">public static void func(string str1,string str2)</span><br><span class="line">&#123;</span><br><span class="line">	Console.WriteLine(str1 + str2);</span><br><span class="line">&#125;</span><br><span class="line">public static void func()</span><br><span class="line">&#123;</span><br><span class="line">	Console.WriteLine(&quot;一个无参数无返回值的方法示例&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>注意我这里是直接重载了上面用到的func方法，由此可见Action&lt;&gt;会自动匹配符合参数列表的方法，如果未找到则不会编译通过。</p>
 <p>不要忘了，无论是 Action 还是 Action&lt;&gt; 都不可引用有返回值的方法！</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/16/C-Lock/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="一个废物捏">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="要roll就莱！我是卡莎！！！">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/10/16/C-Lock/" class="post-title-link" itemprop="url">C# Lock</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-10-16 08:52:12 / Modified: 09:16:51" itemprop="dateCreated datePublished" datetime="2022-10-16T08:52:12+08:00">2022-10-16</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>lock语法是： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">private object o = new object();//创建一个对象</span><br><span class="line">public void Work()</span><br><span class="line">&#123;</span><br><span class="line">　　lock(o)//锁住这个对象</span><br><span class="line">　　&#123;</span><br><span class="line">　　　　//做一些必须按照顺序做的事情</span><br><span class="line">　　&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 目的是，在多线程中，使用lock后，能使该代码块按照指定的顺序执行，被lock这块代码已经被其中一个线程访问了，那么另外一个线程只能等待。</p>
 
       
     </div>

@@ -20,33 +20,30 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="庆祝第一次自己找到漏洞  buf的大小为0x88，但却能读入0x100，造成了溢出 ​  ​ 敏感函数system的地址：0x08048320 ​ _system函数里面有system(command)  关键字符串的地址：0x0804A024 在32位程序运行中，函数参数直接压入栈中。 调用函数时栈的结构为：1调用函数地址，2调用函数返回地址，参数n，参数n-1，参数。。。 用0x">
+<meta name="description" content="在物体模式下快速绘制、编辑贝塞尔曲线  创建完曲线后需要手动应用变换">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AD_level2">
-<meta property="og:url" content="http://example.com/2021/03/14/AD-level2/index.html">
+<meta property="og:title" content="Bezier Utilities插件">
+<meta property="og:url" content="http://example.com/2022/11/03/Bezier-Utilities%E6%8F%92%E4%BB%B6/index.html">
 <meta property="og:site_name" content="要roll就莱！我是卡莎！！！">
-<meta property="og:description" content="庆祝第一次自己找到漏洞  buf的大小为0x88，但却能读入0x100，造成了溢出 ​  ​ 敏感函数system的地址：0x08048320 ​ _system函数里面有system(command)  关键字符串的地址：0x0804A024 在32位程序运行中，函数参数直接压入栈中。 调用函数时栈的结构为：1调用函数地址，2调用函数返回地址，参数n，参数n-1，参数。。。 用0x">
+<meta property="og:description" content="在物体模式下快速绘制、编辑贝塞尔曲线  创建完曲线后需要手动应用变换">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2021/03/14/AD-level2/1.png">
-<meta property="og:image" content="http://example.com/2021/03/14/AD-level2/2.png">
-<meta property="og:image" content="http://example.com/2021/03/14/AD-level2/3.png">
-<meta property="og:image" content="http://example.com/2021/03/14/AD-level2/1.jpg">
-<meta property="article:published_time" content="2021-03-14T04:52:34.000Z">
-<meta property="article:modified_time" content="2021-03-15T16:47:01.849Z">
+<meta property="og:image" content="http://example.com/2022/11/03/Bezier-Utilities%E6%8F%92%E4%BB%B6/1.png">
+<meta property="article:published_time" content="2022-11-03T09:16:47.000Z">
+<meta property="article:modified_time" content="2022-11-03T09:34:50.392Z">
 <meta property="article:author" content="一个废物捏">
-<meta property="article:tag" content="PWN">
+<meta property="article:tag" content="Blender">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2021/03/14/AD-level2/1.png">
+<meta name="twitter:image" content="http://example.com/2022/11/03/Bezier-Utilities%E6%8F%92%E4%BB%B6/1.png">
 
 
-<link rel="canonical" href="http://example.com/2021/03/14/AD-level2/">
+<link rel="canonical" href="http://example.com/2022/11/03/Bezier-Utilities%E6%8F%92%E4%BB%B6/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2021/03/14/AD-level2/","path":"2021/03/14/AD-level2/","title":"AD_level2"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/11/03/Bezier-Utilities%E6%8F%92%E4%BB%B6/","path":"2022/11/03/Bezier-Utilities插件/","title":"Bezier Utilities插件"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>AD_level2 | 要roll就莱！我是卡莎！！！</title>
+<title>Bezier Utilities插件 | 要roll就莱！我是卡莎！！！</title>
   
 
 
@@ -172,7 +169,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/14/AD-level2/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/03/Bezier-Utilities%E6%8F%92%E4%BB%B6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -185,7 +182,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          AD_level2
+          Bezier Utilities插件
         </h1>
 
         <div class="post-meta-container">
@@ -195,16 +192,10 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
+      
 
-      <time title="Created: 2021-03-14 12:52:34" itemprop="dateCreated datePublished" datetime="2021-03-14T12:52:34+08:00">2021-03-14</time>
+      <time title="Created: 2022-11-03 17:16:47 / Modified: 17:34:50" itemprop="dateCreated datePublished" datetime="2022-11-03T17:16:47+08:00">2022-11-03</time>
     </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-16 00:47:01" itemprop="dateModified" datetime="2021-03-16T00:47:01+08:00">2021-03-16</time>
-      </span>
 
   
 </div>
@@ -216,15 +207,9 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>庆祝第一次自己找到漏洞</p>
-<img src="/2021/03/14/AD-level2/1.png" class>
-<p>buf的大小为0x88，但却能读入0x100，造成了溢出</p>
-<p>​ <img src="/2021/03/14/AD-level2/2.png" class> ​ 敏感函数system的地址：0x08048320 ​ <code>_system</code>函数里面有system(command)</p>
-<img src="/2021/03/14/AD-level2/3.png" class>
-<p>关键字符串的地址：0x0804A024</p>
-<p>在32位程序运行中，函数参数直接压入栈中。 调用函数时栈的结构为：1调用<strong>函数地址</strong>，2调用<strong>函数返回地址</strong>，参数n，参数n-1，参数。。。</p>
-<p>用0x88个字符覆盖栈，在用0x04个字符覆盖ebp的地址，将返回地址覆写为system函数。 根据调用函数时栈的结构，system函数需要返回地址，故写入0x04个字符作为虚假的返回地址（不起作用），在写入bin_sh命令作为system的参数。 关键在于，弄清system函数的底层结构。</p>
-<img src="/2021/03/14/AD-level2/1.jpg" class>
+        <p>在<strong>物体模式</strong>下快速<strong>绘制</strong>、<strong>编辑</strong>贝塞尔曲线</p>
+<img src="/2022/11/03/Bezier-Utilities%E6%8F%92%E4%BB%B6/1.png" class>
+<p>创建完曲线后需要手动应用变换</p>
 
     </div>
 
@@ -234,21 +219,18 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/PWN/" rel="tag"># PWN</a>
+              <a href="/tags/Blender/" rel="tag"># Blender</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/03/10/AD-int-overflow/" rel="prev" title="AD_int_overflow">
-                  <i class="fa fa-chevron-left"></i> AD_int_overflow
+                <a href="/2022/11/02/MACHIN3tools%E6%8F%92%E4%BB%B6/" rel="prev" title="MACHIN3tools插件">
+                  <i class="fa fa-chevron-left"></i> MACHIN3tools插件
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/03/16/AD-guess-num/" rel="next" title="AD_guess_num">
-                  AD_guess_num <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
