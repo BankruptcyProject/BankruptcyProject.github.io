@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">139</span>
+          <span class="site-state-item-count">140</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,186 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/08/Network-Manager/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="一个废物捏">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="要roll就莱！我是卡莎！！！">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/09/08/Network-Manager/" class="post-title-link" itemprop="url">Network Manager</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-09-08 15:50:33" itemprop="dateCreated datePublished" datetime="2022-09-08T15:50:33+08:00">2022-09-08</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-09-13 21:54:36" itemprop="dateModified" datetime="2022-09-13T21:54:36+08:00">2022-09-13</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>用于管理（游戏状态、角色生成位置、场景）。</p>
+<p>多人联机的核心组件，创建一个空对象挂上该组件。</p>
+<p>同时Network Manager组件不能于Network Identity组件共存于一个对象上。因为场景在进行本地加载时会禁用带有Network Identity组件的对象。</p>
+<p>有Client模式、Server模式、Host模式。使用HUD可以直接选择，如果是自写UI需要在代码中选择模式<br>
+NetworkManager.StartClient<br>
+NetworkManager.StartServer<br>
+NetworkManager.StartHost<br>
+在客户端模式下，游戏会试图连杀NetworkManager中设置的ip和端口。在主机或服务器模式下，游戏会监听NetworkManager中设置的ip和端口。</p>
+<h1 id="spwan">Spwan</h1>
+<p>拖入本地控制的玩家预制体，该预制体需要有Network Identity。离线是将自动摧毁该对象。</p>
+<p>除了玩家预制体外，还需将有其他有网络标识的对象注册进列表。<br>
+也可以通过代码注册，用ClientScene.RegisterPrefab方法.</p>
+<p>一个场景有且只能有一个Network Manager。Network Manager有DDOL选项，勾选以贯穿所有场景。同时Network Manager身上注册的所有生成预制体也会跟着到下一个场景生成。如果勾选没有DDOL选项，则需要在每个场景上挂一个NetworkManager，并且每一个NetworkManager上要重新注册生成预制体。</p>
+<p>生成位置 Choose Random to spawn players at randomly chosen startPosition options.<br>
+Choose Round Robin to cycle through startPosition options in a set list.<br>
+Network Start Postion组件可以自定义生成位置相关设置</p>
+<h1 id="scene-management">Scene Management</h1>
+<p>当服务器或主机启动，Online场景会在所有客户端上加载。networkSceneName属性中存有被加载场景的名字。<br>
+断线时offine场景会被加载。<br>
+在代码中 ServerChangeScene方法可以改变场景，此时所有客户端都会跟着一起切换场景。ServerChangeScene的值会被更新</p>
+<img src="/2022/09/08/Network-Manager/1.png" class>
+<h1 id="常用api">常用API</h1>
+<table>
+<colgroup>
+<col style="width: 21%">
+<col style="width: 78%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">属性名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">singleton</td>
+<td>The one and only NetworkManager（可以在别的脚本中通过NetworkManager.singleton调用）</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">numPlayers</td>
+<td>Number of active player objects across all connections on the server.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">networkSceneName</td>
+<td>The name of the current network scene.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th>方法名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -910,80 +1090,6 @@ Poll方法会检查Socket的状态。<br>
 <p><strong>Poll服务端</strong> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">初始化listenfd</span><br><span class="line">初始化clients列表</span><br><span class="line">while(true)</span><br><span class="line">&#123;</span><br><span class="line">	if(listenfd可读) Accept;</span><br><span class="line">	for(遍历clients列表)</span><br><span class="line">	&#123;</span><br><span class="line">		if(这个客户端可读)	消息处理;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>具体代码见案例-Poll</p>
 <p>尽管逻辑清晰，但Poll服务端的弊端也很明显，若没有收到客户端数据，服务端一直在循环，浪费了CPU。Poll客户端也是同理，没有数据的时候也总在Update中检测数据，同样是一种浪费。从性能角度考虑，还有不小的改进空间。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/31/ip%E5%9B%B0%E5%A2%83/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="一个废物捏">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="要roll就莱！我是卡莎！！！">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/08/31/ip%E5%9B%B0%E5%A2%83/" class="post-title-link" itemprop="url">ip困境</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-08-31 01:05:01" itemprop="dateCreated datePublished" datetime="2022-08-31T01:05:01+08:00">2022-08-31</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-09-08 13:44:26" itemprop="dateModified" datetime="2022-09-08T13:44:26+08:00">2022-09-08</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>我该如何把游戏服务器放到公网上</p>
-<p>方法一：申请到ipv4公网ip</p>
-<p>方法二：使用手机热点流量的ipv6，同时让测试人员也使用他们的手机热点流量</p>
-<p>方法三：做内网穿透，通过某个软件获得公网域名，然后在代码中通过解析域名获得ip地址（或者通过内网穿透软件直接申请到一个公网ip和ep）</p>
 
       
     </div>

