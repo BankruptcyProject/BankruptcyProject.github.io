@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">140</span>
+          <span class="site-state-item-count">141</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,78 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/08/Network-Transform/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="一个废物捏">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="要roll就莱！我是卡莎！！！">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/09/08/Network-Transform/" class="post-title-link" itemprop="url">Network Transform</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-09-08 19:28:36 / Modified: 21:49:23" itemprop="dateCreated datePublished" datetime="2022-09-08T19:28:36+08:00">2022-09-08</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>The Network Transform component synchronizes the position, rotation, and scale of networked game objects across the network.</p>
+<p>该组件需要Network Identity组件</p>
+<p>默认情况下Network Transform有服务器权限，除非专门勾选客户端选项。<br>
+客户端权限适用于玩家对象以及专门分配给客户端的非玩家对象，但仅适用于该组件。启用此功能后，位置更改将从客户端发送到服务器。</p>
+<p>压缩勾选框Compression压缩传送数据，压缩四元数适合3d不适合2d</p>
+<p>Authority：操作权限。如果Client Authority被勾上，那么<strong>只有在客户端改变物体Transform时才会同步Transform，且服务端无权改变物体的Transform；反之亦然。</strong>从反作弊的角度来看，通常不勾上是更好的选择，即只有服务端有权限改变物体的Transform</p>
+<p>Sync Position / Sync Rotation：是否同步位置/旋转。如果不勾上的话，如果服务端改变的物体的位置/旋转，客户端将不会有反映。</p>
+<p>Interpolation：是否进行补间动画。这个意思是，通常由于网络延迟等问题客户端可能出现丢包的情况，即没有来得及/能够同步服务端的位置/旋转。如果不勾上的话，物体会在客户端这里发射”瞬移“的情况。如果勾上的话，物体将会平滑地移动过去。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1023,93 +1095,8 @@ microSeconds：等待回应的时间，以微妙为单位，如果该参数为-1
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/01/%E7%8A%B6%E6%80%81%E6%A3%80%E6%B5%8BPoll/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="一个废物捏">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="要roll就莱！我是卡莎！！！">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/01/%E7%8A%B6%E6%80%81%E6%A3%80%E6%B5%8BPoll/" class="post-title-link" itemprop="url">状态检测Poll</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-09-01 00:00:42" itemprop="dateCreated datePublished" datetime="2022-09-01T00:00:42+08:00">2022-09-01</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-09-08 13:42:36" itemprop="dateModified" datetime="2022-09-08T13:42:36+08:00">2022-09-08</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>解决阻塞的方法有异步和Poll两种，异步写在之前的博客，Poll比起异步代码结构更简单清晰。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public bool Poll(</span><br><span class="line">	int microSeconds,</span><br><span class="line">	SelectMode mode</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p>microSeconds：等待回应的时间，以微秒为单位。如果该参数为-1，表示一直等待；如果为0，表示非阻塞。</p>
-<p>mode：有三种可选模式<br>
-SelectRead：如果Socket可读（可以接收数据），返回true，反则返回false<br>
-SelectWrite：如果Socket可写，返回true，否则返回false<br>
-SelectError：如果连接失败，返回true，否则返回false</p>
-<p>Poll方法将会在指定时段（以微秒为单位）内阻止执行，如果希望无限期地等待响应，可将microSeconds设置为一个负整数；如果希望不阻塞，设置为0。<br>
-Poll方法会检查Socket的状态。<br>
-指定参数为SelectMode.SelectRead，则可确定Socket是否为可读；<br>
-指定参数为SelectMode.SelectWrite，可确定Socket是否为可写；<br>
-指定参数为SelectMode.SelectError，可以检测错误条件。</p>
-<p><strong>Poll服务端</strong> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">初始化listenfd</span><br><span class="line">初始化clients列表</span><br><span class="line">while(true)</span><br><span class="line">&#123;</span><br><span class="line">	if(listenfd可读) Accept;</span><br><span class="line">	for(遍历clients列表)</span><br><span class="line">	&#123;</span><br><span class="line">		if(这个客户端可读)	消息处理;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>具体代码见案例-Poll</p>
-<p>尽管逻辑清晰，但Poll服务端的弊端也很明显，若没有收到客户端数据，服务端一直在循环，浪费了CPU。Poll客户端也是同理，没有数据的时候也总在Update中检测数据，同样是一种浪费。从性能角度考虑，还有不小的改进空间。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 </div>

@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">140</span>
+          <span class="site-state-item-count">141</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,111 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/29/Echo%E5%BC%82%E6%AD%A5%E7%BD%91%E7%BB%9C%E7%A8%8B%E5%BA%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="一个废物捏">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="要roll就莱！我是卡莎！！！">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/03/29/Echo%E5%BC%82%E6%AD%A5%E7%BD%91%E7%BB%9C%E7%A8%8B%E5%BA%8F/" class="post-title-link" itemprop="url">Echo异步网络程序</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-03-29 14:59:21" itemprop="dateCreated datePublished" datetime="2022-03-29T14:59:21+08:00">2022-03-29</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-09-08 13:44:13" itemprop="dateModified" datetime="2022-09-08T13:44:13+08:00">2022-09-08</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="异步客户端">异步客户端</h1>
+<h2 id="异步connect">异步Connect</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public IAsyncResult BeginConnect(</span><br><span class="line">    string host, </span><br><span class="line">    int port, </span><br><span class="line">    AsyncCallback requestCallback, </span><br><span class="line">    object state</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public void EndConnect(IAsyncReasult asyncResult)</span><br></pre></td></tr></table></figure>
+<p>begin方法的参数：<br>
+一个<strong>AsyncCallback</strong>委托（用来调用 回调方法）<br>
+一个用户定义的状态对象（用来向 回调方法 传递状态信息）<br>
+begin方法：<br>
+返回一个 实现<strong>IAsyncResult</strong>接口的对象。<br>
+end方法的参数：<br>
+一个<strong>IAsyncResult</strong>参数，用于获取异步操作是否完成的信息，他的返回值与同步方法相同。</p>
+<p>注：回调方法在调用其的方法完成后被调用，且线程与调用其的方法线程相同。例如，下面例子中，BeginConnect方法开启新线程，改方法结束后，调用ConnectCallback回调方法，ConnectCallback与BeginConnect处于同一个线程。</p>
+<h2 id="异步receive">异步Receive</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public IAsyncResult BeginReceive(</span><br><span class="line">    byte[] buffer, </span><br><span class="line">    int offset, </span><br><span class="line">    int size, </span><br><span class="line">    SocketFlags socketFlags, </span><br><span class="line">    AsyncCallback callback, </span><br><span class="line">    object state</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public int EndReceive(IAsyncResult asyncResult)</span><br></pre></td></tr></table></figure>
+<p>buffer：Byte类型数组，存储接收到的数据 offset：buffer中存储数据的位置，该位置从0开始计数 size：最多接收的字节数 socketFlags：SocketFlags值的按位组合，这里设置为0 callback：回调函数，一个AsyncCallback委托 state：一个用户自定义对象，其中包含接收操作的相关信息。当操作完成时，此对象会被传递给EndReceive委托</p>
+<img src="/2022/03/29/Echo%E5%BC%82%E6%AD%A5%E7%BD%91%E7%BB%9C%E7%A8%8B%E5%BA%8F/1.jpg" class>
+<h2 id="异步send">异步Send</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public IAsyncResult BeginSend(</span><br><span class="line">	byte[] buffer,</span><br><span class="line">    int offset,</span><br><span class="line">    int size,</span><br><span class="line">    SocketFlags socketFlags,</span><br><span class="line">    AsyncCallback callback,</span><br><span class="line">    object state</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public int EndSend(IAsyncResult asyncResult)</span><br></pre></td></tr></table></figure>
+<p>每个Socket都会有一个发送缓冲区</p>
+<p>socket用户层面：协议、ip、端口。这些属性可以直接修改。</p>
+<p>socket操作系统层面：发送缓冲区，接收缓冲区。不对用户开放。</p>
+<p>缓冲区：长度默认为8KB，如果缓冲区满、则Send就会阻塞直到缓冲区的数据被确认腾出空间。</p>
+<img src="/2022/03/29/Echo%E5%BC%82%E6%AD%A5%E7%BD%91%E7%BB%9C%E7%A8%8B%E5%BA%8F/2.jpg" class>
+<h1 id="异步服务端">异步服务端</h1>
+<p>同时处理多个客户端的数据</p>
+<p>管理客户端的类</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class ClientState</span><br><span class="line">&#123;</span><br><span class="line">    public Socket socket;//保存客户端的基本信息</span><br><span class="line">    public byte[] readBuff = new byte[1024];//保存客户端接收到的数据</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">static Dictionary&lt;Socket, ClientState&gt; clients = new Dictionary&lt;Socket, ClientState&gt;();</span><br></pre></td></tr></table></figure>
+<h2 id="异步accept">异步Accept</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public IAsyncResult BeginAccept(</span><br><span class="line">	AsyncCallback callback,</span><br><span class="line">    object state</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public Socket EndAccept(IAsyncResult asyncResult)</span><br></pre></td></tr></table></figure>
+<p>异步服务端程序结构</p>
+<img src="/2022/03/29/Echo%E5%BC%82%E6%AD%A5%E7%BD%91%E7%BB%9C%E7%A8%8B%E5%BA%8F/3.jpg" class>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1325,561 +1430,8 @@ string、数组、自定义的class就都是引用类型了。<br>
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/11/c-%E9%9B%86%E5%90%88/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="一个废物捏">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="要roll就莱！我是卡莎！！！">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/03/11/c-%E9%9B%86%E5%90%88/" class="post-title-link" itemprop="url">c#集合</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-03-11 22:43:13" itemprop="dateCreated datePublished" datetime="2022-03-11T22:43:13+08:00">2022-03-11</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-09-08 13:43:01" itemprop="dateModified" datetime="2022-09-08T13:43:01+08:00">2022-09-08</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="动态数组">动态数组</h1>
-<table>
-<thead>
-<tr class="header">
-<th>属性</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Count</td>
-<td>获取 ArrayList 中实际包含的元素个数</td>
-</tr>
-<tr class="even">
-<td>IsReadOnly</td>
-<td>获取一个值，表示 ArrayList 是否只读</td>
-</tr>
-<tr class="odd">
-<td>IsSynchronized</td>
-<td>获取一个值，表示访问 ArrayList 是否同步（线程安全）</td>
-</tr>
-</tbody>
-</table>
-<table>
-<colgroup>
-<col style="width: 46%">
-<col style="width: 53%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>方法</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>int Add( object value )</strong></td>
-<td>在 ArrayList 的末尾添加一个对象</td>
-</tr>
-<tr class="even">
-<td><strong>void AddRange( ICollection c )</strong></td>
-<td>在 ArrayList 的末尾添加 ICollection 的元素</td>
-</tr>
-<tr class="odd">
-<td><strong>void Clear()</strong></td>
-<td>从 ArrayList 中移除所有的元素</td>
-</tr>
-<tr class="even">
-<td><strong>bool Contains( object item )</strong></td>
-<td>判断某个元素是否在 ArrayList 中</td>
-</tr>
-<tr class="odd">
-<td><strong>ArrayList GetRange( int index, int count )</strong></td>
-<td>返回一个 ArrayList，表示源 ArrayList 中元素的子集</td>
-</tr>
-<tr class="even">
-<td><strong>int IndexOf(object)</strong></td>
-<td>返回某个值在 ArrayList 中第一次出现的索引，索引从零开始</td>
-</tr>
-<tr class="odd">
-<td><strong>void Insert( int index, object value )</strong></td>
-<td>在 ArrayList 的指定索引处，插入一个元素</td>
-</tr>
-<tr class="even">
-<td><strong>void InsertRange( int index, ICollection c )</strong></td>
-<td>在 ArrayList 的指定索引处，插入某个集合的元素</td>
-</tr>
-<tr class="odd">
-<td><strong>void Remove( object obj )</strong></td>
-<td>从 ArrayList 中移除第一次出现的指定对象</td>
-</tr>
-<tr class="even">
-<td><strong>void RemoveAt( int index )</strong></td>
-<td>移除 ArrayList 的指定索引处的元素</td>
-</tr>
-<tr class="odd">
-<td><strong>void RemoveRange( int index, int count )</strong></td>
-<td>从 ArrayList 中移除某个范围的元素</td>
-</tr>
-<tr class="even">
-<td><strong>void Reverse()</strong></td>
-<td>逆转 ArrayList 中元素的顺序</td>
-</tr>
-<tr class="odd">
-<td><strong>void SetRange( int index, ICollection c )</strong></td>
-<td>复制某个集合的元素到 ArrayList 中某个范围的元素上</td>
-</tr>
-<tr class="even">
-<td><strong>void Sort()</strong></td>
-<td>对 ArrayList 中的元素进行排序</td>
-</tr>
-</tbody>
-</table>
-<h1 id="哈希表hashtable">哈希表（Hashtable）</h1>
-<p>Hashtable 类代表了一系列基于键的哈希代码组织起来的键/值对。它使用键来访问集合中的元素。</p>
-<p>当您使用键访问元素时，则使用哈希表，而且您可以识别一个有用的键值。哈希表中的每一项都有一个键/值对。键用于访问集合中的项目。</p>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;">属性</th>
-<th style="text-align: left;">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Count</td>
-<td style="text-align: left;">获取 Hashtable 中包含的键值对个数。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">IsFixedSize</td>
-<td style="text-align: left;">获取一个值，表示 Hashtable 是否具有固定大小。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">IsReadOnly</td>
-<td style="text-align: left;">获取一个值，表示 Hashtable 是否只读。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Item</td>
-<td style="text-align: left;">获取或设置与指定的键相关的值。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Keys</td>
-<td style="text-align: left;">获取一个 ICollection，包含 Hashtable 中的键。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Values</td>
-<td style="text-align: left;">获取一个 ICollection，包含 Hashtable 中的值。</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;">方法</th>
-<th style="text-align: left;">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><strong>void Add( object key, object value );</strong></td>
-<td style="text-align: left;">向 Hashtable 添加一个带有指定的键和值的元素。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>void Clear();</strong></td>
-<td style="text-align: left;">从 Hashtable 中移除所有的元素。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>bool ContainsKey( object key );</strong></td>
-<td style="text-align: left;">判断 Hashtable 是否包含指定的键。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>bool ContainsValue( object value );</strong></td>
-<td style="text-align: left;">判断 Hashtable 是否包含指定的值。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>void Remove( object key );</strong></td>
-<td style="text-align: left;">从 Hashtable 中移除带有指定的键的元素。</td>
-</tr>
-</tbody>
-</table>
-<h1 id="排序列表sortedlist">排序列表（SortedList）</h1>
-<p>SortedList 类代表了一系列按照键来排序的<strong>键/值</strong>对，这些键值对可以通过键和索引来访问。</p>
-<p>排序列表是数组和哈希表的组合。它包含一个可使用键或索引访问各项的列表。<br>
-如果使用索引访问各项，则它是一个动态数组（ArrayList）；<br>
-如果使用键访问各项，则它是一个哈希表（Hashtable）。<br>
-集合中的各项总是按键值排序。</p>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;">属性</th>
-<th style="text-align: left;">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Capacity</td>
-<td style="text-align: left;">获取或设置 SortedList 的容量。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Count</td>
-<td style="text-align: left;">获取 SortedList 中的元素个数。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">IsFixedSize</td>
-<td style="text-align: left;">获取一个值，表示 SortedList 是否具有固定大小。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">IsReadOnly</td>
-<td style="text-align: left;">获取一个值，表示 SortedList 是否只读。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Item</td>
-<td style="text-align: left;">获取或设置与 SortedList 中指定的键相关的值。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Keys</td>
-<td style="text-align: left;">获取 SortedList 中的键。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Values</td>
-<td style="text-align: left;">获取 SortedList 中的值。</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;">方法名</th>
-<th style="text-align: left;">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><strong>void Add( object key, object value );</strong></td>
-<td style="text-align: left;">向 SortedList 添加一个带有指定的键和值的元素。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>void Clear();</strong></td>
-<td style="text-align: left;">从 SortedList 中移除所有的元素。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>bool ContainsKey( object key );</strong></td>
-<td style="text-align: left;">判断 SortedList 是否包含指定的键。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>bool ContainsValue( object value );</strong></td>
-<td style="text-align: left;">判断 SortedList 是否包含指定的值。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>object GetByIndex( int index );</strong></td>
-<td style="text-align: left;">获取 SortedList 的指定索引处的值。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>object GetKey( int index );</strong></td>
-<td style="text-align: left;">获取 SortedList 的指定索引处的键。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>IList GetKeyList();</strong></td>
-<td style="text-align: left;">获取 SortedList 中的键。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>IList GetValueList();</strong></td>
-<td style="text-align: left;">获取 SortedList 中的值。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>int IndexOfKey( object key );</strong></td>
-<td style="text-align: left;">返回 SortedList 中的指定键的索引，索引从零开始。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>int IndexOfValue( object value );</strong></td>
-<td style="text-align: left;">返回 SortedList 中的指定值第一次出现的索引，索引从零开始。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>void Remove( object key );</strong></td>
-<td style="text-align: left;">从 SortedList 中移除带有指定的键的元素。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>void RemoveAt( int index );</strong></td>
-<td style="text-align: left;">移除 SortedList 的指定索引处的元素。</td>
-</tr>
-</tbody>
-</table>
-<h1 id="堆栈stack">堆栈（Stack）</h1>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;">属性</th>
-<th style="text-align: left;">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Count</td>
-<td style="text-align: left;">获取 Stack 中包含的元素个数。</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;">方法名</th>
-<th style="text-align: left;">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><strong>void Clear();</strong></td>
-<td style="text-align: left;">从 Stack 中移除所有的元素。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>bool Contains( object obj );</strong></td>
-<td style="text-align: left;">判断某个元素是否在 Stack 中。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>object Peek();</strong></td>
-<td style="text-align: left;">返回在 Stack 的顶部的对象，但不移除它。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>object Pop();</strong></td>
-<td style="text-align: left;">移除并返回在 Stack 的顶部的对象。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>void Push( object obj );</strong></td>
-<td style="text-align: left;">向 Stack 的顶部添加一个对象。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>object[] ToArray();</strong></td>
-<td style="text-align: left;">复制 Stack 到一个新的数组中。</td>
-</tr>
-</tbody>
-</table>
-<h1 id="queue-类的方法和属性">Queue 类的方法和属性</h1>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;">属性</th>
-<th style="text-align: left;">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Count</td>
-<td style="text-align: left;">获取 Queue 中包含的元素个数。</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;">方法名</th>
-<th style="text-align: left;">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><strong>void Clear();</strong></td>
-<td style="text-align: left;">从 Queue 中移除所有的元素。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>bool Contains( object obj );</strong></td>
-<td style="text-align: left;">判断某个元素是否在 Queue 中。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>object Dequeue();</strong></td>
-<td style="text-align: left;">移除并返回在 Queue 的开头的对象。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>void Enqueue( object obj );</strong></td>
-<td style="text-align: left;">向 Queue 的末尾添加一个对象。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>object[] ToArray();</strong></td>
-<td style="text-align: left;">复制 Queue 到一个新的数组中。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>void TrimToSize();</strong></td>
-<td style="text-align: left;">设置容量为 Queue 中元素的实际个数。</td>
-</tr>
-</tbody>
-</table>
-<h1 id="点阵列bitarray">点阵列（BitArray）</h1>
-<p>BitArray 类管理一个紧凑型的位值数组，它使用布尔值来表示，其中 true 表示位是开启的（1），false 表示位是关闭的（0）。</p>
-<p>当您需要存储位，但是事先不知道位数时，则使用点阵列。您可以使用<strong>整型索引</strong>从点阵列集合中访问各项，索引从零开始。</p>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;">属性</th>
-<th style="text-align: left;">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Count</td>
-<td style="text-align: left;">获取 BitArray 中包含的元素个数。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">IsReadOnly</td>
-<td style="text-align: left;">获取一个值，表示 BitArray 是否只读。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Item</td>
-<td style="text-align: left;">获取或设置 BitArray 中指定位置的位的值。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Length</td>
-<td style="text-align: left;">获取或设置 BitArray 中的元素个数。</td>
-</tr>
-</tbody>
-</table>
-<table>
-<colgroup>
-<col style="width: 38%">
-<col style="width: 61%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">方法</th>
-<th style="text-align: left;">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><strong>BitArray And( BitArray value );</strong></td>
-<td style="text-align: left;">对当前的 BitArray 中的元素和指定的 BitArray 中的相对应的元素执行按位与操作。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>bool Get( int index );</strong></td>
-<td style="text-align: left;">获取 BitArray 中指定位置的位的值。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>BitArray Not();</strong></td>
-<td style="text-align: left;">把当前的 BitArray 中的位值反转，以便设置为 true 的元素变为 false，设置为 false 的元素变为 true。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>BitArray Or( BitArray value );</strong></td>
-<td style="text-align: left;">对当前的 BitArray 中的元素和指定的 BitArray 中的相对应的元素执行按位或操作。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>void Set( int index, bool value );</strong></td>
-<td style="text-align: left;">把 BitArray 中指定位置的位设置为指定的值。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>void SetAll( bool value );</strong></td>
-<td style="text-align: left;">把 BitArray 中的所有位设置为指定的值。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>BitArray Xor( BitArray value );</strong></td>
-<td style="text-align: left;">对当前的 BitArray 中的元素和指定的 BitArray 中的相对应的元素执行按位异或操作。</td>
-</tr>
-</tbody>
-</table>
-<h1 id="list">List</h1>
-<p>System.Collections.Generic命名空间</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;T&gt; ListOfT = new List&lt;T&gt;();</span><br></pre></td></tr></table></figure>
-<p>其中的"T"就是所要使用的类型，既可以是简单类型，如string、int，也可以是用户自定义类型。下面看一个具体例子。　</p>
-<p><strong>二、List的方法和属性 方法或属性 作用</strong></p>
-<p>　　Count 属性，用于获取数组中当前元素数量</p>
-<table>
-<thead>
-<tr class="header">
-<th>方法</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Add( )</td>
-<td>在List中添加一个对象的公有方法</td>
-</tr>
-<tr class="even">
-<td>Clear( )</td>
-<td>在List内移除所有元素</td>
-</tr>
-<tr class="odd">
-<td>Contains( )</td>
-<td>测试一个元素是否在List内</td>
-</tr>
-<tr class="even">
-<td>CopyTo( )</td>
-<td>重载的公有方法，把一个List拷贝到一维数组内</td>
-</tr>
-<tr class="odd">
-<td>FindAll( )</td>
-<td>查找并返回List内的所有匹配元素</td>
-</tr>
-<tr class="even">
-<td>Insert()</td>
-<td>方法插入元素</td>
-</tr>
-<tr class="odd">
-<td>Sort()</td>
-<td>对列表中是元素进行从小到大排序</td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 </div>
