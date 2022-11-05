@@ -174,7 +174,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/03/09/Blender%E5%85%A5%E9%97%A8/" class="post-title-link" itemprop="url">Blender入门</a>
+          <a href="/2022/03/09/Blender%E5%85%A5%E9%97%A8/" class="post-title-link" itemprop="url">Blender细节</a>
         </h2>
 
         <div class="post-meta-container">
@@ -192,7 +192,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-11-05 00:27:08" itemprop="dateModified" datetime="2022-11-05T00:27:08+08:00">2022-11-05</time>
+        <time title="Modified: 2022-11-05 16:05:36" itemprop="dateModified" datetime="2022-11-05T16:05:36+08:00">2022-11-05</time>
       </span>
 
   
@@ -268,6 +268,16 @@
 <h1 id="锁定物体">锁定物体</h1>
 <img src="/2022/03/09/Blender%E5%85%A5%E9%97%A8/1.png" class>
 <p>锁定后无法被选择，防止编辑模型时经常误选</p>
+<h1 id="平直着色与平滑着色">平直着色与平滑着色</h1>
+<p>平直着色 将面根据面的法向进行着色，所以一个面上颜色不会有过渡，不同面因为法向不同颜色差别大。</p>
+<p>平滑着色 一个面的每个地方着色时都会参考这个地方和面的所有点的法向，所以任意两个相近的地方的着色都会有圆滑的过渡。</p>
+<p>平滑着色 会造成视觉上的棱角消失，但模型上的面没有增多，减少电脑负担。<br>
+有时候在同一件物体上需要保留其中某些棱角，抹平其它棱角。<br>
+方案一：打开自动光滑设置抹平棱角的范围，并打开法向加权修改<br>
+<img src="/2022/03/09/Blender%E5%85%A5%E9%97%A8/2.png" class> <img src="/2022/03/09/Blender%E5%85%A5%E9%97%A8/3.png" class> 方案二：在编辑模式下部分着色</p>
+<h1 id="打包解包">打包解包</h1>
+<img src="/2022/03/09/Blender%E5%85%A5%E9%97%A8/4.png" class>
+<p>打包后 .blend 文件会变大，包含所有外部资源（原本只是引用），只需要发送.blend文件即可。</p>
 
       
     </div>
