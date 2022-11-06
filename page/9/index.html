@@ -21,9 +21,9 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 <meta property="og:type" content="website">
-<meta property="og:title" content="要roll就莱！我是卡莎！！！">
+<meta property="og:title" content="要roll就来！要roll就来！">
 <meta property="og:url" content="http://example.com/page/9/index.html">
-<meta property="og:site_name" content="要roll就莱！我是卡莎！！！">
+<meta property="og:site_name" content="要roll就来！要roll就来！">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="一个废物捏">
 <meta name="twitter:card" content="summary">
@@ -36,7 +36,7 @@
 <script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"en","comments":"","permalink":"","path":"page/9/index.html","title":""}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>要roll就莱！我是卡莎！！！</title>
+<title>要roll就来！要roll就来！</title>
   
 
 
@@ -62,7 +62,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">要roll就莱！我是卡莎！！！</h1>
+      <h1 class="site-title">要roll就来！要roll就来！</h1>
       <i class="logo-line"></i>
     </a>
   </div>
@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">141</span>
+          <span class="site-state-item-count">142</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -161,6 +161,165 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/04/%E7%B3%BB%E7%BB%9F%E8%84%9A%E6%9C%AC%E4%B8%8E%E5%B8%B8%E7%94%A8API/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="一个废物捏">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="要roll就来！要roll就来！">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/03/04/%E7%B3%BB%E7%BB%9F%E8%84%9A%E6%9C%AC%E4%B8%8E%E5%B8%B8%E7%94%A8API/" class="post-title-link" itemprop="url">系统脚本与常用API</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-03-04 20:25:29" itemprop="dateCreated datePublished" datetime="2022-03-04T20:25:29+08:00">2022-03-04</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-03-13 11:30:07" itemprop="dateModified" datetime="2022-03-13T11:30:07+08:00">2022-03-13</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>脚本中的MyComponent类是继承自MonoBehaviour类的，只要继承自MonoBehaviour类，那么该类就是一个组件类。<br>
+如果删掉父类或修改父类为其他类，那么这个脚本就是一个普通的C#脚本而非组件脚本。</p>
+<h1 id="脚本的生命周期">脚本的生命周期</h1>
+<table>
+<thead>
+<tr class="header">
+<th>方法名称</th>
+<th>调用时间</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Awake</td>
+<td>最早调用，所以一般可以在此实现单例模式</td>
+</tr>
+<tr class="even">
+<td>OnEnable</td>
+<td>组件激活后调用，在Awake后会调用一次</td>
+</tr>
+<tr class="odd">
+<td>Start</td>
+<td>在Update之前调用一次，在OnEnable之后调用，可以在此设置一些初始值</td>
+</tr>
+<tr class="even">
+<td>FixedUpdate</td>
+<td>固定频率调用方法，每次调用与上次调用的时间间隔相同</td>
+</tr>
+<tr class="odd">
+<td>Update</td>
+<td>帧率调用方法，每帧调用一次，每次调用与上次调用的时间间隔不相同</td>
+</tr>
+<tr class="even">
+<td>LateUpdate</td>
+<td>在Update每调用完一次后，紧跟着调用一次</td>
+</tr>
+<tr class="odd">
+<td>OnDisable</td>
+<td>OnEnable相反，组件未激活时调用</td>
+</tr>
+<tr class="even">
+<td>OnDestroy</td>
+<td>被销毁后调用一次</td>
+</tr>
+</tbody>
+</table>
+<h1 id="多个脚本执行顺序">多个脚本执行顺序</h1>
+<p>编辑，项目设置，Project Setting（项目设置），脚本执行顺序，创建</p>
+<h1 id="游戏常用api">游戏常用API</h1>
+<h3 id="vector3">Vector3</h3>
+<p>normalize() 规范化向量</p>
+<p>magnitude() 向量的模长</p>
+<p>Angle() 夹角</p>
+<p>Distance() 距离</p>
+<p>Dot() 点乘</p>
+<p>Cross() 叉乘</p>
+<p>例：Vector3.normalize(······)</p>
+<h3 id="quaternion">Quaternion</h3>
+<p>四元数，一个三维向量加上一个标量。用于描述物体的旋转</p>
+<p>identity() 单位旋转，相当于无旋转</p>
+<p>eulerAngles() 转换未欧拉角</p>
+<p>Quaternion() 使用四个变量构造四元数</p>
+<p>Angle() 返回两个旋转之间的角度</p>
+<p>Euler() 通过欧拉角创造四元数</p>
+<p>LookRotation() 返回一个旋转指向forward的旋转</p>
+<h3 id="debug">Debug</h3>
+<p>DrawLine() 在给定起点、终点间画一条线</p>
+<p>DraRay() 在某点向某个方向画一条线</p>
+<h3 id="gameobject">GameObject</h3>
+<p>···</p>
+<h3 id="time">Time</h3>
+<p>deltaTime() 上一帧到这一帧的时间</p>
+<p>fixedDeltaTime() 固定间隔时间</p>
+<p>time() 游戏开始到现在所花的时间</p>
+<p>timeScale() 时间缩放值，默认为1</p>
+<h3 id="mathf">Mathf</h3>
+<p>···</p>
+<h3 id="application">Application</h3>
+<p>···</p>
+<h3 id="scenemanager">SceneManager</h3>
+<p>sceneCount() 当前以加载场景数量</p>
+<p>GetActiveScene() 得到一个当前激活的场景</p>
+<p>GetSceneByName() 通过名称返回一个已加载的场景</p>
+<p>LoadScene() 加载场景</p>
+<p>LoadSceneAsync() 异步加载场景</p>
+<p>SetActiveScene() 移除并销毁场景</p>
+<h3 id="transform">Transform</h3>
+<p>localPosition() 相当于父物体的位置</p>
+<p>LookAt() 指向</p>
+<p>DetachChildren 解除所有子transform的关联</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/04/%E5%9C%B0%E5%BD%A2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -170,7 +329,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="要roll就莱！我是卡莎！！！">
+      <meta itemprop="name" content="要roll就来！要roll就来！">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -253,7 +412,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="要roll就莱！我是卡莎！！！">
+      <meta itemprop="name" content="要roll就来！要roll就来！">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -331,7 +490,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="要roll就莱！我是卡莎！！！">
+      <meta itemprop="name" content="要roll就来！要roll就来！">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -450,7 +609,7 @@ StopCoroutine(StopIE);</p>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="要roll就莱！我是卡莎！！！">
+      <meta itemprop="name" content="要roll就来！要roll就来！">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -570,7 +729,7 @@ Skin Weights（蒙皮权重）：设置骨骼数量和权重<br>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="要roll就莱！我是卡莎！！！">
+      <meta itemprop="name" content="要roll就来！要roll就来！">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -773,7 +932,7 @@ Bounce Combine（弹力组合）</p>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="要roll就莱！我是卡莎！！！">
+      <meta itemprop="name" content="要roll就来！要roll就来！">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -919,7 +1078,7 @@ Bounce Combine（弹力组合）</p>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="要roll就莱！我是卡莎！！！">
+      <meta itemprop="name" content="要roll就来！要roll就来！">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -1019,7 +1178,7 @@ init脚本中创建所有变量并初始化，data脚本从init获取变量，�
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="要roll就莱！我是卡莎！！！">
+      <meta itemprop="name" content="要roll就来！要roll就来！">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -1098,7 +1257,7 @@ init脚本中创建所有变量并初始化，data脚本从init获取变量，�
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="要roll就莱！我是卡莎！！！">
+      <meta itemprop="name" content="要roll就来！要roll就来！">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -1163,98 +1322,6 @@ LateUpdate是晚于所有Update执行的。例如：游戏中有2个脚本，脚
 <p>比较，当脚本组件被禁用时：只有Awake()会被调用。</p>
 <p>Start()只会调用一次</p>
 <p>OnEnable()在每次被启动时都会被调用一次</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/27/UI/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="一个废物捏">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="要roll就莱！我是卡莎！！！">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/02/27/UI/" class="post-title-link" itemprop="url">UI</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-02-27 22:22:32" itemprop="dateCreated datePublished" datetime="2022-02-27T22:22:32+08:00">2022-02-27</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-03-07 17:28:59" itemprop="dateModified" datetime="2022-03-07T17:28:59+08:00">2022-03-07</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>添加Canvas画布，用于摆放所有的GUI元素</p>
-<p>Canvas和eventsystem系统配合使用</p>
-<p>修改Canvas参数：<br>
-渲染模式：屏幕空间-覆盖（所有UI会覆盖所有游戏物体）、屏幕空间-摄像机（UI一定面对摄像机，根据与摄像机的距离决定覆盖关系）、世界空间（和上一个一样，但UI不一定面对摄像机）</p>
-<p>Canvas节点下添加ui元素<br>
-锚点和轴心的位置和距离永远不会改变<br>
-rect transform（transform的子类）<br>
-相对中心点的位置，单位：像素<br>
-相对中心点可修改，选已有的模板，或者修改Anchors<br>
-image：填充模式九宫格边角美化：在素材中sprite editor 改出九宫格<br>
-按钮自定义按下特性：将transition改为图片切换模式<br>
-文本输入框<br>
-面板panel，人称小画布（Canvas）</p>
-<p>using Unityengine.UI;<br>
-InputField类型变量获取文本输入框内容，string sj = be.text<br>
-on click()下添加方法<br>
-图片转按钮：挂载脚本，脚本：创建方法继承已有的类：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">using UnityEngine;</span><br><span class="line">using UnityEngine.EventSystems;</span><br><span class="line"></span><br><span class="line">public class OkButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler</span><br><span class="line">&#123;</span><br><span class="line">    public void OnPointerDown(PointerEventData eventData)</span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log(&quot;鼠标按下...&quot;);</span><br><span class="line">        transform.localScale = new Vector3(1.05f, 1.05f, 1.05f);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void OnPointerUp(PointerEventData eventData)</span><br><span class="line">    &#123;</span><br><span class="line">        transform.localScale = new Vector3(1, 1, 1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//点击放大一下，打印日志</span><br><span class="line">//机制：射线投射器和射线接收器</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/** 事件列表</span><br><span class="line">IPointerEnterHandler - OnPointerEnter - Called when a pointer enters the object</span><br><span class="line">IPointerExitHandler - OnPointerExit - Called when a pointer exits the object</span><br><span class="line">IPointerDownHandler - OnPointerDown - Called when a pointer is pressed on the object</span><br><span class="line">IPointerUpHandler - OnPointerUp - Called when a pointer is released (called on the GameObject that the pointer is clicking)</span><br><span class="line">IPointerClickHandler - OnPointerClick - Called when a pointer is pressed and released on the same object</span><br><span class="line">IInitializePotentialDragHandler - OnInitializePotentialDrag - Called when a drag target is found, can be used to initialise values</span><br><span class="line">IBeginDragHandler - OnBeginDrag - Called on the drag object when dragging is about to begin</span><br><span class="line">IDragHandler - OnDrag - Called on the drag object when a drag is happening</span><br><span class="line">IEndDragHandler - OnEndDrag - Called on the drag object when a drag finishes</span><br><span class="line">IDropHandler - OnDrop - Called on the object where a drag finishes</span><br><span class="line">IScrollHandler - OnScroll - Called when a mouse wheel scrolls</span><br><span class="line">IUpdateSelectedHandler - OnUpdateSelected - Called on the selected object each tick</span><br><span class="line">ISelectHandler - OnSelect - Called when the object becomes the selected object</span><br><span class="line">IDeselectHandler - OnDeselect - Called on the selected object becomes deselected</span><br><span class="line">IMoveHandler - OnMove - Called when a move event occurs (left, right, up, down, ect)</span><br><span class="line">ISubmitHandler - OnSubmit - Called when the submit button is pressed</span><br><span class="line">ICancelHandler - OnCancel - Called when the cancel button is pressed</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
-<p>常用UI组件：<br>
-遮罩组件：使得子图片不得超出父图片显示<br>
-内容尺寸适应器：一般在文字对象中使用，让对象大小适应输入文本大小<br>
-网格布局组件（Layout Group）：在一个面板中添加该组件，对其子对象进行排列，一般用于制作背包。</p>
 
       
     </div>
