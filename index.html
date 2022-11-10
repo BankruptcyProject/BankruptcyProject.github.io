@@ -186,7 +186,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2022-11-11 02:07:13 / Modified: 02:08:31" itemprop="dateCreated datePublished" datetime="2022-11-11T02:07:13+08:00">2022-11-11</time>
+      <time title="Created: 2022-11-11 02:07:13 / Modified: 03:12:45" itemprop="dateCreated datePublished" datetime="2022-11-11T02:07:13+08:00">2022-11-11</time>
     </span>
 
   
@@ -199,7 +199,18 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          
+          <p>布料修改器基于物体上的点产生效果，点过少将无法模拟布料效果。<br>
+<strong>布料修改器</strong>位于<strong>物理属性</strong>页签下<br>
+<img src="/2022/11/11/Blender%E5%B8%83%E6%96%99/3.png" class> 顶点质量：每个点的质量<br>
+硬度张力、压缩、切片：描述对点和点之间距离改变的限制，限制距离过远、过近、对角线过长<br>
+硬度弯曲：限制点的边的夹角，表现为硬度（例如：纱——&gt;铠甲）</p>
+<img src="/2022/11/11/Blender%E5%B8%83%E6%96%99/4.png" class>
+<p><strong>布料修改器</strong>下的<strong>碰撞</strong>可以开启布料与其它物体的碰撞、布料与自身的碰撞</p>
+<p>能对布料产生作用的物体需要有<strong>碰撞修改器</strong><br>
+<img src="/2022/11/11/Blender%E5%B8%83%E6%96%99/2.png" class> 需要重力对布料施加力<br>
+<img src="/2022/11/11/Blender%E5%B8%83%E6%96%99/5.png" class> 布料需要播放产生效果 <img src="/2022/11/11/Blender%E5%B8%83%E6%96%99/1.png" class> 布料模拟的点过多会对CPU造成很大的负担，同时点过多对参数敏感难以调出效果。<br>
+先用少量的点进行布料模拟，再用表面细分模拟器完善细节。<br>
+<img src="/2022/11/11/Blender%E5%B8%83%E6%96%99/6.png" class> 如果要制作静态的布料，先播放生成布料效果，选出布料效果最好的一帧，应用布料修改器。</p>
 
       
     </div>
