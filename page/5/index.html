@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">147</span>
+          <span class="site-state-item-count">149</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,154 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/02/C-%E4%BA%8B%E4%BB%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="一个废物捏">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="要roll就来！要roll就来！">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/10/02/C-%E4%BA%8B%E4%BB%B6/" class="post-title-link" itemprop="url">C# 事件</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-10-02 20:45:03" itemprop="dateCreated datePublished" datetime="2022-10-02T20:45:03+08:00">2022-10-02</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-10-11 16:55:51" itemprop="dateModified" datetime="2022-10-11T16:55:51+08:00">2022-10-11</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>Event 在 Class 中声明且生成，且通过使用 delegate 与 Event 处理程序关联。</p>
+<p>发布器（publisher） 类 声明事件和委托 订阅器（subscriber） 类 接受事件并处理</p>
+<p>在发布器（publisher）类中的委托 调用 订阅器（subscriber）类中的方法（事件处理程序）。 委托 调用 方法</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/27/%E6%A1%88%E4%BE%8B-Auction/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="一个废物捏">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="要roll就来！要roll就来！">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/09/27/%E6%A1%88%E4%BE%8B-Auction/" class="post-title-link" itemprop="url">案例-Auction</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-09-27 13:58:29 / Modified: 14:29:04" itemprop="dateCreated datePublished" datetime="2022-09-27T13:58:29+08:00">2022-09-27</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><code>NetworkServer.Spwan</code><br>
+这个函数只能在服务器调用。<br>
+<code>NetworkServer.Spwan(Instatelate(GO))</code><br>
+其中这个函数重载在服务端生成一个GO，并在所有客户端各生成一个GO克隆。这些GO都没有Client Authority。<br>
+<code>NetworkServer.Spwan(Instatelate(GO), NetworkConnection)</code><br>
+在某个客户端（也可以是主机）生成一个GO，并在所有客户端各生成一个GO克隆。在目标主机的GO有Client Authority。其他GO克隆没有Client Authority。</p>
+<p>只有拥有Client Authority的对象能调用Cmd函数，Cmd函数会在这个对象的服务器克隆上执行。通过网络生成的克隆统统无Client Authority故无法调用Cmd函数。<br>
+Cmd函数中除了传递过来的参数，其它所有变量都是服务器上的 对象克隆 身上的。</p>
+<p>Client Authority可以理解为真身。一个物体A通过网络生成，每个客户端上都会有一个A，其中只有一个是真的，其它都是克隆体。真身有Client Authority，克隆体无Clietn Authority。<br>
+在服务器上我们可以移除真身或修改哪个是真身，<code>AssignClientAuthority</code>，但真身最多只有一个。</p>
+<p>假设物体A有Client Authority和Cmd函数，那么其它任何物体（不论有无联网）都可以在各自脚本里通过Find物体A来调用Cmd函数。因为本质上是A执行Cmd函数，不是其它物体执行该函数。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -967,208 +1115,6 @@ Network Start Postion组件可以自定义生成位置相关设置</p>
 </tr>
 </tbody>
 </table>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/08/Mirror%E5%85%A5%E9%97%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="一个废物捏">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="要roll就来！要roll就来！">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/08/Mirror%E5%85%A5%E9%97%A8/" class="post-title-link" itemprop="url">Mirror入门</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-09-08 13:34:09" itemprop="dateCreated datePublished" datetime="2022-09-08T13:34:09+08:00">2022-09-08</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-09-18 11:35:37" itemprop="dateModified" datetime="2022-09-18T11:35:37+08:00">2022-09-18</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <img src="/2022/09/08/Mirror%E5%85%A5%E9%97%A8/1.png" class>
-<h1 id="authority">Authority</h1>
-<p>权限决定谁拥有一个物体并能控制它。</p>
-<p>默认情况下，服务器对由 服务器生成的对象 有权限。也就意味着大部分由服务器生成的对象都被服务器控制着，除了玩家对象。被服务器控制的物体，只能在服务器上被修改，同时被修改的数据会自动同步给所有客户端。</p>
-<p>一个物体拥有客户端权限意味着客户端能够控制它在服务器的活动，使用Command标记。这个物体会在客户端下线时被销毁。同时这个物体的组件需要被Command更新，才能实现同步。</p>
-<h1 id="时间同步">时间同步</h1>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">double now = NetworkTime.time;</span><br></pre></td></tr></table></figure>
-<p>It will return the same value in the client and the servers. It starts at 0 when the server starts.</p>
-<h1 id="data-types">Data Types</h1>
-<p>客户端和服务端通过三种手段传递数据，Remote Action，State Synchronization，Network Message。</p>
-<p>支持C#基础数据类型，Unity内置数据类型，NetworkIdentity，有NetworkIdentity的对象，以上组成的结构体，以上组成的Class，以上组成的数组（不能包括同步变量）。</p>
-<p>当同步数据到达客户端时，接收该数据的对象可能还未存在、或者被setActivefalse。使用携程来解决该问题。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public GameObject target;</span><br><span class="line"></span><br><span class="line">[SyncVar(hook = nameof(OnTargetChanged))]</span><br><span class="line">public uint targetID;</span><br><span class="line"></span><br><span class="line">void OnTargetChanged(uint _, uint newValue)</span><br><span class="line">&#123;</span><br><span class="line">    if (NetworkIdentity.spawned.TryGetValue(targetID, out NetworkIdentity identity))</span><br><span class="line">        target = identity.gameObject;</span><br><span class="line">    else</span><br><span class="line">        StartCoroutine(SetTarget());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">IEnumerator SetTarget()</span><br><span class="line">&#123;</span><br><span class="line">    while (target == null)</span><br><span class="line">    &#123;</span><br><span class="line">        yield return null;</span><br><span class="line">        if (NetworkIdentity.spawned.TryGetValue(targetID, out NetworkIdentity identity))</span><br><span class="line">            target = identity.gameObject;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>自定义数据的传输</p>
-<p>对于Mirror不支持的数据如何进行传输。可以通过向NetworkWriter和NetworkReader添加扩展方法来添加对任何类型的支持。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//例如对DataTime类型的数据进行传输前</span><br><span class="line">public static class DateTimeReaderWriter</span><br><span class="line">&#123;</span><br><span class="line">      public static void WriteDateTime(this NetworkWriter writer, DateTime dateTime)</span><br><span class="line">      &#123;</span><br><span class="line">          writer.WriteInt64(dateTime.Ticks);</span><br><span class="line">      &#125;</span><br><span class="line">     </span><br><span class="line">      public static DateTime ReadDateTime(this NetworkReader reader)</span><br><span class="line">      &#123;</span><br><span class="line">          return new DateTime(reader.ReadInt64());</span><br><span class="line">      &#125;</span><br><span class="line">&#125;</span><br><span class="line">//然后，可以在[Command]或SyncList中使用DateTime类型数据</span><br></pre></td></tr></table></figure>
-<p>多态数据传输</p>
-<p>用Command发送自定义多态数据类型（类的继承）。出于安全原因，镜像不会序列化类型名称以保持消息较小，因此镜像无法通过查看消息来确定其接收到的对象类型（无法区分子类父类）。需要使用如下方法序列化</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line">class Item </span><br><span class="line">&#123;</span><br><span class="line">    public string name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Weapon : Item</span><br><span class="line">&#123;</span><br><span class="line">    public int hitPoints;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Armor : Item</span><br><span class="line">&#123;</span><br><span class="line">    public int hitPoints;</span><br><span class="line">    public int level;</span><br><span class="line">&#125;</span><br><span class="line">//需要传输的多态数据</span><br><span class="line">//----------------------------------------</span><br><span class="line">//进行添加</span><br><span class="line">public static class ItemSerializer </span><br><span class="line">&#123;</span><br><span class="line">    const byte WEAPON = 1;</span><br><span class="line">    const byte ARMOR = 2;</span><br><span class="line"></span><br><span class="line">    public static void WriteItem(this NetworkWriter writer, Item item)</span><br><span class="line">    &#123;</span><br><span class="line">        if (item is Weapon weapon)</span><br><span class="line">        &#123;</span><br><span class="line">            writer.WriteByte(WEAPON);</span><br><span class="line">            writer.WriteString(weapon.name);</span><br><span class="line">            writer.WritePackedInt32(weapon.hitPoints);</span><br><span class="line">        &#125;</span><br><span class="line">        else if (item is Armor armor)</span><br><span class="line">        &#123;</span><br><span class="line">            writer.WriteByte(ARMOR);</span><br><span class="line">            writer.WriteString(armor.name);</span><br><span class="line">            writer.WritePackedInt32(armor.hitPoints);</span><br><span class="line">            writer.WritePackedInt32(armor.level);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static Item ReadItem(this NetworkReader reader)</span><br><span class="line">    &#123;</span><br><span class="line">        byte type = reader.ReadByte();</span><br><span class="line">        switch(type)</span><br><span class="line">        &#123;</span><br><span class="line">            case WEAPON:</span><br><span class="line">                return new Weapon</span><br><span class="line">                &#123;</span><br><span class="line">                    name = reader.ReadString(),</span><br><span class="line">                    hitPoints = reader.ReadPackedInt32()</span><br><span class="line">                &#125;;</span><br><span class="line">            case ARMOR:</span><br><span class="line">                return new Armor</span><br><span class="line">                &#123;</span><br><span class="line">                    name = reader.ReadString(),</span><br><span class="line">                    hitPoints = reader.ReadPackedInt32(),</span><br><span class="line">                    level = reader.ReadPackedInt32()</span><br><span class="line">                &#125;;</span><br><span class="line">            default:</span><br><span class="line">                throw new Exception($&quot;Invalid weapon type &#123;type&#125;&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//----------------------------------------</span><br><span class="line">//可以使用了</span><br><span class="line">class Player : NetworkBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    [Command]</span><br><span class="line">    void CmdEquip(Item item)</span><br><span class="line">    &#123;</span><br><span class="line">        if (item is Weapon weapon)</span><br><span class="line">        &#123;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        else if (item is Armor armor)</span><br><span class="line">        &#123;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    [Command]</span><br><span class="line">    void CmdEquipArmor(Armor armor)</span><br><span class="line">    &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="状态同步">状态同步</h1>
-<p>状态同步 指的是属于脚本的值（如整数、浮点数、字符串和布尔值）的同步。</p>
-<p>从服务器到远程客户端进行状态同步。数据不会以相反的方向同步-从远程客户端到服务器。SyncVar hooks在本地客户端上调用。</p>
-<p>SyncVars，SyncLists，SyncDictionary，SyncHashSet，SyncSortedSet</p>
-<p>在inspector中，“Network Sync Mode”有两种模式“Observers”（默认值）和“Owner”。“Observers”意味着将数据通过服务器同步给所有客户端，“Owner”意味着仅同步给服务器。在某些情况下，使用“Owner”来增加安全性 和 减少服务器和网络的负担。</p>
-<h1 id="通讯">通讯</h1>
-<h2 id="bypassing-authority">Bypassing Authority</h2>
-<p>为了安全起见, [Command] 只能在player object上使用</p>
-<p>non-player objects想要使用[Command]需要拥有authority，或者使用 <code>[Command(requiresAuthority = false)]</code>可以绕过权限检查（但无法传递参数）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">public enum DoorState : byte</span><br><span class="line">&#123;</span><br><span class="line">    Open, Closed, Locked</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class Door : NetworkBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    [SyncVar]</span><br><span class="line">    public DoorState doorState;</span><br><span class="line">    </span><br><span class="line">    [Client]</span><br><span class="line">    void OnMouseUpAsButton()</span><br><span class="line">    &#123;</span><br><span class="line">        CmdSetDoorState();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    [Command(requiresAuthority = false)]</span><br><span class="line">    public void CmdSetDoorState(NetworkConnectionToClient sender = null)</span><br><span class="line">    &#123;</span><br><span class="line">        bool hasDoorKey = sender.identity.GetComponent&lt;PlayerState&gt;().hasDoorKey;</span><br><span class="line">        </span><br><span class="line">        if (doorState == DoorState.Open)</span><br><span class="line">        &#123;</span><br><span class="line">            doorState = hasDoorKey ? DoorState.Locked : DoorState.Closed;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        if (doorState == DoorState.Locked &amp;&amp; hasDoorKey)</span><br><span class="line">        &#123;</span><br><span class="line">            doorState = DoorState.Open;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        if (doorState == DoorState.Closed)</span><br><span class="line">            doorState = DoorState.Open;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="network-message">Network Message</h2>
-<p>使用network底层方法来传递信息，可以用来自定义复杂的功能</p>
-<p>只能传递基础数据，如果要传递类、字典等复杂数据，需要手动序列化。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">using UnityEngine;</span><br><span class="line">using Mirror;</span><br><span class="line"></span><br><span class="line">public class Scores : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    public struct ScoreMessage : NetworkMessage</span><br><span class="line">    &#123;</span><br><span class="line">        public int score;</span><br><span class="line">        public Vector3 scorePos;</span><br><span class="line">        public int lives;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void SendScore(int score, Vector3 scorePos, int lives)</span><br><span class="line">    &#123;</span><br><span class="line">        ScoreMessage msg = new ScoreMessage()</span><br><span class="line">        &#123;</span><br><span class="line">            score = score,</span><br><span class="line">            scorePos = scorePos,</span><br><span class="line">            lives = lives</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        NetworkServer.SendToAll(msg);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void SetupClient()</span><br><span class="line">    &#123;</span><br><span class="line">        NetworkClient.RegisterHandler&lt;ScoreMessage&gt;(OnScore);</span><br><span class="line">        NetworkClient.Connect(&quot;localhost&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void OnScore(ScoreMessage msg)</span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log(&quot;OnScoreMessage &quot; + msg.score);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="gameobject">GameObject</h1>
-<h2 id="自定义角色创建">自定义角色创建</h2>
-<p>步骤一 创建一个类继承NetworkManager，并使用这个类作为NetworkManager</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public class MMONetworkManager : NetworkManager</span><br><span class="line">&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>步骤二 在NetworkManager面板中关闭自动创建角色</p>
-<p>步骤三 创建一个结构体用于描述角色</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">//例如</span><br><span class="line">public struct CreateMMOCharacterMessage : NetworkMessage</span><br><span class="line">&#123;</span><br><span class="line">    public Race race;</span><br><span class="line">    public string name;</span><br><span class="line">    public Color hairColor;</span><br><span class="line">    public Color eyeColor;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public enum Race</span><br><span class="line">&#123;</span><br><span class="line">    None,</span><br><span class="line">    Elvish,</span><br><span class="line">    Dwarvish,</span><br><span class="line">    Human</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>步骤四 注册角色到NetworkManager的spawn中</p>
-<p>步骤五</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">public class MMONetworkManager : NetworkManager</span><br><span class="line">&#123;</span><br><span class="line">    public override void OnStartServer()</span><br><span class="line">    &#123;</span><br><span class="line">        base.OnStartServer();</span><br><span class="line">        </span><br><span class="line">        NetworkServer.RegisterHandler&lt;CreateMMOCharacterMessage&gt;(OnCreateCharacter);</span><br><span class="line">        //注册一个消息处理器，接收 NetworkClient.Send(characterMessage) 发来的消息。</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public override void OnClientConnect()</span><br><span class="line">    &#123;</span><br><span class="line">        base.OnClientConnect();</span><br><span class="line"></span><br><span class="line">        // you can send the message here, or wherever else you want</span><br><span class="line">        CreateMMOCharacterMessage characterMessage = new CreateMMOCharacterMessage</span><br><span class="line">        &#123;</span><br><span class="line">            race = Race.Elvish,</span><br><span class="line">            name = &quot;Joe Gaba Gaba&quot;,</span><br><span class="line">            hairColor = Color.red,</span><br><span class="line">            eyeColor = Color.green</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        NetworkClient.Send(characterMessage);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    void OnCreateCharacter(NetworkConnectionToClient conn, CreateMMOCharacterMessage message)</span><br><span class="line">    &#123;</span><br><span class="line">        // playerPrefab is the one assigned in the inspector in NetworkManager but you can use different prefabs per race for example</span><br><span class="line">        GameObject gameobject = Instantiate(playerPrefab);</span><br><span class="line">        </span><br><span class="line">        Player player = gameobject.GetComponent();</span><br><span class="line">        </span><br><span class="line">        player.hairColor = message.hairColor;</span><br><span class="line">        player.eyeColor = message.eyeColor;</span><br><span class="line">        player.name = message.name;</span><br><span class="line">        player.race = message.race;</span><br><span class="line"></span><br><span class="line">        //调用此命令以使用此游戏对象作为主控制器！！！！！</span><br><span class="line">        NetworkServer.AddPlayerForConnection(conn, gameobject);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="更换角色">更换角色</h2>
-<p>该技术有助于限制玩家在特定时间的操作，例如在赛前室屏幕上。旧玩家游戏对象不必被销毁。</p>
-<p>当房间中的所有玩家准备就绪时，NetworkRoomManager使用此技术从NetworkRoom玩家游戏对象切换到游戏玩家游戏对象。</p>
-<p>还可以使用ReplacePlayerForConnection重新激活玩家或更改代表该玩家的对象。</p>
-<p>在某些情况下，最好在重生时禁用游戏对象并重置其游戏属性。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//下面的代码示例演示了如何实际使用新的游戏对象替换玩家游戏对象：</span><br><span class="line">public class MyNetworkManager : NetworkManager</span><br><span class="line">&#123;</span><br><span class="line">    public void ReplacePlayer(NetworkConnectionToClient conn, GameObject newPrefab)</span><br><span class="line">    &#123;</span><br><span class="line">        // Cache a reference to the current player object</span><br><span class="line">        GameObject oldPlayer = conn.identity.gameObject;</span><br><span class="line"></span><br><span class="line">        // Instantiate the new player object and broadcast to clients</span><br><span class="line">        // Include true for keepAuthority paramater to prevent ownership change</span><br><span class="line">        NetworkServer.ReplacePlayerForConnection(conn, Instantiate(newPrefab), true);</span><br><span class="line"></span><br><span class="line">        // Remove the previous player object that&#x27;s now been replaced</span><br><span class="line">        // Delay is required to allow replacement to complete.</span><br><span class="line">        Destroy(oldPlayer, 0.1f);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="spawning-gameobjects">Spawning GameObjects</h2>
-<p>在单机系统中，用Instantate生成对象。在联网系统中，一般使用spawn。在服务器上“spawn”游戏对象意味着在连接到服务器的客户端上创建游戏对象，并由spawning系统管理。</p>
-<p>使用此系统spawn游戏对象后，每当服务器上的游戏对象发生变化(SyncVar、NetTran、NetAnim)时，状态更新将发送到客户端。当在服务器上销毁该游戏对象时，也会在客户端上销毁它。服务器与所有其他网络游戏对象一起管理spawn的游戏对象，以便如果其他客户端稍后加入游戏，服务器可以在该客户端上spawn游戏对象。这些衍生的游戏对象具有一个称为“netId”的唯一网络实例ID，该ID在每个游戏对象的服务器和客户端上相同。这些游戏对象状态在网络上的每个地方都同步(SyncVar、NetTran、NetAnim)。</p>
-<h2 id="pickups-drops-and-child-objects"><strong>Pickups, Drops, and Child Objects</strong></h2>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/08/%E6%A1%88%E4%BE%8B-MirroTest/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="一个废物捏">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="要roll就来！要roll就来！">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/08/%E6%A1%88%E4%BE%8B-MirroTest/" class="post-title-link" itemprop="url">案例-MirrorTest</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-09-08 13:10:15 / Modified: 13:40:35" itemprop="dateCreated datePublished" datetime="2022-09-08T13:10:15+08:00">2022-09-08</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>使用Mirro自带HUD进行制作一个局域网连接游戏。<br>
-在未系统学习Mirro API的情况下直接跟做一个项目。<br>
-许多代码和Mirro组件用法不太清楚，只能靠猜测，所以目前代码中的注释不一定是正确的。</p>
-<p>在本地客户端运行游戏，场景内会有多个人物，其中有一个人物由本地控制——称为玩家<br>
-另外几个人物也是本地生成，组件、材质、脚本都于本地运行，但它们的控制命令来自于服务器——称为克隆玩家</p>
-<p>在本案例中没有专门的服务器，而是选取其中一个客户端，使之即作为客户端使用也作为服务端使用，这个端称为主机。</p>
-<img src="/2022/09/08/%E6%A1%88%E4%BE%8B-MirroTest/1.png" class>
-<p>玩家脚本</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line"> * 对于玩家来说，该脚本位于每一个人物身上</span><br><span class="line"> * 每个人物都有自己的一套以下定义的所有变量</span><br><span class="line"> * 但是克隆玩家，该脚本在它们身上只会执行 Update方法的!isLocalPlayer 和 监听方法</span><br><span class="line">*/</span><br><span class="line">public class PlayerScript : NetworkBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    private Weapon activeWeapon;</span><br><span class="line">    private float coolDownTime;</span><br><span class="line"></span><br><span class="line">    private SceneScript sceneScript;</span><br><span class="line">    public GameObject[] weaponArray;</span><br><span class="line">    private int currentWeaponIndex;</span><br><span class="line"></span><br><span class="line">    public GameObject floatingInfo;</span><br><span class="line">    public TextMesh nameText;</span><br><span class="line">    private Material playerMaterialClone;//用于克隆Player默认的材质球</span><br><span class="line"></span><br><span class="line">    //同步变量标记，被标记的变量会同步给其他玩家</span><br><span class="line">    //那么一旦此变量(在服务器！！！！)发生变化，服务器就会将此变量发送给所有客户端</span><br><span class="line">    //后面是同步变量被修改时的监听方法</span><br><span class="line">    [SyncVar(hook = nameof(OnPlayerNameChanged))]</span><br><span class="line">    private string playerName;</span><br><span class="line">    [SyncVar(hook = nameof(OnPlayerColorChanged))]</span><br><span class="line">    private Color playerColor;</span><br><span class="line">    [SyncVar(hook = nameof(OnWeaponChanged))]</span><br><span class="line">    private int currentWeaponIndexSy;</span><br><span class="line"></span><br><span class="line">    private void OnWeaponChanged(int oldIndex, int newIndex)</span><br><span class="line">    &#123;</span><br><span class="line">        if (0 &lt; oldIndex &amp;&amp; oldIndex &lt; weaponArray.Length &amp;&amp; weaponArray[oldIndex] != null)</span><br><span class="line">        &#123;</span><br><span class="line">            weaponArray[oldIndex].SetActive(false);</span><br><span class="line">        &#125;</span><br><span class="line">        if (0 &lt; newIndex &amp;&amp; newIndex &lt; weaponArray.Length &amp;&amp; weaponArray[newIndex] != null)</span><br><span class="line">        &#123;</span><br><span class="line">            weaponArray[newIndex].SetActive(true);</span><br><span class="line">            activeWeapon = weaponArray[newIndex].GetComponent&lt;Weapon&gt;();</span><br><span class="line">            sceneScript.canvasBulletText.text = activeWeapon.bulletCount.ToString();</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            activeWeapon = null;</span><br><span class="line">            sceneScript.canvasBulletText.text = &quot;No Weapon&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    private void OnPlayerNameChanged(string oldStr, string newStr)//变量变化时调用，故会有两个参数</span><br><span class="line">    &#123;</span><br><span class="line">        nameText.text = newStr;</span><br><span class="line">    &#125;</span><br><span class="line">    private void OnPlayerColorChanged(Color oldCol, Color newCol)</span><br><span class="line">    &#123;</span><br><span class="line">        //修改文字颜色</span><br><span class="line">        nameText.color = newCol;</span><br><span class="line">        //修改身体颜色</span><br><span class="line">        playerMaterialClone = new Material(GetComponent&lt;MeshRenderer&gt;().material);</span><br><span class="line">        playerMaterialClone.SetColor(&quot;_EmissionColor&quot;, newCol);//自发光颜色</span><br><span class="line">        GetComponent&lt;MeshRenderer&gt;().material = playerMaterialClone;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //Command标记是针对方法的标记，被标记的方法必须以Cmd开头</span><br><span class="line">    //CmdSetupPlayer这个方法是被 [Command]标记过的，所以是会在服务器端执行的，不会再本地执行</span><br><span class="line">    //如果取消了[Command] 的标志那就肯定只在本地执行了也就是完全的本地的方法啊和服务端没关系</span><br><span class="line">    //在服务器中改变同步变量才会被分发给客户端！！！！！！！！！！！！！</span><br><span class="line">    //Command方法描述为 会被客户端调用的服务端的方法</span><br><span class="line">    [Command]</span><br><span class="line">    private void CmdSetupPlayer(string nameValue, Color colorValue)</span><br><span class="line">    &#123;</span><br><span class="line">        playerName = nameValue;</span><br><span class="line">        playerColor = colorValue;</span><br><span class="line">        sceneScript.statusText = $&quot;&#123;playerName&#125; joined.&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    [Command]</span><br><span class="line">    public void CmdSendPlayerMessage()</span><br><span class="line">    &#123;</span><br><span class="line">        if(sceneScript)//如果sceneScript不为空，为空说明是克隆对象身上的脚本变量</span><br><span class="line">        &#123;</span><br><span class="line">            sceneScript.statusText = $&quot;&#123;playerName&#125; says hello &#123;UnityEngine.Random.Range(1,99)&#125;&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    [Command]</span><br><span class="line">    private void CmdActiveWeapon(int index)</span><br><span class="line">    &#123;</span><br><span class="line">        currentWeaponIndexSy = index;</span><br><span class="line">    &#125;</span><br><span class="line">    [Command]</span><br><span class="line">    private void CmdShoot()</span><br><span class="line">    &#123;</span><br><span class="line">        RpcWeaponFire();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    [ClientRpc]//服务器远程命令客户端跑某个方法</span><br><span class="line">    private void RpcWeaponFire()</span><br><span class="line">    &#123;</span><br><span class="line">        var bullet = Instantiate(activeWeapon.bullet, activeWeapon.firePos.position, activeWeapon.firePos.rotation);</span><br><span class="line">        bullet.GetComponent&lt;Rigidbody&gt;().velocity = bullet.transform.forward * activeWeapon.bulletSpeed;</span><br><span class="line">        Destroy(bullet, activeWeapon.bulletLife);</span><br><span class="line">    &#125;</span><br><span class="line">    private void Awake()</span><br><span class="line">    &#123;</span><br><span class="line">        sceneScript = FindObjectOfType&lt;SceneScript&gt;();</span><br><span class="line">        //FindObjectOfType寻找到的，总是在对象池中最后挂上SceneScript脚本的对象</span><br><span class="line"></span><br><span class="line">        foreach(GameObject weapon in weaponArray)</span><br><span class="line">        &#123;</span><br><span class="line">            if(weapon!=null)</span><br><span class="line">            &#123;</span><br><span class="line">                weapon.SetActive(false);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public override void OnStartLocalPlayer()//只在本地被调用一次。原函数疑似是个空函数，专门用来override的||Like Start(), but only call on client and host for the local player object;</span><br><span class="line">    &#123;</span><br><span class="line">        sceneScript.playerScript = this;//在本地中sceneScript是唯一的，playerScript有众多个。这里将所需两个脚本关联起来了。</span><br><span class="line">        //摄像机与Player绑定</span><br><span class="line">        Camera.main.transform.SetParent(transform);</span><br><span class="line">        Camera.main.transform.localPosition = Vector3.zero;//LocalPosition是相对于父对象的位置，这里的意思是和父对象重叠</span><br><span class="line">        Debug.Log(&quot;PlayerPos:&quot; + transform.position);</span><br><span class="line">        Debug.Log(&quot;CameraPos:&quot; + Camera.main.transform.position);</span><br><span class="line">        //设置本人名字在本地的位置，相对于摄像头来设置</span><br><span class="line">        floatingInfo.transform.localPosition = new Vector3(0, -0.5f, 1f);</span><br><span class="line">        floatingInfo.transform.localScale = new Vector3(-0.1f, 0.1f, 0.1f);</span><br><span class="line">        //修改颜色和文字</span><br><span class="line">        ChangePlayerNameAndColor();</span><br><span class="line">    &#125;</span><br><span class="line">    void Update()</span><br><span class="line">    &#123;</span><br><span class="line">        if (!isLocalPlayer)//针对本地的其他玩家</span><br><span class="line">        &#123;</span><br><span class="line">            floatingInfo.transform.LookAt(Camera.main.transform);</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        //保证以下代码只在本地玩家身上执行，不在克隆玩家身上执行。由于netID会同步给服务器和其他客户端。</span><br><span class="line">        float moveX = Input.GetAxis(&quot;Horizontal&quot;) * Time.deltaTime * 110f;//用于左右转头，110f为转头灵敏度</span><br><span class="line">        float moveZ = Input.GetAxis(&quot;Vertical&quot;) * Time.deltaTime * 4.0f;//用于前进后退</span><br><span class="line">        transform.Rotate(0, moveX, 0);</span><br><span class="line">        transform.Translate(0, 0, moveZ);</span><br><span class="line">        if (Input.GetKeyDown(KeyCode.C))</span><br><span class="line">        &#123;</span><br><span class="line">            ChangePlayerNameAndColor();</span><br><span class="line">        &#125;</span><br><span class="line">        if (Input.GetButtonDown(&quot;Fire2&quot;))</span><br><span class="line">        &#123;</span><br><span class="line">            currentWeaponIndex += 1;</span><br><span class="line">            if(currentWeaponIndex &gt; weaponArray.Length)</span><br><span class="line">            &#123;</span><br><span class="line">                currentWeaponIndex = 1;</span><br><span class="line">            &#125;</span><br><span class="line">            CmdActiveWeapon(currentWeaponIndex);</span><br><span class="line">        &#125;</span><br><span class="line">        if (Input.GetButtonDown(&quot;Fire1&quot;))</span><br><span class="line">        &#123;</span><br><span class="line">            if (activeWeapon &amp;&amp; Time.time &gt; coolDownTime &amp;&amp; activeWeapon.bulletCount &gt; 0)</span><br><span class="line">            &#123;</span><br><span class="line">                coolDownTime = Time.time + activeWeapon.coolDown;</span><br><span class="line">                activeWeapon.bulletCount -= 1;</span><br><span class="line">                sceneScript.canvasBulletText.text = activeWeapon.bulletCount.ToString(); </span><br><span class="line">                CmdShoot();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    private void ChangePlayerNameAndColor()</span><br><span class="line">    &#123;</span><br><span class="line">        string tempName = $&quot;Player &#123;UnityEngine.Random.Range(1, 999)&#125;&quot;;//&quot;$&quot;是在C#6.0出现的一个新特性，其作用相当于对String.format()的简化。</span><br><span class="line">        Color tempColor = new Color</span><br><span class="line">        (</span><br><span class="line">            UnityEngine.Random.Range(0f, 1f),</span><br><span class="line">            UnityEngine.Random.Range(0f, 1f),</span><br><span class="line">            UnityEngine.Random.Range(0f, 1f),</span><br><span class="line">            1</span><br><span class="line">        );</span><br><span class="line">        CmdSetupPlayer(tempName, tempColor);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>场景切换脚本</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">using System.Collections;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using UnityEngine;</span><br><span class="line">using Mirror;</span><br><span class="line">using System;</span><br><span class="line">using UnityEngine.UI;</span><br><span class="line">using UnityEngine.SceneManagement;</span><br><span class="line"></span><br><span class="line">public class SceneScript : NetworkBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    public Text canvasBulletText;</span><br><span class="line">    public Text canvasStatusText;</span><br><span class="line">    public PlayerScript playerScript;</span><br><span class="line">    </span><br><span class="line">    [SyncVar(hook = nameof(OnStatusTextChanged))]</span><br><span class="line">    public string statusText;</span><br><span class="line"></span><br><span class="line">    private void OnStatusTextChanged(string oldStr,string newStr)</span><br><span class="line">    &#123;</span><br><span class="line">        canvasStatusText.text = statusText;</span><br><span class="line">    &#125;</span><br><span class="line">    public  void ButtonSendMessage()</span><br><span class="line">    &#123;</span><br><span class="line">        if(playerScript != null)</span><br><span class="line">        &#123;</span><br><span class="line">            playerScript.CmdSendPlayerMessage();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public void ButtonChangeScene()</span><br><span class="line">    &#123;</span><br><span class="line">        if (isServer)</span><br><span class="line">        &#123;</span><br><span class="line">            var scene = SceneManager.GetActiveScene();</span><br><span class="line">            NetworkManager.singleton.ServerChangeScene</span><br><span class="line">            (</span><br><span class="line">                scene.name == &quot;MyScene&quot; ? &quot;MyOtherScene&quot; : &quot;MyScene&quot;</span><br><span class="line">            );</span><br><span class="line">        &#125;</span><br><span class="line">        else </span><br><span class="line">            Debug.Log(&quot;You are not host&quot;);</span><br><span class="line">        //singleton指代唯一的NetworkManager</span><br><span class="line">        //ServerChangeScene用于改变网络上主机和所有客服机的场景</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>武器脚本中仅包含武器相关变量，用于被其他脚本读取</p>
-<p>按钮ui脚本中仅包含场景切换方法</p>
-<p>Network HUD脚本</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">using System.Collections;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using UnityEngine;</span><br><span class="line">using UnityEngine.SceneManagement;</span><br><span class="line">using Mirror;</span><br><span class="line"></span><br><span class="line">public class HUDExtension : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    private void OnEnable()//当对象已启动并处于活跃状态时调用此函数</span><br><span class="line">    &#123;</span><br><span class="line">        SceneManager.activeSceneChanged += HandleSceneChanged;//订阅事件，添加监听响应函数</span><br><span class="line">    &#125;</span><br><span class="line">    private void OnDisable()//当行为被禁用或处于非活跃状态时调用此函数</span><br><span class="line">    &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    private void HandleSceneChanged(Scene arg0, Scene arg1)</span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log(&quot;1&quot;);</span><br><span class="line">        if (arg1.name == &quot;Start&quot;)</span><br><span class="line">        &#123;</span><br><span class="line">            Debug.Log(&quot;2&quot;);</span><br><span class="line">            GetComponent&lt;NetworkManagerHUD&gt;().showGUI = false;</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            GetComponent&lt;NetworkManagerHUD&gt;().showGUI = true;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
       
     </div>

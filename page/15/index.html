@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">147</span>
+          <span class="site-state-item-count">149</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,216 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/12/%E5%AF%B9%E6%8B%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="一个废物捏">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="要roll就来！要roll就来！">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/12/12/%E5%AF%B9%E6%8B%8D/" class="post-title-link" itemprop="url">c++对拍</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-12-12 16:52:41" itemprop="dateCreated datePublished" datetime="2020-12-12T16:52:41+08:00">2020-12-12</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-09-08 13:40:55" itemprop="dateModified" datetime="2022-09-08T13:40:55+08:00">2022-09-08</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="在devc中对拍">在devC++中对拍</h1>
+<h3 id="基础">基础</h3>
+<p>尝试.cpp 尝试.exe 暴力.cpp 暴力.exe 数据.cpp 数据.exe 对比.cpp 对比.exe 数据.in（来自数据.exe的执行，用于尝试.exe和暴力.exe的执行） 暴力数据.out（来自暴力.exe的执行，用于对比.exe的执行） 尝试数据.in（来自尝试.exe的执行，用于对比.exe的执行） 将以上全部放入同一个文件夹（方便精简代码）（如若不然，需要在代码中写明每个文件的地址）</p>
+<p>对比.cpp代码（文件输入输出） <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">system</span>(<span class="string">&quot;数据.exe&quot;</span>);</span><br><span class="line">		<span class="built_in">system</span>(<span class="string">&quot;暴力.exe&quot;</span>);</span><br><span class="line">		<span class="built_in">system</span>(<span class="string">&quot;尝试.exe&quot;</span>);</span><br><span class="line">		<span class="keyword">if</span>(<span class="built_in">system</span>(<span class="string">&quot;fc be1.out be2.out&quot;</span>))<span class="keyword">break</span>;</span><br><span class="line">		<span class="comment">//当fc返回1时，说明这时数据不一样</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>运行对比.cpp或直接运行对比.exe <img src="/2020/12/12/%E5%AF%B9%E6%8B%8D/%E4%BE%8B%E5%AD%90.png" class> 找不到差异，说明这两份代码输出的两个文件是一样的。 那么我们可以一直拍着，如果长时间都是找不到差异，那么你写的正解就可能是对的了。 如果找到差异，它会分别返回两个文件的数据（这个是真滴nb，不是假的nb），这样我们就有了一组错误数据，方便我们 debug 。</p>
+<h3 id="进阶">进阶</h3>
+<p>大多比赛用不上文件输入输出，额外去写一堆文件输入输出浪费时间，建议采用标准输入输出 （需用到<code>#include&lt;cstdlib&gt;</code> ）</p>
+<p>对比.cpp代码（标准输入输出） <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>) <span class="comment">//一直循环，直到找到不一样的数据</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">system</span>(<span class="string">&quot;数据.exe &gt; be.in&quot;</span>);  <span class="comment">//运行 数据.exe，把结果输出（&gt;）到 be.in 中。</span></span><br><span class="line">		<span class="built_in">system</span>(<span class="string">&quot;尝试.exe &lt; be.in &gt; be1.out&quot;</span>);<span class="comment">//运行 尝试.exe，从 be.in 中读入（&lt;）数据，把结果输出（&gt;）到 be1.in 中。</span></span><br><span class="line">		<span class="built_in">system</span>(<span class="string">&quot;暴力.exe &lt; be.in &gt; be2.out&quot;</span>);</span><br><span class="line">		<span class="keyword">if</span>(<span class="built_in">system</span>(<span class="string">&quot;fc be1.out be2.out&quot;</span>))<span class="keyword">break</span>;</span><br><span class="line">		<span class="comment">//不需要在其他文件写文件输入输出</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>节约对拍次数 在对拍时，你有没有发现在 cmd 的黑色框框里面，“找不到差异” 这几行输出的很快，看起来对拍的频率好像很高的样子。实际上，这样浪费了很多次对拍，数据生成需要一定的时间，而文件的读取输出等都需要一定时间。但是两个输出文件的对比却在不停地运行着，数据生成器生成的文件在一定的时间内是相同的，这样就浪费了许多次对拍。（更重要的是没法同一个点测n次，写不了无敌版） 为此，我们可以使每次对拍完毕后休眠1秒，给四个程序留给一定的缓冲时间，使得每次对拍时，数据生成器生成的数据都不同。 那么，我们可以使用 <code>#include&lt;windows.h&gt;</code>库里的 Sleep(t) ，t为时间，单位是毫秒。它可以使程序休眠 t 毫秒。我们可以在每次对拍之后加上<code>Sleep(1000);</code> ，这样每次对拍之后休眠1秒，就不会出现浪费对拍的情况了。</p>
+<p>超时测试 用一个计时函数"clock()"，来计算我们写的正解用的时间，判断它是否超时（本地测出的时间和评测机测的时间一般不同），并把所用时间在对拍程序上体现出来。</p>
+<p>不必每次发现错误就退出，给定有限次数测试也行。还可以给把一个通过的数据当作一个测试点，还可以给他赋予编号，这些都能在对拍程序直观地体现出来。</p>
+<p>对比.cpp代码（无敌版，没有人比我更懂无敌） <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span> <span class="comment">//md万用库就这</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n; cin &gt;&gt; n; <span class="comment">//输入要测试几组数据 </span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; ++i)</span><br><span class="line">	&#123; </span><br><span class="line">		<span class="built_in">system</span>(<span class="string">&quot;数据.exe &gt; be.in&quot;</span>);</span><br><span class="line">		<span class="built_in">system</span>(<span class="string">&quot;暴力.exe &lt; be.in &gt; be2.out&quot;</span>);</span><br><span class="line">		<span class="keyword">double</span> begin=<span class="built_in">clock</span>();</span><br><span class="line">		<span class="built_in">system</span>(<span class="string">&quot;尝试.exe &lt; be.in &gt; be1.out&quot;</span>);</span><br><span class="line">		<span class="keyword">double</span> end=<span class="built_in">clock</span>();</span><br><span class="line">		<span class="keyword">double</span> t=(end-begin);</span><br><span class="line">		<span class="keyword">if</span>(<span class="built_in">system</span>(<span class="string">&quot;fc be1.out be2.out&quot;</span>))cout &lt;&lt; i &lt;&lt; <span class="string">&quot; WA&quot;</span> &lt;&lt; endl &lt;&lt; endl;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (t&gt;<span class="number">1000</span>)cout &lt;&lt; i &lt;&lt; <span class="string">&quot; TLE &quot;</span> &lt;&lt; t &lt;&lt; endl &lt;&lt; endl;<span class="comment">//clock()单位是毫秒</span></span><br><span class="line">		<span class="keyword">else</span> cout &lt;&lt; i &lt;&lt; <span class="string">&quot; AC &quot;</span> &lt;&lt; t &lt;&lt; endl &lt;&lt; endl; </span><br><span class="line">		<span class="built_in">Sleep</span>(<span class="number">1000</span>);</span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>结果 <img src="/2020/12/12/%E5%AF%B9%E6%8B%8D/%E4%BE%8B%E5%AD%902.png" class></p>
+<h1 id="在vsc中对拍">在VSC中对拍</h1>
+<p>遇到太多问题，一时语塞</p>
+<img src="/2020/12/12/%E5%AF%B9%E6%8B%8D/%E5%BF%83%E5%BE%97%E4%BD%93%E4%BC%9A1.jpg" class>
+<img src="/2020/12/12/%E5%AF%B9%E6%8B%8D/%E5%BF%83%E5%BE%97%E4%BD%93%E4%BC%9A2.jpg" class>
+<h2 id="如何解决vs2019中freopen等函数报错问题">如何解决vs2019中freopen等函数报错问题</h2>
+<p>vs2019中使用freopen、fopen、sprintf等函数总是出现安全问题： error C4996: ‘xxxxx’: This function or variable may be unsafe. Consider using xxxxxx instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.</p>
+<p>解决方法 （1）打开项目里的属性 （2）配置属性——C/C++——预处理器——预处理器定义中加入一条指令：_CRT_SECURE_NO_WARNINGS，确认即可。</p>
+<h2 id="兄弟这些我都不会">兄弟，这些我都不会</h2>
+<p>一个解决方案可以包含多个项目 其中有一个是主项目 每个项目中只能有一个主函数</p>
+<img src="/2020/12/12/%E5%AF%B9%E6%8B%8D/eg1.png" class>
+<p>这是一个叫做“测试”的解决方案 <img src="/2020/12/12/%E5%AF%B9%E6%8B%8D/eg2.png" class> 其中文件“测试.sln”用VS打开即可 其中两个名字分别叫“project1”，“project2”的项目，源文件分别存放在其中 <img src="/2020/12/12/%E5%AF%B9%E6%8B%8D/eg3.png" class> 解决方案中的debug文件夹存放了以命名项目的运行文件</p>
+<h2 id="方案">方案</h2>
+<p>创建四个项目分别对应，其中“对比”项目设置为主项目 打开解决方案中的“debug文件夹”运行其中的“对比.exe” 系统会自行创建文本 猜想：打开“对比.cpp”运行，该文件原地暂时变成exe文件，并在当前目录搜寻所需，运行结束后回复原状。 如果将对拍所需文件放入“对比”项目文件夹，确实也可以完成对拍，但太麻烦了。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/12/VSC-%E5%90%84%E7%A7%8D%E6%96%87%E4%BB%B6%E7%9A%84%E4%BD%9C%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="一个废物捏">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="要roll就来！要roll就来！">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/12/12/VSC-%E5%90%84%E7%A7%8D%E6%96%87%E4%BB%B6%E7%9A%84%E4%BD%9C%E7%94%A8/" class="post-title-link" itemprop="url">VSC++各种文件的作用</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-12-12 15:58:36" itemprop="dateCreated datePublished" datetime="2020-12-12T15:58:36+08:00">2020-12-12</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-09-08 13:45:16" itemprop="dateModified" datetime="2022-09-08T13:45:16+08:00">2022-09-08</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="vc各种文件的作用">VC++各种文件的作用</h1>
+<p>.APS：存放二进制资源的中间文件，VC把当前资源文件转换成二进制格式，并存放在APS文件中，以加快资源装载速度。资源辅助文件。</p>
+<p>.BMP：位图资源文件。</p>
+<p>.BSC：浏览信息文件，由浏览信息维护工具（BSCMAKE）从原始浏览信息文件（.SBR）中生成，BSC文件可以用来在源代码编辑窗口中进行快速定位。用于浏览项目信息的，如果用source brower的话就必须有这个文件。可以在project options里去掉Generate Browse Info File，这样可以加快编译进度。</p>
+<p>.C：用C语言编写的源代码文件。</p>
+<p>.CLW：ClassWizard生成的用来存放类信息的文件。classwizard信息文件，ini文件的格式。</p>
+<p>.CNT：用来定义帮助文件中“Contents”的结构。</p>
+<p>.CPP或.CXX：用C++语言编写的源代码文件。</p>
+<p>.CUR：光标资源文件。</p>
+<p>.DEF：模块定义文件，供生成动态链接库时使用。</p>
+<p>.DLG：定义对话框资源的独立文件。这种文件对于VC工程来说并非必需，因为VC一般把对话框资源放在.RC资源定义文件中。</p>
+<p>.DSP：VC开发环境生成的工程文件，VC4及以前版本使用MAK文件来定义工程。项目文件，文本格式。</p>
+<p>.DSW：VC开发环境生成的WorkSpace文件，用来把多个工程组织到一个WorkSpace中。工作区文件，与.dsp差不多。</p>
+<p>.EXP：由LIB工具从DEF文件生成的输出文件，其中包含了函数和数据项目的输出信息，LINK工具将使用EXP文件来创建动态链接库。只有在编译DLL时才会生成，记录了DLL文件中的一些信息。</p>
+<p>.H、.HPP或.HXX：用C/C++语言编写的头文件，通常用来定义数据类型，声明变量、函数、结构和类。</p>
+<p>.HLP：Windows帮助文件。</p>
+<p>.HM：在Help工程中，该文件定义了帮助文件与对话框、菜单或其它资源之间ID值的对应关系。</p>
+<p>.HPJ：由Help Workshop生成的Help工程文件，用来控制Help文件的生成过程。</p>
+<p>.HPG，生成帮助的文件的工程。</p>
+<p>.ICO：图标资源文件。</p>
+<p>.ILK：连接过程中生成的一种中间文件，只供LINK工具使用。</p>
+<p>.INI：配置文件。</p>
+<p>.LIB：库文件，LINK工具将使用它来连接各种输入库，以便最终生成EXE文件。</p>
+<p>.LIC：用户许可证书文件，使用某些ActiveX控件时需要该文件。</p>
+<p>.MAK：即MAKE文件，VC4及以前版本使用的工程文件，用来指定如何建立一个工程，VC6把MAK文件转换成DSP文件来处理。</p>
+<p>.MAP：由LINK工具生成的一种文本文件，其中包含有被连接的程序的某些信息，例如程序中的组信息和公共符号信息等。执行文件的映像信息记录文件。</p>
+<p>.MDP：旧版本的项目文件，相当于.dsp</p>
+<p>.NCB：NCB是“No Compile Browser”的缩写，其中存放了供ClassView、WizardBar和Component Gallery使用的信息，由VC开发环境自动生成。无编译浏览文件。当自动完成功能出问题时可以删除此文件。编译工程后会自动生成。</p>
+<p>.OBJ：由编译器或汇编工具生成的目标文件，是模块的二进制中间文件。</p>
+<p>.ODL：用对象描述语言编写的源代码文件，VC用它来生成TLB文件。</p>
+<p>.OLB：带有类型库资源的一种特殊的动态链接库，也叫对象库文件。</p>
+<p>.OPT：VC开发环境自动生成的用来存放WorkSpace中各种选项的文件。工程关于开发环境的参数文件。如工具条位置信息等。</p>
+<p>.PBI、.PBO和.PBT：由VC的性能分析工具PROFILE生成并使用的三种文件。</p>
+<p>.PCH：预编译头文件，比较大，由编译器在建立工程时自动生成，其中存放有工程中已经编译的部分代码，在以后建立工程时不再重新编译这些代码，以便加快整个编译过程的速度。</p>
+<p>.PDB：程序数据库文件，在建立工程时自动生成，其中存放程序的各种信息，用来加快调试过程的速度。记录了程序有关的一些数据和调试信息。</p>
+<p>.PLG：编译信息文件，编译时的error和warning信息文件。</p>
+<p>.RC：资源定义文件。</p>
+<p>.RC2：资源定义文件，供一些特殊情况下使用。</p>
+<p>.REG：注册表信息文件。</p>
+<p>.RES：二进制资源文件，资源编译器编译资源定义文件后即生成RES文件。</p>
+<p>.RTF：Rich Text Format（丰富文本格式）文档，可由Word或写字板来创建，常被用来生成Help文件。</p>
+<p>.SBR：VC编译器为每个OBJ文件生成的原始浏览信息文件，浏览信息维护工具（BSCMAKE）将利用SBR文件来生成BSC文件。</p>
+<p>.TLB：OLE库文件，其中存放了OLE自动化对象的数据类型、模块和接口定义，自动化服务器通过TLB文件就能了解自动化对象的使用方法。</p>
+<p>.WAV：声音资源文件。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
