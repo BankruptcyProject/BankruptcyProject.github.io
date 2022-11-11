@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">149</span>
+          <span class="site-state-item-count">151</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,184 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/16/%E5%AD%A6%E4%B9%A0Linux/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="一个废物捏">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="要roll就来！要roll就来！">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/12/16/%E5%AD%A6%E4%B9%A0Linux/" class="post-title-link" itemprop="url">学习Linux</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-12-16 21:00:38" itemprop="dateCreated datePublished" datetime="2020-12-16T21:00:38+08:00">2020-12-16</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-02-24 13:46:36" itemprop="dateModified" datetime="2022-02-24T13:46:36+08:00">2022-02-24</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="vmubuntu">VM+ubuntu</h1>
+<p>我在系统中找到的文件bin boot cdrom dev etc home lib lib32 lib64 libx32 lost+found media mnt opt proc root run sbin snap srv swapfile sys tmp usr var home 是家目录，通常您自己创建的文件，都保存在这里 usr 应用程序目录。大部分的软件都安装在这里 var 一些服务器方面的应用</p>
+<h4 id="linux有特定的语法结构">linux有特定的语法结构</h4>
+<p>用中文举例子 我们郑重地推荐您Ubuntu/Linux！</p>
+<p>这个句子的语法尽管简单，却是大部分的命令行采用的句型。让我们看一下，这个句子里都有些什么：</p>
+<p>我们</p>
+<p>主语，Linux命令的执行者只有一个，所以主语一概省略。</p>
+<p>推荐</p>
+<p>一个动词，作为谓语而存在。Linux命令中，这一部分是必须的。这一部分也是不同命令之间最根本的区别方式，所以它通常作为命令名，写在最前面。</p>
+<p>郑重的</p>
+<p>状语，用来修饰谓语。与之相对应，Linux命令可以使用参数来精细调节程序的行为。为了与命令的操作对象相区别，参数前通常要加 - 或者 -- 符号。原则上，在命令名之后，参数的位置可以随意，但是为了养成一个良好的习惯，建议在命令名后直接跟参数。</p>
+<p>您 Ubuntu/linux</p>
+<p>这两个部分都是宾语，它们是命令的操作对象。大部分的命令只有一个操作对象，也有一些命令是双宾语结构的，具有一个直接宾语和一个间接宾语。比如 拷贝 这个命令 cp (copy)</p>
+<p>分隔符</p>
+<p>我们的汉语是象形文字，没有分隔符。但是所有的拼音文字中都有分隔符，来分隔单词。Linux命令中同样使用空格作分隔符。</p>
+<p>cp a /home 表示把当前目录下的 a 文件，拷贝到 /home 目录下。（命令的不同部分使用空格分隔，连续的空格视为一个空格）</p>
+<p>上面的那句话，翻译成Linux的命令，应该是这个样子的：</p>
+<p>推荐 --郑重的 您 Ubuntu/Linux （按照传统，“-”后跟简写为单个字母的参数，“--”后跟完整单词的参数。不过也有例外：）</p>
+<h4 id="路径相关命令">路径相关命令</h4>
+<p>cd (change directory) 更改目录。</p>
+<p>pwd (print working directory)显示当前路径。</p>
+<p>ls (list) 显示当前目录中的文件列表。</p>
+<h4 id="软件">软件</h4>
+<p>Linux中没有*<strong>注册表*</strong>这个概念。安装软件，理论上讲，只要拷贝所有相关文件，并运行它的主程序就可以了。</p>
+<p>按照传统，一个软件通常分别拷贝到同级目录下的 bin、etc、lib、share等文件夹。</p>
+<p><strong>Bin</strong> 可执行文件，程序的可执行文件通常在这个目录下。在环境变量中设定搜索路径，就可以直接执行，而不需要定位其路径。</p>
+<p><strong>Etc</strong> 配置文件，大部分系统程序的配置文件保存于 /etc 目录，便于集中修改。</p>
+<p><strong>Lib</strong> 库文件，集中在一起，方便共享给不同程序。相较不同的软件单独保存库文件，能够节约一些磁盘空间。</p>
+<p><strong>Share</strong> 程序运行所需要的其它资源，例如图标、文本。这部分文件是专有的，不需要共享；而且目录结构相对复杂，混放在一起比较混乱，所以单独存放。</p>
+<h4 id="隐藏文件">隐藏文件</h4>
+<p>Linux下，名称中第一个字符为 . 的文件或者文件夹，系统默认情况下将它们隐藏起来</p>
+<h4 id="新建文件">新建文件</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; text.py</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/13/cpp%E8%87%AA%E5%AE%9A%E4%B9%89%E5%A4%B4%E6%96%87%E4%BB%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="一个废物捏">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="要roll就来！要roll就来！">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/12/13/cpp%E8%87%AA%E5%AE%9A%E4%B9%89%E5%A4%B4%E6%96%87%E4%BB%B6/" class="post-title-link" itemprop="url">cpp自定义头文件</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-12-13 16:24:17" itemprop="dateCreated datePublished" datetime="2020-12-13T16:24:17+08:00">2020-12-13</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-09-08 13:43:45" itemprop="dateModified" datetime="2022-09-08T13:43:45+08:00">2022-09-08</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>自定义的头文件中不能定义main()函数</p>
+<p>目前我将自定义的头文件用于存储我自己写的函数，目前包括快速幂、高精度、全排</p>
+<p>在头文件与源文件共享全局变量，且在头文件全局变量先于源文件定义</p>
+<p>将cpp自带的头文件文件全部放入自定义的头文件中，“using namespace std;”也能放里头。可以将它简单理解为顺序“执行”</p>
+<p>进度 <img src="/2020/12/13/cpp%E8%87%AA%E5%AE%9A%E4%B9%89%E5%A4%B4%E6%96%87%E4%BB%B6/eg1.png" class></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1075,110 +1253,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/27/Echo%E7%BD%91%E7%BB%9C%E7%A8%8B%E5%BA%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="一个废物捏">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="要roll就来！要roll就来！">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/03/27/Echo%E7%BD%91%E7%BB%9C%E7%A8%8B%E5%BA%8F/" class="post-title-link" itemprop="url">Echo网络程序</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-03-27 21:03:20" itemprop="dateCreated datePublished" datetime="2022-03-27T21:03:20+08:00">2022-03-27</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-09-08 13:44:08" itemprop="dateModified" datetime="2022-09-08T13:44:08+08:00">2022-09-08</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="客户端">客户端</h1>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">using UnityEngine;</span><br><span class="line">using System.Net.Sockets;</span><br><span class="line">using UnityEngine.UI;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class Echo : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    Socket socket;</span><br><span class="line">    public InputField inputField;</span><br><span class="line">    public Text text;</span><br><span class="line">    public void Connection()</span><br><span class="line">    &#123;</span><br><span class="line">        socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);</span><br><span class="line">        socket.Connect(&quot;127.0.0.1&quot;, 8888);</span><br><span class="line">    &#125;</span><br><span class="line">    public void Send()</span><br><span class="line">    &#123;</span><br><span class="line">        //Send</span><br><span class="line">        string sendStr = inputField.text;</span><br><span class="line">        byte[] sendBytes = System.Text.Encoding.Default.GetBytes(sendStr);</span><br><span class="line">        socket.Send(sendBytes);</span><br><span class="line">        //Recv</span><br><span class="line">        byte[] readBuff = new byte[1024];</span><br><span class="line">        int count = socket.Receive(readBuff);</span><br><span class="line">        string recvStr = System.Text.Encoding.Default.GetString(readBuff, 0, count);</span><br><span class="line">        this.text.text = recvStr;</span><br><span class="line">        //Close</span><br><span class="line">        socket.Close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="创建socket对象">创建Socket对象</h2>
-<p>Socket(AddressFamily.InterNetwork, SocketType.System, ProtocolType.Tcp)</p>
-<p>AddressFamily：<br>
-地址族，有两种。InterNetwork，指Ipv4；InterNetworkV6，只Ipv6</p>
-<p>SocketType:<br>
-套接字类型，有多种类型，游戏开发中最常用的是字节流套接字，Stream。</p>
-<p>ProtocolType:<br>
-指明协议，这里使用的是TCP协议</p>
-<h2 id="连接connect">连接Connect</h2>
-<p>客户端通过 socket.Connect(远程IP地址, 远程端口); 连接服务器。 Connect是一个阻塞方法，程序会卡住直到服务端回应（接收、拒绝或超时）。</p>
-<h2 id="发送消息send">发送消息Send</h2>
-<p>socket.Send，是阻塞方法。<br>
-该方法的参数为一个byte[]作为发送内容<br>
-该方法的返回值指明发送数据的长度</p>
-<h2 id="接收消息receive">接收消息Receive</h2>
-<p>socket.Receive，是阻塞方法。<br>
-该方法的参数为一个byte[]存储接收数据<br>
-该方法的返回值指明接收数据的长度</p>
-<h2 id="关闭连接close">关闭连接Close</h2>
-<p>socket.Close</p>
-<h1 id="服务器">服务器</h1>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">using System;</span><br><span class="line">using System.Net;</span><br><span class="line">using System.Net.Sockets;</span><br><span class="line"></span><br><span class="line">namespace EchoServer</span><br><span class="line">&#123;</span><br><span class="line">    class Program</span><br><span class="line">    &#123;</span><br><span class="line">        static void Main(string[] args)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(&quot;HelloWorld!&quot;);</span><br><span class="line">            //Socket</span><br><span class="line">            Socket listenfd = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);</span><br><span class="line">            //Bind</span><br><span class="line">            IPAddress ipAdr = IPAddress.Parse(&quot;127.0.0.1&quot;);</span><br><span class="line">            IPEndPoint ipEp = new IPEndPoint(ipAdr, 8888);</span><br><span class="line">            listenfd.Bind(ipEp);</span><br><span class="line">            //Listen</span><br><span class="line">            listenfd.Listen(0);</span><br><span class="line">            Console.WriteLine(&quot;[EchoServer] Start!&quot;);</span><br><span class="line">            while(true)</span><br><span class="line">            &#123;</span><br><span class="line">                //Accept</span><br><span class="line">                Socket connfd = listenfd.Accept();</span><br><span class="line">                Console.WriteLine(&quot;[EchoServer] Accept!&quot;);</span><br><span class="line">                //Receive</span><br><span class="line">                byte[] readBuff = new byte[1024];</span><br><span class="line">                int count = connfd.Receive(readBuff);</span><br><span class="line">                string readStr = System.Text.Encoding.UTF8.GetString(readBuff, 0, count);</span><br><span class="line">                Console.WriteLine(&quot;[EchoServer] Recieve: &quot; + readStr);</span><br><span class="line">                //Send</span><br><span class="line">                byte[] sendBytes = System.Text.Encoding.UTF8.GetBytes(readStr);</span><br><span class="line">                connfd.Send(sendBytes);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="绑定bind">绑定Bind</h2>
-<p>listenfd.Bind(ipEp)，给套接字listenfd绑定ip和端口。这里使用的是本地地址和8888号端口。</p>
-<h2 id="监听listen">监听Listen</h2>
-<p>服务端通过listenfd.Listen(backlog)开启监听。（启动服务器）。<br>
-参数 backlog 指定队列中最多可容纳等待接受的连接数，0表示不限制。</p>
-<h2 id="应答accept">应答Accept</h2>
-<p>开启监听后，用listenfd.Accept接受某个客户端的连接（Connect）。<br>
-返回一个Socket对象代表接收到的客户端（因为可能会接收多个客户端）。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/14/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span>
+    <a class="extend prev" rel="prev" href="/page/14/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/16/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 </div>
