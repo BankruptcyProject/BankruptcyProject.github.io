@@ -20,28 +20,28 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="Network Room Player在房间中存储 Network Room Manager的每个Player状态。使用此组件时，您需要编写一个脚本，允许玩家指示他们已准备好开始play，并设置ReadyToBegin属性。 Show Room GUI 启用此选项可为房间中的玩家显示开发人员GUI。此UI仅用于简化开发。这在默认情况下是启用的。 Ready To Begin 玩家准备就绪的">
+<meta name="description" content="The Network Transform component synchronizes the position, rotation, and scale of networked game objects across the network. 该组件需要Network Identity组件 默认情况下Network Transform有服务器权限，除非专门勾选客户端选项。 客户端权限适">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Network Room Player">
-<meta property="og:url" content="http://example.com/2022/09/11/Network-Room-Player/index.html">
+<meta property="og:title" content="Mirror_Network Transform">
+<meta property="og:url" content="http://example.com/2022/09/08/Mirror_Network-Transform/index.html">
 <meta property="og:site_name" content="要roll就来！要roll就来！">
-<meta property="og:description" content="Network Room Player在房间中存储 Network Room Manager的每个Player状态。使用此组件时，您需要编写一个脚本，允许玩家指示他们已准备好开始play，并设置ReadyToBegin属性。 Show Room GUI 启用此选项可为房间中的玩家显示开发人员GUI。此UI仅用于简化开发。这在默认情况下是启用的。 Ready To Begin 玩家准备就绪的">
+<meta property="og:description" content="The Network Transform component synchronizes the position, rotation, and scale of networked game objects across the network. 该组件需要Network Identity组件 默认情况下Network Transform有服务器权限，除非专门勾选客户端选项。 客户端权限适">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-09-10T22:49:22.000Z">
-<meta property="article:modified_time" content="2022-09-10T23:52:20.746Z">
+<meta property="article:published_time" content="2022-09-08T11:28:36.000Z">
+<meta property="article:modified_time" content="2022-11-14T08:57:48.242Z">
 <meta property="article:author" content="一个废物捏">
 <meta property="article:tag" content="Mirror">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/2022/09/11/Network-Room-Player/">
+<link rel="canonical" href="http://example.com/2022/09/08/Mirror_Network-Transform/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/09/11/Network-Room-Player/","path":"2022/09/11/Network-Room-Player/","title":"Network Room Player"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/09/08/Mirror_Network-Transform/","path":"2022/09/08/Mirror_Network-Transform/","title":"Mirror_Network Transform"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Network Room Player | 要roll就来！要roll就来！</title>
+<title>Mirror_Network Transform | 要roll就来！要roll就来！</title>
   
 
 
@@ -95,7 +95,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <div class="sidebar-inner sidebar-overview-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -108,7 +108,6 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#client-virtual-methods"><span class="nav-number">1.</span> <span class="nav-text">Client Virtual Methods</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -168,7 +167,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/11/Network-Room-Player/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/08/Mirror_Network-Transform/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -181,7 +180,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Network Room Player
+          Mirror_Network Transform
         </h1>
 
         <div class="post-meta-container">
@@ -191,10 +190,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2022-09-11 06:49:22 / Modified: 07:52:20" itemprop="dateCreated datePublished" datetime="2022-09-11T06:49:22+08:00">2022-09-11</time>
+      <time title="Created: 2022-09-08 19:28:36" itemprop="dateCreated datePublished" datetime="2022-09-08T19:28:36+08:00">2022-09-08</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-11-14 16:57:48" itemprop="dateModified" datetime="2022-11-14T16:57:48+08:00">2022-11-14</time>
+      </span>
 
   
 </div>
@@ -206,16 +211,14 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>Network Room Player在房间中存储 Network Room Manager的每个Player状态。使用此组件时，您需要编写一个脚本，允许玩家指示他们已准备好开始play，并设置ReadyToBegin属性。</p>
-<p><strong>Show Room GUI</strong><br>
-启用此选项可为房间中的玩家显示开发人员GUI。此UI仅用于简化开发。这在默认情况下是启用的。<br>
-<strong>Ready To Begin</strong><br>
-玩家准备就绪的诊断指示器。<br>
-<strong>Index</strong> 玩家的诊断索引，例如玩家1、玩家2等。<br>
-<strong>Network Sync Interval</strong><br>
-信息从 Network Room Player发送到服务器的速率。</p>
-<h2 id="client-virtual-methods">Client Virtual Methods</h2>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public virtual void OnClientEnterRoom() &#123;&#125;</span><br><span class="line">public virtual void OnClientExitRoom() &#123;&#125;</span><br><span class="line">public virtual void OnClientReady(bool readyState) &#123;&#125;</span><br></pre></td></tr></table></figure>
+        <p>The Network Transform component synchronizes the position, rotation, and scale of networked game objects across the network.</p>
+<p>该组件需要Network Identity组件</p>
+<p>默认情况下Network Transform有服务器权限，除非专门勾选客户端选项。<br>
+客户端权限适用于玩家对象以及专门分配给客户端的非玩家对象，但仅适用于该组件。启用此功能后，位置更改将从客户端发送到服务器。</p>
+<p>压缩勾选框Compression压缩传送数据，压缩四元数适合3d不适合2d</p>
+<p>Authority：操作权限。如果Client Authority被勾上，那么<strong>只有在客户端改变物体Transform时才会同步Transform，且服务端无权改变物体的Transform；反之亦然。</strong>从反作弊的角度来看，通常不勾上是更好的选择，即只有服务端有权限改变物体的Transform</p>
+<p>Sync Position / Sync Rotation：是否同步位置/旋转。如果不勾上的话，如果服务端改变的物体的位置/旋转，客户端将不会有反映。</p>
+<p>Interpolation：是否进行补间动画。这个意思是，通常由于网络延迟等问题客户端可能出现丢包的情况，即没有来得及/能够同步服务端的位置/旋转。如果不勾上的话，物体会在客户端这里发射”瞬移“的情况。如果勾上的话，物体将会平滑地移动过去。</p>
 
     </div>
 
@@ -232,13 +235,13 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2022/09/11/Network-Room-Manager/" rel="prev" title="Network Room Manager">
-                  <i class="fa fa-chevron-left"></i> Network Room Manager
+                <a href="/2022/09/08/Mirror_Network-Manager/" rel="prev" title="Mirror_Network Manager">
+                  <i class="fa fa-chevron-left"></i> Mirror_Network Manager
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2022/09/14/Mirror-%E5%B8%B8%E7%94%A8%E7%9A%84%E7%B1%BB%E7%9A%84%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95%E5%92%8C%E9%9D%99%E6%80%81%E6%88%90%E5%91%98/" rel="next" title="Mirror 常用的类的静态方法和成员">
-                  Mirror 常用的类的静态方法和成员 <i class="fa fa-chevron-right"></i>
+                <a href="/2022/09/08/Mirror_Network-Behaviour/" rel="next" title="Mirror_Network Behaviour">
+                  Mirror_Network Behaviour <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
