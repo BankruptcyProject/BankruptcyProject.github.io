@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="难点 毛发段数（经验）： 长毛发，8~10 中等毛发，5左右 短毛发，2~3 毛发形状 毛发的形状需要切换到渲染模式才能观察到，毛发形状实际上只有一个面，但这个面始终面朝摄像机 着色 毛发着色使用毛发bsdf 子级 用二级毛发代替一级毛发的位置 毛发添加子级才能有更细致的效果 简单形子级：以一级毛发位置为中心，分片生长（不常用） 插值型子级：以一级毛发位置为中心，均匀生长">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Blender毛发">
+<meta property="og:url" content="http://example.com/2022/11/13/Blender%E6%AF%9B%E5%8F%91/index.html">
+<meta property="og:site_name" content="要roll就来！要roll就来！">
+<meta property="og:description" content="难点 毛发段数（经验）： 长毛发，8~10 中等毛发，5左右 短毛发，2~3 毛发形状 毛发的形状需要切换到渲染模式才能观察到，毛发形状实际上只有一个面，但这个面始终面朝摄像机 着色 毛发着色使用毛发bsdf 子级 用二级毛发代替一级毛发的位置 毛发添加子级才能有更细致的效果 简单形子级：以一级毛发位置为中心，分片生长（不常用） 插值型子级：以一级毛发位置为中心，均匀生长">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-11-13T15:26:06.000Z">
+<meta property="article:modified_time" content="2022-11-14T07:58:33.095Z">
+<meta property="article:author" content="一个废物捏">
+<meta property="article:tag" content="Blender">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2022/11/13/Blender%E6%AF%9B%E5%8F%91/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/11/13/Blender%E6%AF%9B%E5%8F%91/","path":"2022/11/13/Blender毛发/","title":"Blender毛发"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Blender毛发 | 要roll就来！要roll就来！</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">要roll就来！要roll就来！</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9A%BE%E7%82%B9"><span class="nav-number">1.</span> <span class="nav-text">难点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AF%9B%E5%8F%91%E6%AE%B5%E6%95%B0%E7%BB%8F%E9%AA%8C"><span class="nav-number">1.1.</span> <span class="nav-text">毛发段数（经验）：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AF%9B%E5%8F%91%E5%BD%A2%E7%8A%B6"><span class="nav-number">1.2.</span> <span class="nav-text">毛发形状</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9D%80%E8%89%B2"><span class="nav-number">1.3.</span> <span class="nav-text">着色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%90%E7%BA%A7"><span class="nav-number">1.4.</span> <span class="nav-text">子级</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">一个废物捏</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">153</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/13/Blender%E6%AF%9B%E5%8F%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="一个废物捏">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="要roll就来！要roll就来！">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Blender毛发
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-11-13 23:26:06" itemprop="dateCreated datePublished" datetime="2022-11-13T23:26:06+08:00">2022-11-13</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-11-14 15:58:33" itemprop="dateModified" datetime="2022-11-14T15:58:33+08:00">2022-11-14</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="难点">难点</h1>
+<h2 id="毛发段数经验">毛发段数（经验）：</h2>
+<p>长毛发，8~10<br>
+中等毛发，5左右<br>
+短毛发，2~3</p>
+<h2 id="毛发形状">毛发形状</h2>
+<p>毛发的形状需要切换到渲染模式才能观察到，毛发形状实际上只有一个面，但这个面始终面朝摄像机</p>
+<h2 id="着色">着色</h2>
+<p>毛发着色使用毛发bsdf</p>
+<h2 id="子级">子级</h2>
+<p>用二级毛发代替一级毛发的位置<br>
+毛发添加子级才能有更细致的效果</p>
+<p><strong>简单形子级</strong>：以一级毛发位置为中心，分片生长（不常用）<br>
+<strong>插值型子级</strong>：以一级毛发位置为中心，均匀生长</p>
+<p><strong>长度</strong>：一级毛发长度缩小 <strong>阈值</strong>：多少二级毛发保持不变</p>
+<p><strong>簇集</strong>：<br>
+让毛发成簇生长。<br>
+让二级毛发上端或者下端向一级毛发位置收缩、聚集。</p>
+<p><strong>糙度：</strong><br>
+让毛发乱一些<br>
+1. <strong>均衡、尺寸</strong>：均衡值一般很小，是毛发整体表现出波浪起伏，尺寸调节波浪的频率<br>
+2. <strong>端点、形状</strong>：端点平移毛发上端的位置，形状将毛发分二到三段统一向内或向外折叠弯曲，两者配合使用达到蓬松的效果<br>
+3. <strong>随机、尺寸、阈值</strong>：随机数值较小时效果为使得每根二级毛发朝着各自随机方向多段折叠，阈值为不受随机影响的比例。有凌乱效果。<br>
+4. <strong>均衡</strong>和<strong>端点</strong>的区别在于：均衡扭曲是保持毛发的长度不变，故改变了毛发整体的高度。端点扭曲时固定保持毛发整体高度不变，变相增长了毛发长度</p>
+<p><strong>扭结</strong>：<br>
+指定毛发的扭曲</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Blender/" rel="tag"># Blender</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/11/11/Blender%E7%B2%92%E5%AD%90/" rel="prev" title="Blender粒子">
+                  <i class="fa fa-chevron-left"></i> Blender粒子
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/11/14/Blender%E9%A1%B6%E7%82%B9%E6%9D%83%E9%87%8D/" rel="next" title="Blender顶点权重">
+                  Blender顶点权重 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">一个废物捏</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

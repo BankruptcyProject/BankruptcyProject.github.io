@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">152</span>
+          <span class="site-state-item-count">153</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,102 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/11/%E6%9B%B2%E7%BA%BF%E5%BB%BA%E6%A8%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="一个废物捏">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="要roll就来！要roll就来！">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/10/11/%E6%9B%B2%E7%BA%BF%E5%BB%BA%E6%A8%A1/" class="post-title-link" itemprop="url">曲线建模</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-10-11 17:04:23" itemprop="dateCreated datePublished" datetime="2022-10-11T17:04:23+08:00">2022-10-11</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-10-13 17:23:04" itemprop="dateModified" datetime="2022-10-13T17:23:04+08:00">2022-10-13</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="贝塞尔曲线建模">贝塞尔曲线建模</h1>
+<p>在物品模式下添加曲线，按TAB编辑曲线。改曲线有两个控制点和两个控制柄。</p>
+<p>曲线和网格是不同的东西，可以将曲线转化为网格。</p>
+<p>按 A键 选择所有点。</p>
+<p>添加控制点：右键细分。或者选中控制点按 E键 挤出控制点。</p>
+<p>删除控制点：融并端点，快捷键X。</p>
+<p>选择控制柄：选择控制柄，按 V键。<br>
+控制柄类型：自由（左右控制柄不对称）、对齐（左右控制柄对称）、矢量（自由的一种，对直线对齐下一个控制点）、自动（平滑，可以选择所有点进行平滑）。</p>
+<p>点的栅格对齐<br>
+打开磁铁模式，吸附至增量，勾选 绝对栅格对齐<br>
+<img src="/2022/10/11/%E6%9B%B2%E7%BA%BF%E5%BB%BA%E6%A8%A1/1.png" class></p>
+<p>自由线绘制：<br>
+按 F键 自动封闭；允许多段曲线不要求相连；可以在垂直面绘制；</p>
+<h2 id="曲线倒角">曲线倒角</h2>
+<p>倒角后本质上还是一个曲线 <img src="/2022/10/11/%E6%9B%B2%E7%BA%BF%E5%BB%BA%E6%A8%A1/3.png" class>在这里做整体调整</p>
+<img src="/2022/10/11/%E6%9B%B2%E7%BA%BF%E5%BB%BA%E6%A8%A1/4.png" class>
+<p>在这里做单个点的调整（粗细、旋转）</p>
+<p>曲线倒角的横截面<br>
+使用另一个封闭的曲线来作为横截面（横截面为二维产物，blender选取局部坐标xy平面来做横截面） <img src="/2022/10/11/%E6%9B%B2%E7%BA%BF%E5%BB%BA%E6%A8%A1/5.png" class></p>
+<p>通过曲线移动形成面 创建两个曲线，一个作为移动路线，一个作为横截面。</p>
+<h1 id="nurbs路径曲线建模">Nurbs路径曲线建模</h1>
+<p>添加 中选择 路径曲线</p>
+<h1 id="背景图">背景图</h1>
+<p>添加，图像，背景图。用于参考建模。只在正交视图下显示，在 透视图 下不显示。作为背景显示，不会遮盖物体。</p>
+<img src="/2022/10/11/%E6%9B%B2%E7%BA%BF%E5%BB%BA%E6%A8%A1/2.png" class>
+<p>在这里做调整。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -852,99 +948,6 @@ Bool 变量，表示所有玩家是否准备好开始比赛。<br>
 <p>若要使用这些，请将“Network Start Position”组件附加到场景中的游戏对象，并将游戏对象定位到希望其中一个玩家开始的位置。可以向场景添加任意多个开始位置。Network Manager检测场景中的所有开始位置，当生成每个玩家实例时，它使用其中一个的位置和方向。</p>
 <p>默认情况下，Network Manager将在（0，0，0）生成玩家。将此组件添加到游戏对象将自动向Network Manager注册/取消注册其游戏对象的变换，作为可用的生成位置。</p>
 <p>根据Network Manager的玩家spwan方法设置，spwan是随机的（可能两个或多个玩家将使用相同的spwan位置）或循环的（使用每个可用位置，直到客户端多于spwan点）。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/08/Network-Attributes/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="一个废物捏">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="要roll就来！要roll就来！">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/08/Network-Attributes/" class="post-title-link" itemprop="url">Network Attributes</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-09-08 23:15:05" itemprop="dateCreated datePublished" datetime="2022-09-08T23:15:05+08:00">2022-09-08</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-09-13 20:35:01" itemprop="dateModified" datetime="2022-09-13T20:35:01+08:00">2022-09-13</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>标记变量和方法</p>
-<p><strong>[Server]</strong><br>
-只有服务器可以调用该方法（在客户端上调用时抛出警告）。</p>
-<p><strong>[ServerCallback]</strong><br>
-Same as Server but does not throw a warning when called on client.</p>
-<p><strong>[Client]</strong><br>
-只有客户端可以调用该方法（在服务器上调用时抛出警告）。</p>
-<p><strong>[ClientCallback]</strong><br>
-Same as Client but does not throw a warning when called on server.</p>
-<p><strong>[Command]</strong><br>
-从客户端调用此函数以在服务器上运行此函数。用于反作弊。不可能从服务器调用。<br>
-核心逻辑就是，当客户端的脚本调用此特性修饰的函数时，服务端的对应的对象执行此函数。任何允许数据类型的参数都将通过命令自动传递到服务器。<br>
-小心每帧从客户端发送命令！这可能会导致大量网络流量。</p>
-<p><strong>[ClientRpc]</strong><br>
-服务器使用远程过程调用（RPC）在客户端上运行该函数。<br>
-核心逻辑就是，当服务器的脚本调用此特性修饰的函数时，客户端的对应的对象执行此函数。<br>
-这意味着函数中的代码不会在服务器执行。</p>
-<p><strong>[TargetRpc]</strong><br>
-允许从服务器在客户端上调用它们。与ClientRpc属性不同，这些函数是在单个目标客户机上调用的，而不是在所有就绪客户机上。 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[TargetRpc]</span><br><span class="line">void TargetRemoteDamaged(NetworkConnection target, int damage)&#123;&#125;</span><br><span class="line">//第一个参数可忽略，默认发给自己，也就是调用此方法的客户端实体</span><br></pre></td></tr></table></figure> 可以获取到挂载在目标对象上的NetworkIdentity，可以通过此获取到目标客户端与服务器的连接的通道NetworkIdentity.connectionToClient。<br>
-将其作为参数TargetRpc的第一个参数由服务器执行，即可只发送给目标客户端。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">public class Player : NetworkBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    public int health;</span><br><span class="line"></span><br><span class="line">    [Command]//攻击对方</span><br><span class="line">    void CmdMagic(GameObject target, int damage)</span><br><span class="line">    &#123;</span><br><span class="line">        target.GetComponent&lt;Player&gt;().health -= damage;</span><br><span class="line">        NetworkIdentity opponentIdentity = target.GetComponent&lt;NetworkIdentity&gt;();//对方的ID</span><br><span class="line">        TargetDoMagic(opponentIdentity.connectionToClient, damage);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    [TargetRpc]//在被攻击方的电脑上执行</span><br><span class="line">    public void TargetDoMagic(NetworkConnection target, int damage)</span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log($&quot;Magic Damage = &#123;damage&#125;&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">//----------------------------------------------------------------------------------------</span><br><span class="line">    [Command]//治疗自己</span><br><span class="line">    public void CmdHealMe()</span><br><span class="line">    &#123;</span><br><span class="line">        health += 10;</span><br><span class="line">        TargetHealed(10);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    [TargetRpc]</span><br><span class="line">    public void TargetHealed(int amount)</span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log($&quot;Health increased by &#123;amount&#125;&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>[SyncVar]</strong><br>
-SyncVars用于自动将变量从服务器同步到所有客户端。不要从客户端修改这些变量，这是没有意义的。不要让它们为空，否则会出错。当客户端从服务器接收更新时，可以使用SyncVar Hooks在客户端上运行代码。</p>
 
       
     </div>
