@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="数据持续化方案 PlayerPrefs 的用法很简单。通过它，能够简单保存某些设置如玩家的图形设置、登录信息，以及需要保存的玩家其它设置。但是，PlayerPrefs 不是为了游戏存档而设计的。因此，需要用到序列化。 PlayerPrefs类下的静态函数        函数名 描述     DeleteAll 从偏好中删除所有键和值。请谨慎使用。   Del">
+<meta property="og:type" content="article">
+<meta property="og:title" content="unity存档">
+<meta property="og:url" content="http://example.com/2022/02/28/unity%E5%AD%98%E6%A1%A3/index.html">
+<meta property="og:site_name" content="要roll就来！要roll就来！">
+<meta property="og:description" content="数据持续化方案 PlayerPrefs 的用法很简单。通过它，能够简单保存某些设置如玩家的图形设置、登录信息，以及需要保存的玩家其它设置。但是，PlayerPrefs 不是为了游戏存档而设计的。因此，需要用到序列化。 PlayerPrefs类下的静态函数        函数名 描述     DeleteAll 从偏好中删除所有键和值。请谨慎使用。   Del">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-02-28T06:05:02.000Z">
+<meta property="article:modified_time" content="2022-11-14T08:31:44.349Z">
+<meta property="article:author" content="一个废物捏">
+<meta property="article:tag" content="unity">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2022/02/28/unity%E5%AD%98%E6%A1%A3/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/02/28/unity%E5%AD%98%E6%A1%A3/","path":"2022/02/28/unity存档/","title":"unity存档"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>unity存档 | 要roll就来！要roll就来！</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">要roll就来！要roll就来！</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%8C%81%E7%BB%AD%E5%8C%96%E6%96%B9%E6%A1%88"><span class="nav-number">1.</span> <span class="nav-text">数据持续化方案</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#playerprefs%E7%B1%BB%E4%B8%8B%E7%9A%84%E9%9D%99%E6%80%81%E5%87%BD%E6%95%B0"><span class="nav-number">1.1.</span> <span class="nav-text">PlayerPrefs类下的静态函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="nav-number">2.</span> <span class="nav-text">序列化与反序列化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E8%BF%9B%E5%88%B6binary-formatter"><span class="nav-number">2.1.</span> <span class="nav-text">二进制Binary Formatter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#json"><span class="nav-number">2.2.</span> <span class="nav-text">JSON</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#xml"><span class="nav-number">2.3.</span> <span class="nav-text">Xml</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">一个废物捏</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">153</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/28/unity%E5%AD%98%E6%A1%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="一个废物捏">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="要roll就来！要roll就来！">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          unity存档
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-02-28 14:05:02" itemprop="dateCreated datePublished" datetime="2022-02-28T14:05:02+08:00">2022-02-28</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-11-14 16:31:44" itemprop="dateModified" datetime="2022-11-14T16:31:44+08:00">2022-11-14</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="数据持续化方案">数据持续化方案</h1>
+<p>PlayerPrefs 的用法很简单。通过它，能够简单保存某些设置如玩家的图形设置、登录信息，以及需要保存的玩家其它设置。但是，PlayerPrefs 不是为了游戏存档而设计的。因此，需要用到序列化。</p>
+<h2 id="playerprefs类下的静态函数">PlayerPrefs类下的静态函数</h2>
+<table>
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>函数名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>DeleteAll</td>
+<td>从偏好中删除所有键和值。请谨慎使用。</td>
+</tr>
+<tr class="even">
+<td>DeleteKey</td>
+<td>Removes the given key from the PlayerPrefs. If the key does not exist, DeleteKey has no impact.</td>
+</tr>
+<tr class="odd">
+<td>GetFloat</td>
+<td>返回偏好设置文件中与 key 对应的值（如果存在）。</td>
+</tr>
+<tr class="even">
+<td>GetInt</td>
+<td>返回偏好设置文件中与 key 对应的值（如果存在）。</td>
+</tr>
+<tr class="odd">
+<td>GetString</td>
+<td>返回偏好设置文件中与 key 对应的值（如果存在）。</td>
+</tr>
+<tr class="even">
+<td>HasKey</td>
+<td>Returns true if the given key exists in PlayerPrefs, otherwise returns false.（可用于读档）</td>
+</tr>
+<tr class="odd">
+<td>Save</td>
+<td>将所有修改的偏好写入磁盘。（存档）</td>
+</tr>
+<tr class="even">
+<td>SetFloat</td>
+<td>Sets the float value of the preference identified by the given key. You can use PlayerPrefs.GetFloat to retrieve this value.</td>
+</tr>
+<tr class="odd">
+<td>SetInt</td>
+<td>Sets a single integer value for the preference identified by the given key. You can use PlayerPrefs.GetInt to retrieve this value.</td>
+</tr>
+<tr class="even">
+<td>SetString</td>
+<td>Sets a single string value for the preference identified by the given key. You can use PlayerPrefs.GetString to retrieve this value.</td>
+</tr>
+</tbody>
+</table>
+<h1 id="序列化与反序列化">序列化与反序列化</h1>
+<p>创建保存类，不继承组件</p>
+<p>[SerializeField] 让某些东西在检查器中显示出来</p>
+<p>在类声明之上，添加：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[System.Serializable]</span><br></pre></td></tr></table></figure>
+<p>这是一个属性，它标明了代码的一个元数据。它告诉 Unity 这个类<strong>可以</strong>被序列化，这意味着你可以将它转换成字节流并保存到磁盘文件中。</p>
+<p>该属性的使用非常广泛，它允许你在类、方法和变量上附加数据（这种数据叫做元数据）。甚至你可以定义自己的元数据并用于你的代码。序列化中使用了 [SerializeField] 和 [System.Serializable] 属性，这样在序列化对象时它知道要写入什么。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[System.Serializable]</span><br><span class="line">public class Save</span><br><span class="line">&#123;</span><br><span class="line">    //这里定义需要序列化的变量</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public Save CreatSaveGO()</span><br><span class="line">&#123;</span><br><span class="line">	Save save = new Save();</span><br><span class="line">	save.time = Data.onlyDataGO.time;//配合场景切换来看</span><br><span class="line">	return save;</span><br><span class="line">&#125;</span><br><span class="line">//之后利用二进制或JSON方法，都需要预先调用这个方法</span><br></pre></td></tr></table></figure>
+<h2 id="二进制binary-formatter">二进制Binary Formatter</h2>
+<p>序列化：新建或打开一个<strong>二进制文件</strong>，通过<strong>二进制格式器</strong>将<strong>对象</strong>写入该二进制文件</p>
+<p>反序列化：打开以及序列化的二进制文件，通过<strong>二进制格式器</strong>将文件解析成<strong>对象</strong>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">using System.Runtime.Serialization.Formatters.Binary;</span><br><span class="line"></span><br><span class="line">private void SaveByBin()</span><br><span class="line">&#123;</span><br><span class="line">    string filePath = Application.dataPath + &quot;/StreamingFile&quot; + &quot;/save.txt&quot;;</span><br><span class="line">    Save save = CreatSaveGO();//创建一个可以被序列化且含有需要保存数据的对象</span><br><span class="line">    BinaryFormatter bf = new BinaryFormatter();//创建一个二进制格式化程序</span><br><span class="line">    FileStream fileStream = File.Create(filePath);</span><br><span class="line">	//创建一个文件流</span><br><span class="line">    //参数为路径，Application.dataPath是游戏所在位置，/StreamingFile是预先自建文件夹</span><br><span class="line">    bf.Serialize(fileStream, save);</span><br><span class="line">    //用（二进制格式化程序的序列化方法）来序列化一个（可被序列号的对象）</span><br><span class="line">    fileStream.Close();</span><br><span class="line">    //关闭文件流</span><br><span class="line">&#125;</span><br><span class="line">private void LoadByBin()</span><br><span class="line">&#123;</span><br><span class="line">	string filePath = Application.dataPath + &quot;/StreamingFile&quot; + &quot;/save.txt&quot;;</span><br><span class="line">    if (!File.Exists(filePath))return;</span><br><span class="line">    BinaryFormatter bf = new BinaryFormatter();</span><br><span class="line">    FileStream fileStream = File.Open(filePath, FileMode.Open);</span><br><span class="line">    Save save = (Save)bf.Derialize(fileStream);</span><br><span class="line">    fileStream.Close();</span><br><span class="line">    Data.onlyDataGO.time = save.time;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注：string filepath = System.Environment.CurrentDirectory + "/StreamFile" + "byJson.json"</p>
+<h2 id="json">JSON</h2>
+<p>对象-&gt;JSON</p>
+<p>JSON-&gt;对象</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">using LitJson;//需要额外下载文件</span><br><span class="line">private void SaveByJson()</span><br><span class="line">&#123;</span><br><span class="line">    Save save = CreateSaveGO();</span><br><span class="line">    string filePath = Application.dataPath + &quot;/StreamingFile&quot; + &quot;/save.txt&quot;;</span><br><span class="line">    string saveJsonStr = JsonMapper.ToJson(save);</span><br><span class="line">    StreamWriter sw = new StreamWriter(filePath);</span><br><span class="line">    sw.Write(saveJsonStr);</span><br><span class="line">    sw.Close();</span><br><span class="line">&#125;</span><br><span class="line">private void LoadByJson()</span><br><span class="line">&#123;</span><br><span class="line">    string filePath = Application.dataPath + &quot;/StreamingFile&quot; + &quot;/save.txt&quot;;</span><br><span class="line">    if (!File.Exists(filePath))return;</span><br><span class="line">    StreamReader sr = new StreamReader(filePath);</span><br><span class="line">    string jsonStr = sr.ReadToEnd();</span><br><span class="line">    sr.Close();</span><br><span class="line">    Save save = JsonMapper.ToObject&lt;Save&gt;(jsonStr);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="xml">Xml</h2>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/unity/" rel="tag"># unity</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/02/28/unity%E5%9C%BA%E6%99%AF%E5%88%87%E6%8D%A2/" rel="prev" title="unity场景切换">
+                  <i class="fa fa-chevron-left"></i> unity场景切换
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/02/28/unity%E7%89%A9%E7%90%86%E5%9F%BA%E7%A1%80/" rel="next" title="unity物理基础">
+                  unity物理基础 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">一个废物捏</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

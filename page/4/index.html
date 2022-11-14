@@ -719,7 +719,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/16/Unity%E5%AD%90%E7%BA%BF%E7%A8%8B%E8%B0%83%E7%94%A8%E4%B8%BB%E7%BA%BF%E7%A8%8B/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/16/unity%E5%AD%90%E7%BA%BF%E7%A8%8B%E8%B0%83%E7%94%A8%E4%B8%BB%E7%BA%BF%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -732,7 +732,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/10/16/Unity%E5%AD%90%E7%BA%BF%E7%A8%8B%E8%B0%83%E7%94%A8%E4%B8%BB%E7%BA%BF%E7%A8%8B/" class="post-title-link" itemprop="url">Unity子线程调用主线程</a>
+          <a href="/2022/10/16/unity%E5%AD%90%E7%BA%BF%E7%A8%8B%E8%B0%83%E7%94%A8%E4%B8%BB%E7%BA%BF%E7%A8%8B/" class="post-title-link" itemprop="url">unity子线程调用主线程</a>
         </h2>
 
         <div class="post-meta-container">
@@ -742,10 +742,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2022-10-16 08:35:57 / Modified: 09:46:00" itemprop="dateCreated datePublished" datetime="2022-10-16T08:35:57+08:00">2022-10-16</time>
+      <time title="Created: 2022-10-16 08:35:57" itemprop="dateCreated datePublished" datetime="2022-10-16T08:35:57+08:00">2022-10-16</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-11-14 16:33:24" itemprop="dateModified" datetime="2022-11-14T16:33:24+08:00">2022-11-14</time>
+      </span>
 
   
 </div>
@@ -757,7 +763,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>在Unity中，子线程是无法调用Unity主线程的API的，因为unity不允许这么干。 <img src="/2022/10/16/Unity%E5%AD%90%E7%BA%BF%E7%A8%8B%E8%B0%83%E7%94%A8%E4%B8%BB%E7%BA%BF%E7%A8%8B/1.png" class></p>
+          <p>在Unity中，子线程是无法调用Unity主线程的API的，因为unity不允许这么干。 <img src="/2022/10/16/unity%E5%AD%90%E7%BA%BF%E7%A8%8B%E8%B0%83%E7%94%A8%E4%B8%BB%E7%BA%BF%E7%A8%8B/1.png" class></p>
 <p>但是我们可以通过别的途径，实现这一功能。<br>
 大致思路：<br>
 将子线程中需要调用的函数，通过委托传递给Loom中的委托列表，在Loom中去调用该委托。<br>
