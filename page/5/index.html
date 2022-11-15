@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">153</span>
+          <span class="site-state-item-count">154</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,79 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/13/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E5%A5%94%E9%A9%B0%E8%BD%A6%E6%A0%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="一个废物捏">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="要roll就来！要roll就来！">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/10/13/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E5%A5%94%E9%A9%B0%E8%BD%A6%E6%A0%87/" class="post-title-link" itemprop="url">（练习）奔驰车标</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-10-13 17:27:16 / Modified: 17:47:50" itemprop="dateCreated datePublished" datetime="2022-10-13T17:27:16+08:00">2022-10-13</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <img src="/2022/10/13/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E5%A5%94%E9%A9%B0%E8%BD%A6%E6%A0%87/1.png" class>
+<p>添加 网格建模 圆环，设置成六边形，Shift选择三个点内缩，做出基本的图形。</p>
+<p>填充面，挤出面。</p>
+<p>在面编辑模式里，按 X 键，塌陷边线&amp;面，使得选中面塌陷为一个点。</p>
+<p>用两个贝塞尔曲线建立圆环和圆环的横截面。</p>
+<img src="/2022/10/13/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E5%A5%94%E9%A9%B0%E8%BD%A6%E6%A0%87/2.png" class>
+<p>这里可以设置 横截面延申方向建模的精细度（是圆环更圆润）。</p>
+<p>物体模式下右键选择平滑着色才能预览到棱角分明的样子。</p>
+<p>着色材质中选择预设的金属材质。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -898,80 +971,6 @@ Bool 变量，表示所有玩家是否准备好开始比赛。<br>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public virtual void OnRoomStartHost() &#123;&#125;</span><br><span class="line">public virtual void OnRoomStopHost() &#123;&#125;</span><br><span class="line">public virtual void OnRoomStartServer() &#123;&#125;</span><br><span class="line">public virtual void OnRoomServerConnect(NetworkConnection conn) &#123;&#125;</span><br><span class="line">public virtual void OnRoomServerDisconnect(NetworkConnection conn) &#123;&#125;</span><br><span class="line">public virtual void OnRoomServerSceneChanged(string sceneName) &#123;&#125;</span><br><span class="line">public virtual GameObject OnRoomServerCreateRoomPlayer(NetworkConnection conn)</span><br><span class="line">&#123;</span><br><span class="line">    return null;</span><br><span class="line">&#125;</span><br><span class="line">public virtual GameObject OnRoomServerCreateGamePlayer(NetworkConnection conn)</span><br><span class="line">&#123;</span><br><span class="line">    return null;</span><br><span class="line">&#125;</span><br><span class="line">public virtual bool OnRoomServerSceneLoadedForPlayer(GameObject roomPlayer, GameObject gamePlayer)</span><br><span class="line">&#123;</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br><span class="line">public virtual void OnRoomServerPlayersReady()</span><br><span class="line">&#123;</span><br><span class="line">    ServerChangeScene(GameplayScene);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>客户端虚方法</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public virtual void OnRoomClientEnter() &#123;&#125;</span><br><span class="line">public virtual void OnRoomClientExit() &#123;&#125;</span><br><span class="line">public virtual void OnRoomClientConnect(NetworkConnection conn) &#123;&#125;</span><br><span class="line">public virtual void OnRoomClientDisconnect(NetworkConnection conn) &#123;&#125;</span><br><span class="line">public virtual void OnRoomStartClient() &#123;&#125;</span><br><span class="line">public virtual void OnRoomStopClient() &#123;&#125;</span><br><span class="line">public virtual void OnRoomClientSceneChanged(NetworkConnection conn) &#123;&#125;</span><br><span class="line">public virtual void OnRoomClientAddPlayerFailed() &#123;&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/08/Mirror_Network-Start-Position/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="一个废物捏">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="要roll就来！要roll就来！">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/08/Mirror_Network-Start-Position/" class="post-title-link" itemprop="url">Mirror_Network Start Position</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-09-08 23:58:21" itemprop="dateCreated datePublished" datetime="2022-09-08T23:58:21+08:00">2022-09-08</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-11-14 16:57:25" itemprop="dateModified" datetime="2022-11-14T16:57:25+08:00">2022-11-14</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>要控制玩家的生成位置，可以使用“Network Start Position”组件。</p>
-<p>若要使用这些，请将“Network Start Position”组件附加到场景中的游戏对象，并将游戏对象定位到希望其中一个玩家开始的位置。可以向场景添加任意多个开始位置。Network Manager检测场景中的所有开始位置，当生成每个玩家实例时，它使用其中一个的位置和方向。</p>
-<p>默认情况下，Network Manager将在（0，0，0）生成玩家。将此组件添加到游戏对象将自动向Network Manager注册/取消注册其游戏对象的变换，作为可用的生成位置。</p>
-<p>根据Network Manager的玩家spwan方法设置，spwan是随机的（可能两个或多个玩家将使用相同的spwan位置）或循环的（使用每个可用位置，直到客户端多于spwan点）。</p>
 
       
     </div>
