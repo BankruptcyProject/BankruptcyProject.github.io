@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">154</span>
+          <span class="site-state-item-count">155</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,142 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/05/unity%E9%9F%B3%E9%A2%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="一个废物捏">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="要roll就来！要roll就来！">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/03/05/unity%E9%9F%B3%E9%A2%91/" class="post-title-link" itemprop="url">unity音频</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-03-05 19:30:22" itemprop="dateCreated datePublished" datetime="2022-03-05T19:30:22+08:00">2022-03-05</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-11-14 16:25:08" itemprop="dateModified" datetime="2022-11-14T16:25:08+08:00">2022-11-14</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>确保一个场景中有且仅有一个音频监听器（Audio Listener）组件，一般挂载在摄像头上。</p>
+<p>音频源（Audio Source）组件 AudioClip音频文件 静音 唤醒时播放 音量 音调：声音频率，可以将声音加速或减速 空间混合：2D或3D，3D的音频会随着距离的增加而减小声音 3D Sound Setting：对3D音频的扩张、衰减设置。</p>
+<p>Audio Source组件脚本</p>
+<table>
+<thead>
+<tr class="header">
+<th>属性方法</th>
+<th>详解</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>clip</td>
+<td>要播放的音频文件，音频文件对应的类为AudioClip</td>
+</tr>
+<tr class="even">
+<td>isPlaying</td>
+<td>当前是否正在播放</td>
+</tr>
+<tr class="odd">
+<td>loop</td>
+<td>是否循环</td>
+</tr>
+<tr class="even">
+<td>mute</td>
+<td>是否静音</td>
+</tr>
+<tr class="odd">
+<td>playOnAwake</td>
+<td>是否开启唤醒时候播放</td>
+</tr>
+<tr class="even">
+<td>time</td>
+<td>播放位置时间</td>
+</tr>
+<tr class="odd">
+<td>volume</td>
+<td>播放音量大小</td>
+</tr>
+<tr class="even">
+<td>Pause</td>
+<td>暂停</td>
+</tr>
+<tr class="odd">
+<td>Play</td>
+<td>从头开始播放</td>
+</tr>
+<tr class="even">
+<td>PlayOneShot</td>
+<td>从头开始播放一次</td>
+</tr>
+<tr class="odd">
+<td>Stop</td>
+<td>停止</td>
+</tr>
+<tr class="even">
+<td>UnPause</td>
+<td>回复暂停播放</td>
+</tr>
+<tr class="odd">
+<td>PlayClipAtPoint</td>
+<td>静态方法，在世界空间的某一点播放音频</td>
+</tr>
+</tbody>
+</table>
+<h1 id="播放画面">播放画面</h1>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1217,106 +1353,6 @@ Bounce Combine（弹力组合）</p>
 <p>JSON-&gt;对象</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">using LitJson;//需要额外下载文件</span><br><span class="line">private void SaveByJson()</span><br><span class="line">&#123;</span><br><span class="line">    Save save = CreateSaveGO();</span><br><span class="line">    string filePath = Application.dataPath + &quot;/StreamingFile&quot; + &quot;/save.txt&quot;;</span><br><span class="line">    string saveJsonStr = JsonMapper.ToJson(save);</span><br><span class="line">    StreamWriter sw = new StreamWriter(filePath);</span><br><span class="line">    sw.Write(saveJsonStr);</span><br><span class="line">    sw.Close();</span><br><span class="line">&#125;</span><br><span class="line">private void LoadByJson()</span><br><span class="line">&#123;</span><br><span class="line">    string filePath = Application.dataPath + &quot;/StreamingFile&quot; + &quot;/save.txt&quot;;</span><br><span class="line">    if (!File.Exists(filePath))return;</span><br><span class="line">    StreamReader sr = new StreamReader(filePath);</span><br><span class="line">    string jsonStr = sr.ReadToEnd();</span><br><span class="line">    sr.Close();</span><br><span class="line">    Save save = JsonMapper.ToObject&lt;Save&gt;(jsonStr);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="xml">Xml</h2>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/28/unity%E5%9C%BA%E6%99%AF%E5%88%87%E6%8D%A2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="一个废物捏">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="要roll就来！要roll就来！">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/02/28/unity%E5%9C%BA%E6%99%AF%E5%88%87%E6%8D%A2/" class="post-title-link" itemprop="url">unity场景切换</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-02-28 13:52:17" itemprop="dateCreated datePublished" datetime="2022-02-28T13:52:17+08:00">2022-02-28</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-11-14 16:32:00" itemprop="dateModified" datetime="2022-11-14T16:32:00+08:00">2022-11-14</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="库">库</h1>
-<p>using UnityEngine.UI<br>
-using UnityEngine.Scenemanagement</p>
-<h1 id="场景切换">场景切换</h1>
-<p>在文件夹中创建多个场景，在生成设置中调整加载场景顺序<br>
-SceneManager.LoadScene(1);或<br>
-SceneManager.LoadScene("main");<br>
-//1是某个场景在生成设置中的代号</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">public class SceneStart : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    public Button btn_start, btn_end, btn_change;</span><br><span class="line">    public void Awake()</span><br><span class="line">    &#123;</span><br><span class="line">        btn_start.onClick.AddListener(() =&gt;</span><br><span class="line">        &#123;</span><br><span class="line">            SceneManager.LoadScene(&quot;main&quot;);</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        btn_change.onClick.AddListener(() =&gt;</span><br><span class="line">        &#123;</span><br><span class="line">            SceneManager.LoadScene(&quot;Change&quot;);</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        btn_end.onClick.AddListener(() =&gt;</span><br><span class="line">        &#123;       </span><br><span class="line">            #if UNITY_EDITOR</span><br><span class="line">                UnityEditor.EditorApplication.isPlaying = false;</span><br><span class="line">            #else</span><br><span class="line">                Application.Quit();</span><br><span class="line">            #endif</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="场景间数据保存">场景间数据保存</h1>
-<p>一个专门存放数据的数据节点挂在一个Data脚本，该脚本存放需要在场景间生存的变量。其余脚本会从该脚本读取变量使用。</p>
-<p>首先，从一个场景A切换到另一个场景B，会导致场景A下的所有节点被销毁。但挂有<br>
-GameObject.DontDestroyOnLoad(gameObject);<br>
-属性的节点（此处称之为节点G）在场景A被销毁后，会在下一个场景重生。<br>
-实际上，会在下一个场景场景生成一个子场景，并将G挂载在子场景上，但这不重要<br>
-问题来了，当场景B切回场景A时，A场景创建时自带一个节点G，同时从场景B中会再重生一个节点G，于是就有了两个节点G，同时这两个节点G会同时启动DontDestoryOnLoad，于是G越来越多</p>
-<p>如何解决： 在场景A创建一个初始化脚本init，脚本中写一个全局静态变量public static bool isAlready = false;<br>
-将G节点做成一个预制体，在init脚本中生成<br>
-init脚本中创建所有变量并初始化，data脚本从init获取变量，随后将isAlready置真<br>
-例：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public class Init : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    //在这里定义需要在场景间保存的变量</span><br><span class="line">    public static bool initAlready;</span><br><span class="line">    public GameObject Data;</span><br><span class="line">    void Awake()</span><br><span class="line">    &#123;</span><br><span class="line">        if (!initAlready)</span><br><span class="line">        &#123;</span><br><span class="line">            //在这里为变量赋初值、默认值</span><br><span class="line">            Instantiate(Data);</span><br><span class="line">            initAlready = true;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class Data : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    //在这里定义需要在场景间保存的变量</span><br><span class="line">    void Start()</span><br><span class="line">    &#123;</span><br><span class="line">		//在这里获得数据</span><br><span class="line">        GameObject.DontDestroyOnLoad(gameObject);</span><br><span class="line">		name = &quot;DataGO&quot;;//在DontDestroyOnLoad场景下的节点名字会增加(Clone)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>注：</strong><br>
-获取数据除了Find的另一个方法 ——单例模式 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class Data : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    public static Data onlyDataScript;//定义全局静态变量，刚好对应Data对象始终只有一个且只实例化一次</span><br><span class="line">    //在这里定义需要在场景间保存的变量</span><br><span class="line">    void Start()</span><br><span class="line">    &#123;</span><br><span class="line">        public Data onlyDataScript = this;//第一次实例化赋值</span><br><span class="line">		//在这里获得数据</span><br><span class="line">        GameObject.DontDestroyOnLoad(gameObject);</span><br><span class="line">		name = &quot;DataGO&quot;;//在DontDestroyOnLoad场景下的节点名字会增加(Clone)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Data.onlyDataScript.time = 300;</span><br><span class="line">float time = Data.onlyDataScript.time;</span><br><span class="line">//使用例子</span><br></pre></td></tr></table></figure>
-<p>注：</p>
-<p>在VS2019中，右键查找所有的引用。</p>
-<h1 id="退出游戏">退出游戏</h1>
-<p>在unity编辑界面实现退出游戏 调用这个 ​```c# void QuitGame() { #if UNITY_EDITOR UnityEditor.EditorApplication.isPlaying = false; #else Application.Quit(); #endif }</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
 
       
     </div>
