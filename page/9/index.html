@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">155</span>
+          <span class="site-state-item-count">156</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,179 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/20/unityUI%E4%BA%A4%E4%BA%92%E7%BB%84%E4%BB%B6%E7%9A%84%E5%8F%AF%E9%80%89%E5%9F%BA%E7%B1%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="一个废物捏">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="要roll就来！要roll就来！">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/03/20/unityUI%E4%BA%A4%E4%BA%92%E7%BB%84%E4%BB%B6%E7%9A%84%E5%8F%AF%E9%80%89%E5%9F%BA%E7%B1%BB/" class="post-title-link" itemprop="url">unityUI交互组件的可选基类</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-03-20 11:18:43" itemprop="dateCreated datePublished" datetime="2022-03-20T11:18:43+08:00">2022-03-20</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-11-14 16:35:37" itemprop="dateModified" datetime="2022-11-14T16:35:37+08:00">2022-11-14</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="可选基类-selectable-base-class">可选基类 (Selectable Base Class)</h1>
+<p>可选类是所有UI中的交互组件的基类，可处理共同的项。</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>属性</strong></th>
+<th style="text-align: left;"><strong>功能</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Interactable</strong></td>
+<td style="text-align: left;">此属性确定该组件是否接受输入。此属性设置为 false 时，交互被禁用，过渡状态也将设置为禁用状态。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Transition（过渡）</strong></td>
+<td style="text-align: left;">在可选组件中，有几个<a href="#过渡选项">过渡选项</a>，具体取决于可选组件的当前状态。不同的状态包括：正常、突出显示、按下和禁用。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Navigation</strong></td>
+<td style="text-align: left;">还有许多[导航选项]可用于控制如何实现控件的键盘导航。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="过渡选项">过渡选项</h2>
+<table>
+<colgroup>
+<col style="width: 31%">
+<col style="width: 68%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>过渡选项</strong></th>
+<th style="text-align: left;"><strong>功能</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>None </strong></td>
+<td style="text-align: left;">此选项用于使按钮完全没有状态效果。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Color Tint（颜色色彩）</strong></td>
+<td style="text-align: left;">根据按钮所处的状态更改按钮的颜色。可为每个单独的状态选择颜色。还可在不同状态之间设置 Fade Duration 属性。数字越大，颜色之间的淡入淡出越慢。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Sprite Swap（精灵交换）</strong></td>
+<td style="text-align: left;">允许根据按钮当前的状态显示不同的精灵，并可自定义精灵。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>动画 (Animation)</strong></td>
+<td style="text-align: left;">允许根据按钮的状态产生动画，必须存在动画器组件才能使用动画过渡。确保禁用根运动非常重要。要创建动画控制器，请单击 Generate Animation（或自行创建），并确保已将动画控制器添加到按钮的动画器组件。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="color-tint颜色色彩">Color Tint（颜色色彩）</h3>
+<table>
+<colgroup>
+<col style="width: 34%">
+<col style="width: 65%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>属性</strong></th>
+<th style="text-align: left;"><strong>功能</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Target Graphic</strong></td>
+<td style="text-align: left;">用于交互组件的图形。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Normal Color</strong></td>
+<td style="text-align: left;">控件的正常颜色</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Highlighted Color</strong></td>
+<td style="text-align: left;">控件突出显示时的颜色</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Pressed Color</strong></td>
+<td style="text-align: left;">控件按下时的颜色</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Disabled Color</strong></td>
+<td style="text-align: left;">控件禁用时的颜色</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Color Multiplier</strong></td>
+<td style="text-align: left;">这会将每个过渡的着色颜色乘以其值。由此可以创建大于 1 的颜色，从而使基色小于白色（或小于完整 Alpha）的图形元素上的颜色（或 Alpha 通道）变亮。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Fade Duration（淡化持续时间）</strong></td>
+<td style="text-align: left;">从一个状态淡入淡出到另一个状态所需的时间（以秒为单位）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sprite-swap精灵交换">Sprite Swap（精灵交换）</h3>
+<h3 id="动画animation">动画（Animation）</h3>
+<p>用到再说</p>
+<h2 id="navigation导航选项">Navigation（导航选项）</h2>
+<p>用到再说</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1534,104 +1707,6 @@ map的键是不能修改的，但是其键对应的值是可以修改的</p>
 <p>将线段渲染器加上脚本组件，使用脚本动态绘制线条： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">private LinRenderer lineRenderer;</span><br><span class="line">lineRenderer = GetComponent&lt;LineRenderer&gt;();</span><br><span class="line">lineRenderer.startColor = Color.red;</span><br><span class="line">lineRenderer.endColor = Color.blue;//起点和终点的颜色</span><br><span class="line">LineRenderer.startWidth = 1f;</span><br><span class="line">LineRenderer.endWidth = 0.5f;//起点和终点的宽度</span><br><span class="line">lineRenderer.positionCount = 3;//一共几个端点</span><br><span class="line">lineRenderer.SetPosition(0, Vector3.zero);</span><br><span class="line">lineRenderer.SetPosition(1, Vector3(10,0,0));</span><br><span class="line">lineRenderer.SetPosition(2, Vector3(10,10,0));</span><br></pre></td></tr></table></figure></p>
 <h1 id="拖尾渲染器">拖尾渲染器</h1>
 <p>在某个对象上添加Trail Renderer组件，在脚本上的使用和线段相似</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/06/unity%E7%B2%92%E5%AD%90%E7%B3%BB%E7%BB%9F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="一个废物捏">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="要roll就来！要roll就来！">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/03/06/unity%E7%B2%92%E5%AD%90%E7%B3%BB%E7%BB%9F/" class="post-title-link" itemprop="url">unity粒子系统</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-03-06 01:26:56" itemprop="dateCreated datePublished" datetime="2022-03-06T01:26:56+08:00">2022-03-06</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-11-14 16:29:01" itemprop="dateModified" datetime="2022-11-14T16:29:01+08:00">2022-11-14</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><strong>粒子系统</strong>由<strong>粒子</strong>和<strong>发射器</strong>组成，发射器创建并发射粒子</p>
-<p><strong>粒子系统</strong>参数如下：<br>
-持续时间（一个周期时间）<br>
-是否循环<br>
-是否预热<br>
-启动延迟（和循环、预热不能同时用）<br>
-生命周期（总时间）<br>
-起始速度（粒子）<br>
-起始大小（粒子）<br>
-开始旋转（粒子起始角度）<br>
-翻转旋转（其中的负起始角度比例（0~1））<br>
-起始颜色<br>
-重力修改器<br>
-模拟空间（相对坐标（世界或局部））<br>
-模拟速度（播放速度）<br>
-时间差（是否受timescale影响）<br>
-是否唤醒是播放<br>
-发射器速度（发射器移动方式rig或trans）<br>
-最大粒子（最多发射多少粒子数目）<br>
-是否随机（每次播放效果不同）<br>
-停止行动（播放完后是否会销毁自身对象）<br>
-剔除模式（粒子不在视野内的行动模式）</p>
-<p><strong>发射器</strong> 在发射模块中<br>
-随单位时间产生的粒子数 随移动距离产生的粒子数（发射器移动） 突发</p>
-<p><strong>发射形状</strong> 在形状模块中，例如锥形</p>
-<p><strong>渲染</strong> 材质 排序 最大最小粒子的尺寸 阴影 图层ID 图层顺序</p>
-<p><strong>颜色</strong> 上标代表Alpha值，下标代表颜色值，双击增加新的颜色或Alpha</p>
-<p>还有粒子的大小旋转等等</p>
 
       
     </div>
