@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">163</span>
+          <span class="site-state-item-count">164</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,85 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/28/unity%E8%B0%83%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="一个废物捏">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="要roll就来！要roll就来！">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/02/28/unity%E8%B0%83%E7%94%A8/" class="post-title-link" itemprop="url">unity调用</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-02-28 12:30:38" itemprop="dateCreated datePublished" datetime="2022-02-28T12:30:38+08:00">2022-02-28</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-11-14 16:31:20" itemprop="dateModified" datetime="2022-11-14T16:31:20+08:00">2022-11-14</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="重复调用">重复调用</h1>
+<p>InvokeRepeating("be",delay,jiange);//字符串：函数名，第一次延时，间隔</p>
+<h1 id="延时调用">延时调用</h1>
+<p>Invoke("be",3); 3秒后调用</p>
+<p>invoke API很有用，去官方手册查</p>
+<h1 id="三种调用其他脚本函数的方法">三种调用其他脚本函数的方法</h1>
+<p>第一种，被调用脚本函数为static类型，调用时直接用 脚本名.函数名()。很不实用……</p>
+<p>第二种，GameObject.Find("脚本所在物体名").SendMessage("函数名"); 此种方法可以调用public和private类型函数//无返回值</p>
+<p>第三种，GameObject.Find("脚本所在物体名").GetComponent<脚本名>().函数名();此种方法只可以调用public类型函数//有返回值</脚本名></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -899,78 +978,6 @@ import 语句和 package 语句对源文件中定义的所有类都有效。在�
 <p>两种方法： 方法一： 对于树的每个节点多维护一个层次属性 方法二： 关键在于对普通BFS的修改，普通BFS一次从队列中取出一个元素进行搜索，现在修改为每一次取出都将队列中的所有元素取出，按顺序对这些元素搜索完毕后，再进行下一次取出</p>
 <h1 id="方法二-7594">方法二 75%，94%</h1>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; <span class="built_in">levelOrder</span>(TreeNode* root) </span><br><span class="line">    &#123;</span><br><span class="line">        vector&lt;<span class="keyword">int</span>&gt;smallAns;</span><br><span class="line">        vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;ans;</span><br><span class="line">        <span class="keyword">if</span> (!root)<span class="keyword">return</span> ans;<span class="comment">//这里TM卡了我好久</span></span><br><span class="line">        queue&lt;TreeNode*&gt;q;</span><br><span class="line">        q.<span class="built_in">push</span>(root);</span><br><span class="line">        <span class="keyword">while</span> (!q.<span class="built_in">empty</span>())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> currentSize = q.<span class="built_in">size</span>();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= currentSize; ++i)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (q.<span class="built_in">front</span>()-&gt;left)q.<span class="built_in">push</span>(q.<span class="built_in">front</span>()-&gt;left);</span><br><span class="line">                <span class="keyword">if</span> (q.<span class="built_in">front</span>()-&gt;right)q.<span class="built_in">push</span>(q.<span class="built_in">front</span>()-&gt;right);</span><br><span class="line">                smallAns.<span class="built_in">push_back</span>(q.<span class="built_in">front</span>()-&gt;val);</span><br><span class="line">                q.<span class="built_in">pop</span>();</span><br><span class="line">            &#125;</span><br><span class="line">            ans.<span class="built_in">push_back</span>(smallAns);</span><br><span class="line">            smallAns.<span class="built_in">clear</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/05/LC-Subsets/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="一个废物捏">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="要roll就来！要roll就来！">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/05/LC-Subsets/" class="post-title-link" itemprop="url">LC-Subsets</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-09-05 10:51:58" itemprop="dateCreated datePublished" datetime="2021-09-05T10:51:58+08:00">2021-09-05</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-03-27 20:59:08" itemprop="dateModified" datetime="2022-03-27T20:59:08+08:00">2022-03-27</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="一次过">一次过</h1>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; <span class="built_in">subsets</span>(vector&lt;<span class="keyword">int</span>&gt;&amp; nums) </span><br><span class="line">    &#123;</span><br><span class="line">        vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;ans;</span><br><span class="line">        ans.<span class="built_in">push_back</span>(vector&lt;<span class="keyword">int</span>&gt;());<span class="comment">//空集是任何集合的子集</span></span><br><span class="line">        <span class="keyword">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        n = <span class="built_in">pow</span>(<span class="number">2</span>, n);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n - <span class="number">1</span>; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> j = i;</span><br><span class="line">            <span class="keyword">int</span> order = <span class="number">0</span>;</span><br><span class="line">            vector&lt;<span class="keyword">int</span>&gt;smallAns;</span><br><span class="line">            <span class="keyword">while</span> (j &gt; <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (j &amp; <span class="number">1</span>)smallAns.<span class="built_in">push_back</span>(nums[order]);</span><br><span class="line">                ++order;</span><br><span class="line">                j /= <span class="number">2</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            ans.<span class="built_in">push_back</span>(smallAns);</span><br><span class="line">        &#125;	</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
       
     </div>

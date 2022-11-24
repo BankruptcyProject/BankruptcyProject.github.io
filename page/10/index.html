@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">163</span>
+          <span class="site-state-item-count">164</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,92 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/19/CS%E5%80%BC%E4%B8%8E%E5%BC%95%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="一个废物捏">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="要roll就来！要roll就来！">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/03/19/CS%E5%80%BC%E4%B8%8E%E5%BC%95%E7%94%A8/" class="post-title-link" itemprop="url">CS值与引用</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-03-19 17:36:55" itemprop="dateCreated datePublished" datetime="2022-03-19T17:36:55+08:00">2022-03-19</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-11-14 17:15:50" itemprop="dateModified" datetime="2022-11-14T17:15:50+08:00">2022-11-14</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>C#中的数据类型，分<strong>值类型</strong>和<strong>引用类型</strong>两大类</p>
+<h4 id="值类型">值类型</h4>
+<p>直接存储数据的值，保存在内存中的stack(堆栈)中 　　 #### 引用类型 存储对值的引用，实际上存储的就是一个内存的地址。引用类型的保存分成两块，实际值保存在托管堆(heap)中，实际值的内存地址保存在stack中<br>
+当使用引用类型时先找到stack中的地址，再找到heap中的实际值<br>
+也就是说保存引用类型时要用到stack和heap，但使用引用类型时我们实际上只用到stack中的值，然后通过这个值间接的访问heap中的值</p>
+<p>C#预定义的简单类型，像int、float、bool、char都是值类型，另外enum(枚举)、struct(结构)也是值类型<br>
+string、数组、自定义的class就都是引用类型了。<br>
+其中的string是比较特殊的引用类型，C#给它增加个字符恒定的特性.</p>
+<h4 id="函数传参">函数传参</h4>
+<p>C#函数的参数如果不加ref、out这样的修饰符显式申明参数是通过引用传递外，默认都是值传递。</p>
+<p>这里要注意的一个问题是，参数的类型是值类型还是引用类型 和 传参数时用值传递还是引用传递是两个不同的概念。</p>
+<h4 id="ref">ref</h4>
+<p>在 C# 中，使用 ref 关键字声明引用参数。<br>
+引用参数是一个对变量的内存位置的引用。当按引用传递参数时，与值参数不同的是，它不会为这些参数创建一个新的存储位置。引用参数表示与提供给方法的实际参数具有相同的内存位置。 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public void swap(ref int x, ref int y)</span><br><span class="line">&#123;</span><br><span class="line">	int temp;</span><br><span class="line"></span><br><span class="line">	temp = x; /* 保存 x 的值 */</span><br><span class="line">	x = y;    /* 把 y 赋值给 x */</span><br><span class="line">	y = temp; /* 把 temp 赋值给 y */</span><br><span class="line">&#125;</span><br><span class="line">n.swap(ref a, ref b);</span><br></pre></td></tr></table></figure></p>
+<h4 id="out">out</h4>
+<p>return 语句可用于只从函数中返回一个值。但是，可以使用 输出参数 来从函数中返回两个值。输出参数会把方法输出的数据赋给自己，其他方面与引用参数相似。 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public void getValue(out int x )</span><br><span class="line">&#123;</span><br><span class="line">	int temp = 5;</span><br><span class="line">	x = temp;</span><br><span class="line">&#125;</span><br><span class="line">n.getValue(out a);</span><br></pre></td></tr></table></figure> 提供给输出参数的变量不需要赋值。当需要从一个参数没有指定初始值的方法中返回值时，输出参数特别有用</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1451,79 +1537,6 @@ map的键是不能修改的，但是其键对应的值是可以修改的</p>
 </tbody>
 </table>
 <h1 id="播放画面">播放画面</h1>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/05/unity%E6%91%84%E5%83%8F%E5%A4%B4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="一个废物捏">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="要roll就来！要roll就来！">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/03/05/unity%E6%91%84%E5%83%8F%E5%A4%B4/" class="post-title-link" itemprop="url">unity摄像头</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-03-05 17:34:14" itemprop="dateCreated datePublished" datetime="2022-03-05T17:34:14+08:00">2022-03-05</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-11-14 16:28:38" itemprop="dateModified" datetime="2022-11-14T16:28:38+08:00">2022-11-14</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>清除标志：设置空白区域的信息，默认为天空盒。此外还有纯色、仅深度（融合多个摄像机的内容）、不清除可选。</p>
-<p>剔除遮罩：选择需要在镜头中显示的图层</p>
-<p>投影：可以调整远近平面距离，视野，视窗大小等属性</p>
 
       
     </div>
