@@ -486,7 +486,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-11-19 11:56:53" itemprop="dateModified" datetime="2022-11-19T11:56:53+08:00">2022-11-19</time>
+        <time title="Modified: 2022-11-25 14:43:57" itemprop="dateModified" datetime="2022-11-25T14:43:57+08:00">2022-11-25</time>
       </span>
 
   
@@ -499,17 +499,30 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>将骨架置于网格中，为了便于观察，勾选 骨架属性|视图显示|在前面</p>
-<p>将网格父级设置为骨架（快捷键Ctrl + P），选则 附带自动权重<br>
-结果： 网格变成骨架的子节点<br>
-网格添加了骨架修改器<br>
-网格根据骨架添加了多个顶点组（名字自动和骨骼名字对应），比自动设置了权重<br>
+          <h1 id="骨骼绑定">骨骼绑定</h1>
+<ol type="1">
+<li><p>将<strong>骨架</strong>置于<strong>网格</strong>中，为了便于观察，勾选 <strong>骨架属性|视图显示|在前面</strong></p></li>
+<li><p>将<strong>网格父级</strong>设置为<strong>骨架</strong>（快捷键Ctrl + P），选则 <strong>附带自动权重</strong></p></li>
+<li><p>结果： <strong>网格</strong>变成<strong>骨架</strong>的<strong>子节点</strong><br>
+<strong>网格</strong>添加了<strong>骨架修改器</strong><br>
+<strong>网格</strong>根据<strong>骨架</strong>添加了多个<strong>顶点组</strong>（名字自动和骨骼名字对应），比自动设置了权重<br>
 <img src="/2022/11/18/Blender%E8%92%99%E7%9A%AE/1.png" class><br>
 <img src="/2022/11/18/Blender%E8%92%99%E7%9A%AE/2.png" class><br>
-工作原理：网格的 骨架修改器，监测到骨架移动，根据骨架移动和顶点组权重，修改顶点位置。<br>
-不满意权重分配，可在权重模式下重新绘制权重</p>
-<p>如果将网格父级设置为骨架（快捷键Ctrl + P），选则 附带空顶点组<br>
+工作原理：网格的 <strong>骨架修改器</strong>，监测到<strong>骨架</strong>移动，根据骨架移动和顶点组权重，修改顶点位置。<br>
+不满意权重分配，可在权重模式下重新绘制权重<br>
+<strong>局部绘制</strong>：现在编辑模式下启用局部视图，再切换到权重绘制模式下 点选 <strong>面遮罩</strong> 按钮，切换显示 <img src="/2022/11/18/Blender%E8%92%99%E7%9A%AE/3.png" class></p></li>
+</ol>
+<p>注：如果将网格父级设置为骨架（快捷键Ctrl + P），选则 附带空顶点组<br>
 与上面相同，唯一不同是顶点组权重为设置。</p>
+<h1 id="混合编辑模式">混合编辑模式</h1>
+<p>选择<strong>骨架</strong>在选中<strong>网格</strong>，切换到<strong>权重绘制</strong>模式 = 进入<strong>混合编辑模式</strong>（<strong>姿态编辑</strong>和<strong>权重绘制</strong>）</p>
+<h1 id="骨骼更新">骨骼更新</h1>
+<p>骨骼绑定完成后，更新骨骼名称，Blender会自动更新相应顶点组的名称</p>
+<p>骨骼绑定完成后，添加新的骨骼，需要重新整体绑定骨骼<br>
+为了防止重置原本的骨骼权重，需要<strong>锁定</strong>原骨骼顶点组。</p>
+<h1 id="分部绑定">分部绑定</h1>
+<p>同时选中多个网格，为他们绑定同一个骨架<br>
+假设骨架有3个骨骼，则每个网格都有3个顶点组，大部分顶点组为空</p>
 
       
     </div>
@@ -567,7 +580,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-11-25 14:17:45" itemprop="dateModified" datetime="2022-11-25T14:17:45+08:00">2022-11-25</time>
+        <time title="Modified: 2022-11-25 14:44:03" itemprop="dateModified" datetime="2022-11-25T14:44:03+08:00">2022-11-25</time>
       </span>
 
   
@@ -600,12 +613,6 @@
 <img src="/2022/11/18/Blender%E9%AA%A8%E9%AA%BC%E5%9F%BA%E7%A1%80/2.png" class>
 <p>快捷键Alt + P 清空父级<br>
 快捷键Ctrl + P 设置父级</p>
-<h1 id="混合编辑模式">混合编辑模式</h1>
-<p>选择<strong>骨架</strong>在选中<strong>网格</strong>，切换到<strong>权重绘制</strong>模式 = 进入<strong>混合编辑模式</strong>（<strong>姿态编辑</strong>和<strong>权重绘制</strong>）</p>
-<h1 id="骨骼更新">骨骼更新</h1>
-<p>骨骼绑定完成后，更新骨骼名称，Blender会自动更新相应顶点组的名称</p>
-<p>骨骼绑定完成后，添加新的骨骼，需要重新整体绑定骨骼<br>
-为了防止重置原本的骨骼权重，需要<strong>锁定</strong>原骨骼顶点组。</p>
 
       
     </div>
