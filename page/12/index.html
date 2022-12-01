@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">164</span>
+          <span class="site-state-item-count">166</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,252 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/28/unity%E5%AD%98%E6%A1%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="一个废物捏">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="要roll就来！要roll就来！">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/02/28/unity%E5%AD%98%E6%A1%A3/" class="post-title-link" itemprop="url">unity存档</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-02-28 14:05:02" itemprop="dateCreated datePublished" datetime="2022-02-28T14:05:02+08:00">2022-02-28</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-11-14 16:31:44" itemprop="dateModified" datetime="2022-11-14T16:31:44+08:00">2022-11-14</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="数据持续化方案">数据持续化方案</h1>
+<p>PlayerPrefs 的用法很简单。通过它，能够简单保存某些设置如玩家的图形设置、登录信息，以及需要保存的玩家其它设置。但是，PlayerPrefs 不是为了游戏存档而设计的。因此，需要用到序列化。</p>
+<h2 id="playerprefs类下的静态函数">PlayerPrefs类下的静态函数</h2>
+<table>
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>函数名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>DeleteAll</td>
+<td>从偏好中删除所有键和值。请谨慎使用。</td>
+</tr>
+<tr class="even">
+<td>DeleteKey</td>
+<td>Removes the given key from the PlayerPrefs. If the key does not exist, DeleteKey has no impact.</td>
+</tr>
+<tr class="odd">
+<td>GetFloat</td>
+<td>返回偏好设置文件中与 key 对应的值（如果存在）。</td>
+</tr>
+<tr class="even">
+<td>GetInt</td>
+<td>返回偏好设置文件中与 key 对应的值（如果存在）。</td>
+</tr>
+<tr class="odd">
+<td>GetString</td>
+<td>返回偏好设置文件中与 key 对应的值（如果存在）。</td>
+</tr>
+<tr class="even">
+<td>HasKey</td>
+<td>Returns true if the given key exists in PlayerPrefs, otherwise returns false.（可用于读档）</td>
+</tr>
+<tr class="odd">
+<td>Save</td>
+<td>将所有修改的偏好写入磁盘。（存档）</td>
+</tr>
+<tr class="even">
+<td>SetFloat</td>
+<td>Sets the float value of the preference identified by the given key. You can use PlayerPrefs.GetFloat to retrieve this value.</td>
+</tr>
+<tr class="odd">
+<td>SetInt</td>
+<td>Sets a single integer value for the preference identified by the given key. You can use PlayerPrefs.GetInt to retrieve this value.</td>
+</tr>
+<tr class="even">
+<td>SetString</td>
+<td>Sets a single string value for the preference identified by the given key. You can use PlayerPrefs.GetString to retrieve this value.</td>
+</tr>
+</tbody>
+</table>
+<h1 id="序列化与反序列化">序列化与反序列化</h1>
+<p>创建保存类，不继承组件</p>
+<p>[SerializeField] 让某些东西在检查器中显示出来</p>
+<p>在类声明之上，添加：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[System.Serializable]</span><br></pre></td></tr></table></figure>
+<p>这是一个属性，它标明了代码的一个元数据。它告诉 Unity 这个类<strong>可以</strong>被序列化，这意味着你可以将它转换成字节流并保存到磁盘文件中。</p>
+<p>该属性的使用非常广泛，它允许你在类、方法和变量上附加数据（这种数据叫做元数据）。甚至你可以定义自己的元数据并用于你的代码。序列化中使用了 [SerializeField] 和 [System.Serializable] 属性，这样在序列化对象时它知道要写入什么。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[System.Serializable]</span><br><span class="line">public class Save</span><br><span class="line">&#123;</span><br><span class="line">    //这里定义需要序列化的变量</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public Save CreatSaveGO()</span><br><span class="line">&#123;</span><br><span class="line">	Save save = new Save();</span><br><span class="line">	save.time = Data.onlyDataGO.time;//配合场景切换来看</span><br><span class="line">	return save;</span><br><span class="line">&#125;</span><br><span class="line">//之后利用二进制或JSON方法，都需要预先调用这个方法</span><br></pre></td></tr></table></figure>
+<h2 id="二进制binary-formatter">二进制Binary Formatter</h2>
+<p>序列化：新建或打开一个<strong>二进制文件</strong>，通过<strong>二进制格式器</strong>将<strong>对象</strong>写入该二进制文件</p>
+<p>反序列化：打开以及序列化的二进制文件，通过<strong>二进制格式器</strong>将文件解析成<strong>对象</strong>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">using System.Runtime.Serialization.Formatters.Binary;</span><br><span class="line"></span><br><span class="line">private void SaveByBin()</span><br><span class="line">&#123;</span><br><span class="line">    string filePath = Application.dataPath + &quot;/StreamingFile&quot; + &quot;/save.txt&quot;;</span><br><span class="line">    Save save = CreatSaveGO();//创建一个可以被序列化且含有需要保存数据的对象</span><br><span class="line">    BinaryFormatter bf = new BinaryFormatter();//创建一个二进制格式化程序</span><br><span class="line">    FileStream fileStream = File.Create(filePath);</span><br><span class="line">	//创建一个文件流</span><br><span class="line">    //参数为路径，Application.dataPath是游戏所在位置，/StreamingFile是预先自建文件夹</span><br><span class="line">    bf.Serialize(fileStream, save);</span><br><span class="line">    //用（二进制格式化程序的序列化方法）来序列化一个（可被序列号的对象）</span><br><span class="line">    fileStream.Close();</span><br><span class="line">    //关闭文件流</span><br><span class="line">&#125;</span><br><span class="line">private void LoadByBin()</span><br><span class="line">&#123;</span><br><span class="line">	string filePath = Application.dataPath + &quot;/StreamingFile&quot; + &quot;/save.txt&quot;;</span><br><span class="line">    if (!File.Exists(filePath))return;</span><br><span class="line">    BinaryFormatter bf = new BinaryFormatter();</span><br><span class="line">    FileStream fileStream = File.Open(filePath, FileMode.Open);</span><br><span class="line">    Save save = (Save)bf.Derialize(fileStream);</span><br><span class="line">    fileStream.Close();</span><br><span class="line">    Data.onlyDataGO.time = save.time;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注：string filepath = System.Environment.CurrentDirectory + "/StreamFile" + "byJson.json"</p>
+<h2 id="json">JSON</h2>
+<p>对象-&gt;JSON</p>
+<p>JSON-&gt;对象</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">using LitJson;//需要额外下载文件</span><br><span class="line">private void SaveByJson()</span><br><span class="line">&#123;</span><br><span class="line">    Save save = CreateSaveGO();</span><br><span class="line">    string filePath = Application.dataPath + &quot;/StreamingFile&quot; + &quot;/save.txt&quot;;</span><br><span class="line">    string saveJsonStr = JsonMapper.ToJson(save);</span><br><span class="line">    StreamWriter sw = new StreamWriter(filePath);</span><br><span class="line">    sw.Write(saveJsonStr);</span><br><span class="line">    sw.Close();</span><br><span class="line">&#125;</span><br><span class="line">private void LoadByJson()</span><br><span class="line">&#123;</span><br><span class="line">    string filePath = Application.dataPath + &quot;/StreamingFile&quot; + &quot;/save.txt&quot;;</span><br><span class="line">    if (!File.Exists(filePath))return;</span><br><span class="line">    StreamReader sr = new StreamReader(filePath);</span><br><span class="line">    string jsonStr = sr.ReadToEnd();</span><br><span class="line">    sr.Close();</span><br><span class="line">    Save save = JsonMapper.ToObject&lt;Save&gt;(jsonStr);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="xml">Xml</h2>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/28/unity%E5%9C%BA%E6%99%AF%E5%88%87%E6%8D%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="一个废物捏">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="要roll就来！要roll就来！">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/02/28/unity%E5%9C%BA%E6%99%AF%E5%88%87%E6%8D%A2/" class="post-title-link" itemprop="url">unity场景切换</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-02-28 13:52:17" itemprop="dateCreated datePublished" datetime="2022-02-28T13:52:17+08:00">2022-02-28</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-11-14 16:32:00" itemprop="dateModified" datetime="2022-11-14T16:32:00+08:00">2022-11-14</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="库">库</h1>
+<p>using UnityEngine.UI<br>
+using UnityEngine.Scenemanagement</p>
+<h1 id="场景切换">场景切换</h1>
+<p>在文件夹中创建多个场景，在生成设置中调整加载场景顺序<br>
+SceneManager.LoadScene(1);或<br>
+SceneManager.LoadScene("main");<br>
+//1是某个场景在生成设置中的代号</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">public class SceneStart : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    public Button btn_start, btn_end, btn_change;</span><br><span class="line">    public void Awake()</span><br><span class="line">    &#123;</span><br><span class="line">        btn_start.onClick.AddListener(() =&gt;</span><br><span class="line">        &#123;</span><br><span class="line">            SceneManager.LoadScene(&quot;main&quot;);</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        btn_change.onClick.AddListener(() =&gt;</span><br><span class="line">        &#123;</span><br><span class="line">            SceneManager.LoadScene(&quot;Change&quot;);</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        btn_end.onClick.AddListener(() =&gt;</span><br><span class="line">        &#123;       </span><br><span class="line">            #if UNITY_EDITOR</span><br><span class="line">                UnityEditor.EditorApplication.isPlaying = false;</span><br><span class="line">            #else</span><br><span class="line">                Application.Quit();</span><br><span class="line">            #endif</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="场景间数据保存">场景间数据保存</h1>
+<p>一个专门存放数据的数据节点挂在一个Data脚本，该脚本存放需要在场景间生存的变量。其余脚本会从该脚本读取变量使用。</p>
+<p>首先，从一个场景A切换到另一个场景B，会导致场景A下的所有节点被销毁。但挂有<br>
+GameObject.DontDestroyOnLoad(gameObject);<br>
+属性的节点（此处称之为节点G）在场景A被销毁后，会在下一个场景重生。<br>
+实际上，会在下一个场景场景生成一个子场景，并将G挂载在子场景上，但这不重要<br>
+问题来了，当场景B切回场景A时，A场景创建时自带一个节点G，同时从场景B中会再重生一个节点G，于是就有了两个节点G，同时这两个节点G会同时启动DontDestoryOnLoad，于是G越来越多</p>
+<p>如何解决： 在场景A创建一个初始化脚本init，脚本中写一个全局静态变量public static bool isAlready = false;<br>
+将G节点做成一个预制体，在init脚本中生成<br>
+init脚本中创建所有变量并初始化，data脚本从init获取变量，随后将isAlready置真<br>
+例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public class Init : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    //在这里定义需要在场景间保存的变量</span><br><span class="line">    public static bool initAlready;</span><br><span class="line">    public GameObject Data;</span><br><span class="line">    void Awake()</span><br><span class="line">    &#123;</span><br><span class="line">        if (!initAlready)</span><br><span class="line">        &#123;</span><br><span class="line">            //在这里为变量赋初值、默认值</span><br><span class="line">            Instantiate(Data);</span><br><span class="line">            initAlready = true;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class Data : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    //在这里定义需要在场景间保存的变量</span><br><span class="line">    void Start()</span><br><span class="line">    &#123;</span><br><span class="line">		//在这里获得数据</span><br><span class="line">        GameObject.DontDestroyOnLoad(gameObject);</span><br><span class="line">		name = &quot;DataGO&quot;;//在DontDestroyOnLoad场景下的节点名字会增加(Clone)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>注：</strong><br>
+获取数据除了Find的另一个方法 ——单例模式 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class Data : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    public static Data onlyDataScript;//定义全局静态变量，刚好对应Data对象始终只有一个且只实例化一次</span><br><span class="line">    //在这里定义需要在场景间保存的变量</span><br><span class="line">    void Start()</span><br><span class="line">    &#123;</span><br><span class="line">        public Data onlyDataScript = this;//第一次实例化赋值</span><br><span class="line">		//在这里获得数据</span><br><span class="line">        GameObject.DontDestroyOnLoad(gameObject);</span><br><span class="line">		name = &quot;DataGO&quot;;//在DontDestroyOnLoad场景下的节点名字会增加(Clone)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Data.onlyDataScript.time = 300;</span><br><span class="line">float time = Data.onlyDataScript.time;</span><br><span class="line">//使用例子</span><br></pre></td></tr></table></figure>
+<p>注：</p>
+<p>在VS2019中，右键查找所有的引用。</p>
+<h1 id="退出游戏">退出游戏</h1>
+<p>在unity编辑界面实现退出游戏 调用这个 ​```c# void QuitGame() { #if UNITY_EDITOR UnityEditor.EditorApplication.isPlaying = false; #else Application.Quit(); #endif }</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -809,175 +1055,6 @@ on click()下添加方法<br>
 <p>一、root存在左孩，找出root左树最右节点p。 1、p右孩为空，根节点路过，不算在中序遍历中，将p右连接root（这个连接不算在树的结构上），root=root-&gt;left（结束）。 2、p右孩不为空（说明来过一次了，即root左树遍历完毕），根节点的位置记录在中序遍历中，将p右置空，root=root-&gt;right（结束）。</p>
 <p>二、root不存在左孩，根节点的位置记录在中序遍历中，root=root-&gt;right（结束）</p>
 <p>本题中，在morris中序遍历中加入一个判断函数解题 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">morrisSearch</span><span class="params">(TreeNode* root)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span> (root != <span class="literal">nullptr</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (root-&gt;left != <span class="literal">nullptr</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			TreeNode* predecessor = root-&gt;left;</span><br><span class="line">			<span class="keyword">while</span> (predecessor-&gt;right != <span class="literal">nullptr</span> &amp;&amp; predecessor-&gt;right != root)</span><br><span class="line">				predecessor = predecessor-&gt;right;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (predecessor-&gt;right == <span class="literal">nullptr</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				predecessor-&gt;right = root;</span><br><span class="line">				root = root-&gt;left;</span><br><span class="line">            &#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">compare</span>(root);</span><br><span class="line">				predecessor-&gt;right = <span class="literal">nullptr</span>;</span><br><span class="line">				root = root-&gt;right;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">compare</span>(root);</span><br><span class="line">			root = root-&gt;right;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">compare</span><span class="params">(TreeNode* root)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (lastRoot != <span class="literal">nullptr</span> &amp;&amp; lastRoot-&gt;val &gt; root-&gt;val)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (x == <span class="literal">nullptr</span>)x = lastRoot;</span><br><span class="line">		y = root;</span><br><span class="line">	&#125;</span><br><span class="line">	lastRoot = root;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//x，y，lastRoot为本题专有，与Morris无关</span></span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/16/Eclipse%20Java/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="一个废物捏">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="要roll就来！要roll就来！">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/16/Eclipse%20Java/" class="post-title-link" itemprop="url">Eclipse Java</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-09-16 12:47:10" itemprop="dateCreated datePublished" datetime="2021-09-16T12:47:10+08:00">2021-09-16</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-03-22 01:04:55" itemprop="dateModified" datetime="2022-03-22T01:04:55+08:00">2022-03-22</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="eclipse-java">Eclipse Java</h1>
-<p>工作区（workspace） 工作区是一个目录，程序和程序所需要用到的资源都在workspace里，中间缓存文件也存在工作区中。</p>
-<p>项目（Project） 为一个需求所服务的代码文件，一个workspace 可以拥有个项目，而你的代码必须有归属于某个项目的，不能单独存在。</p>
-<p>第一个程序 新建项目，在项目下新建包（为了易于管理），在包下新建类，打开这个类，可以写代码了</p>
-<p>其他 关于继承和调试，遇到再说 https://blog.csdn.net/qq_36243942/article/details/81607906</p>
-<h1 id="基础格式">基础格式</h1>
-<p><strong>大小写敏感</strong></p>
-<p><strong>类名</strong>：对于所有的类来说，类名的首字母应该大写。如果类名由若干单词组成，那么每个单词的首字母应该大写，例如： <strong>MyFirstJavaClass</strong> 。</p>
-<p><strong>方法名</strong>：所有的方法名都应该以小写字母开头。如果方法名含有若干单词，则后面的每个单词首字母大写。例如：<strong>startSearch</strong></p>
-<p><strong>源文件名</strong>：源文件名必须和类名相同。当保存文件的时候，你应该使用类名作为文件名保存（切记 Java 是大小写敏感的），文件名的后缀为 <strong>.java</strong>。（如果文件名和类名不相同则会导致编译错误）。</p>
-<p><strong>主方法入口</strong>：所有的 Java 程序由 <strong>public static void main(String[] args)</strong> 方法开始执行。</p>
-<p>一个源文件中只能有一个 public 类<br>
-一个源文件可以有多个非 public 类<br>
-源文件的名称应该和 public 类的类名保持一致。<br>
-如果一个类定义在某个包中，那么 package 语句应该在源文件的首行。<br>
-如果源文件包含 import 语句，那么应该放在 package 语句和类定义之间。如果没有 package 语句，那么 import 语句应该在源文件中最前面。<br>
-import 语句和 package 语句对源文件中定义的所有类都有效。在同一源文件中，不能给不同的类不同的包声明。<br>
-一个包下多个源文件，只有一个能有main函数，可互相调用</p>
-<h1 id="常用">常用</h1>
-<p><code>System.out.println("Hello World"); // 输出 Hello World</code> <code>System.out.println( "菜鸟教程网址长度 : " + len );</code></p>
-<p>instanceof 运算符 该运算符用于操作对象实例，检查该对象是否是一个特定类型（类类型或接口类型）。 <code>boolean result =  a instanceof Car;</code></p>
-<p>增强for <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(声明语句 : 表达式)</span><br><span class="line">&#123;</span><br><span class="line">   <span class="comment">//代码句子</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>变量</p>
-<img src="/2021/09/16/Eclipse%20Java/1.png" class>
-<p>String 类型不可改 StringBuffer 类型可改</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/07/LC-BinaryTreeLevelOrderTraversal/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="一个废物捏">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="要roll就来！要roll就来！">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/07/LC-BinaryTreeLevelOrderTraversal/" class="post-title-link" itemprop="url">LC-BinaryTreeLevelOrderTraversal</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-09-07 13:12:27" itemprop="dateCreated datePublished" datetime="2021-09-07T13:12:27+08:00">2021-09-07</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-03-27 20:59:51" itemprop="dateModified" datetime="2022-03-27T20:59:51+08:00">2022-03-27</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="非顺序存储二叉树层次序遍历">非顺序存储二叉树层次序遍历</h1>
-<p>两种方法： 方法一： 对于树的每个节点多维护一个层次属性 方法二： 关键在于对普通BFS的修改，普通BFS一次从队列中取出一个元素进行搜索，现在修改为每一次取出都将队列中的所有元素取出，按顺序对这些元素搜索完毕后，再进行下一次取出</p>
-<h1 id="方法二-7594">方法二 75%，94%</h1>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; <span class="built_in">levelOrder</span>(TreeNode* root) </span><br><span class="line">    &#123;</span><br><span class="line">        vector&lt;<span class="keyword">int</span>&gt;smallAns;</span><br><span class="line">        vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;ans;</span><br><span class="line">        <span class="keyword">if</span> (!root)<span class="keyword">return</span> ans;<span class="comment">//这里TM卡了我好久</span></span><br><span class="line">        queue&lt;TreeNode*&gt;q;</span><br><span class="line">        q.<span class="built_in">push</span>(root);</span><br><span class="line">        <span class="keyword">while</span> (!q.<span class="built_in">empty</span>())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> currentSize = q.<span class="built_in">size</span>();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= currentSize; ++i)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (q.<span class="built_in">front</span>()-&gt;left)q.<span class="built_in">push</span>(q.<span class="built_in">front</span>()-&gt;left);</span><br><span class="line">                <span class="keyword">if</span> (q.<span class="built_in">front</span>()-&gt;right)q.<span class="built_in">push</span>(q.<span class="built_in">front</span>()-&gt;right);</span><br><span class="line">                smallAns.<span class="built_in">push_back</span>(q.<span class="built_in">front</span>()-&gt;val);</span><br><span class="line">                q.<span class="built_in">pop</span>();</span><br><span class="line">            &#125;</span><br><span class="line">            ans.<span class="built_in">push_back</span>(smallAns);</span><br><span class="line">            smallAns.<span class="built_in">clear</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
       
     </div>
