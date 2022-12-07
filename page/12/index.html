@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">168</span>
+          <span class="site-state-item-count">169</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,125 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/28/unity%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%8D%8F%E7%A8%8BIEnumerator/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="水之黑犀铠甲第二代召唤人">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="要roll就来！要roll就来！">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/02/28/unity%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%8D%8F%E7%A8%8BIEnumerator/" class="post-title-link" itemprop="url">unity多线程与协程IEnumerator</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-02-28 19:58:11" itemprop="dateCreated datePublished" datetime="2022-02-28T19:58:11+08:00">2022-02-28</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-11-14 16:25:29" itemprop="dateModified" datetime="2022-11-14T16:25:29+08:00">2022-11-14</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="多线程">多线程</h1>
+<p>创建一个子线程。在unity中国子线程许多操作都是被禁止的，但仍可用于数据处理、网络信息的传输，读写文件操作和复杂的逻辑计算等。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">using System.Threading;</span><br><span class="line">using UnityEngine;</span><br><span class="line"></span><br><span class="line">public class ThreadTest:MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    void Start()</span><br><span class="line">    &#123;</span><br><span class="line">        ThreadStart ts = new ThreadStart(threadTest);//创建子线程</span><br><span class="line">        Thread thread = new Thread(ts);//创建子线程</span><br><span class="line">        thread.Start();//开始子线程</span><br><span class="line">	&#125;</span><br><span class="line">    void threadTest()</span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log(&quot;线程中&quot;);</span><br><span class="line">        Thread.Sleep(5000);//子线程休眠</span><br><span class="line">        Debug.Log(&quot;5秒过去了&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>比起多线程，unity更推荐使用协程来进行一些异步操作，但协程本质上是单线程。主线程停下会进入协程执行代码，知道协程宣布挂起，然后后主线程会回到主代码执行，协程则在挂起状态等待，知道等待时间结束。</p>
+<h1 id="协程注意事项">协程注意事项</h1>
+<p>协程在当前主程序运行时,开启另一段逻辑处理,协程主要用于代码等待</p>
+<p>协程的方法名最前面最好加上大写的IE表示这是一个协程</p>
+<p>如果协程中有嵌套协程的时候,关闭当前协程不会影响嵌套的协程,只会关闭当前协程,嵌套协程继续执行</p>
+<p>协程所在脚本关闭的时候协程不会停止,但是协程所在的游戏对象删除的时候协程将会被系统回收</p>
+<p>协程的返回值必须是IEnumerator</p>
+<p>协程的内部必须体验Yield return 值</p>
+<p>协程可以重载</p>
+<p>协程可以多次调用,但是不可以关闭后继续运行,只能重新开启协程</p>
+<p>协程可以嵌套</p>
+<p>协程的参数不能使用ref 和out 修饰</p>
+<p>协程在执行完内部所有代码的时候会退出协程</p>
+<h1 id="关于yield-return">关于yield return</h1>
+<p>yiled return 0;<br>
+0可以换成任意的int类型的值,都是当前暂停一帧,从下一帧开始执行</p>
+<p>yiled return 协程;<br>
+yiled return 后面可以跟一个协程,当执行到该行代码的时候执行yiled return 后面的协程,如果下面还有代码在执行完该协程的时候,回来继续执行。</p>
+<p>yiled return new WaitForSeconds(时间);<br>
+时间可以随意设置,该方法主要作用是等待几秒钟后执行,yiled return 后面的代码</p>
+<p>yiled return 后面可以跟一个类,等等根据自己的需要进行使用</p>
+<p>例 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">StartCoroutine(&quot;Injured&quot;, 2f);</span><br><span class="line">IEnumerator Injured(float FlashTime)</span><br><span class="line">&#123;</span><br><span class="line">    yield return new WaitForSeconds(0.125f);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="开启和关闭协程">开启和关闭协程</h1>
+<p><strong>1.直接使用协程方法名</strong><br>
+开启协程 StartCoroutine(“协程方法名 “);<br>
+关闭协程 StopCoroutine(“协程方法名 “);</p>
+<p><strong>2.使用协程方法名加参数</strong><br>
+开启协程 StartCoroutine(“协程方法名”,参数);<br>
+关闭协程 StopCoroutine(“协程方法名”);<br>
+//该方法只适用于协程只有一个参数的时候</p>
+<p><strong>3.使用方法</strong><br>
+开启协程 StartCoroutine(协程方法名(参数));<br>
+关闭协程 StopCoroutine(协程方法名(参数));<br>
+//该方法中的参数个数随意<br>
+//该方法不能关闭该协程,但是开启可以使用<br>
+使用方法参数正确开启关闭协程:<br>
+&lt;1&gt;定义一个IEnumerator 类型的全局变量StopIE<br>
+public IEnumerator StopIE;<br>
+&lt;2&gt;接收 协程方法名(参数)<br>
+StopIE = 协程方法名(参数);<br>
+&lt;3&gt;开启协程<br>
+在这里开启协程可以直接用变量代替方法名加参数<br>
+StartCoroutine(StopIE);<br>
+&lt;4&gt;关闭协程<br>
+在这里同样<br>
+StopCoroutine(StopIE);</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1129,97 +1248,6 @@ on click()下添加方法<br>
 <p>结构体在定义时左右子树也没有赋值 建树过程中在给树赋值的时候，完全没有对左右子树进行操作 所以之后访问树越界</p>
 <p>所以应该在定义时给子树指向赋初值，或建树过程中给树赋值时同步对左右子树进行赋值，可赋值成null</p>
 <p>现在我知道了c++结构体中可以包含函数，这些操作都可以同一在函数内。 例： <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">TreeNode</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    TreeNode* left;</span><br><span class="line">    TreeNode* right;</span><br><span class="line">    <span class="built_in">TreeNode</span>() : <span class="built_in">val</span>(<span class="number">0</span>), <span class="built_in">left</span>(<span class="literal">nullptr</span>), <span class="built_in">right</span>(<span class="literal">nullptr</span>) &#123;&#125;</span><br><span class="line">    <span class="built_in">TreeNode</span>(<span class="keyword">int</span> x) : <span class="built_in">val</span>(x), <span class="built_in">left</span>(<span class="literal">nullptr</span>), <span class="built_in">right</span>(<span class="literal">nullptr</span>) &#123;&#125;</span><br><span class="line">    <span class="built_in">TreeNode</span>(<span class="keyword">int</span> x, TreeNode* left, TreeNode* right) : <span class="built_in">val</span>(x), <span class="built_in">left</span>(left), <span class="built_in">right</span>(right) &#123;&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/30/cpp%E6%95%B0%E5%AD%97%E5%92%8C%E5%AD%97%E7%AC%A6%E6%95%B0%E5%AD%97/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="水之黑犀铠甲第二代召唤人">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="要roll就来！要roll就来！">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/30/cpp%E6%95%B0%E5%AD%97%E5%92%8C%E5%AD%97%E7%AC%A6%E6%95%B0%E5%AD%97/" class="post-title-link" itemprop="url">cpp数字和字符数字</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-10-30 16:53:21" itemprop="dateCreated datePublished" datetime="2021-10-30T16:53:21+08:00">2021-10-30</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-11-14 17:19:16" itemprop="dateModified" datetime="2022-11-14T17:19:16+08:00">2022-11-14</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="atof">atof()</h1>
-<p>头文件#include&lt;stdlib.h&gt;/include<cstdlib></cstdlib></p>
-<p>原型：double atof(const char *nptr);</p>
-<p>作用：<strong>把字符串转换成浮点数</strong>，直至遇到第一个空格。</p>
-<h1 id="itoa">itoa()</h1>
-<p>头文件#include&lt;stdlib.h&gt;/include<cstdlib></cstdlib></p>
-<p>原型：char* itoa(int value, char* string, int radix);</p>
-<p>其中，value是要转换的整数值，string是存储转换后值的字符数组，radix代表进制，radix=10就是十进制，radix=2就是二进制。</p>
-<p>作用：<strong>将整数转换为字符串</strong>。</p>
-<p>下面是我在使用这个函数时遇到的一些问题，</p>
-<ol type="1">
-<li><p>第二个参数只能是char*,不能是string；</p></li>
-<li><p>第二个参数在使用之前必须提前分配存储空间，在C++中就是new一块内存。</p></li>
-</ol>
-<h1 id="atoi与stoi">atoi()与stoi()</h1>
-<p>头文件: #include&lt;stdlib.h&gt;/#include<cstdlib></cstdlib></p>
-<p>原型：int atoi(const char *nptr);</p>
-<p>作用：<strong>把字符串转换成整型数</strong>。如果第一个非空格字符不存在或者不是数字也不是正负号则返回零，否则开始做类型转换，之后检测到非数字或结束符 \0 时停止转换，返回整型数。atoi()不会做范围检查，如果超出范围的话，超出上界，则输出上界，超出下界，则输出下界；stoi()会做范围检查，默认范围是在int的范围内的，如果超出范围的话则会runtime error！</p>
-<h1 id="c_str">c_str()</h1>
-<p>头文件：include<cstring></cstring></p>
-<p>作用：将string对象，转化为char*对象。它是String类中的一个函数，它返回当前字符串的首字符地址。</p>
 
       
     </div>
