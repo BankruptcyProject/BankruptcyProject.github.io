@@ -21,9 +21,9 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 <meta property="og:type" content="website">
-<meta property="og:title" content="要roll就来！要roll就来！">
+<meta property="og:title" content="你这个属于是癔症">
 <meta property="og:url" content="http://example.com/index.html">
-<meta property="og:site_name" content="要roll就来！要roll就来！">
+<meta property="og:site_name" content="你这个属于是癔症">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="水之黑犀铠甲第二代召唤人">
 <meta name="twitter:card" content="summary">
@@ -36,7 +36,7 @@
 <script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"en","comments":"","permalink":"","path":"index.html","title":""}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>要roll就来！要roll就来！</title>
+<title>你这个属于是癔症</title>
   
 
 
@@ -62,7 +62,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">要roll就来！要roll就来！</h1>
+      <h1 class="site-title">你这个属于是癔症</h1>
       <i class="logo-line"></i>
     </a>
   </div>
@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">169</span>
+          <span class="site-state-item-count">171</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -161,6 +161,156 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/03/02/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="水之黑犀铠甲第二代召唤人">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="你这个属于是癔症">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/03/02/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="post-title-link" itemprop="url">正则表达式</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2023-03-02 10:36:38 / Modified: 16:52:18" itemprop="dateCreated datePublished" datetime="2023-03-02T10:36:38+08:00">2023-03-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>正则表达式(regular expression)描述了一种字符串匹配的模式（pattern）<br>
+检查一个串是否含有某种子串<br>
+将匹配的子串替换<br>
+从某个串中取出符合某个条件的子串</p>
+<p><code>^</code> 为匹配输入字符串的开始位置。</p>
+<p><code>[0-9]+</code> 匹配多个数字， <code>[0-9]</code> 匹配单个数字，<code>+</code> 匹配一个或者多个。</p>
+<p><code>abc$</code>匹配字母 <code>abc</code> 并以 <code>abc</code> 结尾，<code>$</code> 为匹配输入字符串的结束位置。</p>
+<p>只允许用户名包含字符、数字、下划线和连接字符 <code>-</code>，并设置用户名的长度3到15，我们就可以使用以下正则表达式来设定<br>
+<code>^[a-z0-9_-]&#123;3,15&#125;$</code><br>
+以上的正则表达式可以匹配 runoob、runoob1、run-oob、run_oob， 但不匹配 ru，因为它包含的字母太短了，小于 3 个无法匹配。也不匹配 runoob$, 因为它包含特殊字符。</p>
+<p><code>runoo+b</code>，可以匹配 <strong>runoob、runooob、runoooooob</strong> 等，<code>+</code> 号代表前面的字符必须至少出现一次（1次或多次）。</p>
+<p><code>runoo\*b</code>，可以匹配 <strong>runob、runoob、runoooooob</strong> 等，<code>*</code> 号代表前面的字符可以不出现，也可以出现一次或者多次（0次、或1次、或多次）。</p>
+<p><code>colou?r</code> 可以匹配 <strong>color</strong> 或者 <strong>colour</strong>，<code>?</code> 问号代表前面的字符最多只可以出现一次（0次或1次）。</p>
+<p>匹配所有。<code>\s</code> 是匹配所有空白符，包括换行，<code>\S</code> 非空白符，不包括换行。</p>
+<p>匹配字母、数字、下划线。<code>w</code>等价于 <code>[A-Za-z0-9_]</code></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/12/07/Blender%E6%8F%92%E4%BB%B6rigify/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="水之黑犀铠甲第二代召唤人">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="你这个属于是癔症">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/12/07/Blender%E6%8F%92%E4%BB%B6rigify/" class="post-title-link" itemprop="url">Blender插件rigify</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-12-07 18:17:15" itemprop="dateCreated datePublished" datetime="2022-12-07T18:17:15+08:00">2022-12-07</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-12-08 09:32:29" itemprop="dateModified" datetime="2022-12-08T09:32:29+08:00">2022-12-08</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/12/07/Blender%E9%AA%A8%E9%AA%BC%E5%B1%82/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -170,7 +320,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="要roll就来！要roll就来！">
+      <meta itemprop="name" content="你这个属于是癔症">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -238,7 +388,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="要roll就来！要roll就来！">
+      <meta itemprop="name" content="你这个属于是癔症">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -319,7 +469,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="要roll就来！要roll就来！">
+      <meta itemprop="name" content="你这个属于是癔症">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -397,7 +547,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="要roll就来！要roll就来！">
+      <meta itemprop="name" content="你这个属于是癔症">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -478,7 +628,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="要roll就来！要roll就来！">
+      <meta itemprop="name" content="你这个属于是癔症">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -543,7 +693,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="要roll就来！要roll就来！">
+      <meta itemprop="name" content="你这个属于是癔症">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -613,7 +763,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="要roll就来！要roll就来！">
+      <meta itemprop="name" content="你这个属于是癔症">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -684,7 +834,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="要roll就来！要roll就来！">
+      <meta itemprop="name" content="你这个属于是癔症">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -751,172 +901,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/19/Blender%E5%A7%BF%E6%80%81/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="水之黑犀铠甲第二代召唤人">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="要roll就来！要roll就来！">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/11/19/Blender%E5%A7%BF%E6%80%81/" class="post-title-link" itemprop="url">Blender姿态</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-11-19 15:33:36 / Modified: 19:10:05" itemprop="dateCreated datePublished" datetime="2022-11-19T15:33:36+08:00">2022-11-19</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>静置位置 Rest Position：初始位置<br>
-姿态位置 Pose Position</p>
-<p>选中骨架，切换到姿态编辑模式<br>
-骨骼轴心：位于骨骼首段；骨骼轴向：沿着骨骼方向为Y轴</p>
-<p>继承旋转、继承缩放：该骨骼会不会受到其父骨骼旋转、缩放的影响，一般勾选。</p>
-<p>正向动力学：父节点先动，父节点带动子节点</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/18/Blender%E8%92%99%E7%9A%AE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="水之黑犀铠甲第二代召唤人">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="要roll就来！要roll就来！">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/11/18/Blender%E8%92%99%E7%9A%AE/" class="post-title-link" itemprop="url">Blender蒙皮</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-11-18 19:09:21" itemprop="dateCreated datePublished" datetime="2022-11-18T19:09:21+08:00">2022-11-18</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-11-25 14:43:57" itemprop="dateModified" datetime="2022-11-25T14:43:57+08:00">2022-11-25</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="骨骼绑定">骨骼绑定</h1>
-<ol type="1">
-<li><p>将<strong>骨架</strong>置于<strong>网格</strong>中，为了便于观察，勾选 <strong>骨架属性|视图显示|在前面</strong></p></li>
-<li><p>将<strong>网格父级</strong>设置为<strong>骨架</strong>（快捷键Ctrl + P），选则 <strong>附带自动权重</strong></p></li>
-<li><p>结果： <strong>网格</strong>变成<strong>骨架</strong>的<strong>子节点</strong><br>
-<strong>网格</strong>添加了<strong>骨架修改器</strong><br>
-<strong>网格</strong>根据<strong>骨架</strong>添加了多个<strong>顶点组</strong>（名字自动和骨骼名字对应），比自动设置了权重<br>
-<img src="/2022/11/18/Blender%E8%92%99%E7%9A%AE/1.png" class><br>
-<img src="/2022/11/18/Blender%E8%92%99%E7%9A%AE/2.png" class><br>
-工作原理：网格的 <strong>骨架修改器</strong>，监测到<strong>骨架</strong>移动，根据骨架移动和顶点组权重，修改顶点位置。<br>
-不满意权重分配，可在权重模式下重新绘制权重<br>
-<strong>局部绘制</strong>：现在编辑模式下启用局部视图，再切换到权重绘制模式下 点选 <strong>面遮罩</strong> 按钮，切换显示 <img src="/2022/11/18/Blender%E8%92%99%E7%9A%AE/3.png" class></p></li>
-</ol>
-<p>注：如果将网格父级设置为骨架（快捷键Ctrl + P），选则 附带空顶点组<br>
-与上面相同，唯一不同是顶点组权重为设置。</p>
-<h1 id="混合编辑模式">混合编辑模式</h1>
-<p>选择<strong>骨架</strong>在选中<strong>网格</strong>，切换到<strong>权重绘制</strong>模式 = 进入<strong>混合编辑模式</strong>（<strong>姿态编辑</strong>和<strong>权重绘制</strong>）</p>
-<h1 id="骨骼更新">骨骼更新</h1>
-<p>骨骼绑定完成后，更新骨骼名称，Blender会自动更新相应顶点组的名称</p>
-<p>骨骼绑定完成后，添加新的骨骼，需要重新整体绑定骨骼<br>
-为了防止重置原本的骨骼权重，需要<strong>锁定</strong>原骨骼顶点组。</p>
-<h1 id="分部绑定">分部绑定</h1>
-<p>同时选中多个网格，为他们绑定同一个骨架<br>
-假设骨架有3个骨骼，则每个网格都有3个顶点组，大部分顶点组为空</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 </div>
@@ -928,7 +914,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

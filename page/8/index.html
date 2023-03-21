@@ -21,9 +21,9 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 <meta property="og:type" content="website">
-<meta property="og:title" content="要roll就来！要roll就来！">
+<meta property="og:title" content="你这个属于是癔症">
 <meta property="og:url" content="http://example.com/page/8/index.html">
-<meta property="og:site_name" content="要roll就来！要roll就来！">
+<meta property="og:site_name" content="你这个属于是癔症">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="水之黑犀铠甲第二代召唤人">
 <meta name="twitter:card" content="summary">
@@ -36,7 +36,7 @@
 <script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"en","comments":"","permalink":"","path":"page/8/index.html","title":""}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>要roll就来！要roll就来！</title>
+<title>你这个属于是癔症</title>
   
 
 
@@ -62,7 +62,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">要roll就来！要roll就来！</h1>
+      <h1 class="site-title">你这个属于是癔症</h1>
       <i class="logo-line"></i>
     </a>
   </div>
@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">169</span>
+          <span class="site-state-item-count">171</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -161,6 +161,264 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/08/Mirror_Network-Transform/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="水之黑犀铠甲第二代召唤人">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="你这个属于是癔症">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/09/08/Mirror_Network-Transform/" class="post-title-link" itemprop="url">Mirror_Network Transform</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-09-08 19:28:36" itemprop="dateCreated datePublished" datetime="2022-09-08T19:28:36+08:00">2022-09-08</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-11-14 16:57:48" itemprop="dateModified" datetime="2022-11-14T16:57:48+08:00">2022-11-14</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>The Network Transform component synchronizes the position, rotation, and scale of networked game objects across the network.</p>
+<p>该组件需要Network Identity组件</p>
+<p>默认情况下Network Transform有服务器权限，除非专门勾选客户端选项。<br>
+客户端权限适用于玩家对象以及专门分配给客户端的非玩家对象，但仅适用于该组件。启用此功能后，位置更改将从客户端发送到服务器。</p>
+<p>压缩勾选框Compression压缩传送数据，压缩四元数适合3d不适合2d</p>
+<p>Authority：操作权限。如果Client Authority被勾上，那么<strong>只有在客户端改变物体Transform时才会同步Transform，且服务端无权改变物体的Transform；反之亦然。</strong>从反作弊的角度来看，通常不勾上是更好的选择，即只有服务端有权限改变物体的Transform</p>
+<p>Sync Position / Sync Rotation：是否同步位置/旋转。如果不勾上的话，如果服务端改变的物体的位置/旋转，客户端将不会有反映。</p>
+<p>Interpolation：是否进行补间动画。这个意思是，通常由于网络延迟等问题客户端可能出现丢包的情况，即没有来得及/能够同步服务端的位置/旋转。如果不勾上的话，物体会在客户端这里发射”瞬移“的情况。如果勾上的话，物体将会平滑地移动过去。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/08/Mirror_Network-Manager/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="水之黑犀铠甲第二代召唤人">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="你这个属于是癔症">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/09/08/Mirror_Network-Manager/" class="post-title-link" itemprop="url">Mirror_Network Manager</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-09-08 15:50:33" itemprop="dateCreated datePublished" datetime="2022-09-08T15:50:33+08:00">2022-09-08</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-11-14 16:56:42" itemprop="dateModified" datetime="2022-11-14T16:56:42+08:00">2022-11-14</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>用于管理（游戏状态、角色生成位置、场景）。</p>
+<p>多人联机的核心组件，创建一个空对象挂上该组件。</p>
+<p>同时Network Manager组件不能于Network Identity组件共存于一个对象上。因为场景在进行本地加载时会禁用带有Network Identity组件的对象。</p>
+<p>有Client模式、Server模式、Host模式。使用HUD可以直接选择，如果是自写UI需要在代码中选择模式<br>
+NetworkManager.StartClient<br>
+NetworkManager.StartServer<br>
+NetworkManager.StartHost<br>
+在客户端模式下，游戏会试图连杀NetworkManager中设置的ip和端口。在主机或服务器模式下，游戏会监听NetworkManager中设置的ip和端口。</p>
+<h1 id="spwan">Spwan</h1>
+<p>拖入本地控制的玩家预制体，该预制体需要有Network Identity。离线是将自动摧毁该对象。</p>
+<p>除了玩家预制体外，还需将有其他有网络标识的对象注册进列表。<br>
+也可以通过代码注册，用ClientScene.RegisterPrefab方法.</p>
+<p>一个场景有且只能有一个Network Manager。Network Manager有DDOL选项，勾选以贯穿所有场景。同时Network Manager身上注册的所有生成预制体也会跟着到下一个场景生成。如果勾选没有DDOL选项，则需要在每个场景上挂一个NetworkManager，并且每一个NetworkManager上要重新注册生成预制体。</p>
+<p>生成位置 Choose Random to spawn players at randomly chosen startPosition options.<br>
+Choose Round Robin to cycle through startPosition options in a set list.<br>
+Network Start Postion组件可以自定义生成位置相关设置</p>
+<h1 id="scene-management">Scene Management</h1>
+<p>当服务器或主机启动，Online场景会在所有客户端上加载。networkSceneName属性中存有被加载场景的名字。<br>
+断线时offine场景会被加载。<br>
+在代码中 ServerChangeScene方法可以改变场景，此时所有客户端都会跟着一起切换场景。ServerChangeScene的值会被更新</p>
+<img src="/2022/09/08/Mirror_Network-Manager/1.png" class>
+<h1 id="常用api">常用API</h1>
+<table>
+<colgroup>
+<col style="width: 21%">
+<col style="width: 78%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">属性名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">singleton</td>
+<td>The one and only NetworkManager（可以在别的脚本中通过NetworkManager.singleton调用）</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">numPlayers</td>
+<td>Number of active player objects across all connections on the server.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">networkSceneName</td>
+<td>The name of the current network scene.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th>方法名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/08/Mirror%E5%85%A5%E9%97%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -170,7 +428,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="要roll就来！要roll就来！">
+      <meta itemprop="name" content="你这个属于是癔症">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -293,7 +551,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="要roll就来！要roll就来！">
+      <meta itemprop="name" content="你这个属于是癔症">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -372,7 +630,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="要roll就来！要roll就来！">
+      <meta itemprop="name" content="你这个属于是癔症">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -476,7 +734,7 @@ SyncHuman继承于BaseHuman控制异地人物。</p>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="要roll就来！要roll就来！">
+      <meta itemprop="name" content="你这个属于是癔症">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -550,7 +808,7 @@ SyncHuman继承于BaseHuman控制异地人物。</p>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="要roll就来！要roll就来！">
+      <meta itemprop="name" content="你这个属于是癔症">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -628,7 +886,7 @@ Select性能相对于Poll有提升，代码逻辑也不复杂，但性能相对�
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="要roll就来！要roll就来！">
+      <meta itemprop="name" content="你这个属于是癔症">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -710,7 +968,7 @@ microSeconds：等待回应的时间，以微妙为单位，如果该参数为-1
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="要roll就来！要roll就来！">
+      <meta itemprop="name" content="你这个属于是癔症">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -785,7 +1043,7 @@ microSeconds：等待回应的时间，以微妙为单位，如果该参数为-1
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="要roll就来！要roll就来！">
+      <meta itemprop="name" content="你这个属于是癔症">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -843,167 +1101,8 @@ microSeconds：等待回应的时间，以微妙为单位，如果该参数为-1
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/01/Socket%E7%8A%B6%E6%80%81%E6%A3%80%E6%B5%8BPoll/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="水之黑犀铠甲第二代召唤人">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="要roll就来！要roll就来！">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/01/Socket%E7%8A%B6%E6%80%81%E6%A3%80%E6%B5%8BPoll/" class="post-title-link" itemprop="url">Socket状态检测Poll</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-09-01 00:00:42" itemprop="dateCreated datePublished" datetime="2022-09-01T00:00:42+08:00">2022-09-01</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-11-14 16:47:59" itemprop="dateModified" datetime="2022-11-14T16:47:59+08:00">2022-11-14</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>解决阻塞的方法有异步和Poll两种，异步写在之前的博客，Poll比起异步代码结构更简单清晰。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public bool Poll(</span><br><span class="line">	int microSeconds,</span><br><span class="line">	SelectMode mode</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p>microSeconds：等待回应的时间，以微秒为单位。如果该参数为-1，表示一直等待；如果为0，表示非阻塞。</p>
-<p>mode：有三种可选模式<br>
-SelectRead：如果Socket可读（可以接收数据），返回true，反则返回false<br>
-SelectWrite：如果Socket可写，返回true，否则返回false<br>
-SelectError：如果连接失败，返回true，否则返回false</p>
-<p>Poll方法将会在指定时段（以微秒为单位）内阻止执行，如果希望无限期地等待响应，可将microSeconds设置为一个负整数；如果希望不阻塞，设置为0。<br>
-Poll方法会检查Socket的状态。<br>
-指定参数为SelectMode.SelectRead，则可确定Socket是否为可读；<br>
-指定参数为SelectMode.SelectWrite，可确定Socket是否为可写；<br>
-指定参数为SelectMode.SelectError，可以检测错误条件。</p>
-<p><strong>Poll服务端</strong> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">初始化listenfd</span><br><span class="line">初始化clients列表</span><br><span class="line">while(true)</span><br><span class="line">&#123;</span><br><span class="line">	if(listenfd可读) Accept;</span><br><span class="line">	for(遍历clients列表)</span><br><span class="line">	&#123;</span><br><span class="line">		if(这个客户端可读)	消息处理;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>具体代码见案例-Poll</p>
-<p>尽管逻辑清晰，但Poll服务端的弊端也很明显，若没有收到客户端数据，服务端一直在循环，浪费了CPU。Poll客户端也是同理，没有数据的时候也总在Update中检测数据，同样是一种浪费。从性能角度考虑，还有不小的改进空间。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/31/ip%E5%9B%B0%E5%A2%83/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="水之黑犀铠甲第二代召唤人">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="要roll就来！要roll就来！">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/08/31/ip%E5%9B%B0%E5%A2%83/" class="post-title-link" itemprop="url">ip困境</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-08-31 01:05:01" itemprop="dateCreated datePublished" datetime="2022-08-31T01:05:01+08:00">2022-08-31</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-09-08 13:44:26" itemprop="dateModified" datetime="2022-09-08T13:44:26+08:00">2022-09-08</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>我该如何把游戏服务器放到公网上</p>
-<p>方法一：申请到ipv4公网ip</p>
-<p>方法二：使用手机热点流量的ipv6，同时让测试人员也使用他们的手机热点流量</p>
-<p>方法三：做内网穿透，通过某个软件获得公网域名，然后在代码中通过解析域名获得ip地址（或者通过内网穿透软件直接申请到一个公网ip和ep）</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 </div>
@@ -1015,7 +1114,7 @@ Poll方法会检查Socket的状态。<br>
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
