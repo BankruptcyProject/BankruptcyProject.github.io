@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">171</span>
+          <span class="site-state-item-count">172</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,111 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/13/Blender%E6%AF%9B%E5%8F%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="水之黑犀铠甲第二代召唤人">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="你这个属于是癔症">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/11/13/Blender%E6%AF%9B%E5%8F%91/" class="post-title-link" itemprop="url">Blender毛发</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-11-13 23:26:06" itemprop="dateCreated datePublished" datetime="2022-11-13T23:26:06+08:00">2022-11-13</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-11-14 21:01:57" itemprop="dateModified" datetime="2022-11-14T21:01:57+08:00">2022-11-14</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="难点">难点</h1>
+<h2 id="毛发段数经验">毛发段数（经验）：</h2>
+<p>长毛发，8~10<br>
+中等毛发，5左右<br>
+短毛发，2~3</p>
+<h2 id="毛发形状">毛发形状</h2>
+<p>毛发的形状需要切换到渲染模式才能观察到，毛发形状实际上只有一个面，但这个面始终面朝摄像机</p>
+<h2 id="着色">着色</h2>
+<p>毛发着色使用毛发bsdf</p>
+<h2 id="子级">子级</h2>
+<p>用二级毛发代替一级毛发的位置<br>
+毛发添加子级才能有更细致的效果</p>
+<p><strong>简单形子级</strong>：以一级毛发位置为中心，分片生长（不常用）<br>
+<strong>插值型子级</strong>：以一级毛发位置为中心，均匀生长</p>
+<p><strong>长度</strong>：一级毛发长度缩小 <strong>阈值</strong>：多少二级毛发保持不变</p>
+<p><strong>簇集</strong>：<br>
+让毛发成簇生长。<br>
+让二级毛发上端或者下端向一级毛发位置收缩、聚集。</p>
+<p><strong>糙度：</strong><br>
+让毛发乱一些<br>
+1. <strong>均衡、尺寸</strong>：均衡值一般很小，是毛发整体表现出波浪起伏，尺寸调节波浪的频率<br>
+2. <strong>端点、形状</strong>：端点平移毛发上端的位置，形状将毛发分二到三段统一向内或向外折叠弯曲，两者配合使用达到蓬松的效果<br>
+3. <strong>随机、尺寸、阈值</strong>：随机数值较小时效果为使得每根二级毛发朝着各自随机方向多段折叠，阈值为不受随机影响的比例。有凌乱效果。<br>
+4. <strong>均衡</strong>和<strong>端点</strong>的区别在于：均衡扭曲是保持毛发的长度不变，故改变了毛发整体的高度。端点扭曲时固定保持毛发整体高度不变，变相增长了毛发长度</p>
+<p><strong>扭结</strong>：<br>
+指定毛发的扭曲</p>
+<h1 id="毛发梳理">毛发梳理</h1>
+<p>切换到粒子编辑模式<br>
+<img src="/2022/11/13/Blender%E6%AF%9B%E5%8F%91/1.png" class></p>
+<p>只能梳理一级毛发，梳理完成后自动添加烘焙，无法在对一级毛发修改，只能修改二级毛发。</p>
+<p><strong>梳理</strong>工具与<strong>蓬松</strong>工具效果相反。<br>
+<strong>光滑</strong>工具将毛发沿发根位置捋直，但不改变发根方向。</p>
+<h1 id="毛发粒子">毛发粒子</h1>
+<p>用毛发粒子模拟静态粒子<br>
+<img src="/2022/11/13/Blender%E6%AF%9B%E5%8F%91/2.png" class></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -856,72 +961,6 @@ home 快捷键选中显示曲线<br>
 <p><strong>编辑动作片段</strong><br>
 <img src="/2022/11/07/Blender%E5%8A%A8%E7%94%BB/17.png" class><br>
 选中动作片段，按Tab</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/06/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E7%A7%AF%E6%B0%B4%E5%9C%B0%E9%9D%A2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="水之黑犀铠甲第二代召唤人">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="你这个属于是癔症">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/11/06/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E7%A7%AF%E6%B0%B4%E5%9C%B0%E9%9D%A2/" class="post-title-link" itemprop="url">（练习）积水地面</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-11-06 21:14:07 / Modified: 22:16:29" itemprop="dateCreated datePublished" datetime="2022-11-06T21:14:07+08:00">2022-11-06</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <img src="/2022/11/06/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E7%A7%AF%E6%B0%B4%E5%9C%B0%E9%9D%A2/1.png" class>
-<img src="/2022/11/06/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E7%A7%AF%E6%B0%B4%E5%9C%B0%E9%9D%A2/2.png" class>
 
       
     </div>

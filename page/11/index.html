@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">171</span>
+          <span class="site-state-item-count">172</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,74 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/14/LC-MergeKSortedLists/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="水之黑犀铠甲第二代召唤人">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="你这个属于是癔症">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/03/14/LC-MergeKSortedLists/" class="post-title-link" itemprop="url">LC-MergeKSortedLists</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-03-14 16:51:45 / Modified: 17:53:34" itemprop="dateCreated datePublished" datetime="2022-03-14T16:51:45+08:00">2022-03-14</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="第一次手打21-39">第一次手打(21%, 39%)</h1>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">public class Solution</span><br><span class="line">&#123;</span><br><span class="line">	public ListNode MergeKLists(ListNode[] lists)</span><br><span class="line">	&#123;</span><br><span class="line">		ListNode ansHead = new ListNode();</span><br><span class="line">		ListNode ans = ansHead;</span><br><span class="line">		int count = lists.Count();//链表个数</span><br><span class="line">		while (true)</span><br><span class="line">		&#123;</span><br><span class="line">			int smallest = 99999;</span><br><span class="line">			int mark = -1;</span><br><span class="line">			for (int i = 0; i &lt;= count - 1; ++i)</span><br><span class="line">			&#123;</span><br><span class="line">				if (lists[i] == null) continue;</span><br><span class="line">				if (lists[i].val &lt;= smallest)</span><br><span class="line">				&#123;</span><br><span class="line">					smallest = lists[i].val;</span><br><span class="line">					mark = i;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			if (mark == -1) break;</span><br><span class="line">			ans = ans.next = new ListNode();</span><br><span class="line">			ans.val = lists[mark].val;</span><br><span class="line">			lists[mark] = lists[mark].next;</span><br><span class="line">		&#125;</span><br><span class="line">		return ansHead.next;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>第一次用C#语言写算法题，效率很低，但总算写出来了。首先是用类来描述结点，注意记录结点头，注意类在内存的位置和变量的引用关系。链表结尾置空注意。这次手打基本可以看作是暴力。</p>
+<p>分析时间复杂度为O(kn)，空间复杂度为O(n)</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1485,165 +1553,6 @@ map的键是不能修改的，但是其键对应的值是可以修改的</p>
 <p>环境反射</p>
 <p>雾</p>
 <p>光晕</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/04/unity%E7%B3%BB%E7%BB%9F%E8%84%9A%E6%9C%AC%E4%B8%8E%E5%B8%B8%E7%94%A8API/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="水之黑犀铠甲第二代召唤人">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="你这个属于是癔症">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/03/04/unity%E7%B3%BB%E7%BB%9F%E8%84%9A%E6%9C%AC%E4%B8%8E%E5%B8%B8%E7%94%A8API/" class="post-title-link" itemprop="url">unity系统脚本与常用API</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-03-04 20:25:29" itemprop="dateCreated datePublished" datetime="2022-03-04T20:25:29+08:00">2022-03-04</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-11-14 16:26:36" itemprop="dateModified" datetime="2022-11-14T16:26:36+08:00">2022-11-14</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>脚本中的MyComponent类是继承自MonoBehaviour类的，只要继承自MonoBehaviour类，那么该类就是一个组件类。<br>
-如果删掉父类或修改父类为其他类，那么这个脚本就是一个普通的C#脚本而非组件脚本。</p>
-<h1 id="脚本的生命周期">脚本的生命周期</h1>
-<table>
-<thead>
-<tr class="header">
-<th>方法名称</th>
-<th>调用时间</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Awake</td>
-<td>最早调用，所以一般可以在此实现单例模式</td>
-</tr>
-<tr class="even">
-<td>OnEnable</td>
-<td>组件激活后调用，在Awake后会调用一次</td>
-</tr>
-<tr class="odd">
-<td>Start</td>
-<td>在Update之前调用一次，在OnEnable之后调用，可以在此设置一些初始值</td>
-</tr>
-<tr class="even">
-<td>FixedUpdate</td>
-<td>固定频率调用方法，每次调用与上次调用的时间间隔相同</td>
-</tr>
-<tr class="odd">
-<td>Update</td>
-<td>帧率调用方法，每帧调用一次，每次调用与上次调用的时间间隔不相同</td>
-</tr>
-<tr class="even">
-<td>LateUpdate</td>
-<td>在Update每调用完一次后，紧跟着调用一次</td>
-</tr>
-<tr class="odd">
-<td>OnDisable</td>
-<td>OnEnable相反，组件未激活时调用</td>
-</tr>
-<tr class="even">
-<td>OnDestroy</td>
-<td>被销毁后调用一次</td>
-</tr>
-</tbody>
-</table>
-<h1 id="多个脚本执行顺序">多个脚本执行顺序</h1>
-<p>编辑，项目设置，Project Setting（项目设置），脚本执行顺序，创建</p>
-<h1 id="游戏常用api">游戏常用API</h1>
-<h3 id="vector3">Vector3</h3>
-<p>normalize() 规范化向量</p>
-<p>magnitude() 向量的模长</p>
-<p>Angle() 夹角</p>
-<p>Distance() 距离</p>
-<p>Dot() 点乘</p>
-<p>Cross() 叉乘</p>
-<p>例：Vector3.normalize(······)</p>
-<h3 id="quaternion">Quaternion</h3>
-<p>四元数，一个三维向量加上一个标量。用于描述物体的旋转</p>
-<p>identity() 单位旋转，相当于无旋转</p>
-<p>eulerAngles() 转换未欧拉角</p>
-<p>Quaternion() 使用四个变量构造四元数</p>
-<p>Angle() 返回两个旋转之间的角度</p>
-<p>Euler() 通过欧拉角创造四元数</p>
-<p>LookRotation() 返回一个旋转指向forward的旋转</p>
-<h3 id="debug">Debug</h3>
-<p>DrawLine() 在给定起点、终点间画一条线</p>
-<p>DraRay() 在某点向某个方向画一条线</p>
-<h3 id="gameobject">GameObject</h3>
-<p>···</p>
-<h3 id="time">Time</h3>
-<p>deltaTime() 上一帧到这一帧的时间</p>
-<p>fixedDeltaTime() 固定间隔时间</p>
-<p>time() 游戏开始到现在所花的时间</p>
-<p>timeScale() 时间缩放值，默认为1</p>
-<h3 id="mathf">Mathf</h3>
-<p>···</p>
-<h3 id="application">Application</h3>
-<p>···</p>
-<h3 id="scenemanager">SceneManager</h3>
-<p>sceneCount() 当前以加载场景数量</p>
-<p>GetActiveScene() 得到一个当前激活的场景</p>
-<p>GetSceneByName() 通过名称返回一个已加载的场景</p>
-<p>LoadScene() 加载场景</p>
-<p>LoadSceneAsync() 异步加载场景</p>
-<p>SetActiveScene() 移除并销毁场景</p>
-<h3 id="transform">Transform</h3>
-<p>localPosition() 相当于父物体的位置</p>
-<p>LookAt() 指向</p>
-<p>DetachChildren 解除所有子transform的关联</p>
 
       
     </div>
