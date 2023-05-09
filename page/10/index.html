@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">177</span>
+          <span class="site-state-item-count">178</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,80 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/29/unity%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="水之黑犀铠甲第二代召唤人">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="你这个属于是癔症">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/08/29/unity%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE/" class="post-title-link" itemprop="url">unity视频播放</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-08-29 17:10:33" itemprop="dateCreated datePublished" datetime="2022-08-29T17:10:33+08:00">2022-08-29</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-11-14 16:27:57" itemprop="dateModified" datetime="2022-11-14T16:27:57+08:00">2022-11-14</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>添加视频播放组件（video player）<br>
+其中源部分若为视频剪辑，则添加本地视频文件<br>
+渲染器模式选择渲染器纹理，渲染器纹理模式的目标纹理文件需要另外创建，该文件中可以对视频进行设置，最重要的是将该文件拖到目标物体上才可播放。</p>
+<img src="/2022/08/29/unity%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE/1.png" class>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1168,100 +1242,6 @@ end方法的参数：<br>
 <p>实际应用中使用过：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">btn_end.onClick.AddListener(() =&gt;</span><br><span class="line">&#123;       </span><br><span class="line">	#if UNITY_EDITOR</span><br><span class="line">		UnityEditor.EditorApplication.isPlaying = false;</span><br><span class="line">	#else</span><br><span class="line">		Application.Quit();</span><br><span class="line">	#endif</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public void LoadByJson()</span><br><span class="line">&#123;</span><br><span class="line">    string filePath = &quot;&quot;;</span><br><span class="line">	#if UNITY_EDITOR</span><br><span class="line">        filePath = Application.dataPath + &quot;/StreamingFile&quot; + &quot;/save.txt&quot;;</span><br><span class="line">	#else</span><br><span class="line">        filePath = System.Environment.CurrentDirectory + &quot;/StreamingFile&quot; + &quot;/save.txt&quot;;</span><br><span class="line">	#endif        </span><br><span class="line">	if (!File.Exists(filePath)) return;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/27/Socket/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="水之黑犀铠甲第二代召唤人">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="你这个属于是癔症">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/03/27/Socket/" class="post-title-link" itemprop="url">Socket</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-03-27 20:35:43" itemprop="dateCreated datePublished" datetime="2022-03-27T20:35:43+08:00">2022-03-27</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-09-08 13:45:08" itemprop="dateModified" datetime="2022-09-08T13:45:08+08:00">2022-09-08</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="socket简介">Socket简介</h1>
-<p>网络上两个程序通过一个双向的通信连接实现数据交换，这个<strong>连接的一端</strong>称为<strong>一个Socket</strong>。</p>
-<p>一个Socket包含：<br>
-协议，本地IP，本地端口，远程IP，远程端口</p>
-<p>Socket通信分为：连接方和监听方<br>
-连接方：不同的客户端使用的是不同的端口<br>
-监听方：服务器，只使用一个端口监听</p>
-<h1 id="socket通信的流程">Socket通信的流程</h1>
-<p>1、<br>
-服务器：创建一个Socket对象（使用API Socket），绑定本地使用的端口（使用API Bind）。<br>
-客户端：创建一个Socket对象（使用API Socket）。</p>
-<p>2、<br>
-服务器：开启监听（使用API Listen），等等客户端接入</p>
-<p>3、<br>
-客户端：连接服务器（使用API Connect），该过程中客户端会由系统自动分配端口</p>
-<p>4、<br>
-服务器：接受连接（使用API Accept），成功建立连接。</p>
-<p>5、<br>
-服务器：Send和Receive<br>
-客户端：Send和Receive<br>
-OS：自动完成数据的确认、重传等，确保传输的数据准确</p>
-<p>6、<br>
-某一方断开连接（使用API Close）<br>
-OS：自动执行”四次握手“，关闭连接。</p>
 
       
     </div>
