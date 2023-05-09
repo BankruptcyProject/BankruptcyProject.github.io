@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">176</span>
+          <span class="site-state-item-count">177</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,75 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/09/%E6%A1%88%E4%BE%8B-%E7%82%B9%E4%BA%AE%E5%92%8C%E7%86%84%E7%81%AD%E8%9C%A1%E7%83%9B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="水之黑犀铠甲第二代召唤人">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="你这个属于是癔症">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/05/09/%E6%A1%88%E4%BE%8B-%E7%82%B9%E4%BA%AE%E5%92%8C%E7%86%84%E7%81%AD%E8%9C%A1%E7%83%9B/" class="post-title-link" itemprop="url">案例 点亮和熄灭蜡烛</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2023-05-09 14:57:47 / Modified: 15:29:54" itemprop="dateCreated datePublished" datetime="2023-05-09T14:57:47+08:00">2023-05-09</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <img src="/2023/05/09/%E6%A1%88%E4%BE%8B-%E7%82%B9%E4%BA%AE%E5%92%8C%E7%86%84%E7%81%AD%E8%9C%A1%E7%83%9B/1.png" class>
+<p>测试射线用法</p>
+<p>为所有蜡烛添加上碰撞器和标签，蜡烛的子物体是火苗例子</p>
+<p>鼠标点击画面上的蜡烛，使得燃起的火苗熄灭/熄灭的火苗燃起</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">void Update()</span><br><span class="line">&#123;</span><br><span class="line">    if(Input.GetMouseButtonDown(0))</span><br><span class="line">    &#123;</span><br><span class="line">        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);</span><br><span class="line">        RaycastHit hit;</span><br><span class="line">        if (Physics.Raycast(ray, out hit))</span><br><span class="line">        &#123;</span><br><span class="line">            if (hit.collider.tag == &quot;Candle&quot;)</span><br><span class="line">            &#123;</span><br><span class="line">                if (hit.transform.GetChild(0).gameObject.activeSelf == true)</span><br><span class="line">                &#123;</span><br><span class="line">                    hit.transform.GetChild(0).gameObject.SetActive(false);</span><br><span class="line">                &#125;</span><br><span class="line">                else</span><br><span class="line">                &#123;</span><br><span class="line">                    hit.transform.GetChild(0).gameObject.SetActive(true);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -899,84 +968,6 @@ Resources目录下的文件不论使用与否，都会被强制打包到游戏�
 <p>在柔性骨骼的两个端点延伸出两个控制骨骼作为控制柄<br>
 <img src="/2022/12/01/Blender%E6%9F%94%E6%80%A7%E9%AA%A8%E9%AA%BC/2.png" class></p>
 <p>在柔性骨骼中设置控制柄 <img src="/2022/12/01/Blender%E6%9F%94%E6%80%A7%E9%AA%A8%E9%AA%BC/3.png" class></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/12/01/Blender%E9%AA%A8%E9%AA%BC%E8%BF%BD%E8%B8%AA%E7%BA%A6%E6%9D%9F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="水之黑犀铠甲第二代召唤人">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="你这个属于是癔症">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/12/01/Blender%E9%AA%A8%E9%AA%BC%E8%BF%BD%E8%B8%AA%E7%BA%A6%E6%9D%9F/" class="post-title-link" itemprop="url">Blender骨骼追踪约束</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-12-01 15:22:52 / Modified: 16:14:36" itemprop="dateCreated datePublished" datetime="2022-12-01T15:22:52+08:00">2022-12-01</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="锁定追踪约束">锁定追踪约束</h1>
-<p>使物体始终对齐目标 <img src="/2022/12/01/Blender%E9%AA%A8%E9%AA%BC%E8%BF%BD%E8%B8%AA%E7%BA%A6%E6%9D%9F/1.png" class></p>
-<h1 id="样条线ik约束">样条线IK约束</h1>
-<p>Spline IK约束<br>
-使得骨架快速对齐曲线<br>
-<img src="/2022/12/01/Blender%E9%AA%A8%E9%AA%BC%E8%BF%BD%E8%B8%AA%E7%BA%A6%E6%9D%9F/3.png" class><br>
-<strong>姿态模式</strong>下，对<strong>末端骨骼</strong>，添加<strong>样条线IK约束</strong><br>
-<img src="/2022/12/01/Blender%E9%AA%A8%E9%AA%BC%E8%BF%BD%E8%B8%AA%E7%BA%A6%E6%9D%9F/2.png" class><br>
-<strong>目标</strong>选择曲线<br>
-设置<strong>链长</strong><br>
-勾选 <strong>适配曲线</strong> 则拉伸每条骨骼至填满曲线</p>
-<p>应用：<br>
-在姿态模式下全选骨骼<br>
-<img src="/2022/12/01/Blender%E9%AA%A8%E9%AA%BC%E8%BF%BD%E8%B8%AA%E7%BA%A6%E6%9D%9F/4.png" class> 随后就可以删除Spline IK</p>
 
       
     </div>
