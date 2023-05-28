@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">182</span>
+          <span class="site-state-item-count">183</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,75 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/04/09/%E6%A1%88%E4%BE%8B-%E5%AF%BB%E5%AE%9D%E6%B8%B8%E6%88%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="水之黑犀铠甲第二代召唤人">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="你这个属于是癔症">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/04/09/%E6%A1%88%E4%BE%8B-%E5%AF%BB%E5%AE%9D%E6%B8%B8%E6%88%8F/" class="post-title-link" itemprop="url">案例-寻宝游戏</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2023-04-09 20:52:48 / Modified: 21:08:36" itemprop="dateCreated datePublished" datetime="2023-04-09T20:52:48+08:00">2023-04-09</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>一个绑定在金币上的脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">public class CoinControl : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    public GameObject EffectPre;</span><br><span class="line">    private Transform player;</span><br><span class="line">    public static int Count = 0;</span><br><span class="line">    private AudioSource audioSource;</span><br><span class="line">    private void Start()</span><br><span class="line">    &#123;</span><br><span class="line">        player = GameObject.FindWithTag(&quot;Player&quot;).transform.GetChild(0);//获取玩家角色需要额外获取一次子物体，因为获取的是摄像机的transform</span><br><span class="line">        audioSource = GetComponent&lt;AudioSource&gt;();</span><br><span class="line">        Debug.Log(&quot;find one&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    private void Update()</span><br><span class="line">    &#123;</span><br><span class="line">        float dis = Vector3.Distance(transform.position, player.position);</span><br><span class="line">        if(dis &lt; 1.9f)</span><br><span class="line">        &#123;</span><br><span class="line">            Count++;</span><br><span class="line">            audioSource.PlayOneShot(Resources.Load&lt;AudioClip&gt;(&quot;Battle_Lost__6s&quot;));</span><br><span class="line">            Debug.Log(&quot;获得金币，当前金币为：&quot; + Count);</span><br><span class="line">            if (Count &gt;= 3)</span><br><span class="line">            &#123;</span><br><span class="line">                GameObject go = Instantiate(EffectPre, transform.position, transform.rotation);</span><br><span class="line">                Destroy(go, 8f);</span><br><span class="line">            &#125;</span><br><span class="line">            Destroy(this);</span><br><span class="line">            Destroy(gameObject, 1f);</span><br><span class="line">            //先删除脚本，延迟后再删除物品</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>脚本挂载在结点上，可以先删除脚本（优化内存，防止其它脚本获取到该脚本等等），然后延迟后删除结点（例如在本案例中，延迟删除结点让结点上的音乐播放完）。</p>
+<p>从文件中动态导入资源，具体做法见另一篇上一篇博客。</p>
+<p>获取玩家的位置更改为获取玩家身上的摄像头的位置。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -830,77 +899,6 @@ Resources目录下的文件不论使用与否，都会被强制打包到游戏�
 <img src="/2022/11/24/Blender%E9%AA%A8%E9%AA%BC%E5%8A%A8%E7%94%BB/1.png" class></p>
 <p>在<strong>姿态模式</strong>下插入关键帧，有<strong>完整角色</strong>和<strong>完整角色（仅选中骨骼）</strong>两个选择</p>
 <p>动作是添加在骨架上的，而非网格上</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/23/Blender%E9%AA%A8%E9%AA%BC%E5%AF%B9%E7%A7%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="水之黑犀铠甲第二代召唤人">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="你这个属于是癔症">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/11/23/Blender%E9%AA%A8%E9%AA%BC%E5%AF%B9%E7%A7%B0/" class="post-title-link" itemprop="url">Blender骨骼对称</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-11-23 22:32:24 / Modified: 23:58:38" itemprop="dateCreated datePublished" datetime="2022-11-23T22:32:24+08:00">2022-11-23</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>骨骼命名后缀<br>
-.L<br>
-.R<br>
-或者右键|名称|左右自动命名</p>
-<p>规范命名后，在编辑模式下选中需要对称生成的骨骼，右键|对称，对称中心是原点</p>
-<img src="/2022/11/23/Blender%E9%AA%A8%E9%AA%BC%E5%AF%B9%E7%A7%B0/1.png" class>
-<p>点击右上角镜像按钮，左右同步操作</p>
 
       
     </div>

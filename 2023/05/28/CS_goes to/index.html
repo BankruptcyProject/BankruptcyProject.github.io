@@ -20,15 +20,15 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="Lambda">
+<meta name="description" content="Lambda Lambda表达式本质上就是匿名函数 使用lambda声明运算符 &#x3D;&gt;（读作goes to）的表达式就是Lambda表达式 创建Lambda表达式，需要在 Lambda 运算符左侧指定输入参数（如果有），然后在另一侧输入表达式或语句块 即是说我们使用形如 （）&#x3D;&gt; { } 这样的格式就可以创建Lambda表达式 任何 Lambda 表达式都可以转换为委托类型。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CS&#x3D;&gt;">
 <meta property="og:url" content="http://example.com/2023/05/28/CS_goes%20to/index.html">
 <meta property="og:site_name" content="你这个属于是癔症">
-<meta property="og:description" content="Lambda">
+<meta property="og:description" content="Lambda Lambda表达式本质上就是匿名函数 使用lambda声明运算符 &#x3D;&gt;（读作goes to）的表达式就是Lambda表达式 创建Lambda表达式，需要在 Lambda 运算符左侧指定输入参数（如果有），然后在另一侧输入表达式或语句块 即是说我们使用形如 （）&#x3D;&gt; { } 这样的格式就可以创建Lambda表达式 任何 Lambda 表达式都可以转换为委托类型。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-05-28T08:00:57.000Z">
-<meta property="article:modified_time" content="2023-05-28T08:39:06.499Z">
+<meta property="article:modified_time" content="2023-05-28T09:22:00.993Z">
 <meta property="article:author" content="水之黑犀铠甲第二代召唤人">
 <meta property="article:tag" content="其他">
 <meta name="twitter:card" content="summary">
@@ -122,7 +122,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">182</span>
+          <span class="site-state-item-count">183</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -193,7 +193,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2023-05-28 16:00:57 / Modified: 16:39:06" itemprop="dateCreated datePublished" datetime="2023-05-28T16:00:57+08:00">2023-05-28</time>
+      <time title="Created: 2023-05-28 16:00:57 / Modified: 17:22:00" itemprop="dateCreated datePublished" datetime="2023-05-28T16:00:57+08:00">2023-05-28</time>
     </span>
 
   
@@ -207,6 +207,13 @@
     
     <div class="post-body" itemprop="articleBody">
         <h1 id="lambda">Lambda</h1>
+<p>Lambda表达式本质上就是匿名函数</p>
+<p>使用lambda声明运算符 =&gt;（读作goes to）的表达式就是Lambda表达式</p>
+<p>创建Lambda表达式，需要在 Lambda 运算符左侧指定输入参数（如果有），然后在另一侧输入表达式或语句块</p>
+<p>即是说我们使用形如 （）=&gt; { } 这样的格式就可以创建Lambda表达式</p>
+<p>任何 Lambda 表达式都可以转换为委托类型。<br>
+Lambda 表达式可以转换的委托类型由其参数和返回值的类型定义。<br>
+如果 Lambda 表达式不返回值，则可以将其转换为 Action 委托类型之一；否则，可将其转换为 Func 委托类型之一</p>
 
     </div>
 
@@ -228,6 +235,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2023/05/28/CS_Func/" rel="next" title="CS_Func">
+                  CS_Func <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>

@@ -20,28 +20,28 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="C的结构体和C++结构体的区别 C的结构体内不允许有函数存在，C++允许有内部成员函数。 C的结构体对内部成员变量的访问权限只能是public，而C++允许public,protected,private三种。 C语言的结构体是不可以继承的，C++的结构体是可以从其他的结构体或者类继承过来的。 以上都是表面的区别，实际区别就是面向过程和面向对象编程思路的区别 C的结构体只是把数据变量给包裹起来">
+<meta name="description" content="C#中Func和Action有点类似，都是一个委托方法，不同的是Func是有返回值的，而Action没有。 Fun常用有两个参数，前面的是输入参数，最后一个的是输出参数。 Fnc最多有16个输入参数，有且只有一个输出参数，Func function代表function函数的返回值得类型是TResult。 Action委托和Func委托是C#平台最重要的两个委托，有了这两个委托，就可以定义出指">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C结构体、C++结构体和类">
-<meta property="og:url" content="http://example.com/2021/10/30/C%E7%BB%93%E6%9E%84%E4%BD%93%E3%80%81C-%E7%BB%93%E6%9E%84%E4%BD%93%E5%92%8C%E7%B1%BB/index.html">
+<meta property="og:title" content="CS_Func">
+<meta property="og:url" content="http://example.com/2023/05/28/CS_Func/index.html">
 <meta property="og:site_name" content="你这个属于是癔症">
-<meta property="og:description" content="C的结构体和C++结构体的区别 C的结构体内不允许有函数存在，C++允许有内部成员函数。 C的结构体对内部成员变量的访问权限只能是public，而C++允许public,protected,private三种。 C语言的结构体是不可以继承的，C++的结构体是可以从其他的结构体或者类继承过来的。 以上都是表面的区别，实际区别就是面向过程和面向对象编程思路的区别 C的结构体只是把数据变量给包裹起来">
+<meta property="og:description" content="C#中Func和Action有点类似，都是一个委托方法，不同的是Func是有返回值的，而Action没有。 Fun常用有两个参数，前面的是输入参数，最后一个的是输出参数。 Fnc最多有16个输入参数，有且只有一个输出参数，Func function代表function函数的返回值得类型是TResult。 Action委托和Func委托是C#平台最重要的两个委托，有了这两个委托，就可以定义出指">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-10-30T08:02:32.000Z">
-<meta property="article:modified_time" content="2022-09-08T05:43:41.252Z">
+<meta property="article:published_time" content="2023-05-28T09:23:58.000Z">
+<meta property="article:modified_time" content="2023-05-28T09:44:26.400Z">
 <meta property="article:author" content="水之黑犀铠甲第二代召唤人">
 <meta property="article:tag" content="其他">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/2021/10/30/C%E7%BB%93%E6%9E%84%E4%BD%93%E3%80%81C-%E7%BB%93%E6%9E%84%E4%BD%93%E5%92%8C%E7%B1%BB/">
+<link rel="canonical" href="http://example.com/2023/05/28/CS_Func/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2021/10/30/C%E7%BB%93%E6%9E%84%E4%BD%93%E3%80%81C-%E7%BB%93%E6%9E%84%E4%BD%93%E5%92%8C%E7%B1%BB/","path":"2021/10/30/C结构体、C-结构体和类/","title":"C结构体、C++结构体和类"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2023/05/28/CS_Func/","path":"2023/05/28/CS_Func/","title":"CS_Func"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>C结构体、C++结构体和类 | 你这个属于是癔症</title>
+<title>CS_Func | 你这个属于是癔症</title>
   
 
 
@@ -167,7 +167,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/30/C%E7%BB%93%E6%9E%84%E4%BD%93%E3%80%81C-%E7%BB%93%E6%9E%84%E4%BD%93%E5%92%8C%E7%B1%BB/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/28/CS_Func/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -180,7 +180,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          C结构体、C++结构体和类
+          CS_Func
         </h1>
 
         <div class="post-meta-container">
@@ -190,16 +190,10 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
+      
 
-      <time title="Created: 2021-10-30 16:02:32" itemprop="dateCreated datePublished" datetime="2021-10-30T16:02:32+08:00">2021-10-30</time>
+      <time title="Created: 2023-05-28 17:23:58 / Modified: 17:44:26" itemprop="dateCreated datePublished" datetime="2023-05-28T17:23:58+08:00">2023-05-28</time>
     </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-09-08 13:43:41" itemprop="dateModified" datetime="2022-09-08T13:43:41+08:00">2022-09-08</time>
-      </span>
 
   
 </div>
@@ -211,12 +205,11 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><strong>C的结构体和C++结构体的区别</strong></p>
-<p>C的结构体内不允许有函数存在，C++允许有内部成员函数。 C的结构体对内部成员变量的访问权限只能是public，而C++允许public,protected,private三种。 C语言的结构体是不可以继承的，C++的结构体是可以从其他的结构体或者类继承过来的。</p>
-<p>以上都是表面的区别，实际区别就是<strong>面向过程</strong>和<strong>面向对象</strong>编程思路的区别 C的结构体只是把数据变量给包裹起来了，并不涉及算法。 C++是把数据变量及对这些数据变量的相关算法给封装起来，并且给对这些数据和类不同的访问权限。</p>
-<p><strong>C++的结构体和C++类的区别</strong></p>
-<p>C++结构体内部成员变量及成员函数默认的访问级别是public,而c++类的内部成员变量及成员函数的默认访问级别是private。</p>
-<p>C++结构体的继承默认是public，而c++类的继承默认是private。</p>
+        <p>C#中Func和Action有点类似，都是一个委托方法，不同的是Func是有返回值的，而Action没有。</p>
+<p>Fun常用有两个参数，前面的是输入参数，最后一个的是输出参数。</p>
+<p>Fnc最多有16个输入参数，有且只有一个输出参数，Func function代表function函数的返回值得类型是TResult。</p>
+<p>Action委托和Func委托是C#平台最重要的两个委托，有了这两个委托，就可以定义出指向任意方法的“函数指针”。注意：这里的函数指针是打引号的，因为C#里不叫函数指针。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Static bool SayHello(int Count)</span><br><span class="line">&#123;</span><br><span class="line">	Console.WriteLine(&quot;Hello&quot; + Count);</span><br><span class="line">	return True;</span><br><span class="line">&#125;</span><br><span class="line">static void Main(string[] args)</span><br><span class="line">&#123;</span><br><span class="line">	Func&lt;int, bool&gt;func = new Func&lt;int, bool&gt;(SayHello);</span><br><span class="line">	func.Invoke(3);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -233,14 +226,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/09/22/LC-RecoverBinarySearchTree/" rel="prev" title="LC-RecoverBinarySearchTree">
-                  <i class="fa fa-chevron-left"></i> LC-RecoverBinarySearchTree
+                <a href="/2023/05/28/CS_goes%20to/" rel="prev" title="CS=>">
+                  <i class="fa fa-chevron-left"></i> CS=>
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/10/30/cpp%E6%95%B0%E5%AD%97%E5%92%8C%E5%AD%97%E7%AC%A6%E6%95%B0%E5%AD%97/" rel="next" title="cpp数字和字符数字">
-                  cpp数字和字符数字 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
