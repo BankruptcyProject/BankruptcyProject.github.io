@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">181</span>
+          <span class="site-state-item-count">182</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,78 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/11/Blender%E6%8F%92%E4%BB%B6BoolTool/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="水之黑犀铠甲第二代召唤人">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="你这个属于是癔症">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/10/11/Blender%E6%8F%92%E4%BB%B6BoolTool/" class="post-title-link" itemprop="url">Blender插件BoolTool</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-10-11 16:45:25" itemprop="dateCreated datePublished" datetime="2022-10-11T16:45:25+08:00">2022-10-11</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-11-14 16:16:03" itemprop="dateModified" datetime="2022-11-14T16:16:03+08:00">2022-11-14</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>按n打开侧边栏，在 “编辑” 子页签 <img src="/2022/10/11/Blender%E6%8F%92%E4%BB%B6BoolTool/1.png" class> 有差、并、交、切片功能</p>
+<p>做布尔运算时要注意选择物体的顺序，A-B，选中且活动的物体是A，选中物体是B。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -903,133 +975,6 @@ Same as Client but does not throw a warning when called on server.</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">public class Player : NetworkBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    public int health;</span><br><span class="line"></span><br><span class="line">    [Command]//攻击对方</span><br><span class="line">    void CmdMagic(GameObject target, int damage)</span><br><span class="line">    &#123;</span><br><span class="line">        target.GetComponent&lt;Player&gt;().health -= damage;</span><br><span class="line">        NetworkIdentity opponentIdentity = target.GetComponent&lt;NetworkIdentity&gt;();//对方的ID</span><br><span class="line">        TargetDoMagic(opponentIdentity.connectionToClient, damage);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    [TargetRpc]//在被攻击方的电脑上执行</span><br><span class="line">    public void TargetDoMagic(NetworkConnection target, int damage)</span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log($&quot;Magic Damage = &#123;damage&#125;&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">//----------------------------------------------------------------------------------------</span><br><span class="line">    [Command]//治疗自己</span><br><span class="line">    public void CmdHealMe()</span><br><span class="line">    &#123;</span><br><span class="line">        health += 10;</span><br><span class="line">        TargetHealed(10);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    [TargetRpc]</span><br><span class="line">    public void TargetHealed(int amount)</span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log($&quot;Health increased by &#123;amount&#125;&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>[SyncVar]</strong><br>
 SyncVars用于自动将变量从服务器同步到所有客户端。不要从客户端修改这些变量，这是没有意义的。不要让它们为空，否则会出错。当客户端从服务器接收更新时，可以使用SyncVar Hooks在客户端上运行代码。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/08/Mirror_Network-Behaviour/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="水之黑犀铠甲第二代召唤人">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="你这个属于是癔症">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/08/Mirror_Network-Behaviour/" class="post-title-link" itemprop="url">Mirror_Network Behaviour</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-09-08 22:08:35" itemprop="dateCreated datePublished" datetime="2022-09-08T22:08:35+08:00">2022-09-08</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-11-14 16:56:22" itemprop="dateModified" datetime="2022-11-14T16:56:22+08:00">2022-11-14</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>NetworkBehaviour脚本用于具有Network Identity组件的游戏对象。这些脚本可以执行高级API功能，如命令、客户端RPC和同步变量。<br>
-这个组件NetworkBehaviour一般用于被其他脚本继承。<br>
-注意：不要在Awake中是使用DDOL，可以在Start中使用</p>
-<img src="/2022/09/08/Mirror_Network-Behaviour/1.png" class>
-<h1 id="属性">属性</h1>
-<p><strong>isServer</strong></p>
-<p><strong>isClient</strong></p>
-<p><strong>isLocalPlayer</strong></p>
-<p><strong>hasAuthority</strong> 如果此客户端控制此游戏对象，则在客户端上返回true。它在服务器上下文中没有意义。 <strong>netId</strong> 此游戏对象的唯一网络ID。服务器在运行时分配此值。它对于网络上的所有游戏对象都是唯一的。 <strong>netIdentity</strong> 返回此对象的网络标识 <strong>connectionToServer</strong> 连接上服务器，只对玩家有效，对克隆玩家无效 <strong>connectionToClient</strong></p>
-<h1 id="network-callbacks">Network Callbacks</h1>
-<p>Network Behaviour scripts 中内置 callback functions 它们是基类上的虚函数 可以在自己的代码上 override 它们。</p>
-<table>
-<colgroup>
-<col style="width: 26%">
-<col style="width: 73%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>方法</th>
-<th style="text-align: left;">callback</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>OnStartServer</strong></td>
-<td style="text-align: left;"><strong>called on server</strong> when <strong>a game object spawns on the server</strong>, or when the <strong>server is started for game objects in the Scene</strong></td>
-</tr>
-<tr class="even">
-<td><strong>OnStopServer</strong></td>
-<td style="text-align: left;"><strong>called on server</strong> when <strong>a game object is destroyed on the server</strong>, or when the <strong>server is stopped for game objects in the Scene</strong></td>
-</tr>
-<tr class="odd">
-<td><strong>OnStartClient</strong></td>
-<td style="text-align: left;"><strong>called on clients</strong> when the <strong>game object spawns on the client</strong>, or when the <strong>client connects to a server for game objects in the Scene</strong></td>
-</tr>
-<tr class="even">
-<td><strong>OnStopClient</strong></td>
-<td style="text-align: left;"><strong>called on clients</strong> when the <strong>server destroys the game object</strong></td>
-</tr>
-<tr class="odd">
-<td><strong>OnStartLocalPlayer</strong></td>
-<td style="text-align: left;"><strong>called on clients</strong> <strong>after <code>OnStartClient</code></strong> for the player game object <strong>on the local client</strong></td>
-</tr>
-<tr class="even">
-<td><strong>OnStopLocalPlayer</strong></td>
-<td style="text-align: left;"><strong>called on clients before <code>OnStopClient</code></strong> for the player game object on the local client</td>
-</tr>
-<tr class="odd">
-<td><strong>OnStartAuthority</strong></td>
-<td style="text-align: left;"><strong>called on owner client</strong> when <strong>assigned authority by the server</strong>. <code>hasAuthority</code> will be true for such objects in client context.</td>
-</tr>
-<tr class="even">
-<td><strong>OnStopAuthority</strong></td>
-<td style="text-align: left;"><strong>called on owner client</strong> when <strong>authority is removed by the server.</strong></td>
-</tr>
-</tbody>
-</table>
 
       
     </div>

@@ -28,7 +28,7 @@
 <meta property="og:description" content="库 using UnityEngine.UI using UnityEngine.Scenemanagement 场景切换 在文件夹中创建多个场景，在生成设置中调整加载场景顺序 SceneManager.LoadScene(1);或 SceneManager.LoadScene(&quot;main&quot;); &#x2F;&#x2F;1是某个场景在生成设置中的代号 1234567891011121314151617">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-02-28T05:52:17.000Z">
-<meta property="article:modified_time" content="2022-11-14T08:32:00.622Z">
+<meta property="article:modified_time" content="2023-05-28T08:20:48.209Z">
 <meta property="article:author" content="水之黑犀铠甲第二代召唤人">
 <meta property="article:tag" content="unity">
 <meta name="twitter:card" content="summary">
@@ -122,7 +122,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">181</span>
+          <span class="site-state-item-count">182</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -199,7 +199,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-11-14 16:32:00" itemprop="dateModified" datetime="2022-11-14T16:32:00+08:00">2022-11-14</time>
+        <time title="Modified: 2023-05-28 16:20:48" itemprop="dateModified" datetime="2023-05-28T16:20:48+08:00">2023-05-28</time>
       </span>
 
   
@@ -240,8 +240,7 @@ init脚本中创建所有变量并初始化，data脚本从init获取变量，�
 <p>注：</p>
 <p>在VS2019中，右键查找所有的引用。</p>
 <h1 id="退出游戏">退出游戏</h1>
-<p>在unity编辑界面实现退出游戏 调用这个 ​```c# void QuitGame() { #if UNITY_EDITOR UnityEditor.EditorApplication.isPlaying = false; #else Application.Quit(); #endif }</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p>在unity编辑界面实现退出游戏 调用这个 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">  void QuitGame()</span><br><span class="line">  &#123;</span><br><span class="line">#if UNITY_EDITOR</span><br><span class="line">      	UnityEditor.EditorApplication.isPlaying = false;</span><br><span class="line">#else</span><br><span class="line">          Application.Quit();</span><br><span class="line">#endif</span><br><span class="line">  &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
 
     </div>
 
