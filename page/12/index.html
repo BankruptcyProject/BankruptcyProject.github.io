@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">180</span>
+          <span class="site-state-item-count">181</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,559 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/11/CS%E9%9B%86%E5%90%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="水之黑犀铠甲第二代召唤人">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="你这个属于是癔症">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/03/11/CS%E9%9B%86%E5%90%88/" class="post-title-link" itemprop="url">CS集合</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-03-11 22:43:13" itemprop="dateCreated datePublished" datetime="2022-03-11T22:43:13+08:00">2022-03-11</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-11-14 17:11:31" itemprop="dateModified" datetime="2022-11-14T17:11:31+08:00">2022-11-14</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="动态数组">动态数组</h1>
+<table>
+<thead>
+<tr class="header">
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Count</td>
+<td>获取 ArrayList 中实际包含的元素个数</td>
+</tr>
+<tr class="even">
+<td>IsReadOnly</td>
+<td>获取一个值，表示 ArrayList 是否只读</td>
+</tr>
+<tr class="odd">
+<td>IsSynchronized</td>
+<td>获取一个值，表示访问 ArrayList 是否同步（线程安全）</td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col style="width: 46%">
+<col style="width: 53%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>int Add( object value )</strong></td>
+<td>在 ArrayList 的末尾添加一个对象</td>
+</tr>
+<tr class="even">
+<td><strong>void AddRange( ICollection c )</strong></td>
+<td>在 ArrayList 的末尾添加 ICollection 的元素</td>
+</tr>
+<tr class="odd">
+<td><strong>void Clear()</strong></td>
+<td>从 ArrayList 中移除所有的元素</td>
+</tr>
+<tr class="even">
+<td><strong>bool Contains( object item )</strong></td>
+<td>判断某个元素是否在 ArrayList 中</td>
+</tr>
+<tr class="odd">
+<td><strong>ArrayList GetRange( int index, int count )</strong></td>
+<td>返回一个 ArrayList，表示源 ArrayList 中元素的子集</td>
+</tr>
+<tr class="even">
+<td><strong>int IndexOf(object)</strong></td>
+<td>返回某个值在 ArrayList 中第一次出现的索引，索引从零开始</td>
+</tr>
+<tr class="odd">
+<td><strong>void Insert( int index, object value )</strong></td>
+<td>在 ArrayList 的指定索引处，插入一个元素</td>
+</tr>
+<tr class="even">
+<td><strong>void InsertRange( int index, ICollection c )</strong></td>
+<td>在 ArrayList 的指定索引处，插入某个集合的元素</td>
+</tr>
+<tr class="odd">
+<td><strong>void Remove( object obj )</strong></td>
+<td>从 ArrayList 中移除第一次出现的指定对象</td>
+</tr>
+<tr class="even">
+<td><strong>void RemoveAt( int index )</strong></td>
+<td>移除 ArrayList 的指定索引处的元素</td>
+</tr>
+<tr class="odd">
+<td><strong>void RemoveRange( int index, int count )</strong></td>
+<td>从 ArrayList 中移除某个范围的元素</td>
+</tr>
+<tr class="even">
+<td><strong>void Reverse()</strong></td>
+<td>逆转 ArrayList 中元素的顺序</td>
+</tr>
+<tr class="odd">
+<td><strong>void SetRange( int index, ICollection c )</strong></td>
+<td>复制某个集合的元素到 ArrayList 中某个范围的元素上</td>
+</tr>
+<tr class="even">
+<td><strong>void Sort()</strong></td>
+<td>对 ArrayList 中的元素进行排序</td>
+</tr>
+</tbody>
+</table>
+<h1 id="哈希表hashtable">哈希表（Hashtable）</h1>
+<p>Hashtable 类代表了一系列基于键的哈希代码组织起来的键/值对。它使用键来访问集合中的元素。</p>
+<p>当您使用键访问元素时，则使用哈希表，而且您可以识别一个有用的键值。哈希表中的每一项都有一个键/值对。键用于访问集合中的项目。</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">属性</th>
+<th style="text-align: left;">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Count</td>
+<td style="text-align: left;">获取 Hashtable 中包含的键值对个数。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">IsFixedSize</td>
+<td style="text-align: left;">获取一个值，表示 Hashtable 是否具有固定大小。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">IsReadOnly</td>
+<td style="text-align: left;">获取一个值，表示 Hashtable 是否只读。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Item</td>
+<td style="text-align: left;">获取或设置与指定的键相关的值。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Keys</td>
+<td style="text-align: left;">获取一个 ICollection，包含 Hashtable 中的键。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Values</td>
+<td style="text-align: left;">获取一个 ICollection，包含 Hashtable 中的值。</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">方法</th>
+<th style="text-align: left;">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>void Add( object key, object value );</strong></td>
+<td style="text-align: left;">向 Hashtable 添加一个带有指定的键和值的元素。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>void Clear();</strong></td>
+<td style="text-align: left;">从 Hashtable 中移除所有的元素。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>bool ContainsKey( object key );</strong></td>
+<td style="text-align: left;">判断 Hashtable 是否包含指定的键。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>bool ContainsValue( object value );</strong></td>
+<td style="text-align: left;">判断 Hashtable 是否包含指定的值。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>void Remove( object key );</strong></td>
+<td style="text-align: left;">从 Hashtable 中移除带有指定的键的元素。</td>
+</tr>
+</tbody>
+</table>
+<h1 id="排序列表sortedlist">排序列表（SortedList）</h1>
+<p>SortedList 类代表了一系列按照键来排序的<strong>键/值</strong>对，这些键值对可以通过键和索引来访问。</p>
+<p>排序列表是数组和哈希表的组合。它包含一个可使用键或索引访问各项的列表。<br>
+如果使用索引访问各项，则它是一个动态数组（ArrayList）；<br>
+如果使用键访问各项，则它是一个哈希表（Hashtable）。<br>
+集合中的各项总是按键值排序。</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">属性</th>
+<th style="text-align: left;">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Capacity</td>
+<td style="text-align: left;">获取或设置 SortedList 的容量。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Count</td>
+<td style="text-align: left;">获取 SortedList 中的元素个数。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">IsFixedSize</td>
+<td style="text-align: left;">获取一个值，表示 SortedList 是否具有固定大小。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">IsReadOnly</td>
+<td style="text-align: left;">获取一个值，表示 SortedList 是否只读。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Item</td>
+<td style="text-align: left;">获取或设置与 SortedList 中指定的键相关的值。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Keys</td>
+<td style="text-align: left;">获取 SortedList 中的键。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Values</td>
+<td style="text-align: left;">获取 SortedList 中的值。</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">方法名</th>
+<th style="text-align: left;">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>void Add( object key, object value );</strong></td>
+<td style="text-align: left;">向 SortedList 添加一个带有指定的键和值的元素。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>void Clear();</strong></td>
+<td style="text-align: left;">从 SortedList 中移除所有的元素。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>bool ContainsKey( object key );</strong></td>
+<td style="text-align: left;">判断 SortedList 是否包含指定的键。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>bool ContainsValue( object value );</strong></td>
+<td style="text-align: left;">判断 SortedList 是否包含指定的值。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>object GetByIndex( int index );</strong></td>
+<td style="text-align: left;">获取 SortedList 的指定索引处的值。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>object GetKey( int index );</strong></td>
+<td style="text-align: left;">获取 SortedList 的指定索引处的键。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>IList GetKeyList();</strong></td>
+<td style="text-align: left;">获取 SortedList 中的键。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>IList GetValueList();</strong></td>
+<td style="text-align: left;">获取 SortedList 中的值。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>int IndexOfKey( object key );</strong></td>
+<td style="text-align: left;">返回 SortedList 中的指定键的索引，索引从零开始。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>int IndexOfValue( object value );</strong></td>
+<td style="text-align: left;">返回 SortedList 中的指定值第一次出现的索引，索引从零开始。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>void Remove( object key );</strong></td>
+<td style="text-align: left;">从 SortedList 中移除带有指定的键的元素。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>void RemoveAt( int index );</strong></td>
+<td style="text-align: left;">移除 SortedList 的指定索引处的元素。</td>
+</tr>
+</tbody>
+</table>
+<h1 id="堆栈stack">堆栈（Stack）</h1>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">属性</th>
+<th style="text-align: left;">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Count</td>
+<td style="text-align: left;">获取 Stack 中包含的元素个数。</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">方法名</th>
+<th style="text-align: left;">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>void Clear();</strong></td>
+<td style="text-align: left;">从 Stack 中移除所有的元素。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>bool Contains( object obj );</strong></td>
+<td style="text-align: left;">判断某个元素是否在 Stack 中。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>object Peek();</strong></td>
+<td style="text-align: left;">返回在 Stack 的顶部的对象，但不移除它。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>object Pop();</strong></td>
+<td style="text-align: left;">移除并返回在 Stack 的顶部的对象。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>void Push( object obj );</strong></td>
+<td style="text-align: left;">向 Stack 的顶部添加一个对象。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>object[] ToArray();</strong></td>
+<td style="text-align: left;">复制 Stack 到一个新的数组中。</td>
+</tr>
+</tbody>
+</table>
+<h1 id="queue-类的方法和属性">Queue 类的方法和属性</h1>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">属性</th>
+<th style="text-align: left;">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Count</td>
+<td style="text-align: left;">获取 Queue 中包含的元素个数。</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">方法名</th>
+<th style="text-align: left;">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>void Clear();</strong></td>
+<td style="text-align: left;">从 Queue 中移除所有的元素。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>bool Contains( object obj );</strong></td>
+<td style="text-align: left;">判断某个元素是否在 Queue 中。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>object Dequeue();</strong></td>
+<td style="text-align: left;">移除并返回在 Queue 的开头的对象。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>void Enqueue( object obj );</strong></td>
+<td style="text-align: left;">向 Queue 的末尾添加一个对象。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>object[] ToArray();</strong></td>
+<td style="text-align: left;">复制 Queue 到一个新的数组中。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>void TrimToSize();</strong></td>
+<td style="text-align: left;">设置容量为 Queue 中元素的实际个数。</td>
+</tr>
+</tbody>
+</table>
+<h1 id="点阵列bitarray">点阵列（BitArray）</h1>
+<p>BitArray 类管理一个紧凑型的位值数组，它使用布尔值来表示，其中 true 表示位是开启的（1），false 表示位是关闭的（0）。</p>
+<p>当您需要存储位，但是事先不知道位数时，则使用点阵列。您可以使用<strong>整型索引</strong>从点阵列集合中访问各项，索引从零开始。</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">属性</th>
+<th style="text-align: left;">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Count</td>
+<td style="text-align: left;">获取 BitArray 中包含的元素个数。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">IsReadOnly</td>
+<td style="text-align: left;">获取一个值，表示 BitArray 是否只读。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Item</td>
+<td style="text-align: left;">获取或设置 BitArray 中指定位置的位的值。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Length</td>
+<td style="text-align: left;">获取或设置 BitArray 中的元素个数。</td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col style="width: 38%">
+<col style="width: 61%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">方法</th>
+<th style="text-align: left;">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>BitArray And( BitArray value );</strong></td>
+<td style="text-align: left;">对当前的 BitArray 中的元素和指定的 BitArray 中的相对应的元素执行按位与操作。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>bool Get( int index );</strong></td>
+<td style="text-align: left;">获取 BitArray 中指定位置的位的值。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>BitArray Not();</strong></td>
+<td style="text-align: left;">把当前的 BitArray 中的位值反转，以便设置为 true 的元素变为 false，设置为 false 的元素变为 true。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>BitArray Or( BitArray value );</strong></td>
+<td style="text-align: left;">对当前的 BitArray 中的元素和指定的 BitArray 中的相对应的元素执行按位或操作。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>void Set( int index, bool value );</strong></td>
+<td style="text-align: left;">把 BitArray 中指定位置的位设置为指定的值。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>void SetAll( bool value );</strong></td>
+<td style="text-align: left;">把 BitArray 中的所有位设置为指定的值。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>BitArray Xor( BitArray value );</strong></td>
+<td style="text-align: left;">对当前的 BitArray 中的元素和指定的 BitArray 中的相对应的元素执行按位异或操作。</td>
+</tr>
+</tbody>
+</table>
+<h1 id="list">List</h1>
+<p>System.Collections.Generic命名空间</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;T&gt; ListOfT = new List&lt;T&gt;();</span><br></pre></td></tr></table></figure>
+<p>其中的"T"就是所要使用的类型，既可以是简单类型，如string、int，也可以是用户自定义类型。下面看一个具体例子。　</p>
+<p><strong>二、List的方法和属性 方法或属性 作用</strong></p>
+<p>　　Count 属性，用于获取数组中当前元素数量</p>
+<table>
+<thead>
+<tr class="header">
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Add( )</td>
+<td>在List中添加一个对象的公有方法</td>
+</tr>
+<tr class="even">
+<td>Clear( )</td>
+<td>在List内移除所有元素</td>
+</tr>
+<tr class="odd">
+<td>Contains( )</td>
+<td>测试一个元素是否在List内</td>
+</tr>
+<tr class="even">
+<td>CopyTo( )</td>
+<td>重载的公有方法，把一个List拷贝到一维数组内</td>
+</tr>
+<tr class="odd">
+<td>FindAll( )</td>
+<td>查找并返回List内的所有匹配元素</td>
+</tr>
+<tr class="even">
+<td>Insert()</td>
+<td>方法插入元素</td>
+</tr>
+<tr class="odd">
+<td>Sort()</td>
+<td>对列表中是元素进行从小到大排序</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1109,97 +1662,8 @@ map的键是不能修改的，但是其键对应的值是可以修改的</p>
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/04/unity%E5%9C%B0%E5%BD%A2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="水之黑犀铠甲第二代召唤人">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="你这个属于是癔症">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/03/04/unity%E5%9C%B0%E5%BD%A2/" class="post-title-link" itemprop="url">unity地形</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-03-04 00:02:22" itemprop="dateCreated datePublished" datetime="2022-03-04T00:02:22+08:00">2022-03-04</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-11-14 16:31:31" itemprop="dateModified" datetime="2022-11-14T16:31:31+08:00">2022-11-14</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="地形terrian">地形（Terrian）</h1>
-<h3 id="创建相邻地形">创建相邻地形</h3>
-<h3 id="地形设置">地形设置</h3>
-<p>像素误差 投影阴影 树距离 速度 地形长宽高</p>
-<h3 id="地形刷">地形刷</h3>
-<p><strong>Raise or Lower Terrain（抬高或降低地形）</strong>，点击左键不放并移动抬高地形，降低不透明度以减少抬高速度，同时按下Shift降低地形<br>
-<strong>Paint Holes（绘制坑洞）</strong>拆除被笼罩的网格<br>
-<strong>Paint Texture（绘制纹理）</strong>，使用不同的地形层绘制不同的纹理 ，漫反射中规定纹理的重复模式<br>
-<strong>Set Height（设置高度）</strong>主要用于调整地形高度，一般初始时使用。”展平瓦片“可将该高度应用于当前地形，“全部展平”可将该高度应用于相邻地形 <strong>Smooth Height（平滑处理）</strong><br>
-<strong>Stamp Terrain（图章操作）</strong></p>
-<h3 id="树">树</h3>
-<p>树本质上是3D预制体的批量随机生成，可定义随机高度、宽度范围，可定义随机宽度。</p>
-<p>Bend Factor（树木弯曲因子）：该参数会受风力的影响</p>
-<h3 id="草">草</h3>
-<p>草本质上是2D黑白纹理图片，可定义颜色，高度，密度，随机范围等等参数</p>
-<p>注意：放置草或树时很容易造成密度过大（某个小区域内对象过多），此时引擎会给出警告并强行删除一部分树木</p>
-<h3 id="水">水</h3>
-<p>水本质上是预制体，更准确的来讲，只是（2D）一片动态的图。</p>
-<p>将这层图放在一个坑上，达到视觉上的水坑的效果</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/11/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/13/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/11/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/13/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 </div>

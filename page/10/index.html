@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">180</span>
+          <span class="site-state-item-count">181</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,91 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/01/Socket%E7%8A%B6%E6%80%81%E6%A3%80%E6%B5%8BPoll/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="水之黑犀铠甲第二代召唤人">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="你这个属于是癔症">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/09/01/Socket%E7%8A%B6%E6%80%81%E6%A3%80%E6%B5%8BPoll/" class="post-title-link" itemprop="url">Socket状态检测Poll</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-09-01 00:00:42" itemprop="dateCreated datePublished" datetime="2022-09-01T00:00:42+08:00">2022-09-01</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-11-14 16:47:59" itemprop="dateModified" datetime="2022-11-14T16:47:59+08:00">2022-11-14</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>解决阻塞的方法有异步和Poll两种，异步写在之前的博客，Poll比起异步代码结构更简单清晰。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public bool Poll(</span><br><span class="line">	int microSeconds,</span><br><span class="line">	SelectMode mode</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>microSeconds：等待回应的时间，以微秒为单位。如果该参数为-1，表示一直等待；如果为0，表示非阻塞。</p>
+<p>mode：有三种可选模式<br>
+SelectRead：如果Socket可读（可以接收数据），返回true，反则返回false<br>
+SelectWrite：如果Socket可写，返回true，否则返回false<br>
+SelectError：如果连接失败，返回true，否则返回false</p>
+<p>Poll方法将会在指定时段（以微秒为单位）内阻止执行，如果希望无限期地等待响应，可将microSeconds设置为一个负整数；如果希望不阻塞，设置为0。<br>
+Poll方法会检查Socket的状态。<br>
+指定参数为SelectMode.SelectRead，则可确定Socket是否为可读；<br>
+指定参数为SelectMode.SelectWrite，可确定Socket是否为可写；<br>
+指定参数为SelectMode.SelectError，可以检测错误条件。</p>
+<p><strong>Poll服务端</strong> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">初始化listenfd</span><br><span class="line">初始化clients列表</span><br><span class="line">while(true)</span><br><span class="line">&#123;</span><br><span class="line">	if(listenfd可读) Accept;</span><br><span class="line">	for(遍历clients列表)</span><br><span class="line">	&#123;</span><br><span class="line">		if(这个客户端可读)	消息处理;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>具体代码见案例-Poll</p>
+<p>尽管逻辑清晰，但Poll服务端的弊端也很明显，若没有收到客户端数据，服务端一直在循环，浪费了CPU。Poll客户端也是同理，没有数据的时候也总在Update中检测数据，同样是一种浪费。从性能角度考虑，还有不小的改进空间。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1111,113 +1196,8 @@ Procedural fire。使用爆炸特效</p>
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/29/Socket_Echo%E5%BC%82%E6%AD%A5%E7%BD%91%E7%BB%9C%E7%A8%8B%E5%BA%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="水之黑犀铠甲第二代召唤人">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="你这个属于是癔症">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/03/29/Socket_Echo%E5%BC%82%E6%AD%A5%E7%BD%91%E7%BB%9C%E7%A8%8B%E5%BA%8F/" class="post-title-link" itemprop="url">Socket_Echo异步网络程序</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-03-29 14:59:21" itemprop="dateCreated datePublished" datetime="2022-03-29T14:59:21+08:00">2022-03-29</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-11-14 16:50:59" itemprop="dateModified" datetime="2022-11-14T16:50:59+08:00">2022-11-14</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="异步客户端">异步客户端</h1>
-<h2 id="异步connect">异步Connect</h2>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public IAsyncResult BeginConnect(</span><br><span class="line">    string host, </span><br><span class="line">    int port, </span><br><span class="line">    AsyncCallback requestCallback, </span><br><span class="line">    object state</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public void EndConnect(IAsyncReasult asyncResult)</span><br></pre></td></tr></table></figure>
-<p>begin方法的参数：<br>
-一个<strong>AsyncCallback</strong>委托（用来调用 回调方法）<br>
-一个用户定义的状态对象（用来向 回调方法 传递状态信息）<br>
-begin方法：<br>
-返回一个 实现<strong>IAsyncResult</strong>接口的对象。<br>
-end方法的参数：<br>
-一个<strong>IAsyncResult</strong>参数，用于获取异步操作是否完成的信息，他的返回值与同步方法相同。</p>
-<p>注：回调方法在调用其的方法完成后被调用，且线程与调用其的方法线程相同。例如，下面例子中，BeginConnect方法开启新线程，改方法结束后，调用ConnectCallback回调方法，ConnectCallback与BeginConnect处于同一个线程。</p>
-<h2 id="异步receive">异步Receive</h2>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public IAsyncResult BeginReceive(</span><br><span class="line">    byte[] buffer, </span><br><span class="line">    int offset, </span><br><span class="line">    int size, </span><br><span class="line">    SocketFlags socketFlags, </span><br><span class="line">    AsyncCallback callback, </span><br><span class="line">    object state</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public int EndReceive(IAsyncResult asyncResult)</span><br></pre></td></tr></table></figure>
-<p>buffer：Byte类型数组，存储接收到的数据 offset：buffer中存储数据的位置，该位置从0开始计数 size：最多接收的字节数 socketFlags：SocketFlags值的按位组合，这里设置为0 callback：回调函数，一个AsyncCallback委托 state：一个用户自定义对象，其中包含接收操作的相关信息。当操作完成时，此对象会被传递给EndReceive委托</p>
-<img src="/2022/03/29/Socket_Echo%E5%BC%82%E6%AD%A5%E7%BD%91%E7%BB%9C%E7%A8%8B%E5%BA%8F/1.jpg" class>
-<h2 id="异步send">异步Send</h2>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public IAsyncResult BeginSend(</span><br><span class="line">	byte[] buffer,</span><br><span class="line">    int offset,</span><br><span class="line">    int size,</span><br><span class="line">    SocketFlags socketFlags,</span><br><span class="line">    AsyncCallback callback,</span><br><span class="line">    object state</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public int EndSend(IAsyncResult asyncResult)</span><br></pre></td></tr></table></figure>
-<p>每个Socket都会有一个发送缓冲区</p>
-<p>socket用户层面：协议、ip、端口。这些属性可以直接修改。</p>
-<p>socket操作系统层面：发送缓冲区，接收缓冲区。不对用户开放。</p>
-<p>缓冲区：长度默认为8KB，如果缓冲区满、则Send就会阻塞直到缓冲区的数据被确认腾出空间。</p>
-<img src="/2022/03/29/Socket_Echo%E5%BC%82%E6%AD%A5%E7%BD%91%E7%BB%9C%E7%A8%8B%E5%BA%8F/2.jpg" class>
-<h1 id="异步服务端">异步服务端</h1>
-<p>同时处理多个客户端的数据</p>
-<p>管理客户端的类</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class ClientState</span><br><span class="line">&#123;</span><br><span class="line">    public Socket socket;//保存客户端的基本信息</span><br><span class="line">    public byte[] readBuff = new byte[1024];//保存客户端接收到的数据</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">static Dictionary&lt;Socket, ClientState&gt; clients = new Dictionary&lt;Socket, ClientState&gt;();</span><br></pre></td></tr></table></figure>
-<h2 id="异步accept">异步Accept</h2>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public IAsyncResult BeginAccept(</span><br><span class="line">	AsyncCallback callback,</span><br><span class="line">    object state</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public Socket EndAccept(IAsyncResult asyncResult)</span><br></pre></td></tr></table></figure>
-<p>异步服务端程序结构</p>
-<img src="/2022/03/29/Socket_Echo%E5%BC%82%E6%AD%A5%E7%BD%91%E7%BB%9C%E7%A8%8B%E5%BA%8F/3.jpg" class>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 </div>
