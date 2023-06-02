@@ -116,13 +116,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">183</span>
+          <span class="site-state-item-count">184</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -152,6 +152,77 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/04/10/%E6%A1%88%E4%BE%8B-%E7%89%A9%E7%90%86%E8%BD%AE%E8%83%8E/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="冲击波">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/04/10/%E6%A1%88%E4%BE%8B-%E7%89%A9%E7%90%86%E8%BD%AE%E8%83%8E/" class="post-title-link" itemprop="url">案例-物理轮胎</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2023-04-10 22:50:21 / Modified: 23:00:18" itemprop="dateCreated datePublished" datetime="2023-04-10T22:50:21+08:00">2023-04-10</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="刚体小球">刚体小球</h1>
+<p>利用水平、垂直轴的输入，生成方向，在将方向变成速度，控制球体前进。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public class SphereCtrl : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    private Rigidbody rbody;</span><br><span class="line">    void Start()</span><br><span class="line">    &#123;</span><br><span class="line">        rbody = GetComponent&lt;Rigidbody&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">    void Update()</span><br><span class="line">    &#123;</span><br><span class="line">        float horizontal = Input.GetAxis(&quot;Horizontal&quot;);</span><br><span class="line">        float vertical = Input.GetAxis(&quot;Vertical&quot;);</span><br><span class="line">        Vector3 dir = new Vector3(horizontal, 0, vertical).normalized;</span><br><span class="line">        rbody.velocity = dir * 2;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="模拟物理轮胎">模拟物理轮胎</h1>
+<p>挂载在车上的脚本，控制这车的子物体（两个前轮、两个后轮）。轮胎挂载这<strong>轮胎碰撞模拟器（WheelCollider）</strong>。WheelCollider旋转，通过摩擦力带动小车前进。</p>
+<img src="/2023/04/10/%E6%A1%88%E4%BE%8B-%E7%89%A9%E7%90%86%E8%BD%AE%E8%83%8E/1.png" class>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public class CarCtrl : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    public WheelCollider[] frontWheels;</span><br><span class="line">    public WheelCollider[] backWheels;</span><br><span class="line">    void Update()</span><br><span class="line">    &#123;</span><br><span class="line">        float horizontal = Input.GetAxis(&quot;Horizontal&quot;);</span><br><span class="line">        float vertical = Input.GetAxis(&quot;Vertical&quot;);</span><br><span class="line">        foreach(WheelCollider wheel in frontWheels)</span><br><span class="line">        &#123;</span><br><span class="line">            wheel.steerAngle = horizontal * 30;</span><br><span class="line">        &#125;</span><br><span class="line">        foreach (WheelCollider wheel in backWheels)</span><br><span class="line">        &#123;</span><br><span class="line">            wheel.motorTorque = vertical * 200;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -829,76 +900,6 @@ Resources目录下的文件不论使用与否，都会被强制打包到游戏�
     
     <div class="post-body" itemprop="articleBody">
           
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/24/Blender%E9%AA%A8%E9%AA%BC%E5%8A%A8%E7%94%BB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="冲击波">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/11/24/Blender%E9%AA%A8%E9%AA%BC%E5%8A%A8%E7%94%BB/" class="post-title-link" itemprop="url">Blender骨骼动画</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-11-24 14:58:45 / Modified: 16:58:59" itemprop="dateCreated datePublished" datetime="2022-11-24T14:58:45+08:00">2022-11-24</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>骨骼动画一般配置：<br>
-动作编辑器窗口，非线性动画窗口，时间线窗口<br>
-开启自动插帧（首帧仍需要手动添加），关闭<strong>仅显示已选中</strong><br>
-<img src="/2022/11/24/Blender%E9%AA%A8%E9%AA%BC%E5%8A%A8%E7%94%BB/1.png" class></p>
-<p>在<strong>姿态模式</strong>下插入关键帧，有<strong>完整角色</strong>和<strong>完整角色（仅选中骨骼）</strong>两个选择</p>
-<p>动作是添加在骨架上的，而非网格上</p>
 
       
     </div>

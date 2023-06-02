@@ -116,13 +116,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">183</span>
+          <span class="site-state-item-count">184</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -152,6 +152,88 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/02/Socket%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8%20Select/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="冲击波">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/09/02/Socket%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8%20Select/" class="post-title-link" itemprop="url">Socket多路复用 Select</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-09-02 22:52:20" itemprop="dateCreated datePublished" datetime="2022-09-02T22:52:20+08:00">2022-09-02</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-11-14 16:49:00" itemprop="dateModified" datetime="2022-11-14T16:49:00+08:00">2022-11-14</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>多路复用，就是同时处理多路信号，比如同时检测多个Socket的状态。</p>
+<p>函数原型 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public static void Select</span><br><span class="line">&#123;</span><br><span class="line">	IList checkRead,</span><br><span class="line">	IList checkWrite,</span><br><span class="line">	IList checkError,</span><br><span class="line">	int microSeconds</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>checkRead：检测是否有可读的Select列表<br>
+checkWrite：检测是否有可写的Socket列表<br>
+checkError：检测是否有出错的Socekt列表<br>
+microSeconds：等待回应的时间，以微妙为单位，如果该参数为-1表示一直等待，如果为0表示非阻塞。</p>
+<p>Select可以确定一个或多个Socket对象的状态。使用它时，需先将一个或多个Socket放入IList中。<br>
+通过调用Select函数（IList作为参数）。调用之后，Select将修改IList列表，仅保留那些满足条件的Socket。没有可用的Socket时，程序将会阻塞，不占用CPU资源。</p>
+<p>Select服务端流程 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">初始化Listenfd</span><br><span class="line">初始化clients列表</span><br><span class="line">while(true)</span><br><span class="line">&#123;</span><br><span class="line">	checkList = 待检测Socket列表</span><br><span class="line">	Select(checkList ···)</span><br><span class="line">	for(遍历可读checkList 列表)</span><br><span class="line">	&#123;</span><br><span class="line">		if(listenfd可读) Accept;</span><br><span class="line">		if(这个客户端可读) 消息处理;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 解析：</p>
+<p>将监听Socket（listenfd）和客户端Socket（遍历clients列表）添加到待检测Socket可读状态的列表checkList中。<br>
+调用Select，程序中设置超过时间为1毫秒，若1毫秒没没有任何可读信息，Select方法将checkList列表变成空列表，然后返回。<br>
+对Select处理后的每个Socket做处理，如果监听Socket（listenfd）可读，说明有客户端连接，需调用Accept。如果客户端Socket可读，说明客户端发送了消息（或关闭），将消息广播给所有客户端。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -902,81 +984,6 @@ Procedural fire。使用爆炸特效</p>
 <p><strong>摄像头跟随摘要</strong></p>
 <p>仅实现固定距离跟随，不会转向</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class CameraControl : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    private Vector3 vector;</span><br><span class="line">    private Transform player;</span><br><span class="line">    void Start()</span><br><span class="line">    &#123;</span><br><span class="line">        player = GameObject.FindWithTag(&quot;Player&quot;).transform;</span><br><span class="line">        vector = player.transform.position - transform.position;</span><br><span class="line">    &#125;</span><br><span class="line">    void Update()</span><br><span class="line">    &#123;</span><br><span class="line">        transform.position = player.transform.position - vector;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/07/29/%E9%AA%91%E7%A0%8Dmod%E7%BC%96%E8%BE%91%E5%85%A5%E9%97%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="冲击波">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/07/29/%E9%AA%91%E7%A0%8Dmod%E7%BC%96%E8%BE%91%E5%85%A5%E9%97%A8/" class="post-title-link" itemprop="url">骑砍mod编辑入门</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-07-29 13:28:09" itemprop="dateCreated datePublished" datetime="2022-07-29T13:28:09+08:00">2022-07-29</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-08-28 16:02:33" itemprop="dateModified" datetime="2022-08-28T16:02:33+08:00">2022-08-28</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>1.下载源码文件，文件里是一堆py文件，将该文件放在module下<br>
-2.在module文件夹下复制native文件重命名作为新mod<br>
-3.源码文件中header开头的为头文件<br>
-4.源码文件中module_info文件中存放了编译生成路径，将路径改为步骤2的文件<br>
-5.源码文件中，build_module批处理类型文件为编译功能，双击编译</p>
 
       
     </div>
