@@ -800,7 +800,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/16/unity%E5%AD%90%E7%BA%BF%E7%A8%8B%E8%B0%83%E7%94%A8%E4%B8%BB%E7%BA%BF%E7%A8%8B/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/16/unity%E5%AD%90%E7%BA%BF%E7%A8%8B%E4%B8%AD%E8%B0%83%E7%94%A8%E4%B8%BB%E7%BA%BF%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -813,7 +813,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/10/16/unity%E5%AD%90%E7%BA%BF%E7%A8%8B%E8%B0%83%E7%94%A8%E4%B8%BB%E7%BA%BF%E7%A8%8B/" class="post-title-link" itemprop="url">unity子线程调用主线程</a>
+          <a href="/2022/10/16/unity%E5%AD%90%E7%BA%BF%E7%A8%8B%E4%B8%AD%E8%B0%83%E7%94%A8%E4%B8%BB%E7%BA%BF%E7%A8%8B/" class="post-title-link" itemprop="url">unity子线程中调用主线程</a>
         </h2>
 
         <div class="post-meta-container">
@@ -831,7 +831,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2024-03-01 12:41:09" itemprop="dateModified" datetime="2024-03-01T12:41:09+08:00">2024-03-01</time>
+        <time title="Modified: 2024-03-01 16:24:28" itemprop="dateModified" datetime="2024-03-01T16:24:28+08:00">2024-03-01</time>
       </span>
 
   
@@ -844,7 +844,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>在Unity中，子线程是无法调用Unity主线程的API的，因为unity不允许这么干。 <img src="/2022/10/16/unity%E5%AD%90%E7%BA%BF%E7%A8%8B%E8%B0%83%E7%94%A8%E4%B8%BB%E7%BA%BF%E7%A8%8B/1.png" class></p>
+          <p>在Unity中，子线程是无法调用Unity主线程的API的，因为unity不允许这么干。 <img src="/2022/10/16/unity%E5%AD%90%E7%BA%BF%E7%A8%8B%E4%B8%AD%E8%B0%83%E7%94%A8%E4%B8%BB%E7%BA%BF%E7%A8%8B/1.png" class></p>
 <p>但是我们可以通过别的途径，实现这一功能。<br>
 大致思路：<br>
 将子线程中需要调用的函数，通过委托传递给Loom中的委托列表，在Loom中去调用该委托。<br>
