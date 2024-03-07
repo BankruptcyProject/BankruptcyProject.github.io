@@ -161,6 +161,156 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/04/15/Mirror%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="冲击波">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/04/15/Mirror%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93/" class="post-title-link" itemprop="url">Mirror基础总结（可跟随复习制作）</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-04-15 16:17:06" itemprop="dateCreated datePublished" datetime="2023-04-15T16:17:06+08:00">2023-04-15</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2023-05-08 22:17:25" itemprop="dateModified" datetime="2023-05-08T22:17:25+08:00">2023-05-08</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="networkmanager">NetworkManager</h1>
+<p>是一个组件，多人联机的核心组件，创建一个空对象专门存储这个组件。</p>
+<p>一个场景<strong>有且只能有一个</strong>Network Manager。Network Manager有<strong>DDOL</strong>选项，勾选以贯穿所有场景。同时Network Manager身上注册的所有生成预制体也会跟着到下一个场景生成。</p>
+<p>设置<strong>离线</strong>和<strong>在线</strong>场景</p>
+<p>NetworkManager自带的UI勾选上后可以直接使用，我写过自定义的连接UI<br>
+设置传输协议（Telepathy Transport）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public TelepathyTransport telepathyTransport;</span><br><span class="line">public NetworkManager networkManager;</span><br><span class="line">public void BtnLoadHostScene()//点击创建房间按钮函数</span><br><span class="line">&#123;</span><br><span class="line">	networkManager.networkAddress = ipText.text;//获取ip地址</span><br><span class="line">    telepathyTransport.port = (ushort)Convert.ToInt32(epText.text);//获取端口号</span><br><span class="line">    networkManager.StartHost();//创建</span><br><span class="line">&#125;</span><br><span class="line">public void BtnLoadClientScene()</span><br><span class="line">&#123;</span><br><span class="line">    networkManager.networkAddress = ipText.text;</span><br><span class="line">    telepathyTransport.port = (ushort)Convert.ToInt32(epText.text);</span><br><span class="line">    networkManager.StartClient();//连接</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>Spawn</strong><br>
+注册Player预制体<br>
+勾选自动创建Player<br>
+在连接上游戏后会自动创建联网的Player<br>
+该预制体需要有Network Identity。离线是将自动摧毁该对象<br>
+创建顺序和位置需要参考<strong>NetworkStartPosition结点</strong>（下面会讲）</p>
+<p>在<strong>Registered Spawnable Prefabs</strong>注册后续可能在游戏中联网生成的其它对象（子弹、敌人），这些对象有netId。也可以写到这部分的时候回过头来注册，Spawn详细部分下面会讲。</p>
+<p>在代码中ServerChangeScene方法可以改变场景，此时所有客户端都会跟着一起切换场景。ServerChangeScene的值会被更新。</p>
+<p><strong>常用API</strong></p>
+<table>
+<colgroup>
+<col style="width: 21%">
+<col style="width: 78%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">属性名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">singleton</td>
+<td>The one and only NetworkManager（可以在别的脚本中通过NetworkManager.singleton调用）</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">numPlayers</td>
+<td>Number of active player objects across all connections on the server.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">networkSceneName</td>
+<td>The name of the current network scene.</td>
+</tr>
+</tbody>
+</table>
+<h1 id="networkroommanager">NetworkRoomManager</h1>
+<p>NetworkRoomManager是Network Manager的派生类，包括拥有后者的所有功能，因此不能共存。</p>
+<p>请勾选上Show Room GUI，我还没写过自定义游戏大厅的UI和连接方式。（但是在<a target="_blank" rel="noopener" href="https://bankruptcyproject.github.io/2022/09/11/Mirror_Network-Room-Manager/">NetworkRoomManager</a>和<a target="_blank" rel="noopener" href="https://bankruptcyproject.github.io/2022/09/11/Mirror_Network-Room-Player/">Network Room Player</a>的专门的博客里我有把相关方法和属性列进去）</p>
+<p>将在游戏大厅中生成的玩家所需要用到的预制体称为<strong>大厅玩家预制体</strong>，相应的我将在真正游戏中生成玩家所需要用到的预制体称为<strong>游戏玩家预制体</strong>，两者独立。请专门另外做一种大厅玩家预制体，注册上。</p>
+<h1 id="network-start-position">Network Start Position</h1>
+<p>一个组件，创建一个结点专门放置这个组件最为一个出生点。<br>
+可以创建多个出生点，分布在场景各个地方。<br>
+场景加载完后，NetworkManager会在这些地方有根据的生成玩家。</p>
+<h1 id="network-identity">Network Identity</h1>
+<p>组件<br>
+在联网游戏进行时所用到的预制体必须要有NetworkIdentity组件<br>
+加载场景顺序：<br>
+加载没有NetworkIdentity组件的结点<br>
+等待联网<br>
+当一个玩家联网时，加载（更新）所有最新状态的拥有NetworkIdentity组件的结点</p>
+<h1 id="运行逻辑与顺序">运行逻辑与顺序</h1>
+<img src="/2023/04/15/Mirror%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93/1.png" class>
+<img src="/2023/04/15/Mirror%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93/2.png" class>
+<p>在本地客户端运行游戏，场景内会有多个人物，其中有一个人物由本地控制——称为<strong>玩家</strong><br>
+另外几个人物也是本地生成，组件、材质、脚本都于本地运行，但它们的控制命令来自于服务器——称为<strong>克隆玩家</strong><br>
+控制<strong>玩家</strong>实际上是向服务器发送行动请求，服务器许可后<strong>玩家</strong>及其对应的所有<strong>克隆玩家</strong>行动</p>
+<img src="/2023/04/15/Mirror%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93/3.png" class>
+<img src="/2023/04/15/Mirror%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93/4.png" class>
+<img src="/2023/04/15/Mirror%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93/5.png" class>
+<h1 id="network-attributes">Network Attributes</h1>
+<p>同步变量标记，被标记的变量会同步给其他玩家<br>
+那么一旦此变量<strong>(在服务器！！！！)</strong>发生变化，服务器就会将此变量发送给所有客户端<br>
+后面是同步变量被修改时的监听方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[SyncVar(hook = nameof(OnNameStrChanged))]</span><br><span class="line">public string nameStr;</span><br><span class="line">void OnNameStrChanged(string _, string newStr)</span><br><span class="line">&#123;</span><br><span class="line">	GetComponent&lt;TextMesh&gt;().text = newStr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Command标记是针对方法的标记，被标记的方法必须以Cmd开头<br>
+CmdSetupPlayer这个方法是被 [Command]标记过的，所以是会在服务器端执行的，不会再本地执行<br>
+如果取消了[Command] 的标志那就肯定只在本地执行了也就是完全的本地的方法啊和服务端没关系<br>
+在服务器中改变同步变量才会被分发给客户端！！！！！！！！！！！！！<br>
+Command方法描述为 会被客户端调用的服务端的方法</p>
+<p>Bypassing Authority<br>
+为了安全起见, [Command] 只能在player object上使用<br>
+non-player objects想要使用[Command]需要拥有authority，或者使用[Command(requiresAuthority = false)]可以绕过权限检查（但无法传递参数）</p>
+<p>关于标记更多信息参考以前写的博客<a target="_blank" rel="noopener" href="https://bankruptcyproject.github.io/2022/09/08/Mirror_Network-Attributes/">Mirror_Network Attributes</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2023/04/10/%E6%A1%88%E4%BE%8B-%E7%89%A9%E7%90%86%E8%BD%AE%E8%83%8E/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -835,71 +985,6 @@ Resources目录下的文件不论使用与否，都会被强制打包到游戏�
 <img src="/2022/12/01/Blender%E6%9C%BA%E6%A2%B0%E7%BB%91%E5%AE%9A/2.png" class></p>
 <p><strong>复制旋转</strong><br>
 <img src="/2022/12/01/Blender%E6%9C%BA%E6%A2%B0%E7%BB%91%E5%AE%9A/3.png" class> 实时复制另一根骨骼的旋转量</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/25/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E9%BE%99%E7%8C%AB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="冲击波">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/11/25/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E9%BE%99%E7%8C%AB/" class="post-title-link" itemprop="url">（练习）龙猫</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-11-25 14:48:10 / Modified: 15:00:14" itemprop="dateCreated datePublished" datetime="2022-11-25T14:48:10+08:00">2022-11-25</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          
 
       
     </div>
