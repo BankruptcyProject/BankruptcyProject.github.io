@@ -174,7 +174,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/03/05/unity-ET%E6%A1%86%E6%9E%B6/" class="post-title-link" itemprop="url">unity-ET框架 6.0</a>
+          <a href="/2024/03/05/unity-ET%E6%A1%86%E6%9E%B6/" class="post-title-link" itemprop="url">ET框架 6.0</a>
         </h2>
 
         <div class="post-meta-container">
@@ -192,7 +192,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2024-03-07 20:27:13" itemprop="dateModified" datetime="2024-03-07T20:27:13+08:00">2024-03-07</time>
+        <time title="Modified: 2024-03-07 23:43:06" itemprop="dateModified" datetime="2024-03-07T23:43:06+08:00">2024-03-07</time>
       </span>
 
   
@@ -303,16 +303,16 @@ c. 从全局事件系统(EventSystem)中删除该组件，并且将InstanceId设
 </ol>
 <p>ET框架的逻辑就是由以上各种事件来驱动的。</p>
 <h1 id="eui">EUI</h1>
-<p>UI显示窗口（预制体）目录：<br>
-ET6.0-UI项目名称<br>
-在此处制作一个大的窗口UI<br>
-Dlg文件下新制作的窗口，需要右键SpawnEUICode，且需要在Unity.cs中添加窗口名称。<br>
+<p>某个<strong>自定义显示窗口节点</strong>（下面可挂很多UI节点）（预制体）的目录： ET6.0-UI项目名称(View  在此处制作一个<strong>大的窗口UI</strong>（命名规则为Dlg开头）<br>
+在UI文件下新制作的窗口，需要右键SpawnEUICode，且需要在Unity.cs中添加窗口名称。<br>
 窗口需要在检查栏中右下角 添加AssetBuddle标签 使用小写 必须使用unity3d后缀<br>
-每次在窗口下更新新的UI组件都需要对窗口进行SpawnEUICode</p>
+之后每次在该窗口下更新新的UI组件时都需要对<strong>该窗口节点</strong>进行SpawnEUICode</p>
 <p>EUI不需要在检查栏中注册UI即可在所创建的EUI脚本中用self.View.xxxx调用到UI</p>
 <p>以某个捕鱼机UI游戏为例子（ET6.0+EUI）<br>
 ET6.0-UI项目名称  在这个目录下有被注册过的UI文件夹，每个UI文件夹包括 一个System脚本和一个event文件夹（存放eventHandler脚本）</p>
 <h1 id="eui公共ui">EUI公共UI</h1>
+<p>将需要做成 公共UI 的节点 拖入 目录Unity(View，同时注意该节点的命名规则为ES开头，之后就可以打开预制体编辑模式制作 公共UI。</p>
+<p>制作完成后需要对 公共UI 节点进行一次 SpawnEUICode。</p>
 
       
     </div>
