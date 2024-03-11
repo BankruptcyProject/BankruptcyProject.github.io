@@ -20,15 +20,15 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="Async&#x2F;Await 代替过于底层和繁杂的thread Async&#x2F;Await的关键点总结 先上干活，把要点总结一下，看不懂没关系，直接跳过即可。之所以把要点放前面是因为代码太长，不想把重点挤到太后面了。  Async是C#的修饰符，可以用来修饰method或者expression，用来声明一个异步的method或者expression 一个异步的method仅支持以下返回值：">
+<meta name="description" content="通过使用异步编程，你可以避免性能瓶颈并增强应用程序的总体响应能力。 但是，编写异步应用程序的传统技术可能比较复杂，使它们难以编写、调试和维护。 C# 支持简化的方法，即异步编程，它利用 .NET 运行时中的异步支持。 编译器可执行开发人员曾进行的高难度工作，且应用程序保留了一个类似于同步代码的逻辑结构。 因此，你只需做一小部分工作就可以获得异步编程的所有好处。 异步方法易于编写 C# 中的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CS异步编程Task">
 <meta property="og:url" content="http://example.com/2024/03/09/CS%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8BTask/index.html">
 <meta property="og:site_name" content="你们这样对得起孤胆英雄飞天狙吗">
-<meta property="og:description" content="Async&#x2F;Await 代替过于底层和繁杂的thread Async&#x2F;Await的关键点总结 先上干活，把要点总结一下，看不懂没关系，直接跳过即可。之所以把要点放前面是因为代码太长，不想把重点挤到太后面了。  Async是C#的修饰符，可以用来修饰method或者expression，用来声明一个异步的method或者expression 一个异步的method仅支持以下返回值：">
+<meta property="og:description" content="通过使用异步编程，你可以避免性能瓶颈并增强应用程序的总体响应能力。 但是，编写异步应用程序的传统技术可能比较复杂，使它们难以编写、调试和维护。 C# 支持简化的方法，即异步编程，它利用 .NET 运行时中的异步支持。 编译器可执行开发人员曾进行的高难度工作，且应用程序保留了一个类似于同步代码的逻辑结构。 因此，你只需做一小部分工作就可以获得异步编程的所有好处。 异步方法易于编写 C# 中的">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-03-09T13:50:40.000Z">
-<meta property="article:modified_time" content="2024-03-11T05:10:02.465Z">
+<meta property="article:modified_time" content="2024-03-11T05:45:30.988Z">
 <meta property="article:author" content="冲击波">
 <meta property="article:tag" content="CSharp">
 <meta name="twitter:card" content="summary">
@@ -108,7 +108,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#asyncawait"><span class="nav-number">1.</span> <span class="nav-text">Async&#x2F;Await</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#asyncawait%E7%9A%84%E5%85%B3%E9%94%AE%E7%82%B9%E6%80%BB%E7%BB%93"><span class="nav-number">1.1.</span> <span class="nav-text">Async&#x2F;Await的关键点总结</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%82%E6%AD%A5%E6%96%B9%E6%B3%95%E6%98%93%E4%BA%8E%E7%BC%96%E5%86%99"><span class="nav-number">1.</span> <span class="nav-text">异步方法易于编写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#asyncawait%E7%9A%84%E5%85%B3%E9%94%AE%E7%82%B9%E6%80%BB%E7%BB%93"><span class="nav-number">2.</span> <span class="nav-text">Async&#x2F;Await的关键点总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E7%AE%80%E4%BB%8B"><span class="nav-number">3.</span> <span class="nav-text">异步编程简介</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -199,7 +199,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2024-03-11 13:10:02" itemprop="dateModified" datetime="2024-03-11T13:10:02+08:00">2024-03-11</time>
+        <time title="Modified: 2024-03-11 13:45:30" itemprop="dateModified" datetime="2024-03-11T13:45:30+08:00">2024-03-11</time>
       </span>
 
   
@@ -212,10 +212,25 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="asyncawait">Async/Await</h1>
-<p>代替过于底层和繁杂的thread</p>
+        <p>通过使用异步编程，你可以避免性能瓶颈并增强应用程序的总体响应能力。 但是，编写异步应用程序的传统技术可能比较复杂，使它们难以编写、调试和维护。</p>
+<p>C# 支持简化的方法，即异步编程，它利用 .NET 运行时中的异步支持。 编译器可执行开发人员曾进行的高难度工作，且应用程序保留了一个类似于同步代码的逻辑结构。 因此，你只需做一小部分工作就可以获得异步编程的所有好处。</p>
+<h2 id="异步方法易于编写">异步方法易于编写</h2>
+<p>C# 中的 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/dotnet/csharp/language-reference/keywords/async">Async</a> 和 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/dotnet/csharp/language-reference/operators/await">Await</a> 关键字是异步编程的核心。 通过这两个关键字，可以使用 .NET Framework、.NET Core 或 Windows 运行时中的资源，轻松创建异步方法（几乎与创建同步方法一样轻松）。 使用 <code>async</code> 关键字定义的异步方法简称为“异步方法”。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public async Task&lt;int&gt; GetUrlContentLengthAsync()</span><br><span class="line">&#123;</span><br><span class="line">    var client = new HttpClient();</span><br><span class="line"></span><br><span class="line">    Task&lt;string&gt; getStringTask =</span><br><span class="line">        client.GetStringAsync(&quot;https://learn.microsoft.com/dotnet&quot;);</span><br><span class="line"></span><br><span class="line">    DoIndependentWork();</span><br><span class="line"></span><br><span class="line">    string contents = await getStringTask;</span><br><span class="line"></span><br><span class="line">    return contents.Length;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void DoIndependentWork()</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(&quot;Working...&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>该例子包含 <code>async</code> 修饰符。 返回类型为 <code>Task&lt;int&gt;</code>（有关更多选项，请参阅“返回类型”部分）。 方法名称以 <code>Async</code> 结尾。 在方法的主体中，<code>GetStringAsync</code> 返回 <code>Task&lt;string&gt;</code>。 这意味着在 <code>await</code> 任务时，将获得 <code>string</code> (<code>contents</code>)。 在等待任务之前，可以通过 <code>GetStringAsync</code> 执行不依赖于 <code>string</code> 的工作。</p>
+<p>密切注意 <code>await</code> 运算符。 它会暂停 <code>GetUrlContentLengthAsync</code>：</p>
+<ul>
+<li>在 <code>getStringTask</code> 完成之前，<code>GetUrlContentLengthAsync</code> 无法继续。</li>
+<li>同时，控件返回至 <code>GetUrlContentLengthAsync</code> 的调用方。</li>
+<li>当 <code>getStringTask</code> 完成时，控件将在此处继续。</li>
+<li>然后，<code>await</code> 运算符会从 <code>getStringTask</code> 检索 <code>string</code> 结果。</li>
+</ul>
+<p>return 语句指定整数结果。 任何等待 <code>GetUrlContentLengthAsync</code> 的方法都会检索长度值。</p>
+<p>如果 <code>GetUrlContentLengthAsync</code> 在调用 <code>GetStringAsync</code> 和等待其完成期间不能进行任何工作，则你可以通过在下面的单个语句中调用和等待来简化代码。</p>
+<p>C#复制</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span> contents = <span class="keyword">await</span> client.GetStringAsync(<span class="string">&quot;https://learn.microsoft.com/dotnet&quot;</span>);</span><br></pre></td></tr></table></figure>
 <h2 id="asyncawait的关键点总结">Async/Await的关键点总结</h2>
-<p>先上干活，把要点总结一下，看不懂没关系，直接跳过即可。之所以把要点放前面是因为代码太长，不想把重点挤到太后面了。</p>
+<p>代替过于底层和繁杂的thread</p>
 <ul>
 <li><p>Async是C#的修饰符，可以用来修饰method或者expression，用来声明一个异步的method或者expression</p></li>
 <li><p>一个异步的method仅支持以下返回值：</p></li>
@@ -228,6 +243,9 @@
 <li><p>Async方法在执行的时候，开始是以同步的方式执行（即在调用方的thread里跑的），直到遇到await关键字，从await关键字开始，C#会另起一个thread来执行await后面的代码。</p></li>
 <li><p>如果Async方法里面的代码没有包含await的代码会怎么样？那整个函数就会同步执行，跟普通函数没差别。编译器也会给你个警告。</p></li>
 </ul>
+<h2 id="异步编程简介">异步编程简介</h2>
+<p>异步编程的核心是 Task 和 Task<T> 对象，这两个对象对异步操作建模。 它们受关键字 async 和 await 的支持。 在大多数情况下模型十分简单：</T></p>
+<p>对于 I/O 绑定代码，等待一个在 async 方法中返回 Task 或 Task<T> 的操作。</T></p>
 
     </div>
 
