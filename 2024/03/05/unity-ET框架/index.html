@@ -28,7 +28,7 @@
 <meta property="og:description" content="目录 bin：游戏服务器代码经过编译输出 book：指南文档以及可运行的案例 config：服务器运行时所用到的配置文件 excel：存放策划的数值excel文件，会自动转换配置和代码 FileServer：存放web资源服务器程序 logs：服务器运行时日志 protos：存放游戏客户端和服务端的通讯协议，以及服务器进程之间通讯的协议 Server：ET框架源码，日常开发所在">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-03-05T06:40:19.000Z">
-<meta property="article:modified_time" content="2024-03-07T16:06:50.054Z">
+<meta property="article:modified_time" content="2024-03-08T02:16:01.158Z">
 <meta property="article:author" content="冲击波">
 <meta property="article:tag" content="unity">
 <meta name="twitter:card" content="summary">
@@ -108,7 +108,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9B%AE%E5%BD%95"><span class="nav-number">1.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ecs%E7%B3%BB%E7%BB%9F"><span class="nav-number">2.</span> <span class="nav-text">ECS系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%A5%E9%97%A8"><span class="nav-number">2.0.1.</span> <span class="nav-text">入门</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E5%88%87%E7%9A%86%E5%AE%9E%E4%BD%93"><span class="nav-number">2.0.2.</span> <span class="nav-text">一切皆实体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%84%E4%BB%B6%E7%9A%84%E4%B8%80%E4%BA%9B%E7%BB%86%E8%8A%82"><span class="nav-number">2.0.3.</span> <span class="nav-text">组件的一些细节</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E6%9C%BA%E5%88%B6eventsystem"><span class="nav-number">2.0.4.</span> <span class="nav-text">事件机制EventSystem</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#eui"><span class="nav-number">3.</span> <span class="nav-text">EUI</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#eui%E5%85%AC%E5%85%B1ui"><span class="nav-number">4.</span> <span class="nav-text">EUI公共UI</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9B%AE%E5%BD%95"><span class="nav-number">1.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ecs%E7%B3%BB%E7%BB%9F"><span class="nav-number">2.</span> <span class="nav-text">ECS系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%A5%E9%97%A8"><span class="nav-number">2.0.1.</span> <span class="nav-text">入门</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E5%88%87%E7%9A%86%E5%AE%9E%E4%BD%93"><span class="nav-number">2.0.2.</span> <span class="nav-text">一切皆实体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%84%E4%BB%B6%E7%9A%84%E4%B8%80%E4%BA%9B%E7%BB%86%E8%8A%82"><span class="nav-number">2.0.3.</span> <span class="nav-text">组件的一些细节</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E6%9C%BA%E5%88%B6eventsystem"><span class="nav-number">2.0.4.</span> <span class="nav-text">事件机制EventSystem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E8%AE%A2%E9%98%85%E5%92%8C%E5%8F%91%E5%B8%83"><span class="nav-number">2.0.5.</span> <span class="nav-text">事件订阅和发布</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#eui"><span class="nav-number">3.</span> <span class="nav-text">EUI</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#eui%E5%85%AC%E5%85%B1ui"><span class="nav-number">4.</span> <span class="nav-text">EUI公共UI</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -122,7 +122,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">185</span>
+          <span class="site-state-item-count">186</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -199,7 +199,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2024-03-08 00:06:50" itemprop="dateModified" datetime="2024-03-08T00:06:50+08:00">2024-03-08</time>
+        <time title="Modified: 2024-03-08 10:16:01" itemprop="dateModified" datetime="2024-03-08T10:16:01+08:00">2024-03-08</time>
       </span>
 
   
@@ -309,6 +309,7 @@ c. 从全局事件系统(EventSystem)中删除该组件，并且将InstanceId设
 ......, 更多的事件由自己去开发。</li>
 </ol>
 <p>ET框架的逻辑就是由以上各种事件来驱动的。</p>
+<h3 id="事件订阅和发布">事件订阅和发布</h3>
 <h1 id="eui">EUI</h1>
 <p>某个<strong>自定义显示窗口节点</strong>（下面可挂很多UI节点）（预制体）的目录： ET6.0-UI项目名称(View  在此处制作一个<strong>大的窗口UI</strong>（命名规则为Dlg开头）<br>
 在UI文件下新制作的窗口，需要右键SpawnEUICode，且需要在Unity.cs中添加窗口名称。<br>
@@ -344,6 +345,9 @@ ET6.0-UI项目名称  在这个目录下有被注册过的UI文件夹，每个U
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2024/03/09/CS%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8BTask/" rel="next" title="CS异步编程Task">
+                  CS异步编程Task <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>
