@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">186</span>
+          <span class="site-state-item-count">190</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,310 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/31/ip%E5%9B%B0%E5%A2%83/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="冲击波">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/08/31/ip%E5%9B%B0%E5%A2%83/" class="post-title-link" itemprop="url">ip困境</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-08-31 01:05:01" itemprop="dateCreated datePublished" datetime="2022-08-31T01:05:01+08:00">2022-08-31</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-09-08 13:44:26" itemprop="dateModified" datetime="2022-09-08T13:44:26+08:00">2022-09-08</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>我该如何把游戏服务器放到公网上</p>
+<p>方法一：申请到ipv4公网ip</p>
+<p>方法二：使用手机热点流量的ipv6，同时让测试人员也使用他们的手机热点流量</p>
+<p>方法三：做内网穿透，通过某个软件获得公网域名，然后在代码中通过解析域名获得ip地址（或者通过内网穿透软件直接申请到一个公网ip和ep）</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/29/%E6%A1%88%E4%BE%8B-%E8%81%8A%E5%A4%A9%E5%AE%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="冲击波">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/08/29/%E6%A1%88%E4%BE%8B-%E8%81%8A%E5%A4%A9%E5%AE%A4/" class="post-title-link" itemprop="url">案例-聊天室</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-08-29 21:21:26" itemprop="dateCreated datePublished" datetime="2022-08-29T21:21:26+08:00">2022-08-29</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-09-08 13:40:09" itemprop="dateModified" datetime="2022-09-08T13:40:09+08:00">2022-09-08</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>实现一个简单的本地多人聊天室。<br>
+服务器必需处于启动状态，用于接收每个客户端发送来的消息，并转发到所有客户端上。<br>
+服务器时刻同时处于监听状态，已准备随时接纳新的客户端接入。<br>
+该聊天室的网络部分大多采用异步技术，多线程卡顿较少。</p>
+<p><strong>服务器部分代码</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">class ClientState</span><br><span class="line">&#123;</span><br><span class="line">	public Socket socket;</span><br><span class="line">    public byte[] readBuff = new byte[1024];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Program</span><br><span class="line">&#123;</span><br><span class="line">    static Socket listenfd;</span><br><span class="line">    static Dictionary&lt;Socket, ClientState&gt; clients = new Dictionary&lt;Socket, ClientState&gt;();</span><br><span class="line">    static void Main(string[] args)</span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(&quot;Hello World!&quot;);</span><br><span class="line">        //Socket</span><br><span class="line">        listenfd = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);</span><br><span class="line">        //Bind</span><br><span class="line">        IPAddress ipAdr = IPAddress.Parse(&quot;127.0.0.1&quot;);</span><br><span class="line">        IPEndPoint ipEp = new IPEndPoint(ipAdr, 8888);</span><br><span class="line">        listenfd.Bind(ipEp);</span><br><span class="line">        //Listen</span><br><span class="line">        listenfd.Listen(0);</span><br><span class="line">        Console.WriteLine(&quot;[服务器]启动成功&quot;);</span><br><span class="line">        //Accept</span><br><span class="line">        listenfd.BeginAccept(AcceptCallback, listenfd);</span><br><span class="line">        //等待</span><br><span class="line">        Console.ReadLine();</span><br><span class="line">    &#125;</span><br><span class="line">    public static void AcceptCallback(IAsyncResult ar)</span><br><span class="line">    &#123;</span><br><span class="line">        try</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(&quot;[服务器]Accept&quot;);</span><br><span class="line">            Socket listenfd = (Socket)ar.AsyncState;</span><br><span class="line">            Socket clientfd = listenfd.EndAccept(ar);</span><br><span class="line">            //clients列表</span><br><span class="line">            ClientState state = new ClientState();</span><br><span class="line">            state.socket = clientfd;</span><br><span class="line">            clients.Add(clientfd, state);</span><br><span class="line">            //接收数据BeginReceive</span><br><span class="line">            clientfd.BeginReceive(state.readBuff, 0, 1024, 0, ReceiveCallback, state);</span><br><span class="line">            //继续Accept接收新客户端</span><br><span class="line">            listenfd.BeginAccept(AcceptCallback, listenfd);</span><br><span class="line">        &#125;</span><br><span class="line">        catch(SocketException ex)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(&quot;Socket Accept fail &quot; + ex.ToString());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public static void ReceiveCallback(IAsyncResult ar)</span><br><span class="line">    &#123;</span><br><span class="line">		try</span><br><span class="line">		&#123;</span><br><span class="line">			ClientState state = (ClientState) ar.AsyncState;</span><br><span class="line">            Socket clientfd = state.socket;</span><br><span class="line">            int count = clientfd.EndReceive(ar);</span><br><span class="line">            //客户端关闭</span><br><span class="line">            if (count == 0)</span><br><span class="line">            &#123;</span><br><span class="line">          		clientfd.Close();</span><br><span class="line">                clients.Remove(clientfd);</span><br><span class="line">                Console.WriteLine(&quot;Socket Close&quot;);</span><br><span class="line">                return;</span><br><span class="line">			&#125;</span><br><span class="line">            string recvStr = System.Text.Encoding.Default.GetString(state.readBuff, 0, count);</span><br><span class="line">            byte[] sendByte = System.Text.Encoding.Default.GetBytes(recvStr);</span><br><span class="line">            foreach (ClientState s in clients.Values)</span><br><span class="line">            &#123;</span><br><span class="line">            	s.socket.Send(sendByte);//此处本应该且可以使用异步，但为了初学者我的简洁，暂时不使用</span><br><span class="line">            &#125;</span><br><span class="line">            clientfd.BeginReceive(state.readBuff, 0, 1024, 0, ReceiveCallback, state);</span><br><span class="line">        &#125;</span><br><span class="line">        catch(SocketException ex)</span><br><span class="line">        &#123;</span><br><span class="line">        	Console.WriteLine(&quot;Socket Receive fail&quot; + ex.ToString());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>客户端部分代码</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">public class Echo : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    //定义套接字</span><br><span class="line">    Socket socket;</span><br><span class="line">    //UI</span><br><span class="line">    public InputField inputField;</span><br><span class="line">    public Text text;</span><br><span class="line">    //接收缓冲区</span><br><span class="line">    byte[] readBuff = new byte[1024];</span><br><span class="line">    string recvStr = &quot;&quot;;</span><br><span class="line">    public void Connection()</span><br><span class="line">    &#123;</span><br><span class="line">        socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);</span><br><span class="line">        socket.BeginConnect(&quot;127.0.0.1&quot;, 8888, ConnectCallback, socket);</span><br><span class="line">    &#125;</span><br><span class="line">    public void ConnectCallback(IAsyncResult ar)</span><br><span class="line">    &#123;</span><br><span class="line">        try</span><br><span class="line">        &#123;</span><br><span class="line">            Socket socket = (Socket)ar.AsyncState;</span><br><span class="line">            socket.EndConnect(ar);</span><br><span class="line">            Debug.Log(&quot;Socket Connect Succ&quot;);</span><br><span class="line">            socket.BeginReceive(readBuff, 0, 1024, 0, ReceiveCallback, socket);</span><br><span class="line">        &#125;</span><br><span class="line">        catch(SocketException ex)</span><br><span class="line">        &#123;</span><br><span class="line">            Debug.Log(&quot;Socket Connect fail &quot; + ex.ToString());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public void ReceiveCallback(IAsyncResult ar)</span><br><span class="line">    &#123;</span><br><span class="line">        try</span><br><span class="line">        &#123;</span><br><span class="line">            Socket socket = (Socket)ar.AsyncState;</span><br><span class="line">            int count = socket.EndReceive(ar);</span><br><span class="line">            string s = System.Text.Encoding.Default.GetString(readBuff, 0, count);</span><br><span class="line">            recvStr = s + &quot;\n&quot; + recvStr;</span><br><span class="line"></span><br><span class="line">            socket.BeginReceive(readBuff, 0, 1024, 0, ReceiveCallback, socket);</span><br><span class="line">        &#125;</span><br><span class="line">        catch(SocketException ex)</span><br><span class="line">        &#123;</span><br><span class="line">            Debug.Log(&quot;Socket Receive fail &quot; + ex.ToString());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public void Send()</span><br><span class="line">    &#123;</span><br><span class="line">        string sendStr = inputField.text;</span><br><span class="line">        byte[] sendBytes = System.Text.Encoding.Default.GetBytes(sendStr);</span><br><span class="line"></span><br><span class="line">        socket.BeginSend(sendBytes, 0, sendBytes.Length, 0, SendCallback, socket);</span><br><span class="line">    &#125;</span><br><span class="line">    public void SendCallback(IAsyncResult ar)</span><br><span class="line">    &#123;</span><br><span class="line">        try</span><br><span class="line">        &#123;</span><br><span class="line">            Socket socket = (Socket)ar.AsyncState;</span><br><span class="line">            int count = socket.EndSend(ar);</span><br><span class="line">            Debug.Log(&quot;Socket Send succ &quot; + count);</span><br><span class="line">        &#125;</span><br><span class="line">        catch(SocketException ex)</span><br><span class="line">        &#123;</span><br><span class="line">            Debug.Log(&quot;Socket Send fail &quot; + ex.ToString());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    void Update()</span><br><span class="line">    &#123;</span><br><span class="line">        text.text = recvStr;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<img src="/2022/08/29/%E6%A1%88%E4%BE%8B-%E8%81%8A%E5%A4%A9%E5%AE%A4/1.png" class>
+<img src="/2022/08/29/%E6%A1%88%E4%BE%8B-%E8%81%8A%E5%A4%A9%E5%AE%A4/2.png" class>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/29/unity%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="冲击波">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/08/29/unity%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE/" class="post-title-link" itemprop="url">unity视频播放</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-08-29 17:10:33" itemprop="dateCreated datePublished" datetime="2022-08-29T17:10:33+08:00">2022-08-29</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-11-14 16:27:57" itemprop="dateModified" datetime="2022-11-14T16:27:57+08:00">2022-11-14</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>添加视频播放组件（video player）<br>
+其中源部分若为视频剪辑，则添加本地视频文件<br>
+渲染器模式选择渲染器纹理，渲染器纹理模式的目标纹理文件需要另外创建，该文件中可以对视频进行设置，最重要的是将该文件拖到目标物体上才可播放。</p>
+<img src="/2022/08/29/unity%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE/1.png" class>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/28/unity%E8%B5%84%E6%BA%90%E6%B8%85%E5%8D%95%E6%95%B4%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="冲击波">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/08/28/unity%E8%B5%84%E6%BA%90%E6%B8%85%E5%8D%95%E6%95%B4%E7%90%86/" class="post-title-link" itemprop="url">unity资源清单整理</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-08-28 16:12:39" itemprop="dateCreated datePublished" datetime="2022-08-28T16:12:39+08:00">2022-08-28</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-11-14 16:22:37" itemprop="dateModified" datetime="2022-11-14T16:22:37+08:00">2022-11-14</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="easy-primitive-people">Easy Primitive People</h1>
+<p>无代码，仅模型。仅包含预制体和预制体的材质。<br>
+圆柱小人包含各种职业，以及一个粉色圆柱猪</p>
+<h1 id="procedural-fire">Procedural fire</h1>
+<p>无代码，预制体中的特效可直接使用。<br>
+包含一个小型爆炸效果和几个不同颜色的火焰燃烧效果。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -894,555 +1198,6 @@ end方法的参数：<br>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public Socket EndAccept(IAsyncResult asyncResult)</span><br></pre></td></tr></table></figure>
 <p>异步服务端程序结构</p>
 <img src="/2022/03/29/Socket_Echo%E5%BC%82%E6%AD%A5%E7%BD%91%E7%BB%9C%E7%A8%8B%E5%BA%8F/3.jpg" class>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/28/CS%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="冲击波">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/03/28/CS%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" class="post-title-link" itemprop="url">CS异常处理</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-03-28 23:44:52" itemprop="dateCreated datePublished" datetime="2022-03-28T23:44:52+08:00">2022-03-28</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2023-06-02 15:28:29" itemprop="dateModified" datetime="2023-06-02T15:28:29+08:00">2023-06-02</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><strong>try</strong>：一个 try 块标识了一个将被激活的特定的异常的代码块。后跟一个或多个 catch 块。</p>
-<p><strong>catch</strong>：程序通过异常处理程序捕获异常。catch 关键字表示异常的捕获。</p>
-<p><strong>finally</strong>：finally 块用于执行给定的语句，不管异常是否被抛出都会执行。例如，如果打开一个文件，不管是否出现异常文件都要被关闭。</p>
-<p><strong>throw</strong>：当问题出现时，程序抛出一个异常。使用 throw 关键字来完成。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">try</span><br><span class="line">&#123;</span><br><span class="line">   // 引起异常的语句</span><br><span class="line">&#125;</span><br><span class="line">catch( DivideByZeroException e1 )</span><br><span class="line">&#123;</span><br><span class="line">   // 错误处理代码</span><br><span class="line">&#125;</span><br><span class="line">catch( ExceptionName e2 )</span><br><span class="line">&#123;</span><br><span class="line">   // 错误处理代码</span><br><span class="line">&#125;</span><br><span class="line">catch( ExceptionName eN )</span><br><span class="line">&#123;</span><br><span class="line">   // 错误处理代码</span><br><span class="line">&#125;</span><br><span class="line">finally</span><br><span class="line">&#123;</span><br><span class="line">   // 要执行的语句</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="c-中的异常类">C# 中的异常类</h1>
-<p>C# 异常是使用类来表示的。C# 中的异常类主要是直接或间接地派生于 System.Exception 类。</p>
-<p><strong>System.ApplicationException</strong> 类支持由应用程序生成的异常。所以程序员定义的异常都应派生自该类。</p>
-<p><strong>System.SystemException</strong> 类是所有预定义的系统异常的基类。</p>
-<h2 id="system.systemexception">System.SystemException</h2>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;">异常类</th>
-<th style="text-align: left;">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">System.IO.IOException</td>
-<td style="text-align: left;">处理 I/O 错误。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">System.IndexOutOfRangeException</td>
-<td style="text-align: left;">处理当方法指向超出范围的数组索引时生成的错误。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">System.ArrayTypeMismatchException</td>
-<td style="text-align: left;">处理当数组类型不匹配时生成的错误。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">System.NullReferenceException</td>
-<td style="text-align: left;">处理当依从一个空对象时生成的错误。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">System.DivideByZeroException</td>
-<td style="text-align: left;">处理当除以零时生成的错误。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">System.InvalidCastException</td>
-<td style="text-align: left;">处理在类型转换期间生成的错误。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">System.OutOfMemoryException</td>
-<td style="text-align: left;">处理空闲内存不足生成的错误。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">System.StackOverflowException</td>
-<td style="text-align: left;">处理栈溢出生成的错误。</td>
-</tr>
-</tbody>
-</table>
-<h2 id="system.applicationexception">System.ApplicationException</h2>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">public class KassaIsZeroException: ApplicationException//用户自定义的错误派生自</span><br><span class="line">&#123;</span><br><span class="line">   public KassaIsZeroException(string message): base(message)//throw、catch需要给出的消息</span><br><span class="line">   &#123;</span><br><span class="line">       </span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">public class Kassa</span><br><span class="line">&#123;</span><br><span class="line">   public int nature = 0;</span><br><span class="line">   public void showNature()</span><br><span class="line">   &#123;</span><br><span class="line">      if(nature == 0)</span><br><span class="line">      &#123;</span><br><span class="line">         throw (new KassaIsZeroException(&quot;卡神是烧0&quot;));//扔出一个错误</span><br><span class="line">      &#125;</span><br><span class="line">      else</span><br><span class="line">      &#123;</span><br><span class="line">         Console.WriteLine(&quot;卡神不是烧0&quot;);</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">class Test</span><br><span class="line">&#123;</span><br><span class="line">	static void Main(string[] args)</span><br><span class="line">    &#123;</span><br><span class="line">    	Kassa kassa = new Kassa();</span><br><span class="line">        try</span><br><span class="line">        &#123;</span><br><span class="line">        	kassa.showNature();</span><br><span class="line">        &#125;</span><br><span class="line">        catch(KassaIsZeroException e)//接住一个错误</span><br><span class="line">        &#123;</span><br><span class="line">        	Console.WriteLine(e.Message);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//看过Apex且会C#的人，看到这段代码后，都将认为这段代码是绝唱</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/28/CS%E9%A2%84%E5%A4%84%E7%90%86%E6%8C%87%E4%BB%A4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="冲击波">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/03/28/CS%E9%A2%84%E5%A4%84%E7%90%86%E6%8C%87%E4%BB%A4/" class="post-title-link" itemprop="url">CS预处理指令</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-03-28 22:20:07" itemprop="dateCreated datePublished" datetime="2022-03-28T22:20:07+08:00">2022-03-28</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2023-06-02 15:28:31" itemprop="dateModified" datetime="2023-06-02T15:28:31+08:00">2023-06-02</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>在 C# 中，预处理器指令用于在<strong>条件编译</strong>中起作用。 预处理器指令指导编译器在<strong>实际编译开始之前对信息进行预处理</strong>。</p>
-<p>实际应用中使用过：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">btn_end.onClick.AddListener(() =&gt;</span><br><span class="line">&#123;       </span><br><span class="line">	#if UNITY_EDITOR</span><br><span class="line">		UnityEditor.EditorApplication.isPlaying = false;</span><br><span class="line">	#else</span><br><span class="line">		Application.Quit();</span><br><span class="line">	#endif</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public void LoadByJson()</span><br><span class="line">&#123;</span><br><span class="line">    string filePath = &quot;&quot;;</span><br><span class="line">	#if UNITY_EDITOR</span><br><span class="line">        filePath = Application.dataPath + &quot;/StreamingFile&quot; + &quot;/save.txt&quot;;</span><br><span class="line">	#else</span><br><span class="line">        filePath = System.Environment.CurrentDirectory + &quot;/StreamingFile&quot; + &quot;/save.txt&quot;;</span><br><span class="line">	#endif        </span><br><span class="line">	if (!File.Exists(filePath)) return;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/27/Socket/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="冲击波">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/03/27/Socket/" class="post-title-link" itemprop="url">Socket</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-03-27 20:35:43" itemprop="dateCreated datePublished" datetime="2022-03-27T20:35:43+08:00">2022-03-27</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-09-08 13:45:08" itemprop="dateModified" datetime="2022-09-08T13:45:08+08:00">2022-09-08</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="socket简介">Socket简介</h1>
-<p>网络上两个程序通过一个双向的通信连接实现数据交换，这个<strong>连接的一端</strong>称为<strong>一个Socket</strong>。</p>
-<p>一个Socket包含：<br>
-协议，本地IP，本地端口，远程IP，远程端口</p>
-<p>Socket通信分为：连接方和监听方<br>
-连接方：不同的客户端使用的是不同的端口<br>
-监听方：服务器，只使用一个端口监听</p>
-<h1 id="socket通信的流程">Socket通信的流程</h1>
-<p>1、<br>
-服务器：创建一个Socket对象（使用API Socket），绑定本地使用的端口（使用API Bind）。<br>
-客户端：创建一个Socket对象（使用API Socket）。</p>
-<p>2、<br>
-服务器：开启监听（使用API Listen），等等客户端接入</p>
-<p>3、<br>
-客户端：连接服务器（使用API Connect），该过程中客户端会由系统自动分配端口</p>
-<p>4、<br>
-服务器：接受连接（使用API Accept），成功建立连接。</p>
-<p>5、<br>
-服务器：Send和Receive<br>
-客户端：Send和Receive<br>
-OS：自动完成数据的确认、重传等，确保传输的数据准确</p>
-<p>6、<br>
-某一方断开连接（使用API Close）<br>
-OS：自动执行”四次握手“，关闭连接。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/21/CS%E6%96%87%E4%BB%B6%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="冲击波">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/03/21/CS%E6%96%87%E4%BB%B6%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/" class="post-title-link" itemprop="url">CS文件输入输出</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-03-21 22:01:49" itemprop="dateCreated datePublished" datetime="2022-03-21T22:01:49+08:00">2022-03-21</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2023-06-02 15:28:26" itemprop="dateModified" datetime="2023-06-02T15:28:26+08:00">2023-06-02</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="c-io-类">C# I/O 类</h1>
-<p>System.IO 命名空间有各种不同的类，用于执行各种文件操作，如创建和删除文件、读取或写入文件，关闭文件等。</p>
-<p>下表列出了一些 System.IO 命名空间中常用的非抽象类：</p>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;">I/O 类</th>
-<th style="text-align: left;">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">BinaryReader</td>
-<td style="text-align: left;">从二进制流读取原始数据。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">BinaryWriter</td>
-<td style="text-align: left;">以二进制格式写入原始数据。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">BufferedStream</td>
-<td style="text-align: left;">字节流的临时存储。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Directory</td>
-<td style="text-align: left;">有助于操作目录结构。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">DirectoryInfo</td>
-<td style="text-align: left;">用于对目录执行操作。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">DriveInfo</td>
-<td style="text-align: left;">提供驱动器的信息。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">File</td>
-<td style="text-align: left;">有助于处理文件。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">FileInfo</td>
-<td style="text-align: left;">用于对文件执行操作。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">FileStream</td>
-<td style="text-align: left;">用于文件中任何位置的读写。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">MemoryStream</td>
-<td style="text-align: left;">用于随机访问存储在内存中的数据流。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Path</td>
-<td style="text-align: left;">对路径信息执行操作。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">StreamReader</td>
-<td style="text-align: left;">用于从字节流中读取字符。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">StreamWriter</td>
-<td style="text-align: left;">用于向一个流中写入字符。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">StringReader</td>
-<td style="text-align: left;">用于读取字符串缓冲区。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">StringWriter</td>
-<td style="text-align: left;">用于写入字符串缓冲区。</td>
-</tr>
-</tbody>
-</table>
-<h2 id="streamreader-类">StreamReader 类</h2>
-<p>下表列出了 <strong>StreamReader</strong> 类中一些常用的<strong>方法</strong>：</p>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;">方法</th>
-<th style="text-align: left;">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><strong>public override void Close()</strong></td>
-<td style="text-align: left;">关闭 StreamReader 对象和基础流，并释放任何与读者相关的系统资源。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>public override int Peek()</strong></td>
-<td style="text-align: left;">返回下一个可用的字符，但不使用它。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>public override int Read()</strong></td>
-<td style="text-align: left;">从输入流中读取下一个字符，并把字符位置往前移一个字符。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>public override int ReadToEnd()</strong></td>
-<td style="text-align: left;">从输入流中读取。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>public override int ReadLine()</strong></td>
-<td style="text-align: left;">从输入流中读取。</td>
-</tr>
-</tbody>
-</table>
-<h2 id="streamwriter-类">StreamWriter 类</h2>
-<p><strong>StreamWriter</strong> 类继承自抽象类 TextWriter，表示编写器写入一系列字符。</p>
-<p><strong>StreamWriter</strong>专用于特定编码的字符输出，而从派生的类 <strong>Stream</strong>则设计用于字节输入和输出。</p>
-<p>下表列出了 <strong>StreamWriter</strong> 类中一些常用的<strong>方法</strong>：</p>
-<table>
-<colgroup>
-<col style="width: 35%">
-<col style="width: 64%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">方法</th>
-<th style="text-align: left;">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><strong>public override void Close()</strong></td>
-<td style="text-align: left;">关闭当前的 StreamWriter 对象和基础流。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>public override void Flush()</strong></td>
-<td style="text-align: left;">清理当前编写器的所有缓冲区，使得所有缓冲数据写入基础流。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>public virtual void Write(bool value)</strong></td>
-<td style="text-align: left;">把一个布尔值的文本表示形式写入到文本字符串或流。（继承自 TextWriter。）</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>public override void Write( char value )</strong></td>
-<td style="text-align: left;">把一个字符写入到流。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>public virtual void Write( decimal value )</strong></td>
-<td style="text-align: left;">把一个十进制值的文本表示形式写入到文本字符串或流。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>public virtual void Write( double value )</strong></td>
-<td style="text-align: left;">把一个 8 字节浮点值的文本表示形式写入到文本字符串或流。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>public virtual void Write( int value )</strong></td>
-<td style="text-align: left;">把一个 4 字节有符号整数的文本表示形式写入到文本字符串或流。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>public override void Write( string value )</strong></td>
-<td style="text-align: left;">把一个字符串写入到流。</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>public virtual void WriteLine()</strong></td>
-<td style="text-align: left;">把行结束符写入到文本字符串或流。</td>
-</tr>
-</tbody>
-</table>
-<h2 id="filestream-类">FileStream 类</h2>
-<p>System.IO 命名空间中的 <strong>FileStream</strong> 类有助于文件的读写与关闭。该类派生自抽象类 Stream。</p>
-<p>您需要创建一个 <strong>FileStream</strong> 对象来创建一个新的文件，或打开一个已有的文件。创建 <strong>FileStream</strong> 对象的语法如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FileStream &lt;object_name&gt; = new FileStream( &lt;file_name&gt;, &lt;FileMode Enumerator&gt;, &lt;FileAccess Enumerator&gt;, &lt;FileShare Enumerator&gt;);</span><br></pre></td></tr></table></figure>
-<p>例如，创建一个 FileStream 对象 <strong>F</strong> 来读取名为 <strong>sample.txt</strong> 的文件：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FileStream F = new FileStream(&quot;sample.txt&quot;, FileMode.Open, FileAccess.Read, FileShare.Read);</span><br></pre></td></tr></table></figure>
-<table>
-<colgroup>
-<col style="width: 14%">
-<col style="width: 85%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">参数</th>
-<th style="text-align: left;">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">FileMode</td>
-<td style="text-align: left;"><strong>FileMode</strong> 枚举定义了各种打开文件的方法。FileMode 枚举的成员有：<strong>Append</strong>：打开一个已有的文件，并将光标放置在文件的末尾。如果文件不存在，则创建文件。<strong>Create</strong>：创建一个新的文件。如果文件已存在，则删除旧文件，然后创建新文件。<strong>CreateNew</strong>：指定操作系统应创建一个新的文件。如果文件已存在，则抛出异常。<strong>Open</strong>：打开一个已有的文件。如果文件不存在，则抛出异常。<strong>OpenOrCreate</strong>：指定操作系统应打开一个已有的文件。如果文件不存在，则用指定的名称创建一个新的文件打开。<strong>Truncate</strong>：打开一个已有的文件，文件一旦打开，就将被截断为零字节大小。然后我们可以向文件写入全新的数据，但是保留文件的初始创建日期。如果文件不存在，则抛出异常。</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">FileAccess</td>
-<td style="text-align: left;"><strong>FileAccess</strong> 枚举的成员有：<strong>Read</strong>、<strong>ReadWrite</strong> 和 <strong>Write</strong>。</td>
-</tr>
-</tbody>
-</table>
 
       
     </div>

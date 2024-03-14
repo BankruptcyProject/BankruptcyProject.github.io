@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">186</span>
+          <span class="site-state-item-count">190</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,555 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/28/CS%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="冲击波">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/03/28/CS%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" class="post-title-link" itemprop="url">CS异常处理</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-03-28 23:44:52" itemprop="dateCreated datePublished" datetime="2022-03-28T23:44:52+08:00">2022-03-28</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2023-06-02 15:28:29" itemprop="dateModified" datetime="2023-06-02T15:28:29+08:00">2023-06-02</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><strong>try</strong>：一个 try 块标识了一个将被激活的特定的异常的代码块。后跟一个或多个 catch 块。</p>
+<p><strong>catch</strong>：程序通过异常处理程序捕获异常。catch 关键字表示异常的捕获。</p>
+<p><strong>finally</strong>：finally 块用于执行给定的语句，不管异常是否被抛出都会执行。例如，如果打开一个文件，不管是否出现异常文件都要被关闭。</p>
+<p><strong>throw</strong>：当问题出现时，程序抛出一个异常。使用 throw 关键字来完成。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">try</span><br><span class="line">&#123;</span><br><span class="line">   // 引起异常的语句</span><br><span class="line">&#125;</span><br><span class="line">catch( DivideByZeroException e1 )</span><br><span class="line">&#123;</span><br><span class="line">   // 错误处理代码</span><br><span class="line">&#125;</span><br><span class="line">catch( ExceptionName e2 )</span><br><span class="line">&#123;</span><br><span class="line">   // 错误处理代码</span><br><span class="line">&#125;</span><br><span class="line">catch( ExceptionName eN )</span><br><span class="line">&#123;</span><br><span class="line">   // 错误处理代码</span><br><span class="line">&#125;</span><br><span class="line">finally</span><br><span class="line">&#123;</span><br><span class="line">   // 要执行的语句</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="c-中的异常类">C# 中的异常类</h1>
+<p>C# 异常是使用类来表示的。C# 中的异常类主要是直接或间接地派生于 System.Exception 类。</p>
+<p><strong>System.ApplicationException</strong> 类支持由应用程序生成的异常。所以程序员定义的异常都应派生自该类。</p>
+<p><strong>System.SystemException</strong> 类是所有预定义的系统异常的基类。</p>
+<h2 id="system.systemexception">System.SystemException</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">异常类</th>
+<th style="text-align: left;">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">System.IO.IOException</td>
+<td style="text-align: left;">处理 I/O 错误。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">System.IndexOutOfRangeException</td>
+<td style="text-align: left;">处理当方法指向超出范围的数组索引时生成的错误。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">System.ArrayTypeMismatchException</td>
+<td style="text-align: left;">处理当数组类型不匹配时生成的错误。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">System.NullReferenceException</td>
+<td style="text-align: left;">处理当依从一个空对象时生成的错误。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">System.DivideByZeroException</td>
+<td style="text-align: left;">处理当除以零时生成的错误。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">System.InvalidCastException</td>
+<td style="text-align: left;">处理在类型转换期间生成的错误。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">System.OutOfMemoryException</td>
+<td style="text-align: left;">处理空闲内存不足生成的错误。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">System.StackOverflowException</td>
+<td style="text-align: left;">处理栈溢出生成的错误。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="system.applicationexception">System.ApplicationException</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">public class KassaIsZeroException: ApplicationException//用户自定义的错误派生自</span><br><span class="line">&#123;</span><br><span class="line">   public KassaIsZeroException(string message): base(message)//throw、catch需要给出的消息</span><br><span class="line">   &#123;</span><br><span class="line">       </span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">public class Kassa</span><br><span class="line">&#123;</span><br><span class="line">   public int nature = 0;</span><br><span class="line">   public void showNature()</span><br><span class="line">   &#123;</span><br><span class="line">      if(nature == 0)</span><br><span class="line">      &#123;</span><br><span class="line">         throw (new KassaIsZeroException(&quot;卡神是烧0&quot;));//扔出一个错误</span><br><span class="line">      &#125;</span><br><span class="line">      else</span><br><span class="line">      &#123;</span><br><span class="line">         Console.WriteLine(&quot;卡神不是烧0&quot;);</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">class Test</span><br><span class="line">&#123;</span><br><span class="line">	static void Main(string[] args)</span><br><span class="line">    &#123;</span><br><span class="line">    	Kassa kassa = new Kassa();</span><br><span class="line">        try</span><br><span class="line">        &#123;</span><br><span class="line">        	kassa.showNature();</span><br><span class="line">        &#125;</span><br><span class="line">        catch(KassaIsZeroException e)//接住一个错误</span><br><span class="line">        &#123;</span><br><span class="line">        	Console.WriteLine(e.Message);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//看过Apex且会C#的人，看到这段代码后，都将认为这段代码是绝唱</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/28/CS%E9%A2%84%E5%A4%84%E7%90%86%E6%8C%87%E4%BB%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="冲击波">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/03/28/CS%E9%A2%84%E5%A4%84%E7%90%86%E6%8C%87%E4%BB%A4/" class="post-title-link" itemprop="url">CS预处理指令</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-03-28 22:20:07" itemprop="dateCreated datePublished" datetime="2022-03-28T22:20:07+08:00">2022-03-28</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2023-06-02 15:28:31" itemprop="dateModified" datetime="2023-06-02T15:28:31+08:00">2023-06-02</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>在 C# 中，预处理器指令用于在<strong>条件编译</strong>中起作用。 预处理器指令指导编译器在<strong>实际编译开始之前对信息进行预处理</strong>。</p>
+<p>实际应用中使用过：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">btn_end.onClick.AddListener(() =&gt;</span><br><span class="line">&#123;       </span><br><span class="line">	#if UNITY_EDITOR</span><br><span class="line">		UnityEditor.EditorApplication.isPlaying = false;</span><br><span class="line">	#else</span><br><span class="line">		Application.Quit();</span><br><span class="line">	#endif</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public void LoadByJson()</span><br><span class="line">&#123;</span><br><span class="line">    string filePath = &quot;&quot;;</span><br><span class="line">	#if UNITY_EDITOR</span><br><span class="line">        filePath = Application.dataPath + &quot;/StreamingFile&quot; + &quot;/save.txt&quot;;</span><br><span class="line">	#else</span><br><span class="line">        filePath = System.Environment.CurrentDirectory + &quot;/StreamingFile&quot; + &quot;/save.txt&quot;;</span><br><span class="line">	#endif        </span><br><span class="line">	if (!File.Exists(filePath)) return;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/27/Socket/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="冲击波">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/03/27/Socket/" class="post-title-link" itemprop="url">Socket</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-03-27 20:35:43" itemprop="dateCreated datePublished" datetime="2022-03-27T20:35:43+08:00">2022-03-27</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-09-08 13:45:08" itemprop="dateModified" datetime="2022-09-08T13:45:08+08:00">2022-09-08</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="socket简介">Socket简介</h1>
+<p>网络上两个程序通过一个双向的通信连接实现数据交换，这个<strong>连接的一端</strong>称为<strong>一个Socket</strong>。</p>
+<p>一个Socket包含：<br>
+协议，本地IP，本地端口，远程IP，远程端口</p>
+<p>Socket通信分为：连接方和监听方<br>
+连接方：不同的客户端使用的是不同的端口<br>
+监听方：服务器，只使用一个端口监听</p>
+<h1 id="socket通信的流程">Socket通信的流程</h1>
+<p>1、<br>
+服务器：创建一个Socket对象（使用API Socket），绑定本地使用的端口（使用API Bind）。<br>
+客户端：创建一个Socket对象（使用API Socket）。</p>
+<p>2、<br>
+服务器：开启监听（使用API Listen），等等客户端接入</p>
+<p>3、<br>
+客户端：连接服务器（使用API Connect），该过程中客户端会由系统自动分配端口</p>
+<p>4、<br>
+服务器：接受连接（使用API Accept），成功建立连接。</p>
+<p>5、<br>
+服务器：Send和Receive<br>
+客户端：Send和Receive<br>
+OS：自动完成数据的确认、重传等，确保传输的数据准确</p>
+<p>6、<br>
+某一方断开连接（使用API Close）<br>
+OS：自动执行”四次握手“，关闭连接。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/21/CS%E6%96%87%E4%BB%B6%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="冲击波">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/03/21/CS%E6%96%87%E4%BB%B6%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/" class="post-title-link" itemprop="url">CS文件输入输出</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-03-21 22:01:49" itemprop="dateCreated datePublished" datetime="2022-03-21T22:01:49+08:00">2022-03-21</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2023-06-02 15:28:26" itemprop="dateModified" datetime="2023-06-02T15:28:26+08:00">2023-06-02</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="c-io-类">C# I/O 类</h1>
+<p>System.IO 命名空间有各种不同的类，用于执行各种文件操作，如创建和删除文件、读取或写入文件，关闭文件等。</p>
+<p>下表列出了一些 System.IO 命名空间中常用的非抽象类：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">I/O 类</th>
+<th style="text-align: left;">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">BinaryReader</td>
+<td style="text-align: left;">从二进制流读取原始数据。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BinaryWriter</td>
+<td style="text-align: left;">以二进制格式写入原始数据。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">BufferedStream</td>
+<td style="text-align: left;">字节流的临时存储。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Directory</td>
+<td style="text-align: left;">有助于操作目录结构。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">DirectoryInfo</td>
+<td style="text-align: left;">用于对目录执行操作。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">DriveInfo</td>
+<td style="text-align: left;">提供驱动器的信息。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">File</td>
+<td style="text-align: left;">有助于处理文件。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FileInfo</td>
+<td style="text-align: left;">用于对文件执行操作。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">FileStream</td>
+<td style="text-align: left;">用于文件中任何位置的读写。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MemoryStream</td>
+<td style="text-align: left;">用于随机访问存储在内存中的数据流。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Path</td>
+<td style="text-align: left;">对路径信息执行操作。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">StreamReader</td>
+<td style="text-align: left;">用于从字节流中读取字符。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">StreamWriter</td>
+<td style="text-align: left;">用于向一个流中写入字符。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">StringReader</td>
+<td style="text-align: left;">用于读取字符串缓冲区。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">StringWriter</td>
+<td style="text-align: left;">用于写入字符串缓冲区。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="streamreader-类">StreamReader 类</h2>
+<p>下表列出了 <strong>StreamReader</strong> 类中一些常用的<strong>方法</strong>：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">方法</th>
+<th style="text-align: left;">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>public override void Close()</strong></td>
+<td style="text-align: left;">关闭 StreamReader 对象和基础流，并释放任何与读者相关的系统资源。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>public override int Peek()</strong></td>
+<td style="text-align: left;">返回下一个可用的字符，但不使用它。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>public override int Read()</strong></td>
+<td style="text-align: left;">从输入流中读取下一个字符，并把字符位置往前移一个字符。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>public override int ReadToEnd()</strong></td>
+<td style="text-align: left;">从输入流中读取。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>public override int ReadLine()</strong></td>
+<td style="text-align: left;">从输入流中读取。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="streamwriter-类">StreamWriter 类</h2>
+<p><strong>StreamWriter</strong> 类继承自抽象类 TextWriter，表示编写器写入一系列字符。</p>
+<p><strong>StreamWriter</strong>专用于特定编码的字符输出，而从派生的类 <strong>Stream</strong>则设计用于字节输入和输出。</p>
+<p>下表列出了 <strong>StreamWriter</strong> 类中一些常用的<strong>方法</strong>：</p>
+<table>
+<colgroup>
+<col style="width: 35%">
+<col style="width: 64%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">方法</th>
+<th style="text-align: left;">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>public override void Close()</strong></td>
+<td style="text-align: left;">关闭当前的 StreamWriter 对象和基础流。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>public override void Flush()</strong></td>
+<td style="text-align: left;">清理当前编写器的所有缓冲区，使得所有缓冲数据写入基础流。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>public virtual void Write(bool value)</strong></td>
+<td style="text-align: left;">把一个布尔值的文本表示形式写入到文本字符串或流。（继承自 TextWriter。）</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>public override void Write( char value )</strong></td>
+<td style="text-align: left;">把一个字符写入到流。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>public virtual void Write( decimal value )</strong></td>
+<td style="text-align: left;">把一个十进制值的文本表示形式写入到文本字符串或流。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>public virtual void Write( double value )</strong></td>
+<td style="text-align: left;">把一个 8 字节浮点值的文本表示形式写入到文本字符串或流。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>public virtual void Write( int value )</strong></td>
+<td style="text-align: left;">把一个 4 字节有符号整数的文本表示形式写入到文本字符串或流。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>public override void Write( string value )</strong></td>
+<td style="text-align: left;">把一个字符串写入到流。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>public virtual void WriteLine()</strong></td>
+<td style="text-align: left;">把行结束符写入到文本字符串或流。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="filestream-类">FileStream 类</h2>
+<p>System.IO 命名空间中的 <strong>FileStream</strong> 类有助于文件的读写与关闭。该类派生自抽象类 Stream。</p>
+<p>您需要创建一个 <strong>FileStream</strong> 对象来创建一个新的文件，或打开一个已有的文件。创建 <strong>FileStream</strong> 对象的语法如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FileStream &lt;object_name&gt; = new FileStream( &lt;file_name&gt;, &lt;FileMode Enumerator&gt;, &lt;FileAccess Enumerator&gt;, &lt;FileShare Enumerator&gt;);</span><br></pre></td></tr></table></figure>
+<p>例如，创建一个 FileStream 对象 <strong>F</strong> 来读取名为 <strong>sample.txt</strong> 的文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FileStream F = new FileStream(&quot;sample.txt&quot;, FileMode.Open, FileAccess.Read, FileShare.Read);</span><br></pre></td></tr></table></figure>
+<table>
+<colgroup>
+<col style="width: 14%">
+<col style="width: 85%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">参数</th>
+<th style="text-align: left;">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">FileMode</td>
+<td style="text-align: left;"><strong>FileMode</strong> 枚举定义了各种打开文件的方法。FileMode 枚举的成员有：<strong>Append</strong>：打开一个已有的文件，并将光标放置在文件的末尾。如果文件不存在，则创建文件。<strong>Create</strong>：创建一个新的文件。如果文件已存在，则删除旧文件，然后创建新文件。<strong>CreateNew</strong>：指定操作系统应创建一个新的文件。如果文件已存在，则抛出异常。<strong>Open</strong>：打开一个已有的文件。如果文件不存在，则抛出异常。<strong>OpenOrCreate</strong>：指定操作系统应打开一个已有的文件。如果文件不存在，则用指定的名称创建一个新的文件打开。<strong>Truncate</strong>：打开一个已有的文件，文件一旦打开，就将被截断为零字节大小。然后我们可以向文件写入全新的数据，但是保留文件的初始创建日期。如果文件不存在，则抛出异常。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FileAccess</td>
+<td style="text-align: left;"><strong>FileAccess</strong> 枚举的成员有：<strong>Read</strong>、<strong>ReadWrite</strong> 和 <strong>Write</strong>。</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1375,401 +1924,6 @@ string、数组、自定义的class就都是引用类型了。<br>
 </tr>
 </tbody>
 </table>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/09/Blender%E7%BB%86%E8%8A%82/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="冲击波">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/03/09/Blender%E7%BB%86%E8%8A%82/" class="post-title-link" itemprop="url">Blender细节</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-03-09 21:47:16" itemprop="dateCreated datePublished" datetime="2022-03-09T21:47:16+08:00">2022-03-09</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-11-25 14:29:45" itemprop="dateModified" datetime="2022-11-25T14:29:45+08:00">2022-11-25</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="入门快捷键">入门快捷键</h1>
-<p>快捷键很多，平时别瞎按键盘</p>
-<p>鼠标中键+Shift：负责主界面移动</p>
-<p>n键：打开sidebar面板</p>
-<p>左下角有微调面板：可微调上次的调整</p>
-<p>数字键7、3、1：三视图</p>
-<p>Ctrl+Alt+Q：四视图</p>
-<p>Alt+G：坐标归零</p>
-<p>Alt+R：旋转归零</p>
-<p>Alt+S：缩放归零</p>
-<p>g：进入grab模式（x、y、z键）</p>
-<p>Shift+d：复制物体并进入grab模式</p>
-<h1 id="游标">游标</h1>
-<p>一个坐标，用于辅助定位<br>
-创建的新物体默认位置是游标的位置<br>
-右键吸附中可以使得物体靠近游标或者游标靠近物体<br>
-左侧栏选中游标来移动游标。选择磁体模式也可移动游标。<br>
-游标可隐藏（在右上角设置）</p>
-<h1 id="原点">原点</h1>
-<p>物体基准点，默认为物体几何中心，可更改。<br>
-1. 通过游标来更，移动游标的位置，再使原点移动到游标位置。<br>
-2. 直接移动原点，右上角只勾选原点，再移动原点。 <img src="/2022/03/09/Blender%E7%BB%86%E8%8A%82/10.png" class><br>
-3. 在编辑模式中移动物体不会改变原点位置，视为形状的改变。</p>
-<h1 id="局部视图">局部视图</h1>
-<p>物体置中：选中物体，快捷键数字键 . 键<br>
-全物体置中：快捷键 Shift + C<br>
-隐藏其他物体：选中物体，快捷键 / 键，隐藏除了选中的物体<br>
-裁剪视图：只显示框框内的点线面。快捷键alt + b，取消也是alt + b<br>
-<img src="/2022/03/09/Blender%E7%BB%86%E8%8A%82/10.png" class><br>
-隐藏选中项：快捷键H<br>
-隐藏其他项：加快捷Shift + H 取消隐藏：Alt + H</p>
-<h1 id="坐标系">坐标系</h1>
-<img src="/2022/03/09/Blender%E7%BB%86%E8%8A%82/9.png" class>
-<p>局部坐标系：相对物体自身的坐标系。坐标系的位置和方向会变化。<br>
-法向坐标系：启用后按 Shift+7 可以从法向方向对准这个面。</p>
-<h1 id="衰减和球形化">衰减和球形化</h1>
-<p>衰减编辑：拖动点、线、面的时候，（拉力）会大范围（可调整）影响周围点线面。</p>
-<p>球形化：<img src="/2022/03/09/Blender%E7%BB%86%E8%8A%82/8.png" class>系数为1是为完全球体</p>
-<h1 id="应用变换">应用变换</h1>
-<img src="/2022/03/09/Blender%E7%BB%86%E8%8A%82/12.png" class>
-<p>将目前的状态设置为（0，0，0）。防止例如looptool工具出现问题。</p>
-<h1 id="组合分离">组合分离</h1>
-<p>物体模式下添加网络是独立物体<br>
-编辑模式下添加物体是附属物体</p>
-<p>物体模式下选中两个物体，右键合并（快捷键CTRL+J）。<br>
-被选中的物体是橙红色描边，被选中且活动的物体是橙黄色描边，是合并的目标。</p>
-<p>拆分：选中面右键拆分（注意关闭衰减模式），面相关的顶点不再是焊接状态。但仍然只有一个物体。<br>
-分离：右键分离，分离出一个新物体。</p>
-<h1 id="饼状菜单">饼状菜单</h1>
-<p>~ 切换视图</p>
-<p>z 切换着色方式</p>
-<p>, 切换坐标系</p>
-<p>. 切换基准点</p>
-<h1 id="资产">资产</h1>
-<p>物品大纲中可以将物体设置为资产<br>
-资产类似预制体，可以在资产浏览器中拖出来直接用，可以设置是否关联</p>
-<p><strong>资产库</strong> 我将资产库设置在 E:/mod/BlenderAssets 中，如果将.blend文件保存在这里，则.blend文件中被标记为资产的物品可以直接从blender资产浏览器中拖出来使用。</p>
-<h1 id="文本">文本</h1>
-<p>中文需要选择支持中文的字体，且不能直接输入只能复制粘贴进来。</p>
-<h1 id="快速收藏夹">快速收藏夹</h1>
-<p>将常用的操作右键加入快速收藏夹，按Q唤出快速收藏夹</p>
-<h1 id="配置默认模板">配置默认模板</h1>
-<p>文件，默认，保存启动文件</p>
-<h1 id="锁定物体">锁定物体</h1>
-<img src="/2022/03/09/Blender%E7%BB%86%E8%8A%82/1.png" class>
-<p>锁定后无法被选择，防止编辑模型时经常误选</p>
-<h1 id="平直着色与平滑着色">平直着色与平滑着色</h1>
-<p>平直着色 将面根据面的法向进行着色，所以一个面上颜色不会有过渡，不同面因为法向不同颜色差别大。</p>
-<p>平滑着色 一个面的每个地方着色时都会参考这个地方和面的所有点的法向，所以任意两个相近的地方的着色都会有圆滑的过渡。</p>
-<p>平滑着色 会造成视觉上的棱角消失，但模型上的面没有增多，减少电脑负担。<br>
-有时候在同一件物体上需要保留其中某些棱角，抹平其它棱角。<br>
-方案一：打开自动光滑设置抹平棱角的范围，并打开法向加权修改<br>
-<img src="/2022/03/09/Blender%E7%BB%86%E8%8A%82/2.png" class> <img src="/2022/03/09/Blender%E7%BB%86%E8%8A%82/3.png" class> 方案二：在编辑模式下部分着色</p>
-<h1 id="打包解包">打包解包</h1>
-<img src="/2022/03/09/Blender%E7%BB%86%E8%8A%82/4.png" class>
-<p>打包后 .blend 文件会变大，包含所有外部资源（原本只是引用），只需要发送.blend文件即可。</p>
-<h1 id="选择">选择</h1>
-<p>选择相连项（快捷键ctrl+L）</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/09/%E5%93%88%E5%B8%8C%E8%A1%A8-unorderer-map%E5%92%8Cunorderer-set/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="冲击波">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/03/09/%E5%93%88%E5%B8%8C%E8%A1%A8-unorderer-map%E5%92%8Cunorderer-set/" class="post-title-link" itemprop="url">哈希表(unorderer_map和unorderer_set)</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-03-09 13:31:33" itemprop="dateCreated datePublished" datetime="2022-03-09T13:31:33+08:00">2022-03-09</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-09-08 13:41:21" itemprop="dateModified" datetime="2022-09-08T13:41:21+08:00">2022-09-08</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="unorderer_map">unorderer_map</h1>
-<p>简单来说，就是一个无序哈希表，时间复杂度O(1)</p>
-<p>两个常用方法：</p>
-<p>count()返回要查找的key在map的所有key中的出现次数。因为此容器不允许重复，故count()只可能返回 1 或 0，即可判断此key是否存在。有返回1，无返回0。<br>
-unordered_map也有find方法，得到的对象是一个iterator，在unordered_map中，如果find()没找到要找的key，就返回和end()一样的iterator值。</p>
-<h1 id="unorderer_set">unorderer_set</h1>
-<p>unordered_set基于哈希表，也是无序的，但是，unordered_set是在哈希表中插入value，同时这个value也是它自己的key，和unordered_map不同，这里的key-value只是为了方便查阅，</p>
-<p>两个常用方法：<br>
-同上，count（）和find（）</p>
-<h1 id="map和set区别">map和set区别</h1>
-<p>map：<br>
-map的值不作为键，键和值是分开的，所有元素都是键+值存在<br>
-不允许键重复<br>
-所有元素是通过键进行自动排序的<br>
-map的键是不能修改的，但是其键对应的值是可以修改的</p>
-<p>set：<br>
-所得元素的只有key没有value，value就是key<br>
-不允许出现键值重复<br>
-所有的元素都会被自动排序<br>
-不能通过迭代器来改变set的值，因为set的值就是键</p>
-<h1 id="用法实例">用法实例</h1>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">unordered_set&lt;<span class="keyword">char</span>&gt; occ;</span><br><span class="line">occ.<span class="built_in">insert</span>(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">occ.<span class="built_in">erase</span>(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">cout &lt;&lt; occ.<span class="built_in">count</span>(<span class="string">&quot;a&quot;</span>);</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/08/LC-LongestSubstringWithoutRepeatingCharacters/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="冲击波">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/03/08/LC-LongestSubstringWithoutRepeatingCharacters/" class="post-title-link" itemprop="url">LC-LongestSubstringWithoutRepeatingCharacters</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-03-08 21:56:01" itemprop="dateCreated datePublished" datetime="2022-03-08T21:56:01+08:00">2022-03-08</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-03-27 20:59:47" itemprop="dateModified" datetime="2022-03-27T20:59:47+08:00">2022-03-27</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="第一次手写97.2189.08">第一次手写（97.21%，89.08%）</h1>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> hashTable[<span class="number">129</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">    <span class="keyword">int</span> start = <span class="number">0</span>, end = <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(string s)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//特判</span></span><br><span class="line">        <span class="keyword">if</span> (s == <span class="string">&quot;&quot;</span>)<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (s.<span class="built_in">length</span>() == <span class="number">1</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="comment">//初始化</span></span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> len = s.<span class="built_in">length</span>();</span><br><span class="line">        hashTable[(<span class="keyword">int</span>)s[<span class="number">0</span>]] = <span class="literal">true</span>;</span><br><span class="line">        <span class="comment">//首先尾巴前进直到不能前进为止(重复的)，则头前进直到(去掉那个重复的)，然后循环，直到尾巴不能再前进了</span></span><br><span class="line">        <span class="keyword">while</span> (end &lt; len - <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            ++end;</span><br><span class="line">            hashTable[(<span class="keyword">int</span>)s[end]]++;</span><br><span class="line">            <span class="keyword">if</span> (hashTable[(<span class="keyword">int</span>)s[end]] == <span class="number">1</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                ans = <span class="built_in">max</span>(ans, end - start + <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">while</span> (start &lt; end)</span><br><span class="line">                &#123;</span><br><span class="line">                    hashTable[(<span class="keyword">int</span>)s[start]]--;</span><br><span class="line">                    <span class="keyword">if</span> (hashTable[(<span class="keyword">int</span>)s[start]] == <span class="number">1</span>)</span><br><span class="line">                    &#123;</span><br><span class="line">                        ++start;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    ++start;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>标签是哈希和滑动窗口，但是哈希部分非常简单，我直接使用ASCII映射。滑动窗口之前写过一题，但掌握得很不熟练，只懂个大概。这次纯手打增进了不少对滑动窗口的掌握。</p>
-<p>注：事实证明，只有理解性纯手撕才算掌握。<br>
-看着题解写代码纯属扯淡，顶多算了解了有这么个算法的存在。</p>
-<h1 id="官方题解-50-44">官方题解 (50%, 44%)</h1>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 哈希集合，记录每个字符是否出现过</span></span><br><span class="line">        unordered_set&lt;<span class="keyword">char</span>&gt; occ;</span><br><span class="line">        <span class="keyword">int</span> n = s.<span class="built_in">size</span>();</span><br><span class="line">        <span class="comment">// 右指针，初始值为 -1，相当于我们在字符串的左边界的左侧，还没有开始移动</span></span><br><span class="line">        <span class="keyword">int</span> rk = <span class="number">-1</span>, ans = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// 枚举左指针的位置，初始值隐性地表示为 -1</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i != <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="comment">// 左指针向右移动一格，移除一个字符</span></span><br><span class="line">                occ.<span class="built_in">erase</span>(s[i - <span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">while</span> (rk + <span class="number">1</span> &lt; n &amp;&amp; !occ.<span class="built_in">count</span>(s[rk + <span class="number">1</span>])) &#123;</span><br><span class="line">                <span class="comment">// 不断地移动右指针</span></span><br><span class="line">                occ.<span class="built_in">insert</span>(s[rk + <span class="number">1</span>]);</span><br><span class="line">                ++rk;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 第 i 到 rk 个字符是一个极长的无重复字符子串</span></span><br><span class="line">            ans = <span class="built_in">max</span>(ans, rk - i + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>官方题解思路更间接，但效率却低，也许是因为unorderer_set效率不足</p>
-<h1 id="加工整理得到版本之子97-95">加工整理得到版本之子(97%, 95%)</h1>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(string s)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// 特判</span></span><br><span class="line">        <span class="keyword">if</span> (s == <span class="string">&quot;&quot;</span>)<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (s.<span class="built_in">length</span>() == <span class="number">1</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="comment">// 初始化</span></span><br><span class="line">        <span class="keyword">int</span> hashTable[<span class="number">129</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">        <span class="keyword">int</span> lk = <span class="number">0</span>, rk = <span class="number">1</span>, ans = <span class="number">1</span>;<span class="comment">// 左右指针，闭区间</span></span><br><span class="line">        <span class="keyword">int</span> len = s.<span class="built_in">length</span>();</span><br><span class="line">        hashTable[(<span class="keyword">int</span>)s[<span class="number">0</span>]] = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (rk &lt;= len - <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (++hashTable[(<span class="keyword">int</span>)s[rk]] == <span class="number">1</span>) <span class="comment">// 判断右指针是否遇到重复字符</span></span><br><span class="line">                ans = <span class="built_in">max</span>(ans, rk - lk + <span class="number">1</span>);</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="keyword">while</span> (lk &lt; rk) <span class="comment">//左指针不断前进直至将重复字符剔除</span></span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span> (--hashTable[(<span class="keyword">int</span>)s[lk++]] == <span class="number">1</span>) <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            ++rk; <span class="comment">// 右指针不断前进直到结束</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/06/unity%E7%BA%BF%E6%9D%A1%E6%95%88%E6%9E%9C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="冲击波">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/03/06/unity%E7%BA%BF%E6%9D%A1%E6%95%88%E6%9E%9C/" class="post-title-link" itemprop="url">unity线条效果</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-03-06 16:52:54" itemprop="dateCreated datePublished" datetime="2022-03-06T16:52:54+08:00">2022-03-06</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-11-14 16:25:59" itemprop="dateModified" datetime="2022-11-14T16:25:59+08:00">2022-11-14</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="线段渲染器">线段渲染器</h1>
-<p>添加在层级，创建，游戏对象，效果中</p>
-<p>将线段渲染器加上脚本组件，使用脚本动态绘制线条： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">private LinRenderer lineRenderer;</span><br><span class="line">lineRenderer = GetComponent&lt;LineRenderer&gt;();</span><br><span class="line">lineRenderer.startColor = Color.red;</span><br><span class="line">lineRenderer.endColor = Color.blue;//起点和终点的颜色</span><br><span class="line">LineRenderer.startWidth = 1f;</span><br><span class="line">LineRenderer.endWidth = 0.5f;//起点和终点的宽度</span><br><span class="line">lineRenderer.positionCount = 3;//一共几个端点</span><br><span class="line">lineRenderer.SetPosition(0, Vector3.zero);</span><br><span class="line">lineRenderer.SetPosition(1, Vector3(10,0,0));</span><br><span class="line">lineRenderer.SetPosition(2, Vector3(10,10,0));</span><br></pre></td></tr></table></figure></p>
-<h1 id="拖尾渲染器">拖尾渲染器</h1>
-<p>在某个对象上添加Trail Renderer组件，在脚本上的使用和线段相似</p>
 
       
     </div>

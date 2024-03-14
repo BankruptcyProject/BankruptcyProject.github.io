@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">186</span>
+          <span class="site-state-item-count">190</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,344 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/03/14/CS-partial/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="冲击波">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/03/14/CS-partial/" class="post-title-link" itemprop="url">CS_partial</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2024-03-14 16:37:17 / Modified: 16:45:21" itemprop="dateCreated datePublished" datetime="2024-03-14T16:37:17+08:00">2024-03-14</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><code>partial</code> 关键字用于拆分一个类、一个结构、一个接口或一个方法的定义到两个或更多的文件中。 每个源文件包含类型或方法定义的一部分，编译应用程序时将把所有部分组合起来。在设计 Framework 时，可以充分利用 <code>partial</code> 这个特性。</p>
+<p>什么情况下需要拆分类定义呢？</p>
+<ul>
+<li>处理大型项目时，使一个类分布于多个独立文件中可以让多位程序员同时对该类进行处理。</li>
+<li>当使用<strong>自动生成的源文件</strong>时，可以添加代码而<strong>不需要重新创建源文件</strong>。</li>
+<li>使用源生成器在类中生成附加功能时。</li>
+</ul>
+<p>处理分部类定义时需遵循下面的几个规则：</p>
+<ul>
+<li><p>要作为同一类型的各个部分的所有分部类型定义都必须使用 <code>partial</code> 进行修饰。</p></li>
+<li><p><code>partial</code> 修饰符只能出现在紧靠关键字 <code>class</code>、<code>struct</code> 或 <code>interface</code> 前面的位置。</p></li>
+<li><p>要成为同一类型的各个部分的所有分部类型定义都必须在同一程序集和同一模块（.exe 或 .dll 文件）中进行定义。 分部定义不能跨越多个模块。这些分部的文件必须在同一命名空间。</p></li>
+<li><p>类名和泛型类型参数在所有的分部类型定义中都必须匹配。 泛型类型可以是分部的。 每个分部声明都必须以相同的顺序使用相同的参数名。</p></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/03/13/ET6-0-EUI%E6%8D%95%E9%B1%BC%E6%9C%BA%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="冲击波">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/03/13/ET6-0-EUI%E6%8D%95%E9%B1%BC%E6%9C%BA%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">ET6.0_EUI捕鱼机项目笔记</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-03-13 21:56:27" itemprop="dateCreated datePublished" datetime="2024-03-13T21:56:27+08:00">2024-03-13</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2024-03-14 16:37:31" itemprop="dateModified" datetime="2024-03-14T16:37:31+08:00">2024-03-14</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="项目结构">项目结构</h1>
+<img src="/2024/03/13/ET6-0-EUI%E6%8D%95%E9%B1%BC%E6%9C%BA%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/1.png" class>
+<p>项目名称主要窗口UI预制体</p>
+<p>项目名称公共UI预制体</p>
+<h1 id="创建一个窗口ui预制体所需脚本">创建一个窗口UI预制体所需脚本</h1>
+<p>例如：DlgChase预制体</p>
+<p>DlgChase.cs<br>
+Unity</p>
+<p>DlgChaseSystem.cs<br>
+该脚本包括：DlgChaseSystem.class 和 DlgChaseUpdateSystem.class<br>
+Unity</p>
+<p>DlgEventHandler.cs<br>
+Unity</p>
+<p>DlgChaseViewComponent.cs<br>
+Unity</p>
+<p>DlgChaseViewComponentSystem.cs<br>
+该脚本包括DlgChaseViewComponentAwakeSystem.class 和 DlgChaseViewComponentDestorySystem.class<br>
+Unity</p>
+<p>这五个脚本有些可以通过对DlgChase预制体的SpwanEUI生成，有些需要手动添加</p>
+<p>同时需要在Unity.cs中添加WindowID_Chase，其他代码会调用这个WindowID_Chase，注意查找。</p>
+<h1 id="创建一个公共预制体所需脚本">创建一个公共预制体所需脚本</h1>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/03/12/FairyGUI/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="冲击波">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/03/12/FairyGUI/" class="post-title-link" itemprop="url">FairyGUI</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-03-12 22:57:25" itemprop="dateCreated datePublished" datetime="2024-03-12T22:57:25+08:00">2024-03-12</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2024-03-13 21:56:56" itemprop="dateModified" datetime="2024-03-13T21:56:56+08:00">2024-03-13</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/03/11/Stable-Diffusion/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="冲击波">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/03/11/Stable-Diffusion/" class="post-title-link" itemprop="url">Stable Diffusion</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-03-11 22:20:32" itemprop="dateCreated datePublished" datetime="2024-03-11T22:20:32+08:00">2024-03-11</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2024-03-13 21:57:06" itemprop="dateModified" datetime="2024-03-13T21:57:06+08:00">2024-03-13</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="文生图">文生图</h1>
+<p><strong>采样步数（迭代次数）</strong><br>
+不需要太大，一般在50以内。通常28是一个不错的值。<br>
+扩散模型的工作方式是从随机高斯噪声向符合提示的图像迈出小步。这样的步骤应该有多少个。<br>
+更多的步骤意味着从噪声到图像的更小、更精确的步骤。增加这一点直接增加了生成图像所需的时间。</p>
+<p>回报递减，取决于采样器。</p>
+<p><strong>采样器（Sampler）</strong> 目前好用的有 <code>Euler</code>，<code>Euler a</code>（更细腻），和 <code>DDIM</code>。<br>
+推荐 <code>Euler a</code> 和 <code>DDIM</code>，<strong>新手推荐使用 <code>Euler a</code></strong><br>
+<code>Euler a</code> 富有创造力，不同步数可以生产出不同的图片。调太高步数 (&gt;30) 效果不会更好。<br>
+<code>DDIM</code> 收敛快，但效率相对较低，因为需要很多 step 才能获得好的结果，<strong>适合在重绘时候使用</strong><br>
+<code>LMS</code> 和 <code>PLMS</code> 是 <code>Euler</code> 的衍生，它们使用一种相关但稍有不同的方法（平均过去的几个步骤以提高准确性）。大概 30 step 可以得到稳定结果<br>
+<code>PLMS</code> 是一种有效的 LMS（经典方法），可以更好地处理神经网络结构中的奇异性<br>
+<code>DPM2</code> 是一种神奇的方法，它旨在改进 DDIM，减少步骤以获得良好的结果。它需要每一步运行两次去噪，它的速度大约是 DDIM 的两倍。但是如果你在进行调试提示词的实验，这个采样器效果不怎么样<br>
+<code>Euler</code> 是最简单的，因此也是最快的之一</p>
+<p><strong>提示词相关性（CFG Scale）</strong>代表你输入的 Tag 对画面的引导程度有多大，可以理解为 “越小AI越自由发挥”。太大会出现锐化、线条变粗的效果。太小AI就自由发挥了，不看 Tag。 CFG Scale（无分类指导规模）：图像与你的提示的匹配程度。增加这个值将导致图像更接近你的提示（根据模型），但它也在一定程度上降低了图像质量。可以用更多的采样步骤来抵消。</p>
+<p>Tag 里的符号<br>
+以 girl 这个 Tag 作为例子。<br>
+<code>(girl)</code> 加权重，这里是1.1倍。括号是可以叠加的，如<code>((girl))</code>加很多权重。1.1*1.1=1.21倍<br>
+<code>[girl]</code> 减权重，一般用的少。减权重也一般就用下面的指定倍数。<br>
+<code>(girl:1.5)</code> 指定倍数，这里是1.5倍的权重。还可以 <code>(girl:0.9)</code> 达到减权重的效果</p>
+<p><strong>随机种子</strong> 是生成过程中所有随机性的源头，每个种子都是一幅不一样的画。默认的 -1 是代表每次都换一个随机种子。由随机种子，生成了随机的噪声图，再交给AI进行画出来。</p>
+<p>为生成的图片进行放大<br>
+AI 基本上无法生成超级大图，想要生成高清图片正确的做法是分辨率调小，比如512x768，然后开启 “<strong>高清修复</strong>”。放大倍数请考虑自己的显存大小调整，太大会爆显存。<strong>高清修复Hires fix</strong>同时有助于出单人减少鬼图。</p>
+<h1 id="图生图基础使用">图生图基础使用</h1>
+<h1 id="查询图片参数">查询图片参数</h1>
+<p>AI生成图片会自动保存全部参数到原图中，可以在WebUI的 “图片信息” 一栏内通过解析原图查看到。也可以这个工具：https://spell.novelai.dev/</p>
+<p>非AI生成图片或经过压缩的图片推荐使用 WD14Tagger 来尝试反推tag。</p>
+<p>Tagger是一个插件，可以在顶栏找到。打开后拖入图片，AI会识别出一些tag。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -748,311 +1086,6 @@ Lambda 表达式可以转换的委托类型由其参数和返回值的类型定�
 <li>T：<基类名> 类型参数必须是指定的基类或派生自指定的基类</基类名></li>
 <li>T：<接口名称> 类型参数必须是指定的接口或实现指定的接口。可以指定多个接口约束。约束接口也可以是泛型的。</接口名称></li>
 </ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/27/CS-IComparable%E5%92%8CIComparaer%E6%8E%A5%E5%8F%A3%E5%92%8C%E8%87%AA%E5%AE%9A%E4%B9%89%E6%AF%94%E8%BE%83%E5%99%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="冲击波">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/05/27/CS-IComparable%E5%92%8CIComparaer%E6%8E%A5%E5%8F%A3%E5%92%8C%E8%87%AA%E5%AE%9A%E4%B9%89%E6%AF%94%E8%BE%83%E5%99%A8/" class="post-title-link" itemprop="url">CS IComparable和IComparaer接口和自定义比较器</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2023-05-27 17:24:38" itemprop="dateCreated datePublished" datetime="2023-05-27T17:24:38+08:00">2023-05-27</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2023-06-02 15:27:45" itemprop="dateModified" datetime="2023-06-02T15:27:45+08:00">2023-06-02</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="comparer类">Comparer类</h1>
-<p>在System.Collections名称空间中，有这么一个类：Comparer。</p>
-<p>顾名思义，他可以实现对简单类型的比较，什么意思呢？来看如下代码：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int a=1,b=2;</span><br><span class="line">Console.WriteLine(Comparer.Default.Compare(a,b));</span><br></pre></td></tr></table></figure>
-<p>因为a&lt;b，所以控制台会输出-1。（这个函数总是返回-1，0，1三个值。） 这里通过Comparer里的<strong>静态属性Default</strong>获得Comparer的实例调用了Comparer里的非静态函数Compare。</p>
-<h1 id="icomparable接口">IComparable接口</h1>
-<p>IComparable接口里只有一个方法CompareTo()。<br>
-<strong>让你的类实现这个接口的CompareTo方法</strong>，就可以直接调用这个方法和另一个对象比较。<br>
-下面是例子：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class ClassTest : IComparable</span><br><span class="line">&#123;</span><br><span class="line">  public int intTest;</span><br><span class="line">  public int CompareTo(object obj)</span><br><span class="line">  &#123;</span><br><span class="line">    return intTest-((ClassTest)obj).intTest;</span><br><span class="line">    //这里的代码可以按需要自己编写，这里只是一个简单的示例</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">//然后就可以直接使用啦：</span><br><span class="line">ClassTest a = new ClassTest()&#123;intTest=1&#125;;</span><br><span class="line">ClassTest b = new ClassTest()&#123;intTest=2&#125;;</span><br><span class="line">Console.WriteLine(a.CompareTo(b));//输出-1</span><br></pre></td></tr></table></figure>
-<h1 id="icomparer接口">IComparer接口</h1>
-<p>自定义IComparer。<br>
-新建一个类：（记得using System.Collections;）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public class ClassTestComparer : IComparer</span><br><span class="line">&#123;</span><br><span class="line">  public static IComparer Default = new ClassTestComparer();</span><br><span class="line">  //这里必须使用这样的定义，将对象转化为IComparer类型有很大用处，下面会介绍</span><br><span class="line">  public int Compare(object a,object b)</span><br><span class="line">  &#123;</span><br><span class="line">    return ((ClassTest)a).intTest - ((ClassTest)b).intTest;</span><br><span class="line">    //同样这里使用最简单的示例，但是你可以大放异彩</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">//注意，如果用于比较的类和设定的类不一样，就会出现错误。</span><br><span class="line">//使用示例：</span><br><span class="line">ClassTest a = new ClassTest()&#123;intTest=1&#125;;</span><br><span class="line">ClassTest b = new ClassTest()&#123;intTest=2&#125;;</span><br><span class="line">Console.WriteLine(ClassTestComparer.Default.Compare(a,b));</span><br><span class="line">//结果是-1</span><br></pre></td></tr></table></figure>
-<p>可以发现，这两个接口的不同之处在于：<br>
-IComparable在要比较的对象的类中实现，可以比较该对象和另一个对象。<br>
-IComparer在一个单独的类中实现，可以比较任意两个对象（关键是你的设置）。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/27/%E5%A0%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="冲击波">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/05/27/%E5%A0%86/" class="post-title-link" itemprop="url">堆</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2023-05-27 16:14:19" itemprop="dateCreated datePublished" datetime="2023-05-27T16:14:19+08:00">2023-05-27</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2023-06-02 17:01:52" itemprop="dateModified" datetime="2023-06-02T17:01:52+08:00">2023-06-02</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>给定结点ListNode，要求建立一个<strong>小根堆</strong>（子结点永远大于它的父结点） <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class ListNode</span><br><span class="line">   &#123;</span><br><span class="line">       public int val;</span><br><span class="line">       public ListNode next;</span><br><span class="line">       public ListNode(int val = 0, ListNode next = null)</span><br><span class="line">       &#123;</span><br><span class="line">           this.val = val;</span><br><span class="line">           this.next = next;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
-<p>将堆结构通过数组下标的树形关系来维护</p>
-<p>同时从下标1开始使用（因为0乘除后仍等于0）</p>
-<p>基本思路：<br>
-从末尾插入新元素，然后<strong>上浮Swim</strong>至合适位置<br>
-从堆顶拿走元素，实际上是将堆顶元素和末尾元素<strong>对调Swap</strong>位置，删除末尾元素，然后再使得堆顶元素<strong>下沉Sink</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">   public class Statu : IComparable&lt;Statu&gt; //因为ListNode已经给定，新建一个类来包装一下ListNode</span><br><span class="line">   &#123;</span><br><span class="line">       public ListNode Node;</span><br><span class="line">       public Statu(ListNode Node)</span><br><span class="line">       &#123;</span><br><span class="line">           this.Node = Node;</span><br><span class="line">       &#125;</span><br><span class="line">       public int CompareTo(Statu temp)</span><br><span class="line">       &#123;</span><br><span class="line">           return Node.val - temp.Node.val;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">//小根堆</span><br><span class="line">   public class Heap&lt;T&gt; where T : IComparable&lt;T&gt;//这个堆是一个数组，用下标来维护关系</span><br><span class="line">   &#123;</span><br><span class="line">       readonly List&lt;T&gt; m_heap;</span><br><span class="line">       public int Count =&gt; m_heap.Count - 1;//Lambda</span><br><span class="line">       public Heap()</span><br><span class="line">       &#123;</span><br><span class="line">           m_heap = new List&lt;T&gt;();</span><br><span class="line">           T eg = default;</span><br><span class="line">           m_heap.Add(eg);//填充掉下标0的位置</span><br><span class="line">       &#125;</span><br><span class="line">       public void Insert(T value)</span><br><span class="line">       &#123;</span><br><span class="line">           m_heap.Add(value);</span><br><span class="line">           Swim(Count);</span><br><span class="line">       &#125;</span><br><span class="line">       public T Remove()//移除堆顶</span><br><span class="line">       &#123;</span><br><span class="line">           T res = m_heap[1];</span><br><span class="line">           Swap(m_heap, 1, Count);</span><br><span class="line">           m_heap.RemoveAt(Count);</span><br><span class="line">           Sink(1);</span><br><span class="line">           return res;</span><br><span class="line">       &#125;</span><br><span class="line">       public T Peek()//查看堆顶</span><br><span class="line">       &#123;</span><br><span class="line">           return m_heap[1];</span><br><span class="line">       &#125;</span><br><span class="line">       private void Swim(int pos)</span><br><span class="line">       &#123;</span><br><span class="line">           while (pos &gt; 1 &amp;&amp; m_heap[pos].CompareTo(m_heap[pos &gt;&gt; 1]) &lt; 0)//自定义比较器//?</span><br><span class="line">           &#123;</span><br><span class="line">               Swap(m_heap, pos, pos &gt;&gt; 1);</span><br><span class="line">               pos &gt;&gt;= 1;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       private void Sink(int pos)</span><br><span class="line">       &#123;</span><br><span class="line">           while ((pos &lt;&lt; 1) &lt;= Count)//存在左子下标</span><br><span class="line">           &#123;</span><br><span class="line">               int j = pos &lt;&lt; 1;//j是左子下标</span><br><span class="line">               if (j &lt; Count &amp;&amp; m_heap[j].CompareTo(m_heap[j + 1]) &gt; 0) j++;//存在右子，且右子大于左子</span><br><span class="line">               if (m_heap[pos].CompareTo(m_heap[j]) &lt;= 0) break;//下沉完毕</span><br><span class="line">               Swap(m_heap, pos, j);</span><br><span class="line">               pos = j;//下沉</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       private static void Swap(List&lt;T&gt; list, int a, int b)</span><br><span class="line">       &#123;</span><br><span class="line">           T temp = list[a];</span><br><span class="line">           list[a] = list[b];</span><br><span class="line">           list[b] = temp;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/09/%E6%A1%88%E4%BE%8B-%E6%89%93%E9%A3%9E%E6%9C%BA3D/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="冲击波">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/05/09/%E6%A1%88%E4%BE%8B-%E6%89%93%E9%A3%9E%E6%9C%BA3D/" class="post-title-link" itemprop="url">案例-打飞机3D</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2023-05-09 17:16:49 / Modified: 17:43:23" itemprop="dateCreated datePublished" datetime="2023-05-09T17:16:49+08:00">2023-05-09</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <img src="/2023/05/09/%E6%A1%88%E4%BE%8B-%E6%89%93%E9%A3%9E%E6%9C%BA3D/1.png" class>
-<p>比起我做的第一个案例——2D打飞机简介很多</p>
-<p>它用的是unity的坐标轴输入驱动飞机移动和刚体运动驱动子弹</p>
-<p>有巧妙的方式防止飞机越界</p>
-<p>增加了敌人生成点而不啥把生成敌人功能放在游戏主控下</p>
-<p>第一次使用3D天空盒，是一个挂在摄像机下的组件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">public class PlayerControl : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    public GameObject BulletPre;</span><br><span class="line">    private Transform firePoint;</span><br><span class="line">    private void Start()</span><br><span class="line">    &#123;</span><br><span class="line">        firePoint = transform.Find(&quot;FirePoint&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    void Update()</span><br><span class="line">    &#123;</span><br><span class="line">        float vertical = Input.GetAxis(&quot;Vertical&quot;);</span><br><span class="line">        float horizontal = Input.GetAxis(&quot;Horizontal&quot;);</span><br><span class="line">        if (horizontal != 0 || vertical != 0)</span><br><span class="line">        &#123;</span><br><span class="line">            transform.position -= Vector3.left * 10f * Time.deltaTime * horizontal;</span><br><span class="line">            if (transform.position.x &lt; -10 || transform.position.x &gt; 10)</span><br><span class="line">            &#123;</span><br><span class="line">                transform.position += Vector3.left * 10f * Time.deltaTime * horizontal;</span><br><span class="line">            &#125;</span><br><span class="line">            transform.position += Vector3.up * 10f * Time.deltaTime * vertical;</span><br><span class="line">            if (transform.position.y &lt; -10 || transform.position.y &gt; 10)</span><br><span class="line">            &#123;</span><br><span class="line">                transform.position -= Vector3.up * 10f * Time.deltaTime * vertical;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if (Input.GetKeyDown(KeyCode.Space))</span><br><span class="line">        &#123;</span><br><span class="line">            Instantiate(BulletPre, firePoint.position, firePoint.rotation);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    private void OnCollisionEnter(Collision collision)</span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log(&quot;游戏结束&quot;);</span><br><span class="line">        Time.timeScale = 0;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class BulletControl : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    void Start()</span><br><span class="line">    &#123;</span><br><span class="line">        Destroy(gameObject, 10f);</span><br><span class="line">        GetComponent&lt;Rigidbody&gt;().velocity = Vector3.forward * 50;</span><br><span class="line">    &#125;</span><br><span class="line">    private void OnTriggerEnter(Collider other)</span><br><span class="line">    &#123;</span><br><span class="line">        Destroy(gameObject);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/09/%E6%A1%88%E4%BE%8B-%E7%82%B9%E4%BA%AE%E5%92%8C%E7%86%84%E7%81%AD%E8%9C%A1%E7%83%9B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="冲击波">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/05/09/%E6%A1%88%E4%BE%8B-%E7%82%B9%E4%BA%AE%E5%92%8C%E7%86%84%E7%81%AD%E8%9C%A1%E7%83%9B/" class="post-title-link" itemprop="url">案例 点亮和熄灭蜡烛</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2023-05-09 14:57:47 / Modified: 15:29:54" itemprop="dateCreated datePublished" datetime="2023-05-09T14:57:47+08:00">2023-05-09</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <img src="/2023/05/09/%E6%A1%88%E4%BE%8B-%E7%82%B9%E4%BA%AE%E5%92%8C%E7%86%84%E7%81%AD%E8%9C%A1%E7%83%9B/1.png" class>
-<p>测试射线用法</p>
-<p>为所有蜡烛添加上碰撞器和标签，蜡烛的子物体是火苗例子</p>
-<p>鼠标点击画面上的蜡烛，使得燃起的火苗熄灭/熄灭的火苗燃起</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">void Update()</span><br><span class="line">&#123;</span><br><span class="line">    if(Input.GetMouseButtonDown(0))</span><br><span class="line">    &#123;</span><br><span class="line">        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);</span><br><span class="line">        RaycastHit hit;</span><br><span class="line">        if (Physics.Raycast(ray, out hit))</span><br><span class="line">        &#123;</span><br><span class="line">            if (hit.collider.tag == &quot;Candle&quot;)</span><br><span class="line">            &#123;</span><br><span class="line">                if (hit.transform.GetChild(0).gameObject.activeSelf == true)</span><br><span class="line">                &#123;</span><br><span class="line">                    hit.transform.GetChild(0).gameObject.SetActive(false);</span><br><span class="line">                &#125;</span><br><span class="line">                else</span><br><span class="line">                &#123;</span><br><span class="line">                    hit.transform.GetChild(0).gameObject.SetActive(true);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>

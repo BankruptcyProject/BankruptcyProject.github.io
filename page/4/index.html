@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">186</span>
+          <span class="site-state-item-count">190</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,360 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/18/Blender%E8%92%99%E7%9A%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="冲击波">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/11/18/Blender%E8%92%99%E7%9A%AE/" class="post-title-link" itemprop="url">Blender蒙皮</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-11-18 19:09:21" itemprop="dateCreated datePublished" datetime="2022-11-18T19:09:21+08:00">2022-11-18</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-11-25 14:43:57" itemprop="dateModified" datetime="2022-11-25T14:43:57+08:00">2022-11-25</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="骨骼绑定">骨骼绑定</h1>
+<ol type="1">
+<li><p>将<strong>骨架</strong>置于<strong>网格</strong>中，为了便于观察，勾选 <strong>骨架属性|视图显示|在前面</strong></p></li>
+<li><p>将<strong>网格父级</strong>设置为<strong>骨架</strong>（快捷键Ctrl + P），选则 <strong>附带自动权重</strong></p></li>
+<li><p>结果： <strong>网格</strong>变成<strong>骨架</strong>的<strong>子节点</strong><br>
+<strong>网格</strong>添加了<strong>骨架修改器</strong><br>
+<strong>网格</strong>根据<strong>骨架</strong>添加了多个<strong>顶点组</strong>（名字自动和骨骼名字对应），比自动设置了权重<br>
+<img src="/2022/11/18/Blender%E8%92%99%E7%9A%AE/1.png" class><br>
+<img src="/2022/11/18/Blender%E8%92%99%E7%9A%AE/2.png" class><br>
+工作原理：网格的 <strong>骨架修改器</strong>，监测到<strong>骨架</strong>移动，根据骨架移动和顶点组权重，修改顶点位置。<br>
+不满意权重分配，可在权重模式下重新绘制权重<br>
+<strong>局部绘制</strong>：现在编辑模式下启用局部视图，再切换到权重绘制模式下 点选 <strong>面遮罩</strong> 按钮，切换显示 <img src="/2022/11/18/Blender%E8%92%99%E7%9A%AE/3.png" class></p></li>
+</ol>
+<p>注：如果将网格父级设置为骨架（快捷键Ctrl + P），选则 附带空顶点组<br>
+与上面相同，唯一不同是顶点组权重为设置。</p>
+<h1 id="混合编辑模式">混合编辑模式</h1>
+<p>选择<strong>骨架</strong>在选中<strong>网格</strong>，切换到<strong>权重绘制</strong>模式 = 进入<strong>混合编辑模式</strong>（<strong>姿态编辑</strong>和<strong>权重绘制</strong>）</p>
+<h1 id="骨骼更新">骨骼更新</h1>
+<p>骨骼绑定完成后，更新骨骼名称，Blender会自动更新相应顶点组的名称</p>
+<p>骨骼绑定完成后，添加新的骨骼，需要重新整体绑定骨骼<br>
+为了防止重置原本的骨骼权重，需要<strong>锁定</strong>原骨骼顶点组。</p>
+<h1 id="分部绑定">分部绑定</h1>
+<p>同时选中多个网格，为他们绑定同一个骨架<br>
+假设骨架有3个骨骼，则每个网格都有3个顶点组，大部分顶点组为空</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/18/Blender%E9%AA%A8%E9%AA%BC%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="冲击波">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/11/18/Blender%E9%AA%A8%E9%AA%BC%E5%9F%BA%E7%A1%80/" class="post-title-link" itemprop="url">Blender骨骼基础</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-11-18 16:04:07" itemprop="dateCreated datePublished" datetime="2022-11-18T16:04:07+08:00">2022-11-18</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-11-25 14:44:03" itemprop="dateModified" datetime="2022-11-25T14:44:03+08:00">2022-11-25</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="简介">简介</h1>
+<p>骨架 Armature<br>
+骨骼 Bone</p>
+<p>一根骨骼的结构：<br>
+首端 Root<br>
+主体 Body<br>
+尾端 Tip</p>
+<p>骨架本质上是顶点和线，其中一个骨骼的两个顶点有首尾之分。</p>
+<p>切换视图显示 <img src="/2022/11/18/Blender%E9%AA%A8%E9%AA%BC%E5%9F%BA%E7%A1%80/1.png" class></p>
+<h1 id="编辑">编辑</h1>
+<p>在编辑模式下，选择端点，挤出工具（快捷键 E 挤出）<br>
+适用网格点线的缩放、移动、旋转（快捷键 G ）。</p>
+<p><strong>细分</strong><br>
+选中一根骨骼，右键 细分（类似对边的细分）</p>
+<p><strong>填充</strong><br>
+选中两个关节，快捷键 F ，填充骨骼（但未连接，需手动连接）</p>
+<h1 id="父子关系">父子关系</h1>
+<img src="/2022/11/18/Blender%E9%AA%A8%E9%AA%BC%E5%9F%BA%E7%A1%80/2.png" class>
+<p>快捷键Alt + P 清空父级<br>
+快捷键Ctrl + P 设置父级</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/18/Blender%E7%BC%A9%E8%A3%B9%E4%BF%AE%E6%94%B9%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="冲击波">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/11/18/Blender%E7%BC%A9%E8%A3%B9%E4%BF%AE%E6%94%B9%E5%99%A8/" class="post-title-link" itemprop="url">Blender缩裹修改器</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-11-18 15:41:55 / Modified: 16:02:32" itemprop="dateCreated datePublished" datetime="2022-11-18T15:41:55+08:00">2022-11-18</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="缩裹方式">缩裹方式</h1>
+<p><strong>最近的表面点</strong><br>
+缩裹是形变类修改器，所以不会增删顶点，只是修改顶点的位置。<br>
+此时，将所选的顶点贴合到目标的表面。<br>
+计算时，自物体A的顶点，向目标B的表面引一条垂线。即得到最近的表面点。<br>
+在编辑模式下观察。<br>
+<img src="/2022/11/18/Blender%E7%BC%A9%E8%A3%B9%E4%BF%AE%E6%94%B9%E5%99%A8/1.png" class></p>
+<p><strong>投影</strong><br>
+直接从原始顶点，引一条投影线，投射到目标表面。投影线与目标表面的交点，即为新的位置。<br>
+此时，要指定投影线的投射方向。<br>
+<img src="/2022/11/18/Blender%E7%BC%A9%E8%A3%B9%E4%BF%AE%E6%94%B9%E5%99%A8/2.png" class><br>
+此处，投射方向为 –X 轴。<br>
+<img src="/2022/11/18/Blender%E7%BC%A9%E8%A3%B9%E4%BF%AE%E6%94%B9%E5%99%A8/3.png" class></p>
+<p><strong>最近的顶点</strong><br>
+在目标物体上找最近的顶点。使物体A顶点，和目标B的顶点位置重合。<br>
+如果目标物体上顶点稀少，则结果不适。<br>
+<img src="/2022/11/18/Blender%E7%BC%A9%E8%A3%B9%E4%BF%AE%E6%94%B9%E5%99%A8/4.png" class></p>
+<p><strong>目标法线投影</strong> 这个和“最近的表面点”算法类似，但计算的方法是反的。<br>
+它是从目标的表面引出法线，找到与原始顶点最近的法线。据说效果会更平滑一些，但计算过程较慢。</p>
+<h1 id="吸附模式">吸附模式</h1>
+<p>这个用于指定是否偏移、偏移多少。和下面的偏移量一起使用。</p>
+<p><strong>曲面上</strong> 此时的偏移量是，表示从原顶点向目标表面引一条线，沿这条线偏移。</p>
+<p><strong>表面外围</strong> 先使用偏移量，将表面向外挤出一个偏移量，（沿各向挤出），然后再吸附或投射。</p>
+<p><strong>表面上方</strong> 先使用偏移量，将表面向外挤出一个偏移量，（沿法向挤出），然后再吸附或投射。</p>
+<p><strong>向内 Inside</strong> 如果顶点已经在目标之内，则不做偏移。<br>
+如果顶点在目标之外，则将其吸附到表面。<br>
+适用于物体A和目标物体交叠的情形。</p>
+<p><strong>向外 Outside</strong> 如果顶点已经在目标之外，则不做偏移。<br>
+如果顶点在目标之内，则不做偏移。<br>
+适用于物体A和目标物体交叠的情形。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/18/Blender%E6%B3%A2%E6%B5%AA%E4%BF%AE%E6%94%B9%E5%99%A8%E3%80%81%E6%B4%8B%E9%9D%A2%E4%BF%AE%E6%94%B9%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="冲击波">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/11/18/Blender%E6%B3%A2%E6%B5%AA%E4%BF%AE%E6%94%B9%E5%99%A8%E3%80%81%E6%B4%8B%E9%9D%A2%E4%BF%AE%E6%94%B9%E5%99%A8/" class="post-title-link" itemprop="url">Blender波浪修改器、洋面修改器</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-11-18 15:02:40 / Modified: 15:40:42" itemprop="dateCreated datePublished" datetime="2022-11-18T15:02:40+08:00">2022-11-18</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="波浪修改器">波浪修改器</h1>
+<p>形变修改器</p>
+<p>闭环：是否有周期性</p>
+<p>Falloff：波浪衰减半径</p>
+<p>Damping：波浪消失后，衰减需要的时间</p>
+<h1 id="洋面修改器">洋面修改器</h1>
+<p>几何数据|生成，会直接生成洋面网格替换原有网格</p>
+<p>用<strong>时间</strong>属性来模拟动画效果</p>
+<p>空间尺寸：是选取海洋的大小<br>
+尺寸：是等比放大缩小</p>
+<p>波浪|缩放：调整海浪的高度大小</p>
+<p><strong>浪花</strong>：需要湍流海洋海浪谱。勾选<strong>泡沐</strong>，命名数据层。材质中，添加属性节点，取出被命名的数据层。 <img src="/2022/11/18/Blender%E6%B3%A2%E6%B5%AA%E4%BF%AE%E6%94%B9%E5%99%A8%E3%80%81%E6%B4%8B%E9%9D%A2%E4%BF%AE%E6%94%B9%E5%99%A8/1.png" class></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -650,290 +1004,6 @@
 <p>粒子可以烘焙但不能应用修改器（没效果）<br>
 使用 <strong>物体</strong>|<strong>应用</strong>|<strong>实例独立化</strong> 具现化粒子</p>
 <p>一个物体可以挂载多个粒子修改器</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/11/Blender%E7%BC%93%E5%AD%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="冲击波">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/11/11/Blender%E7%BC%93%E5%AD%98/" class="post-title-link" itemprop="url">Blender缓存</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-11-11 18:26:22 / Modified: 18:48:02" itemprop="dateCreated datePublished" datetime="2022-11-11T18:26:22+08:00">2022-11-11</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>风吹窗帘，实时结算每一帧物理效果速度慢，CPU负载高。</p>
-<p>在布料修改器下有针对布料物理效果的烘培，可以选择烘培在内存里还是磁盘上。 <img src="/2022/11/11/Blender%E7%BC%93%E5%AD%98/1.png" class></p>
-<p>烘培后不能再对布料修改，需要布料修改需要删除烘培。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/11/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E9%A3%8E%E5%90%B9%E7%AA%97%E5%B8%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="冲击波">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/11/11/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E9%A3%8E%E5%90%B9%E7%AA%97%E5%B8%98/" class="post-title-link" itemprop="url">（练习）风吹窗帘</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-11-11 17:27:22 / Modified: 17:39:21" itemprop="dateCreated datePublished" datetime="2022-11-11T17:27:22+08:00">2022-11-11</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <img src="/2022/11/11/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E9%A3%8E%E5%90%B9%E7%AA%97%E5%B8%98/1.png" class>
-<p>砖墙着色器 <img src="/2022/11/11/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E9%A3%8E%E5%90%B9%E7%AA%97%E5%B8%98/2.png" class></p>
-<p>添加了两次布料修改器，第一次应用形态键做静态窗帘，第二次配合动画产生动态窗帘效果。</p>
-<img src="/2022/11/11/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E9%A3%8E%E5%90%B9%E7%AA%97%E5%B8%98/3.png" class>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/11/Blender%E5%8A%9B%E5%9C%BA/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="冲击波">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/11/11/Blender%E5%8A%9B%E5%9C%BA/" class="post-title-link" itemprop="url">Blender力场</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-11-11 15:31:43 / Modified: 15:45:12" itemprop="dateCreated datePublished" datetime="2022-11-11T15:31:43+08:00">2022-11-11</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <img src="/2022/11/11/Blender%E5%8A%9B%E5%9C%BA/1.png" class>
-<p><strong>添加</strong>|<strong>力场</strong></p>
-<img src="/2022/11/11/Blender%E5%8A%9B%E5%9C%BA/2.png" class>
-<p><strong>力场</strong>本质上是<strong>空物体</strong>添加<strong>物理属性</strong>的力场</p>
-<p><strong>风场</strong>无关位置，只有方向和大小</p>
-<img src="/2022/11/11/Blender%E5%8A%9B%E5%9C%BA/3.png" class>
-<p>每个物体<strong>物理属性</strong>页签下的<strong>力场权重</strong>可以调整该物体受不同力场影响的大小</p>
-<img src="/2022/11/11/Blender%E5%8A%9B%E5%9C%BA/4.png" class>
-<p>或者在<strong>效果器集合</strong>中添加集合，在上图中若添加了Collection2，则物体只受磁力影响</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/11/Blender%E5%BD%A2%E6%80%81%E9%94%AE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="冲击波">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/11/11/Blender%E5%BD%A2%E6%80%81%E9%94%AE/" class="post-title-link" itemprop="url">Blender形态键</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-11-11 12:54:44 / Modified: 13:47:56" itemprop="dateCreated datePublished" datetime="2022-11-11T12:54:44+08:00">2022-11-11</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>形态键用于记录一个网格的不同形态</p>
-<p>特点：<br>
-一个基准形态，和多个变化形态<br>
-仅移动顶点的位置，不增删顶点，在形态键中，只是记录顶点的位置变化</p>
-<p>物体模式下，添加、删除、重命名形态键<br>
-编辑模式下，选中一个形态键编辑网格形态</p>
-<img src="/2022/11/11/Blender%E5%BD%A2%E6%80%81%E9%94%AE/1.png" class>
-<p>相对形态：形态键保存的是顶点的相对位移<br>
-物体的最终形态 = 基态 + 形变1 * 权重1 + 形变2 * 权重2 + 。。。</p>
-<p>绝对形态：形态键直接保存每个顶点的坐标，使用<strong>估算时刻</strong>来切换形态 <img src="/2022/11/11/Blender%E5%BD%A2%E6%80%81%E9%94%AE/2.png" class></p>
-<p>使用形态键和顶点组顶固制作窗帘 <img src="/2022/11/11/Blender%E5%BD%A2%E6%80%81%E9%94%AE/3.png" class></p>
-<p>在修改器力保存形态键 <img src="/2022/11/11/Blender%E5%BD%A2%E6%80%81%E9%94%AE/4.png" class></p>
 
       
     </div>
