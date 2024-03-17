@@ -28,7 +28,7 @@
 <meta property="og:description" content="Stable Diffusion模型 .ckpt文件或.safetensors文件，文件较大，简称大模型 外挂VAE模型 .pt文件或者.safetensors文件，文件较小 降噪完成后启用，多在颜色和整体滤镜上起作用。 许多大模型会以及将其包括在内，不需要外挂VAE；另一些则需要外挂VAE 大模型介绍中一般会提示推荐适配的外挂VAE模型 选 自动 则会选择与大模型相同名称的外挂VA">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-03-11T14:20:32.000Z">
-<meta property="article:modified_time" content="2024-03-17T00:32:42.273Z">
+<meta property="article:modified_time" content="2024-03-17T15:20:52.981Z">
 <meta property="article:author" content="冲击波">
 <meta property="article:tag" content="其他">
 <meta name="twitter:card" content="summary">
@@ -199,7 +199,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2024-03-17 08:32:42" itemprop="dateModified" datetime="2024-03-17T08:32:42+08:00">2024-03-17</time>
+        <time title="Modified: 2024-03-17 23:20:52" itemprop="dateModified" datetime="2024-03-17T23:20:52+08:00">2024-03-17</time>
       </span>
 
   
@@ -267,8 +267,20 @@ AI 基本上无法生成超级大图，想要生成高清图片正确的做法�
 <p>需要在SD WebUI<strong>设置</strong>中找到<strong>附加网络</strong>，添加<strong>Hypernetwork 超网络</strong>提示词，然后可以在提示词中添加</p>
 <p>注意：本功能效果不好，且有些LoRa已经取代了它的功能</p>
 <h1 id="局部重绘sketch">局部重绘Sketch</h1>
+<p><strong>重绘区域</strong>选择全图，则<strong>蒙版模糊</strong>决定了重回区域边界的柔和程度，太小会导致重回区域边界与原图违和。</p>
+<p><strong>重绘区域</strong>选择<strong>仅蒙版</strong>，则<strong>仅蒙版模式的边缘预留像素</strong>决定了重回区域边界的柔和程度，太小会导致重回区域边界与原图违和。</p>
 <h1 id="controlnet">ControlNet</h1>
 <p>根据一些额外信息控制扩散生成走向</p>
+<p>在预处理器后面有一个按钮可以将导入图片生成信息图，直接使用信息图则不需要使用预处理器</p>
+<p><strong>预处理器Annotator</strong>：从图片中提取出对ControlNet有用的额外信息<br>
+openpose（动作姿势）：控制人物姿势<br>
+depth leres++（深度、层次） ：控制人物四肢躯干前后关系，控制建筑结构<br>
+canny（提出线稿的信息图）：有两个阚值滑条控制线稿精细度、关闭预处理器可以应用于线稿上色（注意需要反色（使用inver预处理器））<br>
+linart：专门基于动漫风格的canny升级版<br>
+HED/Soft Edge：与canny类似，但信息图的线条更粗更模糊，能基于ai更多自由<br>
+scribble：与canny更类似，但提取出来的信息图极为简单，如果更改提示词可以做出例如乌龟形状的飞船的效果。同时自己创作的简笔画通过inver预处理器和scribble模型和描述词可以做到创作风景图。</p>
+<p>多个ControlNet可以结合使用，例如openpose和depth Control Weight：决定控制效应在图片中呈现出来的强度，在多个ControlNet一起使用时很关键</p>
+<p>StartControlStep 和 EndingControlStep：影响在生图过程中什么时候加入ControlNet的影响</p>
 
     </div>
 
