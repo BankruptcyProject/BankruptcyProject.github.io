@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">190</span>
+          <span class="site-state-item-count">191</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,101 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/16/AD-guess-num/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="冲击波">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/16/AD-guess-num/" class="post-title-link" itemprop="url">AD_guess_num</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-03-16 17:18:41" itemprop="dateCreated datePublished" datetime="2021-03-16T17:18:41+08:00">2021-03-16</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-03-19 21:20:22" itemprop="dateModified" datetime="2021-03-19T21:20:22+08:00">2021-03-19</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <img src="/2021/03/16/AD-guess-num/1.png" class>
+<p>可以看出要进行10次猜测，保证每次猜测（v4）与v6相等，即可执行sub_C3E，sub_C3E是能得到的flag函数。</p>
+<p>v6来自伪随机函数rand()</p>
+<p>rand()需要srand()提供的种子，只要种子相同，rand()就一定相同。</p>
+<p>此处种子为seed</p>
+<img src="/2021/03/16/AD-guess-num/2.png" class>
+<p>该图中地址为ida地址，1代表1个字节 <img src="/2021/03/16/AD-guess-num/1.jpg" class></p>
+<p>该程序用gets来读取&amp;v7（name）（），所以可以用名字覆盖种子（写入我们需要的种子），再另外写一个cpp程序来看看该种子对应的rand（）函数值。</p>
+<p><strong>ida地址表示1相当于1个字节</strong></p>
+<p>名字写入0x24个a，相当于从客户端·输入32个a，一个a一个字节，刚好覆盖完-30h到-10h的地址，触及seed的地址，seed的类型是unsigned int，故seed[0]的大小为4个字节，故选取的种子4个a。</p>
+<p>这里特别要注意，由于题目本身是在linux下的，所以我们自己写的程序也要在linux下进行测试，不同的平台所产生的结果是不同的（我吐了，卡了老子这久）</p>
+<img src="/2021/03/16/AD-guess-num/2.jpg" class>
+<p><em>顺便需要学习在Linux中编写c</em></p>
+<p><em>首先确保安装了gcc，g++。我的linux里已经有了</em></p>
+<p><em>新建文件夹命名为xxx.cpp或xxx.c</em></p>
+<p><em>编写，保存</em></p>
+<p><em>用命令编译，g++ xxx.cpp 或 gcc xxx.c</em></p>
+<p><em>如果成功，会得到一个可执行程序，xxx.out</em></p>
+<p><em>运行，./xxx.out，会输出结果</em></p>
+<p>回到这题</p>
+<p>附件只提供参考，flag不在附件中，如果单纯运行附件答题能成功，但给不出flag（怎么想怎么对，我之前竟然不知道）</p>
+<p>所以有两个方法完成这题</p>
+<p>第一种方法nc服务器，输入0x24个a，也就是36个a，答题，得到flag</p>
+<p>第二种方法是使用脚本</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> * </span><br><span class="line">io = remote(<span class="string">&quot;111.200.241.244&quot;</span>, <span class="number">47746</span>)</span><br><span class="line"></span><br><span class="line">io.recvuntil(<span class="string">&quot;Your name:&quot;</span>)</span><br><span class="line">payload=<span class="string">&#x27;a&#x27;</span>*<span class="number">0x24</span></span><br><span class="line">io.sendline(payload)</span><br><span class="line"></span><br><span class="line">ans=[<span class="number">5</span>,<span class="number">6</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">6</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">6</span>,<span class="number">2</span>,<span class="number">2</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> ans:</span><br><span class="line">	io.recvuntil(<span class="string">&quot;Please input your guess number:&quot;</span>)</span><br><span class="line">	io.sendline(<span class="built_in">str</span>(i))</span><br><span class="line"></span><br><span class="line">io.interactive()</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1236,111 +1331,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/16/%E5%AD%A6%E4%B9%A0Linux/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="冲击波">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2020/12/16/%E5%AD%A6%E4%B9%A0Linux/" class="post-title-link" itemprop="url">学习Linux</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2020-12-16 21:00:38" itemprop="dateCreated datePublished" datetime="2020-12-16T21:00:38+08:00">2020-12-16</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-02-24 13:46:36" itemprop="dateModified" datetime="2022-02-24T13:46:36+08:00">2022-02-24</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="vmubuntu">VM+ubuntu</h1>
-<p>我在系统中找到的文件bin boot cdrom dev etc home lib lib32 lib64 libx32 lost+found media mnt opt proc root run sbin snap srv swapfile sys tmp usr var home 是家目录，通常您自己创建的文件，都保存在这里 usr 应用程序目录。大部分的软件都安装在这里 var 一些服务器方面的应用</p>
-<h4 id="linux有特定的语法结构">linux有特定的语法结构</h4>
-<p>用中文举例子 我们郑重地推荐您Ubuntu/Linux！</p>
-<p>这个句子的语法尽管简单，却是大部分的命令行采用的句型。让我们看一下，这个句子里都有些什么：</p>
-<p>我们</p>
-<p>主语，Linux命令的执行者只有一个，所以主语一概省略。</p>
-<p>推荐</p>
-<p>一个动词，作为谓语而存在。Linux命令中，这一部分是必须的。这一部分也是不同命令之间最根本的区别方式，所以它通常作为命令名，写在最前面。</p>
-<p>郑重的</p>
-<p>状语，用来修饰谓语。与之相对应，Linux命令可以使用参数来精细调节程序的行为。为了与命令的操作对象相区别，参数前通常要加 - 或者 -- 符号。原则上，在命令名之后，参数的位置可以随意，但是为了养成一个良好的习惯，建议在命令名后直接跟参数。</p>
-<p>您 Ubuntu/linux</p>
-<p>这两个部分都是宾语，它们是命令的操作对象。大部分的命令只有一个操作对象，也有一些命令是双宾语结构的，具有一个直接宾语和一个间接宾语。比如 拷贝 这个命令 cp (copy)</p>
-<p>分隔符</p>
-<p>我们的汉语是象形文字，没有分隔符。但是所有的拼音文字中都有分隔符，来分隔单词。Linux命令中同样使用空格作分隔符。</p>
-<p>cp a /home 表示把当前目录下的 a 文件，拷贝到 /home 目录下。（命令的不同部分使用空格分隔，连续的空格视为一个空格）</p>
-<p>上面的那句话，翻译成Linux的命令，应该是这个样子的：</p>
-<p>推荐 --郑重的 您 Ubuntu/Linux （按照传统，“-”后跟简写为单个字母的参数，“--”后跟完整单词的参数。不过也有例外：）</p>
-<h4 id="路径相关命令">路径相关命令</h4>
-<p>cd (change directory) 更改目录。</p>
-<p>pwd (print working directory)显示当前路径。</p>
-<p>ls (list) 显示当前目录中的文件列表。</p>
-<h4 id="软件">软件</h4>
-<p>Linux中没有*<strong>注册表*</strong>这个概念。安装软件，理论上讲，只要拷贝所有相关文件，并运行它的主程序就可以了。</p>
-<p>按照传统，一个软件通常分别拷贝到同级目录下的 bin、etc、lib、share等文件夹。</p>
-<p><strong>Bin</strong> 可执行文件，程序的可执行文件通常在这个目录下。在环境变量中设定搜索路径，就可以直接执行，而不需要定位其路径。</p>
-<p><strong>Etc</strong> 配置文件，大部分系统程序的配置文件保存于 /etc 目录，便于集中修改。</p>
-<p><strong>Lib</strong> 库文件，集中在一起，方便共享给不同程序。相较不同的软件单独保存库文件，能够节约一些磁盘空间。</p>
-<p><strong>Share</strong> 程序运行所需要的其它资源，例如图标、文本。这部分文件是专有的，不需要共享；而且目录结构相对复杂，混放在一起比较混乱，所以单独存放。</p>
-<h4 id="隐藏文件">隐藏文件</h4>
-<p>Linux下，名称中第一个字符为 . 的文件或者文件夹，系统默认情况下将它们隐藏起来</p>
-<h4 id="新建文件">新建文件</h4>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; text.py</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/17/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><span class="page-number current">18</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/19/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/17/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><span class="page-number current">18</span><a class="page-number" href="/page/19/">19</a><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/19/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 </div>

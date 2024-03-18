@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">190</span>
+          <span class="site-state-item-count">191</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,80 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/03/18/unity%E5%AF%B9%E8%B1%A1%E6%B1%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="冲击波">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/03/18/unity%E5%AF%B9%E8%B1%A1%E6%B1%A0/" class="post-title-link" itemprop="url">unity对象池</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2024-03-18 20:16:16 / Modified: 23:33:05" itemprop="dateCreated datePublished" datetime="2024-03-18T20:16:16+08:00">2024-03-18</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>unity内置的对象池在2021.3版本后</p>
+<p>对象池是一种优化项目的方法，可以在快速创建和销毁新对象时减轻CPU的负担。以占用内存空间的方式减轻CPU压力。ObjectPool使用堆栈来保存对象实例的集合以供重用，线程上不一定安全。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//将脚本挂载在对象池节点上</span><br><span class="line">using UnityEngine.Pool;</span><br><span class="line"></span><br><span class="line">private ObjectPool&lt;GameObject&gt; pool;</span><br><span class="line">private void Awake()</span><br><span class="line">&#123;</span><br><span class="line">    pool = new ObjectPool&lt;GameObject&gt;();</span><br><span class="line">    //创建需要七个参数，一个Func委托，三个Action委托，三个基础变量</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>createFunc<br>
+actionOnGet<br>
+actionOnRelease<br>
+actionOnDestroy<br>
+collectionCheck<br>
+defaultCapacity<br>
+maxSize</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1064,94 +1138,8 @@ Lambda 表达式可以转换的委托类型由其参数和返回值的类型定�
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/28/CS%E6%B3%9B%E5%9E%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="冲击波">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/05/28/CS%E6%B3%9B%E5%9E%8B/" class="post-title-link" itemprop="url">CS泛型</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2023-05-28 14:50:33" itemprop="dateCreated datePublished" datetime="2023-05-28T14:50:33+08:00">2023-05-28</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2023-06-02 15:28:13" itemprop="dateModified" datetime="2023-06-02T15:28:13+08:00">2023-06-02</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="泛型">泛型</h1>
-<p><strong>泛型（Generic）</strong>允许编写一个可以与<strong>任何数据类型</strong>一起工作的<strong>类</strong>或<strong>方法</strong>。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">//泛型类</span><br><span class="line">public class EgClass&lt;T&gt;</span><br><span class="line">&#123;</span><br><span class="line">	private T[] array;</span><br><span class="line">    public EgClass(int size)</span><br><span class="line">    &#123;</span><br><span class="line">    	array = new T[size + 1];</span><br><span class="line">    &#125;</span><br><span class="line">    public T getItem(int index)</span><br><span class="line">    &#123;</span><br><span class="line">    	return array[index];</span><br><span class="line">    &#125;</span><br><span class="line">    public void setItem(int index, T value)</span><br><span class="line">    &#123;</span><br><span class="line">    	array[index] = value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;       </span><br><span class="line">class Tester</span><br><span class="line">&#123;</span><br><span class="line">	static void Main(string[] args)</span><br><span class="line">    &#123;</span><br><span class="line">        // 声明一个整型数组</span><br><span class="line">        EgClass&lt;int&gt; intArray = new EgClass&lt;int&gt;(5);</span><br><span class="line">        // 设置值</span><br><span class="line">        for (int c = 0; c &lt; 5; c++)</span><br><span class="line">        &#123;</span><br><span class="line">            intArray.setItem(c, c*5);</span><br><span class="line">        &#125;</span><br><span class="line">        // 获取值</span><br><span class="line">        for (int c = 0; c &lt; 5; c++)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.Write(intArray.getItem(c) + &quot; &quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">//泛型方法</span><br><span class="line">class Program</span><br><span class="line">&#123;</span><br><span class="line">    static void Swap&lt;T&gt;(ref T lhs, ref T rhs)</span><br><span class="line">    &#123;</span><br><span class="line">        T temp;</span><br><span class="line">        temp = lhs;</span><br><span class="line">        lhs = rhs;</span><br><span class="line">        rhs = temp;</span><br><span class="line">    &#125;</span><br><span class="line">    static void Main(string[] args)</span><br><span class="line">    &#123;</span><br><span class="line">        char c, d;</span><br><span class="line">        c = &#x27;I&#x27;;</span><br><span class="line">        d = &#x27;V&#x27;;</span><br><span class="line">		// 调用 swap</span><br><span class="line">        Swap&lt;char&gt;(ref c, ref d);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="where关键字">where关键字</h1>
-<p>在声明泛型方法/泛型类的时候，可以给泛型加上一定的约束来满足我们特定的一些条件。</p>
-<p>比如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public class EgClass&lt;T&gt; where T:new()</span><br><span class="line">&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>泛型限定条件：</p>
-<ul>
-<li>T：结构（类型参数必须是值类型。可以指定除 Nullable 以外的任何值类型）</li>
-<li>T：类 （类型参数必须是引用类型，包括任何类、接口、委托或数组类型）</li>
-<li>T：new() （类型参数必须具有无参数的公共构造函数。当与其他约束一起使用时new() 约束必须最后指定）</li>
-<li>T：<基类名> 类型参数必须是指定的基类或派生自指定的基类</基类名></li>
-<li>T：<接口名称> 类型参数必须是指定的接口或实现指定的接口。可以指定多个接口约束。约束接口也可以是泛型的。</接口名称></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 </div>
