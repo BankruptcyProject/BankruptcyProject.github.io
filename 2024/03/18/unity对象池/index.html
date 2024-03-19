@@ -20,15 +20,15 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="unity内置的对象池在2021.3版本后 对象池是一种优化项目的方法，可以在快速创建和销毁新对象时减轻CPU的负担。以占用内存空间的方式减轻CPU压力。ObjectPool使用堆栈来保存对象实例的集合以供重用，线程上不一定安全。 123456789&#x2F;&#x2F;将脚本挂载在对象池节点上using UnityEngine.Pool;private ObjectPool&lt;GameObject&gt;">
+<meta name="description" content="unity内置的对象池在2021.3版本后 对象池是一种优化项目的方法，可以在快速创建和销毁新对象时减轻CPU的负担。以占用内存空间的方式减轻CPU压力。 ObjectPool使用堆栈来保存对象实例的集合以供重用，线程上不一定安全。 123456789101112131415161718192021222324252627282930313233343536&#x2F;&#x2F;将脚本挂载在对象池节点上usi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="unity对象池">
 <meta property="og:url" content="http://example.com/2024/03/18/unity%E5%AF%B9%E8%B1%A1%E6%B1%A0/index.html">
 <meta property="og:site_name" content="你们这样对得起孤胆英雄飞天狙吗">
-<meta property="og:description" content="unity内置的对象池在2021.3版本后 对象池是一种优化项目的方法，可以在快速创建和销毁新对象时减轻CPU的负担。以占用内存空间的方式减轻CPU压力。ObjectPool使用堆栈来保存对象实例的集合以供重用，线程上不一定安全。 123456789&#x2F;&#x2F;将脚本挂载在对象池节点上using UnityEngine.Pool;private ObjectPool&lt;GameObject&gt;">
+<meta property="og:description" content="unity内置的对象池在2021.3版本后 对象池是一种优化项目的方法，可以在快速创建和销毁新对象时减轻CPU的负担。以占用内存空间的方式减轻CPU压力。 ObjectPool使用堆栈来保存对象实例的集合以供重用，线程上不一定安全。 123456789101112131415161718192021222324252627282930313233343536&#x2F;&#x2F;将脚本挂载在对象池节点上usi">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-03-18T12:16:16.000Z">
-<meta property="article:modified_time" content="2024-03-18T15:33:05.717Z">
+<meta property="article:modified_time" content="2024-03-19T15:58:11.667Z">
 <meta property="article:author" content="冲击波">
 <meta property="article:tag" content="unity">
 <meta name="twitter:card" content="summary">
@@ -190,10 +190,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2024-03-18 20:16:16 / Modified: 23:33:05" itemprop="dateCreated datePublished" datetime="2024-03-18T20:16:16+08:00">2024-03-18</time>
+      <time title="Created: 2024-03-18 20:16:16" itemprop="dateCreated datePublished" datetime="2024-03-18T20:16:16+08:00">2024-03-18</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2024-03-19 23:58:11" itemprop="dateModified" datetime="2024-03-19T23:58:11+08:00">2024-03-19</time>
+      </span>
 
   
 </div>
@@ -206,13 +212,14 @@
     
     <div class="post-body" itemprop="articleBody">
         <p>unity内置的对象池在2021.3版本后</p>
-<p>对象池是一种优化项目的方法，可以在快速创建和销毁新对象时减轻CPU的负担。以占用内存空间的方式减轻CPU压力。ObjectPool使用堆栈来保存对象实例的集合以供重用，线程上不一定安全。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//将脚本挂载在对象池节点上</span><br><span class="line">using UnityEngine.Pool;</span><br><span class="line"></span><br><span class="line">private ObjectPool&lt;GameObject&gt; pool;</span><br><span class="line">private void Awake()</span><br><span class="line">&#123;</span><br><span class="line">    pool = new ObjectPool&lt;GameObject&gt;();</span><br><span class="line">    //创建需要七个参数，一个Func委托，三个Action委托，三个基础变量</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>createFunc<br>
-actionOnGet<br>
-actionOnRelease<br>
-actionOnDestroy<br>
-collectionCheck<br>
+<p>对象池是一种优化项目的方法，可以在快速创建和销毁新对象时减轻CPU的负担。以占用内存空间的方式减轻CPU压力。<br>
+ObjectPool使用堆栈来保存对象实例的集合以供重用，线程上不一定安全。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">//将脚本挂载在对象池节点上</span><br><span class="line">using UnityEngine.Pool;</span><br><span class="line"></span><br><span class="line">Public class Pool: MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    private ObjectPool&lt;GameObject&gt; pool;</span><br><span class="line">    //pool的四个公共函数Get,Release,Dispose,Clear</span><br><span class="line">    //pool的三个变量CountActive，CountAll，CountInactive</span><br><span class="line">	private void Awake()</span><br><span class="line">	&#123;</span><br><span class="line">    	pool = new ObjectPool&lt;GameObject&gt;(createFunc, actionOnGet, actionOnRelease, actionOnDestroy, true, 10, 1000);//创建需要七个参数，一个Func委托，三个Action委托，三个基础变量</span><br><span class="line">	&#125;</span><br><span class="line">    GameObject createFunc()</span><br><span class="line">    &#123;</span><br><span class="line">        var obj = Instantitate(coin, transform);</span><br><span class="line">        obj.GetComponent&lt;XXX&gt;().pool = pool;//注意，池中物体的脚本XXX需要有ObjectPool&lt;GameObject &gt;类型的变量</span><br><span class="line">         return obj;</span><br><span class="line">	&#125;</span><br><span class="line">    void actionOnGet(GameObject obj)</span><br><span class="line">    &#123;</span><br><span class="line">        obj.gameObject.SetActive(true);</span><br><span class="line">	&#125;</span><br><span class="line">    void actionOnRelease(GameObject obj)</span><br><span class="line">    &#123;</span><br><span class="line">        obj.gameObject.SetActive(false);</span><br><span class="line">	&#125;</span><br><span class="line">    void actionOnDestory</span><br><span class="line">    &#123;</span><br><span class="line">        Destory(obj);</span><br><span class="line">	&#125;</span><br><span class="line">    </span><br><span class="line">    public void Spawn()</span><br><span class="line">    &#123;</span><br><span class="line">        GameObject temp = pool.Get();//自动调用createFunc()</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>createFunc 当池子空了或对象不够用时会自动调用创建新实例，因此在这个函数中我们应该实现创建实例的功能<br>
+actionOnGet 从池中调用实例时自动调用，因此在这个函数中我们只需要将对象状态设置为启动就好<br>
+actionOnRelease 在实例返回到池中时调用，因此在这个函数中我们只需要将对象状态设置为禁用就好<br>
+actionOnDestroy 当元素由于池达到最大大小而无法返回到池时调用，因此在这个函数中我们只需要销毁对象即可</p>
+<p>collectionCheck 一个bool变量，设置为true则收集检查在实例返回到池时执行的安全检查。如果实例已在池中，则会引发异常。收集检查仅在编辑器中执行。<br>
 defaultCapacity<br>
 maxSize</p>
 
