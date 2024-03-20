@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">191</span>
+          <span class="site-state-item-count">192</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,133 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/08/Mirror_Network-Behaviour/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="冲击波">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/09/08/Mirror_Network-Behaviour/" class="post-title-link" itemprop="url">Mirror_Network Behaviour</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-09-08 22:08:35" itemprop="dateCreated datePublished" datetime="2022-09-08T22:08:35+08:00">2022-09-08</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-11-14 16:56:22" itemprop="dateModified" datetime="2022-11-14T16:56:22+08:00">2022-11-14</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>NetworkBehaviour脚本用于具有Network Identity组件的游戏对象。这些脚本可以执行高级API功能，如命令、客户端RPC和同步变量。<br>
+这个组件NetworkBehaviour一般用于被其他脚本继承。<br>
+注意：不要在Awake中是使用DDOL，可以在Start中使用</p>
+<img src="/2022/09/08/Mirror_Network-Behaviour/1.png" class>
+<h1 id="属性">属性</h1>
+<p><strong>isServer</strong></p>
+<p><strong>isClient</strong></p>
+<p><strong>isLocalPlayer</strong></p>
+<p><strong>hasAuthority</strong> 如果此客户端控制此游戏对象，则在客户端上返回true。它在服务器上下文中没有意义。 <strong>netId</strong> 此游戏对象的唯一网络ID。服务器在运行时分配此值。它对于网络上的所有游戏对象都是唯一的。 <strong>netIdentity</strong> 返回此对象的网络标识 <strong>connectionToServer</strong> 连接上服务器，只对玩家有效，对克隆玩家无效 <strong>connectionToClient</strong></p>
+<h1 id="network-callbacks">Network Callbacks</h1>
+<p>Network Behaviour scripts 中内置 callback functions 它们是基类上的虚函数 可以在自己的代码上 override 它们。</p>
+<table>
+<colgroup>
+<col style="width: 26%">
+<col style="width: 73%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>方法</th>
+<th style="text-align: left;">callback</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>OnStartServer</strong></td>
+<td style="text-align: left;"><strong>called on server</strong> when <strong>a game object spawns on the server</strong>, or when the <strong>server is started for game objects in the Scene</strong></td>
+</tr>
+<tr class="even">
+<td><strong>OnStopServer</strong></td>
+<td style="text-align: left;"><strong>called on server</strong> when <strong>a game object is destroyed on the server</strong>, or when the <strong>server is stopped for game objects in the Scene</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>OnStartClient</strong></td>
+<td style="text-align: left;"><strong>called on clients</strong> when the <strong>game object spawns on the client</strong>, or when the <strong>client connects to a server for game objects in the Scene</strong></td>
+</tr>
+<tr class="even">
+<td><strong>OnStopClient</strong></td>
+<td style="text-align: left;"><strong>called on clients</strong> when the <strong>server destroys the game object</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>OnStartLocalPlayer</strong></td>
+<td style="text-align: left;"><strong>called on clients</strong> <strong>after <code>OnStartClient</code></strong> for the player game object <strong>on the local client</strong></td>
+</tr>
+<tr class="even">
+<td><strong>OnStopLocalPlayer</strong></td>
+<td style="text-align: left;"><strong>called on clients before <code>OnStopClient</code></strong> for the player game object on the local client</td>
+</tr>
+<tr class="odd">
+<td><strong>OnStartAuthority</strong></td>
+<td style="text-align: left;"><strong>called on owner client</strong> when <strong>assigned authority by the server</strong>. <code>hasAuthority</code> will be true for such objects in client context.</td>
+</tr>
+<tr class="even">
+<td><strong>OnStopAuthority</strong></td>
+<td style="text-align: left;"><strong>called on owner client</strong> when <strong>authority is removed by the server.</strong></td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1014,81 +1141,6 @@ microSeconds：等待回应的时间，以微妙为单位，如果该参数为-1
 做内插面多卡线，以后可能会用到，用不到最后再融掉。<br>
 侧面循环面可以隔一个格子选。（先全选侧面ctrl+alt+LMB，再在选择里选隔项弃选）</p>
 <p>该练习为学习3D建模的第一个作品。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/01/%E6%A1%88%E4%BE%8B-%E8%81%8A%E5%A4%A9%E5%AE%A4Poll/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="冲击波">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/01/%E6%A1%88%E4%BE%8B-%E8%81%8A%E5%A4%A9%E5%AE%A4Poll/" class="post-title-link" itemprop="url">案例-聊天室Poll</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-09-01 14:08:40" itemprop="dateCreated datePublished" datetime="2022-09-01T14:08:40+08:00">2022-09-01</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-09-08 13:40:13" itemprop="dateModified" datetime="2022-09-08T13:40:13+08:00">2022-09-08</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>部分使用异步技术，部分使用Poll，也有一部分阻塞没做处理</p>
-<p>客户端部分代码 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">public class EchoPoll : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    //定义套接字</span><br><span class="line">    Socket socket;</span><br><span class="line">    //UI</span><br><span class="line">    public InputField inputField;</span><br><span class="line">    public Text text;</span><br><span class="line">    //接收缓冲区</span><br><span class="line">    byte[] readBuff = new byte[1024];</span><br><span class="line">    string recvStr = &quot;&quot;;</span><br><span class="line">    public void Connection()</span><br><span class="line">    &#123;</span><br><span class="line">        socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);</span><br><span class="line">        socket.BeginConnect(&quot;127.0.0.1&quot;, 8888, ConnectCallback, socket);</span><br><span class="line">    &#125;</span><br><span class="line">    public void ConnectCallback(IAsyncResult ar)</span><br><span class="line">    &#123;</span><br><span class="line">        try</span><br><span class="line">        &#123;</span><br><span class="line">            Socket socket = (Socket)ar.AsyncState;</span><br><span class="line">            socket.EndConnect(ar);</span><br><span class="line">            Debug.Log(&quot;Socket Connect Succ&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        catch (SocketException ex)</span><br><span class="line">        &#123;</span><br><span class="line">            Debug.Log(&quot;Socket Connect fail &quot; + ex.ToString());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public void Send()</span><br><span class="line">    &#123;</span><br><span class="line">        string sendStr = inputField.text;</span><br><span class="line">        byte[] sendBytes = System.Text.Encoding.Default.GetBytes(sendStr);</span><br><span class="line"></span><br><span class="line">        socket.BeginSend(sendBytes, 0, sendBytes.Length, 0, SendCallback, socket);</span><br><span class="line">    &#125;</span><br><span class="line">    public void SendCallback(IAsyncResult ar)</span><br><span class="line">    &#123;</span><br><span class="line">        try</span><br><span class="line">        &#123;</span><br><span class="line">            Socket socket = (Socket)ar.AsyncState;</span><br><span class="line">            int count = socket.EndSend(ar);</span><br><span class="line">            Debug.Log(&quot;Socket Send succ &quot; + count);</span><br><span class="line">        &#125;</span><br><span class="line">        catch (SocketException ex)</span><br><span class="line">        &#123;</span><br><span class="line">            Debug.Log(&quot;Socket Send fail &quot; + ex.ToString());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    void Update()</span><br><span class="line">    &#123;</span><br><span class="line">        if (socket == null) return;</span><br><span class="line">        if (socket.Poll(0,SelectMode.SelectRead))</span><br><span class="line">        &#123;</span><br><span class="line">            byte[] readBuff = new byte[1024];</span><br><span class="line">            int count = socket.Receive(readBuff);</span><br><span class="line">            string recvStr = System.Text.Encoding.Default.GetString(readBuff, 0, count);</span><br><span class="line">            text.text += &quot;\n&quot; + recvStr;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>服务器部分代码 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">class PollServer</span><br><span class="line">&#123;</span><br><span class="line">    //监听Socket</span><br><span class="line">    static Socket listenfd;</span><br><span class="line">    //客户端Socket及状态信息</span><br><span class="line">    static Dictionary&lt;Socket, ClientState&gt; clients = new Dictionary&lt;Socket, ClientState&gt;();</span><br><span class="line">    public static void Start()</span><br><span class="line">   	&#123;</span><br><span class="line">        //Socket</span><br><span class="line">        listenfd = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);</span><br><span class="line">        //Bind</span><br><span class="line">        IPAddress ipAdr = IPAddress.Parse(&quot;127.0.0.1&quot;);</span><br><span class="line">        IPEndPoint ipEp = new IPEndPoint(ipAdr, 8888);</span><br><span class="line">        listenfd.Bind(ipEp);</span><br><span class="line">        //Listen</span><br><span class="line">        istenfd.Listen(0);</span><br><span class="line">        Console.WriteLine(&quot;[服务器]启动成功&quot;);</span><br><span class="line">        //主循环</span><br><span class="line">        while(true)</span><br><span class="line">        &#123;</span><br><span class="line">            //检测listenfd</span><br><span class="line">            if(listenfd.Poll(0, SelectMode.SelectRead))</span><br><span class="line">            &#123;</span><br><span class="line">                ReadListenfd(listenfd);</span><br><span class="line">            &#125;</span><br><span class="line">            //检查clientfd</span><br><span class="line">            foreach (ClientState s in clients.Values)</span><br><span class="line">            &#123;</span><br><span class="line">                Socket clientfd = s.socket;</span><br><span class="line">                if(clientfd.Poll(0, SelectMode.SelectRead))</span><br><span class="line">                &#123;</span><br><span class="line">                    if (!ReadClientfd(clientfd)) break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            System.Threading.Thread.Sleep(1);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public static void ReadListenfd(Socket listenfd)</span><br><span class="line">    &#123;</span><br><span class="line"> 		Console.WriteLine(&quot;Accept&quot;);</span><br><span class="line">        Socket clientfd = listenfd.Accept();</span><br><span class="line">        ClientState state = new ClientState();</span><br><span class="line">        state.socket = clientfd;</span><br><span class="line">        clients.Add(clientfd, state);</span><br><span class="line">    &#125;</span><br><span class="line">    public static bool ReadClientfd(Socket clientfd)</span><br><span class="line">    &#123;</span><br><span class="line">        ClientState state = clients[clientfd];</span><br><span class="line">        int count = 0;</span><br><span class="line">        try</span><br><span class="line">            &#123;count = clientfd.Receive(state.readBuff);&#125;</span><br><span class="line">        catch(SocketException ex)</span><br><span class="line">        &#123;</span><br><span class="line">            clientfd.Close();</span><br><span class="line">            clients.Remove(clientfd);</span><br><span class="line">            Console.WriteLine(&quot;Receive SocketException &quot; + ex.ToString());</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">        if(count == 0)//客户端关闭</span><br><span class="line">        &#123;</span><br><span class="line">            clientfd.Close();</span><br><span class="line">            clients.Remove(clientfd);</span><br><span class="line">            Console.WriteLine(&quot;Socket Close&quot;);</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">        //广播</span><br><span class="line">        string recvStr = System.Text.Encoding.Default.GetString(state.readBuff, 0, count);</span><br><span class="line">        Console.WriteLine(&quot;Receive &quot; + recvStr);</span><br><span class="line">        string sendStr = clientfd.RemoteEndPoint.ToString() + &quot;:&quot; + recvStr;</span><br><span class="line">        byte[] sendBytes = System.Text.Encoding.Default.GetBytes(sendStr);</span><br><span class="line">        foreach(ClientState cs in clients.Values)</span><br><span class="line">        &#123;</span><br><span class="line">            cs.socket.Send(sendBytes);//？</span><br><span class="line">        &#125;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<img src="/2022/09/01/%E6%A1%88%E4%BE%8B-%E8%81%8A%E5%A4%A9%E5%AE%A4Poll/1.png" class>
-<img src="/2022/09/01/%E6%A1%88%E4%BE%8B-%E8%81%8A%E5%A4%A9%E5%AE%A4Poll/2.png" class>
 
       
     </div>

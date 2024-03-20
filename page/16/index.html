@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">191</span>
+          <span class="site-state-item-count">192</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,85 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/07/23/LC-MinimumSizeSubarraySum/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="冲击波">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/07/23/LC-MinimumSizeSubarraySum/" class="post-title-link" itemprop="url">LC-MinimumSizeSubarraySum</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-07-23 13:13:07" itemprop="dateCreated datePublished" datetime="2021-07-23T13:13:07+08:00">2021-07-23</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-03-27 20:59:39" itemprop="dateModified" datetime="2022-03-27T20:59:39+08:00">2022-03-27</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>暴力解法： O(n)找到开始下标i，O(n)找到结束下标i</p>
+<p>前缀和+二分搜索： O(n)找到开始下标i，二分法O(nlogn)找到结束下标i 因为题目给出的数列全是正数，故前缀和数列一定是一个递增数量，对于有序数列的搜索就可以用二分搜索。 例子： 数列：2,3,1,2,4,3 查询长度最小且和大于target（例子中假设target=7）的子数组的长度 前缀和数列：2,5,6,8,12,15 O(n)遍历开头，2开头的子数组使用二分搜索结束。现在需要从3开头，但再造一个3开头的前缀和数列代价太大，所以<strong>将target+2</strong>，以达到相同的效果。</p>
+<h1 id="第一次手写76.95.11">第一次手写76.9%，5.11%</h1>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt;sum;</span><br><span class="line">    <span class="keyword">int</span> length = <span class="number">99999</span>, n, target;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minSubArrayLen</span><span class="params">(<span class="keyword">int</span> target, vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        n = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">this</span>-&gt;target = target;</span><br><span class="line">        <span class="keyword">this</span>-&gt;sum = vector&lt;<span class="keyword">int</span>&gt;(n + <span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)sum[i] = sum[i - <span class="number">1</span>] + nums[i - <span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> S = <span class="built_in">binarySearch</span>(i, n);</span><br><span class="line">            <span class="keyword">if</span> (sum[S] &lt; <span class="keyword">this</span>-&gt;target)<span class="keyword">continue</span>;<span class="comment">//检查二分查找是否失败</span></span><br><span class="line">            <span class="keyword">if</span> (S - i + <span class="number">1</span> &lt; length)length = S - i +<span class="number">1</span>;<span class="comment">//更新长度</span></span><br><span class="line">            <span class="keyword">this</span>-&gt;target += nums[i - <span class="number">1</span>];<span class="comment">//！！！更新target</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> length &lt; <span class="number">99999</span> ? length : <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">binarySearch</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> mid;</span><br><span class="line">        <span class="keyword">while</span> (l &lt; r)</span><br><span class="line">        &#123;</span><br><span class="line">            mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (sum[mid] &lt; <span class="keyword">this</span>-&gt;target)l = mid + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> r = mid;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> r;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>因为两个相邻的数相加整除2，必然得到前一个数，所以当取左区间时r=mid，当取右区间时l=mid+1</p>
+<h1 id="利用c内置二分">利用c++内置二分</h1>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minSubArrayLen</span><span class="params">(<span class="keyword">int</span> target, vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> length = INT_MAX;</span><br><span class="line">        <span class="keyword">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        vector&lt;<span class="keyword">int</span>&gt;sum = vector&lt;<span class="keyword">int</span>&gt;(n + <span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)sum[i] = sum[i - <span class="number">1</span>] + nums[i - <span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span>* addr = <span class="built_in">lower_bound</span>(&amp;sum[i], &amp;sum[n], target);</span><br><span class="line">            <span class="keyword">if</span> (*addr &lt; target) &#123; target += nums[i - <span class="number">1</span>]; <span class="keyword">continue</span>; &#125;<span class="comment">//判断二分是否失败</span></span><br><span class="line">            length = <span class="built_in">min</span>(length, <span class="built_in"><span class="keyword">int</span></span> (addr - &amp;sum[i] + <span class="number">1</span>));<span class="comment">//更新长度</span></span><br><span class="line">            target += nums[i - <span class="number">1</span>];<span class="comment">//更新target</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> length &lt; INT_MAX ? length : <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="滑动窗口解法最优ono1">滑动窗口解法（最优）O(n),O(1)</h1>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> //滑动窗口</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minSubArrayLen</span><span class="params">(<span class="keyword">int</span> target, vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> start = <span class="number">0</span>, end = <span class="number">0</span>, length = INT_MAX, sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (end &lt; n)</span><br><span class="line">        &#123;</span><br><span class="line">            sum += nums[end];</span><br><span class="line">            <span class="keyword">while</span> (sum &gt;= target)</span><br><span class="line">            &#123;</span><br><span class="line">                length = <span class="built_in">min</span>(length, end - start + <span class="number">1</span>);</span><br><span class="line">                sum -= nums[start++];<span class="comment">//如果start出现在end前面，那么sum必然等于零</span></span><br><span class="line">            &#125;</span><br><span class="line">            ++end;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> length &lt; INT_MAX ? length : <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1006,181 +1085,6 @@
 <p>首先简化输入输出，实现某算法的功能后移植到类中</p>
 <p>eg1：第一题</p>
 <img src="/2021/05/09/VS2019&Leetcode%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C/1.png" class>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/01/unity%E5%85%A5%E9%97%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="冲击波">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/05/01/unity%E5%85%A5%E9%97%A8/" class="post-title-link" itemprop="url">unity2D入门</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-05-01 14:18:38" itemprop="dateCreated datePublished" datetime="2021-05-01T14:18:38+08:00">2021-05-01</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-03-04 17:03:08" itemprop="dateModified" datetime="2022-03-04T17:03:08+08:00">2022-03-04</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h4 id="网格">网格</h4>
-<p>每一个代表为1Unit（对应屏幕上的100像素点）</p>
-<h4 id="摄像机的几个参数">摄像机的几个参数</h4>
-<p>Z坐标：默认是-10，不用修改 Background，最底层背景色 Size广角，指摄影范围，默认5个单位 其中，5Unit为半高，全高为10Unit ,是摄影范围的高度 长宽比 在Game（游戏）窗口中调整 若要1080p分辨率：长1920像素点，宽1080像素点，则Size=5.4，比例为FH</p>
-<h4 id="游戏对象">游戏对象</h4>
-<p>隐藏/显示 操作在Inspector（检察器）上方的打勾栏 图层顺序越小在越底下 对象轴心（Pivot）修改：在下方文件文件夹中选择素材，右栏中打开sprite editor 父子关系：在左栏拖动完成。子坐标是相对于父的。对于父子AB组成的一个对象C，C的坐标轴心和旋转可为AB中心或A，在攻击栏切换轴心 一个游戏对象可以拥有不同素材/造型，在右栏sprite renderers可添加造型 sprite renderers是一个组件，功能是显示图片</p>
-<h4 id="图片素材">图片素材</h4>
-<p>背景一般为jpg图片，其它一般为png图片。 素材切割：在下方文件文件夹中选择素材，在右栏sprite mode设为multiple，打开sprite editor，执行切割，切割后的素材展开可分别拖出。</p>
-<h4 id="创建一个空对象">创建一个空对象</h4>
-<p>在左栏某个场景下可以创建 对象可以添加不同组件</p>
-<h4 id="游戏脚本">游戏脚本</h4>
-<p>最好在下栏新建文件夹用于存放脚本 这是一个文件名叫Hello的脚本</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">using System.Collections;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using UnityEngine;</span><br><span class="line"></span><br><span class="line">public class Hello : MonoBehaviour			//继承于MonoBehaviour的父类，这个父类由unity提供</span><br><span class="line">&#123;</span><br><span class="line">    float stepout = 0.8f;		//unity一般使用float类型; public属性才能被检查器看得到，能修改</span><br><span class="line">    void Start()							//在游戏开始时被调用</span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log(&quot;这是我的第一个游戏&quot;);			//于控制台中输出，注意区分大小写</span><br><span class="line">        Application.targetFrameRate = 60;		//尽量以60FPS运行</span><br><span class="line">        GameObject obj22 = GameObject.Find(&quot;/22&quot;);	//创建一个节点变量并获取一个节点</span><br><span class="line">        SpriteRenderer s22 = obj22.GetComponent&lt;SpriteRenderer&gt;();	//创建一个精灵编辑变量并获取某个节点的精灵编辑</span><br><span class="line">        s22.flipX = true;	//水平翻转</span><br><span class="line">        SpriteRenderer splane1 = GetComponent&lt;SpriteRenderer&gt;();	//因为这个脚本挂载在该对象下，有些东西默认</span><br><span class="line">        splane1.flipY = true;</span><br><span class="line">        transform.position =new Vector3(0,0,0);//出现在某个坐标</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    void Update()						//每一帧调用一次</span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log(&quot;In Updata() ... &quot; + Time.deltaTime);//调用间隔</span><br><span class="line">        float step = stepout * Time.deltaTime;//为了达到匀速前进，且deltaTime不能再外调用</span><br><span class="line">        transform.Translate(0, step, 0, Space.self);//组件，方法，x，y，z，沿自己的坐标系（自己为原点），改成Space.World是沿着世界坐标系</span><br><span class="line">        transform.eulerAngles += new Vector3(0, 0, 100*step);//旋转</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>将脚本挂载到游戏对象：于游戏对象的检查器中添加脚本组件，或者直接拖动 关于脚本： 1.类名必须和文件名相同 2.必须继承于MonoBehaviour，所有unity脚本都继承于这个类 3.默认定义了一些事件函数，如：Start(),Updata,会被unity引擎自动调用 脚本在引擎内部执行顺序： 1.创建游戏对象 2.创建组件，比如Hello sjtql = new hello(); 3.sjtql.Start() 4.定时执行sjtql.Updata()更新游戏显示 5.一个脚本可以挂载在多个对象上，一个对象也可以挂载多个脚本</p>
-<h4 id="父节点和子节点的修改">父节点和子节点的修改</h4>
-<p>transform用于设置位置、大小、旋转，也可以用于维护父子节点关系 例子“脚本挂载在阴影，阴影的父节点为角色”</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">using System.Collections;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using UnityEngine;</span><br><span class="line">public class shadow22 : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    void Start()</span><br><span class="line">    &#123;</span><br><span class="line">        GameObject shadow = transform.parent.gameObject;</span><br><span class="line">        Debug.Log(&quot;shadow22的父节点：&quot; + transform.parent.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>例子遍历所有子节点(不包括子节点的子节点)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">using System.Collections;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using UnityEngine;</span><br><span class="line">public class children : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">	void Start()</span><br><span class="line">	&#123;</span><br><span class="line">		foreach(Transform child in transform)//定义一个名字叫child（也可以叫别的）的Tsf型变量</span><br><span class="line">        &#123;</span><br><span class="line">            Debug.Log(&quot;子节点名：&quot; + child.name);</span><br><span class="line">        &#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>修改节点父子关系</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">be.transform.SetParent(sj.transform);//be，sj是两个节点</span><br><span class="line">sj.transform.SetParent(null);//sj的无父节点，直接挂载在场景下</span><br></pre></td></tr></table></figure>
-<h4 id="组件属性">组件属性</h4>
-<p>只有public的属性才能在检查器（inspector）中显示</p>
-<h4 id="脚本单步调试">脚本单步调试</h4>
-<p>在VS里，添加断点 在VS里，点击附加到unity 在untiy里，点play 在VS里，点Step Over（F10）单步调试 在VS里，点停止调试，使得VS与unity分离。（此时并没有停止游戏，只是停止调试让它自由运行）</p>
-<h4 id="坐标与旋转">坐标与旋转</h4>
-<p>Vector3是一个类，用于表示一个3维向量（x，y，z），也称为3元数</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Vector3 be = new Vector3(0,0.1f,0);//结构体的实体化</span><br><span class="line">transform.position =new Vector3(0,0.1f,0);//出现在某个坐标</span><br><span class="line">transform.localposition =new Vector3(0,0.1f,0);//已父节点为原点计算</span><br></pre></td></tr></table></figure>
-<h4 id="向量">向量</h4>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Vector3 be = new Vector3(3,4,0);//be.magnitude返回向量长度</span><br><span class="line">Vector3 sj = be.nomalized; //sj=(0.6,0.8,0)化为标准向量</span><br><span class="line">float zzl = Vector3.SignedAngle(b,a,Vector3.forward);//返回a向量逆时针旋转到b向量划过的角度，以z轴作为旋转轴</span><br><span class="line">//Vector3.right=(1,0,0)			Vector3.up=(0,1,0)		Vector3.forward=(0,0,1)</span><br><span class="line">float zzl = Vector3.Angle(b,a,Vector3.forward);//不带正负号</span><br></pre></td></tr></table></figure>
-<h4 id="物体的指向">物体的指向</h4>
-<p>transform.right<br>
-transform.up<br>
-transform.forward 代表某物体的x，y，z轴的指向 这3个都是标准向量</p>
-<p>让物体1指向另一个物体2 方法一：两个物体向量相减，得出方向向量，修改物体1的指向 方法二：两个物体向量相减，得出方向向量，再算物体1和方向向量的夹角，旋转物体1 transform.Rotate(0,0,angle)</p>
-<p>例子</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">void Start()</span><br><span class="line">&#123;</span><br><span class="line">    Application.targetFrameRate = 60;</span><br><span class="line">    GameObject target = GameObject.Find(&quot;plane&quot;);</span><br><span class="line">    Vector3 d = target.transform.position - transform.position;</span><br><span class="line">    float angle = Vector3.SignedAngle(transform.up, d, Vector3.forward);</span><br><span class="line">    transform.Rotate(0, 0, angle);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="屏幕坐标摄像机拍摄出的画面">屏幕坐标（摄像机拍摄出的画面）</h4>
-<p>左下角为原点，像素点为单位 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int a= Screen.width;	//获取屏幕宽度，单位：像素点</span><br><span class="line">int b= Screen.hegiht;	//获取屏幕高度</span><br><span class="line">Vector3 c = transform.position;	//获取坐标</span><br><span class="line">Vector3 d = Camera.main.WorldToScreenPoint(c);	//坐标转化</span><br><span class="line">Vector3 c = Camera.main.ScreenToWorldPoint(d);	//坐标转化</span><br><span class="line">c.z=0;//屏幕坐标转化为世界坐标时需要将z坐标转化为零</span><br></pre></td></tr></table></figure></p>
-<p>判断一个物体是否到边界，应该用屏幕坐标</p>
-<h4 id="鼠标事件">鼠标事件</h4>
-<p>区分： Input.GetMouseButtonDown(0) 检查鼠标按下事件 Input.GetMouseButtonUp(0) 检查鼠标抬起事件 Input.GetMouseButton(0) 检查鼠标状态 ( 是否是按下状态 ) 其中，前两个事件不会重复触发 0代表左键，1代表右键，2代表中键 验证：保持鼠标一直按下，观察打印输出</p>
-<p><strong>所有的输入都在Input当中</strong> 例子</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">if (Input.GetMouseButtonDown(0))</span><br><span class="line">&#123;</span><br><span class="line">	Debug.Log(&quot;鼠标按下的位置的屏幕坐标&quot;+Input.mousePosition);</span><br><span class="line">&#125;</span><br><span class="line">if (Input.GetMouseButtonUp(0))</span><br><span class="line">&#123;</span><br><span class="line">	Debug.Log(&quot;鼠标抬起的位置的屏幕坐标&quot;+Input.mousePosition);</span><br><span class="line">&#125;</span><br><span class="line">if (Input.GetMouseButton(0))</span><br><span class="line">&#123;</span><br><span class="line">	Debug.Log(&quot;鼠标左键正在被按下&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>鼠标按下物体跟随做法：判断按下，记录坐标，物体朝目的坐标前进 鼠标拖拽物体做法：判断按下，记录鼠标坐标，判断鼠标坐标与物体坐标是否接触，如果接触，让物体出现在鼠标坐标</p>
-<p>鼠标事件有优化</p>
-<h4 id="预制体">预制体</h4>
-<p>1.先在场景上做好一个游戏对象 2.在层级管理器把游戏对象直接拖到Project窗口，则生成一个预制体资源*.prefab 3.给预制体改个名字，以免混淆，重要！！！！！</p>
-<p>主预制体单独编辑，同步更新所有预制体；预制体的一个实例修改，可选应用到主预制体；可选择某个预制体的实例，使其脱离预制体成为一个单独的游戏对象</p>
-<h4 id="动态创建实例">动态创建实例</h4>
-<p>1 添加脚本，挂载</p>
-<p>2 添加公共变量 public GameObject myPrefab;</p>
-<p>3 在 Inspector 中引用资源 预制体可添加到节点上</p>
-<p>4 当点击鼠标时，创建一个子弹的实例</p>
-<p>GameObject bullet = Instantiate(myPrefab);</p>
-<p>bullet.transform.position = transform.position + new Vector3(0, 1f, 0);</p>
-<p>其中，Instantiate() 方法根据一个 Prefab ，来创建一个实例，返回值就是创建出来的GameObject 。</p>
-<p>5 运行游戏 在 Hierarchy 窗口中，观察新创建的实例</p>
-<p>Instantiate() 重载了很多版本，常用的如下：</p>
-<p>bullet = Instantiate(myPrefab)</p>
-<p>创建一个实例，position与rotation与当前游戏对象相当，挂载场景根节点下</p>
-<p>bullet = Instantiate(myPrefab, Transform parent )</p>
-<p>创建一个实例，position与rotation与当前游戏对象相当，同时指定父节点</p>
-<p>bullet = Instantiate(myPrefab, position, rotation)</p>
-<p>创建一个实例，挂载场景根节点下，同时指定 position与rotation</p>
-<p>例如，</p>
-<p>bullet = Instantiate(myPrefab, transform.position, transform.rotation)</p>
-<p>bullet = Instantiate(myPrefab, position, rotation, Transform parent)</p>
-<p>创建一个实例，挂载 parent 节点下，同时指定 position与rotation</p>
-<p>实例化一个对象后可以重命名它</p>
-<h4 id="实例销毁">实例销毁</h4>
-<p>例子，当子弹飞出视野之后，销毁实例</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Vector3 sp = Camera.main.WorldToScreenPoint(transform.position);</span><br><span class="line">if (sp.y &gt; Screen.height)</span><br><span class="line">&#123;</span><br><span class="line">    GameObject.Destory(gameObject);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="定时器">定时器</h4>
-<p>Time.deltaTime、累计和if语句实现</p>
-<h4 id="键盘事件">键盘事件</h4>
-<p>Input.GetKeyDown(KeyCode.Tab) Input.GetKeyUp(KeyCode.Tab) Input.GetKey(KeyCode.Tab) 和鼠标事件很像</p>
-<p>Backspace 退格键 Delete Delete键 Tab TabTab键 Clear Clear键 Return 回车键 Pause 暂停键 Escape ESC键 Space 空格键</p>
-<p>Keypad0 小键盘0 Keypad1 小键盘1 Keypad2 小键盘2 Keypad3 小键盘3 Keypad4 小键盘4</p>
-<p>KeypadPeriod 小键盘“.” KeypadDivide 小键盘“/” KeypadMultiply 小键盘“*” KeypadMinus 小键盘“-” KeypadPlus 小键盘“+” KeypadEnter 小键盘“Enter” KeypadEquals 小键盘“=”</p>
-<p>UpArrow 方向键上 DownArrow 方向键下 RightArrow 方向键右 LeftArrow 方向键左</p>
-<p>F1 功能键 F1 F2 功能键 F2 F3 功能键 F3 F4 功能键 F4 F5 功能键 F5</p>
-<p>Alpha0 按键0 Alpha1 按键1 Alpha2 按键2 Alpha3 按键3 Alpha4 按键4 Alpha5 按键5</p>
-<p>A ‘a’键 B ‘b’键 C ‘c’键 D ‘d’键 E ‘e’键 F ‘f’键</p>
-<p>Capslock 大小写锁定键 RightShift 右上档键 LeftShift 左上档键 RightControl右Ctrl键 LeftControl左Ctrl键 RightAlt 右Alt键 LeftAlt 左Alt键</p>
-<p>Mouse0 鼠标左键 Mouse1 鼠标右键 Mouse2 鼠标中键 Mouse3 鼠标第3个按键 Mouse4 鼠标第4个按键</p>
-<h4 id="标签tag">标签(tag)</h4>
-<p>在碰撞事件中可以检测碰撞对象的标签，区分敌人和队友</p>
-<p>if(collision.tag.Equals("Enemy")) {</p>
-<p>}</p>
-<h4 id="layer">Layer</h4>
-<p>可以在项目设定里编辑，碰撞是否检测</p>
-<h4 id="声音">声音</h4>
-<p>支持格式mp3/wav/ogg/aiff</p>
-<p>分为声音播放者和声音采集者</p>
-<p>默认情况下camera自带了一个声音采集者</p>
-<p>声源是组件</p>
-<h4 id="小坑">小坑</h4>
-<p>各种路径不要出现中文，每次保存加载一万年</p>
-<h4 id="资源商店">资源商店</h4>
-<p>资源商店内登入，将资源购买。<br>
-资源添加到unity的包管理<br>
-在unity中打开包管理，下载资源，使用<br>
-可以将已下载的资源导出本地保存。</p>
-<p>注意资源版本，低的版本一般能兼容，高的版本一般无法兼容，问题在导入后会提示</p>
 
       
     </div>

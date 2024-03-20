@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">191</span>
+          <span class="site-state-item-count">192</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,81 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/01/%E6%A1%88%E4%BE%8B-%E8%81%8A%E5%A4%A9%E5%AE%A4Poll/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="冲击波">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/09/01/%E6%A1%88%E4%BE%8B-%E8%81%8A%E5%A4%A9%E5%AE%A4Poll/" class="post-title-link" itemprop="url">案例-聊天室Poll</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-09-01 14:08:40" itemprop="dateCreated datePublished" datetime="2022-09-01T14:08:40+08:00">2022-09-01</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-09-08 13:40:13" itemprop="dateModified" datetime="2022-09-08T13:40:13+08:00">2022-09-08</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>部分使用异步技术，部分使用Poll，也有一部分阻塞没做处理</p>
+<p>客户端部分代码 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">public class EchoPoll : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    //定义套接字</span><br><span class="line">    Socket socket;</span><br><span class="line">    //UI</span><br><span class="line">    public InputField inputField;</span><br><span class="line">    public Text text;</span><br><span class="line">    //接收缓冲区</span><br><span class="line">    byte[] readBuff = new byte[1024];</span><br><span class="line">    string recvStr = &quot;&quot;;</span><br><span class="line">    public void Connection()</span><br><span class="line">    &#123;</span><br><span class="line">        socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);</span><br><span class="line">        socket.BeginConnect(&quot;127.0.0.1&quot;, 8888, ConnectCallback, socket);</span><br><span class="line">    &#125;</span><br><span class="line">    public void ConnectCallback(IAsyncResult ar)</span><br><span class="line">    &#123;</span><br><span class="line">        try</span><br><span class="line">        &#123;</span><br><span class="line">            Socket socket = (Socket)ar.AsyncState;</span><br><span class="line">            socket.EndConnect(ar);</span><br><span class="line">            Debug.Log(&quot;Socket Connect Succ&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        catch (SocketException ex)</span><br><span class="line">        &#123;</span><br><span class="line">            Debug.Log(&quot;Socket Connect fail &quot; + ex.ToString());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public void Send()</span><br><span class="line">    &#123;</span><br><span class="line">        string sendStr = inputField.text;</span><br><span class="line">        byte[] sendBytes = System.Text.Encoding.Default.GetBytes(sendStr);</span><br><span class="line"></span><br><span class="line">        socket.BeginSend(sendBytes, 0, sendBytes.Length, 0, SendCallback, socket);</span><br><span class="line">    &#125;</span><br><span class="line">    public void SendCallback(IAsyncResult ar)</span><br><span class="line">    &#123;</span><br><span class="line">        try</span><br><span class="line">        &#123;</span><br><span class="line">            Socket socket = (Socket)ar.AsyncState;</span><br><span class="line">            int count = socket.EndSend(ar);</span><br><span class="line">            Debug.Log(&quot;Socket Send succ &quot; + count);</span><br><span class="line">        &#125;</span><br><span class="line">        catch (SocketException ex)</span><br><span class="line">        &#123;</span><br><span class="line">            Debug.Log(&quot;Socket Send fail &quot; + ex.ToString());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    void Update()</span><br><span class="line">    &#123;</span><br><span class="line">        if (socket == null) return;</span><br><span class="line">        if (socket.Poll(0,SelectMode.SelectRead))</span><br><span class="line">        &#123;</span><br><span class="line">            byte[] readBuff = new byte[1024];</span><br><span class="line">            int count = socket.Receive(readBuff);</span><br><span class="line">            string recvStr = System.Text.Encoding.Default.GetString(readBuff, 0, count);</span><br><span class="line">            text.text += &quot;\n&quot; + recvStr;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>服务器部分代码 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">class PollServer</span><br><span class="line">&#123;</span><br><span class="line">    //监听Socket</span><br><span class="line">    static Socket listenfd;</span><br><span class="line">    //客户端Socket及状态信息</span><br><span class="line">    static Dictionary&lt;Socket, ClientState&gt; clients = new Dictionary&lt;Socket, ClientState&gt;();</span><br><span class="line">    public static void Start()</span><br><span class="line">   	&#123;</span><br><span class="line">        //Socket</span><br><span class="line">        listenfd = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);</span><br><span class="line">        //Bind</span><br><span class="line">        IPAddress ipAdr = IPAddress.Parse(&quot;127.0.0.1&quot;);</span><br><span class="line">        IPEndPoint ipEp = new IPEndPoint(ipAdr, 8888);</span><br><span class="line">        listenfd.Bind(ipEp);</span><br><span class="line">        //Listen</span><br><span class="line">        istenfd.Listen(0);</span><br><span class="line">        Console.WriteLine(&quot;[服务器]启动成功&quot;);</span><br><span class="line">        //主循环</span><br><span class="line">        while(true)</span><br><span class="line">        &#123;</span><br><span class="line">            //检测listenfd</span><br><span class="line">            if(listenfd.Poll(0, SelectMode.SelectRead))</span><br><span class="line">            &#123;</span><br><span class="line">                ReadListenfd(listenfd);</span><br><span class="line">            &#125;</span><br><span class="line">            //检查clientfd</span><br><span class="line">            foreach (ClientState s in clients.Values)</span><br><span class="line">            &#123;</span><br><span class="line">                Socket clientfd = s.socket;</span><br><span class="line">                if(clientfd.Poll(0, SelectMode.SelectRead))</span><br><span class="line">                &#123;</span><br><span class="line">                    if (!ReadClientfd(clientfd)) break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            System.Threading.Thread.Sleep(1);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public static void ReadListenfd(Socket listenfd)</span><br><span class="line">    &#123;</span><br><span class="line"> 		Console.WriteLine(&quot;Accept&quot;);</span><br><span class="line">        Socket clientfd = listenfd.Accept();</span><br><span class="line">        ClientState state = new ClientState();</span><br><span class="line">        state.socket = clientfd;</span><br><span class="line">        clients.Add(clientfd, state);</span><br><span class="line">    &#125;</span><br><span class="line">    public static bool ReadClientfd(Socket clientfd)</span><br><span class="line">    &#123;</span><br><span class="line">        ClientState state = clients[clientfd];</span><br><span class="line">        int count = 0;</span><br><span class="line">        try</span><br><span class="line">            &#123;count = clientfd.Receive(state.readBuff);&#125;</span><br><span class="line">        catch(SocketException ex)</span><br><span class="line">        &#123;</span><br><span class="line">            clientfd.Close();</span><br><span class="line">            clients.Remove(clientfd);</span><br><span class="line">            Console.WriteLine(&quot;Receive SocketException &quot; + ex.ToString());</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">        if(count == 0)//客户端关闭</span><br><span class="line">        &#123;</span><br><span class="line">            clientfd.Close();</span><br><span class="line">            clients.Remove(clientfd);</span><br><span class="line">            Console.WriteLine(&quot;Socket Close&quot;);</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">        //广播</span><br><span class="line">        string recvStr = System.Text.Encoding.Default.GetString(state.readBuff, 0, count);</span><br><span class="line">        Console.WriteLine(&quot;Receive &quot; + recvStr);</span><br><span class="line">        string sendStr = clientfd.RemoteEndPoint.ToString() + &quot;:&quot; + recvStr;</span><br><span class="line">        byte[] sendBytes = System.Text.Encoding.Default.GetBytes(sendStr);</span><br><span class="line">        foreach(ClientState cs in clients.Values)</span><br><span class="line">        &#123;</span><br><span class="line">            cs.socket.Send(sendBytes);//？</span><br><span class="line">        &#125;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<img src="/2022/09/01/%E6%A1%88%E4%BE%8B-%E8%81%8A%E5%A4%A9%E5%AE%A4Poll/1.png" class>
+<img src="/2022/09/01/%E6%A1%88%E4%BE%8B-%E8%81%8A%E5%A4%A9%E5%AE%A4Poll/2.png" class>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1094,90 +1169,6 @@ Procedural fire。使用爆炸特效</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">void Update()</span><br><span class="line">&#123;</span><br><span class="line">    if(Input.GetButtonDown(&quot;Fire1&quot;))</span><br><span class="line">    &#123;</span><br><span class="line">	&#125;</span><br><span class="line">    if(Input.GetButton(&quot;Fire1&quot;))</span><br><span class="line">    &#123;</span><br><span class="line">	&#125;</span><br><span class="line">    if(Input.GetButtonUp(&quot;Fire1&quot;))</span><br><span class="line">    &#123;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="触屏">触屏</h1>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">void Start()</span><br><span class="line">&#123;</span><br><span class="line">    Input.multiTouchEnabled = true;//开启多点触摸</span><br><span class="line">&#125;</span><br><span class="line">void Update()</span><br><span class="line">&#123;</span><br><span class="line">    if(Input.touchCount == 1)//判断单点触摸</span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log(Input.touches[0].position);//触摸位置</span><br><span class="line">	&#125;</span><br><span class="line">    switch(Input.touches[0].phase)</span><br><span class="line">    &#123;</span><br><span class="line">        case TouchPhase.Begin:</span><br><span class="line">            Debug.Log(&quot;开始触摸&quot;);</span><br><span class="line">            break;</span><br><span class="line">        case TouchPhase.Moved;</span><br><span class="line">            Debug.Log(&quot;触摸中并且在移动&quot;);</span><br><span class="line">            break;</span><br><span class="line">        case TouchPhase.Ended;</span><br><span class="line">            Debug.Log(&quot;触摸结束&quot;);</span><br><span class="line">            break;</span><br><span class="line">        case TouchPhase.Canceled;</span><br><span class="line">            Debug.Log(&quot;触摸取消&quot;);</span><br><span class="line">            break;</span><br><span class="line">        case TouchPhase.Stationary;</span><br><span class="line">            Debug.Log(&quot;触摸但未移动&quot;);</span><br><span class="line">            break;</span><br><span class="line">	&#125;</span><br><span class="line">    if (Input.touchCount == 2)//判断两点触摸</span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log(Input.touches[0].position);</span><br><span class="line">        Debug.Log(Input.touches[1].position);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/29/CS%E5%A7%94%E6%89%98%EF%BC%88Delegate%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="冲击波">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/03/29/CS%E5%A7%94%E6%89%98%EF%BC%88Delegate%EF%BC%89/" class="post-title-link" itemprop="url">CS委托（Delegate）</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-03-29 15:43:50" itemprop="dateCreated datePublished" datetime="2022-03-29T15:43:50+08:00">2022-03-29</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2023-06-02 15:28:24" itemprop="dateModified" datetime="2023-06-02T15:28:24+08:00">2023-06-02</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>C# 中的<strong>委托</strong>（Delegate）类似于 C 或 C++ 中<strong>函数的指针</strong>。委托是一个类，定义了方法的类型，从而可以将方法当作另一个方法的参数来进行传递，这种将方法动态地赋给参数地做法，可以避免在程序中大量使用if-else语句。</p>
-<p>委托（Delegate） 是 <strong>存有对某个方法的引用</strong> 的 <strong>一种引用类型变量</strong>。引用可在运行时被改变。</p>
-<p>委托（Delegate）特别用于实现事件和回调方法。</p>
-<p>所有的委托（Delegate）都派生自 System.Delegate 类。</p>
-<h2 id="声明委托delegate">声明委托（Delegate）</h2>
-<p>委托声明决定了可由该委托引用的方法。委托可指向一个与其具有相同标签的方法。声明一个delegate类型，它必须与要传递的方法具有相同的参数和返回值类型。</p>
-<p>例如，假设有一个委托：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public delegate int eg (string s);</span><br></pre></td></tr></table></figure>
-<p>上面的委托可被用于，（引用任何一个带有一个单一的 <em>string</em> 参数并返回一个 <em>int</em> 类型变量的方法）。</p>
-<h2 id="实例化委托delegate">实例化委托（Delegate）</h2>
-<p>创建delegate对象，要将传递的方法作为参数传入。一旦声明了委托类型，委托对象必须使用 <strong>new</strong> 关键字来创建，且与一个特定的方法有关。当创建委托时，传递到 <strong>new</strong> 语句的参数就像方法调用一样书写，但是不带有参数。例如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public delegate void printString(string s);</span><br><span class="line">...</span><br><span class="line">printString ps1 = new printString(WriteToScreen);</span><br><span class="line">printString ps2 = new printString(WriteToFile);</span><br></pre></td></tr></table></figure>
-<h2 id="操作符-">操作符+=，-=</h2>
-<p>"+="和“-=”是委托对象的操作符，可以为委托添加方法或删除方法。一个委托中有多个方法则依次调用。</p>
 
       
     </div>
