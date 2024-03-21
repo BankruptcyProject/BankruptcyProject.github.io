@@ -20,15 +20,15 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="Event 在 Class 中声明且生成，且通过使用 delegate 与 Event 处理程序关联。 发布器类 声明事件和委托 订阅器类 接受事件并处理 在发布器类中的委托 调用 订阅器类中的方法（事件处理程序）。 委托 调用 方法">
+<meta name="description" content="C# 中使用事件机制实现线程间的通信。 Event 在 Class 中声明且生成，且通过一个类或其他类使用 delegate 与 Event 处理程序关联。 12345public delegate void BoilerLogHandler(string status);&#x2F;&#x2F;声明事件的委托类型public event BoilerLogHandler BoilerEventLog;&#x2F;&#x2F;声明事">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CS事件">
 <meta property="og:url" content="http://example.com/2022/10/02/CS%E4%BA%8B%E4%BB%B6/index.html">
 <meta property="og:site_name" content="你们这样对得起孤胆英雄飞天狙吗">
-<meta property="og:description" content="Event 在 Class 中声明且生成，且通过使用 delegate 与 Event 处理程序关联。 发布器类 声明事件和委托 订阅器类 接受事件并处理 在发布器类中的委托 调用 订阅器类中的方法（事件处理程序）。 委托 调用 方法">
+<meta property="og:description" content="C# 中使用事件机制实现线程间的通信。 Event 在 Class 中声明且生成，且通过一个类或其他类使用 delegate 与 Event 处理程序关联。 12345public delegate void BoilerLogHandler(string status);&#x2F;&#x2F;声明事件的委托类型public event BoilerLogHandler BoilerEventLog;&#x2F;&#x2F;声明事">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-10-02T12:45:03.000Z">
-<meta property="article:modified_time" content="2024-03-20T15:46:25.155Z">
+<meta property="article:modified_time" content="2024-03-21T15:37:35.907Z">
 <meta property="article:author" content="冲击波">
 <meta property="article:tag" content="CSharp">
 <meta name="twitter:card" content="summary">
@@ -198,7 +198,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2024-03-20 23:46:25" itemprop="dateModified" datetime="2024-03-20T23:46:25+08:00">2024-03-20</time>
+        <time title="Modified: 2024-03-21 23:37:35" itemprop="dateModified" datetime="2024-03-21T23:37:35+08:00">2024-03-21</time>
       </span>
 
   
@@ -211,8 +211,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><strong>Event</strong> 在 <strong>Class</strong> 中声明且生成，且通过使用 <strong>delegate</strong> 与 <strong>Event</strong> 处理程序关联。</p>
-<p><strong>发布器类</strong> 声明事件和委托 <strong>订阅器类</strong> 接受事件并处理</p>
+        <p>C# 中使用事件机制实现线程间的通信。</p>
+<p><strong>Event 在 Class 中声明</strong>且生成，且通过一个类或其他类使用 <strong>delegate</strong> 与 <strong>Event</strong> 处理程序关联。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public delegate void BoilerLogHandler(string status);//声明事件的委托类型</span><br><span class="line"></span><br><span class="line">public event BoilerLogHandler BoilerEventLog;//声明事件</span><br><span class="line"></span><br><span class="line">//上面的代码定义了一个名为 BoilerLogHandler 的委托和一个名为 BoilerEventLog 的事件，该事件在生成的时候会调用委托。</span><br></pre></td></tr></table></figure>
+<p><strong>发布器类</strong> 声明事件和委托，事件和委托之间的联系也定义在其中 <strong>订阅器类</strong> 接受事件并处理</p>
 <p>在<strong>发布器类</strong>中的<strong>委托</strong> 调用 <strong>订阅器类</strong>中的<strong>方法</strong>（事件处理程序）。 <strong>委托 调用 方法</strong></p>
 
     </div>
