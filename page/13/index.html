@@ -1263,7 +1263,7 @@ map的键是不能修改的，但是其键对应的值是可以修改的</p>
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-11-14 16:29:01" itemprop="dateModified" datetime="2022-11-14T16:29:01+08:00">2022-11-14</time>
+        <time title="Modified: 2024-03-24 23:35:04" itemprop="dateModified" datetime="2024-03-24T23:35:04+08:00">2024-03-24</time>
       </span>
 
   
@@ -1276,31 +1276,31 @@ map的键是不能修改的，但是其键对应的值是可以修改的</p>
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><strong>粒子系统</strong>由<strong>粒子</strong>和<strong>发射器</strong>组成，发射器创建并发射粒子</p>
-<p><strong>粒子系统</strong>参数如下：<br>
-持续时间（一个周期时间）<br>
-是否循环<br>
-是否预热<br>
-启动延迟（和循环、预热不能同时用）<br>
-生命周期（总时间）<br>
-起始速度（粒子）<br>
-起始大小（粒子）<br>
-开始旋转（粒子起始角度）<br>
-翻转旋转（其中的负起始角度比例（0~1））<br>
-起始颜色<br>
-重力修改器<br>
-模拟空间（相对坐标（世界或局部））<br>
-模拟速度（播放速度）<br>
-时间差（是否受timescale影响）<br>
-是否唤醒是播放<br>
-发射器速度（发射器移动方式rig或trans）<br>
-最大粒子（最多发射多少粒子数目）<br>
-是否随机（每次播放效果不同）<br>
-停止行动（播放完后是否会销毁自身对象）<br>
-剔除模式（粒子不在视野内的行动模式）</p>
-<p><strong>发射器</strong> 在发射模块中<br>
-随单位时间产生的粒子数 随移动距离产生的粒子数（发射器移动） 突发</p>
-<p><strong>发射形状</strong> 在形状模块中，例如锥形</p>
+          <h1 id="particle-system-组件">Particle System 组件</h1>
+<p>包含1个主模块和22个子模块(可隐藏)</p>
+<p><strong>粒子系统</strong>由<strong>粒子</strong>和<strong>发射器</strong>组成，发射器创建并发射粒子</p>
+<h2 id="主模块">主模块</h2>
+<p>起始速度、起始大小、起始颜色等参数 可以在右边下拉栏中 切换成随机大小并设置随机区间或曲线</p>
+<p>预热参数代表 在摄像头观察前先工作一周期</p>
+<p>启动延迟（和循环、预热不能同时用）</p>
+<p>发射器速度（发射器移动方式rig或trans）</p>
+<p>是否随机（每次播放效果不同）</p>
+<p>停止行动（播放完后是否会销毁自身对象）</p>
+<p>剔除模式（粒子不在视野内的行动模式）</p>
+<p>模拟空间 Simulation Space：Local以粒子发射器为中心，World使用世界坐标系。模拟空间控制着每个粒子的运动轨迹，因此设置为local后，粒子发射器移动将会影响已发射粒子，设置为World则仅影响未发射粒子</p>
+<h2 id="renderer渲染器子模块">Renderer（渲染器）子模块</h2>
+<p>billboard模式，控制粒子始终面向摄像机</p>
+<p>渲染器渲染粒子，可以设置材质，材质可以设置贴图</p>
+<p><strong>粒子着色器</strong><br>
+材质 着色模式 可以改为 粒子着色模式</p>
+<h2 id="emission发射器-子模块">Emission（发射器） 子模块</h2>
+<p>匀速发射模式（默认）：<br>
+随单位时间产生的粒子<br>
+随<strong>发射器</strong>移动距离产生的粒子</p>
+<p>突发（爆发）发射模式：<br>
+短时间内一次性发射出大量粒子</p>
+<h2 id="shape发射形状子模块">Shape（发射形状）子模块</h2>
+<p>在形状模块中，例如锥形</p>
 <p><strong>渲染</strong> 材质 排序 最大最小粒子的尺寸 阴影 图层ID 图层顺序</p>
 <p><strong>颜色</strong> 上标代表Alpha值，下标代表颜色值，双击增加新的颜色或Alpha</p>
 <p>还有粒子的大小旋转等等</p>
