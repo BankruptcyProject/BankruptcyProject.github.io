@@ -21,9 +21,9 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 <meta property="og:type" content="website">
-<meta property="og:title" content="你们这样对得起孤胆英雄飞天狙吗">
+<meta property="og:title" content="OK">
 <meta property="og:url" content="http://example.com/page/2/index.html">
-<meta property="og:site_name" content="你们这样对得起孤胆英雄飞天狙吗">
+<meta property="og:site_name" content="OK">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="冲击波">
 <meta name="twitter:card" content="summary">
@@ -36,7 +36,7 @@
 <script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"en","comments":"","permalink":"","path":"page/2/index.html","title":""}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>你们这样对得起孤胆英雄飞天狙吗</title>
+<title>OK</title>
   
 
 
@@ -62,7 +62,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">你们这样对得起孤胆英雄飞天狙吗</h1>
+      <h1 class="site-title">OK</h1>
       <i class="logo-line"></i>
     </a>
   </div>
@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">193</span>
+          <span class="site-state-item-count">194</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -161,6 +161,81 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/28/CS_Func/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="冲击波">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="OK">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/05/28/CS_Func/" class="post-title-link" itemprop="url">CS_Func</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-05-28 17:23:58" itemprop="dateCreated datePublished" datetime="2023-05-28T17:23:58+08:00">2023-05-28</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2023-06-02 15:28:05" itemprop="dateModified" datetime="2023-06-02T15:28:05+08:00">2023-06-02</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>C#中Func和Action有点类似，都是一个委托方法，不同的是Func是有返回值的，而Action没有。</p>
+<p>Fun常用有两个参数，前面的是输入参数，最后一个的是输出参数。</p>
+<p>Fnc最多有16个输入参数，有且只有一个输出参数，Func function代表function函数的返回值得类型是TResult。</p>
+<p>Action委托和Func委托是C#平台最重要的两个委托，有了这两个委托，就可以定义出指向任意方法的“函数指针”。注意：这里的函数指针是打引号的，因为C#里不叫函数指针。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Static bool SayHello(int Count)</span><br><span class="line">&#123;</span><br><span class="line">	Console.WriteLine(&quot;Hello&quot; + Count);</span><br><span class="line">	return True;</span><br><span class="line">&#125;</span><br><span class="line">static void Main(string[] args)</span><br><span class="line">&#123;</span><br><span class="line">	Func&lt;int, bool&gt;func = new Func&lt;int, bool&gt;(SayHello);</span><br><span class="line">	func.Invoke(3);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/28/CS_goes%20to/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -170,7 +245,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
+      <meta itemprop="name" content="OK">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -266,7 +341,7 @@ Lambda 表达式可以转换的委托类型由其参数和返回值的类型定�
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
+      <meta itemprop="name" content="OK">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -352,7 +427,7 @@ Lambda 表达式可以转换的委托类型由其参数和返回值的类型定�
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
+      <meta itemprop="name" content="OK">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -439,7 +514,7 @@ IComparer在一个单独的类中实现，可以比较任意两个对象（关�
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
+      <meta itemprop="name" content="OK">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -516,7 +591,7 @@ IComparer在一个单独的类中实现，可以比较任意两个对象（关�
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
+      <meta itemprop="name" content="OK">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -588,7 +663,7 @@ IComparer在一个单独的类中实现，可以比较任意两个对象（关�
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
+      <meta itemprop="name" content="OK">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -657,7 +732,7 @@ IComparer在一个单独的类中实现，可以比较任意两个对象（关�
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
+      <meta itemprop="name" content="OK">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -730,7 +805,7 @@ IComparer在一个单独的类中实现，可以比较任意两个对象（关�
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
+      <meta itemprop="name" content="OK">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -880,7 +955,7 @@ non-player objects想要使用[Command]需要拥有authority，或者使用[Comm
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
+      <meta itemprop="name" content="OK">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -916,75 +991,6 @@ non-player objects想要使用[Command]需要拥有authority，或者使用[Comm
 <p>挂载在车上的脚本，控制这车的子物体（两个前轮、两个后轮）。轮胎挂载这<strong>轮胎碰撞模拟器（WheelCollider）</strong>。WheelCollider旋转，通过摩擦力带动小车前进。</p>
 <img src="/2023/04/10/%E6%A1%88%E4%BE%8B-%E7%89%A9%E7%90%86%E8%BD%AE%E8%83%8E/1.png" class>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public class CarCtrl : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    public WheelCollider[] frontWheels;</span><br><span class="line">    public WheelCollider[] backWheels;</span><br><span class="line">    void Update()</span><br><span class="line">    &#123;</span><br><span class="line">        float horizontal = Input.GetAxis(&quot;Horizontal&quot;);</span><br><span class="line">        float vertical = Input.GetAxis(&quot;Vertical&quot;);</span><br><span class="line">        foreach(WheelCollider wheel in frontWheels)</span><br><span class="line">        &#123;</span><br><span class="line">            wheel.steerAngle = horizontal * 30;</span><br><span class="line">        &#125;</span><br><span class="line">        foreach (WheelCollider wheel in backWheels)</span><br><span class="line">        &#123;</span><br><span class="line">            wheel.motorTorque = vertical * 200;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/04/09/%E6%A1%88%E4%BE%8B-%E5%AF%BB%E5%AE%9D%E6%B8%B8%E6%88%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="冲击波">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="你们这样对得起孤胆英雄飞天狙吗">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/04/09/%E6%A1%88%E4%BE%8B-%E5%AF%BB%E5%AE%9D%E6%B8%B8%E6%88%8F/" class="post-title-link" itemprop="url">案例-寻宝游戏</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2023-04-09 20:52:48 / Modified: 21:08:36" itemprop="dateCreated datePublished" datetime="2023-04-09T20:52:48+08:00">2023-04-09</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>一个绑定在金币上的脚本</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">public class CoinControl : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    public GameObject EffectPre;</span><br><span class="line">    private Transform player;</span><br><span class="line">    public static int Count = 0;</span><br><span class="line">    private AudioSource audioSource;</span><br><span class="line">    private void Start()</span><br><span class="line">    &#123;</span><br><span class="line">        player = GameObject.FindWithTag(&quot;Player&quot;).transform.GetChild(0);//获取玩家角色需要额外获取一次子物体，因为获取的是摄像机的transform</span><br><span class="line">        audioSource = GetComponent&lt;AudioSource&gt;();</span><br><span class="line">        Debug.Log(&quot;find one&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    private void Update()</span><br><span class="line">    &#123;</span><br><span class="line">        float dis = Vector3.Distance(transform.position, player.position);</span><br><span class="line">        if(dis &lt; 1.9f)</span><br><span class="line">        &#123;</span><br><span class="line">            Count++;</span><br><span class="line">            audioSource.PlayOneShot(Resources.Load&lt;AudioClip&gt;(&quot;Battle_Lost__6s&quot;));</span><br><span class="line">            Debug.Log(&quot;获得金币，当前金币为：&quot; + Count);</span><br><span class="line">            if (Count &gt;= 3)</span><br><span class="line">            &#123;</span><br><span class="line">                GameObject go = Instantiate(EffectPre, transform.position, transform.rotation);</span><br><span class="line">                Destroy(go, 8f);</span><br><span class="line">            &#125;</span><br><span class="line">            Destroy(this);</span><br><span class="line">            Destroy(gameObject, 1f);</span><br><span class="line">            //先删除脚本，延迟后再删除物品</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>脚本挂载在结点上，可以先删除脚本（优化内存，防止其它脚本获取到该脚本等等），然后延迟后删除结点（例如在本案例中，延迟删除结点让结点上的音乐播放完）。</p>
-<p>从文件中动态导入资源，具体做法见另一篇上一篇博客。</p>
-<p>获取玩家的位置更改为获取玩家身上的摄像头的位置。</p>
 
       
     </div>
