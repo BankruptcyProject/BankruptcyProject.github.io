@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">194</span>
+          <span class="site-state-item-count">196</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1334,7 +1334,7 @@ map的键是不能修改的，但是其键对应的值是可以修改的</p>
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2024-03-26 14:26:23" itemprop="dateModified" datetime="2024-03-26T14:26:23+08:00">2024-03-26</time>
+        <time title="Modified: 2024-03-26 17:02:06" itemprop="dateModified" datetime="2024-03-26T17:02:06+08:00">2024-03-26</time>
       </span>
 
   
@@ -1360,7 +1360,8 @@ map的键是不能修改的，但是其键对应的值是可以修改的</p>
 <p>剔除模式（粒子不在视野内的行动模式）</p>
 <p>模拟空间 Simulation Space：Local以粒子发射器为中心，World使用世界坐标系。模拟空间控制着每个粒子的运动轨迹，因此设置为local后，粒子发射器移动将会影响已发射粒子，设置为World则仅影响未发射粒子</p>
 <h2 id="renderer渲染器子模块">Renderer（渲染器）子模块</h2>
-<p>billboard模式，控制粒子始终面向摄像机</p>
+<p>billboard模式，控制粒子始终面向摄像机，且粒子贴图初始头朝上</p>
+<p>strectched billboard模式，粒子贴图初始朝向为 头(左)朝飞行方向，Length可调整粒子长宽比，CameraScale与SpeedScale考虑相机和粒子的速度进行拉伸，模拟粒子高速运动的效果</p>
 <p>渲染器渲染粒子，可以设置材质，材质可以设置贴图</p>
 <p><strong>粒子着色器</strong><br>
 材质 着色模式 可以改为 粒子着色模式</p>
@@ -1385,6 +1386,24 @@ map的键是不能修改的，但是其键对应的值是可以修改的</p>
 <p><strong>绕行效果：</strong></p>
 <p>设置轨道速度，此时xyz分别代表轨道轴，射线参数（Radial）代表离心速度</p>
 <p>粒子速度受到主模块StartSpeed 和 子模块的同时影响（向量相加）</p>
+<h2 id="force-over-lifetime-子模块">Force over lifetime 子模块</h2>
+<p>注意，如果要模拟重力效果，则需要使用世界坐标系</p>
+<p>物理系统中的力 与 粒子系统中的力 相互独立互不影响</p>
+<h2 id="limit-velocity-over-lifetime-子模块">Limit velocity over lifetime 子模块</h2>
+<p>Drag：摩擦系数，模拟介质阻力</p>
+<p>Multipy by Size：粒子越大、阻力越大</p>
+<p>Multipy by Velocity：粒子越快、阻力越大</p>
+<h2 id="noise-子模块">Noise 子模块</h2>
+<p>对粒子的随机扰动</p>
+<p>设置扰动强度和扰动频率</p>
+<h1 id="案例">案例</h1>
+<p>火星飞溅效果</p>
+<p>Shape: Sphere球形</p>
+<p>Emission: Burst爆发式</p>
+<p>Main: Start Size 大 / Lifetime 短 / Size 小</p>
+<p>Velocity: Speed Modifier 模拟衰减</p>
+<p>Renderer: Stretched Billboard, Speed Scale 速度方向上拉伸</p>
+<p>Color over lifetime: 淡入淡出，颜色白-火红-暗</p>
 
       
     </div>
