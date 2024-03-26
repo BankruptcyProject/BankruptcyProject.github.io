@@ -1334,7 +1334,7 @@ map的键是不能修改的，但是其键对应的值是可以修改的</p>
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2024-03-24 23:35:04" itemprop="dateModified" datetime="2024-03-24T23:35:04+08:00">2024-03-24</time>
+        <time title="Modified: 2024-03-26 14:26:23" itemprop="dateModified" datetime="2024-03-26T14:26:23+08:00">2024-03-26</time>
       </span>
 
   
@@ -1371,10 +1371,20 @@ map的键是不能修改的，但是其键对应的值是可以修改的</p>
 <p>突发（爆发）发射模式：<br>
 短时间内一次性发射出大量粒子</p>
 <h2 id="shape发射形状子模块">Shape（发射形状）子模块</h2>
-<p>在形状模块中，例如锥形</p>
-<p><strong>渲染</strong> 材质 排序 最大最小粒子的尺寸 阴影 图层ID 图层顺序</p>
-<p><strong>颜色</strong> 上标代表Alpha值，下标代表颜色值，双击增加新的颜色或Alpha</p>
-<p>还有粒子的大小旋转等等</p>
+<p>关闭该模块，则发射器变成一个点，沿着一条线发射</p>
+<h2 id="color-over-lifetime-生命周期内颜色子模块">Color Over Lifetime （生命周期内颜色）子模块</h2>
+<p>渐变色编辑器：<br>
+上面控制点控制Alpha，下面控制点控制Color<br>
+可增加、删除、移动控制点，最多可以有8个控制点</p>
+<p>常用效果：淡入淡出</p>
+<p>注：在主模块中也可以设置颜色，<code>粒子最终颜色=初始颜色*渐变颜色</code></p>
+<h2 id="size-over-lifetime-生命周期内大小子模块">Size Over Lifetime （生命周期内大小）子模块</h2>
+<p>曲线编辑器，使用的是贝塞尔曲线</p>
+<h2 id="velocity-over-lifetime-子模块">Velocity over lifetime 子模块</h2>
+<p>从x、y、z三个轴分别控制速度，可设置速度曲线</p>
+<p><strong>绕行效果：</strong></p>
+<p>设置轨道速度，此时xyz分别代表轨道轴，射线参数（Radial）代表离心速度</p>
+<p>粒子速度受到主模块StartSpeed 和 子模块的同时影响（向量相加）</p>
 
       
     </div>
