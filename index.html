@@ -226,6 +226,115 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/03/26/unity-AnimationCurve/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="冲击波">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="OK">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/03/26/unity-AnimationCurve/" class="post-title-link" itemprop="url">unity AnimationCurve</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-03-26 16:06:02" itemprop="dateCreated datePublished" datetime="2024-03-26T16:06:02+08:00">2024-03-26</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2024-03-27 10:40:28" itemprop="dateModified" datetime="2024-03-27T10:40:28+08:00">2024-03-27</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>来自UnityEngine的类 AnimationCurve</p>
+<h1 id="在检查窗口中创建曲线">在检查窗口中创建曲线</h1>
+<p>在脚本中定义一个 AnimationCurve 类型的变量（public），挂载这个脚本，可在检查窗口中手动调整曲线</p>
+<p>曲线是普通的贝塞尔曲线，控制方式与Blender中相差不大</p>
+<img src="/2024/03/26/unity-AnimationCurve/1.png" class>
+<p>每一个控制点有的参数</p>
+<img src="/2024/03/26/unity-AnimationCurve/2.png" class>
+<h1 id="使用代码创建曲线">使用代码创建曲线</h1>
+<p>AnimationCurve可以理解为2部分。(1)控制点序列 (2)曲线的循环模式</p>
+<p>一：控制点序列</p>
+<p>创建控制点序列：<code>Keyframe[] ks = new Keyframe[3];</code></p>
+<p>曲线中加入键序列：<code>AnimationCurve curve = new AnimationCurve(ks);</code></p>
+<p>获取曲线中的键序列：<code>curve[index]</code> 或者 <code>curve.keys[index]</code></p>
+<p>添加单键：<code>curve.Addkey(time,value)</code></p>
+<p>删除单键：<code>curve.RemoveKey(index)</code></p>
+<p>二：曲线的循环模式</p>
+<p><code>anim.preWrapMode = WrapMode.Loop;</code></p>
+<p><code>anim.postWrapMode = WrapMode.Once;</code></p>
+<p>三：控制点</p>
+<p><code>Keyframe kf = new Keyframe(time,value);</code></p>
+<p><code>kf.inTangent = 45;</code></p>
+<p><code>kf.outTangent = 45;</code></p>
+<p>四：一些函数 <code>public float Evaluate(float time)</code><br>
+获取当前time位置对应曲线上的value</p>
+<p><code>public int AddKey(Keyframe key)</code><br>
+<code>public int AddKey(float time, float value);</code><br>
+添加一个关键帧</p>
+<p><code>public int MoveKey(int index, Keyframe key)</code><br>
+移动一个关键帧到指定index处</p>
+<p><code>public void RemoveKey(int index);</code><br>
+移除一个关键帧</p>
+<p><code>public void SmoothTangents(int index, float weight);</code><br>
+平滑化指定索引的关键帧的in和out tangents,weight：The smoothing weight to apply to the keyframe’s tangents.</p>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">using UnityEngine;</span><br><span class="line">using System.Collections;</span><br><span class="line"></span><br><span class="line">public class CreateRuntime : MonoBehaviour </span><br><span class="line">&#123;</span><br><span class="line">   public AnimationCurve anim = new AnimationCurve();</span><br><span class="line">   void Start() </span><br><span class="line">   &#123;</span><br><span class="line">       Keyframe[] ks = new Keyframe[3];</span><br><span class="line">       ks[0] = new Keyframe(0, 0);</span><br><span class="line">       ks[0].inTangent = 0;</span><br><span class="line">       ks[1] = new Keyframe(4, 0);</span><br><span class="line">       ks[1].inTangent = 45;</span><br><span class="line">       ks[2] = new Keyframe(8, 0);</span><br><span class="line">       ks[2].inTangent = 90;</span><br><span class="line">       anim = new AnimationCurve(ks);</span><br><span class="line">    &#125;</span><br><span class="line">   void Update() </span><br><span class="line">   &#123;</span><br><span class="line">       transform.position = new Vector3(Time.time, anim.Evaluate(Time.time), 0);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="使用编辑器的animationcurve">使用编辑器的AnimationCurve</h1>
+<p>创建EditorCurves.cs及FollowAnimationCurveMine.cs脚本如下。 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">using UnityEngine;</span><br><span class="line">using System.Collections;</span><br><span class="line">using UnityEditor;</span><br><span class="line"></span><br><span class="line">public class EditorCurves :EditorWindow </span><br><span class="line">&#123;</span><br><span class="line">	AnimationCurve curveX = AnimationCurve.Linear(0,0,10,10);</span><br><span class="line">	[MenuItem(&quot;Examples/Mine&quot;)]</span><br><span class="line">	static void Init()</span><br><span class="line">	&#123;</span><br><span class="line">		EditorWindow window = GetWindow(typeof(EditorCurves));</span><br><span class="line">		window.position = new Rect(0,300,200,100);</span><br><span class="line">		window.Show();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	void OnGUI()</span><br><span class="line">	&#123;</span><br><span class="line">		curveX = EditorGUI.CurveField(new Rect(3,3,position.width-6,15), &quot;Animation on X&quot;, curveX);</span><br><span class="line">		if(GUI.Button(new Rect(3,60,position.width-6,30),&quot;Generate Curve&quot;))</span><br><span class="line">            AddCurveToSelectedGameObject();</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	void AddCurveToSelectedGameObject()</span><br><span class="line">	&#123;</span><br><span class="line">		if(Selection.activeGameObject) </span><br><span class="line">        &#123;</span><br><span class="line">            FollowAnimationCurveMinecomp = Selection.activeGameObject.AddComponent();</span><br><span class="line">            comp.SetCurves(curveX);</span><br><span class="line">		&#125;</span><br><span class="line">        else </span><br><span class="line">        &#123;</span><br><span class="line">            Debug.LogError(&quot;No Game Object selected for adding an animation curve&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">using UnityEngine;</span><br><span class="line">using System.Collections;</span><br><span class="line"></span><br><span class="line">public class FollowAnimationCurveMine : MonoBehaviour </span><br><span class="line">&#123;</span><br><span class="line">	public AnimationCurve curveX;</span><br><span class="line">	public void SetCurves(AnimationCurve tmpCurve)</span><br><span class="line">	&#123;</span><br><span class="line">		curveX = tmpCurve;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	void Update () </span><br><span class="line">	&#123;</span><br><span class="line">        if(curveX != null)</span><br><span class="line">            transform.position = new Vector3(1f*Time.time, curveX.Evaluate(Time.time) * 0.3f,0);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>使用时，先选中物体，再点击Unity菜单栏Examples-&gt;Mine，编辑好曲线后点击Generate Curve,之后运行即可。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2024/03/20/unity%E9%81%AE%E7%BD%A9Mask/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1022,76 +1131,6 @@ ET6.0-UI项目名称  在这个目录下有被注册过的UI文件夹，每个U
 <p>还需要在Unity(View公共UI 创建一个对应的逻辑层代码脚本。<br>
 例如：ESXXX.prefeb对应ESXXXSystem.cs<br>
 前者为公共UI预制体，后者为它的行为脚本，按照ET框架规定，该脚本内容为一个<strong>静态类</strong>ESXXXsystem</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/06/02/CS-readonly%E5%85%B3%E9%94%AE%E5%AD%97/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="冲击波">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="OK">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/06/02/CS-readonly%E5%85%B3%E9%94%AE%E5%AD%97/" class="post-title-link" itemprop="url">CS readonly关键字</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2023-06-02 15:20:13 / Modified: 15:27:54" itemprop="dateCreated datePublished" datetime="2023-06-02T15:20:13+08:00">2023-06-02</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><strong>C#——关键字：readonly</strong></p>
-<p>在字段声明中，readonly 指示只能在声明期间或在同一个类的构造函数中向字段赋值。 可以在字段声明和构造函数中多次分配和重新分配只读字段。<br>
-构造函数退出后，不能分配 readonly 字段。<br>
-此规则对于值类型和引用类型具有不同的含义：</p>
-<p>1.由于<strong>值类型</strong>直接包含数据，因此属于 readonly 值类型的字段不可变。</p>
-<p>2.由于<strong>引用类型</strong>包含对其数据的引用，因此属于 readonly <strong>引用类型的字段必须始终引用同一对象，但该对象是可变的</strong>。 readonly 修饰符可防止字段替换为引用类型的其他实例。 但是，修饰符不会阻止通过只读字段修改字段的实例数据。</p>
 
       
     </div>

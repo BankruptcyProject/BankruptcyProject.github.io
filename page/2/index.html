@@ -161,6 +161,76 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/06/02/CS-readonly%E5%85%B3%E9%94%AE%E5%AD%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="冲击波">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="OK">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/06/02/CS-readonly%E5%85%B3%E9%94%AE%E5%AD%97/" class="post-title-link" itemprop="url">CS readonly关键字</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2023-06-02 15:20:13 / Modified: 15:27:54" itemprop="dateCreated datePublished" datetime="2023-06-02T15:20:13+08:00">2023-06-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><strong>C#——关键字：readonly</strong></p>
+<p>在字段声明中，readonly 指示只能在声明期间或在同一个类的构造函数中向字段赋值。 可以在字段声明和构造函数中多次分配和重新分配只读字段。<br>
+构造函数退出后，不能分配 readonly 字段。<br>
+此规则对于值类型和引用类型具有不同的含义：</p>
+<p>1.由于<strong>值类型</strong>直接包含数据，因此属于 readonly 值类型的字段不可变。</p>
+<p>2.由于<strong>引用类型</strong>包含对其数据的引用，因此属于 readonly <strong>引用类型的字段必须始终引用同一对象，但该对象是可变的</strong>。 readonly 修饰符可防止字段替换为引用类型的其他实例。 但是，修饰符不会阻止通过只读字段修改字段的实例数据。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/28/CS_Func/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -920,77 +990,6 @@ Command方法描述为 会被客户端调用的服务端的方法</p>
 为了安全起见, [Command] 只能在player object上使用<br>
 non-player objects想要使用[Command]需要拥有authority，或者使用[Command(requiresAuthority = false)]可以绕过权限检查（但无法传递参数）</p>
 <p>关于标记更多信息参考以前写的博客<a target="_blank" rel="noopener" href="https://bankruptcyproject.github.io/2022/09/08/Mirror_Network-Attributes/">Mirror_Network Attributes</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/04/10/%E6%A1%88%E4%BE%8B-%E7%89%A9%E7%90%86%E8%BD%AE%E8%83%8E/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="冲击波">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="OK">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/04/10/%E6%A1%88%E4%BE%8B-%E7%89%A9%E7%90%86%E8%BD%AE%E8%83%8E/" class="post-title-link" itemprop="url">案例-物理轮胎</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2023-04-10 22:50:21 / Modified: 23:00:18" itemprop="dateCreated datePublished" datetime="2023-04-10T22:50:21+08:00">2023-04-10</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="刚体小球">刚体小球</h1>
-<p>利用水平、垂直轴的输入，生成方向，在将方向变成速度，控制球体前进。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public class SphereCtrl : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    private Rigidbody rbody;</span><br><span class="line">    void Start()</span><br><span class="line">    &#123;</span><br><span class="line">        rbody = GetComponent&lt;Rigidbody&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">    void Update()</span><br><span class="line">    &#123;</span><br><span class="line">        float horizontal = Input.GetAxis(&quot;Horizontal&quot;);</span><br><span class="line">        float vertical = Input.GetAxis(&quot;Vertical&quot;);</span><br><span class="line">        Vector3 dir = new Vector3(horizontal, 0, vertical).normalized;</span><br><span class="line">        rbody.velocity = dir * 2;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="模拟物理轮胎">模拟物理轮胎</h1>
-<p>挂载在车上的脚本，控制这车的子物体（两个前轮、两个后轮）。轮胎挂载这<strong>轮胎碰撞模拟器（WheelCollider）</strong>。WheelCollider旋转，通过摩擦力带动小车前进。</p>
-<img src="/2023/04/10/%E6%A1%88%E4%BE%8B-%E7%89%A9%E7%90%86%E8%BD%AE%E8%83%8E/1.png" class>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public class CarCtrl : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    public WheelCollider[] frontWheels;</span><br><span class="line">    public WheelCollider[] backWheels;</span><br><span class="line">    void Update()</span><br><span class="line">    &#123;</span><br><span class="line">        float horizontal = Input.GetAxis(&quot;Horizontal&quot;);</span><br><span class="line">        float vertical = Input.GetAxis(&quot;Vertical&quot;);</span><br><span class="line">        foreach(WheelCollider wheel in frontWheels)</span><br><span class="line">        &#123;</span><br><span class="line">            wheel.steerAngle = horizontal * 30;</span><br><span class="line">        &#125;</span><br><span class="line">        foreach (WheelCollider wheel in backWheels)</span><br><span class="line">        &#123;</span><br><span class="line">            wheel.motorTorque = vertical * 200;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
       
     </div>

@@ -20,16 +20,21 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="来自UnityEngine的类 AnimationCurve 在检查窗口中创建曲线 在脚本中定义一个 AnimationCurve 类型的变量（public），挂载这个脚本，可在检查窗口中手动调整曲线 曲线是普通的贝塞尔曲线，控制方式与Blender中相差不大  每一个控制点有的参数  使用代码创建曲线 AnimationCurve可以理解为2部分。(1)控制点序列 (2)曲线的循">
 <meta property="og:type" content="article">
 <meta property="og:title" content="unity AnimationCurve">
 <meta property="og:url" content="http://example.com/2024/03/26/unity-AnimationCurve/index.html">
 <meta property="og:site_name" content="OK">
+<meta property="og:description" content="来自UnityEngine的类 AnimationCurve 在检查窗口中创建曲线 在脚本中定义一个 AnimationCurve 类型的变量（public），挂载这个脚本，可在检查窗口中手动调整曲线 曲线是普通的贝塞尔曲线，控制方式与Blender中相差不大  每一个控制点有的参数  使用代码创建曲线 AnimationCurve可以理解为2部分。(1)控制点序列 (2)曲线的循">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2024/03/26/unity-AnimationCurve/1.png">
+<meta property="og:image" content="http://example.com/2024/03/26/unity-AnimationCurve/2.png">
 <meta property="article:published_time" content="2024-03-26T08:06:02.000Z">
-<meta property="article:modified_time" content="2024-03-26T08:35:52.936Z">
+<meta property="article:modified_time" content="2024-03-27T02:40:28.055Z">
 <meta property="article:author" content="冲击波">
 <meta property="article:tag" content="unity">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2024/03/26/unity-AnimationCurve/1.png">
 
 
 <link rel="canonical" href="http://example.com/2024/03/26/unity-AnimationCurve/">
@@ -93,7 +98,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -106,6 +111,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9C%A8%E6%A3%80%E6%9F%A5%E7%AA%97%E5%8F%A3%E4%B8%AD%E5%88%9B%E5%BB%BA%E6%9B%B2%E7%BA%BF"><span class="nav-number">1.</span> <span class="nav-text">在检查窗口中创建曲线</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E4%BB%A3%E7%A0%81%E5%88%9B%E5%BB%BA%E6%9B%B2%E7%BA%BF"><span class="nav-number">2.</span> <span class="nav-text">使用代码创建曲线</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E7%BC%96%E8%BE%91%E5%99%A8%E7%9A%84animationcurve"><span class="nav-number">3.</span> <span class="nav-text">使用编辑器的AnimationCurve</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -188,10 +194,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2024-03-26 16:06:02 / Modified: 16:35:52" itemprop="dateCreated datePublished" datetime="2024-03-26T16:06:02+08:00">2024-03-26</time>
+      <time title="Created: 2024-03-26 16:06:02" itemprop="dateCreated datePublished" datetime="2024-03-26T16:06:02+08:00">2024-03-26</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2024-03-27 10:40:28" itemprop="dateModified" datetime="2024-03-27T10:40:28+08:00">2024-03-27</time>
+      </span>
 
   
 </div>
@@ -203,7 +215,45 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        
+        <p>来自UnityEngine的类 AnimationCurve</p>
+<h1 id="在检查窗口中创建曲线">在检查窗口中创建曲线</h1>
+<p>在脚本中定义一个 AnimationCurve 类型的变量（public），挂载这个脚本，可在检查窗口中手动调整曲线</p>
+<p>曲线是普通的贝塞尔曲线，控制方式与Blender中相差不大</p>
+<img src="/2024/03/26/unity-AnimationCurve/1.png" class>
+<p>每一个控制点有的参数</p>
+<img src="/2024/03/26/unity-AnimationCurve/2.png" class>
+<h1 id="使用代码创建曲线">使用代码创建曲线</h1>
+<p>AnimationCurve可以理解为2部分。(1)控制点序列 (2)曲线的循环模式</p>
+<p>一：控制点序列</p>
+<p>创建控制点序列：<code>Keyframe[] ks = new Keyframe[3];</code></p>
+<p>曲线中加入键序列：<code>AnimationCurve curve = new AnimationCurve(ks);</code></p>
+<p>获取曲线中的键序列：<code>curve[index]</code> 或者 <code>curve.keys[index]</code></p>
+<p>添加单键：<code>curve.Addkey(time,value)</code></p>
+<p>删除单键：<code>curve.RemoveKey(index)</code></p>
+<p>二：曲线的循环模式</p>
+<p><code>anim.preWrapMode = WrapMode.Loop;</code></p>
+<p><code>anim.postWrapMode = WrapMode.Once;</code></p>
+<p>三：控制点</p>
+<p><code>Keyframe kf = new Keyframe(time,value);</code></p>
+<p><code>kf.inTangent = 45;</code></p>
+<p><code>kf.outTangent = 45;</code></p>
+<p>四：一些函数 <code>public float Evaluate(float time)</code><br>
+获取当前time位置对应曲线上的value</p>
+<p><code>public int AddKey(Keyframe key)</code><br>
+<code>public int AddKey(float time, float value);</code><br>
+添加一个关键帧</p>
+<p><code>public int MoveKey(int index, Keyframe key)</code><br>
+移动一个关键帧到指定index处</p>
+<p><code>public void RemoveKey(int index);</code><br>
+移除一个关键帧</p>
+<p><code>public void SmoothTangents(int index, float weight);</code><br>
+平滑化指定索引的关键帧的in和out tangents,weight：The smoothing weight to apply to the keyframe’s tangents.</p>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">using UnityEngine;</span><br><span class="line">using System.Collections;</span><br><span class="line"></span><br><span class="line">public class CreateRuntime : MonoBehaviour </span><br><span class="line">&#123;</span><br><span class="line">   public AnimationCurve anim = new AnimationCurve();</span><br><span class="line">   void Start() </span><br><span class="line">   &#123;</span><br><span class="line">       Keyframe[] ks = new Keyframe[3];</span><br><span class="line">       ks[0] = new Keyframe(0, 0);</span><br><span class="line">       ks[0].inTangent = 0;</span><br><span class="line">       ks[1] = new Keyframe(4, 0);</span><br><span class="line">       ks[1].inTangent = 45;</span><br><span class="line">       ks[2] = new Keyframe(8, 0);</span><br><span class="line">       ks[2].inTangent = 90;</span><br><span class="line">       anim = new AnimationCurve(ks);</span><br><span class="line">    &#125;</span><br><span class="line">   void Update() </span><br><span class="line">   &#123;</span><br><span class="line">       transform.position = new Vector3(Time.time, anim.Evaluate(Time.time), 0);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="使用编辑器的animationcurve">使用编辑器的AnimationCurve</h1>
+<p>创建EditorCurves.cs及FollowAnimationCurveMine.cs脚本如下。 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">using UnityEngine;</span><br><span class="line">using System.Collections;</span><br><span class="line">using UnityEditor;</span><br><span class="line"></span><br><span class="line">public class EditorCurves :EditorWindow </span><br><span class="line">&#123;</span><br><span class="line">	AnimationCurve curveX = AnimationCurve.Linear(0,0,10,10);</span><br><span class="line">	[MenuItem(&quot;Examples/Mine&quot;)]</span><br><span class="line">	static void Init()</span><br><span class="line">	&#123;</span><br><span class="line">		EditorWindow window = GetWindow(typeof(EditorCurves));</span><br><span class="line">		window.position = new Rect(0,300,200,100);</span><br><span class="line">		window.Show();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	void OnGUI()</span><br><span class="line">	&#123;</span><br><span class="line">		curveX = EditorGUI.CurveField(new Rect(3,3,position.width-6,15), &quot;Animation on X&quot;, curveX);</span><br><span class="line">		if(GUI.Button(new Rect(3,60,position.width-6,30),&quot;Generate Curve&quot;))</span><br><span class="line">            AddCurveToSelectedGameObject();</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	void AddCurveToSelectedGameObject()</span><br><span class="line">	&#123;</span><br><span class="line">		if(Selection.activeGameObject) </span><br><span class="line">        &#123;</span><br><span class="line">            FollowAnimationCurveMinecomp = Selection.activeGameObject.AddComponent();</span><br><span class="line">            comp.SetCurves(curveX);</span><br><span class="line">		&#125;</span><br><span class="line">        else </span><br><span class="line">        &#123;</span><br><span class="line">            Debug.LogError(&quot;No Game Object selected for adding an animation curve&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">using UnityEngine;</span><br><span class="line">using System.Collections;</span><br><span class="line"></span><br><span class="line">public class FollowAnimationCurveMine : MonoBehaviour </span><br><span class="line">&#123;</span><br><span class="line">	public AnimationCurve curveX;</span><br><span class="line">	public void SetCurves(AnimationCurve tmpCurve)</span><br><span class="line">	&#123;</span><br><span class="line">		curveX = tmpCurve;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	void Update () </span><br><span class="line">	&#123;</span><br><span class="line">        if(curveX != null)</span><br><span class="line">            transform.position = new Vector3(1f*Time.time, curveX.Evaluate(Time.time) * 0.3f,0);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>使用时，先选中物体，再点击Unity菜单栏Examples-&gt;Mine，编辑好曲线后点击Generate Curve,之后运行即可。</p>
 
     </div>
 
