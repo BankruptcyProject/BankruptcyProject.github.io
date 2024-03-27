@@ -161,6 +161,188 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/03/05/unity-ET%E6%A1%86%E6%9E%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="冲击波">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="OK">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/03/05/unity-ET%E6%A1%86%E6%9E%B6/" class="post-title-link" itemprop="url">ET框架 6.0</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-03-05 14:40:19" itemprop="dateCreated datePublished" datetime="2024-03-05T14:40:19+08:00">2024-03-05</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2024-03-08 10:16:01" itemprop="dateModified" datetime="2024-03-08T10:16:01+08:00">2024-03-08</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="目录">目录</h1>
+<p>bin：游戏服务器代码经过编译输出</p>
+<p>book：指南文档以及可运行的案例</p>
+<p>config：服务器运行时所用到的配置文件</p>
+<p>excel：存放策划的数值excel文件，会自动转换配置和代码</p>
+<p>FileServer：存放web资源服务器程序</p>
+<p>logs：服务器运行时日志</p>
+<p>protos：存放游戏客户端和服务端的通讯协议，以及服务器进程之间通讯的协议</p>
+<p>Server：ET框架源码，日常开发所在</p>
+<p>Tool：工具</p>
+<p>Unity：客户端文件夹<br>
+ET6.0后所有客户端代码放到Unity，包括Hotfix、HotfixView、Model、ModelView。</p>
+<h1 id="ecs系统">ECS系统</h1>
+<h3 id="入门">入门</h3>
+<p>所有自定义实体类继承Entity类</p>
+<p>自定义组件类继承子Component或ComponentWithID</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public class Car:Entity</span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public class Engin:Component</span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Car car = ComponentFactory.Create&lt;Car&gt;();</span><br><span class="line">car.AddComponent&lt;Engin&gt;();</span><br></pre></td></tr></table></figure>
+<h3 id="一切皆实体">一切皆实体</h3>
+<p>Entity, Component, System</p>
+<p>ET框架中，所有数据都是Entity，包括Entity，Entity既可以当成组件使用，也可以当做其它Entity的孩子。通用的数据放在Entity身上作为成员，不太通用的数据可以作为组件挂在Entity身上。比如物品的设计，所有物品都有配置id，数量，等级的字段，这些字段没有必要做成组件，放在Entity身上使用会更加方便。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Head head = human.AddComponent&lt;Head&gt;();</span><br><span class="line">head.AddComponent&lt;Eye&gt;();</span><br><span class="line">head.AddComponent&lt;Mouse&gt;();</span><br><span class="line">head.AddComponent&lt;Nose&gt;();</span><br><span class="line">head.AddComponent&lt;Ear&gt;();</span><br><span class="line">human.AddComponent&lt;Body&gt;();</span><br><span class="line">human.AddComponent&lt;Hand&gt;();</span><br><span class="line">human.AddComponent&lt;Leg&gt;();</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">Item</span>: <span class="title">Entity</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 道具的配置Id</span></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> ConfigId &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="comment">// 道具的数量</span></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> Count &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="comment">// 道具的等级</span></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> Level &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>ET的这种设计数据是一种树状的结构，非常有层次，能够非常轻松的理解整个游戏的架构。</p>
+<p>顶层Game.Scene，不同模块的数据都挂载在Game.Scene上面，每个模块自身下面又可以挂载很多数据。</p>
+<p>每开发一个新功能不用思考太多，类该怎么设计，数据放在什么地方，挂载这里会不会导致冗余等等。比如我玩家需要做一个道具系统，设计一个ItemsComponent挂在Player身上即可，需要技能开发一个SpellComponent挂在Player身上。全服需要做一个活动，搞个活动组件挂在Game.Scene上面。这种设计任务分派会很简单，十分的模块化。</p>
+<h3 id="组件的一些细节">组件的一些细节</h3>
+<p><strong>1.组件的创建</strong></p>
+<p>组件统一使用ComponentFactory创建。<br>
+ComponentFactory提供了三组方法用来创建组件Create，CreateWithParent，CreateWithId。</p>
+<p>Create是最简单的创建方式，它做了几个处理<br>
+a. 根据组件类型构造一个组件<br>
+b. 将组件加入事件系统，并且抛出一个AwakeSystem<br>
+c. 是否启用对象池</p>
+<p>CreateWithParent在Create的基础上提供了一个Parent对象，设置到Component.Parent字段上。CreateWithId是用来创建ComponentWithId或者其子类的，在Create的基础上可以自己设置一个Id, Component在创建的时候可以选择是否使用对象池。三类工厂方法都带有一个fromPool的参数，默认是true。</p>
+<p><strong>2.组件的释放</strong></p>
+<p>Component都继承了一个IDisposable接口，需要注意，Component有非托管资源，删除一个Component必须调用该接口。<br>
+该接口做了如下的操作<br>
+a. 抛出Destroy System<br>
+b. 如果组件是使用对象池创建的，那么在这里会放回对象池<br>
+c. 从全局事件系统(EventSystem)中删除该组件，并且将InstanceId设为0<br>
+如果组件挂载Entity身上，那么Entity调用Dispose的时候会自动调用身上所有Component的Dispose方法。</p>
+<p><strong>3.InstanceId的作用</strong></p>
+<p>任何Component都带有一个InstanceId字段，这个字段会在组件构造，或者组件从对象池取出的时候重新设置，这个InstanceId标识这个组件的身份。为什么需要这么一个字段呢？有以下几个原因</p>
+<ol type="1">
+<li>对象池的存在，组件未必会释放，而是回到对象池中。在异步调用中，很可能这个组件已经被释放了，然后又被重新利用了起来，这样我们需要一种方式能区分之前的组件对象是否已经被释放，例如下面这段代码：</li>
+</ol>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">async</span> ETVoid <span class="title">UpdateAsync</span>(<span class="params"><span class="keyword">this</span> ActorLocationSender self</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">try</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">long</span> instanceId = self.InstanceId;</span><br><span class="line">		<span class="keyword">while</span> (<span class="literal">true</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (self.InstanceId != instanceId)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">return</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			ActorTask actorTask = <span class="keyword">await</span> self.GetAsync();</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">if</span> (self.InstanceId != instanceId)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">return</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (actorTask.ActorRequest == <span class="literal">null</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">return</span>;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			<span class="keyword">await</span> self.RunTask(actorTask);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	catch (Exception e)</span><br><span class="line">	&#123;</span><br><span class="line">		Log.Error(e);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>while (true)中是段异步方法，await self.GetAsync()之后很可能ActorLocationSender对象已经被释放了，甚至有可能这个对象又被其它逻辑从对象池中再次利用了起来。我们这时候可以通过InstanceId的变化来判断这个对象是否已经被释放掉。</p>
+<ol start="2" type="1">
+<li>InstanceId是全局唯一的，并且带有位置信息，可以通过InstanceId来找到对象的位置，将消息发给对象。这个设计将会Actor消息中利用到。这里暂时就不讲了。</li>
+</ol>
+<h3 id="事件机制eventsystem">事件机制EventSystem</h3>
+<p>ECS最重要的特性一是数据跟逻辑分离，二是数据驱动逻辑。什么是数据驱动逻辑呢？不太好理解，我们举个例子 一个moba游戏，英雄都有血条，血条会在人物头上显示，也会在左上方头像UI上显示。这时候服务端发来一个扣血消息。我们怎么处理这个消息？第一种方法，在消息处理函数中修改英雄的血数值，修改头像上血条显示，同时修改头像UI的血条。这种方式很明显造成了模块间的耦合。第二种方法，扣血消息处理函数中只是改变血值，血值的改变抛出一个hpchange的事件，人物头像模块跟UI模块都订阅血值改变事件，在订阅的方法中分别处理自己的逻辑，这样各个模块负责自己的逻辑，没有耦合。 ET提供了多种事件，事件都是可以多次订阅的:</p>
+<ol type="1">
+<li>AwakeSystem，组件工厂创建组件后抛出，只抛出一次，可以带参数</li>
+</ol>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Player player = ComponentFactory.Create&lt;Player&gt;();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 订阅Player的Awake事件</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PlayerAwakeSystem</span>: <span class="title">AwakeSystem</span>&lt;<span class="title">Player</span>&gt;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Awake</span>(<span class="params">Player self</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2" type="1">
+<li>StartSystem，组件UpdateSystem调用前抛出</li>
+</ol>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 订阅Player的Start事件</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PlayerStartSystem</span>: <span class="title">StartSystem</span>&lt;<span class="title">Player</span>&gt;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Start</span>(<span class="params">Player self</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3" type="1">
+<li>UpdateSystem，组件每帧抛出</li>
+</ol>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 订阅Player的Update事件</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PlayerUpdateSystem</span>: <span class="title">UpdateSystem</span>&lt;<span class="title">Player</span>&gt;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Update</span>(<span class="params">Player self</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="4" type="1">
+<li>DestroySystem，组件删除时抛出</li>
+</ol>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 订阅Player的Destroy事件</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PlayerDestroySystem</span>: <span class="title">DestroySystem</span>&lt;<span class="title">Player</span>&gt;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Destroy</span>(<span class="params">Player self</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Player player = ComponentFactory.Create&lt;Player&gt;();</span><br><span class="line"><span class="comment">// 这里会触发Destroy事件</span></span><br><span class="line">player.Dispose();</span><br></pre></td></tr></table></figure>
+<ol start="5" type="1">
+<li>ChangeSystem，组件内容改变时抛出，需要开发者手动触发</li>
+</ol>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 订阅Player的Destroy事件</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PlayerChangeSystem</span>: <span class="title">ChangeSystem</span>&lt;<span class="title">Player</span>&gt;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Change</span>(<span class="params">Player self</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Player player = ComponentFactory.Create&lt;Player&gt;();</span><br><span class="line"><span class="comment">// 需要手动触发ChangeSystem</span></span><br><span class="line">Game.EventSystem.Change(player);</span><br></pre></td></tr></table></figure>
+<ol start="6" type="1">
+<li>DeserializeSystem，组件反序列化之后抛出</li>
+</ol>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 订阅Player的Deserialize事件</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PlayerDeserializeSystem</span>: <span class="title">DeserializeSystem</span>&lt;<span class="title">Player</span>&gt;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Deserialize</span>(<span class="params">Player self</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这里player2会触发Deserialize事件</span></span><br><span class="line">Player player2 = MongoHelper.FromBson&lt;Player&gt;(player.ToBson());</span><br></pre></td></tr></table></figure>
+<ol start="7" type="1">
+<li>LoadSystem，EventSystem加载dll时抛出，用于服务端热更新，重新加载dll做一些处理，比如重新注册handler</li>
+</ol>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 订阅Player的Load事件</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PlayerLoadSystem</span>: <span class="title">LoadSystem</span>&lt;<span class="title">Player</span>&gt;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Load</span>(<span class="params">Player self</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="8" type="1">
+<li>普通的Event，由开发者自己抛出，可以最多带三个参数。另外客户端热更层也可以订阅mono层的Event事件</li>
+</ol>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> oldhp = <span class="number">10</span>;</span><br><span class="line"><span class="built_in">int</span> newhp = <span class="number">5</span>;</span><br><span class="line"><span class="comment">// 抛出hp改变事件</span></span><br><span class="line">Game.EventSystem.Run(<span class="string">&quot;HpChange&quot;</span>, oldhp, newhp);</span><br><span class="line"></span><br><span class="line"><span class="comment">// UI订阅hp改变事件</span></span><br><span class="line">[<span class="meta">Event(<span class="meta-string">&quot;HpChange&quot;</span>)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">HpChange_ShowUI</span>: <span class="title">AEvent</span>&lt;<span class="title">int</span>, <span class="title">int</span>&gt;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Run</span>(<span class="params"><span class="built_in">int</span> a, <span class="built_in">int</span> b</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> NotImplementedException();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 模型头顶血条模块也订阅hp改变事件</span></span><br><span class="line">[<span class="meta">Event(<span class="meta-string">&quot;HpChange&quot;</span>)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">HpChange_ModelHeadChange</span>: <span class="title">AEvent</span>&lt;<span class="title">int</span>, <span class="title">int</span>&gt;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Run</span>(<span class="params"><span class="built_in">int</span> a, <span class="built_in">int</span> b</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> NotImplementedException();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="9" type="1">
+<li>除此之外还有很多事件，例如消息事件。消息事件使用MessageHandler来声明，可以带参数指定哪种服务器需要订阅。</li>
+</ol>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">MessageHandler(AppType.Gate)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">C2G_LoginGateHandler</span> : <span class="title">AMRpcHandler</span>&lt;<span class="title">C2G_LoginGate</span>, <span class="title">G2C_LoginGate</span>&gt;</span><br><span class="line">&#123;</span><br><span class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Run</span>(<span class="params">Session session, C2G_LoginGate message, Action&lt;G2C_LoginGate&gt; reply</span>)</span></span><br><span class="line">	&#123;</span><br><span class="line">		G2C_LoginGate response = <span class="keyword">new</span> G2C_LoginGate();</span><br><span class="line">		reply(response);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>更具体的消息事件等到讲消息的时候再细细讲解了</p>
+<ol start="10" type="1">
+<li>数值事件，数值模块再讲解<br>
+......, 更多的事件由自己去开发。</li>
+</ol>
+<p>ET框架的逻辑就是由以上各种事件来驱动的。</p>
+<h3 id="事件订阅和发布">事件订阅和发布</h3>
+<h1 id="eui">EUI</h1>
+<p>某个<strong>自定义显示窗口节点</strong>（下面可挂很多UI节点）（预制体）的目录： ET6.0-UI项目名称(View  在此处制作一个<strong>大的窗口UI</strong>（命名规则为Dlg开头）<br>
+在UI文件下新制作的窗口，需要右键SpawnEUICode，且需要在Unity.cs中添加窗口名称。<br>
+窗口需要在检查栏中右下角 添加AssetBuddle标签 使用小写 必须使用unity3d后缀<br>
+之后每次在该窗口下更新新的UI组件时都需要对<strong>该窗口节点</strong>进行SpawnEUICode</p>
+<p>EUI不需要在检查栏中注册UI即可在所创建的EUI脚本中用self.View.xxxx调用到UI</p>
+<p>以某个捕鱼机UI游戏为例子（ET6.0+EUI）<br>
+ET6.0-UI项目名称  在这个目录下有被注册过的UI文件夹，每个UI文件夹包括 一个System脚本和一个event文件夹（存放eventHandler脚本）</p>
+<h1 id="eui公共ui">EUI公共UI</h1>
+<p>将需要做成 公共UI 的节点 拖入 目录Unity(View，同时注意该节点的命名规则为ES开头，之后就可以打开预制体编辑模式制作 公共UI。</p>
+<p>制作完成后需要对 公共UI 节点进行一次 SpawnEUICode。</p>
+<p>还需要在Unity(View公共UI 创建一个对应的逻辑层代码脚本。<br>
+例如：ESXXX.prefeb对应ESXXXSystem.cs<br>
+前者为公共UI预制体，后者为它的行为脚本，按照ET框架规定，该脚本内容为一个<strong>静态类</strong>ESXXXsystem</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2023/06/02/CS-readonly%E5%85%B3%E9%94%AE%E5%AD%97/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -840,156 +1022,6 @@ IComparer在一个单独的类中实现，可以比较任意两个对象（关�
 <p>设置上和铰链关节相似</p>
 <h1 id="固定关节">固定关节</h1>
 <p>希望两个物体保持相对的位置一起运动，但不希望两者拥有父子关系，且希望两者引外力而分离</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/04/15/Mirror%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="冲击波">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="OK">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/04/15/Mirror%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93/" class="post-title-link" itemprop="url">Mirror基础总结（可跟随复习制作）</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2023-04-15 16:17:06" itemprop="dateCreated datePublished" datetime="2023-04-15T16:17:06+08:00">2023-04-15</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2023-05-08 22:17:25" itemprop="dateModified" datetime="2023-05-08T22:17:25+08:00">2023-05-08</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="networkmanager">NetworkManager</h1>
-<p>是一个组件，多人联机的核心组件，创建一个空对象专门存储这个组件。</p>
-<p>一个场景<strong>有且只能有一个</strong>Network Manager。Network Manager有<strong>DDOL</strong>选项，勾选以贯穿所有场景。同时Network Manager身上注册的所有生成预制体也会跟着到下一个场景生成。</p>
-<p>设置<strong>离线</strong>和<strong>在线</strong>场景</p>
-<p>NetworkManager自带的UI勾选上后可以直接使用，我写过自定义的连接UI<br>
-设置传输协议（Telepathy Transport）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public TelepathyTransport telepathyTransport;</span><br><span class="line">public NetworkManager networkManager;</span><br><span class="line">public void BtnLoadHostScene()//点击创建房间按钮函数</span><br><span class="line">&#123;</span><br><span class="line">	networkManager.networkAddress = ipText.text;//获取ip地址</span><br><span class="line">    telepathyTransport.port = (ushort)Convert.ToInt32(epText.text);//获取端口号</span><br><span class="line">    networkManager.StartHost();//创建</span><br><span class="line">&#125;</span><br><span class="line">public void BtnLoadClientScene()</span><br><span class="line">&#123;</span><br><span class="line">    networkManager.networkAddress = ipText.text;</span><br><span class="line">    telepathyTransport.port = (ushort)Convert.ToInt32(epText.text);</span><br><span class="line">    networkManager.StartClient();//连接</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>Spawn</strong><br>
-注册Player预制体<br>
-勾选自动创建Player<br>
-在连接上游戏后会自动创建联网的Player<br>
-该预制体需要有Network Identity。离线是将自动摧毁该对象<br>
-创建顺序和位置需要参考<strong>NetworkStartPosition结点</strong>（下面会讲）</p>
-<p>在<strong>Registered Spawnable Prefabs</strong>注册后续可能在游戏中联网生成的其它对象（子弹、敌人），这些对象有netId。也可以写到这部分的时候回过头来注册，Spawn详细部分下面会讲。</p>
-<p>在代码中ServerChangeScene方法可以改变场景，此时所有客户端都会跟着一起切换场景。ServerChangeScene的值会被更新。</p>
-<p><strong>常用API</strong></p>
-<table>
-<colgroup>
-<col style="width: 21%">
-<col style="width: 78%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">属性名</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">singleton</td>
-<td>The one and only NetworkManager（可以在别的脚本中通过NetworkManager.singleton调用）</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">numPlayers</td>
-<td>Number of active player objects across all connections on the server.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">networkSceneName</td>
-<td>The name of the current network scene.</td>
-</tr>
-</tbody>
-</table>
-<h1 id="networkroommanager">NetworkRoomManager</h1>
-<p>NetworkRoomManager是Network Manager的派生类，包括拥有后者的所有功能，因此不能共存。</p>
-<p>请勾选上Show Room GUI，我还没写过自定义游戏大厅的UI和连接方式。（但是在<a target="_blank" rel="noopener" href="https://bankruptcyproject.github.io/2022/09/11/Mirror_Network-Room-Manager/">NetworkRoomManager</a>和<a target="_blank" rel="noopener" href="https://bankruptcyproject.github.io/2022/09/11/Mirror_Network-Room-Player/">Network Room Player</a>的专门的博客里我有把相关方法和属性列进去）</p>
-<p>将在游戏大厅中生成的玩家所需要用到的预制体称为<strong>大厅玩家预制体</strong>，相应的我将在真正游戏中生成玩家所需要用到的预制体称为<strong>游戏玩家预制体</strong>，两者独立。请专门另外做一种大厅玩家预制体，注册上。</p>
-<h1 id="network-start-position">Network Start Position</h1>
-<p>一个组件，创建一个结点专门放置这个组件最为一个出生点。<br>
-可以创建多个出生点，分布在场景各个地方。<br>
-场景加载完后，NetworkManager会在这些地方有根据的生成玩家。</p>
-<h1 id="network-identity">Network Identity</h1>
-<p>组件<br>
-在联网游戏进行时所用到的预制体必须要有NetworkIdentity组件<br>
-加载场景顺序：<br>
-加载没有NetworkIdentity组件的结点<br>
-等待联网<br>
-当一个玩家联网时，加载（更新）所有最新状态的拥有NetworkIdentity组件的结点</p>
-<h1 id="运行逻辑与顺序">运行逻辑与顺序</h1>
-<img src="/2023/04/15/Mirror%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93/1.png" class>
-<img src="/2023/04/15/Mirror%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93/2.png" class>
-<p>在本地客户端运行游戏，场景内会有多个人物，其中有一个人物由本地控制——称为<strong>玩家</strong><br>
-另外几个人物也是本地生成，组件、材质、脚本都于本地运行，但它们的控制命令来自于服务器——称为<strong>克隆玩家</strong><br>
-控制<strong>玩家</strong>实际上是向服务器发送行动请求，服务器许可后<strong>玩家</strong>及其对应的所有<strong>克隆玩家</strong>行动</p>
-<img src="/2023/04/15/Mirror%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93/3.png" class>
-<img src="/2023/04/15/Mirror%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93/4.png" class>
-<img src="/2023/04/15/Mirror%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93/5.png" class>
-<h1 id="network-attributes">Network Attributes</h1>
-<p>同步变量标记，被标记的变量会同步给其他玩家<br>
-那么一旦此变量<strong>(在服务器！！！！)</strong>发生变化，服务器就会将此变量发送给所有客户端<br>
-后面是同步变量被修改时的监听方法</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[SyncVar(hook = nameof(OnNameStrChanged))]</span><br><span class="line">public string nameStr;</span><br><span class="line">void OnNameStrChanged(string _, string newStr)</span><br><span class="line">&#123;</span><br><span class="line">	GetComponent&lt;TextMesh&gt;().text = newStr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Command标记是针对方法的标记，被标记的方法必须以Cmd开头<br>
-CmdSetupPlayer这个方法是被 [Command]标记过的，所以是会在服务器端执行的，不会再本地执行<br>
-如果取消了[Command] 的标志那就肯定只在本地执行了也就是完全的本地的方法啊和服务端没关系<br>
-在服务器中改变同步变量才会被分发给客户端！！！！！！！！！！！！！<br>
-Command方法描述为 会被客户端调用的服务端的方法</p>
-<p>Bypassing Authority<br>
-为了安全起见, [Command] 只能在player object上使用<br>
-non-player objects想要使用[Command]需要拥有authority，或者使用[Command(requiresAuthority = false)]可以绕过权限检查（但无法传递参数）</p>
-<p>关于标记更多信息参考以前写的博客<a target="_blank" rel="noopener" href="https://bankruptcyproject.github.io/2022/09/08/Mirror_Network-Attributes/">Mirror_Network Attributes</a></p>
 
       
     </div>
