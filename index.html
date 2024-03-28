@@ -366,7 +366,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2024-03-27 22:21:41" itemprop="dateModified" datetime="2024-03-27T22:21:41+08:00">2024-03-27</time>
+        <time title="Modified: 2024-03-28 19:49:50" itemprop="dateModified" datetime="2024-03-28T19:49:50+08:00">2024-03-28</time>
       </span>
 
   
@@ -425,7 +425,9 @@
 <li>Set：对当前效果进行设置。</li>
 <li>On：一系的列回调。</li>
 </ul>
+<p><strong>注</strong></p>
 <p>带 local 的代表自身坐标系统</p>
+<p>使用DOTween相当于开启一个新的线程，播放完毕后会自动关闭该线程。如果动画未播放完毕，却需要将DOTWeen所在对象回收入对象池，则需要手动Kill掉DOTween，否则会有bug。</p>
 <h1 id="不熟的拓展方法">不熟的拓展方法</h1>
 <h3 id="transform拓展方法">1.Transform拓展方法</h3>
 <h4 id="rotate旋转">Rotate（旋转）</h4>
