@@ -27,11 +27,13 @@
 <meta property="og:site_name" content="OK">
 <meta property="og:description" content="Particle System 组件 包含1个主模块和22个子模块(可隐藏) 粒子系统由粒子和发射器组成，发射器创建并发射粒子 主模块 起始速度、起始大小、起始颜色等参数 可以在右边下拉栏中 切换成随机大小并设置随机区间或曲线 预热参数代表 在摄像头观察前先工作一周期 启动延迟（和循环、预热不能同时用） 发射器速度（发射器移动方式rig或trans） 是否随机（每次播放效果不同）">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2022/03/06/unity%E7%B2%92%E5%AD%90%E7%B3%BB%E7%BB%9F/1.png">
 <meta property="article:published_time" content="2022-03-05T17:26:56.000Z">
-<meta property="article:modified_time" content="2024-03-26T09:02:06.610Z">
+<meta property="article:modified_time" content="2024-03-31T09:10:55.078Z">
 <meta property="article:author" content="冲击波">
 <meta property="article:tag" content="unity">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/03/06/unity%E7%B2%92%E5%AD%90%E7%B3%BB%E7%BB%9F/1.png">
 
 
 <link rel="canonical" href="http://example.com/2022/03/06/unity%E7%B2%92%E5%AD%90%E7%B3%BB%E7%BB%9F/">
@@ -108,7 +110,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#particle-system-%E7%BB%84%E4%BB%B6"><span class="nav-number">1.</span> <span class="nav-text">Particle System 组件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E6%A8%A1%E5%9D%97"><span class="nav-number">1.1.</span> <span class="nav-text">主模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#renderer%E6%B8%B2%E6%9F%93%E5%99%A8%E5%AD%90%E6%A8%A1%E5%9D%97"><span class="nav-number">1.2.</span> <span class="nav-text">Renderer（渲染器）子模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#emission%E5%8F%91%E5%B0%84%E5%99%A8-%E5%AD%90%E6%A8%A1%E5%9D%97"><span class="nav-number">1.3.</span> <span class="nav-text">Emission（发射器） 子模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shape%E5%8F%91%E5%B0%84%E5%BD%A2%E7%8A%B6%E5%AD%90%E6%A8%A1%E5%9D%97"><span class="nav-number">1.4.</span> <span class="nav-text">Shape（发射形状）子模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#color-over-lifetime-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%86%85%E9%A2%9C%E8%89%B2%E5%AD%90%E6%A8%A1%E5%9D%97"><span class="nav-number">1.5.</span> <span class="nav-text">Color Over Lifetime （生命周期内颜色）子模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#size-over-lifetime-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%86%85%E5%A4%A7%E5%B0%8F%E5%AD%90%E6%A8%A1%E5%9D%97"><span class="nav-number">1.6.</span> <span class="nav-text">Size Over Lifetime （生命周期内大小）子模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#velocity-over-lifetime-%E5%AD%90%E6%A8%A1%E5%9D%97"><span class="nav-number">1.7.</span> <span class="nav-text">Velocity over lifetime 子模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#force-over-lifetime-%E5%AD%90%E6%A8%A1%E5%9D%97"><span class="nav-number">1.8.</span> <span class="nav-text">Force over lifetime 子模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#limit-velocity-over-lifetime-%E5%AD%90%E6%A8%A1%E5%9D%97"><span class="nav-number">1.9.</span> <span class="nav-text">Limit velocity over lifetime 子模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#noise-%E5%AD%90%E6%A8%A1%E5%9D%97"><span class="nav-number">1.10.</span> <span class="nav-text">Noise 子模块</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B"><span class="nav-number">2.</span> <span class="nav-text">案例</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#particle-system-%E7%BB%84%E4%BB%B6"><span class="nav-number">1.</span> <span class="nav-text">Particle System 组件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E6%A8%A1%E5%9D%97"><span class="nav-number">1.1.</span> <span class="nav-text">主模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#renderer%E6%B8%B2%E6%9F%93%E5%99%A8%E5%AD%90%E6%A8%A1%E5%9D%97"><span class="nav-number">1.2.</span> <span class="nav-text">Renderer（渲染器）子模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#emission%E5%8F%91%E5%B0%84%E5%99%A8-%E5%AD%90%E6%A8%A1%E5%9D%97"><span class="nav-number">1.3.</span> <span class="nav-text">Emission（发射器） 子模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shape%E5%8F%91%E5%B0%84%E5%BD%A2%E7%8A%B6%E5%AD%90%E6%A8%A1%E5%9D%97"><span class="nav-number">1.4.</span> <span class="nav-text">Shape（发射形状）子模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#color-over-lifetime-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%86%85%E9%A2%9C%E8%89%B2%E5%AD%90%E6%A8%A1%E5%9D%97"><span class="nav-number">1.5.</span> <span class="nav-text">Color Over Lifetime （生命周期内颜色）子模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#size-over-lifetime-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%86%85%E5%A4%A7%E5%B0%8F%E5%AD%90%E6%A8%A1%E5%9D%97"><span class="nav-number">1.6.</span> <span class="nav-text">Size Over Lifetime （生命周期内大小）子模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#velocity-over-lifetime-%E5%AD%90%E6%A8%A1%E5%9D%97"><span class="nav-number">1.7.</span> <span class="nav-text">Velocity over lifetime 子模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#force-over-lifetime-%E5%AD%90%E6%A8%A1%E5%9D%97"><span class="nav-number">1.8.</span> <span class="nav-text">Force over lifetime 子模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#limit-velocity-over-lifetime-%E5%AD%90%E6%A8%A1%E5%9D%97"><span class="nav-number">1.9.</span> <span class="nav-text">Limit velocity over lifetime 子模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#noise-%E5%AD%90%E6%A8%A1%E5%9D%97"><span class="nav-number">1.10.</span> <span class="nav-text">Noise 子模块</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B"><span class="nav-number">2.</span> <span class="nav-text">案例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B2%92%E5%AD%90%E7%9D%80%E8%89%B2%E5%99%A8"><span class="nav-number">3.</span> <span class="nav-text">粒子着色器</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -199,7 +201,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2024-03-26 17:02:06" itemprop="dateModified" datetime="2024-03-26T17:02:06+08:00">2024-03-26</time>
+        <time title="Modified: 2024-03-31 17:10:55" itemprop="dateModified" datetime="2024-03-31T17:10:55+08:00">2024-03-31</time>
       </span>
 
   
@@ -269,6 +271,13 @@
 <p>Velocity: Speed Modifier 模拟衰减</p>
 <p>Renderer: Stretched Billboard, Speed Scale 速度方向上拉伸</p>
 <p>Color over lifetime: 淡入淡出，颜色白-火红-暗</p>
+<h1 id="粒子着色器">粒子着色器</h1>
+<p>Renderer（渲染器）子模块 中选择粒子的材质，在材质中选择 Particle/standard Unlit 的 Shader</p>
+<p>Rendering Mode（渲染模式）的 Additive（叠加）：粒子颜色将与背景颜色混合（(A+B)/2），当粒子贴图有黑色时候会使得黑色部分消失。</p>
+<p>Color Mode 的 Multiply：<code>粒子颜色=粒子贴图颜色*Albedo Color</code><br>
+一个颜色与黑色相乘，结果为黑色；一个颜色与白色相乘，结果为原颜色<br>
+<img src="/2022/03/06/unity%E7%B2%92%E5%AD%90%E7%B3%BB%E7%BB%9F/1.png" class><br>
+应用：使用黑底白色的粒子贴图用于描述粒子的形状，启用Rendering Mode的Additive和Color Mode 的 Multiply，之后就可以在Albedo Color中自由描述粒子的颜色，同时配合color over lifetime更方便更直观的控制粒子颜色。</p>
 
     </div>
 
