@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">196</span>
+          <span class="site-state-item-count">197</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,80 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/03/Socket%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="冲击波">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="OK">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/09/03/Socket%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" class="post-title-link" itemprop="url">Socket消息队列</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-09-03 22:05:00" itemprop="dateCreated datePublished" datetime="2022-09-03T22:05:00+08:00">2022-09-03</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-11-14 16:48:18" itemprop="dateModified" datetime="2022-11-14T16:48:18+08:00">2022-11-14</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>由于单线程消息处理足以满足游戏客户端的需要，因此大部分游戏会使用消息队列让主线程去处理异步Socket接收到的消息。</p>
+<p>C#的异步通信由线程池实现，不同的BeginReceive不一定在同一线程中执行。创建一个消息列表，每当收到消息便在列表末端添加数据，这个列表由主线程读取，它可以作为主线程和异步接收线程之间的桥梁。</p>
+<p>由于MonoBehaviour的Update方法在主线程中执行，可让Update方法每次从消息列表中读取几条信息并处理，处理后便在消息列表中删除它们。</p>
+<img src="/2022/09/03/Socket%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/1.png" class>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -834,153 +908,6 @@ Poll方法会检查Socket的状态。<br>
 <h1 id="procedural-fire">Procedural fire</h1>
 <p>无代码，预制体中的特效可直接使用。<br>
 包含一个小型爆炸效果和几个不同颜色的火焰燃烧效果。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/28/unity%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="冲击波">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="OK">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/08/28/unity%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" class="post-title-link" itemprop="url">unity线性代数</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-08-28 14:35:46 / Modified: 16:01:42" itemprop="dateCreated datePublished" datetime="2022-08-28T14:35:46+08:00">2022-08-28</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>点乘获取两个向量夹角<br>
-叉乘获取两个向量的平面垂直向量</p>
-<h1 id="旋转">旋转</h1>
-<p><strong>静态欧拉角</strong><br>
-围绕世界坐标的旋转，用三个标量表示围绕三个轴的旋转角度。可以将物体旋转到任意位置。<br>
-<strong>动态欧拉角</strong><br>
-围绕自身坐标旋转，用三个标量表示围绕三个轴的旋转角度。及围绕其中一个轴旋转时另外两个坐标轴的位置会发生变化。可能出现万向锁问题。<br>
-<strong>Quaternion</strong>结构体代表一个四元数，包含一个标量和一个三维向量，用于描述一个物体的原地旋转。（给一个物体定一个轴（三维向量），绕这个轴旋转一定角度（标量））</p>
-<p><strong>Quaternion常用属性方法</strong></p>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: right;">属性方法</th>
-<th style="text-align: left;">详解</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">identity</td>
-<td style="text-align: left;">单位旋转，相当于无旋转</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">eulerAngles</td>
-<td style="text-align: left;">转化为（返回）欧拉角</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">Quaternion</td>
-<td style="text-align: left;">使用x，y，z，w分量构造一个四元数</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">Angle</td>
-<td style="text-align: left;">范围两个旋转（向量）之间的角度</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">Euler</td>
-<td style="text-align: left;">通过欧拉角创建一个四元数</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">LookRotation</td>
-<td style="text-align: left;">返回 forward向量 旋转至 参数向量 的四元数。可以理解位看向某向量</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Transform旋转相关属性方法</strong></p>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: right;">属性方法</th>
-<th style="text-align: left;">详解</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">rotation</td>
-<td style="text-align: left;">在世界坐标系中旋转，使用四元数</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">eulerAngles</td>
-<td style="text-align: left;">在世界坐标系中的欧拉角旋转，使用Vector3</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">localRotation</td>
-<td style="text-align: left;">相对于父物体的旋转</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">localEulerAngles</td>
-<td style="text-align: left;">相对于父物体的欧拉角旋转</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">LookAt</td>
-<td style="text-align: left;">旋转物体使forward向量指向目标点</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">Rotate</td>
-<td style="text-align: left;">旋转物体（动态欧拉角旋转）</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">RotateAround</td>
-<td style="text-align: left;">绕着莫个点旋转</td>
-</tr>
-</tbody>
-</table>
-<p>例子 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">transform.rotation = Quaternion.LookRotation(dir);</span><br><span class="line">//看向某个方向</span><br></pre></td></tr></table></figure></p>
 
       
     </div>

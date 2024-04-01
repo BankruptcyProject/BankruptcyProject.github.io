@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">196</span>
+          <span class="site-state-item-count">197</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,110 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/03/09/CS%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8BTask/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="冲击波">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="OK">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/03/09/CS%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8BTask/" class="post-title-link" itemprop="url">CS异步编程Task</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-03-09 21:50:40" itemprop="dateCreated datePublished" datetime="2024-03-09T21:50:40+08:00">2024-03-09</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2024-03-11 13:45:30" itemprop="dateModified" datetime="2024-03-11T13:45:30+08:00">2024-03-11</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>通过使用异步编程，你可以避免性能瓶颈并增强应用程序的总体响应能力。 但是，编写异步应用程序的传统技术可能比较复杂，使它们难以编写、调试和维护。</p>
+<p>C# 支持简化的方法，即异步编程，它利用 .NET 运行时中的异步支持。 编译器可执行开发人员曾进行的高难度工作，且应用程序保留了一个类似于同步代码的逻辑结构。 因此，你只需做一小部分工作就可以获得异步编程的所有好处。</p>
+<h2 id="异步方法易于编写">异步方法易于编写</h2>
+<p>C# 中的 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/dotnet/csharp/language-reference/keywords/async">Async</a> 和 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/dotnet/csharp/language-reference/operators/await">Await</a> 关键字是异步编程的核心。 通过这两个关键字，可以使用 .NET Framework、.NET Core 或 Windows 运行时中的资源，轻松创建异步方法（几乎与创建同步方法一样轻松）。 使用 <code>async</code> 关键字定义的异步方法简称为“异步方法”。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public async Task&lt;int&gt; GetUrlContentLengthAsync()</span><br><span class="line">&#123;</span><br><span class="line">    var client = new HttpClient();</span><br><span class="line"></span><br><span class="line">    Task&lt;string&gt; getStringTask =</span><br><span class="line">        client.GetStringAsync(&quot;https://learn.microsoft.com/dotnet&quot;);</span><br><span class="line"></span><br><span class="line">    DoIndependentWork();</span><br><span class="line"></span><br><span class="line">    string contents = await getStringTask;</span><br><span class="line"></span><br><span class="line">    return contents.Length;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void DoIndependentWork()</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(&quot;Working...&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>该例子包含 <code>async</code> 修饰符。 返回类型为 <code>Task&lt;int&gt;</code>（有关更多选项，请参阅“返回类型”部分）。 方法名称以 <code>Async</code> 结尾。 在方法的主体中，<code>GetStringAsync</code> 返回 <code>Task&lt;string&gt;</code>。 这意味着在 <code>await</code> 任务时，将获得 <code>string</code> (<code>contents</code>)。 在等待任务之前，可以通过 <code>GetStringAsync</code> 执行不依赖于 <code>string</code> 的工作。</p>
+<p>密切注意 <code>await</code> 运算符。 它会暂停 <code>GetUrlContentLengthAsync</code>：</p>
+<ul>
+<li>在 <code>getStringTask</code> 完成之前，<code>GetUrlContentLengthAsync</code> 无法继续。</li>
+<li>同时，控件返回至 <code>GetUrlContentLengthAsync</code> 的调用方。</li>
+<li>当 <code>getStringTask</code> 完成时，控件将在此处继续。</li>
+<li>然后，<code>await</code> 运算符会从 <code>getStringTask</code> 检索 <code>string</code> 结果。</li>
+</ul>
+<p>return 语句指定整数结果。 任何等待 <code>GetUrlContentLengthAsync</code> 的方法都会检索长度值。</p>
+<p>如果 <code>GetUrlContentLengthAsync</code> 在调用 <code>GetStringAsync</code> 和等待其完成期间不能进行任何工作，则你可以通过在下面的单个语句中调用和等待来简化代码。</p>
+<p>C#复制</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span> contents = <span class="keyword">await</span> client.GetStringAsync(<span class="string">&quot;https://learn.microsoft.com/dotnet&quot;</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="asyncawait的关键点总结">Async/Await的关键点总结</h2>
+<p>代替过于底层和繁杂的thread</p>
+<ul>
+<li><p>Async是C#的修饰符，可以用来修饰method或者expression，用来声明一个异步的method或者expression</p></li>
+<li><p>一个异步的method仅支持以下返回值：</p></li>
+<li><ul>
+<li>Task</li>
+<li>Task<TResult> // 泛型</TResult></li>
+<li>void // 定义void返回仅仅是为了跟普通函数保持兼容</li>
+<li>任何包含可访问GetAwaiter()方法的类型（从C# 7.0开始支持）</li>
+</ul></li>
+<li><p>Async方法在执行的时候，开始是以同步的方式执行（即在调用方的thread里跑的），直到遇到await关键字，从await关键字开始，C#会另起一个thread来执行await后面的代码。</p></li>
+<li><p>如果Async方法里面的代码没有包含await的代码会怎么样？那整个函数就会同步执行，跟普通函数没差别。编译器也会给你个警告。</p></li>
+</ul>
+<h2 id="异步编程简介">异步编程简介</h2>
+<p>异步编程的核心是 Task 和 Task<T> 对象，这两个对象对异步操作建模。 它们受关键字 async 和 await 的支持。 在大多数情况下模型十分简单：</T></p>
+<p>对于 I/O 绑定代码，等待一个在 async 方法中返回 Task 或 Task<T> 的操作。</T></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -949,79 +1053,6 @@ IComparer在一个单独的类中实现，可以比较任意两个对象（关�
 <p>为所有蜡烛添加上碰撞器和标签，蜡烛的子物体是火苗例子</p>
 <p>鼠标点击画面上的蜡烛，使得燃起的火苗熄灭/熄灭的火苗燃起</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">void Update()</span><br><span class="line">&#123;</span><br><span class="line">    if(Input.GetMouseButtonDown(0))</span><br><span class="line">    &#123;</span><br><span class="line">        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);</span><br><span class="line">        RaycastHit hit;</span><br><span class="line">        if (Physics.Raycast(ray, out hit))</span><br><span class="line">        &#123;</span><br><span class="line">            if (hit.collider.tag == &quot;Candle&quot;)</span><br><span class="line">            &#123;</span><br><span class="line">                if (hit.transform.GetChild(0).gameObject.activeSelf == true)</span><br><span class="line">                &#123;</span><br><span class="line">                    hit.transform.GetChild(0).gameObject.SetActive(false);</span><br><span class="line">                &#125;</span><br><span class="line">                else</span><br><span class="line">                &#123;</span><br><span class="line">                    hit.transform.GetChild(0).gameObject.SetActive(true);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/09/%E6%A1%88%E4%BE%8B-%E5%85%B3%E8%8A%82%E6%B5%8B%E8%AF%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="冲击波">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="OK">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/05/09/%E6%A1%88%E4%BE%8B-%E5%85%B3%E8%8A%82%E6%B5%8B%E8%AF%95/" class="post-title-link" itemprop="url">案例 关节测试</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2023-05-09 14:34:57 / Modified: 14:50:09" itemprop="dateCreated datePublished" datetime="2023-05-09T14:34:57+08:00">2023-05-09</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="铰链关节">铰链关节</h1>
-<p><strong>Using Limits</strong>和<strong>编辑角度限制</strong>绑定使用</p>
-<p><strong>Connected Body</strong> 可以设置连接另一个刚体，为设置关节则连接到世界</p>
-<p><strong>Anchor</strong> 和 <strong>轴</strong>修改关节位置和方向</p>
-<p><strong>Metor</strong>相关为其施加动力</p>
-<h1 id="弹簧关节">弹簧关节</h1>
-<p>设置上和铰链关节相似</p>
-<h1 id="固定关节">固定关节</h1>
-<p>希望两个物体保持相对的位置一起运动，但不希望两者拥有父子关系，且希望两者引外力而分离</p>
 
       
     </div>

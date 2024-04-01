@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">196</span>
+          <span class="site-state-item-count">197</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -200,6 +200,91 @@
     
     <div class="post-body" itemprop="articleBody">
           <img src="/2024/03/25/%E9%A6%96%E9%A1%B5/1.jpg" class>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/04/01/Unity-SkeletonData%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="冲击波">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="OK">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/04/01/Unity-SkeletonData%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">Unity SkeletonData相关问题</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2024-04-01 11:59:31 / Modified: 12:11:30" itemprop="dateCreated datePublished" datetime="2024-04-01T11:59:31+08:00">2024-04-01</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="导入">导入</h1>
+<p>待导入文件</p>
+<img src="/2024/04/01/Unity-SkeletonData%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/1.png" class>
+<p>其中m_loricaeblack.atlas文件需要跟改为m_loricaeblack.atlas.txt才能导入</p>
+<p>json文件与png文件导入会在unity中重名，因此需要将json文件改名。如果更改png文件名则需要对应更改txt中的png文件名。</p>
+<h1 id="unity调用spine动画在切换动画的时候有个闪的过程">unity调用spine动画在切换动画的时候有个闪的过程</h1>
+<p>问题描述: 在用spine动画时，有时候角色在切换动画的时候会有残影，或者动画播放不正确，例如会丢失一部分节点, 例如切换动画后角色虽然动画播放正常，但丢失了武器。</p>
+<p>解决：</p>
+<p>需要添加这两句：</p>
+<p>skeleton.SetToSetupPose();//将骨骼 约束和槽 设置为姿势值（我的理解应该是Spine动画设置的基础动作）</p>
+<p>spineAnimationState.ClearTracks();//移除轨道上的动画</p>
+<p>实际案例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">self.View.EAni_m_angeSkeletonGraphic.timeScale = 1;</span><br><span class="line">self.View.EAni_m_angeSkeletonGraphic.AnimationState.SetAnimation(0, &quot;idle1&quot;, true);</span><br></pre></td></tr></table></figure>
+<p>更改为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">self.View.EAni_m_angeSkeletonGraphic.timeScale = 1;</span><br><span class="line">self.View.EAni_m_angeSkeletonGraphic.Skeleton.SetToSetupPose();</span><br><span class="line">self.View.EAni_m_angeSkeletonGraphic.AnimationState.ClearTracks();</span><br><span class="line">self.View.EAni_m_angeSkeletonGraphic.AnimationState.SetAnimation(0, &quot;idle1&quot;, true);</span><br></pre></td></tr></table></figure>
+<h1 id="spine动画显示错乱问题">Spine动画显示错乱问题</h1>
+<p>图片资源过多导致spine导出需要用到多个图集的时候，如果一个动画播放的图片在两个图集，就可能出现显示错乱的问题。</p>
+<p>原因是一个SkeletonGraphic默认只有一个Canvasenders。</p>
+<p>可以先尝试在打包设置中修改最大宽高，勾选去除X,Y轴空白区域，尽可能让资源在一张图集中如果是由于多套皮肤导致的，可以根据目录，按照文件夹分组打包。</p>
+<p>如果不能分成多文件夹可以勾选Advanced-&gt;Multiple CanvasRenders，这样单个SkeletonGraphic也可以有多个CanvasRender进行渲染</p>
+<img src="/2024/04/01/Unity-SkeletonData%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/2.png" class>
 
       
     </div>
@@ -998,110 +1083,6 @@ scribble：与canny更类似，但提取出来的信息图极为简单，如果�
 <p>多个ControlNet可以结合使用，例如openpose和depth Control Weight：决定控制效应在图片中呈现出来的强度，在多个ControlNet一起使用时很关键</p>
 <p>StartControlStep 和 EndingControlStep：影响在生图过程中什么时候加入ControlNet的影响</p>
 <h1 id="layerdiffusion插件">LayerDiffusion插件</h1>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/03/09/CS%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8BTask/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="冲击波">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="OK">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/03/09/CS%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8BTask/" class="post-title-link" itemprop="url">CS异步编程Task</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2024-03-09 21:50:40" itemprop="dateCreated datePublished" datetime="2024-03-09T21:50:40+08:00">2024-03-09</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2024-03-11 13:45:30" itemprop="dateModified" datetime="2024-03-11T13:45:30+08:00">2024-03-11</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>通过使用异步编程，你可以避免性能瓶颈并增强应用程序的总体响应能力。 但是，编写异步应用程序的传统技术可能比较复杂，使它们难以编写、调试和维护。</p>
-<p>C# 支持简化的方法，即异步编程，它利用 .NET 运行时中的异步支持。 编译器可执行开发人员曾进行的高难度工作，且应用程序保留了一个类似于同步代码的逻辑结构。 因此，你只需做一小部分工作就可以获得异步编程的所有好处。</p>
-<h2 id="异步方法易于编写">异步方法易于编写</h2>
-<p>C# 中的 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/dotnet/csharp/language-reference/keywords/async">Async</a> 和 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/dotnet/csharp/language-reference/operators/await">Await</a> 关键字是异步编程的核心。 通过这两个关键字，可以使用 .NET Framework、.NET Core 或 Windows 运行时中的资源，轻松创建异步方法（几乎与创建同步方法一样轻松）。 使用 <code>async</code> 关键字定义的异步方法简称为“异步方法”。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public async Task&lt;int&gt; GetUrlContentLengthAsync()</span><br><span class="line">&#123;</span><br><span class="line">    var client = new HttpClient();</span><br><span class="line"></span><br><span class="line">    Task&lt;string&gt; getStringTask =</span><br><span class="line">        client.GetStringAsync(&quot;https://learn.microsoft.com/dotnet&quot;);</span><br><span class="line"></span><br><span class="line">    DoIndependentWork();</span><br><span class="line"></span><br><span class="line">    string contents = await getStringTask;</span><br><span class="line"></span><br><span class="line">    return contents.Length;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void DoIndependentWork()</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(&quot;Working...&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>该例子包含 <code>async</code> 修饰符。 返回类型为 <code>Task&lt;int&gt;</code>（有关更多选项，请参阅“返回类型”部分）。 方法名称以 <code>Async</code> 结尾。 在方法的主体中，<code>GetStringAsync</code> 返回 <code>Task&lt;string&gt;</code>。 这意味着在 <code>await</code> 任务时，将获得 <code>string</code> (<code>contents</code>)。 在等待任务之前，可以通过 <code>GetStringAsync</code> 执行不依赖于 <code>string</code> 的工作。</p>
-<p>密切注意 <code>await</code> 运算符。 它会暂停 <code>GetUrlContentLengthAsync</code>：</p>
-<ul>
-<li>在 <code>getStringTask</code> 完成之前，<code>GetUrlContentLengthAsync</code> 无法继续。</li>
-<li>同时，控件返回至 <code>GetUrlContentLengthAsync</code> 的调用方。</li>
-<li>当 <code>getStringTask</code> 完成时，控件将在此处继续。</li>
-<li>然后，<code>await</code> 运算符会从 <code>getStringTask</code> 检索 <code>string</code> 结果。</li>
-</ul>
-<p>return 语句指定整数结果。 任何等待 <code>GetUrlContentLengthAsync</code> 的方法都会检索长度值。</p>
-<p>如果 <code>GetUrlContentLengthAsync</code> 在调用 <code>GetStringAsync</code> 和等待其完成期间不能进行任何工作，则你可以通过在下面的单个语句中调用和等待来简化代码。</p>
-<p>C#复制</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span> contents = <span class="keyword">await</span> client.GetStringAsync(<span class="string">&quot;https://learn.microsoft.com/dotnet&quot;</span>);</span><br></pre></td></tr></table></figure>
-<h2 id="asyncawait的关键点总结">Async/Await的关键点总结</h2>
-<p>代替过于底层和繁杂的thread</p>
-<ul>
-<li><p>Async是C#的修饰符，可以用来修饰method或者expression，用来声明一个异步的method或者expression</p></li>
-<li><p>一个异步的method仅支持以下返回值：</p></li>
-<li><ul>
-<li>Task</li>
-<li>Task<TResult> // 泛型</TResult></li>
-<li>void // 定义void返回仅仅是为了跟普通函数保持兼容</li>
-<li>任何包含可访问GetAwaiter()方法的类型（从C# 7.0开始支持）</li>
-</ul></li>
-<li><p>Async方法在执行的时候，开始是以同步的方式执行（即在调用方的thread里跑的），直到遇到await关键字，从await关键字开始，C#会另起一个thread来执行await后面的代码。</p></li>
-<li><p>如果Async方法里面的代码没有包含await的代码会怎么样？那整个函数就会同步执行，跟普通函数没差别。编译器也会给你个警告。</p></li>
-</ul>
-<h2 id="异步编程简介">异步编程简介</h2>
-<p>异步编程的核心是 Task 和 Task<T> 对象，这两个对象对异步操作建模。 它们受关键字 async 和 await 的支持。 在大多数情况下模型十分简单：</T></p>
-<p>对于 I/O 绑定代码，等待一个在 async 方法中返回 Task 或 Task<T> 的操作。</T></p>
 
       
     </div>
