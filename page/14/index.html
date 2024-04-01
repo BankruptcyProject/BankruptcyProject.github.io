@@ -192,7 +192,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2024-04-01 11:00:08" itemprop="dateModified" datetime="2024-04-01T11:00:08+08:00">2024-04-01</time>
+        <time title="Modified: 2024-04-01 16:59:58" itemprop="dateModified" datetime="2024-04-01T16:59:58+08:00">2024-04-01</time>
       </span>
 
   
@@ -275,6 +275,11 @@
 <p>拖尾长度由lifetime决定（0~0.1），代表占 <strong>粒子生命周期Start lifetime</strong> 的比例。例如Startlifetime=5s，lifetime=0.1，则拖尾长度为粒子0.5s内走过的距离。</p>
 <p>因为拖尾贴图和粒子本身贴图有重合，因此可以把拖尾的颜色开头部分设置为透明</p>
 <p>继承粒子颜色和生命周期内颜色定义颜色A，拖尾颜色定义颜色B，拖尾最终呈现颜色为A*B</p>
+<h1 id="texture-sheet-animation纹理表格动画子模块">Texture Sheet Animation（纹理表格动画）子模块</h1>
+<p>将Renderer模块中的材质切分成多块，播放。</p>
+<p>一般用于制作火焰效果。此时一般关闭发射器形状，设置预热和循环，速度为零，发射间隔根据粒子生存时间调整（例如粒子生存5s，则发射速率为0.2，此时粒子消失后下一个粒子刚好出现）</p>
+<img src="/2022/03/06/unity%E7%B2%92%E5%AD%90%E7%B3%BB%E7%BB%9F/2.tif" class>
+<p>由上面图片制作的材质需要网格形式8*8切分，切出来的64帧会在一个粒子周期内播放 X 轮（默认1轮 Cycle参数）</p>
 
       
     </div>
