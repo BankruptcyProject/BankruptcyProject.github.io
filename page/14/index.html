@@ -192,7 +192,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2024-04-01 16:59:58" itemprop="dateModified" datetime="2024-04-01T16:59:58+08:00">2024-04-01</time>
+        <time title="Modified: 2024-04-02 11:39:58" itemprop="dateModified" datetime="2024-04-02T11:39:58+08:00">2024-04-02</time>
       </span>
 
   
@@ -208,6 +208,7 @@
           <h1 id="particle-system-组件">Particle System 组件</h1>
 <p>包含1个主模块和22个子模块(可隐藏)</p>
 <p><strong>粒子系统</strong>由<strong>粒子</strong>和<strong>发射器</strong>组成，发射器创建并发射粒子</p>
+<p>为了同时预览多个粒子组合效果，需要将多个粒子挂载在同一个父粒子身上，此时父粒子一般不启用发射模块</p>
 <h2 id="主模块">主模块</h2>
 <p>起始速度、起始大小、起始颜色等参数 可以在右边下拉栏中 切换成随机大小并设置随机区间或曲线</p>
 <p>预热参数代表 在摄像头观察前先工作一周期</p>
@@ -280,6 +281,38 @@
 <p>一般用于制作火焰效果。此时一般关闭发射器形状，设置预热和循环，速度为零，发射间隔根据粒子生存时间调整（例如粒子生存5s，则发射速率为0.2，此时粒子消失后下一个粒子刚好出现）</p>
 <img src="/2022/03/06/unity%E7%B2%92%E5%AD%90%E7%B3%BB%E7%BB%9F/2.tif" class>
 <p>由上面图片制作的材质需要网格形式8*8切分，切出来的64帧会在一个粒子周期内播放 X 轮（默认1轮 Cycle参数）</p>
+<h1 id="light灯光子模块">Light（灯光）子模块</h1>
+<p>让发射的粒子携带一个光源</p>
+<ul>
+<li>Light选择点光源<br>
+</li>
+<li>Ratio 比例，例如0.1表示有10%的粒子会携带一个光源 - Use Particle Color，使用粒子的颜色作为灯光颜色<br>
+</li>
+<li>Range / Intensity Mulitiplier，范围因子/强度因子<br>
+</li>
+<li>Max Lights，光源的最大数量</li>
+</ul>
+<h1 id="sub-emission二级发射器子模块">Sub Emission（二级发射器）子模块</h1>
+<p>二级粒子最好作为一级粒子的子节点，以便预览</p>
+<p>其中， 什么时候发射二级粒子发射器? 当一级粒子死亡(Death )时,创建二级发射器 在一级粒子死亡的位置，创建二级粒子发射器 当Emit Probability = 1时，表示100%创建二级发生器。</p>
+<p>二级粒子的发射时机:<br>
+Birth ，当一级粒子创建时<br>
+Death ，当一级粒子死亡时<br>
+Collision ，当一级粒子与其他物体发生碰撞时<br>
+其中大多数时候二级粒子发射方式必须使用爆发模式</p>
+<h1 id="collison碰撞子模块">Collison（碰撞）子模块</h1>
+<p>Collision模块，检测粒子与其他物体的碰撞。</p>
+<p>粒子的碰撞检测，有两种类型: - Planes ，检测与目标平面之间的碰撞 - World，检测与世界中物体之间的碰撞( collider ) 其中，Planes方式的碰撞检测效率更高。</p>
+<p>Planes,指定碰撞平面。所在位置添加一个碰撞平面，确定位置后，应将它隐藏<br>
+当指定为 World 时，目标物体应该添加Collider，用Layer来细化要碰撞的目标，尽量减少碰撞的范围</p>
+<p>Dampen ，速度的衰减，o不衰减/1则100%衰减<br>
+Bounce，粒子在碰撞时弹跳的力度<br>
+Lifetime Loss ，生命时长的损失</p>
+<p>粒子碰撞时，会调用一个事件函数OnParticleCollision<br>
+添加 SimpleLogic脚本，挂在粒子上<br>
+添加事件函数onParticleCollision<br>
+勾选 Send Collision Message<br>
+粒子事件无法预览</p>
 
       
     </div>
