@@ -318,7 +318,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2024-04-02 14:47:39 / Modified: 16:33:04" itemprop="dateCreated datePublished" datetime="2024-04-02T14:47:39+08:00">2024-04-02</time>
+      <time title="Created: 2024-04-02 14:47:39 / Modified: 18:01:13" itemprop="dateCreated datePublished" datetime="2024-04-02T14:47:39+08:00">2024-04-02</time>
     </span>
 
   
@@ -331,13 +331,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="常用标记">常用标记</h1>
+          <h1 id="简单的自定义inspector窗口">简单的自定义Inspector窗口</h1>
+<p><strong>常用标记</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">[SerializeField]</span><br><span class="line">private int Number;</span><br><span class="line"></span><br><span class="line">[Range(0, 1)]//滑动条</span><br><span class="line">public float MyFloat;</span><br><span class="line"></span><br><span class="line">[Header(&quot;This is the Name&quot;)]//标题</span><br><span class="line">public string Name = &quot;大壮&quot;;</span><br><span class="line"></span><br><span class="line">[Tooltip(&quot;物体宽度&quot;)]//鼠标悬停时出现的提示</span><br><span class="line">public float width;</span><br><span class="line"></span><br><span class="line">[Space(30)]//控制上下两个属性之间的间隔</span><br><span class="line">[TextArea(5, 10)]//文本框大小，参数是最小行数和最大行数</span><br><span class="line">public string Content = &quot;&quot;;</span><br><span class="line"></span><br><span class="line">[HideInInspector]//隐藏</span><br><span class="line">public string Str = &quot;test string&quot;;</span><br></pre></td></tr></table></figure>
-<h1 id="简单的自定义inspector窗口">简单的自定义Inspector窗口</h1>
 <p>需要拓展Editor类，并且最好将类放到Editor文件夹下，Editor文件夹下的资源在游戏最终打包过程不会被打包进项目。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">using UnityEditor;</span><br><span class="line"></span><br><span class="line">[CustomEditor(typeof(TestScriptBE))]//该标记用于声明为哪个脚本进行Inspector拓展</span><br><span class="line">public class EditorTestScriptBE : Editor</span><br><span class="line">&#123;</span><br><span class="line">    private Texture2D texture;</span><br><span class="line">    public override void OnInspectorGUI()</span><br><span class="line">    &#123;</span><br><span class="line">        base.OnInspectorGUI();//显示TestScriptBE脚本的属性</span><br><span class="line">        texture = EditorGUILayout.ObjectField(texture, typeof(Texture2D)) as Textture2D;</span><br><span class="line">        //新增一个获取图片的操作框</span><br><span class="line">        if(GUILayout.Button(&quot;Test Button&quot;, GUILayout.Height(30)))//新增一个按钮，并设置高度</span><br><span class="line">        &#123;</span><br><span class="line">            if (texture != null)</span><br><span class="line">                Debug.Log(texture.name);</span><br><span class="line">        &#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这类编辑器拓展来自于IMGUI，较为落后与混乱</p>
 <h1 id="ui-toolkit">UI Toolkit</h1>
+<p>包含UI Elements, UI Builder, Features。在2021版本后被集成进Unity。</p>
+<p>在项目管理窗口的Editor文件夹下创建UI Toolkit/Editor Window</p>
 
       
     </div>
