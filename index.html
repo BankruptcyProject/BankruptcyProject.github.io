@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">197</span>
+          <span class="site-state-item-count">199</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -200,6 +200,144 @@
     
     <div class="post-body" itemprop="articleBody">
           <img src="/2024/03/25/%E9%A6%96%E9%A1%B5/1.jpg" class>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/04/02/unity-%E4%BF%AE%E6%94%B9%E7%BC%96%E8%BE%91%E5%99%A8%E7%AA%97%E5%8F%A3%E6%A0%87%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="冲击波">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="OK">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/04/02/unity-%E4%BF%AE%E6%94%B9%E7%BC%96%E8%BE%91%E5%99%A8%E7%AA%97%E5%8F%A3%E6%A0%87%E9%A2%98/" class="post-title-link" itemprop="url">unity 修改编辑器窗口标题</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2024-04-02 17:15:38 / Modified: 17:18:07" itemprop="dateCreated datePublished" datetime="2024-04-02T17:15:38+08:00">2024-04-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>用Unity开多个相同工程时，Untiy编辑器的窗口不能迅速区分开是哪个工程，使用user32.dll的接口修改窗口名。</p>
+<p>在Editor文件夹下导入一下脚本，关联窗口名与项目路径</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br></pre></td><td class="code"><pre><span class="line">using System;</span><br><span class="line">using System.Diagnostics;</span><br><span class="line">using System.Runtime.InteropServices;</span><br><span class="line">using System.Text;</span><br><span class="line">using UnityEngine;</span><br><span class="line">using UnityEditor;</span><br><span class="line"></span><br><span class="line">namespace NF</span><br><span class="line">&#123;</span><br><span class="line">    //声明要调用的系统接口</span><br><span class="line">    public partial class UpdateUnityEditorProcess</span><br><span class="line">    &#123;</span><br><span class="line">        public delegate bool EnumThreadWindowsCallback(IntPtr hWnd, IntPtr lParam);</span><br><span class="line"></span><br><span class="line">        [DllImport(&quot;user32.dll&quot;, CharSet = CharSet.Auto, SetLastError = true)]</span><br><span class="line">        public static extern bool EnumWindows(EnumThreadWindowsCallback callback, IntPtr extraData);</span><br><span class="line">        [DllImport(&quot;user32.dll&quot;, CharSet = CharSet.Auto, SetLastError = true)]</span><br><span class="line">        public static extern int GetWindowThreadProcessId(HandleRef handle, out int processId);</span><br><span class="line"></span><br><span class="line">        [DllImport(&quot;user32.dll&quot;, CharSet = CharSet.Auto, ExactSpelling = true)]</span><br><span class="line">        public static extern IntPtr GetWindow(HandleRef hWnd, int uCmd);</span><br><span class="line"></span><br><span class="line">        [DllImport(&quot;user32.dll&quot;, CharSet = CharSet.Auto)]</span><br><span class="line">        public static extern bool IsWindowVisible(HandleRef hWnd);</span><br><span class="line"></span><br><span class="line">        [DllImport(&quot;user32.dll&quot;, CharSet = CharSet.Auto)]</span><br><span class="line">        public static extern IntPtr GetParent(IntPtr hWnd);</span><br><span class="line"></span><br><span class="line">        [DllImport(&quot;user32.dll&quot;)]</span><br><span class="line">        private static extern bool GetWindowText(int hWnd, StringBuilder title, int maxBufSize);</span><br><span class="line"></span><br><span class="line">        [DllImport(&quot;user32.dll&quot;, CharSet = CharSet.Auto)]</span><br><span class="line">        private extern static int GetWindowTextLength(IntPtr hWnd);</span><br><span class="line"></span><br><span class="line">        [DllImport(&quot;user32.dll&quot;, EntryPoint = &quot;SetWindowText&quot;, CharSet = CharSet.Auto)] </span><br><span class="line">        public extern static int SetWindowText(int hwnd, string lpString);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //工具类</span><br><span class="line">    public partial class UpdateUnityEditorProcess</span><br><span class="line">    &#123;</span><br><span class="line">        public IntPtr hwnd = IntPtr.Zero;</span><br><span class="line">        private bool haveMainWindow = false;</span><br><span class="line">        private IntPtr mainWindowHandle = IntPtr.Zero;</span><br><span class="line">        private int processId = 0;</span><br><span class="line">        private IntPtr hwCurr = IntPtr.Zero;</span><br><span class="line">        private static StringBuilder sbtitle = new StringBuilder(255);</span><br><span class="line">        private static string ProjectName = &quot;&quot;;</span><br><span class="line">        private static string ProjectPath = &quot;&quot;;</span><br><span class="line">        public static float lasttime = 0;</span><br><span class="line"></span><br><span class="line">        private static UpdateUnityEditorProcess _instance;</span><br><span class="line">        public static UpdateUnityEditorProcess Instance//具体修改窗口名的地方</span><br><span class="line">        &#123;</span><br><span class="line">            get</span><br><span class="line">            &#123;</span><br><span class="line">                if (_instance == null)</span><br><span class="line">                &#123;</span><br><span class="line">                    _instance = new UpdateUnityEditorProcess();</span><br><span class="line">                    _instance.hwnd = _instance.GetMainWindowHandle(Process.GetCurrentProcess().Id);</span><br><span class="line">                    var strArr = Application.dataPath.Split(&quot;/&quot;);</span><br><span class="line">                    ProjectName = strArr[strArr.Length - 2];</span><br><span class="line">                    ProjectPath = Application.dataPath.Replace(&quot;/Assets&quot;, &quot;&quot;);</span><br><span class="line">                &#125;</span><br><span class="line">                return _instance;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        public void SetTitle()</span><br><span class="line">        &#123;</span><br><span class="line"></span><br><span class="line">            lasttime = 0;</span><br><span class="line">            if (Time.realtimeSinceStartup &gt; lasttime)</span><br><span class="line">            &#123;</span><br><span class="line">                sbtitle.Length = 0;</span><br><span class="line">                lasttime = Time.realtimeSinceStartup + 2f;</span><br><span class="line">                int length = GetWindowTextLength(hwnd);</span><br><span class="line">                hwnd = _instance.hwnd;</span><br><span class="line">                GetWindowText(hwnd.ToInt32(), sbtitle, 255);</span><br><span class="line">                string strTitle = sbtitle.ToString();</span><br><span class="line">                string[] ss = strTitle.Split(&#x27;-&#x27;);</span><br><span class="line">                if (ss.Length &gt; 0 &amp;&amp; !strTitle.Contains(ProjectPath))</span><br><span class="line">                &#123;</span><br><span class="line">                    SetWindowText(hwnd.ToInt32(), strTitle.Replace(ProjectName, ProjectPath));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        public IntPtr GetMainWindowHandle(int processId)</span><br><span class="line">        &#123;</span><br><span class="line">            if (!this.haveMainWindow)</span><br><span class="line">            &#123;</span><br><span class="line">                this.mainWindowHandle = IntPtr.Zero;</span><br><span class="line">                this.processId = processId;</span><br><span class="line">                EnumThreadWindowsCallback callback = new EnumThreadWindowsCallback(this.EnumWindowsCallback);</span><br><span class="line">                EnumWindows(callback, IntPtr.Zero);</span><br><span class="line">                GC.KeepAlive(callback);</span><br><span class="line">                this.haveMainWindow = true;</span><br><span class="line">            &#125;</span><br><span class="line">            return this.mainWindowHandle;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        private bool EnumWindowsCallback(IntPtr handle, IntPtr extraParameter)</span><br><span class="line">        &#123;</span><br><span class="line">            int num;</span><br><span class="line">            GetWindowThreadProcessId(new HandleRef(this, handle), out num);</span><br><span class="line">            if ((num == this.processId) &amp;&amp; this.IsMainWindow(handle))</span><br><span class="line">            &#123;</span><br><span class="line">                this.mainWindowHandle = handle;</span><br><span class="line">            &#125;</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        private bool IsMainWindow(IntPtr handle)</span><br><span class="line">        &#123;</span><br><span class="line"></span><br><span class="line">            return (GetParent(handle) == IntPtr.Zero &amp;&amp; !(GetWindow(new HandleRef(this, handle), 4) != IntPtr.Zero) &amp;&amp; IsWindowVisible(new HandleRef(this, handle)));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //Editor 回调设置</span><br><span class="line">#if UNITY_EDITOR_WIN</span><br><span class="line"></span><br><span class="line">    [InitializeOnLoad]</span><br><span class="line">    class UpdateUnityEditorTitle</span><br><span class="line">    &#123;</span><br><span class="line">        private static bool isInGame = false;</span><br><span class="line"></span><br><span class="line">        [System.Obsolete]</span><br><span class="line">        static UpdateUnityEditorTitle()</span><br><span class="line">        &#123;</span><br><span class="line">            EditorApplication.delayCall += DoUpdateTitleFunc;</span><br><span class="line"></span><br><span class="line">            EditorApplication.hierarchyChanged += DoUpdateTitleFunc;</span><br><span class="line"></span><br><span class="line">            EditorApplication.playmodeStateChanged += OnPlaymodeStateChanged;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        static void OnPlaymodeStateChanged()</span><br><span class="line">        &#123;</span><br><span class="line">            if (EditorApplication.isPlaying == isInGame) return;</span><br><span class="line">            isInGame = EditorApplication.isPlaying;</span><br><span class="line">            UpdateUnityEditorProcess.lasttime = 0;</span><br><span class="line">            DoUpdateTitleFunc();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        static void DoUpdateTitleFunc()</span><br><span class="line">        &#123;</span><br><span class="line">            UpdateUnityEditorProcess.lasttime = 0;</span><br><span class="line">            UpdateUnityEditorProcess.Instance.SetTitle();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">#endif</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/04/02/Unity-Editor%E6%8B%93%E5%B1%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="冲击波">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="OK">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/04/02/Unity-Editor%E6%8B%93%E5%B1%95/" class="post-title-link" itemprop="url">Unity Editor拓展</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2024-04-02 14:47:39 / Modified: 16:33:04" itemprop="dateCreated datePublished" datetime="2024-04-02T14:47:39+08:00">2024-04-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="常用标记">常用标记</h1>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">[SerializeField]</span><br><span class="line">private int Number;</span><br><span class="line"></span><br><span class="line">[Range(0, 1)]//滑动条</span><br><span class="line">public float MyFloat;</span><br><span class="line"></span><br><span class="line">[Header(&quot;This is the Name&quot;)]//标题</span><br><span class="line">public string Name = &quot;大壮&quot;;</span><br><span class="line"></span><br><span class="line">[Tooltip(&quot;物体宽度&quot;)]//鼠标悬停时出现的提示</span><br><span class="line">public float width;</span><br><span class="line"></span><br><span class="line">[Space(30)]//控制上下两个属性之间的间隔</span><br><span class="line">[TextArea(5, 10)]//文本框大小，参数是最小行数和最大行数</span><br><span class="line">public string Content = &quot;&quot;;</span><br><span class="line"></span><br><span class="line">[HideInInspector]//隐藏</span><br><span class="line">public string Str = &quot;test string&quot;;</span><br></pre></td></tr></table></figure>
+<h1 id="简单的自定义inspector窗口">简单的自定义Inspector窗口</h1>
+<p>需要拓展Editor类，并且最好将类放到Editor文件夹下，Editor文件夹下的资源在游戏最终打包过程不会被打包进项目。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">using UnityEditor;</span><br><span class="line"></span><br><span class="line">[CustomEditor(typeof(TestScriptBE))]//该标记用于声明为哪个脚本进行Inspector拓展</span><br><span class="line">public class EditorTestScriptBE : Editor</span><br><span class="line">&#123;</span><br><span class="line">    private Texture2D texture;</span><br><span class="line">    public override void OnInspectorGUI()</span><br><span class="line">    &#123;</span><br><span class="line">        base.OnInspectorGUI();//显示TestScriptBE脚本的属性</span><br><span class="line">        texture = EditorGUILayout.ObjectField(texture, typeof(Texture2D)) as Textture2D;</span><br><span class="line">        //新增一个获取图片的操作框</span><br><span class="line">        if(GUILayout.Button(&quot;Test Button&quot;, GUILayout.Height(30)))//新增一个按钮，并设置高度</span><br><span class="line">        &#123;</span><br><span class="line">            if (texture != null)</span><br><span class="line">                Debug.Log(texture.name);</span><br><span class="line">        &#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这类编辑器拓展来自于IMGUI，较为落后与混乱</p>
+<h1 id="ui-toolkit">UI Toolkit</h1>
 
       
     </div>
@@ -872,217 +1010,6 @@ maxSize</p>
 <h1 id="注">注</h1>
 <p>Entity a;</p>
 <p>a.uitransform.SetVisibale();</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/03/12/FairyGUI/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="冲击波">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="OK">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/03/12/FairyGUI/" class="post-title-link" itemprop="url">FairyGUI</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2024-03-12 22:57:25" itemprop="dateCreated datePublished" datetime="2024-03-12T22:57:25+08:00">2024-03-12</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2024-03-13 21:56:56" itemprop="dateModified" datetime="2024-03-13T21:56:56+08:00">2024-03-13</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/03/11/Stable-Diffusion/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="冲击波">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="OK">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/03/11/Stable-Diffusion/" class="post-title-link" itemprop="url">Stable Diffusion</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2024-03-11 22:20:32" itemprop="dateCreated datePublished" datetime="2024-03-11T22:20:32+08:00">2024-03-11</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2024-03-21 20:33:28" itemprop="dateModified" datetime="2024-03-21T20:33:28+08:00">2024-03-21</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="stable-diffusion模型">Stable Diffusion模型</h1>
-<p>.ckpt文件或.safetensors文件，文件较大，简称大模型</p>
-<h1 id="外挂vae模型">外挂VAE模型</h1>
-<p>.pt文件或者.safetensors文件，文件较小</p>
-<p>降噪完成后启用，多在颜色和整体滤镜上起作用。</p>
-<p>许多大模型会以及将其包括在内，不需要外挂VAE；另一些则需要外挂VAE</p>
-<p>大模型介绍中一般会提示推荐适配的外挂VAE模型</p>
-<p>选 自动 则会选择与大模型相同名称的外挂VAE模型，如果在本地找不到则为无</p>
-<h1 id="文生图">文生图</h1>
-<p><strong>采样步数（迭代次数）</strong><br>
-不需要太大，一般在50以内。通常28是一个不错的值。<br>
-扩散模型的工作方式是从随机高斯噪声向符合提示的图像迈出小步。这样的步骤应该有多少个。<br>
-更多的步骤意味着从噪声到图像的更小、更精确的步骤。增加这一点直接增加了生成图像所需的时间。</p>
-<p>回报递减，取决于采样器。</p>
-<p><strong>采样器（Sampler）</strong> 目前好用的有 <code>Euler</code>，<code>Euler a</code>（更细腻），和 <code>DDIM</code>。<br>
-推荐 <code>Euler a</code> 和 <code>DDIM</code>，<strong>新手推荐使用 <code>Euler a</code></strong><br>
-<code>Euler a</code> 富有创造力，不同步数可以生产出不同的图片。调太高步数 (&gt;30) 效果不会更好。<br>
-<code>DDIM</code> 收敛快，但效率相对较低，因为需要很多 step 才能获得好的结果，<strong>适合在重绘时候使用</strong><br>
-<code>LMS</code> 和 <code>PLMS</code> 是 <code>Euler</code> 的衍生，它们使用一种相关但稍有不同的方法（平均过去的几个步骤以提高准确性）。大概 30 step 可以得到稳定结果<br>
-<code>PLMS</code> 是一种有效的 LMS（经典方法），可以更好地处理神经网络结构中的奇异性<br>
-<code>DPM2</code> 是一种神奇的方法，它旨在改进 DDIM，减少步骤以获得良好的结果。它需要每一步运行两次去噪，它的速度大约是 DDIM 的两倍。但是如果你在进行调试提示词的实验，这个采样器效果不怎么样<br>
-<code>Euler</code> 是最简单的，因此也是最快的之一</p>
-<p><strong>提示词相关性（CFG Scale）</strong>代表你输入的 Tag 对画面的引导程度有多大，可以理解为 “越小AI越自由发挥”。太大会出现锐化、线条变粗的效果。太小AI就自由发挥了，不看 Tag。 CFG Scale（无分类指导规模）：图像与你的提示的匹配程度。增加这个值将导致图像更接近你的提示（根据模型），但它也在一定程度上降低了图像质量。可以用更多的采样步骤来抵消。</p>
-<p>Tag 里的符号<br>
-以 girl 这个 Tag 作为例子。<br>
-<code>(girl)</code> 加权重，这里是1.1倍。括号是可以叠加的，如<code>((girl))</code>加很多权重。1.1*1.1=1.21倍<br>
-<code>[girl]</code> 减权重，一般用的少。减权重也一般就用下面的指定倍数。<br>
-<code>(girl:1.5)</code> 指定倍数，这里是1.5倍的权重。还可以 <code>(girl:0.9)</code> 达到减权重的效果</p>
-<p><strong>随机种子</strong> 是生成过程中所有随机性的源头，每个种子都是一幅不一样的画。默认的 <strong>-1 是代表每次都换一个随机种子</strong>。由随机种子，生成了随机的噪声图，再交给AI进行画出来。</p>
-<p>为生成的图片进行放大<br>
-AI 基本上无法生成超级大图，想要生成高清图片正确的做法是分辨率调小，比如512x768，然后开启 “<strong>高清修复</strong>”。放大倍数请考虑自己的显存大小调整，太大会爆显存。<strong>高清修复Hires fix</strong>同时有助于出单人减少鬼图。</p>
-<p>关于<strong>高清修复Hires fix</strong>，可以看作是一种图生图，高分迭代步数为0则默认为等于迭代步数。生成图片像素过大会导致生成时间过长、内容控制难度上升、爆显存等问题，所以关闭<strong>高清修复</strong>生成图，得到满意的图片后在将其<strong>随机种子</strong>和其他参数提取出，在使用文生图开启<strong>高清修复Hires fix</strong>生成一遍</p>
-<h1 id="图生图基础使用">图生图基础使用</h1>
-<h1 id="查询图片参数">查询图片参数</h1>
-<p>AI生成图片会自动保存全部参数到原图中，可以在WebUI的 “图片信息” 一栏内通过解析原图查看到。也可以这个工具：https://spell.novelai.dev/</p>
-<p>非AI生成图片或经过压缩的图片推荐使用 WD14Tagger 来尝试反推tag。</p>
-<p>Tagger是一个插件，可以在顶栏找到。打开后拖入图片，AI会识别出一些tag。</p>
-<h1 id="embeddingstextual-inversion嵌入式向量">Embeddings/Textual Inversion/嵌入式向量</h1>
-<p>.pt文件，按kb计算大小的文件</p>
-<p>放置目录：根目录/embeddings/</p>
-<p>使用方式：在提示词中添加其 触发词</p>
-<p>在目前使用的大模型中更加准确的找到与触发词相近的东西生成。</p>
-<p>应用：人物三视图、修手、一些通用的物品</p>
-<h1 id="lora-低秩模型">LoRa 低秩模型</h1>
-<p>在生成过程中附带到大模型里的小模型，几百M的.safetensors或者.ckpt文件</p>
-<p>放置位置：根目录/models/lora/</p>
-<p>主要用于让已有的大模型绘制出 它不认识的、现实已有的新角色，用于二创</p>
-<p>触发提示词格式<code>&lt;lora:lora文件名不带后缀&gt;</code>，有的LoRa有专属的触发提示词</p>
-<p>注意：LoRa模型会对原大模型画风一定构成影响，可以减弱提示词权重<code>&lt;lora:lora文件名不带后缀:0.8&gt;</code></p>
-<h1 id="hypernetwork-超网络">Hypernetwork 超网络</h1>
-<p>类似与LoRa，但更偏向于修改大模型的画风（Q版小人、像素风等）</p>
-<p>放置位置：根目录/models/Hypernetwork/</p>
-<p>需要在SD WebUI<strong>设置</strong>中找到<strong>附加网络</strong>，添加<strong>Hypernetwork 超网络</strong>提示词，然后可以在提示词中添加</p>
-<p>注意：本功能效果不好，且有些LoRa已经取代了它的功能</p>
-<h1 id="局部重绘sketch">局部重绘Sketch</h1>
-<p><strong>重绘区域</strong>选择全图，则<strong>蒙版模糊</strong>决定了重回区域边界的柔和程度，太小会导致重回区域边界与原图违和。</p>
-<p><strong>重绘区域</strong>选择<strong>仅蒙版</strong>，则<strong>仅蒙版模式的边缘预留像素</strong>决定了重回区域边界的柔和程度，太小会导致重回区域边界与原图违和。</p>
-<h1 id="controlnet">ControlNet</h1>
-<p>根据一些额外信息控制扩散生成走向</p>
-<p>在预处理器后面有一个按钮可以将导入图片生成信息图，直接使用信息图则不需要使用预处理器</p>
-<p><strong>预处理器Annotator</strong>：从图片中提取出对ControlNet有用的额外信息<br>
-openpose（动作姿势）：控制人物姿势<br>
-depth leres++（深度、层次） ：控制人物四肢躯干前后关系，控制建筑结构<br>
-canny（提出线稿的信息图）：有两个阚值滑条控制线稿精细度、关闭预处理器可以应用于线稿上色（注意需要反色（使用inver预处理器））<br>
-linart：专门基于动漫风格的canny升级版<br>
-HED/Soft Edge：与canny类似，但信息图的线条更粗更模糊，能基于ai更多自由<br>
-scribble：与canny更类似，但提取出来的信息图极为简单，如果更改提示词可以做出例如乌龟形状的飞船的效果。同时自己创作的简笔画通过inver预处理器和scribble模型和描述词可以做到创作风景图。</p>
-<p>多个ControlNet可以结合使用，例如openpose和depth Control Weight：决定控制效应在图片中呈现出来的强度，在多个ControlNet一起使用时很关键</p>
-<p>StartControlStep 和 EndingControlStep：影响在生图过程中什么时候加入ControlNet的影响</p>
-<h1 id="layerdiffusion插件">LayerDiffusion插件</h1>
 
       
     </div>

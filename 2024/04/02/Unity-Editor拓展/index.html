@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="常用标记 123456789101112131415161718[SerializeField]private int Number;[Range(0, 1)]&#x2F;&#x2F;滑动条public float MyFloat;[Header(&quot;This is the Name&quot;)]&#x2F;&#x2F;标题public string Name &#x3D; &quot;大壮&quot;;[Tooltip(&quot;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unity Editor拓展">
+<meta property="og:url" content="http://example.com/2024/04/02/Unity-Editor%E6%8B%93%E5%B1%95/index.html">
+<meta property="og:site_name" content="OK">
+<meta property="og:description" content="常用标记 123456789101112131415161718[SerializeField]private int Number;[Range(0, 1)]&#x2F;&#x2F;滑动条public float MyFloat;[Header(&quot;This is the Name&quot;)]&#x2F;&#x2F;标题public string Name &#x3D; &quot;大壮&quot;;[Tooltip(&quot;">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-04-02T06:47:39.000Z">
+<meta property="article:modified_time" content="2024-04-02T08:33:04.824Z">
+<meta property="article:author" content="冲击波">
+<meta property="article:tag" content="unity">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2024/04/02/Unity-Editor%E6%8B%93%E5%B1%95/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2024/04/02/Unity-Editor%E6%8B%93%E5%B1%95/","path":"2024/04/02/Unity-Editor拓展/","title":"Unity Editor拓展"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Unity Editor拓展 | OK</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">OK</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%A0%87%E8%AE%B0"><span class="nav-number">1.</span> <span class="nav-text">常用标记</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E7%9A%84%E8%87%AA%E5%AE%9A%E4%B9%89inspector%E7%AA%97%E5%8F%A3"><span class="nav-number">2.</span> <span class="nav-text">简单的自定义Inspector窗口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ui-toolkit"><span class="nav-number">3.</span> <span class="nav-text">UI Toolkit</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">冲击波</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">199</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/04/02/Unity-Editor%E6%8B%93%E5%B1%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="冲击波">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="OK">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Unity Editor拓展
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2024-04-02 14:47:39 / Modified: 16:33:04" itemprop="dateCreated datePublished" datetime="2024-04-02T14:47:39+08:00">2024-04-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="常用标记">常用标记</h1>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">[SerializeField]</span><br><span class="line">private int Number;</span><br><span class="line"></span><br><span class="line">[Range(0, 1)]//滑动条</span><br><span class="line">public float MyFloat;</span><br><span class="line"></span><br><span class="line">[Header(&quot;This is the Name&quot;)]//标题</span><br><span class="line">public string Name = &quot;大壮&quot;;</span><br><span class="line"></span><br><span class="line">[Tooltip(&quot;物体宽度&quot;)]//鼠标悬停时出现的提示</span><br><span class="line">public float width;</span><br><span class="line"></span><br><span class="line">[Space(30)]//控制上下两个属性之间的间隔</span><br><span class="line">[TextArea(5, 10)]//文本框大小，参数是最小行数和最大行数</span><br><span class="line">public string Content = &quot;&quot;;</span><br><span class="line"></span><br><span class="line">[HideInInspector]//隐藏</span><br><span class="line">public string Str = &quot;test string&quot;;</span><br></pre></td></tr></table></figure>
+<h1 id="简单的自定义inspector窗口">简单的自定义Inspector窗口</h1>
+<p>需要拓展Editor类，并且最好将类放到Editor文件夹下，Editor文件夹下的资源在游戏最终打包过程不会被打包进项目。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">using UnityEditor;</span><br><span class="line"></span><br><span class="line">[CustomEditor(typeof(TestScriptBE))]//该标记用于声明为哪个脚本进行Inspector拓展</span><br><span class="line">public class EditorTestScriptBE : Editor</span><br><span class="line">&#123;</span><br><span class="line">    private Texture2D texture;</span><br><span class="line">    public override void OnInspectorGUI()</span><br><span class="line">    &#123;</span><br><span class="line">        base.OnInspectorGUI();//显示TestScriptBE脚本的属性</span><br><span class="line">        texture = EditorGUILayout.ObjectField(texture, typeof(Texture2D)) as Textture2D;</span><br><span class="line">        //新增一个获取图片的操作框</span><br><span class="line">        if(GUILayout.Button(&quot;Test Button&quot;, GUILayout.Height(30)))//新增一个按钮，并设置高度</span><br><span class="line">        &#123;</span><br><span class="line">            if (texture != null)</span><br><span class="line">                Debug.Log(texture.name);</span><br><span class="line">        &#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这类编辑器拓展来自于IMGUI，较为落后与混乱</p>
+<h1 id="ui-toolkit">UI Toolkit</h1>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/unity/" rel="tag"># unity</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/04/01/Unity-SkeletonData%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/" rel="prev" title="Unity SkeletonData相关问题">
+                  <i class="fa fa-chevron-left"></i> Unity SkeletonData相关问题
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/04/02/unity-%E4%BF%AE%E6%94%B9%E7%BC%96%E8%BE%91%E5%99%A8%E7%AA%97%E5%8F%A3%E6%A0%87%E9%A2%98/" rel="next" title="unity 修改编辑器窗口标题">
+                  unity 修改编辑器窗口标题 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">冲击波</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">197</span>
+          <span class="site-state-item-count">199</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,147 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/09/%E6%A1%88%E4%BE%8B-%E6%89%93%E9%A3%9E%E6%9C%BA3D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="冲击波">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="OK">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/05/09/%E6%A1%88%E4%BE%8B-%E6%89%93%E9%A3%9E%E6%9C%BA3D/" class="post-title-link" itemprop="url">案例-打飞机3D</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2023-05-09 17:16:49 / Modified: 17:43:23" itemprop="dateCreated datePublished" datetime="2023-05-09T17:16:49+08:00">2023-05-09</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <img src="/2023/05/09/%E6%A1%88%E4%BE%8B-%E6%89%93%E9%A3%9E%E6%9C%BA3D/1.png" class>
+<p>比起我做的第一个案例——2D打飞机简介很多</p>
+<p>它用的是unity的坐标轴输入驱动飞机移动和刚体运动驱动子弹</p>
+<p>有巧妙的方式防止飞机越界</p>
+<p>增加了敌人生成点而不啥把生成敌人功能放在游戏主控下</p>
+<p>第一次使用3D天空盒，是一个挂在摄像机下的组件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">public class PlayerControl : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    public GameObject BulletPre;</span><br><span class="line">    private Transform firePoint;</span><br><span class="line">    private void Start()</span><br><span class="line">    &#123;</span><br><span class="line">        firePoint = transform.Find(&quot;FirePoint&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    void Update()</span><br><span class="line">    &#123;</span><br><span class="line">        float vertical = Input.GetAxis(&quot;Vertical&quot;);</span><br><span class="line">        float horizontal = Input.GetAxis(&quot;Horizontal&quot;);</span><br><span class="line">        if (horizontal != 0 || vertical != 0)</span><br><span class="line">        &#123;</span><br><span class="line">            transform.position -= Vector3.left * 10f * Time.deltaTime * horizontal;</span><br><span class="line">            if (transform.position.x &lt; -10 || transform.position.x &gt; 10)</span><br><span class="line">            &#123;</span><br><span class="line">                transform.position += Vector3.left * 10f * Time.deltaTime * horizontal;</span><br><span class="line">            &#125;</span><br><span class="line">            transform.position += Vector3.up * 10f * Time.deltaTime * vertical;</span><br><span class="line">            if (transform.position.y &lt; -10 || transform.position.y &gt; 10)</span><br><span class="line">            &#123;</span><br><span class="line">                transform.position -= Vector3.up * 10f * Time.deltaTime * vertical;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if (Input.GetKeyDown(KeyCode.Space))</span><br><span class="line">        &#123;</span><br><span class="line">            Instantiate(BulletPre, firePoint.position, firePoint.rotation);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    private void OnCollisionEnter(Collision collision)</span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log(&quot;游戏结束&quot;);</span><br><span class="line">        Time.timeScale = 0;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class BulletControl : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    void Start()</span><br><span class="line">    &#123;</span><br><span class="line">        Destroy(gameObject, 10f);</span><br><span class="line">        GetComponent&lt;Rigidbody&gt;().velocity = Vector3.forward * 50;</span><br><span class="line">    &#125;</span><br><span class="line">    private void OnTriggerEnter(Collider other)</span><br><span class="line">    &#123;</span><br><span class="line">        Destroy(gameObject);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/09/%E6%A1%88%E4%BE%8B-%E7%82%B9%E4%BA%AE%E5%92%8C%E7%86%84%E7%81%AD%E8%9C%A1%E7%83%9B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="冲击波">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="OK">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/05/09/%E6%A1%88%E4%BE%8B-%E7%82%B9%E4%BA%AE%E5%92%8C%E7%86%84%E7%81%AD%E8%9C%A1%E7%83%9B/" class="post-title-link" itemprop="url">案例 点亮和熄灭蜡烛</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2023-05-09 14:57:47 / Modified: 15:29:54" itemprop="dateCreated datePublished" datetime="2023-05-09T14:57:47+08:00">2023-05-09</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <img src="/2023/05/09/%E6%A1%88%E4%BE%8B-%E7%82%B9%E4%BA%AE%E5%92%8C%E7%86%84%E7%81%AD%E8%9C%A1%E7%83%9B/1.png" class>
+<p>测试射线用法</p>
+<p>为所有蜡烛添加上碰撞器和标签，蜡烛的子物体是火苗例子</p>
+<p>鼠标点击画面上的蜡烛，使得燃起的火苗熄灭/熄灭的火苗燃起</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">void Update()</span><br><span class="line">&#123;</span><br><span class="line">    if(Input.GetMouseButtonDown(0))</span><br><span class="line">    &#123;</span><br><span class="line">        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);</span><br><span class="line">        RaycastHit hit;</span><br><span class="line">        if (Physics.Raycast(ray, out hit))</span><br><span class="line">        &#123;</span><br><span class="line">            if (hit.collider.tag == &quot;Candle&quot;)</span><br><span class="line">            &#123;</span><br><span class="line">                if (hit.transform.GetChild(0).gameObject.activeSelf == true)</span><br><span class="line">                &#123;</span><br><span class="line">                    hit.transform.GetChild(0).gameObject.SetActive(false);</span><br><span class="line">                &#125;</span><br><span class="line">                else</span><br><span class="line">                &#123;</span><br><span class="line">                    hit.transform.GetChild(0).gameObject.SetActive(true);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -818,165 +959,6 @@ Resources目录下的文件不论使用与否，都会被强制打包到游戏�
 <p>更改骨骼层</p>
 <img src="/2022/12/07/Blender%E9%AA%A8%E9%AA%BC%E5%B1%82/2.png" class>
 <p>快捷键 M</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/12/01/Blender%E6%9F%94%E6%80%A7%E9%AA%A8%E9%AA%BC/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="冲击波">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="OK">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/12/01/Blender%E6%9F%94%E6%80%A7%E9%AA%A8%E9%AA%BC/" class="post-title-link" itemprop="url">Blender柔性骨骼</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-12-01 20:59:18" itemprop="dateCreated datePublished" datetime="2022-12-01T20:59:18+08:00">2022-12-01</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-12-07 17:24:46" itemprop="dateModified" datetime="2022-12-07T17:24:46+08:00">2022-12-07</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="柔性骨骼">柔性骨骼</h1>
-<p>选中一根骨骼，<strong>骨骼属性|柔性骨骼|段数</strong></p>
-<img src="/2022/12/01/Blender%E6%9F%94%E6%80%A7%E9%AA%A8%E9%AA%BC/1.png" class>
-<p>段数为1时，刚性骨骼<br>
-段数大于1时，柔性骨骼</p>
-<p>将<strong>骨骼</strong>的<strong>视图显示</strong>用<strong>柔性骨骼</strong>，可以观看到柔性骨骼的弯曲效果。</p>
-<h1 id="自定义控制骨骼">自定义控制骨骼</h1>
-<p>柔性骨骼被一条看不见的曲线控制</p>
-<p>在柔性骨骼的两个端点延伸出两个控制骨骼作为控制柄<br>
-<img src="/2022/12/01/Blender%E6%9F%94%E6%80%A7%E9%AA%A8%E9%AA%BC/2.png" class></p>
-<p>在柔性骨骼中设置控制柄 <img src="/2022/12/01/Blender%E6%9F%94%E6%80%A7%E9%AA%A8%E9%AA%BC/3.png" class></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/12/01/Blender%E9%AA%A8%E9%AA%BC%E8%BF%BD%E8%B8%AA%E7%BA%A6%E6%9D%9F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="冲击波">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="OK">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/12/01/Blender%E9%AA%A8%E9%AA%BC%E8%BF%BD%E8%B8%AA%E7%BA%A6%E6%9D%9F/" class="post-title-link" itemprop="url">Blender骨骼追踪约束</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-12-01 15:22:52 / Modified: 16:14:36" itemprop="dateCreated datePublished" datetime="2022-12-01T15:22:52+08:00">2022-12-01</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="锁定追踪约束">锁定追踪约束</h1>
-<p>使物体始终对齐目标 <img src="/2022/12/01/Blender%E9%AA%A8%E9%AA%BC%E8%BF%BD%E8%B8%AA%E7%BA%A6%E6%9D%9F/1.png" class></p>
-<h1 id="样条线ik约束">样条线IK约束</h1>
-<p>Spline IK约束<br>
-使得骨架快速对齐曲线<br>
-<img src="/2022/12/01/Blender%E9%AA%A8%E9%AA%BC%E8%BF%BD%E8%B8%AA%E7%BA%A6%E6%9D%9F/3.png" class><br>
-<strong>姿态模式</strong>下，对<strong>末端骨骼</strong>，添加<strong>样条线IK约束</strong><br>
-<img src="/2022/12/01/Blender%E9%AA%A8%E9%AA%BC%E8%BF%BD%E8%B8%AA%E7%BA%A6%E6%9D%9F/2.png" class><br>
-<strong>目标</strong>选择曲线<br>
-设置<strong>链长</strong><br>
-勾选 <strong>适配曲线</strong> 则拉伸每条骨骼至填满曲线</p>
-<p>应用：<br>
-在姿态模式下全选骨骼<br>
-<img src="/2022/12/01/Blender%E9%AA%A8%E9%AA%BC%E8%BF%BD%E8%B8%AA%E7%BA%A6%E6%9D%9F/4.png" class> 随后就可以删除Spline IK</p>
 
       
     </div>
