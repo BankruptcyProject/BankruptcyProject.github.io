@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">198</span>
+          <span class="site-state-item-count">199</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -200,6 +200,91 @@
     
     <div class="post-body" itemprop="articleBody">
           <img src="/2024/03/25/%E9%A6%96%E9%A1%B5/1.jpg" class>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/04/03/EUI-%E5%BE%AA%E7%8E%AF%E5%88%97%E8%A1%A8%E9%A1%B9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="冲击波">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="OK">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/04/03/EUI-%E5%BE%AA%E7%8E%AF%E5%88%97%E8%A1%A8%E9%A1%B9/" class="post-title-link" itemprop="url">EUI 循环列表项</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2024-04-03 10:03:06 / Modified: 11:47:16" itemprop="dateCreated datePublished" datetime="2024-04-03T10:03:06+08:00">2024-04-03</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="创建循环列表eloopscrolllist_test">创建循环列表ELoopScrollList_Test</h1>
+<p>在DlgRank窗口下添加循环列表ELoopScrollList_Test</p>
+<p>DlgRank节点，右键EUI/循环列表，重命名，SpwanEUICode</p>
+<img src="/2024/04/03/EUI-%E5%BE%AA%E7%8E%AF%E5%88%97%E8%A1%A8%E9%A1%B9/1.png" class>
+<p>ELoopScrollList_Test节点的Loop Vertical Scroll Rect组件规定 列表项 的预制体、数量、滑动速度和方式</p>
+<img src="/2024/04/03/EUI-%E5%BE%AA%E7%8E%AF%E5%88%97%E8%A1%A8%E9%A1%B9/2.png" class>
+<p>Content节点下将会自动创建 列表项 作为子节点，通过组件LayoutGroup规矩子节点静态排列方式</p>
+<img src="/2024/04/03/EUI-%E5%BE%AA%E7%8E%AF%E5%88%97%E8%A1%A8%E9%A1%B9/3.png" class>
+<p>列表项 预制体命名必须以Item开头，例如Item_Test 或 Item_Rank。<br>
+列表项 预制体的需要添加Layout Element组件，用于配合其父节点Content的LayoutGroup组件使用。</p>
+<h1 id="在dlgrank中添加">在DlgRank中添加</h1>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public Dictionary&lt;int, Scroll_Item_Test&gt; TestDic = new Dictionary&lt;int, Scroll_Item_Test&gt;();</span><br><span class="line">//创建字典格式</span><br><span class="line">//其中Scroll_Item_Test类型在SpawnEUICode中自动生成</span><br></pre></td></tr></table></figure>
+<h1 id="在dlgranksystem中添加">在DlgRankSystem中添加</h1>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">public static async void ShowWindow(this DlgRank self, Entity contextData = null)//一般在ShowWindow中添加监听</span><br><span class="line">&#123;</span><br><span class="line">	self.AddUIScrollItems(ref self.TestDic, numCount);</span><br><span class="line">	//添加字典，numCount是列表项数量</span><br><span class="line">	self.View.ELoopScrollList_TestLoopVerticalScrollRect.AddItemRefreshListener(self.OnTestItem);</span><br><span class="line">	//为 LoopScrollList_Test变化事件 添加 监听响应</span><br><span class="line">	self.View.ELoopScrollList_RankLoopVerticalScrollRect.SetVisible(true, numCount);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static void HideWindow(this DlgRank self)</span><br><span class="line">&#123;</span><br><span class="line">	self.RemoveUIScrollItems(ref self.TestDic);//清空</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public static void OnTestItem(this DlgRank self, Transform trans, int index)</span><br><span class="line">&#123;</span><br><span class="line">    var testItem = self.TestDic[index].BindTrans(trans);</span><br><span class="line">	//字典与列表项绑定，并返回Scroll_Item_Test类的变量用于后续显示操作</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="进阶">进阶</h1>
+<p>一个EUI循环列表项需要：</p>
+<p>在数据层添加字典<br>
+在创建/显示/刷新时添加字典、监听，并显示<br>
+在隐藏/销毁时清空字典<br>
+需要一个列表项响应函数</p>
+<p>只要满足上述条件，则不一定在ShowWindow和HideWindow中书写相关代码</p>
 
       
     </div>
@@ -316,10 +401,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2024-04-02 14:47:39 / Modified: 18:01:13" itemprop="dateCreated datePublished" datetime="2024-04-02T14:47:39+08:00">2024-04-02</time>
+      <time title="Created: 2024-04-02 14:47:39" itemprop="dateCreated datePublished" datetime="2024-04-02T14:47:39+08:00">2024-04-02</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2024-04-03 10:01:46" itemprop="dateModified" datetime="2024-04-03T10:01:46+08:00">2024-04-03</time>
+      </span>
 
   
 </div>
@@ -340,6 +431,7 @@
 <h1 id="ui-toolkit">UI Toolkit</h1>
 <p>包含UI Elements, UI Builder, Features。在2021版本后被集成进Unity。</p>
 <p>在项目管理窗口的Editor文件夹下创建UI Toolkit/Editor Window</p>
+<img src="/2024/04/02/Unity-Editor%E6%8B%93%E5%B1%95/1.png" class>
 
       
     </div>
@@ -913,105 +1005,6 @@ maxSize</p>
 <li><p>要成为同一类型的各个部分的所有分部类型定义都必须在同一程序集和同一模块（.exe 或 .dll 文件）中进行定义。 分部定义不能跨越多个模块。这些分部的文件必须在同一命名空间。</p></li>
 <li><p>类名和泛型类型参数在所有的分部类型定义中都必须匹配。 泛型类型可以是分部的。 每个分部声明都必须以相同的顺序使用相同的参数名。</p></li>
 </ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/03/13/ET6-0-EUI%E6%8D%95%E9%B1%BC%E6%9C%BA%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="冲击波">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="OK">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/03/13/ET6-0-EUI%E6%8D%95%E9%B1%BC%E6%9C%BA%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">ET6.0_EUI捕鱼机项目笔记</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2024-03-13 21:56:27" itemprop="dateCreated datePublished" datetime="2024-03-13T21:56:27+08:00">2024-03-13</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2024-03-25 21:01:26" itemprop="dateModified" datetime="2024-03-25T21:01:26+08:00">2024-03-25</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="项目结构">项目结构</h1>
-<img src="/2024/03/13/ET6-0-EUI%E6%8D%95%E9%B1%BC%E6%9C%BA%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/1.png" class>
-<p><code>项目名称\Unity\Assets\Bundles\UI\Dlg\</code>目录下放置了 主要窗口UI预制体</p>
-<p><code>项目名称\Unity\Assets\Bundles\UI\Common\</code>目录下放置了 公共UI预制体</p>
-<h1 id="创建一个窗口ui预制体所需脚本">创建一个窗口UI预制体所需脚本</h1>
-<p>例如：DlgChase预制体</p>
-<p>DlgChase.cs<br>
-<code>Unity\Codes\ModelView\Demo\UI\DlgChase</code></p>
-<p>DlgChaseSystem.cs<br>
-该脚本包括：DlgChaseSystem.class 和 DlgChaseUpdateSystem.class<br>
-<code>Unity\Codes\HotfixView\Demo\UI\DlgChase</code></p>
-<p>DlgEventHandler.cs<br>
-<code>Unity\Codes\HotfixView\Demo\UI\DlgChase\Event</code></p>
-<p>DlgChaseViewComponent.cs<br>
-<code>Unity\Codes\ModelView\Demo\UIBehaviour\DlgChase</code></p>
-<p>DlgChaseViewComponentSystem.cs<br>
-该脚本包括DlgChaseViewComponentAwakeSystem.class 和 DlgChaseViewComponentDestorySystem.class<br>
-<code>Unity\Codes\HotfixView\Demo\UIBehaviour\DlgChase</code></p>
-<p>这五个脚本有些可以通过对DlgChase预制体的SpwanEUI生成，有些需要手动添加</p>
-<p>同时需要在<code>Unity\Codes\ModelView\Module\EUI</code>的WindowId.cs中添加WindowID_Chase，其他代码会调用这个WindowID_Chase，注意查找。</p>
-<h1 id="创建一个公共预制体所需脚本">创建一个公共预制体所需脚本</h1>
-<p>举例ESRank公共预制体</p>
-<p><code>Unity\Codes\ModelView\Demo\UIBehaviour\CommonUI\ESRank.cs</code></p>
-<p><code>Unity\Codes\HotfixView\Demo\UI\Common\ESRankSystem.cs</code></p>
-<p><code>Unity\Codes\HotfixView\Demo\UIBehaviour\CommonUI\ESRankViewSystem.cs</code><br>
-该脚本包含ESRankViewAwakeSystem.class和ESRankViewDestorySystem.class</p>
-<h1 id="注">注</h1>
-<p>Entity a;</p>
-<p>a.uitransform.SetVisibale();</p>
 
       
     </div>

@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">198</span>
+          <span class="site-state-item-count">199</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,158 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/16/Blender%E4%BF%AE%E6%94%B9%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="冲击波">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="OK">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/10/16/Blender%E4%BF%AE%E6%94%B9%E5%99%A8/" class="post-title-link" itemprop="url">Blender修改器</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-10-16 21:07:14" itemprop="dateCreated datePublished" datetime="2022-10-16T21:07:14+08:00">2022-10-16</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-11-14 15:58:18" itemprop="dateModified" datetime="2022-11-14T15:58:18+08:00">2022-11-14</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="修改器">修改器</h1>
+<img src="/2022/10/16/Blender%E4%BF%AE%E6%94%B9%E5%99%A8/1.png" class>
+<img src="/2022/10/16/Blender%E4%BF%AE%E6%94%B9%E5%99%A8/2.png" class>
+<p>一系列有意义修改的合集，类似于一个函数 y = f(模型)。<br>
+可以同时存在多个修改器，有顺序关系，第二个修改器在第一个修改器的基础上做修改。<br>
+修改器在为应用时仅仅作用于物体模式，意思是它的效果仅限于美颜，只能看到物体面貌发生了改变，但实际上在编辑模式中，物体的点线面并无发生改变。</p>
+<img src="/2022/10/16/Blender%E4%BF%AE%E6%94%B9%E5%99%A8/3.png" class>
+<p>修改器的名称可以修改<br>
+开启实时才能在看到修改器效果，否则必须渲染后才能看到效果。<br>
+选择应用使得修改器的效果释放于编辑模式，修改点线面。（一般情况下不会轻易使用应用）</p>
+<p>可以理解为用“美颜”相机看效果，满意后“整容”。</p>
+<h2 id="阵列修改器">阵列修改器</h2>
+<p>阵列修改器用于批量复制物体，可以设置物体生成数量、方式、间隔等等。<br>
+相对偏移量参考物体大小，设置为1时物体刚好连接不重叠。<br>
+物体偏移通过指定第二个物体来参考偏移，可以设置物体生成的旋转和缩放。<br>
+阵列修改器在未应用之前，对一个物体的修改会同步到所有物体上。<br>
+一个阵列修改器只能生成一行东西，两个阵列修改器可以生成x行y列的东西。 <img src="/2022/10/16/Blender%E4%BF%AE%E6%94%B9%E5%99%A8/4.png" class></p>
+<h2 id="镜像修改器">镜像修改器</h2>
+<img src="/2022/10/16/Blender%E4%BF%AE%E6%94%B9%E5%99%A8/5.png" class>
+<p>需要选择一个物体作为轴心，一般选择轴向空物体。</p>
+<h2 id="布尔修改器">布尔修改器</h2>
+<img src="/2022/10/16/Blender%E4%BF%AE%E6%94%B9%E5%99%A8/6.png" class>
+<p>在布尔修改器中选择需要运算的对象</p>
+<img src="/2022/10/16/Blender%E4%BF%AE%E6%94%B9%E5%99%A8/7.png" class>
+<p>可以使运算对象 显示为线框 方便实时修改</p>
+<img src="/2022/10/16/Blender%E4%BF%AE%E6%94%B9%E5%99%A8/8.png" class>
+<img src="/2022/10/16/Blender%E4%BF%AE%E6%94%B9%E5%99%A8/9.png" class>
+<h2 id="线框修改器">线框修改器</h2>
+<img src="/2022/10/16/Blender%E4%BF%AE%E6%94%B9%E5%99%A8/10.png" class>
+<img src="/2022/10/16/Blender%E4%BF%AE%E6%94%B9%E5%99%A8/11.png" class>
+<p>利用反细分，将正方形网状结构转换为菱形网状结构。</p>
+<img src="/2022/10/16/Blender%E4%BF%AE%E6%94%B9%E5%99%A8/12.png" class>
+<h2 id="表面细分修改器">表面细分修改器</h2>
+<img src="/2022/10/16/Blender%E4%BF%AE%E6%94%B9%E5%99%A8/13.png" class>
+<p>细分和过渡。<br>
+将物体所有面进行细分，当相邻的两个面的法向不同时，调整面的法向，使得整个物体变得更圆滑细腻。<br>
+视图层级为1时，一个面分成4个面。<br>
+视图层级为2时，一个面分成16个面。</p>
+<h3 id="卡线限制表面细分修改器范围">卡线限制表面细分修改器范围</h3>
+<img src="/2022/10/16/Blender%E4%BF%AE%E6%94%B9%E5%99%A8/14.png" class>
+<p>通过卡线来限制圆滑范围 <img src="/2022/10/16/Blender%E4%BF%AE%E6%94%B9%E5%99%A8/15.png" class></p>
+<h3 id="设置边的折痕控制表面细分修改器">设置边的折痕控制表面细分修改器</h3>
+<p>折痕是边的一个属性。设置为1提醒表面细分修改器不在此做过渡，进而产生一个类似折痕的效果。 设置为0进行完全过渡。<br>
+选中边右键设置，在边的n面板中也可以设置。</p>
+<h3 id="非四边形">非四边形</h3>
+<p>非四边形（三角形或者五边形）在做面的细分时细分不规整。特别是在过渡区域（面与面夹角不为）会产生褶皱。</p>
+<h2 id="实体修改器">实体修改器</h2>
+<p>给面增加厚度。例如将矩形变成一个薄的长方体。</p>
+<h2 id="几何结点修改器">几何结点修改器</h2>
+<p>本质上是一种自定义修改器 <img src="/2022/10/16/Blender%E4%BF%AE%E6%94%B9%E5%99%A8/16.png" class></p>
+<h3 id="变换节点">变换节点</h3>
+<p>（添加，几何数据，变换）<br>
+包含位置、旋转、缩放变换。</p>
+<h3 id="在表面上分布点">在表面上分布点</h3>
+<p>（添加，点，在表面上分布点） 在物体表面上随机（可以选择随机算法为泊松随机）做出点来，输入网格输出点</p>
+<h3 id="点上实例结点">点上实例结点</h3>
+<p>（添加，实例，点上的实例）（添加，输入，物体信息） <img src="/2022/10/16/Blender%E4%BF%AE%E6%94%B9%E5%99%A8/17.png" class> 输入一个物体，获取这个物体的所有点，将所有点替换为一个实例，输出。<br>
+实例来源于另一个物体，从物体信息中选择和获得。（注：对实例的改变需要应用）</p>
+<h3 id="网格基本体输入">网格基本体输入</h3>
+<img src="/2022/10/16/Blender%E4%BF%AE%E6%94%B9%E5%99%A8/18.png" class>
+<p>（添加，网格基本体）</p>
+<h3 id="曲线基本体输入">曲线基本体输入</h3>
+<p>（添加，曲线基本体）</p>
+<h3 id="旋转实例">旋转实例</h3>
+<p>（添加，实例，旋转实例）（添加，实用工具，对齐欧拉至矢量）（添加，输入，位置） 使用旋转实例开控制实例旋转方向<br>
+这个例子实现了辐射状的旋转 <img src="/2022/10/16/Blender%E4%BF%AE%E6%94%B9%E5%99%A8/19.png" class></p>
+<h3 id="缩放实例">缩放实例</h3>
+<p>（添加，实例，缩放实例）</p>
+<h3 id="随机节点">随机节点</h3>
+<p>（添加，实用工具，随机值）</p>
+<h3 id="曲线上的实例">曲线上的实例</h3>
+<img src="/2022/10/16/Blender%E4%BF%AE%E6%94%B9%E5%99%A8/20.png" class>
+<h2 id="曲线修改器">曲线修改器</h2>
+<p>属于形变修改器，不会增加或删除顶点，只会改变顶点的位置。<br>
+网格添加曲线修改器，在修改器里添加曲线作为形变路线（注意该算法需要使得网格的原点和曲线的原点重叠），曲线n面板中控制点的半径会影响网格横截面大小，曲线n面板中控制点的倾斜程度会影响网格的扭转程度。</p>
+<h2 id="晶格修改器">晶格修改器</h2>
+<p>添加晶格来定义一个扭曲的空间<br>
+物体添加晶格修改器选择晶格，当物体进入晶格是会产生扭曲（顶点的位置发生变换）</p>
+<h2 id="简易形变修改器">简易形变修改器</h2>
+<p>Simple Deform 简易形变修改器。</p>
+<p>实现 扭曲、弯曲、锥化 等功能。</p>
+<p>弯曲需要设置一个子物体——空物体作为形变轴。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -845,83 +997,6 @@ Capsule 胶囊 Clay Bar 枕头状 Octahedron 八面体 Quadsphere 球体</p>
 <img src="/2022/10/10/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E7%93%B6%E5%AD%90/2.png" class>
 <p>侧面倒角抹平棱角，段数推荐为偶数。</p>
 <p>顶面倒角、做内插，内插面用LoopTools插件改成圆形，将该圆形挤出做盖子。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/02/CS%E4%BA%8B%E4%BB%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="冲击波">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="OK">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/10/02/CS%E4%BA%8B%E4%BB%B6/" class="post-title-link" itemprop="url">CS事件</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-10-02 20:45:03" itemprop="dateCreated datePublished" datetime="2022-10-02T20:45:03+08:00">2022-10-02</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2024-04-02 17:37:13" itemprop="dateModified" datetime="2024-04-02T17:37:13+08:00">2024-04-02</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>C# 中使用事件机制实现线程间的通信。</p>
-<p><strong>Event 在 Class 中声明</strong>且生成，且通过一个类或其他类使用 <strong>delegate</strong> 与 <strong>Event</strong> 处理程序关联。</p>
-<p><strong>发布器类</strong> 声明事件和委托，事件和委托之间的联系也定义在其中 <strong>订阅器类</strong> 接受事件并处理</p>
-<p>在<strong>发布器类</strong>中的<strong>委托</strong> 调用 <strong>订阅器类</strong>中的<strong>方法</strong>（事件处理程序）。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">/***********发布器类***********/</span><br><span class="line">public class EventPublisher</span><br><span class="line">&#123;</span><br><span class="line">	private int value;</span><br><span class="line">    public delegate void NumManipulationHandler();//定义了一个委托类型NumManipulationHandler</span><br><span class="line">    public event NumManipulationHandler ChangeNum;//定义了一个事件变量ChangeNum</span><br><span class="line">    protected virtual void OnNumChanged()</span><br><span class="line">    &#123;</span><br><span class="line">		if ( ChangeNum != null )</span><br><span class="line">        &#123;</span><br><span class="line">        	ChangeNum(); /* 事件被触发 */</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">        	Console.WriteLine( &quot;event not fire&quot; );</span><br><span class="line">        	Console.ReadKey(); /* 回车继续 */</span><br><span class="line">      	&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public EventTest()</span><br><span class="line">    &#123;</span><br><span class="line">      	int n = 5;</span><br><span class="line">      	SetValue( n );</span><br><span class="line">    &#125;</span><br><span class="line">    public void SetValue( int n )</span><br><span class="line">    &#123;</span><br><span class="line">      	if ( value != n )</span><br><span class="line">      	&#123;</span><br><span class="line">        	value = n;</span><br><span class="line">        	OnNumChanged();</span><br><span class="line">      	&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/***********订阅器类***********/</span><br><span class="line">public class subscribEvent</span><br><span class="line">&#123;</span><br><span class="line">	public void printf()</span><br><span class="line">    &#123;</span><br><span class="line">      	Console.WriteLine( &quot;event fire&quot; );</span><br><span class="line">      	Console.ReadKey(); /* 回车继续 */</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/***********触发***********/</span><br><span class="line">public class MainClass</span><br><span class="line">&#123;</span><br><span class="line">    public static void Main()</span><br><span class="line">    &#123;</span><br><span class="line">      	EventPublisher e = new EventPublisher();//实例化一个事件发布器e</span><br><span class="line">     	subscribEvent v = new subscribEvent(); //实例化一个事件订阅器v</span><br><span class="line">      	e.ChangeNum += new EventPublisher.NumManipulationHandler( v.printf ); /* 注册 */</span><br><span class="line">        /********************************/</span><br><span class="line">      	e.SetValue( 7 );</span><br><span class="line">      	e.SetValue( 11 );</span><br><span class="line">        //因为v订阅了事件e，当事件e“出现”时，v会处理。</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">/*</span><br><span class="line">执行效果为：</span><br><span class="line">event not fire</span><br><span class="line">event fire</span><br><span class="line">event fire</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
-<p>例二：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line">using System;</span><br><span class="line">namespace CarEvent</span><br><span class="line">&#123;</span><br><span class="line">    public class Car</span><br><span class="line">    &#123;</span><br><span class="line">        // 申明委托</span><br><span class="line">        public delegate void CarEngineHandler(string msg);</span><br><span class="line">        // 创建委托实例Exploded和AboutToBlow事件</span><br><span class="line">        public event CarEngineHandler Exploded;</span><br><span class="line">        public event CarEngineHandler AboutToBlow;</span><br><span class="line">        //设置属性</span><br><span class="line">        public int CurrentSpeed &#123; get; set; &#125;</span><br><span class="line">        public int MaxSpeed &#123; get; set; &#125;</span><br><span class="line">        public string PetName &#123; get; set; &#125;</span><br><span class="line">        public bool CarIsDead;//用于判断是否超速</span><br><span class="line">        </span><br><span class="line">        public Car()//构造函数</span><br><span class="line">        &#123;</span><br><span class="line">            MaxSpeed = 100;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        public Car(string name, int maxSp, int currSp)//构造函数重载</span><br><span class="line"></span><br><span class="line">        &#123;</span><br><span class="line">            CurrentSpeed = currSp;</span><br><span class="line">            MaxSpeed = maxSp;</span><br><span class="line">            PetName = name;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        public void Accelerate(int delta)//用于触发Exploded和AboutToBlow事件</span><br><span class="line">        &#123;            </span><br><span class="line">            CurrentSpeed += delta;//&quot;踩油门&quot;加速</span><br><span class="line">            if (CurrentSpeed &gt;= MaxSpeed)//判断时速  </span><br><span class="line">                CarIsDead = true;    </span><br><span class="line">            else</span><br><span class="line">                CarIsDead = false;</span><br><span class="line">            if (CarIsDead)// 如果Car超速了，触发Exploded事件</span><br><span class="line">            &#123;</span><br><span class="line">                if (Exploded != null)//判断是否被委托联系起来</span><br><span class="line">                &#123;</span><br><span class="line">                    Exploded(&quot;sorry,this car is dead&quot;);//调用CarDead事件</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">            &#123;    //如果没有超速，则提示快要超速并显示实时车速</span><br><span class="line">                if ((MaxSpeed - CurrentSpeed) &gt; 0 &amp;&amp; (MaxSpeed - CurrentSpeed) &lt;= 10 &amp;&amp; AboutToBlow != null)//判断是否被委托联系起来且速度是否接近临界值</span><br><span class="line">                &#123;</span><br><span class="line">                    AboutToBlow(&quot;careful buddy ! gonna blow !&quot;);//调用NearDead事件 </span><br><span class="line">                    Console.WriteLine(&quot;CurrentSpeed=&#123;0&#125;&quot;,CurrentSpeed);//显示实时车速</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //订阅类书写举例</span><br><span class="line">    public class Answer</span><br><span class="line">    &#123;</span><br><span class="line">        public void CarDead(string msg)//汽车已爆缸事件</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(&quot;sorry,this car is dead&quot;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        public void NearDead(string msg)//汽车快要爆缸事件</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(&quot;careful buddy ! gonna blow !&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //主函数书写</span><br><span class="line">    public class test</span><br><span class="line">    &#123; </span><br><span class="line">        static void Main(string[] args)</span><br><span class="line">        &#123; </span><br><span class="line">            Car c = new Car(&quot;奔驰&quot;,100,93);//创建实例并初始化，初始速度为93</span><br><span class="line">            Answer an = new Answer();</span><br><span class="line">            c.Exploded += new Car.CarEngineHandler(an.CarDead);//Exploded&quot;绑定&quot;CarDead</span><br><span class="line">            c.AboutToBlow += new Car.CarEngineHandler(an.NearDead);//AboutToBlow&quot;绑定&quot;NearDead</span><br><span class="line">            c.Accelerate(6);//第一次加速，时速小于100，引发的事件为&quot;快要爆缸&quot;并显示实时车速为99</span><br><span class="line">            Console.ReadLine();//等待回车键已启动第二次加速</span><br><span class="line">            c.Accelerate(2);//第二次加速，时速超过100，引发的事件为&quot;已爆缸&quot;，不显示车速</span><br><span class="line">            Console.ReadKey();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">/*</span><br><span class="line">结果为：</span><br><span class="line">&quot;careful buddy ! gonna blow !&quot;</span><br><span class="line">&quot;CurrentSpeed=99&quot;</span><br><span class="line"></span><br><span class="line">&quot;sorry,this car is dead&quot;</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
 
       
     </div>
