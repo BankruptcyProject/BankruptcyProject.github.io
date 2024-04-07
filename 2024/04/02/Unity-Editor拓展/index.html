@@ -20,16 +20,16 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="简单的自定义Inspector窗口 常用标记 123456789101112131415161718[SerializeField]private int Number;[Range(0, 1)]&#x2F;&#x2F;滑动条public float MyFloat;[Header(&quot;This is the Name&quot;)]&#x2F;&#x2F;标题public string Name &#x3D; &quot;大壮&amp;qu">
+<meta name="description" content="IMGUI扩展编辑器 常用标记 123456789101112131415161718[SerializeField]private int Number;[Range(0, 1)]&#x2F;&#x2F;滑动条public float MyFloat;[Header(&quot;This is the Name&quot;)]&#x2F;&#x2F;标题public string Name &#x3D; &quot;大壮&quot;;[To">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Unity Editor拓展">
 <meta property="og:url" content="http://example.com/2024/04/02/Unity-Editor%E6%8B%93%E5%B1%95/index.html">
 <meta property="og:site_name" content="OK">
-<meta property="og:description" content="简单的自定义Inspector窗口 常用标记 123456789101112131415161718[SerializeField]private int Number;[Range(0, 1)]&#x2F;&#x2F;滑动条public float MyFloat;[Header(&quot;This is the Name&quot;)]&#x2F;&#x2F;标题public string Name &#x3D; &quot;大壮&amp;qu">
+<meta property="og:description" content="IMGUI扩展编辑器 常用标记 123456789101112131415161718[SerializeField]private int Number;[Range(0, 1)]&#x2F;&#x2F;滑动条public float MyFloat;[Header(&quot;This is the Name&quot;)]&#x2F;&#x2F;标题public string Name &#x3D; &quot;大壮&quot;;[To">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2024/04/02/Unity-Editor%E6%8B%93%E5%B1%95/1.png">
 <meta property="article:published_time" content="2024-04-02T06:47:39.000Z">
-<meta property="article:modified_time" content="2024-04-03T02:01:46.422Z">
+<meta property="article:modified_time" content="2024-04-05T09:23:01.428Z">
 <meta property="article:author" content="冲击波">
 <meta property="article:tag" content="unity">
 <meta name="twitter:card" content="summary">
@@ -110,7 +110,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E7%9A%84%E8%87%AA%E5%AE%9A%E4%B9%89inspector%E7%AA%97%E5%8F%A3"><span class="nav-number">1.</span> <span class="nav-text">简单的自定义Inspector窗口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ui-toolkit"><span class="nav-number">2.</span> <span class="nav-text">UI Toolkit</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#imgui%E6%89%A9%E5%B1%95%E7%BC%96%E8%BE%91%E5%99%A8"><span class="nav-number">1.</span> <span class="nav-text">IMGUI扩展编辑器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ui-toolkit"><span class="nav-number">2.</span> <span class="nav-text">UI Toolkit</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -201,7 +201,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2024-04-03 10:01:46" itemprop="dateModified" datetime="2024-04-03T10:01:46+08:00">2024-04-03</time>
+        <time title="Modified: 2024-04-05 17:23:01" itemprop="dateModified" datetime="2024-04-05T17:23:01+08:00">2024-04-05</time>
       </span>
 
   
@@ -214,7 +214,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="简单的自定义inspector窗口">简单的自定义Inspector窗口</h1>
+        <h1 id="imgui扩展编辑器">IMGUI扩展编辑器</h1>
 <p><strong>常用标记</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">[SerializeField]</span><br><span class="line">private int Number;</span><br><span class="line"></span><br><span class="line">[Range(0, 1)]//滑动条</span><br><span class="line">public float MyFloat;</span><br><span class="line"></span><br><span class="line">[Header(&quot;This is the Name&quot;)]//标题</span><br><span class="line">public string Name = &quot;大壮&quot;;</span><br><span class="line"></span><br><span class="line">[Tooltip(&quot;物体宽度&quot;)]//鼠标悬停时出现的提示</span><br><span class="line">public float width;</span><br><span class="line"></span><br><span class="line">[Space(30)]//控制上下两个属性之间的间隔</span><br><span class="line">[TextArea(5, 10)]//文本框大小，参数是最小行数和最大行数</span><br><span class="line">public string Content = &quot;&quot;;</span><br><span class="line"></span><br><span class="line">[HideInInspector]//隐藏</span><br><span class="line">public string Str = &quot;test string&quot;;</span><br></pre></td></tr></table></figure>
 <p>需要拓展Editor类，并且最好将类放到Editor文件夹下，Editor文件夹下的资源在游戏最终打包过程不会被打包进项目。</p>
