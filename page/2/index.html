@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">199</span>
+          <span class="site-state-item-count">200</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,84 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/03/14/CS-partial/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="冲击波">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="OK">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/03/14/CS-partial/" class="post-title-link" itemprop="url">CS_partial</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2024-03-14 16:37:17 / Modified: 16:45:21" itemprop="dateCreated datePublished" datetime="2024-03-14T16:37:17+08:00">2024-03-14</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><code>partial</code> 关键字用于拆分一个类、一个结构、一个接口或一个方法的定义到两个或更多的文件中。 每个源文件包含类型或方法定义的一部分，编译应用程序时将把所有部分组合起来。在设计 Framework 时，可以充分利用 <code>partial</code> 这个特性。</p>
+<p>什么情况下需要拆分类定义呢？</p>
+<ul>
+<li>处理大型项目时，使一个类分布于多个独立文件中可以让多位程序员同时对该类进行处理。</li>
+<li>当使用<strong>自动生成的源文件</strong>时，可以添加代码而<strong>不需要重新创建源文件</strong>。</li>
+<li>使用源生成器在类中生成附加功能时。</li>
+</ul>
+<p>处理分部类定义时需遵循下面的几个规则：</p>
+<ul>
+<li><p>要作为同一类型的各个部分的所有分部类型定义都必须使用 <code>partial</code> 进行修饰。</p></li>
+<li><p><code>partial</code> 修饰符只能出现在紧靠关键字 <code>class</code>、<code>struct</code> 或 <code>interface</code> 前面的位置。</p></li>
+<li><p>要成为同一类型的各个部分的所有分部类型定义都必须在同一程序集和同一模块（.exe 或 .dll 文件）中进行定义。 分部定义不能跨越多个模块。这些分部的文件必须在同一命名空间。</p></li>
+<li><p>类名和泛型类型参数在所有的分部类型定义中都必须匹配。 泛型类型可以是分部的。 每个分部声明都必须以相同的顺序使用相同的参数名。</p></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1058,93 +1136,6 @@ Lambda 表达式可以转换的委托类型由其参数和返回值的类型定�
 <li>T：<基类名> 类型参数必须是指定的基类或派生自指定的基类</基类名></li>
 <li>T：<接口名称> 类型参数必须是指定的接口或实现指定的接口。可以指定多个接口约束。约束接口也可以是泛型的。</接口名称></li>
 </ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/27/CS-IComparable%E5%92%8CIComparaer%E6%8E%A5%E5%8F%A3%E5%92%8C%E8%87%AA%E5%AE%9A%E4%B9%89%E6%AF%94%E8%BE%83%E5%99%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="冲击波">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="OK">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/05/27/CS-IComparable%E5%92%8CIComparaer%E6%8E%A5%E5%8F%A3%E5%92%8C%E8%87%AA%E5%AE%9A%E4%B9%89%E6%AF%94%E8%BE%83%E5%99%A8/" class="post-title-link" itemprop="url">CS IComparable和IComparaer接口和自定义比较器</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2023-05-27 17:24:38" itemprop="dateCreated datePublished" datetime="2023-05-27T17:24:38+08:00">2023-05-27</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2023-06-02 15:27:45" itemprop="dateModified" datetime="2023-06-02T15:27:45+08:00">2023-06-02</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="comparer类">Comparer类</h1>
-<p>在System.Collections名称空间中，有这么一个类：Comparer。</p>
-<p>顾名思义，他可以实现对简单类型的比较，什么意思呢？来看如下代码：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int a=1,b=2;</span><br><span class="line">Console.WriteLine(Comparer.Default.Compare(a,b));</span><br></pre></td></tr></table></figure>
-<p>因为a&lt;b，所以控制台会输出-1。（这个函数总是返回-1，0，1三个值。） 这里通过Comparer里的<strong>静态属性Default</strong>获得Comparer的实例调用了Comparer里的非静态函数Compare。</p>
-<h1 id="icomparable接口">IComparable接口</h1>
-<p>IComparable接口里只有一个方法CompareTo()。<br>
-<strong>让你的类实现这个接口的CompareTo方法</strong>，就可以直接调用这个方法和另一个对象比较。<br>
-下面是例子：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class ClassTest : IComparable</span><br><span class="line">&#123;</span><br><span class="line">  public int intTest;</span><br><span class="line">  public int CompareTo(object obj)</span><br><span class="line">  &#123;</span><br><span class="line">    return intTest-((ClassTest)obj).intTest;</span><br><span class="line">    //这里的代码可以按需要自己编写，这里只是一个简单的示例</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">//然后就可以直接使用啦：</span><br><span class="line">ClassTest a = new ClassTest()&#123;intTest=1&#125;;</span><br><span class="line">ClassTest b = new ClassTest()&#123;intTest=2&#125;;</span><br><span class="line">Console.WriteLine(a.CompareTo(b));//输出-1</span><br></pre></td></tr></table></figure>
-<h1 id="icomparer接口">IComparer接口</h1>
-<p>自定义IComparer。<br>
-新建一个类：（记得using System.Collections;）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public class ClassTestComparer : IComparer</span><br><span class="line">&#123;</span><br><span class="line">  public static IComparer Default = new ClassTestComparer();</span><br><span class="line">  //这里必须使用这样的定义，将对象转化为IComparer类型有很大用处，下面会介绍</span><br><span class="line">  public int Compare(object a,object b)</span><br><span class="line">  &#123;</span><br><span class="line">    return ((ClassTest)a).intTest - ((ClassTest)b).intTest;</span><br><span class="line">    //同样这里使用最简单的示例，但是你可以大放异彩</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">//注意，如果用于比较的类和设定的类不一样，就会出现错误。</span><br><span class="line">//使用示例：</span><br><span class="line">ClassTest a = new ClassTest()&#123;intTest=1&#125;;</span><br><span class="line">ClassTest b = new ClassTest()&#123;intTest=2&#125;;</span><br><span class="line">Console.WriteLine(ClassTestComparer.Default.Compare(a,b));</span><br><span class="line">//结果是-1</span><br></pre></td></tr></table></figure>
-<p>可以发现，这两个接口的不同之处在于：<br>
-IComparable在要比较的对象的类中实现，可以比较该对象和另一个对象。<br>
-IComparer在一个单独的类中实现，可以比较任意两个对象（关键是你的设置）。</p>
 
       
     </div>

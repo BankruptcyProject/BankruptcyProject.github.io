@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">199</span>
+          <span class="site-state-item-count">200</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -200,6 +200,75 @@
     
     <div class="post-body" itemprop="articleBody">
           <img src="/2024/03/25/%E9%A6%96%E9%A1%B5/1.jpg" class>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/04/22/CS-JSON%E5%BA%8F%E5%88%97%E5%8C%96/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="冲击波">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="OK">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/04/22/CS-JSON%E5%BA%8F%E5%88%97%E5%8C%96/" class="post-title-link" itemprop="url">CS_JSON序列化</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2024-04-22 19:18:05 / Modified: 19:27:48" itemprop="dateCreated datePublished" datetime="2024-04-22T19:18:05+08:00">2024-04-22</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><code>System.Text.Json</code>命名空间提供用于序列化和反序列化 JavaScript 对象表示法 (JSON) 的功能。</p>
+<p>序列化是将对象状态（即其属性的值）转换为可存储或传输的形式的过程。 序列化形式不包含有关对象的关联方法的任何信息。 反序列化从序列化形式重新构造对象。</p>
+<p>https://learn.microsoft.com/zh-cn/dotnet/standard/serialization/</p>
+<p>对应JSON格式，最外层为类，类中使用字典</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">    public class Data</span><br><span class="line">    &#123;</span><br><span class="line">        public string companyName &#123; get; set; &#125;</span><br><span class="line">        public int used &#123; get; set; &#125;</span><br><span class="line">        public int balance &#123; get; set; &#125;</span><br><span class="line">        public int taskLimitCount &#123; get; set; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public class ClientData</span><br><span class="line">    &#123;</span><br><span class="line">        public Dictionary&lt;string, object&gt; data &#123; get; set; &#125;//这里不加&#123; get; set; &#125;就无法反序列化进来，会为null</span><br><span class="line">        public int code &#123; get; set; &#125;</span><br><span class="line">        public bool success &#123; get; set; &#125;</span><br><span class="line">        public string msg &#123; get; set; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">ClientData clientData = JsonSerializer.Deserialize&lt;ClientData&gt;(responseBody);//反序列化，指定类型</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -940,84 +1009,6 @@ actionOnDestroy 当元素由于池达到最大大小而无法返回到池时调�
 <p>collectionCheck 一个bool变量，设置为true则收集检查在实例返回到池时执行的安全检查。如果实例已在池中，则会引发异常。收集检查仅在编辑器中执行。<br>
 defaultCapacity<br>
 maxSize</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/03/14/CS-partial/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="冲击波">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="OK">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/03/14/CS-partial/" class="post-title-link" itemprop="url">CS_partial</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2024-03-14 16:37:17 / Modified: 16:45:21" itemprop="dateCreated datePublished" datetime="2024-03-14T16:37:17+08:00">2024-03-14</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><code>partial</code> 关键字用于拆分一个类、一个结构、一个接口或一个方法的定义到两个或更多的文件中。 每个源文件包含类型或方法定义的一部分，编译应用程序时将把所有部分组合起来。在设计 Framework 时，可以充分利用 <code>partial</code> 这个特性。</p>
-<p>什么情况下需要拆分类定义呢？</p>
-<ul>
-<li>处理大型项目时，使一个类分布于多个独立文件中可以让多位程序员同时对该类进行处理。</li>
-<li>当使用<strong>自动生成的源文件</strong>时，可以添加代码而<strong>不需要重新创建源文件</strong>。</li>
-<li>使用源生成器在类中生成附加功能时。</li>
-</ul>
-<p>处理分部类定义时需遵循下面的几个规则：</p>
-<ul>
-<li><p>要作为同一类型的各个部分的所有分部类型定义都必须使用 <code>partial</code> 进行修饰。</p></li>
-<li><p><code>partial</code> 修饰符只能出现在紧靠关键字 <code>class</code>、<code>struct</code> 或 <code>interface</code> 前面的位置。</p></li>
-<li><p>要成为同一类型的各个部分的所有分部类型定义都必须在同一程序集和同一模块（.exe 或 .dll 文件）中进行定义。 分部定义不能跨越多个模块。这些分部的文件必须在同一命名空间。</p></li>
-<li><p>类名和泛型类型参数在所有的分部类型定义中都必须匹配。 泛型类型可以是分部的。 每个分部声明都必须以相同的顺序使用相同的参数名。</p></li>
-</ul>
 
       
     </div>

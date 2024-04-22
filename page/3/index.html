@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">199</span>
+          <span class="site-state-item-count">200</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,93 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/27/CS-IComparable%E5%92%8CIComparaer%E6%8E%A5%E5%8F%A3%E5%92%8C%E8%87%AA%E5%AE%9A%E4%B9%89%E6%AF%94%E8%BE%83%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="冲击波">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="OK">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/05/27/CS-IComparable%E5%92%8CIComparaer%E6%8E%A5%E5%8F%A3%E5%92%8C%E8%87%AA%E5%AE%9A%E4%B9%89%E6%AF%94%E8%BE%83%E5%99%A8/" class="post-title-link" itemprop="url">CS IComparable和IComparaer接口和自定义比较器</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-05-27 17:24:38" itemprop="dateCreated datePublished" datetime="2023-05-27T17:24:38+08:00">2023-05-27</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2023-06-02 15:27:45" itemprop="dateModified" datetime="2023-06-02T15:27:45+08:00">2023-06-02</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="comparer类">Comparer类</h1>
+<p>在System.Collections名称空间中，有这么一个类：Comparer。</p>
+<p>顾名思义，他可以实现对简单类型的比较，什么意思呢？来看如下代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int a=1,b=2;</span><br><span class="line">Console.WriteLine(Comparer.Default.Compare(a,b));</span><br></pre></td></tr></table></figure>
+<p>因为a&lt;b，所以控制台会输出-1。（这个函数总是返回-1，0，1三个值。） 这里通过Comparer里的<strong>静态属性Default</strong>获得Comparer的实例调用了Comparer里的非静态函数Compare。</p>
+<h1 id="icomparable接口">IComparable接口</h1>
+<p>IComparable接口里只有一个方法CompareTo()。<br>
+<strong>让你的类实现这个接口的CompareTo方法</strong>，就可以直接调用这个方法和另一个对象比较。<br>
+下面是例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class ClassTest : IComparable</span><br><span class="line">&#123;</span><br><span class="line">  public int intTest;</span><br><span class="line">  public int CompareTo(object obj)</span><br><span class="line">  &#123;</span><br><span class="line">    return intTest-((ClassTest)obj).intTest;</span><br><span class="line">    //这里的代码可以按需要自己编写，这里只是一个简单的示例</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">//然后就可以直接使用啦：</span><br><span class="line">ClassTest a = new ClassTest()&#123;intTest=1&#125;;</span><br><span class="line">ClassTest b = new ClassTest()&#123;intTest=2&#125;;</span><br><span class="line">Console.WriteLine(a.CompareTo(b));//输出-1</span><br></pre></td></tr></table></figure>
+<h1 id="icomparer接口">IComparer接口</h1>
+<p>自定义IComparer。<br>
+新建一个类：（记得using System.Collections;）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public class ClassTestComparer : IComparer</span><br><span class="line">&#123;</span><br><span class="line">  public static IComparer Default = new ClassTestComparer();</span><br><span class="line">  //这里必须使用这样的定义，将对象转化为IComparer类型有很大用处，下面会介绍</span><br><span class="line">  public int Compare(object a,object b)</span><br><span class="line">  &#123;</span><br><span class="line">    return ((ClassTest)a).intTest - ((ClassTest)b).intTest;</span><br><span class="line">    //同样这里使用最简单的示例，但是你可以大放异彩</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">//注意，如果用于比较的类和设定的类不一样，就会出现错误。</span><br><span class="line">//使用示例：</span><br><span class="line">ClassTest a = new ClassTest()&#123;intTest=1&#125;;</span><br><span class="line">ClassTest b = new ClassTest()&#123;intTest=2&#125;;</span><br><span class="line">Console.WriteLine(ClassTestComparer.Default.Compare(a,b));</span><br><span class="line">//结果是-1</span><br></pre></td></tr></table></figure>
+<p>可以发现，这两个接口的不同之处在于：<br>
+IComparable在要比较的对象的类中实现，可以比较该对象和另一个对象。<br>
+IComparer在一个单独的类中实现，可以比较任意两个对象（关键是你的设置）。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -897,77 +984,6 @@ Resources目录下的文件不论使用与否，都会被强制打包到游戏�
 <p><code>colou?r</code> 可以匹配 <strong>color</strong> 或者 <strong>colour</strong>，<code>?</code> 问号代表前面的字符最多只可以出现一次（0次或1次）。</p>
 <p>匹配所有。<code>\s</code> 是匹配所有空白符，包括换行，<code>\S</code> 非空白符，不包括换行。</p>
 <p>匹配字母、数字、下划线。<code>w</code>等价于 <code>[A-Za-z0-9_]</code></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/12/07/Blender%E6%8F%92%E4%BB%B6rigify/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="冲击波">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="OK">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/12/07/Blender%E6%8F%92%E4%BB%B6rigify/" class="post-title-link" itemprop="url">Blender插件rigify</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-12-07 18:17:15" itemprop="dateCreated datePublished" datetime="2022-12-07T18:17:15+08:00">2022-12-07</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-12-08 09:32:29" itemprop="dateModified" datetime="2022-12-08T09:32:29+08:00">2022-12-08</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          
 
       
     </div>
