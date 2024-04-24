@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">200</span>
+          <span class="site-state-item-count">201</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,92 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/28/CS%E6%B3%9B%E5%9E%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="冲击波">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="OK">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/05/28/CS%E6%B3%9B%E5%9E%8B/" class="post-title-link" itemprop="url">CS泛型</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-05-28 14:50:33" itemprop="dateCreated datePublished" datetime="2023-05-28T14:50:33+08:00">2023-05-28</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2023-06-02 15:28:13" itemprop="dateModified" datetime="2023-06-02T15:28:13+08:00">2023-06-02</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="泛型">泛型</h1>
+<p><strong>泛型（Generic）</strong>允许编写一个可以与<strong>任何数据类型</strong>一起工作的<strong>类</strong>或<strong>方法</strong>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">//泛型类</span><br><span class="line">public class EgClass&lt;T&gt;</span><br><span class="line">&#123;</span><br><span class="line">	private T[] array;</span><br><span class="line">    public EgClass(int size)</span><br><span class="line">    &#123;</span><br><span class="line">    	array = new T[size + 1];</span><br><span class="line">    &#125;</span><br><span class="line">    public T getItem(int index)</span><br><span class="line">    &#123;</span><br><span class="line">    	return array[index];</span><br><span class="line">    &#125;</span><br><span class="line">    public void setItem(int index, T value)</span><br><span class="line">    &#123;</span><br><span class="line">    	array[index] = value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;       </span><br><span class="line">class Tester</span><br><span class="line">&#123;</span><br><span class="line">	static void Main(string[] args)</span><br><span class="line">    &#123;</span><br><span class="line">        // 声明一个整型数组</span><br><span class="line">        EgClass&lt;int&gt; intArray = new EgClass&lt;int&gt;(5);</span><br><span class="line">        // 设置值</span><br><span class="line">        for (int c = 0; c &lt; 5; c++)</span><br><span class="line">        &#123;</span><br><span class="line">            intArray.setItem(c, c*5);</span><br><span class="line">        &#125;</span><br><span class="line">        // 获取值</span><br><span class="line">        for (int c = 0; c &lt; 5; c++)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.Write(intArray.getItem(c) + &quot; &quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">//泛型方法</span><br><span class="line">class Program</span><br><span class="line">&#123;</span><br><span class="line">    static void Swap&lt;T&gt;(ref T lhs, ref T rhs)</span><br><span class="line">    &#123;</span><br><span class="line">        T temp;</span><br><span class="line">        temp = lhs;</span><br><span class="line">        lhs = rhs;</span><br><span class="line">        rhs = temp;</span><br><span class="line">    &#125;</span><br><span class="line">    static void Main(string[] args)</span><br><span class="line">    &#123;</span><br><span class="line">        char c, d;</span><br><span class="line">        c = &#x27;I&#x27;;</span><br><span class="line">        d = &#x27;V&#x27;;</span><br><span class="line">		// 调用 swap</span><br><span class="line">        Swap&lt;char&gt;(ref c, ref d);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="where关键字">where关键字</h1>
+<p>在声明泛型方法/泛型类的时候，可以给泛型加上一定的约束来满足我们特定的一些条件。</p>
+<p>比如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public class EgClass&lt;T&gt; where T:new()</span><br><span class="line">&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>泛型限定条件：</p>
+<ul>
+<li>T：结构（类型参数必须是值类型。可以指定除 Nullable 以外的任何值类型）</li>
+<li>T：类 （类型参数必须是引用类型，包括任何类、接口、委托或数组类型）</li>
+<li>T：new() （类型参数必须具有无参数的公共构造函数。当与其他约束一起使用时new() 约束必须最后指定）</li>
+<li>T：<基类名> 类型参数必须是指定的基类或派生自指定的基类</基类名></li>
+<li>T：<接口名称> 类型参数必须是指定的接口或实现指定的接口。可以指定多个接口约束。约束接口也可以是泛型的。</接口名称></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -923,87 +1009,8 @@ Resources目录下的文件不论使用与否，都会被强制打包到游戏�
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/03/02/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="冲击波">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="OK">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/03/02/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="post-title-link" itemprop="url">正则表达式</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2023-03-02 10:36:38 / Modified: 16:52:18" itemprop="dateCreated datePublished" datetime="2023-03-02T10:36:38+08:00">2023-03-02</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>正则表达式(regular expression)描述了一种字符串匹配的模式（pattern）<br>
-检查一个串是否含有某种子串<br>
-将匹配的子串替换<br>
-从某个串中取出符合某个条件的子串</p>
-<p><code>^</code> 为匹配输入字符串的开始位置。</p>
-<p><code>[0-9]+</code> 匹配多个数字， <code>[0-9]</code> 匹配单个数字，<code>+</code> 匹配一个或者多个。</p>
-<p><code>abc$</code>匹配字母 <code>abc</code> 并以 <code>abc</code> 结尾，<code>$</code> 为匹配输入字符串的结束位置。</p>
-<p>只允许用户名包含字符、数字、下划线和连接字符 <code>-</code>，并设置用户名的长度3到15，我们就可以使用以下正则表达式来设定<br>
-<code>^[a-z0-9_-]&#123;3,15&#125;$</code><br>
-以上的正则表达式可以匹配 runoob、runoob1、run-oob、run_oob， 但不匹配 ru，因为它包含的字母太短了，小于 3 个无法匹配。也不匹配 runoob$, 因为它包含特殊字符。</p>
-<p><code>runoo+b</code>，可以匹配 <strong>runoob、runooob、runoooooob</strong> 等，<code>+</code> 号代表前面的字符必须至少出现一次（1次或多次）。</p>
-<p><code>runoo\*b</code>，可以匹配 <strong>runob、runoob、runoooooob</strong> 等，<code>*</code> 号代表前面的字符可以不出现，也可以出现一次或者多次（0次、或1次、或多次）。</p>
-<p><code>colou?r</code> 可以匹配 <strong>color</strong> 或者 <strong>colour</strong>，<code>?</code> 问号代表前面的字符最多只可以出现一次（0次或1次）。</p>
-<p>匹配所有。<code>\s</code> 是匹配所有空白符，包括换行，<code>\S</code> 非空白符，不包括换行。</p>
-<p>匹配字母、数字、下划线。<code>w</code>等价于 <code>[A-Za-z0-9_]</code></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 </div>
