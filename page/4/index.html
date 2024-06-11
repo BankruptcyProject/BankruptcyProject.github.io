@@ -116,13 +116,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">202</span>
+          <span class="site-state-item-count">203</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -152,6 +152,177 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/04/09/%E6%A1%88%E4%BE%8B-%E5%AF%BB%E5%AE%9D%E6%B8%B8%E6%88%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="冲击波">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="OK">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/04/09/%E6%A1%88%E4%BE%8B-%E5%AF%BB%E5%AE%9D%E6%B8%B8%E6%88%8F/" class="post-title-link" itemprop="url">案例-寻宝游戏</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2023-04-09 20:52:48 / Modified: 21:08:36" itemprop="dateCreated datePublished" datetime="2023-04-09T20:52:48+08:00">2023-04-09</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>一个绑定在金币上的脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">public class CoinControl : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    public GameObject EffectPre;</span><br><span class="line">    private Transform player;</span><br><span class="line">    public static int Count = 0;</span><br><span class="line">    private AudioSource audioSource;</span><br><span class="line">    private void Start()</span><br><span class="line">    &#123;</span><br><span class="line">        player = GameObject.FindWithTag(&quot;Player&quot;).transform.GetChild(0);//获取玩家角色需要额外获取一次子物体，因为获取的是摄像机的transform</span><br><span class="line">        audioSource = GetComponent&lt;AudioSource&gt;();</span><br><span class="line">        Debug.Log(&quot;find one&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    private void Update()</span><br><span class="line">    &#123;</span><br><span class="line">        float dis = Vector3.Distance(transform.position, player.position);</span><br><span class="line">        if(dis &lt; 1.9f)</span><br><span class="line">        &#123;</span><br><span class="line">            Count++;</span><br><span class="line">            audioSource.PlayOneShot(Resources.Load&lt;AudioClip&gt;(&quot;Battle_Lost__6s&quot;));</span><br><span class="line">            Debug.Log(&quot;获得金币，当前金币为：&quot; + Count);</span><br><span class="line">            if (Count &gt;= 3)</span><br><span class="line">            &#123;</span><br><span class="line">                GameObject go = Instantiate(EffectPre, transform.position, transform.rotation);</span><br><span class="line">                Destroy(go, 8f);</span><br><span class="line">            &#125;</span><br><span class="line">            Destroy(this);</span><br><span class="line">            Destroy(gameObject, 1f);</span><br><span class="line">            //先删除脚本，延迟后再删除物品</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>脚本挂载在结点上，可以先删除脚本（优化内存，防止其它脚本获取到该脚本等等），然后延迟后删除结点（例如在本案例中，延迟删除结点让结点上的音乐播放完）。</p>
+<p>从文件中动态导入资源，具体做法见另一篇上一篇博客。</p>
+<p>获取玩家的位置更改为获取玩家身上的摄像头的位置。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/04/08/unity-Resources/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="冲击波">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="OK">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/04/08/unity-Resources/" class="post-title-link" itemprop="url">unity_Resources</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2023-04-08 20:41:53 / Modified: 22:22:47" itemprop="dateCreated datePublished" datetime="2023-04-08T20:41:53+08:00">2023-04-08</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>通过 Resources.Load 函数，可访问 Assets 文件夹中处于任意位置的名为“Resources”的文件夹中的所有资源。 可以存在多个“Resources”文件夹，加载对象时，将对每个文件夹进行检查。</p>
+<p>推荐使用<strong>通过声明一个成员变量来公开对资源的引用，然后在 Inspector 中对其进行分配</strong>。</p>
+<p>但是，在某些情况下，通过名称获取资源比在 Inspector 中链接到资源更为方便。 基本上，只要不方便在 Inspector 中为对象分配引用时， 您就应该，例如，在脚本中以程序方式创建游戏对象、将纹理指定给程序生成的网格等。</p>
+<p>某些已加载的资源，尤其是纹理，即使在场景中不存在其实例时，也会占用相当多的内存。要在不再需要该资源时回收其内存，可以使用 Resources.UnloadUnusedAssets。</p>
+<p>注意： Assets 中的 Resources 文件夹需要在使用前创建。创建新项目时，不会创建该文件夹。<br>
+Resources目录下的文件不论使用与否，都会被强制打包到游戏包中，所以应尽可能去除不需要运行时加载的资源或者已经废弃掉的资源，否则会增大游戏包体积。且Resources下的文件不要直接当作预制体引用在场景中，否则会被Scene和Resources打包成两份，而应该在打开场景时加载Resources中的资源。</p>
+<table>
+<colgroup>
+<col style="width: 25%">
+<col style="width: 75%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>FindObjectsOfTypeAll</td>
+<td>返回所有类型为 T 的对象的列表。</td>
+</tr>
+<tr class="even">
+<td>Load</td>
+<td>Loads the asset of the requested type stored at path in a Resources folder.</td>
+</tr>
+<tr class="odd">
+<td>LoadAll</td>
+<td>加载位于 Resources 文件夹中的 path 处的文件夹中的所有资源，或加载位于该处的文件。</td>
+</tr>
+<tr class="even">
+<td>LoadAsync</td>
+<td>异步加载存储在 Resources 文件夹中的 path 处的资源。</td>
+</tr>
+<tr class="odd">
+<td>UnloadAsset</td>
+<td>从内存中卸载 /assetToUnload/。</td>
+</tr>
+<tr class="even">
+<td>UnloadUnusedAssets</td>
+<td>卸载未使用的资源。</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -806,161 +977,6 @@
 <img src="/2022/11/24/Blender%E9%AA%A8%E9%AA%BC%E5%8A%A8%E7%94%BB/1.png" class></p>
 <p>在<strong>姿态模式</strong>下插入关键帧，有<strong>完整角色</strong>和<strong>完整角色（仅选中骨骼）</strong>两个选择</p>
 <p>动作是添加在骨架上的，而非网格上</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/23/Blender%E9%AA%A8%E9%AA%BC%E5%AF%B9%E7%A7%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="冲击波">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="OK">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/11/23/Blender%E9%AA%A8%E9%AA%BC%E5%AF%B9%E7%A7%B0/" class="post-title-link" itemprop="url">Blender骨骼对称</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-11-23 22:32:24 / Modified: 23:58:38" itemprop="dateCreated datePublished" datetime="2022-11-23T22:32:24+08:00">2022-11-23</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>骨骼命名后缀<br>
-.L<br>
-.R<br>
-或者右键|名称|左右自动命名</p>
-<p>规范命名后，在编辑模式下选中需要对称生成的骨骼，右键|对称，对称中心是原点</p>
-<img src="/2022/11/23/Blender%E9%AA%A8%E9%AA%BC%E5%AF%B9%E7%A7%B0/1.png" class>
-<p>点击右上角镜像按钮，左右同步操作</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/22/Blender%E5%8F%8D%E5%90%91%E5%8A%A8%E5%8A%9B%E5%AD%A6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="冲击波">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="OK">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/11/22/Blender%E5%8F%8D%E5%90%91%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="post-title-link" itemprop="url">Blender反向动力学</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-11-22 21:36:45" itemprop="dateCreated datePublished" datetime="2022-11-22T21:36:45+08:00">2022-11-22</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-12-01 14:39:25" itemprop="dateModified" datetime="2022-12-01T14:39:25+08:00">2022-12-01</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>反向动力学，英文Inverse kinematics，简称IK</p>
-<p>由末端骨骼牵引父级骨骼完成动作</p>
-<p>在<strong>姿态模式</strong>下，选中<strong>末端骨骼</strong>，在<strong>骨骼约束属性下</strong>为其添加IK（快捷键Shift + I）<br>
-<img src="/2022/11/22/Blender%E5%8F%8D%E5%90%91%E5%8A%A8%E5%8A%9B%E5%AD%A6/1.png" class><br>
-<img src="/2022/11/22/Blender%E5%8F%8D%E5%90%91%E5%8A%A8%E5%8A%9B%E5%AD%A6/2.png" class></p>
-<p><strong>目标物体</strong>一般选择在同一骨架内的<strong>控制骨骼</strong><br>
-添加一个骨骼，将其更改为控制骨骼<br>
-<img src="/2022/11/22/Blender%E5%8F%8D%E5%90%91%E5%8A%A8%E5%8A%9B%E5%AD%A6/3.png" class></p>
-<p><strong>控制骨骼</strong>一般情况下为了方便操作，将其显示为<strong>线框自定义物体</strong> <img src="/2022/11/22/Blender%E5%8F%8D%E5%90%91%E5%8A%A8%E5%8A%9B%E5%AD%A6/4.png" class></p>
-<p><strong>极向目标</strong>一般也设置为同骨架线控自定义控制骨骼，极向目标保证反向动力学牵连的骨骼和极向目标保持在同一水平面</p>
-<p><strong>链长</strong>指受到IK影响的骨骼的数量，0为全部</p>
-<p>受IK影响的骨骼的<strong>骨骼属性|反向动力学</strong>下可以限制骨骼的拉伸和旋转</p>
-<img src="/2022/11/22/Blender%E5%8F%8D%E5%90%91%E5%8A%A8%E5%8A%9B%E5%AD%A6/5.png" class>
-<p>注：IK作为一种特殊的骨骼约束，优先级总是高于其它骨骼约束</p>
 
       
     </div>

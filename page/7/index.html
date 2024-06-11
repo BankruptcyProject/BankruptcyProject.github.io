@@ -116,13 +116,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">202</span>
+          <span class="site-state-item-count">203</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -152,6 +152,196 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/07/Blender%E5%8A%A8%E7%94%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="冲击波">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="OK">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/11/07/Blender%E5%8A%A8%E7%94%BB/" class="post-title-link" itemprop="url">Blender动画</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-11-07 10:51:33" itemprop="dateCreated datePublished" datetime="2022-11-07T10:51:33+08:00">2022-11-07</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-11-24 15:28:40" itemprop="dateModified" datetime="2022-11-24T15:28:40+08:00">2022-11-24</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="动画变量">动画变量</h1>
+<p>动画变量（动画属性）<br>
+在属性窗口中，以小圆点标识<br>
+<img src="/2022/11/07/Blender%E5%8A%A8%E7%94%BB/4.png" class></p>
+<p><strong>变量类型</strong> <img src="/2022/11/07/Blender%E5%8A%A8%E7%94%BB/5.png" class></p>
+<h1 id="时间线">时间线</h1>
+<p>默认每秒钟24帧</p>
+<h2 id="关键帧-keyframe">关键帧 Keyframe</h2>
+<p>快捷键 i ，插入关键帧<br>
+关键帧可以修改（修改完再按一次i），删除，移动（拖动），复制</p>
+<p><strong>状态颜色</strong> <img src="/2022/11/07/Blender%E5%8A%A8%E7%94%BB/2.png" class></p>
+<p><strong>自动插帧</strong> <img src="/2022/11/07/Blender%E5%8A%A8%E7%94%BB/3.png" class> 打开自动插帧<br>
+按 i 键照常插入第一个关键帧<br>
+之后在模型窗口中移动物体会自动插入关键帧，或者修改物体属性按Enter后也会自动插入关键帧<br>
+使用完自动插帧后记得关闭</p>
+<p><strong>运动路径</strong><br>
+<img src="/2022/11/07/Blender%E5%8A%A8%E7%94%BB/1.png" class> 运动路径仅是一种辅助标注</p>
+<h1 id="曲线编辑器">曲线编辑器</h1>
+<p>一个变量对应一个通道<br>
+通道中有一个贝塞尔曲线，横坐标是帧，纵坐标是变量的值<br>
+贝塞尔曲线上的控制点对应关键帧<br>
+home 快捷键选中显示曲线<br>
+选中一条曲线右键可以选中预设的曲线类型，有常值、线性、弹跳等</p>
+<h1 id="动作循环">动作循环</h1>
+<p>在曲线编辑器的n栏中</p>
+<img src="/2022/11/07/Blender%E5%8A%A8%E7%94%BB/6.png" class>
+<h1 id="跟随路径">跟随路径</h1>
+<p>曲线应用变化<br>
+曲线作为运动路径，勾选曲线，几何数据，路径动画<br>
+<img src="/2022/11/07/Blender%E5%8A%A8%E7%94%BB/7.png" class> 钳制：将运动路径限定为曲线长度</p>
+<p>物体作为运动物体，约束属性下添加跟随路径，选曲线作为跟随路径<br>
+<img src="/2022/11/07/Blender%E5%8A%A8%E7%94%BB/8.png" class> 曲线半径：物体大小随贝塞尔曲线控制点的半径变化<br>
+跟随曲线：物体方向随贝塞尔曲线控制点的倾斜变化<br>
+<img src="/2022/11/07/Blender%E5%8A%A8%E7%94%BB/9.png" class></p>
+<h1 id="动作">动作</h1>
+<img src="/2022/11/07/Blender%E5%8A%A8%E7%94%BB/10.png" class>
+<p>描述一个动作的数据（属性和时间），类似于材质一样可以被保存并被多个物体使用（关联）。</p>
+<p>建立的动作数据需要被物体关联，为被关联的动作数据一段时间后会被删除。若需要将未被关联的数据保存，需要用伪用户关联。 <img src="/2022/11/07/Blender%E5%8A%A8%E7%94%BB/11.png" class></p>
+<h1 id="非线性编辑器">非线性编辑器</h1>
+<p>将<strong>动作</strong>组合分层创造动画，在非线性编辑器里的动画，在所有窗口播放都生效。但时间线窗口中无关键帧。 <img src="/2022/11/07/Blender%E5%8A%A8%E7%94%BB/12.png" class></p>
+<p><strong>动作</strong> <strong>下推</strong> 后成为<strong>动作轨道</strong>，动作下推可以将不同动作推进同一个动作轨道。 <img src="/2022/11/07/Blender%E5%8A%A8%E7%94%BB/13.png" class> <img src="/2022/11/07/Blender%E5%8A%A8%E7%94%BB/15.png" class></p>
+<p>动作轨道可以独占、静默、锁定，上下排序、删除、重命名。<br>
+动作轨道有优先级，顶层优先。两条轨道的动作修改了同一个变量，以上层为主；两条轨道的动作修改了不同变量，则不冲突。<br>
+<img src="/2022/11/07/Blender%E5%8A%A8%E7%94%BB/14.png" class></p>
+<p><strong>动作轨道</strong>中的一个个高亮片段就是<strong>动作片段</strong><br>
+<img src="/2022/11/07/Blender%E5%8A%A8%E7%94%BB/16.png" class><br>
+<img src="/2022/11/07/Blender%E5%8A%A8%E7%94%BB/18.png" class><br>
+选中一个动作片段，打开n栏<br>
+<strong>外插</strong>描述<strong>动作片段</strong>是否影响它前后的空白帧<br>
+<strong>混合</strong>描述顶层轨道是否覆盖底层轨道<br>
+<strong>动作剪辑</strong>里的<strong>重复</strong>可以快速实现动作循环</p>
+<p><strong>编辑动作片段</strong><br>
+<img src="/2022/11/07/Blender%E5%8A%A8%E7%94%BB/17.png" class><br>
+选中动作片段，按Tab</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/06/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E7%A7%AF%E6%B0%B4%E5%9C%B0%E9%9D%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="冲击波">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="OK">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/11/06/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E7%A7%AF%E6%B0%B4%E5%9C%B0%E9%9D%A2/" class="post-title-link" itemprop="url">（练习）积水地面</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-11-06 21:14:07 / Modified: 22:16:29" itemprop="dateCreated datePublished" datetime="2022-11-06T21:14:07+08:00">2022-11-06</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <img src="/2022/11/06/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E7%A7%AF%E6%B0%B4%E5%9C%B0%E9%9D%A2/1.png" class>
+<img src="/2022/11/06/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E7%A7%AF%E6%B0%B4%E5%9C%B0%E9%9D%A2/2.png" class>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -809,163 +999,6 @@ Blender使用 exr 格式的HDRI贴图<br>
 <img src="/2022/11/02/Blender%E6%A8%A1%E5%9E%8B%E5%AF%BC%E5%87%BA/1.png" class>
 <p>blender 到 unity 的材质不一定兼容，需要重新在 unity 调整</p>
 <p>unity 不支持内嵌 贴图，需要将贴图手动添加到 unity</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/01/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E5%BC%AF%E6%9B%B2%E6%96%87%E5%AD%97/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="冲击波">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="OK">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/11/01/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E5%BC%AF%E6%9B%B2%E6%96%87%E5%AD%97/" class="post-title-link" itemprop="url">（练习）弯曲文字</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-11-01 17:10:50" itemprop="dateCreated datePublished" datetime="2022-11-01T17:10:50+08:00">2022-11-01</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-11-02 23:03:58" itemprop="dateModified" datetime="2022-11-02T23:03:58+08:00">2022-11-02</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <img src="/2022/11/01/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E5%BC%AF%E6%9B%B2%E6%96%87%E5%AD%97/1.png" class>
-<p>曲线建模，倒角，转换为网格模型</p>
-<p>选择缝合边，手动UV展开，导出UV展开图</p>
-<p>在ps里根据UV展开图添加文字</p>
-<p>给网络模型添加图片纹理</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/01/Blender_UV/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="冲击波">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="OK">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/11/01/Blender_UV/" class="post-title-link" itemprop="url">Blender_UV</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-11-01 13:55:58" itemprop="dateCreated datePublished" datetime="2022-11-01T13:55:58+08:00">2022-11-01</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-11-14 15:59:49" itemprop="dateModified" datetime="2022-11-14T15:59:49+08:00">2022-11-14</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>纹理 Texture 贴图，一个东西</p>
-<p>对于一个物体，材质使用原理化BSDF，在着色器编辑器里打开这个BSDF，添加纹理图片作为输入基础色。</p>
-<h1 id="uv编辑工作区">UV编辑工作区</h1>
-<p>在UV编辑工作区打开n栏，XY坐标的原点是图片的左下角</p>
-<h1 id="uv展开">UV展开</h1>
-<p>UV下拉栏中有导出UV布局图，根据UI布局图绘制纹理，再导入纹理<br>
-<strong>自动UV展开</strong>：在模型编辑工作区中，全选面，UV下拉栏的 智能UV投射<br>
-<strong>手动UV展开</strong>：在模型编辑工作区中，边模式选择需要剪开的边，UV下拉栏选 标记为缝合边。最后全选面，UV下拉栏选 展开<br>
-<strong>UV布局调整</strong>：在UV编辑工作区中有点、边、面、孤岛模式，孤岛模式是剪开后相连的面，选择孤岛模式方便UV布局调整</p>
-<h1 id="textool插件">TexTool插件</h1>
-<p>（动态图）教程<br>
-http://renderhjs.net/textools/blender/index.html#uvlayout</p>
 
       
     </div>
