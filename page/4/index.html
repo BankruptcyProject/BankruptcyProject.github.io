@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">201</span>
+          <span class="site-state-item-count">202</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -184,10 +184,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2023-03-02 10:36:38 / Modified: 16:52:18" itemprop="dateCreated datePublished" datetime="2023-03-02T10:36:38+08:00">2023-03-02</time>
+      <time title="Created: 2023-03-02 10:36:38" itemprop="dateCreated datePublished" datetime="2023-03-02T10:36:38+08:00">2023-03-02</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2024-05-03 11:16:09" itemprop="dateModified" datetime="2024-05-03T11:16:09+08:00">2024-05-03</time>
+      </span>
 
   
 </div>
@@ -214,6 +220,78 @@
 <p><code>colou?r</code> 可以匹配 <strong>color</strong> 或者 <strong>colour</strong>，<code>?</code> 问号代表前面的字符最多只可以出现一次（0次或1次）。</p>
 <p>匹配所有。<code>\s</code> 是匹配所有空白符，包括换行，<code>\S</code> 非空白符，不包括换行。</p>
 <p>匹配字母、数字、下划线。<code>w</code>等价于 <code>[A-Za-z0-9_]</code></p>
+<h2 id="正则表达式的模式">正则表达式的模式</h2>
+<p>正则表达式的模式可以包括以下内容：</p>
+<ul>
+<li>字面值字符：例如字母、数字、空格等，可以直接匹配它们自身。</li>
+<li>特殊字符：例如点号 <code>.</code>、星号 <code>*</code>、加号 <code>+</code>、问号 <code>?</code> 等，它们具有特殊的含义和功能。</li>
+<li>字符类：用方括号 <code>[ ]</code> 包围的字符集合，用于匹配方括号内的任意一个字符。</li>
+<li>元字符：例如 <code>\d</code>、<code>\w</code>、<code>\s</code> 等，用于匹配特定类型的字符，如数字、字母、空白字符等。</li>
+<li>量词：例如 <code>&#123;n&#125;</code>、<code>&#123;n,&#125;</code>、<code>&#123;n,m&#125;</code> 等，用于指定匹配的次数或范围。</li>
+<li>边界符号：例如 <code>^</code>、<code>$</code>、<code>\b</code>、<code>\B</code> 等，用于匹配字符串的开头、结尾或单词边界位置。</li>
+</ul>
+<h1 id="正则表达式---运算符优先级">正则表达式 - 运算符优先级</h1>
+<p>正则表达式从左到右进行计算，并遵循优先级顺序，这与算术表达式非常类似。</p>
+<p>相同优先级的从左到右进行运算，不同优先级的运算先高后低。下表从最高到最低说明了各种正则表达式运算符的优先级顺序：</p>
+<table>
+<colgroup>
+<col style="width: 31%">
+<col style="width: 68%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">运算符</th>
+<th style="text-align: left;">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">\</td>
+<td style="text-align: left;">转义符</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">(), (?:), (?=), []</td>
+<td style="text-align: left;">圆括号和方括号</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">*, +, ?, {n}, {n,}, {n,m}</td>
+<td style="text-align: left;">限定符</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">^, $, 、任何字符</td>
+<td style="text-align: left;">定位点和序列（即：位置和顺序）</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">|</td>
+<td style="text-align: left;">替换，"或"操作 字符具有高于替换运算符的优先级，使得"m|food"匹配"m"或"food"。若要匹配"mood"或"food"，请使用括号创建子表达式，从而产生"(m|f)ood"。</td>
+</tr>
+</tbody>
+</table>
+<p>以下是一些常见正则表达式运算符按照优先级从高到低的顺序：</p>
+<ul>
+<li><p><strong>转义符号：</strong> <code>\</code> 是用于转义其他特殊字符的转义符号。它具有最高的优先级。</p>
+<p>示例：<code>\d</code>、<code>\.</code> 等，其中 <code>\d</code> 匹配数字，<code>\.</code> 匹配点号。</p></li>
+<li><p><strong>括号：</strong> 圆括号 <code>()</code> 用于创建子表达式，具有高于其他运算符的优先级。</p>
+<p>示例：<code>(abc)+</code> 匹配 "abc" 一次或多次。</p></li>
+<li><p><strong>量词：</strong> 量词指定前面的元素可以重复的次数。</p>
+<p>示例：<code>a*</code> 匹配零个或多个 "a"。</p></li>
+<li><p><strong>字符类：</strong> 字符类使用方括号 <code>[]</code> 表示，用于匹配括号内的任意字符。</p>
+<p>示例：<code>[aeiou]</code> 匹配任何一个元音字母。</p></li>
+<li><p><strong>断言：</strong> 断言是用于检查字符串中特定位置的条件的元素。</p>
+<p>示例：<code>^</code> 表示行的开头，<code>$</code> 表示行的结尾。</p></li>
+<li><p><strong>连接：</strong> 连接在没有其他运算符的情况下表示字符之间的简单连接。</p>
+<p>示例：<code>abc</code> 匹配 "abc"。</p></li>
+<li><p><strong>管道：</strong> 管道符号 <code>|</code> 表示"或"关系，用于在多个模式之间选择一个。</p>
+<p>示例：<code>cat|dog</code> 匹配 "cat" 或 "dog"。</p></li>
+</ul>
+<p>接下来我们看下以下正则表达式的优先级说明：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\d&#123;2,3&#125;|[a-z]+(abc)*</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>\d&#123;2,3&#125;</code> 匹配两到三个数字。</li>
+<li><code>|</code> 表示或。</li>
+<li><code>[a-z]+</code> 匹配一个或多个小写字母。</li>
+<li><code>(abc)*</code> 匹配零个或多个 "abc"。</li>
+</ul>
 
       
     </div>

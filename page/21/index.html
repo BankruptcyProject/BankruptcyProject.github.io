@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">201</span>
+          <span class="site-state-item-count">202</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,85 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/06/11/lua/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="冲击波">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="OK">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/06/11/lua/" class="post-title-link" itemprop="url">lua</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2024-06-11 13:51:11 / Modified: 13:53:21" itemprop="dateCreated datePublished" datetime="2024-06-11T13:51:11+08:00">2024-06-11</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>lua菜鸟教程:https://www.runoob.com/lua/lua-coroutine.html</p>
+<p>目前项目使用Lua 5.1</p>
+<p>在默认情况下，变量总是认为是全局的</p>
+<p>如果想删除一个全局变量或者table，只需要将变量赋值为nil</p>
+<p>nil表示一个空值</p>
+<p>nil 作比较时应该加上双引号 " <code>type(X)=="nil"</code></p>
+<p>boolean 类型只有两个可选值：true 和 false Lua 把 false 和 nil 看作是 false，其他的都为 true，数字 0 也是 true</p>
+<p>使用 # 来计算字符串的长度，放在字符串前面 <code>print(#"www.runoob.com")</code></p>
+<p>使用 .. 连接两个字符串 <code>print("Hello".."World")</code></p>
+<p>Lua 里表的默认初始索引一般以 1 开始</p>
+<p>lua 不存在continue语句</p>
+<p>Lua 模块与包</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 文件名为 module.lua</span></span><br><span class="line"><span class="comment">-- 定义一个名为 module 的模块</span></span><br><span class="line"><span class="built_in">module</span> = &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 内容</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="built_in">module</span></span><br></pre></td></tr></table></figure>
+<p>加载模块会直接执行模块中的代码，并返回模块的返回值</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 加载模块</span></span><br><span class="line"><span class="keyword">local</span> <span class="built_in">module</span> = <span class="built_in">require</span> <span class="string">&quot;module&quot;</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
