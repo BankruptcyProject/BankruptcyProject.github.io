@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="GLSL 语法 用来在 OpenGL 中着色编程的语言，也即开发人员写的短小的自定义程序，他们是在图形卡的 GPU上执行的，代替了固定的渲染管线的一部分，使渲染管线中不同层次具有可编程性。 GLSL 其使用 C 语言作为基础高阶着色语言，避免了使用汇编语言或硬件规格语言的复杂性。 变量命名 变量名不能以 gl_ 作为前缀，这个是GLSL 保留的前缀，用于GLSL 的内部变量。 变量类型">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Shader">
+<meta property="og:url" content="http://example.com/2024/07/01/Shader/index.html">
+<meta property="og:site_name" content="OK">
+<meta property="og:description" content="GLSL 语法 用来在 OpenGL 中着色编程的语言，也即开发人员写的短小的自定义程序，他们是在图形卡的 GPU上执行的，代替了固定的渲染管线的一部分，使渲染管线中不同层次具有可编程性。 GLSL 其使用 C 语言作为基础高阶着色语言，避免了使用汇编语言或硬件规格语言的复杂性。 变量命名 变量名不能以 gl_ 作为前缀，这个是GLSL 保留的前缀，用于GLSL 的内部变量。 变量类型">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-07-01T15:12:40.000Z">
+<meta property="article:modified_time" content="2024-07-01T15:14:15.144Z">
+<meta property="article:author" content="冲击波">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2024/07/01/Shader/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2024/07/01/Shader/","path":"2024/07/01/Shader/","title":"Shader"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Shader | OK</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">OK</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#glsl-%E8%AF%AD%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">GLSL 语法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E5%91%BD%E5%90%8D"><span class="nav-number">1.1.</span> <span class="nav-text">变量命名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.2.</span> <span class="nav-text">变量类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%B9%E7%90%86%E9%87%87%E6%A0%B7%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.2.1.</span> <span class="nav-text">纹理采样类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%91%E9%87%8F%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.2.2.</span> <span class="nav-text">向量类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.2.3.</span> <span class="nav-text">矩阵类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E7%BB%84"><span class="nav-number">1.2.4.</span> <span class="nav-text">数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93"><span class="nav-number">1.2.5.</span> <span class="nav-text">结构体</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%99%90%E5%AE%9A%E7%AC%A6"><span class="nav-number">1.3.</span> <span class="nav-text">限定符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E7%AE%97"><span class="nav-number">1.4.</span> <span class="nav-text">运算</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8D%E5%90%8C%E7%B1%BB%E5%9E%8B-float-%E4%B8%8E-int-%E9%97%B4%E7%9A%84%E8%BF%90%E7%AE%97"><span class="nav-number">1.4.0.1.</span> <span class="nav-text">1、不同类型 float 与 int 间的运算:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#float-%E4%B8%8E-vec%E5%90%91%E9%87%8Fmat%E7%9F%A9%E9%98%B5-%E7%9A%84%E8%BF%90%E7%AE%97"><span class="nav-number">1.4.0.2.</span> <span class="nav-text">2、float 与 vec(向量)、mat(矩阵) 的运算:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#vec%E5%90%91%E9%87%8F-%E4%B8%8E-vec%E5%90%91%E9%87%8F%E8%BF%90%E7%AE%97"><span class="nav-number">1.4.0.3.</span> <span class="nav-text">3、vec(向量) 与 vec(向量)运算：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#vec%E5%90%91%E9%87%8F-%E4%B8%8E-mat%E7%9F%A9%E9%98%B5"><span class="nav-number">1.4.0.4.</span> <span class="nav-text">4、vec(向量) 与 mat(矩阵):</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mat%E7%9F%A9%E9%98%B5-%E4%B8%8E-mat%E7%9F%A9%E9%98%B5"><span class="nav-number">1.4.0.5.</span> <span class="nav-text">5、mat(矩阵) 与 mat(矩阵):</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B2%BE%E5%BA%A6%E9%99%90%E5%AE%9A"><span class="nav-number">1.5.</span> <span class="nav-text">精度限定</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">冲击波</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">203</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/07/01/Shader/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="冲击波">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="OK">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Shader
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2024-07-01 23:12:40 / Modified: 23:14:15" itemprop="dateCreated datePublished" datetime="2024-07-01T23:12:40+08:00">2024-07-01</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="glsl-语法">GLSL 语法</h1>
+<p>用来在 <strong>OpenGL</strong> 中着色编程的语言，也即开发人员写的短小的自定义程序，他们是在图形卡的 <strong>GPU</strong>上执行的，代替了固定的渲染管线的一部分，使渲染管线中不同层次具有可编程性。</p>
+<p><strong>GLSL</strong> 其使用 <strong>C</strong> 语言作为基础高阶着色语言，避免了使用汇编语言或硬件规格语言的复杂性。</p>
+<h2 id="变量命名">变量命名</h2>
+<p>变量名不能以 <strong>gl_</strong> 作为前缀，这个是<strong>GLSL</strong> 保留的前缀，用于<strong>GLSL</strong> 的内部变量。</p>
+<h2 id="变量类型">变量类型</h2>
+<h3 id="纹理采样类型"><strong>纹理采样类型</strong></h3>
+<table>
+<thead>
+<tr class="header">
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>sampler1D</strong></td>
+<td>用于内建的纹理函数中引用指定的<strong>1D纹理的句柄</strong> 。只可以作为一致变量或者函数参数使用</td>
+</tr>
+<tr class="even">
+<td><strong>sampler2D</strong></td>
+<td><strong>二维纹理句柄</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>sampler3D</strong></td>
+<td><strong>三维纹理句柄</strong></td>
+</tr>
+<tr class="even">
+<td><strong>samplerCube</strong></td>
+<td><strong>cube map 纹理句柄</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>sampler1DShadow</strong></td>
+<td><strong>一维深度纹理句柄</strong></td>
+</tr>
+<tr class="even">
+<td><strong>sampler2DShadow</strong></td>
+<td><strong>二维深度纹理句柄</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="向量类型">向量类型</h3>
+<table>
+<thead>
+<tr class="header">
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>vec2,vec3,vec4</td>
+<td>2分量、3分量和4分量浮点向量</td>
+</tr>
+<tr class="even">
+<td>ivec2,ivec3,ivec4</td>
+<td>2分量、3分量和4分量整数向量</td>
+</tr>
+<tr class="odd">
+<td>uvec2,uvec3,uvec4</td>
+<td>2分量、3分量和4分量无符号整数向量</td>
+</tr>
+<tr class="even">
+<td>bvec2,vbec3,bvec4</td>
+<td>2分量、3分量和4分量布尔向量</td>
+</tr>
+</tbody>
+</table>
+<p><strong>向量定义、运算</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">vec4 v;</span><br><span class="line">vec4 vOldPos = vec4(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>);</span><br><span class="line">vec4 vOffset = vec4(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>);</span><br><span class="line">v = vOldPos + vOffset;</span><br><span class="line">v += vec4(<span class="number">10</span>, <span class="number">10</span>, <span class="number">10</span>, <span class="number">10</span>);</span><br><span class="line">v = vOldPos * vOffset;</span><br><span class="line">v *= <span class="number">5</span>;</span><br></pre></td></tr></table></figure>
+<p><strong>向量元素的获取（成分选择）</strong></p>
+<p>向量中单独的成分可以通过 <strong>{x,y,z,w}, {r,g,b,a}</strong> 或者 <strong>{s,t,p,q}</strong> 的记法来表示。这些不同的记法用于 <strong>顶点</strong> ， <strong>颜色</strong> ， <strong>纹理坐标</strong> 。在成分选择中，不可以混合使用这些记法。其中 <strong>{s,t,p,q}</strong> 中的 <strong>p</strong> 替换了<strong>纹理</strong>的 <strong>r</strong> 坐标，因为与颜色 <strong>r</strong> 重复了。下面是用法举例：</p>
+<p>例如有向量 <strong>v1</strong> 和 <strong>v2</strong> :</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vec3 v1 = &#123;<span class="number">0.5</span>, <span class="number">0.35</span>, <span class="number">0.7</span>&#125;;</span><br><span class="line">vec4 v2 = &#123;<span class="number">0.1</span>, <span class="number">0.2</span>, <span class="number">0.3</span>, <span class="number">0.4</span>&#125;;</span><br></pre></td></tr></table></figure>
+<p>可以通过 <strong>{x,y,z,w}, {r,g,b,a}</strong> 或者 <strong>{s,t,p,q}</strong> 来取出向量中的元素值。</p>
+<p>通过 <strong>x,y,z,w</strong> ：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">v2.x = <span class="number">3.0f</span>;</span><br><span class="line">v2.xy = vec2(<span class="number">3.0f</span>,<span class="number">4.0f</span>);</span><br><span class="line">v2.xyz = vec3(<span class="number">3</span>,<span class="number">0f</span>,<span class="number">4</span>,<span class="number">0f</span>,<span class="number">5.0f</span>);</span><br></pre></td></tr></table></figure>
+<p>通过 <strong>r,g,b,a</strong> ：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">v2.r = 3.0f;</span><br><span class="line">v2.rgba = vec4(1.0f,1.0f,1.0f,1.0f);</span><br></pre></td></tr></table></figure>
+<h3 id="矩阵类型">矩阵类型</h3>
+<table>
+<thead>
+<tr class="header">
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>mat4 或 mat4x4</td>
+<td>4x4的浮点数矩阵类型</td>
+</tr>
+<tr class="even">
+<td>mat2x3</td>
+<td>2列3行的浮点矩阵（OpenGL的矩阵是列主顺序的）</td>
+</tr>
+<tr class="odd">
+<td>mat2x4</td>
+<td>2列4行的浮点矩阵</td>
+</tr>
+</tbody>
+</table>
+<p><strong>创建矩阵：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mat4 m1,m2,m3;</span><br></pre></td></tr></table></figure>
+<p><strong>构造单元矩阵：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mat4 m2 = mat4(	<span class="number">1.0f</span>,<span class="number">0.0f</span>,<span class="number">0.0f</span>,<span class="number">0.0f</span>,</span><br><span class="line">		<span class="number">0.0f</span>,<span class="number">1.0f</span>,<span class="number">0.0f</span>,<span class="number">0.0f</span>,</span><br><span class="line">                <span class="number">0.0f</span>,<span class="number">0.0f</span>,<span class="number">1.0f</span>,<span class="number">0.0f</span>,</span><br><span class="line">                <span class="number">0.0f</span>,<span class="number">0.0f</span>,<span class="number">0.0f</span>,<span class="number">1.0f</span>);</span><br></pre></td></tr></table></figure>
+<p>数学上等同于</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mat4 m4 = mat4(1.0f);</span><br></pre></td></tr></table></figure>
+<h3 id="数组">数组</h3>
+<p><strong>GLSL</strong> 中只可以使用一维的数组。数组的类型可以是一切基本类型或者结构体。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">float</span> floatArray[<span class="number">4</span>];</span><br><span class="line">vec4 vecArray[<span class="number">2</span>];</span><br><span class="line"><span class="keyword">float</span> a[<span class="number">4</span>] = <span class="keyword">float</span>[](<span class="number">1.0</span>,<span class="number">2.0</span>,<span class="number">3.0</span>,<span class="number">4.0</span>);</span><br><span class="line">vec2 c[<span class="number">2</span>] = vec2[<span class="number">2</span>](vec2(<span class="number">1.0</span>,<span class="number">2.0</span>),vec2(<span class="number">3.0</span>,<span class="number">4.0</span>));</span><br></pre></td></tr></table></figure>
+<p>数组类型内建了一个 <code>length()</code>函数，可以返回数组的长度。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a.length() // 返回数组的长度</span><br></pre></td></tr></table></figure>
+<h3 id="结构体">结构体</h3>
+<p>与C的差别不大</p>
+<h2 id="限定符">限定符</h2>
+<table>
+<colgroup>
+<col style="width: 25%">
+<col style="width: 75%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>限定符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>const</strong></td>
+<td>常量值必须在声明时初始化，只读不可修改</td>
+</tr>
+<tr class="even">
+<td><strong>varying</strong></td>
+<td>顶点着色器的输出，主要负责在<strong>vertex</strong>和<strong>fragment</strong>之间传递变量。<br>例如颜色或者纹理坐标，（插值后的数据）作为片段着色器的只读输入数据。<br>必须是全局范围声明的全局变量。<br>可以是浮点数类型的标量，向量，矩阵。不能是数组或者结构体。</td>
+</tr>
+<tr class="odd">
+<td><strong>uniform</strong></td>
+<td>一致变量。在着色器执行期间一致变量的值是不变的。<br>与<strong>const</strong>常量不同的是，这个值在编译时期是未知的是由着色器外部初始化的。<br>一致变量在顶点着色器和片段着色器之间是共享的。它也只能在全局范围进行声明。</td>
+</tr>
+<tr class="even">
+<td><strong>attribute</strong></td>
+<td>表示只读的顶点数据，只用在顶点着色器中。数据来自当前的顶点状态或者顶点数组。<br>它必须是全局范围声明的，不能再函数内部。<br>一个<strong>attribute</strong>可以是浮点数类型的标量，向量，或者矩阵。不可以是数组或则结构体</td>
+</tr>
+<tr class="odd">
+<td><strong>centorid varying</strong></td>
+<td>在没有多重采样的情况下，与<strong>varying</strong>是一样的意思。<br>在多重采样时，<strong>centorid varying</strong>在光栅化的图形内部进行求值而不是在片段中心的固定位置求值。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="运算">运算</h2>
+<p><strong>注意 GLSL 中没有隐式转换，即便在多维向量中也没有</strong></p>
+<pre><code>**逐分量运算**
+**vec，mat** 这些类型其实是由 **float** 复合而成的，当它们与**float** 运算时，其实就是在每一个分量上分别与 **float** 进行运算，这就是所谓的  **逐分量运算** 。**GLSL** 里，大部分涉及 **vec，mat** 的运算都是逐分量运算，但也并不全是。下文中就会讲到特例。
+**逐分量运算** 是线性的，这就是说 vec 与 float 的运算结果是还是  **vec** 。</code></pre>
+<h4 id="不同类型-float-与-int-间的运算">1、不同类型 float 与 int 间的运算:</h4>
+<p><strong>float</strong> 与 <strong>int</strong> 之间进行运算，需要进行一次显示转换</p>
+<h4 id="float-与-vec向量mat矩阵-的运算">2、float 与 vec(向量)、mat(矩阵) 的运算:</h4>
+<p><strong>int</strong> 与 <strong>vec，mat</strong> 之间是不可运算的，因为 <strong>vec</strong> 和 <strong>mat</strong> 中的每一个分量都是 <strong>float</strong> 类型的，无法与 <strong>int</strong> 进行逐分量计算。</p>
+<h4 id="vec向量-与-vec向量运算">3、vec(向量) 与 vec(向量)运算：</h4>
+<p>两向量间的运算首先要保证操作数的阶数都相同，否则不能计算。</p>
+<h4 id="vec向量-与-mat矩阵">4、vec(向量) 与 mat(矩阵):</h4>
+<p>要保证操作数的阶数相同，且 <strong>vec</strong> 与 <strong>mat</strong> 间只存在乘法运算。 它们的计算方式和线性代数中的矩阵乘法相同， <strong>不是逐分量运算</strong> 。</p>
+<h4 id="mat矩阵-与-mat矩阵">5、mat(矩阵) 与 mat(矩阵):</h4>
+<p>⚠️要保证操作数的阶数相同。</p>
+<p>在 <strong>mat</strong> 与 <strong>mat</strong> 的运算中，除了乘法是线性代数中的矩阵乘法外，其余的运算仍为 <strong>逐分量运算</strong> 。简单说就是只有乘法是特殊的，其余都和 <strong>vec</strong> 与 <strong>vec</strong> 运算类似。</p>
+<h2 id="精度限定">精度限定</h2>
+<p><strong>GLSL</strong> 在进行光栅化着色的时候，会产生大量的浮点数运算，这些运算可能是当前设备所不能承受的，所以 <strong>GLSL</strong> 提供了 <strong>3</strong> 种浮点数精度，我们可以根据不同的设备来使用合适的精度。</p>
+<p>在变量前面加上 <strong><code>highp</code>、<code>mediump</code>、<code>lowp</code></strong> 即可完成对该变量的精度声明：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lowp <span class="keyword">float</span> color;</span><br><span class="line">varying mediump vec2 Coord;</span><br><span class="line"><span class="function">lowp ivec2 <span class="title">foo</span><span class="params">(lowp mat3)</span></span>;</span><br><span class="line">highp mat4 m;</span><br></pre></td></tr></table></figure>
+<p>我们一般在 <strong>片元着色器（fragment shader)</strong> 最开始的地方加上 <code>precision mediump float;</code> 便设定了默认的精度，这样所有没有显式表明精度的变量都会按照设定好的默认精度来处理。</p>
+<p>⚠️注意 <strong>GLSL</strong> 函数中没有递归！</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/07/01/Fisher-Yates%E6%B4%97%E7%89%8C%E7%AE%97%E6%B3%95/" rel="prev" title="Fisher-Yates洗牌算法">
+                  <i class="fa fa-chevron-left"></i> Fisher-Yates洗牌算法
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">冲击波</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

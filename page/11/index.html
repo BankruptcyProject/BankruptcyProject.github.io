@@ -116,7 +116,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">202</span>
+          <span class="site-state-item-count">203</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,6 +152,99 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/08/Mirror_Network-Attributes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="冲击波">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="OK">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/09/08/Mirror_Network-Attributes/" class="post-title-link" itemprop="url">Mirror_Network Attributes</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-09-08 23:15:05" itemprop="dateCreated datePublished" datetime="2022-09-08T23:15:05+08:00">2022-09-08</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-11-14 16:55:56" itemprop="dateModified" datetime="2022-11-14T16:55:56+08:00">2022-11-14</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>标记变量和方法</p>
+<p><strong>[Server]</strong><br>
+只有服务器可以调用该方法（在客户端上调用时抛出警告）。</p>
+<p><strong>[ServerCallback]</strong><br>
+Same as Server but does not throw a warning when called on client.</p>
+<p><strong>[Client]</strong><br>
+只有客户端可以调用该方法（在服务器上调用时抛出警告）。</p>
+<p><strong>[ClientCallback]</strong><br>
+Same as Client but does not throw a warning when called on server.</p>
+<p><strong>[Command]</strong><br>
+从客户端调用此函数以在服务器上运行此函数。用于反作弊。不可能从服务器调用。<br>
+核心逻辑就是，当客户端的脚本调用此特性修饰的函数时，服务端的对应的对象执行此函数。任何允许数据类型的参数都将通过命令自动传递到服务器。<br>
+小心每帧从客户端发送命令！这可能会导致大量网络流量。</p>
+<p><strong>[ClientRpc]</strong><br>
+服务器使用远程过程调用（RPC）在客户端上运行该函数。<br>
+核心逻辑就是，当服务器的脚本调用此特性修饰的函数时，客户端的对应的对象执行此函数。<br>
+这意味着函数中的代码不会在服务器执行。</p>
+<p><strong>[TargetRpc]</strong><br>
+允许从服务器在客户端上调用它们。与ClientRpc属性不同，这些函数是在单个目标客户机上调用的，而不是在所有就绪客户机上。 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[TargetRpc]</span><br><span class="line">void TargetRemoteDamaged(NetworkConnection target, int damage)&#123;&#125;</span><br><span class="line">//第一个参数可忽略，默认发给自己，也就是调用此方法的客户端实体</span><br></pre></td></tr></table></figure> 可以获取到挂载在目标对象上的NetworkIdentity，可以通过此获取到目标客户端与服务器的连接的通道NetworkIdentity.connectionToClient。<br>
+将其作为参数TargetRpc的第一个参数由服务器执行，即可只发送给目标客户端。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">public class Player : NetworkBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    public int health;</span><br><span class="line"></span><br><span class="line">    [Command]//攻击对方</span><br><span class="line">    void CmdMagic(GameObject target, int damage)</span><br><span class="line">    &#123;</span><br><span class="line">        target.GetComponent&lt;Player&gt;().health -= damage;</span><br><span class="line">        NetworkIdentity opponentIdentity = target.GetComponent&lt;NetworkIdentity&gt;();//对方的ID</span><br><span class="line">        TargetDoMagic(opponentIdentity.connectionToClient, damage);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    [TargetRpc]//在被攻击方的电脑上执行</span><br><span class="line">    public void TargetDoMagic(NetworkConnection target, int damage)</span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log($&quot;Magic Damage = &#123;damage&#125;&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">//----------------------------------------------------------------------------------------</span><br><span class="line">    [Command]//治疗自己</span><br><span class="line">    public void CmdHealMe()</span><br><span class="line">    &#123;</span><br><span class="line">        health += 10;</span><br><span class="line">        TargetHealed(10);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    [TargetRpc]</span><br><span class="line">    public void TargetHealed(int amount)</span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log($&quot;Health increased by &#123;amount&#125;&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>[SyncVar]</strong><br>
+SyncVars用于自动将变量从服务器同步到所有客户端。不要从客户端修改这些变量，这是没有意义的。不要让它们为空，否则会出错。当客户端从服务器接收更新时，可以使用SyncVar Hooks在客户端上运行代码。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1066,81 +1159,6 @@ microSeconds：等待回应的时间，以微妙为单位，如果该参数为-1
 <p>将监听Socket（listenfd）和客户端Socket（遍历clients列表）添加到待检测Socket可读状态的列表checkList中。<br>
 调用Select，程序中设置超过时间为1毫秒，若1毫秒没没有任何可读信息，Select方法将checkList列表变成空列表，然后返回。<br>
 对Select处理后的每个Socket做处理，如果监听Socket（listenfd）可读，说明有客户端连接，需调用Accept。如果客户端Socket可读，说明客户端发送了消息（或关闭），将消息广播给所有客户端。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/02/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E6%97%8B%E9%92%AE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="冲击波">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="OK">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/02/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E6%97%8B%E9%92%AE/" class="post-title-link" itemprop="url">（练习）旋钮</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-09-02 22:06:09" itemprop="dateCreated datePublished" datetime="2022-09-02T22:06:09+08:00">2022-09-02</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-10-10 15:37:04" itemprop="dateModified" datetime="2022-10-10T15:37:04+08:00">2022-10-10</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <img src="/2022/09/02/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E6%97%8B%E9%92%AE/1.png" class>
-<p>原型是一个圆柱体，通过内插面和挤出面做上下的小柱体，边缘用倒角磨平。<br>
-做内插面多卡线，以后可能会用到，用不到最后再融掉。<br>
-侧面循环面可以隔一个格子选。（先全选侧面ctrl+alt+LMB，再在选择里选隔项弃选）</p>
-<p>该练习为学习3D建模的第一个作品。</p>
 
       
     </div>
