@@ -1,418 +1,0 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
-
-<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="以空项目empty举例    empty      res 代码以外的其它资源（包含图片、音频等等）   src 脚本文件   debug.log 在quick-x-player上调试生成的控制台日志信息   UserDefault.xml 本地化存储文件   README 开发人员及版本等信息文件       src">
-<meta property="og:type" content="article">
-<meta property="og:title" content="一般项目结构">
-<meta property="og:url" content="http://example.com/2024/06/11/%E4%B8%80%E8%88%AC%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84/index.html">
-<meta property="og:site_name" content="OK">
-<meta property="og:description" content="以空项目empty举例    empty      res 代码以外的其它资源（包含图片、音频等等）   src 脚本文件   debug.log 在quick-x-player上调试生成的控制台日志信息   UserDefault.xml 本地化存储文件   README 开发人员及版本等信息文件       src">
-<meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-06-11T05:58:30.000Z">
-<meta property="article:modified_time" content="2024-06-11T06:02:26.567Z">
-<meta property="article:author" content="冲击波">
-<meta property="article:tag" content="bbframework">
-<meta name="twitter:card" content="summary">
-
-
-<link rel="canonical" href="http://example.com/2024/06/11/%E4%B8%80%E8%88%AC%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84/">
-
-
-
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2024/06/11/%E4%B8%80%E8%88%AC%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84/","path":"2024/06/11/一般项目结构/","title":"一般项目结构"}</script>
-
-<script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>一般项目结构 | OK</title>
-  
-
-
-
-
-  <noscript>
-    <link rel="stylesheet" href="/css/noscript.css">
-  </noscript>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
-  <div class="headband"></div>
-
-  <main class="main">
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar" role="button">
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <i class="logo-line"></i>
-      <h1 class="site-title">OK</h1>
-      <i class="logo-line"></i>
-    </a>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-    </div>
-  </div>
-</div>
-
-
-
-
-
-
-
-</div>
-        
-  
-  <div class="toggle sidebar-toggle" role="button">
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-  </div>
-
-  <aside class="sidebar">
-
-    <div class="sidebar-inner sidebar-overview-active">
-      <ul class="sidebar-nav">
-        <li class="sidebar-nav-toc">
-          Table of Contents
-        </li>
-        <li class="sidebar-nav-overview">
-          Overview
-        </li>
-      </ul>
-
-      <div class="sidebar-panel-container">
-        <!--noindex-->
-        <div class="post-toc-wrap sidebar-panel">
-        </div>
-        <!--/noindex-->
-
-        <div class="site-overview-wrap sidebar-panel">
-          <div class="site-overview">
-            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">冲击波</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap site-overview-item animated">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-        <a href="/archives/">
-          <span class="site-state-item-count">203</span>
-          <span class="site-state-item-name">posts</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-tags">
-          <a href="/tags/">
-        <span class="site-state-item-count">11</span>
-        <span class="site-state-item-name">tags</span></a>
-      </div>
-  </nav>
-</div>
-
-
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </aside>
-  <div class="sidebar-dimmer"></div>
-
-
-    </header>
-
-    
-  <div class="back-to-top" role="button" aria-label="Back to top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-<noscript>
-  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
-</noscript>
-
-
-    <div class="main-inner post posts-expand">
-
-
-  
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/06/11/%E4%B8%80%E8%88%AC%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="冲击波">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="OK">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          一般项目结构
-        </h1>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2024-06-11 13:58:30 / Modified: 14:02:26" itemprop="dateCreated datePublished" datetime="2024-06-11T13:58:30+08:00">2024-06-11</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-        <p>以空项目empty举例</p>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;">empty</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">res</td>
-<td>代码以外的其它资源（包含图片、音频等等）</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">src</td>
-<td>脚本文件</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">debug.log</td>
-<td>在quick-x-player上调试生成的控制台日志信息</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">UserDefault.xml</td>
-<td>本地化存储文件</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">README</td>
-<td>开发人员及版本等信息文件</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr class="header">
-<th>src</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>app</td>
-<td>当前项目的各个模块、场景，例如gameplay</td>
-</tr>
-<tr class="even">
-<td>com</td>
-<td>是我们项目中一些可以封装出来共用的一些组件</td>
-</tr>
-<tr class="odd">
-<td>lang</td>
-<td>国际化配置的文件</td>
-</tr>
-<tr class="even">
-<td>plugin</td>
-<td>插件</td>
-</tr>
-<tr class="odd">
-<td>game.lua</td>
-<td>游戏的启动文件，也是游戏的入口</td>
-</tr>
-<tr class="even">
-<td>game_init.lua</td>
-<td>游戏的初始化操作</td>
-</tr>
-<tr class="odd">
-<td>config.lua</td>
-<td>项目的初始化操作，如：导入框架文件之类的</td>
-</tr>
-<tr class="even">
-<td>main.lua</td>
-<td>程序的唯一入口，我们的项目代码就是从这里开始执行的</td>
-</tr>
-</tbody>
-</table>
-<p>app/gameplay模块 1、“scene”： 模块的场景类文件 “XxxScene.lua”:主要展示场景的内容 2、“layer”： 场景的所有的层文件 "MainLayer"：主要逻辑层，在此添加各个node，以及逻辑 "ButtonLayer"：按钮层，置于最顶层的按钮存放于此 "BackgroundLayer"：背景层，比较少用 3、“node”： 层里面所有的精灵节点的类文件</p>
-<table>
-<colgroup>
-<col style="width: 34%">
-<col style="width: 65%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>res</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>“android_zh.json”、“ios_en.json”</td>
-<td>Android、iOS的配置文件</td>
-</tr>
-<tr class="even">
-<td>“bb.bin”和“bb_64.bin”</td>
-<td>bbframework的框架的压缩版，可以在bbframework_lua_3项目里里面看到框架的源代码（源代码链接在开头）</td>
-</tr>
-<tr class="odd">
-<td>“box.bin”和“box_64.bin”</td>
-<td>框架的盒子，即：从游戏启动的开始到开场动画、公司Logo、巴士车等等</td>
-</tr>
-<tr class="even">
-<td>db</td>
-<td>里面是数据库文件</td>
-</tr>
-<tr class="odd">
-<td>i18n</td>
-<td>存放国际化资源，十八国语言</td>
-</tr>
-<tr class="even">
-<td>img</td>
-<td>存放图片、粒子文件等等</td>
-</tr>
-<tr class="odd">
-<td>mov</td>
-<td>存放视频，现在公司盒子的开场动画就放在这里</td>
-</tr>
-<tr class="even">
-<td>plg</td>
-<td>放置框架的一些插件</td>
-</tr>
-<tr class="odd">
-<td>snd</td>
-<td>存放音频资源</td>
-</tr>
-<tr class="even">
-<td>fnt</td>
-<td>存放字体文件，注：公司目前所有购买的字体只能在美术图上使用，不能在程序中使用</td>
-</tr>
-<tr class="odd">
-<td>VERSION</td>
-<td>版本信息</td>
-</tr>
-</tbody>
-</table>
-<p>注：bbframework在读取图片资源的时候会先去国际化文件夹里面根据当前设备语言环境读取相应的资源，当找不到该资源后才会去“res/img”里面去读取，音频等其他资源也是类似</p>
-<p>img 1、x2：通常称为“2倍图”、“普清图”，主要播放安卓平台以及ios中分辨率较低的机子，如ipad mini1 2、x4：通常称为“4倍图”或“高清图”，主要播放平台为ios分辨率较高的机子，如ipad,iphone6之后的机子 3、common：主要放置游戏中x2,x4可以共用的资源，如：<strong>粒子</strong>，tilemap的文件，骨骼的xml等等 4、xx：主要放置框架中x2,x4公共的资源 注：开发线是先制作X4再通过工具缩图至X2， 对于资源的调用框架默认自动索引到x2/x4的目录下，如：“bbframework/res/img/x4/gameplay/bg.png”，我们只需写相对路径为为：“gameplay/bg.png”</p>
-<p>snd 1、effect：存放音效，如：打斗时武器刀剑撞击在一起的声音等 2、music：存放背景音乐 注：对于音频的调用，框架默认自动索引到snd目录下，如：“bbframework/res/snd/effect/17901001.mp3”，我们只需写相对路径为：“effect/17901001.mp3”</p>
-
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/bbframework/" rel="tag"># bbframework</a>
-          </div>
-
-        
-
-          <div class="post-nav">
-            <div class="post-nav-item">
-                <a href="/2024/06/11/lua/" rel="prev" title="lua">
-                  <i class="fa fa-chevron-left"></i> lua
-                </a>
-            </div>
-            <div class="post-nav-item">
-            </div>
-          </div>
-    </footer>
-  </article>
-</div>
-
-
-
-
-
-
-</div>
-  </main>
-
-  <footer class="footer">
-    <div class="footer-inner">
-
-
-<div class="copyright">
-  &copy; 
-  <span itemprop="copyrightYear">2024</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">冲击波</span>
-</div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
-  </div>
-
-    </div>
-  </footer>
-
-  
-  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
-
-  
-
-
-
-
-  
-
-
-
-
-  
-
-  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
-<script src="/js/third-party/math/mathjax.js"></script>
-
-
-
-</body>
-</html>
